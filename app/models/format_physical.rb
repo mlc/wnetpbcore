@@ -1,0 +1,3 @@
+class FormatPhysical < Format
+
+end

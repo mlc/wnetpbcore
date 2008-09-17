@@ -1,0 +1,3 @@
+class FormatDigital < Format
+
+end
