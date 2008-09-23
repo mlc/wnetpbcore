@@ -3,6 +3,7 @@ class Asset < ActiveRecord::Base
   has_many :titles, :dependent => :destroy
   has_many :subjects
   has_many :descriptions
+  has_many :genres
   has_many :relations
   has_many :covergaes
   has_and_belongs_to_many :audience_levels
