@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080915155611) do
+ActiveRecord::Schema.define(:version => 20080923055831) do
 
   create_table "annotation", :force => true do |t|
     t.integer "instantiation_id"
@@ -206,7 +206,7 @@ ActiveRecord::Schema.define(:version => 20080915155611) do
     t.string   "date_issued"
     t.integer  "format_id"
     t.string   "format_location",              :null => false
-    t.integer  "format_media_type"
+    t.integer  "format_media_type_id"
     t.integer  "format_generation_id"
     t.string   "format_file_size"
     t.string   "format_time_start"
