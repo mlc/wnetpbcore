@@ -626,9 +626,16 @@ class InitialPbCoreDatabase < ActiveRecord::Migration
   end
 
   def self.down
-    [ :assets, :description_types, :descriptions, :identifier_sources,
-      :identifiers, :schema_migrations, :subjects, :title_type_categories,
-      :title_types, :titles
+    [
+      :annotation, :assets, :assets_audience_levels, :assets_audience_ratings,
+      :audience_levels, :audience_ratings, :contributor_roles, :contributors,
+      :coverages, :creator_roles, :creators, :date_availables,
+      :description_types, :descriptions, :essence_tracks, :extensions,
+      :format_colors, :format_generations, :format_ids, :format_media_types,
+      :formats, :genres, :identifier_sources, :identifiers, :instantiations,
+      :publisher_roles, :publishers, :relation_types, :relations,
+      :rights_summaries, :subjects, :title_type_categories, :title_types,
+      :titles
     ].each do |t|
       drop_table t
     end
