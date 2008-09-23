@@ -1,0 +1,165 @@
+*CustomXMLSerialization*
+version 1.2 (Oct 19, 2007)
+
+Author::    Tim Morgan  (mailto:riscfuture@gmail.com)
+Copyright:: Copyright (c)2007 Tim Morgan
+License::   Distributed under the same terms as Ruby
+
+Allows you to customize what the +to_xml+ method produces when called on your
++ActiveRecord+ instance, without overriding +to_xml+ each time.
+
+Example:
+
+    class MyModel < ActiveRecord
+      xml_serialize [ :some_field, :some_other_field ]
+    end
+
+will produce:
+
+    <my-model>
+        <some-field>value</some-field>
+        <some-other-field>value</some-other-field>
+    </my-model>
+
+when serialized.
+
+In addition, you can include fields from second-level +belongs_to+ associations.
+Assume that you have a widget, which +belongs_to+ a factory. You could do:
+
+    class Widget < ActiveRecord
+      xml_serialize [ :name, { :factory => :name } ]
+    end
+
+which will produce:
+
+    <widget>
+        <name>Ham Sandwich Embalmer</name>
+        <factory-name>Food Embalming Products, Inc.</factory-name>
+    </widget>
+
+Don't want to use the key "factory-name"? Try this:
+
+    class Widget < ActiveRecord
+      xml_serialize [ :name, { :factory => [ :name, "factory" ] } ]
+    end
+
+That lovely and not-at-all-unwieldy syntax gets you:
+
+    <widget>
+        <name>Ham Sandwich Embalmer</name>
+        <factory>Food Embalming Products, Inc.</factory>
+    </widget>
+
+This works without associations too:
+
+    class Widget < ActiveRecord
+      xml_serialize [ :name, [ :id, "product-id" ] ]
+    end
+
+If you need to include one-to-many associations, simply make use of the
+<tt>:include</tt> keyword when you call +to_xml+. If you want your +belongs_to+
+associations wrapped in their own supertag, also make use of the
+<tt>:include</tt> keyword.
+
+If your field requires special options, you should call
++xml_serialization_options+ after your call to +xml_serialize+. Pass in the name
+of the field (or your custom name, if you gave it one), and a hash of specific
+options for that field. The following options are supported:
+
++cdata+:: If set to true, wraps the field data in a CDATA tag to preserve
+          special characters (default false)
+
+In addition, the method can be passed the name of an association. With an
+association, the following options can be used:
+
++name+:: When used with an association, provides a custom name for the
+         enclosing tag. (See the example below.)
++favor_class_name+:: Normally, the name of the association (in singular) is used
+                     as the enclosing tag for each element of the association.
+                     (So an association called "sprockets" will have each
+                     sprocket's XML description enclosed in +sprocket+ tags.) If
+                     you would prefer to use the name of each element's class
+                     (for instance, if +sprockets+ can be composed of either
+                     +Doodad+ instances or +Thingamajig+ instances, and you'd
+                     like to use tags named +doodad+ and +thingamajig+, instead
+                     of just +sprocket+), set this to true. (Default is false.)
++favor_association_name+:: If you use the <tt>:name</tt> attribute to specify a
+                           custom enclosing tag name, it will singularize the
+                           name for use with each tag element. If you want to
+                           suppress this behavior and instead use the
+                           association name for each tag element, set this to
+                           true.
+
+The following is an example of how to make an +xml_serialization_options+ call:
+
+    xml_serialize [ :first_level_field, [ :custom_name_field, "custom-name"],
+                    { :association => :associated_field } ]
+                    
+    xml_serialization_options :first_level_field, :cdata => true
+    xml_serialization_options "custom-name", :cdata => true
+    xml_serialization_options, "association-associated_field", :cdata => true
+
+Note the use of the dash to separate an association from its field.
+
+Here's an example of how to use the +name+ option to give an association a
+custom enclosing tag name (typically in plural). The code:
+
+    class Widget < ActiveRecord
+      has_many :sprockets
+      xml_serialization_options :sprockets, :name => "components"
+    end
+
+produces:
+
+    <widget>
+        <components>
+            <component>
+                ...
+            </component>
+            ...
+        </components>
+    </widget>
+
+if +to_xml+ is called with the <tt>:include</tt> option. Note that each element
+of +components+ is wrapped in a +component+ tag. To wrap it in a +sprocket+ tag,
+set +favor_class_name+ to true.
+
+Let's say you're calling +to_xml+ on an array of +Widgets+, and you'd like to
+use the +name+ or +favor_class_name+ options  on the resulting XML list. You
+can't do that using +xml_serialization_options+, because that's only for
+associations (sublists). To use those options for your main list simply pass
+them to the +xml_array_serialization_options+ class method. It takes exactly the
+same parameters as the former method, except +favor_association_name+ obviously.
+An example:
+
+	class Widget < ActiveRecord
+	  xml_array_serialization_options :name => 'sprockets'
+	end
+
+	@widgets = Widget.find(:all)
+	@widgets.to_xml
+
+This produces:
+
+	<sprockets>
+		<widget>
+			...
+		</widget>
+		<widget>
+			...
+		</widget>
+	</sprockets>
+
+Things people should probably write if people other than me actually use this:
+
+* The ability to use n-th level +belongs_to+ associations, a la
+  <tt>ActiveRecord#find</tt> and its <tt>:include</tt> option.
+
+* A better but still succinct syntax for specifying with great precision how one
+  wants his precious model XMLified.
+
+* Building on above, perhaps the use of <tt>:only</tt> or <tt>:except</tt>
+  keywords to reduce boilerplate for objects with large numbers of fields.
+
+* Better support for other parameters passed to +to_xml+, such as including
+  types (<tt><age type="integer">35</age></tt> kind of thing).
