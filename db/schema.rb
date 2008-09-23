@@ -9,14 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080923055831) do
+ActiveRecord::Schema.define(:version => 20080923150336) do
 
-  create_table "annotation", :force => true do |t|
+  create_table "annotations", :force => true do |t|
     t.integer "instantiation_id"
     t.text    "annotation"
   end
 
-  add_index "annotation", ["instantiation_id"], :name => "index_annotation_on_instantiation_id"
+  add_index "annotations", ["instantiation_id"], :name => "index_annotation_on_instantiation_id"
 
   create_table "assets", :force => true do |t|
     t.datetime "created_at"
