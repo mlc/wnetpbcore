@@ -1,4 +1,6 @@
 module PbcoreXmlElement
+  PBCORE_NAMESPACE = "pbcore:http://www.pbcore.org/PBCore/PBCoreNamespace.html"
+
   module ClassMethods
     def xml_string(attr, field)
       from_xml_elt do |record|
@@ -15,6 +17,13 @@ module PbcoreXmlElement
         unless elts.empty? || elts[0].child.empty?
           record.send("#{field}=".to_sym, klass.find_or_create_by_name(elts[0].child.to_s))
         end
+      end
+    end
+    
+    def xml_subelements(attr, field, klass)
+      from_xml_elt do |record|
+        elts = record._working_xml.find("pbcore:#{attr}", PBCORE_NAMESPACE)
+        record.send("#{field}=".to_sym, elts.map{|elt| klass.from_xml(elt)})
       end
     end
     
