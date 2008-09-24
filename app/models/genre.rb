@@ -1,4 +1,6 @@
 class Genre < ActiveRecord::Base
-  include Picklist
-  has_many :assets
+  include PbcoreXmlElement
+  belongs_to :asset
+  xml_string "genre", :genre
+  xml_string "genreAuthorityUsed", :genre_authority_used
 end

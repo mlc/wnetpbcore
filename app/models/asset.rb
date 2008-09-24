@@ -18,5 +18,7 @@ class Asset < ActiveRecord::Base
   
   xml_subelements "pbcoreIdentifier", :identifiers, Identifier
   xml_subelements "pbcoreTitle", :titles, Title
-  #xml_subelements "pbcoreSubject", :subjects, Subject
+  xml_subelements "pbcoreSubject", :subjects, Subject
+  xml_subelements "pbcoreDescription", :descriptions, Description
+  xml_subelements "pbcoreGenre", :genres, Genre
 end
