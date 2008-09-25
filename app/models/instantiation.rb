@@ -1,7 +1,9 @@
 class Instantiation < ActiveRecord::Base
+  include PbcoreXmlElement
+  
   belongs_to :asset
   has_many :format_ids
-  belongs_to :format
+  has_one :format
   belongs_to :format_media_type
   belongs_to :format_generation
   belongs_to :format_color
@@ -10,4 +12,24 @@ class Instantiation < ActiveRecord::Base
   has_many :annotations
 
   validates_presence_of :format_location
+  
+  xml_string "dateCreated"
+  xml_string "dateIssued"
+  xml_picklist "formatPhysical", :format, FormatPhysical
+  xml_picklist "formatDigital", :format, FormatDigital
+  xml_string "formatLocation"
+  xml_picklist "formatMediaType"
+  xml_picklist "formatGenerations", :format_generation
+  xml_string "formatFileSize"
+  xml_string "formatTimeStart"
+  xml_string "formatDuration"
+  xml_string "formatDataRate"
+  xml_picklist "formatColors", :format_color, FormatColor
+  xml_string "formatTracks"
+  xml_string "formatChannelConfiguration"
+  xml_string "language"
+  xml_string "alternativeModes"
+  xml_subelements "pbcoreEssenceTrack", :essence_tracks
+  xml_subelements "pbcoreDateAvailable", :date_availables
+  xml_subelements "pbcoreAnnotation", :annotations
 end

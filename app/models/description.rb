@@ -3,6 +3,6 @@ class Description < ActiveRecord::Base
   belongs_to :asset
   belongs_to :description_type
   
-  xml_string "description", :description
+  xml_string "description"
   xml_picklist "descriptionType", :description_type, DescriptionType
 end
