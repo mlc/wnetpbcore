@@ -587,6 +587,7 @@ class InitialPbCoreDatabase < ActiveRecord::Migration
       t.integer :instantiation_id
       # these are not documented yet...
       # maybe some should eventually be lookup tables...
+      t.string :essence_track_type
       t.string :essence_track_identifier
       t.string :essence_track_identifier_source
       t.string :essence_track_standard

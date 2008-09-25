@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(:version => 20080923150336) do
 
   create_table "essence_tracks", :force => true do |t|
     t.integer "instantiation_id"
+    t.string  "essence_track_type"
     t.string  "essence_track_identifier"
     t.string  "essence_track_identifier_source"
     t.string  "essence_track_standard"
