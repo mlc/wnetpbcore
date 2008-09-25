@@ -23,12 +23,23 @@ class Asset < ActiveRecord::Base
   xml_subelements "pbcoreGenre", :genres
   xml_subelements "pbcoreRelation", :relations
   xml_subelements "pbcoreCoverage", :coverages
-  xml_subelements_picklist "pbcoreAudienceLevel/pbcore:audienceLevel", :audience_levels
-  xml_subelements_picklist "pbcoreAudienceRating/pbcore:audienceRating", :audience_ratings
+  xml_subelements_picklist "pbcoreAudienceLevel", "audienceLevel", :audience_levels
+  xml_subelements_picklist "pbcoreAudienceRating", "audienceRating", :audience_ratings
   xml_subelements "pbcoreCreator", :creators
   xml_subelements "pbcoreContributor", :contributors
   xml_subelements "pbcorePublisher", :publishers
   xml_subelements "pbcoreRightsSummary", :rights_summaries
   xml_subelements "pbcoreInstantiation", :instantiations
   xml_subelements "pbcoreExtension", :extensions
+  
+  def to_xml
+    builder = Builder::XmlMarkup.new(:indent => 2)
+    builder.instruct!
+    builder.PBCoreDescriptionDocument "xmlns" => "http://www.pbcore.org/PBCore/PBCoreNamespace.html",
+      "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance",
+      "xsi:schemaLocation" => "http://www.pbcore.org/PBCore/PBCoreNamespace.html http://www.pbcore.org/PBCore/PBCoreSchema.xsd" do
+      xml.comment! "XML Generated at #{Time.new} by rails pbcore database"
+      build_xml(builder)
+    end
+  end
 end
