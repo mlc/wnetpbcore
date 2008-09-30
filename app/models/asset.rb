@@ -17,6 +17,13 @@ class Asset < ActiveRecord::Base
   has_many :extensions
   
   xml_subelements "pbcoreIdentifier", :identifiers
+  to_xml_elt do |obj|
+    xml = obj._working_xml
+    xml.pbcoreIdentifier do
+      xml.identifier obj.id
+      xml.identifierSource "pbcore XML database"
+    end
+  end
   xml_subelements "pbcoreTitle", :titles
   xml_subelements "pbcoreSubject", :subjects
   xml_subelements "pbcoreDescription", :descriptions
@@ -38,7 +45,7 @@ class Asset < ActiveRecord::Base
     builder.PBCoreDescriptionDocument "xmlns" => "http://www.pbcore.org/PBCore/PBCoreNamespace.html",
       "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance",
       "xsi:schemaLocation" => "http://www.pbcore.org/PBCore/PBCoreNamespace.html http://www.pbcore.org/PBCore/PBCoreSchema.xsd" do
-      xml.comment! "XML Generated at #{Time.new} by rails pbcore database"
+      builder.comment! "XML Generated at #{Time.new} by rails pbcore database"
       build_xml(builder)
     end
   end
