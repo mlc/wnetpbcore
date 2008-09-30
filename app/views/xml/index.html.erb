@@ -1,0 +1,9 @@
+<% form_tag({}, :multipart => true) do  %>
+  <p>
+    <label for="xml">XML File: </label>
+    <%= file_field_tag :xml %>
+  </p>
+  <p>
+    <%= submit_tag "Upload" %>
+  </p>
+<% end %>

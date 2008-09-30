@@ -1,0 +1,21 @@
+#error, #warning, #message {
+    width: 100%;
+    border: 3px solid;
+    padding: 1em;
+    margin: 1em 0em;
+}
+
+#error {
+    background-color: #f77;
+    border-color: #f00;
+}
+
+#warning {
+    background-color: #ff7;
+    border-color: #ff0;
+}
+
+#message {
+    background-color: #eee;
+    border-color: #aaa;
+}
