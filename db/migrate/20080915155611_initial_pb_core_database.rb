@@ -153,7 +153,7 @@ class InitialPbCoreDatabase < ActiveRecord::Migration
 
     create_table :assets_audience_levels, :id => false do |t|
       t.integer :asset_id
-      t.integer :asset_level_id
+      t.integer :audience_level_id
     end
     add_index :assets_audience_levels, :asset_id
 
