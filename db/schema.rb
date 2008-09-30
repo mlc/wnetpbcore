@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20080923150336) do
 
   create_table "assets_audience_levels", :id => false, :force => true do |t|
     t.integer "asset_id"
-    t.integer "asset_level_id"
+    t.integer "audience_level_id"
   end
 
   add_index "assets_audience_levels", ["asset_id"], :name => "index_assets_audience_levels_on_asset_id"
