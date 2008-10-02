@@ -1,0 +1,20 @@
+<%-
+if (local_assigns[:key].nil? && !objs.empty?)
+  -%>
+  <dt><%= h field %></dt>
+  <%-
+end
+objs.each do |obj|
+  if local_assigns[:key]
+    objkey = obj.send(key)
+    objkey = objkey.name if objkey.respond_to?(:name)
+    keystr = "#{field} (#{objkey})"
+    -%>
+    <dt><%= h keystr %></dt>
+    <%-
+  end
+-%>
+  <dd><%= h obj.send(value) %></dd>
+<%-
+end
+-%>

@@ -1,0 +1,42 @@
+<h2>Intellectual Content Section</h2>
+<dl>
+  <%= render :partial => "field_array", :locals => {:objs => @asset.identifiers, :field => "Identifier", :key => :identifier_source, :value => :identifier} %>
+  <%= render :partial => "field_array", :locals => {:objs => @asset.titles, :field => "Title", :key => :title_type, :value => :title} %>
+  <%= render :partial => "field_array", :locals => {:objs => @asset.subjects, :field => "Subject", :key => :subject_authority, :value => :subject} %>
+  <%= render :partial => "field_array", :locals => {:objs => @asset.descriptions, :field => "Description", :key => :description_type, :value => :description} %>
+  <%= render :partial => "field_array", :locals => {:objs => @asset.genres, :field => "Genre", :key => :genre_authority_used, :value => :genre} %>
+  <%= render :partial => "field_array", :locals => {:objs => @asset.relations, :field => "Relation", :value => :to_s} %>
+  <%= render :partial => "field_array", :locals => {:objs => @asset.coverages, :field => "Coverage", :key => :coverage_type, :value => :coverage} %>
+  <%= render :partial => "field_array", :locals => {:objs => @asset.audience_levels, :field => "Audience Level", :value => :name} %>
+  <%= render :partial => "field_array", :locals => {:objs => @asset.audience_ratings, :field => "Audience Rating", :value => :name} %>
+</dl>
+<h2>Intellectual Property Section</h2>
+<dl>
+  <%= render :partial => "field_array", :locals => {:objs => @asset.creators, :field => "Creators", :value => :to_s} %>
+  <%= render :partial => "field_array", :locals => {:objs => @asset.contributors, :field => "Contributors", :value => :to_s} %>
+  <%= render :partial => "field_array", :locals => {:objs => @asset.publishers, :field => "Publishers", :value => :to_s} %>
+  <%= render :partial => "field_array", :locals => {:objs => @asset.rights_summaries, :field => "Rights", :value => :rights_summary} %>
+</dl>
+<h2>Instantiation Section</h2>
+<%- @asset.instantiations.each do |instantiation| -%>
+  <h3>Instantiation</h3>
+  <dl>
+    <%= render :partial => "field_array", :locals => {:objs => instantiation.format_ids, :field => "Format ID", :key => :format_identifier_source, :value => :format_identifier} %>
+    <%= render :partial => "field_one", :locals => {:key => "Date Created", :value => instantiation.date_created} %>
+    <%= render :partial => "field_one", :locals => {:key => "Date Issued", :value => instantiation.date_issued} %>
+    <%= render :partial => "field_one", :locals => {:key => "Format", :value => instantiation.format, :field => :name } %>
+    <%= render :partial => "field_one", :locals => {:key => "Format Location", :value => instantiation.format_location, :url => true } %>
+    <%= render :partial => "field_one", :locals => {:key => "Media Type", :value => instantiation.format_media_type, :field => :name } %>
+    <%= render :partial => "field_one", :locals => {:key => "Generations", :value => instantiation.format_generation, :field => :name } %>
+    <%= render :partial => "field_one", :locals => {:key => "File Size", :value => instantiation.format_file_size } %>
+    <%= render :partial => "field_one", :locals => {:key => "Time Start", :value => instantiation.format_time_start } %>
+    <%= render :partial => "field_one", :locals => {:key => "Duration", :value => instantiation.format_duration } %>
+    <%= render :partial => "field_one", :locals => {:key => "Data Rate", :value => instantiation.format_data_rate } %>
+    <%= render :partial => "field_one", :locals => {:key => "Colors", :value => instantiation.format_color, :field => :name } %>
+    <%= render :partial => "field_one", :locals => {:key => "Tracks", :value => instantiation.format_tracks } %>
+    <%= render :partial => "field_one", :locals => {:key => "Channel Configuration", :value => instantiation.format_channel_configuration } %>
+    <%= render :partial => "field_one", :locals => {:key => "Language", :value => instantiation.language } %>
+    <%= render :partial => "field_one", :locals => {:key => "Alternative Modes", :value => instantiation.alternative_modes } %>
+    <%= render :partial => "field_array", :locals => {:objs => instantiation.date_availables, :field => "Date Available", :value => :to_s } %>
+  </dl>
+<%- end -%>

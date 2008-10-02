@@ -4,4 +4,8 @@ class Relation < ActiveRecord::Base
   belongs_to :relation_type
   xml_picklist "relationType", :relation_type, RelationType
   xml_string "relationIdentifier", :relation_identifier
+  
+  def to_s
+    "#{relation_type.name}: #{relation_identifier}"
+  end
 end

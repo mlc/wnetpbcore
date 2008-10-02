@@ -4,4 +4,8 @@ class Publisher < ActiveRecord::Base
   belongs_to :publisher_role
   xml_string "publisher"
   xml_picklist "publisherRole", :publisher_role, PublisherRole
+
+  def to_s
+    "#{publisher_role.name}: #{publisher}"
+  end
 end
