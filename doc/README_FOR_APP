@@ -1,3 +1,5 @@
 This needs the following gems:
  * chronic
  * libxml-ruby
+
+Also you need sphinx, from http://www.sphinxsearch.org/
