@@ -1,5 +1,9 @@
 class Asset < ActiveRecord::Base
   include PbcoreXmlElement
+  ALL_INCLUDES = [:identifiers, :titles, :subjects, :descriptions, :genres,
+    :relations, :coverages, :audience_levels, :audience_ratings, :creators,
+    :contributors, :publishers, :rights_summaries, :instantiations, :extensions
+    ]
   has_many :identifiers, :dependent => :destroy
   has_many :titles, :dependent => :destroy
   has_many :subjects

@@ -5,7 +5,7 @@ class AssetsController < ApplicationController
   end
   
   def show
-    @asset = Asset.find(params[:id])
+    @asset = Asset.find(params[:id], :include => Asset::ALL_INCLUDES)
     @page_title = "View Asset"
     respond_to do |format|
       format.html
