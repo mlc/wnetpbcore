@@ -15,7 +15,6 @@
       <%- if flash[severity] -%>
         <div id="<%= severity.to_s %>">
           <%= flash[severity] %>
-          <%- flash.discard(severity) -%>
         </div>
       <%- end -%>
     <%- end -%>

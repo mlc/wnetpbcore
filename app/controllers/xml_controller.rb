@@ -5,9 +5,9 @@ class XmlController < ApplicationController
       begin
         a = Asset.from_xml(params[:xml].read)
         a.save
-        flash[:message] = "thanks for #{a.titles[0].title}"
+        flash.now[:message] = "thanks for #{a.titles[0].title} #{params[:xml].class}"
       rescue Exception => e
-        flash[:error] = e.to_s
+        flash.now[:error] = e.to_s
       end
     end
   end
