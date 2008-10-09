@@ -1,0 +1,18 @@
+defaults: &defaults
+  adapter: mysql
+  host: localhost
+  username:
+  password:
+  encoding: utf8
+
+development:
+  database: pbcore_development
+  <<: *defaults
+
+test:
+  database: pbcore_test
+  <<: *defaults
+
+production:
+  database: pbcore_production
+  <<: *defaults
