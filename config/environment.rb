@@ -28,6 +28,7 @@ Rails::Initializer.run do |config|
   config.gem 'libxml-ruby', :lib => 'libxml', :version => '>=0.8.0'
   config.gem 'rubyzip', :lib => 'zip/zip'
   config.gem 'mime-types', :lib => 'mime/types'
+  config.gem 'uuidtools'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
