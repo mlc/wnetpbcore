@@ -2,7 +2,8 @@ class AssetsController < ApplicationController
   def index
     @query = params[:q]
     @page_title = @query ? "Search for #{@query}" : "Assets"
-    @assets = @query ? Asset.search(@query) : Asset.all
+    pageopts = {:page => params[:page] || 1, :per_page => 20}
+    @assets = @query ? Asset.search(@query, pageopts) : Asset.paginate(:all, {:order => 'updated_at DESC'}.merge(pageopts))
 
     respond_to do |format|
       format.html
