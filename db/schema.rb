@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080923150336) do
+ActiveRecord::Schema.define(:version => 20081010164229) do
 
   create_table "annotations", :force => true do |t|
     t.integer "instantiation_id", :limit => 11
@@ -21,7 +21,10 @@ ActiveRecord::Schema.define(:version => 20080923150336) do
   create_table "assets", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "uuid",       :limit => 36, :null => false
   end
+
+  add_index "assets", ["uuid"], :name => "index_assets_on_uuid", :unique => true
 
   create_table "assets_audience_levels", :id => false, :force => true do |t|
     t.integer "asset_id",          :limit => 11

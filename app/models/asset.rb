@@ -1,4 +1,6 @@
 class Asset < ActiveRecord::Base
+  before_create :generate_uuid
+  
   include PbcoreXmlElement
   ALL_INCLUDES = [:identifiers, :titles, :subjects, :descriptions, :genres,
     :relations, :coverages, :audience_levels, :audience_ratings, :creators,
@@ -43,8 +45,8 @@ class Asset < ActiveRecord::Base
   to_xml_elt do |obj|
     xml = obj._working_xml
     xml.pbcoreIdentifier do
-      xml.identifier obj.id
-      xml.identifierSource "pbcore XML database"
+      xml.identifier obj.uuid
+      xml.identifierSource "pbcore XML database UUID"
     end
   end
   xml_subelements "pbcoreTitle", :titles
@@ -71,5 +73,9 @@ class Asset < ActiveRecord::Base
       builder.comment! "XML Generated at #{Time.new} by rails pbcore database"
       build_xml(builder)
     end
+  end
+  protected
+  def generate_uuid
+    self.uuid = UUID.random_create.to_s
   end
 end
