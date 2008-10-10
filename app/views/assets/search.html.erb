@@ -1,0 +1,13 @@
+<%= render :partial => 'search_form' %>
+<%-
+if @results && !@results.empty?
+  content_tag :ul do
+    @results.each do |asset|
+-%>
+<li><%= link_to asset.titles[0].title, asset %></li>
+<%-
+    end
+  end
+else -%>
+<p>Sorry, no search results found.</p>
+<%- end -%>

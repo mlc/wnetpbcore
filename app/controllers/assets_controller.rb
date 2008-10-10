@@ -12,4 +12,10 @@ class AssetsController < ApplicationController
       format.xml { render :xml => @asset.to_xml }
     end
   end
+  
+  def search
+    @query = params[:q]
+    @results = Asset.search(@query) if @query
+    @page_title = "Search"
+  end
 end
