@@ -2,7 +2,7 @@
   <%- @assets.each do |asset| -%>
     <li>
       <%= h asset.titles.map{|t| t.title}.join(", ") %>
-      <%= link_to "view", asset_url(asset) %>
+      <%= link_to "view", asset %>
       <%= link_to "xml", formatted_asset_url(asset, "xml") %>
     </li>
   <%- end -%>
