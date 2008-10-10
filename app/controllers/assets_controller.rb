@@ -1,7 +1,13 @@
 class AssetsController < ApplicationController
   def index
-    @page_title = "Assets"
-    @assets = Asset.all
+    @query = params[:q]
+    @page_title = @query ? "Search for #{@query}" : "Assets"
+    @assets = @query ? Asset.search(@query) : Asset.all
+
+    respond_to do |format|
+      format.html
+#      format.xml
+    end
   end
   
   def show
@@ -20,11 +26,5 @@ class AssetsController < ApplicationController
       flash[:error] = "Invalid Asset ID specified"
       redirect_to :action => 'index'
     end
-  end
-  
-  def search
-    @query = params[:q]
-    @results = Asset.search(@query) if @query
-    @page_title = "Search"
   end
 end

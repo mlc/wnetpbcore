@@ -1,3 +1,5 @@
+<%= render :partial => 'search_form' %>
+
 <ul>
   <%- @assets.each do |asset| -%>
     <li>
@@ -7,7 +9,5 @@
     </li>
   <%- end -%>
 </ul>
-
-<%= render :partial => 'search_form' %>
 
 <p><%= link_to "upload assets", :controller => :xml %></p>
