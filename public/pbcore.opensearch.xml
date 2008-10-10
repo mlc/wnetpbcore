@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+    <ShortName>pbcore</ShortName>
+    <Description>Search PBCore XML Database</Description>
+    <Url type="text/html" template="http://localhost:3000/?q={searchTerms}&amp;page={startPage?}"/>
+    <Url type="application/atom+xml" template="http://localhost:3000/index.atom?q={searchTerms}&amp;page={startPage?}"/>
+    <Query role="example" terms="wnet"/>
+    <Developer>Roasted Vermicelli LLC for the WNET Digital Archive</Developer>
+    <InputEncoding>UTF-8</InputEncoding>
+</OpenSearchDescription>
