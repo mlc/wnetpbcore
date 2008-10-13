@@ -3,3 +3,8 @@ This needs the following gems:
  * libxml-ruby
 
 Also you need sphinx, from http://www.sphinxsearch.com/
+
+If you plan to deploy, you need capistrano as well.
+
+
+On the server, install ruby, nginx, and git.
