@@ -74,6 +74,23 @@ class Asset < ActiveRecord::Base
       build_xml(builder)
     end
   end
+  
+  def find_existing
+    return self unless new_record?
+    
+    possibility = identifiers.detect{|s| s.identifier_source_id == IdentifierSource::OUR_UUID_SOURCE.id}
+    if possibility
+      Asset.find_by_uuid(possibility.identifier)
+    else
+      nil
+    end
+  end
+  
+  def destroy_existing
+    existing = find_existing
+    existing.destroy if existing
+  end
+
   protected
   def generate_uuid
     self.uuid = UUID.random_create.to_s

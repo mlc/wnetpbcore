@@ -14,6 +14,7 @@ class XmlController < ApplicationController
           next if entry.name =~ /[\/\\]\.[^\/\\]*/ # and hidden files too
           #begin
             a = Asset.from_xml(zip.read(nil, String.new))
+            a.destroy_existing
             a.save
             successes << a.titles[0].title
           #rescue Exception => e
@@ -24,6 +25,7 @@ class XmlController < ApplicationController
       else
         begin
           a = Asset.from_xml(params[:xml].read)
+          a.destroy_existing
           a.save
           flash.now[:message] = "thanks for #{a.titles[0].title}"
         rescue Exception => e
