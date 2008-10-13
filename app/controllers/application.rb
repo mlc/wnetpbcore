@@ -12,9 +12,13 @@ class ApplicationController < ActionController::Base
   # Uncomment this to filter the contents of submitted sensitive data parameters
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
-    
+
+  def initialize(*args)
+    super(*args)
+    @alternates = []
+  end
+  
   def alternate(type, *args_for_url)
-    @alternates ||= []
     @alternates << [url_for(*args_for_url), type]
   end
 end
