@@ -1,5 +1,6 @@
 class AssetsController < ApplicationController
   def index
+    alternate "application/atom+xml", :format => "atom", :q => params[:q]
     @query = params[:q]
     @page_title = @query ? "Search for #{@query}" : "Assets"
     pageopts = {:page => params[:page] || 1, :per_page => 20}
@@ -14,6 +15,7 @@ class AssetsController < ApplicationController
   end
   
   def show
+    alternate "application/xml", :format => "xml"
     if params[:id] =~ /^[\d]+$/
       @asset = Asset.find(params[:id], :include => Asset::ALL_INCLUDES)
     else

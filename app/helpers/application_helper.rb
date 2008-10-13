@@ -20,4 +20,8 @@ module ApplicationHelper
       "itemsPerPage" => 20
     }
   end
+  
+  def alternate_views
+    @alternates.map{|href,type| tag(:link,:href=>href, :rel=>:alternate, :type=>type, :title=>@page_title)}.join
+  end
 end

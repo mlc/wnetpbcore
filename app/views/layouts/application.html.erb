@@ -9,6 +9,7 @@
     </title>
     <%= stylesheet_link_tag "application"  %>
     <%= opensearch_headers(@search_object) %>
+    <%= alternate_views %>
   </head>
   <body>
     <%= content_tag :h1, @page_title %>
