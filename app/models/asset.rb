@@ -8,19 +8,19 @@ class Asset < ActiveRecord::Base
     ]
   has_many :identifiers, :dependent => :destroy
   has_many :titles, :dependent => :destroy
-  has_many :subjects
-  has_many :descriptions
-  has_many :genres
-  has_many :relations
-  has_many :coverages
+  has_many :subjects, :dependent => :destroy
+  has_many :descriptions, :dependent => :destroy
+  has_many :genres, :dependent => :destroy
+  has_many :relations, :dependent => :destroy
+  has_many :coverages, :dependent => :destroy
   has_and_belongs_to_many :audience_levels
   has_and_belongs_to_many :audience_ratings
-  has_many :creators
-  has_many :contributors
-  has_many :publishers
-  has_many :rights_summaries
-  has_many :instantiations
-  has_many :extensions
+  has_many :creators, :dependent => :destroy
+  has_many :contributors, :dependent => :destroy
+  has_many :publishers, :dependent => :destroy
+  has_many :rights_summaries, :dependent => :destroy
+  has_many :instantiations, :dependent => :destroy
+  has_many :extensions, :dependent => :destroy
   
   define_index do
     indexes [identifiers.identifier], :as => :identifier
