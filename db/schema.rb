@@ -56,14 +56,13 @@ ActiveRecord::Schema.define(:version => 20081010164229) do
 
   create_table "contributors", :force => true do |t|
     t.integer  "asset_id",            :limit => 11
-    t.string   "contributor",                       :null => false
+    t.text     "contributor",                       :null => false
     t.integer  "contributor_role_id", :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "contributors", ["asset_id"], :name => "index_contributors_on_asset_id"
-  add_index "contributors", ["contributor"], :name => "index_contributors_on_contributor"
 
   create_table "coverages", :force => true do |t|
     t.integer  "asset_id",      :limit => 11
@@ -81,14 +80,13 @@ ActiveRecord::Schema.define(:version => 20081010164229) do
 
   create_table "creators", :force => true do |t|
     t.integer  "asset_id",        :limit => 11
-    t.string   "creator",                       :null => false
+    t.text     "creator",                       :null => false
     t.integer  "creator_role_id", :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "creators", ["asset_id"], :name => "index_creators_on_asset_id"
-  add_index "creators", ["creator"], :name => "index_creators_on_creator"
 
   create_table "date_availables", :force => true do |t|
     t.integer "instantiation_id",     :limit => 11
@@ -106,7 +104,7 @@ ActiveRecord::Schema.define(:version => 20081010164229) do
 
   create_table "descriptions", :force => true do |t|
     t.integer  "asset_id",            :limit => 11
-    t.string   "description",                       :null => false
+    t.text     "description",                       :null => false
     t.integer  "description_type_id", :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -116,20 +114,20 @@ ActiveRecord::Schema.define(:version => 20081010164229) do
 
   create_table "essence_tracks", :force => true do |t|
     t.integer "instantiation_id",                :limit => 11
-    t.string  "essence_track_type"
-    t.string  "essence_track_identifier"
-    t.string  "essence_track_identifier_source"
-    t.string  "essence_track_standard"
-    t.string  "essence_track_encoding"
-    t.string  "essence_track_data_rate"
-    t.string  "essence_track_time_start"
-    t.string  "essence_track_duration"
-    t.string  "essence_track_bit_depth"
-    t.string  "essence_track_sampling_rate"
-    t.string  "essence_track_frame_size"
-    t.string  "essence_track_aspect_ratio"
-    t.string  "essence_track_frame_rate"
-    t.string  "essence_track_language"
+    t.text    "essence_track_type"
+    t.text    "essence_track_identifier"
+    t.text    "essence_track_identifier_source"
+    t.text    "essence_track_standard"
+    t.text    "essence_track_encoding"
+    t.text    "essence_track_data_rate"
+    t.text    "essence_track_time_start"
+    t.text    "essence_track_duration"
+    t.text    "essence_track_bit_depth"
+    t.text    "essence_track_sampling_rate"
+    t.text    "essence_track_frame_size"
+    t.text    "essence_track_aspect_ratio"
+    t.text    "essence_track_frame_rate"
+    t.text    "essence_track_language"
     t.text    "essence_track_annotation"
   end
 
@@ -155,8 +153,8 @@ ActiveRecord::Schema.define(:version => 20081010164229) do
 
   create_table "format_ids", :force => true do |t|
     t.integer  "instantiation_id",         :limit => 11
-    t.string   "format_identifier",                      :null => false
-    t.string   "format_identifier_source"
+    t.text     "format_identifier",                      :null => false
+    t.text     "format_identifier_source"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -178,17 +176,16 @@ ActiveRecord::Schema.define(:version => 20081010164229) do
 
   create_table "genres", :force => true do |t|
     t.integer  "asset_id",             :limit => 11
-    t.string   "genre",                              :null => false
-    t.string   "genre_authority_used"
+    t.text     "genre",                              :null => false
+    t.text     "genre_authority_used"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "genres", ["asset_id"], :name => "index_genres_on_asset_id"
-  add_index "genres", ["genre"], :name => "index_genres_on_genre"
 
   create_table "identifier_sources", :force => true do |t|
-    t.string   "name",       :null => false
+    t.text     "name",       :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -209,7 +206,7 @@ ActiveRecord::Schema.define(:version => 20081010164229) do
     t.string   "date_created"
     t.string   "date_issued"
     t.integer  "format_id",                    :limit => 11
-    t.string   "format_location",                            :null => false
+    t.text     "format_location",                            :null => false
     t.integer  "format_media_type_id",         :limit => 11
     t.integer  "format_generation_id",         :limit => 11
     t.string   "format_file_size"
@@ -235,7 +232,7 @@ ActiveRecord::Schema.define(:version => 20081010164229) do
 
   create_table "publishers", :force => true do |t|
     t.integer  "asset_id",          :limit => 11
-    t.string   "publisher",                       :null => false
+    t.text     "publisher",                       :null => false
     t.integer  "publisher_role_id", :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -244,7 +241,7 @@ ActiveRecord::Schema.define(:version => 20081010164229) do
   add_index "publishers", ["asset_id"], :name => "index_publishers_on_asset_id"
 
   create_table "relation_types", :force => true do |t|
-    t.string "name", :null => false
+    t.text "name", :null => false
   end
 
   create_table "relations", :force => true do |t|
@@ -269,14 +266,13 @@ ActiveRecord::Schema.define(:version => 20081010164229) do
 
   create_table "subjects", :force => true do |t|
     t.integer  "asset_id",          :limit => 11
-    t.string   "subject",                         :null => false
-    t.string   "subject_authority"
+    t.text     "subject"
+    t.text     "subject_authority"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "subjects", ["asset_id"], :name => "index_subjects_on_asset_id"
-  add_index "subjects", ["subject"], :name => "index_subjects_on_subject"
 
   create_table "title_type_categories", :force => true do |t|
     t.string "name", :null => false
@@ -291,7 +287,7 @@ ActiveRecord::Schema.define(:version => 20081010164229) do
 
   create_table "titles", :force => true do |t|
     t.integer  "asset_id",      :limit => 11
-    t.string   "title",                       :null => false
+    t.text     "title",                       :null => false
     t.integer  "title_type_id", :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"

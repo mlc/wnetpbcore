@@ -5,23 +5,23 @@ class InitialPbCoreDatabase < ActiveRecord::Migration
     end
 
     create_table "identifiers" do |t|
-      t.column :asset_id, :int
-      t.column :identifier, :string, :null => false
-      t.column :identifier_source_id, :int
+      t.integer :asset_id
+      t.string :identifier, :null => false
+      t.integer :identifier_source_id
       t.timestamps
     end
     add_index :identifiers, :asset_id
     add_index :identifiers, [:identifier, :identifier_source_id]
 
     create_table "identifier_sources" do |t|
-      t.column :name, :string, :null => false
+      t.column :name, :text, :null => false
       t.timestamps
     end
 
     create_table "titles" do |t|
-      t.column :asset_id, :int
-      t.column :title, :string, :null => false
-      t.column :title_type_id, :int
+      t.integer :asset_id
+      t.text :title, :null => false
+      t.integer :title_type_id
       t.timestamps
     end
     add_index :titles, :asset_id
@@ -79,18 +79,17 @@ class InitialPbCoreDatabase < ActiveRecord::Migration
     end
 
     create_table "subjects" do |t|
-      t.column :asset_id, :int
-      t.column :subject, :string, :null => false
-      t.column :subject_authority, :string
+      t.integer :asset_id
+      t.text :subject
+      t.text :subject_authority
       t.timestamps
     end
     add_index :subjects, :asset_id
-    add_index :subjects, :subject
 
     create_table "descriptions" do |t|
-      t.column :asset_id, :int
-      t.column :description, :string, :null => false
-      t.column :description_type_id, :int
+      t.integer :asset_id
+      t.text :description, :null => false
+      t.integer :description_type_id
       t.timestamps
     end
     add_index :descriptions, :asset_id
@@ -112,12 +111,11 @@ class InitialPbCoreDatabase < ActiveRecord::Migration
 
     create_table :genres do |t|
       t.integer :asset_id
-      t.string :genre, :null => false
-      t.string :genre_authority_used
+      t.text :genre, :null => false
+      t.text :genre_authority_used
       t.timestamps
     end
     add_index :genres, :asset_id
-    add_index :genres, :genre
 
     create_table :relations do |t|
       t.integer :asset_id
@@ -129,7 +127,7 @@ class InitialPbCoreDatabase < ActiveRecord::Migration
     add_index :relations, :relation_identifier
 
     create_table :relation_types do |t|
-      t.string :name, :null => false
+      t.text :name, :null => false
     end
 
     [
@@ -192,12 +190,11 @@ class InitialPbCoreDatabase < ActiveRecord::Migration
 
     create_table :creators do |t|
       t.integer :asset_id
-      t.string :creator, :null => false
+      t.text :creator, :null => false
       t.integer :creator_role_id
       t.timestamps
     end
     add_index :creators, :asset_id
-    add_index :creators, :creator
 
     create_table :creator_roles do |t|
       t.string :name, :null => false
@@ -216,12 +213,11 @@ class InitialPbCoreDatabase < ActiveRecord::Migration
 
     create_table :contributors do |t|
       t.integer :asset_id
-      t.string :contributor, :null => false
+      t.text :contributor, :null => false
       t.integer :contributor_role_id
       t.timestamps
     end
     add_index :contributors, :asset_id
-    add_index :contributors, :contributor
 
     create_table :contributor_roles do |t|
       t.string :name, :null => false
@@ -270,7 +266,7 @@ class InitialPbCoreDatabase < ActiveRecord::Migration
 
     create_table :publishers do |t|
       t.integer :asset_id
-      t.string :publisher, :null => false
+      t.text :publisher, :null => false
       t.integer :publisher_role_id
       t.timestamps
     end
@@ -300,7 +296,7 @@ class InitialPbCoreDatabase < ActiveRecord::Migration
       t.string :date_created
       t.string :date_issued
       t.integer :format_id
-      t.string :format_location, :null => false
+      t.text :format_location, :null => false
       t.integer :format_media_type
       t.integer :format_generation_id
       t.string :format_file_size
@@ -318,8 +314,8 @@ class InitialPbCoreDatabase < ActiveRecord::Migration
 
     create_table :format_ids do |t|
       t.integer :instantiation_id
-      t.string :format_identifier, :null => false
-      t.string :format_identifier_source
+      t.text :format_identifier, :null => false
+      t.text :format_identifier_source
       t.timestamps
     end
     add_index :format_ids, :instantiation_id
@@ -587,20 +583,20 @@ class InitialPbCoreDatabase < ActiveRecord::Migration
       t.integer :instantiation_id
       # these are not documented yet...
       # maybe some should eventually be lookup tables...
-      t.string :essence_track_type
-      t.string :essence_track_identifier
-      t.string :essence_track_identifier_source
-      t.string :essence_track_standard
-      t.string :essence_track_encoding
-      t.string :essence_track_data_rate
-      t.string :essence_track_time_start
-      t.string :essence_track_duration
-      t.string :essence_track_bit_depth
-      t.string :essence_track_sampling_rate
-      t.string :essence_track_frame_size
-      t.string :essence_track_aspect_ratio
-      t.string :essence_track_frame_rate
-      t.string :essence_track_language
+      t.text :essence_track_type
+      t.text :essence_track_identifier
+      t.text :essence_track_identifier_source
+      t.text :essence_track_standard
+      t.text :essence_track_encoding
+      t.text :essence_track_data_rate
+      t.text :essence_track_time_start
+      t.text :essence_track_duration
+      t.text :essence_track_bit_depth
+      t.text :essence_track_sampling_rate
+      t.text :essence_track_frame_size
+      t.text :essence_track_aspect_ratio
+      t.text :essence_track_frame_rate
+      t.text :essence_track_language
       t.text :essence_track_annotation
     end
     add_index :essence_tracks, :instantiation_id
