@@ -12,14 +12,14 @@ class XmlController < ApplicationController
           next unless entry.file? && entry.size > 0
           next if entry.name =~ /__MACOS/ # attempt to ignore resource fork
           next if entry.name =~ /[\/\\]\.[^\/\\]*/ # and hidden files too
-          #begin
+          begin
             a = Asset.from_xml(zip.read(nil, String.new))
             a.destroy_existing
             a.save
             successes << a.titles[0].title
-          #rescue Exception => e
-          #  flash.now[:warning] ||= "#{e.to_s} on #{entry.name}"
-          #end
+          rescue Exception => e
+            flash.now[:warning] ||= "#{e.to_s} on #{entry.name}"
+          end
         end
         flash.now[:message] = "read " + successes.join(", ")
       else
