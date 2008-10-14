@@ -2,5 +2,5 @@ class IdentifierSource < ActiveRecord::Base
   include Picklist
   has_many :identifiers
   
-  OUR_UUID_SOURCE = find_or_create_by_name("pbcore XML database UUID")
+  OUR_UUID_SOURCE = find_or_create_by_name("pbcore XML database UUID") rescue nil
 end
