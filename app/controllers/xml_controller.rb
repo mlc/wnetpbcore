@@ -7,6 +7,7 @@ class XmlController < ApplicationController
       havezip = MIME::Types.of(params[:xml].original_filename).any?{|t| t.content_type == "application/zip"}
       if havezip
         successes = []
+        failures = []
         zip = Zip::ZipInputStream.new(params[:xml])
         while (entry = zip.get_next_entry) do
           next unless entry.file? && entry.size > 0
@@ -18,10 +19,11 @@ class XmlController < ApplicationController
             a.save
             successes << a.titles[0].title
           rescue Exception => e
-            flash.now[:warning] ||= "#{e.to_s} on #{entry.name}"
+            failures << "#{e.to_s} on #{entry.name}"
           end
         end
         flash.now[:message] = "read " + successes.join(", ")
+        flash.now[:warning] = failures.join(", ") unless failures.empty?
       else
         begin
           a = Asset.from_xml(params[:xml].read)
