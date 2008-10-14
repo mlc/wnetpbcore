@@ -4,6 +4,9 @@ class Contributor < ActiveRecord::Base
   belongs_to :contributor_role
   xml_string "contributor"
   xml_picklist "contributorRole", :contributor_role, ContributorRole
+  
+  validates_presence_of :contributor
+  validates_length_of :contributor, :minimum => 1
 
   def to_s
     "#{contributor_role.name}: #{contributor}"

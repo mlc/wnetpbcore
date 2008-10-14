@@ -5,4 +5,6 @@ class Description < ActiveRecord::Base
   
   xml_string "description"
   xml_picklist "descriptionType", :description_type, DescriptionType
+
+  validates_length_of :description, :minimum => 1
 end
