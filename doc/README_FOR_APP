@@ -1,10 +1,29 @@
+LOCAL DEVELOPMENT SET-UP
+========================
+
 This needs the following gems:
  * chronic
  * libxml-ruby
+ * rake
+ * thin
+ * mysql (optional, but highly recommended)
+
+Other gems are unpacked into vendor/gems/ and don't need to be
+installed specially.
 
 Also you need sphinx, from http://www.sphinxsearch.com/
 
 If you plan to deploy, you need capistrano as well.
 
 
-On the server, install ruby, nginx, and git.
+SERVER SET-UP
+=============
+
+On the server, install ruby (including rubygems), nginx, git,
+sphinxsearch. Then install the required gems as above.
+
+Then, copy config/deploy-securerb.example to deploy-secure.rb and put
+in the database password. Create the 'pbcore' database and grant
+access as specified.
+
+If you're lucky, you can then do 'cap deploy'!

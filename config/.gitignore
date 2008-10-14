@@ -1,2 +1,3 @@
 database.yml
+deploy-secure.rb
 *.sphinx.conf
