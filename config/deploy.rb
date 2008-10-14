@@ -172,6 +172,11 @@ namespace :sphinx do
     run "cd #{current_path} && rake RAILS_ENV=production thinking_sphinx:configure && rake RAILS_ENV=production thinking_sphinx:running_start"
 
   end
+
+  desc "Ask sphinx to re-index"
+  task :index, :roles => :app do
+    run "cd #{current_path} && rake RAILS_ENV=production thinking_sphinx:index"
+  end
 end
 
 after "deploy:setup", "sphinx:setup"
