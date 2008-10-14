@@ -39,6 +39,8 @@ class Asset < ActiveRecord::Base
     indexes [extensions.extension_authority_used, extensions.extension], :as => :extension
     has :updated_at
     has :created_at
+    
+    set_property :delta => true
   end
   
   xml_subelements "pbcoreIdentifier", :identifiers
