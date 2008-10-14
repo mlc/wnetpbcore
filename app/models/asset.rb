@@ -91,6 +91,6 @@ class Asset < ActiveRecord::Base
 
   protected
   def generate_uuid
-    self.uuid = UUID.random_create.to_s unless self.uuid
+    self.uuid = UUID.random_create.to_s unless (self.uuid && !self.uuid.empty?)
   end
 end
