@@ -1,7 +1,7 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   def opensearch_headers(collection = nil)
-    msg = tag("link",  {:href=>"/pbcore.opensearch.xml",
+    msg = tag("link",  {:href=>"/assets/opensearch.xml",
       :rel=>"search",
       :type=>"application/opensearchdescription+xml",
       :title=>"PBCore Search"})

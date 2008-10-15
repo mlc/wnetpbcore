@@ -2,8 +2,8 @@
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
     <ShortName>pbcore</ShortName>
     <Description>Search PBCore XML Database</Description>
-    <Url type="text/html" template="http://localhost:3000/?q={searchTerms}&amp;page={startPage?}"/>
-    <Url type="application/atom+xml" template="http://localhost:3000/index.atom?q={searchTerms}&amp;page={startPage?}"/>
+    <Url type="text/html" template="<%= url_for :action => :index, :only_path => false %>?q={searchTerms}&amp;page={startPage?}"/>
+    <Url type="application/atom+xml" template="<%= url_for :action => :index, :format => :atom, :only_path => false %>?q={searchTerms}&amp;page={startPage?}"/>
     <Query role="example" terms="wnet"/>
     <Developer>Roasted Vermicelli LLC for the WNET Digital Archive</Developer>
     <InputEncoding>UTF-8</InputEncoding>

@@ -32,4 +32,11 @@ class AssetsController < ApplicationController
       redirect_to :action => 'index'
     end
   end
+
+  # give opensearch descriptor document
+  def opensearch
+    respond_to do |format|
+      format.xml
+    end
+  end
 end
