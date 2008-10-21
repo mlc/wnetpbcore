@@ -130,21 +130,13 @@ namespace :nginx do
 end
 
 namespace :deploy do
-  %w(start stop).each do |action|
+  %w(start stop restart).each do |action|
     desc "#{action} our server"
     task action.to_sym do
       find_and_execute_task("#{server_type}:#{action}")
       find_and_execute_task("sphinx:#{action}")
       find_and_execute_task("backgroundrb:#{action}")
     end
-  end
-  
-  desc "restart our server"
-  task :restart do
-    find_and_execute_task("deploy:stop")
-    find_and_execute_task("sphinx:restart")
-    find_and_execute_task("backgroundrb:restart")
-    find_and_execute_task("deploy:start")
   end
 end
 
