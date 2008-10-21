@@ -135,6 +135,7 @@ namespace :deploy do
     task action.to_sym do
       find_and_execute_task("#{server_type}:#{action}")
       find_and_execute_task("sphinx:#{action}")
+      find_and_execute_task("backgroundrb:#{action}")
     end
   end
 end
@@ -188,12 +189,12 @@ after "deploy:symlink", "sphinx:symlink"
 namespace :backgroundrb do
   desc "Stop the backgroundrb server"
   task :stop, :roles => :app do
-    run "cd #{current_path} && ./script/backgroundrb/stop -e production"
+    run "cd #{current_path} && ./script/backgroundrb stop -e production"
   end
 
   desc "Start the backgroundrb server"
   task :start, :roles => :app do
-    run "cd #{current_path} && RAILS_ENV=production nohup ./script/backgroundrb/start -e production > /dev/null 2>&1"
+    run "cd #{current_path} && RAILS_ENV=production nohup ./script/backgroundrb start -e production > /dev/null 2>&1"
   end
 
   desc "Start the backgroundrb server"
@@ -202,5 +203,3 @@ namespace :backgroundrb do
     start
   end
 end
-
-after "deploy:start", "backgroundrb:restart"
