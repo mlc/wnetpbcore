@@ -3,7 +3,7 @@ class AssetsController < ApplicationController
     alternate "application/atom+xml", :format => "atom", :q => params[:q]
     @query = params[:q]
     @page_title = @query ? "Search for #{@query}" : "Assets"
-    pageopts = {:page => params[:page] || 1, :per_page => 20}
+    pageopts = {:page => params[:page] || 1, :per_page => 20, :include => :titles}
     pageopts[:page] = 1 if pageopts[:page] == ""
     @assets = @query ? Asset.search(@query, {:match_mode => :extended}.merge(pageopts)) : Asset.paginate(:all, {:order => 'updated_at DESC'}.merge(pageopts))
     @search_object = @assets
