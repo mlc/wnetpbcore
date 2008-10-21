@@ -6,6 +6,7 @@ This needs the following gems:
  * libxml-ruby
  * rake
  * thin
+ * packet
  * mysql (optional, but highly recommended)
 
 Other gems are unpacked into vendor/gems/ and don't need to be
@@ -26,4 +27,4 @@ Then, copy config/deploy-securerb.example to deploy-secure.rb and put
 in the database password. Create the 'pbcore' database and grant
 access as specified.
 
-If you're lucky, you can then do 'cap deploy'!
+If you're lucky, you can then do 'cap deploy:setup' and 'cap deploy'!

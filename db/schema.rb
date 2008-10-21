@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081021215241) do
+ActiveRecord::Schema.define(:version => 20081021221742) do
 
   create_table "annotations", :force => true do |t|
     t.integer "instantiation_id", :limit => 11
@@ -47,6 +47,26 @@ ActiveRecord::Schema.define(:version => 20081021215241) do
 
   create_table "audience_ratings", :force => true do |t|
     t.string "name", :null => false
+  end
+
+  create_table "bdrb_job_queues", :force => true do |t|
+    t.binary   "args"
+    t.string   "worker_name"
+    t.string   "worker_method"
+    t.string   "job_key"
+    t.integer  "taken",          :limit => 11
+    t.integer  "finished",       :limit => 11
+    t.integer  "timeout",        :limit => 11
+    t.integer  "priority",       :limit => 11
+    t.datetime "submitted_at"
+    t.datetime "started_at"
+    t.datetime "finished_at"
+    t.datetime "archived_at"
+    t.string   "tag"
+    t.string   "submitter_info"
+    t.string   "runner_info"
+    t.string   "worker_key"
+    t.datetime "scheduled_at"
   end
 
   create_table "contributor_roles", :force => true do |t|
