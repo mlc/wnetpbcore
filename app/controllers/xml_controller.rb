@@ -26,6 +26,7 @@ class XmlController < ApplicationController
           end
         ensure
           ThinkingSphinx.updates_enabled = true
+          MiddleMan.worker(:indexing_worker).async_reindex
         end
         flash.now[:message] = "read " + successes.join(", ")
         flash.now[:warning] = failures.join(", ") unless failures.empty?
