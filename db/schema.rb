@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081014191043) do
+ActiveRecord::Schema.define(:version => 20081021215241) do
 
   create_table "annotations", :force => true do |t|
     t.integer "instantiation_id", :limit => 11
@@ -72,6 +72,8 @@ ActiveRecord::Schema.define(:version => 20081014191043) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "coverages", ["asset_id"], :name => "index_coverages_on_asset_id"
 
   create_table "creator_roles", :force => true do |t|
     t.string "name", :null => false

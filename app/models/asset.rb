@@ -28,13 +28,13 @@ class Asset < ActiveRecord::Base
     indexes [subjects.subject], :as => :subject
     indexes [descriptions.description], :as => :description
     indexes [genres.genre], :as => :genre
-    indexes [relations.relation_type.name, relations.relation_identifier], :as => :relation
-    indexes [coverages.coverage, coverages.coverage_type], :as => :coverage
+    indexes [relations.relation_identifier], :as => :relation
+    indexes [coverages.coverage], :as => :coverage
     indexes [audience_levels.name], :as => :audience_level
     indexes [audience_ratings.name], :as => :audience_rating
-    indexes [creators.creator_role.name, creators.creator], :as => :creator
-    indexes [contributors.contributor_role.name, contributors.contributor], :as => :contributors
-    indexes [publishers.publisher_role.name, publishers.publisher], :as => :publishers
+    indexes [creators.creator], :as => :creator
+    indexes [contributors.contributor], :as => :contributors
+    indexes [publishers.publisher], :as => :publishers
     indexes [rights_summaries.rights_summary], :as => :rights
     indexes [extensions.extension_authority_used, extensions.extension], :as => :extension
     has :updated_at
