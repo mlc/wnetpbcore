@@ -1,4 +1,8 @@
 <h2>Intellectual Content Section</h2>
+<p>
+  Asset <acronym title="Universally Unique Identifier">UUID</acronym>:
+  <%= @asset.uuid %>
+</p>
 <dl>
   <%= render :partial => "field_array", :locals => {:objs => @asset.identifiers, :field => "Identifier", :key => :identifier_source, :value => :identifier} %>
   <%= render :partial => "field_array", :locals => {:objs => @asset.titles, :field => "Title", :key => :title_type, :value => :title} %>
