@@ -19,3 +19,8 @@
     background-color: #eee;
     border-color: #aaa;
 }
+
+.destroy_link {
+    color: red;
+    font-size: smaller;
+}

@@ -16,6 +16,21 @@ class AssetsController < ApplicationController
     end
   end
   
+  def destroy
+    asset = Asset.find(params[:id], :include => :titles)
+    titles = asset.titles.map{|t| t.title}.join("; ")
+    asset.destroy
+    @destroyed_id = params[:id]
+    
+    respond_to do |format|
+      format.html do
+        flash[:warning] = "<strong>#{titles}</strong> has been deleted from the database."
+        redirect_to :action => 'index'
+      end
+      format.js
+    end
+  end
+  
   def show
     alternate "application/xml", :format => "xml"
     if params[:id] =~ /^[\d]+$/
