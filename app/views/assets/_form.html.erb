@@ -1,0 +1,20 @@
+<% form_for @asset do |f| %>
+  <h2>Intellectual Content</h2>
+  <div id="identifiers">
+    <h3>Identifiers</h3>
+    <%= render :partial => 'identifier', :collection => @asset.identifiers %>
+  </div>
+  <p><%= link_to_function "Add an identifier..." do |page|
+  page.insert_html :bottom, :identifiers, :partial => 'identifier', :object => Identifier.new
+  end %></p>
+  <div id="titles">
+    <h3>Titles</h3>
+    <%= render :partial => 'title', :collection => @asset.titles %>
+  </div>
+  <p><%= link_to_function "Add a title..." do |page|
+  page.insert_html :bottom, :titles, :partial => 'title', :object => Title.new
+  end %></p>
+  <p>
+    <%= f.submit "Submit" %>
+  </p>
+<% end %>

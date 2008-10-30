@@ -7,6 +7,7 @@
       <%= h title %>
       <%= link_to "view", asset_url(asset.uuid) %>
       <%= link_to "xml", formatted_asset_url(asset.uuid, "xml") %>
+      <%= link_to "edit", edit_asset_url(asset) %>
       <%= link_to_remote "destroy", :url => { :action => 'destroy', :id => asset.id }, :method => :delete, :confirm => "Are you sure you wish to delete #{title}?", :html => { :class => "destroy_link" } %>
     </li>
   <%- end -%>
@@ -14,4 +15,7 @@
 
 <%= will_paginate @search_object %>
 
-<p><%= link_to "upload assets", :controller => :xml %></p>
+<ul>
+  <li><%= link_to "create new asset", :action => 'new' %></li>
+  <li><%= link_to "upload assets", :controller => :xml %></li>
+</ul>

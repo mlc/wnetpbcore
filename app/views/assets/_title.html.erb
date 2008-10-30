@@ -1,0 +1,16 @@
+<div class="title">
+  <%- new_or_existing = title.new_record? ? 'new' : 'existing' -%>
+  <%- prefix = "project[#{new_or_existing}_title_attributes][]" -%>
+
+  <% fields_for prefix, title do |title_form| -%>
+    <p>
+      Title: <%= title_form.text_field :title %>
+      <%#= title_form.select :title_type_id, TitleType.all.map{|i| [i.name, i.id]} %>
+      <select>
+        <%= option_groups_from_collection_for_select(TitleTypeCategory.all(:include => :title_types),
+        :title_types, :name, :id, :name, title.title_type_id) %>
+      </select>
+      <%= link_to_function "remove", "$(this).parents('.title').remove()" %>
+    </p>
+  <% end -%>
+</div>

@@ -49,6 +49,16 @@ class AssetsController < ApplicationController
       redirect_to :action => 'index'
     end
   end
+  
+  def new
+    @asset = Asset.new
+    @page_title = "New Asset"
+  end
+  
+  def edit
+    @asset = Asset.find(params[:id])
+    @page_title = "Edit Asset"
+  end
 
   # give opensearch descriptor document
   def opensearch
