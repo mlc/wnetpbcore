@@ -4,8 +4,8 @@
   <%- @assets.each do |asset| -%>
     <li>
       <%= h asset.titles.map{|t| t.title}.join(", ") %>
-      <%= link_to "view", asset %>
-      <%= link_to "xml", formatted_asset_url(asset, "xml") %>
+      <%= link_to "view", asset_url(asset.uuid) %>
+      <%= link_to "xml", formatted_asset_url(asset.uuid, "xml") %>
     </li>
   <%- end -%>
 </ul>
