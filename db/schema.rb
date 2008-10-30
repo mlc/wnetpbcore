@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081021221742) do
+ActiveRecord::Schema.define(:version => 20081030185124) do
 
   create_table "annotations", :force => true do |t|
     t.integer "instantiation_id", :limit => 11
@@ -18,11 +18,36 @@ ActiveRecord::Schema.define(:version => 20081021221742) do
 
   add_index "annotations", ["instantiation_id"], :name => "index_annotation_on_instantiation_id"
 
+  create_table "asset_terms", :force => true do |t|
+    t.integer  "asset_id",        :limit => 11, :null => false
+    t.text     "identifier"
+    t.text     "title"
+    t.text     "subject"
+    t.text     "description"
+    t.text     "genre"
+    t.text     "relation"
+    t.text     "coverage"
+    t.text     "audience_level"
+    t.text     "audience_rating"
+    t.text     "creator"
+    t.text     "contributor"
+    t.text     "publisher"
+    t.text     "rights"
+    t.text     "extension"
+    t.text     "location"
+    t.text     "annotation"
+    t.text     "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "delta",                         :null => false
+  end
+
+  add_index "asset_terms", ["asset_id"], :name => "index_asset_terms_on_asset_id", :unique => true
+
   create_table "assets", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "uuid",       :limit => 36, :null => false
-    t.boolean  "delta",                    :null => false
   end
 
   add_index "assets", ["uuid"], :name => "index_assets_on_uuid", :unique => true

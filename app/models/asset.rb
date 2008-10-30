@@ -1,5 +1,6 @@
 class Asset < ActiveRecord::Base
   before_create :generate_uuid
+  before_save :update_asset_terms
   
   include PbcoreXmlElement
   ALL_INCLUDES = [:identifiers, :titles, :subjects, :descriptions, :genres,
@@ -21,27 +22,7 @@ class Asset < ActiveRecord::Base
   has_many :rights_summaries, :dependent => :destroy
   has_many :instantiations, :dependent => :destroy
   has_many :extensions, :dependent => :destroy
-  
-  define_index do
-    indexes [identifiers.identifier], :as => :identifier
-    indexes [titles.title], :as => :title
-    indexes [subjects.subject], :as => :subject
-    indexes [descriptions.description], :as => :description
-    indexes [genres.genre], :as => :genre
-    indexes [relations.relation_identifier], :as => :relation
-    indexes [coverages.coverage], :as => :coverage
-    indexes [audience_levels.name], :as => :audience_level
-    indexes [audience_ratings.name], :as => :audience_rating
-    indexes [creators.creator], :as => :creator
-    indexes [contributors.contributor], :as => :contributors
-    indexes [publishers.publisher], :as => :publishers
-    indexes [rights_summaries.rights_summary], :as => :rights
-    indexes [extensions.extension_authority_used, extensions.extension], :as => :extension
-    has :updated_at
-    has :created_at
-    
-    set_property :delta => true
-  end
+  has_one :asset_terms, :dependent => :destroy
   
   xml_subelements "pbcoreIdentifier", :identifiers
   to_xml_elt do |obj|
@@ -88,7 +69,36 @@ class Asset < ActiveRecord::Base
       other.destroy if other
     end
   end
-
+ 
+  def update_asset_terms
+    self.asset_terms ||= AssetTerms.new
+    asset_terms.identifier = (
+      identifiers.map{|a| [a.identifier, a.identifier_source.name]} +
+      instantiations.map{|a| a.format_ids.map{|b| b.format_identifier}}
+    ).flatten.join(' ')
+    asset_terms.title = titles.map{|a| a.title}.join(' ')
+    asset_terms.subject = subjects.map{|a| a.subject}.join(' ')
+    asset_terms.description = descriptions.map{|a| a.description}.join(' ')
+    asset_terms.genre = genres.map{|a| a.genre}.join(' ')
+    asset_terms.relation = relations.map{|a| a.relation_identifier}.join(' ')
+    asset_terms.coverage = coverages.map{|a| a.coverage}.join(' ')
+    asset_terms.audience_level = audience_levels.map{|a| a.name}.join(' ')
+    asset_terms.audience_rating = audience_ratings.map{|a| a.name}.join(' ')
+    asset_terms.creator = creators.map{|a| a.creator}.join(' ')
+    asset_terms.contributor = contributors.map{|a| a.contributor}.join(' ')
+    asset_terms.publisher = publishers.map{|a| a.publisher}.join(' ')
+    asset_terms.rights = rights_summaries.map{|a| a.rights_summary}.join(' ')
+    asset_terms.extension = extensions.map{|a| "#{a.extension} #{a.extension_authority_used}"}.join(' ')
+    asset_terms.location = instantiations.map{|a| a.format_location}.join(' ')
+    asset_terms.annotation = (
+      instantiations.map{|a| a.annotations.map{|b| b.annotation}} +
+      instantiations.map{|a| a.essence_tracks.map{|b| b.essence_track_annotation}}
+    ).flatten.join(' ')
+    asset_terms.date = (
+      instantiations.map{|a| a.date_availables.map{|b| [b.date_available_start, b.date_available_end]}}
+    ).flatten.join(' ')
+  end
+  
   protected
   def generate_uuid
     self.uuid = UUID.random_create.to_s unless (self.uuid && !self.uuid.empty?)
