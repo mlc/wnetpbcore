@@ -52,6 +52,8 @@ class AssetsController < ApplicationController
   
   def new
     @asset = Asset.new
+    @asset.identifiers.build
+    @asset.titles.build
     @page_title = "New Asset"
   end
   

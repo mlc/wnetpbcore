@@ -5,7 +5,7 @@
   <% fields_for prefix, identifier do |identifier_form| -%>
     <p>
       Identifier: <%= identifier_form.text_field :identifier %>
-      <%= identifier_form.select :identifier_source_id, ['', nil] + IdentifierSource.all.map{|i| [i.name, i.id]} %>
+      <%= identifier_form.select :identifier_source_id, (IdentifierSource.all(:order => "name ASC") - [IdentifierSource::OUR_UUID_SOURCE]).map{|i| [i.name, i.id]} %>
       <%= link_to_function "remove", "$(this).parents('.identifier').remove()" %>
     </p>
   <% end -%>
