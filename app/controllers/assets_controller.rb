@@ -61,6 +61,28 @@ class AssetsController < ApplicationController
     @asset = Asset.find(params[:id])
     @page_title = "Edit Asset"
   end
+  
+  def create
+    @asset = Asset.new(:params[:asset])
+    if @asset.save
+      flash[:message] = "Successfully created new Asset."
+      redirect_to :action => 'index'
+    else
+      @page_title = "New Asset"
+      render :action => 'new'
+    end
+  end
+  
+  def update
+    @asset = Asset.find(params[:id])
+    if @asset.update_attributes(params[:asset])
+      flash[:message] = "Successfully updated your Asset."
+      redirect_to :action => 'index'
+    else
+      @page_title = 'Edit Asset'
+      render :action => 'edit'
+    end
+  end
 
   # give opensearch descriptor document
   def opensearch

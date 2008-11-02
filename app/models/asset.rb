@@ -7,8 +7,8 @@ class Asset < ActiveRecord::Base
     :relations, :coverages, :audience_levels, :audience_ratings, :creators,
     :contributors, :publishers, :rights_summaries, :instantiations, :extensions
     ]
-  has_many :identifiers, :dependent => :destroy
-  has_many :titles, :dependent => :destroy
+  has_many :identifiers, :dependent => :destroy, :attributes => true
+  has_many :titles, :dependent => :destroy, :attributes => true
   has_many :subjects, :dependent => :destroy
   has_many :descriptions, :dependent => :destroy
   has_many :genres, :dependent => :destroy
