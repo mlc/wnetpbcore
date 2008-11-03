@@ -1,6 +1,8 @@
 class Asset < ActiveRecord::Base
   before_create :generate_uuid
   before_save :update_asset_terms
+
+  attr_protected :uuid
   
   include PbcoreXmlElement
   ALL_INCLUDES = [:identifiers, :titles, :subjects, :descriptions, :genres,
@@ -23,6 +25,9 @@ class Asset < ActiveRecord::Base
   has_many :instantiations, :dependent => :destroy
   has_many :extensions, :dependent => :destroy
   has_one :asset_terms, :dependent => :destroy
+
+  validates_size_of :identifiers, :minimum => 1, :message => "must have at least one entry"
+  validates_size_of :titles, :minimum => 1, :message => "must have at least one entry"
   
   xml_subelements "pbcoreIdentifier", :identifiers
   to_xml_elt do |obj|
