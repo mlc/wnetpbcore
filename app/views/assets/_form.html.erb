@@ -1,5 +1,6 @@
 <% form_for @asset do |f| %>
-    <%= error_messages_for :asset %>
+  <%= error_messages_for :asset %>
+
   <h2>Intellectual Content</h2>
   <h3>Identifiers</h3>
   <div id="identifiers">
@@ -18,6 +19,52 @@
     <%= f.render_associated_form(@asset.subjects) %>
   </div>
   <p><%= f.add_associated_link "Add a subject…", @asset.subjects.build %></p>
+
+  <h3>Descriptions</h3>
+  <div id="descriptions">
+    <%= f.render_associated_form(@asset.descriptions) %>
+  </div>
+  <p><%= f.add_associated_link "Add a description…", @asset.descriptions.build %></p>
+
+  <h3>Genres</h3>
+  <div id="genres">
+    <%= f.render_associated_form(@asset.genres) %>
+  </div>
+  <p><%= f.add_associated_link "Add a genre…", @asset.genres.build %></p>
+
+  <h3>Relations</h3>
+  <div id="relations">
+    <%= f.render_associated_form(@asset.relations) %>
+  </div>
+  <p><%= f.add_associated_link "Add a relation…", @asset.relations.build %></p>
+
+  <h3>Coverages</h3>
+  <div id="relations">
+    <%= f.render_associated_form(@asset.coverages) %>
+  </div>
+  <p><%= f.add_associated_link "Add a coverage…", @asset.coverages.build %></p>
+
+  <h3>Audience Levels</h3>
+  <div id="audience_levels">
+    <%- AudienceLevel.all.each do |level| -%>
+    <span style="white-space: nowrap;">
+    <%= check_box_tag "asset[audience_level_ids][]", level.id, @asset.audience_levels.include?(level), :id => "level_box_#{level.id}" %>
+    <label for="level_box_<%= level.id %>"><%= level.name %></label>
+    </span>
+    &nbsp;&nbsp;
+    <%- end -%>
+  </div>
+
+  <h3>Audience Ratings</h3>
+  <div id="audience_ratings">
+    <%- AudienceRating.all.each do |rating| -%>
+    <span style="white-space: nowrap;">
+    <%= check_box_tag "asset[audience_rating_ids][]", rating.id, @asset.audience_ratings.include?(rating), :id => "rating_box_#{rating.id}" %>
+    <label for="rating_box_<%= rating.id %>"><%= rating.name %></label>
+    </span>
+    &nbsp;&nbsp;
+    <%- end -%>
+  </div>
 
   <p>
     <%= f.submit "Submit" %>

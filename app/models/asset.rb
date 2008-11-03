@@ -11,11 +11,11 @@ class Asset < ActiveRecord::Base
     ]
   has_many :identifiers, :dependent => :destroy, :attributes => true
   has_many :titles, :dependent => :destroy, :attributes => true
-  has_many :subjects, :dependent => :destroy
-  has_many :descriptions, :dependent => :destroy
-  has_many :genres, :dependent => :destroy
-  has_many :relations, :dependent => :destroy
-  has_many :coverages, :dependent => :destroy
+  has_many :subjects, :dependent => :destroy, :attributes => true
+  has_many :descriptions, :dependent => :destroy, :attributes => true
+  has_many :genres, :dependent => :destroy, :attributes => true
+  has_many :relations, :dependent => :destroy, :attributes => true
+  has_many :coverages, :dependent => :destroy, :attributes => true
   has_and_belongs_to_many :audience_levels
   has_and_belongs_to_many :audience_ratings
   has_many :creators, :dependent => :destroy

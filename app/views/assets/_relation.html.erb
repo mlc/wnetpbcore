@@ -1,0 +1,8 @@
+<div class="relation">
+  <p>
+    <%= f.label(:relation_type_id, "Relation Type: ") %> <%= f.select :relation_type_id, RelationType.all.map{|i| [i.name, i.id]} %>
+    &nbsp;&nbsp;
+    <%= f.label(:relation_identifier, "Relation Identifier:") %> <%= f.text_field :relation_identifier %>
+    <%= f.remove_link "remove" %>
+  </p>
+</div>

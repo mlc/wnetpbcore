@@ -58,7 +58,7 @@ class AssetsController < ApplicationController
   end
   
   def edit
-    @asset = Asset.find(params[:id])
+    @asset = Asset.find(params[:id], :include => Asset::ALL_INCLUDES)
     @page_title = "Edit Asset"
   end
   
@@ -74,7 +74,17 @@ class AssetsController < ApplicationController
   end
   
   def update
-    @asset = Asset.find(params[:id])
+    @asset = Asset.find(params[:id], :include => Asset::ALL_INCLUDES)
+    params[:asset] ||= {}
+    params[:asset][:identifier_attributes] ||= {}
+    params[:asset][:title_attributes] ||= {}
+    params[:asset][:subject_attributes] ||= {}
+    params[:asset][:description_attributes] ||= {}
+    params[:asset][:genre_attributes] ||= {}
+    params[:asset][:relation_attributes] ||= {}
+    params[:asset][:coverage_attributes] ||= {}
+    params[:asset][:audience_rating_ids] ||= []
+    params[:asset][:audience_level_ids] ||= []
     if @asset.update_attributes(params[:asset])
       flash[:message] = "Successfully updated your Asset."
       redirect_to :action => 'index'
