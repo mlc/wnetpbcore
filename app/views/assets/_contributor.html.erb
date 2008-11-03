@@ -1,0 +1,8 @@
+<div class="contributor">
+  <p>
+    <%= f.label(:contributor_role_id, "Contributor Role: ") %> <%= f.select :contributor_role_id, ContributorRole.all.map{|i| [i.name, i.id]} %>
+    &nbsp;&nbsp;
+    <%= f.label(:contributor, "Contributor:") %> <%= f.text_field :contributor %>
+    <%= f.remove_link "remove" %>
+  </p>
+</div>

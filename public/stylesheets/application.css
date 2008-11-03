@@ -52,3 +52,9 @@
   font-size: 12px;
   list-style: square;
 }
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}

@@ -1,0 +1,8 @@
+<div class="publisher">
+  <p>
+    <%= f.label(:publisher_role_id, "Publisher Role: ") %> <%= f.select :publisher_role_id, PublisherRole.all.map{|i| [i.name, i.id]} %>
+    &nbsp;&nbsp;
+    <%= f.label(:publisher, "Publisher:") %> <%= f.text_field :publisher %>
+    <%= f.remove_link "remove" %>
+  </p>
+</div>

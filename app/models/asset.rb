@@ -18,12 +18,12 @@ class Asset < ActiveRecord::Base
   has_many :coverages, :dependent => :destroy, :attributes => true
   has_and_belongs_to_many :audience_levels
   has_and_belongs_to_many :audience_ratings
-  has_many :creators, :dependent => :destroy
-  has_many :contributors, :dependent => :destroy
-  has_many :publishers, :dependent => :destroy
-  has_many :rights_summaries, :dependent => :destroy
+  has_many :creators, :dependent => :destroy, :attributes => true
+  has_many :contributors, :dependent => :destroy, :attributes => true
+  has_many :publishers, :dependent => :destroy, :attributes => true
+  has_many :rights_summaries, :dependent => :destroy, :attributes => true
   has_many :instantiations, :dependent => :destroy
-  has_many :extensions, :dependent => :destroy
+  has_many :extensions, :dependent => :destroy, :attributes => true
   has_one :asset_terms, :dependent => :destroy
 
   validates_size_of :identifiers, :minimum => 1, :message => "must have at least one entry"
