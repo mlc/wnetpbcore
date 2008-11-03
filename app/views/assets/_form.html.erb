@@ -13,6 +13,12 @@
   </div>
   <p><%= f.add_associated_link "Add a title…", @asset.titles.build %></p>
 
+  <h3>Subjects</h3>
+  <div id="subjects">
+    <%= f.render_associated_form(@asset.subjects) %>
+  </div>
+  <p><%= f.add_associated_link "Add a subject…", @asset.subjects.build %></p>
+
   <p>
     <%= f.submit "Submit" %>
   </p>
