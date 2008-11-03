@@ -63,7 +63,7 @@ class AssetsController < ApplicationController
   end
   
   def create
-    @asset = Asset.new(:params[:asset])
+    @asset = Asset.new(params[:asset])
     if @asset.save
       flash[:message] = "Successfully created new Asset."
       redirect_to :action => 'index'
