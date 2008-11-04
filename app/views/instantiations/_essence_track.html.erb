@@ -1,0 +1,20 @@
+<div class="essence_track">
+  <h4>Essence Track</h4>
+  <p>
+  <%= f.remove_link "remove this essence track" %>
+  <br />
+  <%- 
+  [
+    :type, :identifier, :identifier_source, :standard, :encoding, :data_rate,
+    :time_start, :duration, :bit_depth, :sampling_rate, :frame_size,
+    :aspect_ratio, :frame_rate, :annotation
+  ].each do |fld|
+  -%>
+  <%= f.label "essence_track_#{fld}".to_sym, "#{fld.to_s.gsub('_', ' ').capitalize}: "%>
+  <%= f.text_field("essence_track_#{fld}".to_sym) %>
+  <br />
+  <%- end -%>
+  <%= f.label "Language:" %>
+  <%= f.select :essence_track_language, ISO639::FOR_SELECT, :include_blank => true %>
+  </p>
+</div>

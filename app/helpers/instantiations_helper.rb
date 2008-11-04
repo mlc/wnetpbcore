@@ -1,0 +1,2 @@
+module InstantiationsHelper
+end

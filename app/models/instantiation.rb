@@ -2,14 +2,16 @@ class Instantiation < ActiveRecord::Base
   include PbcoreXmlElement
   
   belongs_to :asset
-  has_many :format_ids, :dependent => :destroy
+  has_many :format_ids, :dependent => :destroy, :attributes => true
   belongs_to :format
   belongs_to :format_media_type
   belongs_to :format_generation
   belongs_to :format_color
-  has_many :essence_tracks, :dependent => :destroy
-  has_many :date_availables, :dependent => :destroy
-  has_many :annotations, :dependent => :destroy
+  has_many :essence_tracks, :dependent => :destroy, :attributes => true
+  has_many :date_availables, :dependent => :destroy, :attributes => true
+  has_many :annotations, :dependent => :destroy, :attributes => true
+  
+  attr_protected :asset, :asset_id
 
   validates_presence_of :format_location
   validates_size_of :format_ids, :minimum => 1

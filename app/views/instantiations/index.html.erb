@@ -1,0 +1,14 @@
+<%- if @instantiations.empty? -%>
+<p><em>No instantiations yet.</em></p>
+<%- end -%>
+<ul>
+  <%- @instantiations.each do |instantiation| -%>
+    <li id="instantion_#{instantiation.id}">
+      <%= instantiation.identifier %>
+      (<%= instantiation.format.nil? ? "unknown format" : instantiation.format.name %>,
+      <%= instantiation.format_media_type.nil? ? "unknown media type" : instantiation.format_media_type.name %>)
+      <%= link_to "Edit", :action => 'edit', :id => instantiation.id %>
+    </li>
+  <%- end -%>
+  <li><%= link_to("Add a new instantiation…", :action => 'new') %></li>
+</ul>

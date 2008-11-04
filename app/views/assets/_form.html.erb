@@ -91,8 +91,14 @@
   </div>
   <p><%= f.add_associated_link "Add a rights summary…", @asset.rights_summaries.build %></p>
  
+  <%- unless @asset.new_record? -%>
   <h2>Instantiation Section</h2>
-  <p><em>Coming soon.</em></p>
+  <p>
+    This asset currently has <strong><%= icount = @asset.instantiations.count %></strong>
+    instantiation<%= icount == 1 ? '' : 's' %>.
+    <%= link_to "Edit, modify, and delete instantiations for this record.", asset_instantiations_url(@asset) %>
+  </p>
+  <%- end -%>
 
   <h2>Extension Section</h2>
   <h3>Extensions</h3>
