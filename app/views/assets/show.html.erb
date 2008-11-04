@@ -16,9 +16,9 @@
 </dl>
 <h2>Intellectual Property Section</h2>
 <dl>
-  <%= render :partial => "field_array", :locals => {:objs => @asset.creators, :field => "Creators", :value => :to_s} %>
-  <%= render :partial => "field_array", :locals => {:objs => @asset.contributors, :field => "Contributors", :value => :to_s} %>
-  <%= render :partial => "field_array", :locals => {:objs => @asset.publishers, :field => "Publishers", :value => :to_s} %>
+  <%= render :partial => "field_array", :locals => {:objs => @asset.creators, :field => "Creators", :value => :to_s, :searchkey => :creator, :searchvalue => :creator} %>
+  <%= render :partial => "field_array", :locals => {:objs => @asset.contributors, :field => "Contributors", :value => :to_s, :searchkey => :contributor, :searchvalue => :contributor} %>
+  <%= render :partial => "field_array", :locals => {:objs => @asset.publishers, :field => "Publishers", :value => :to_s, :searchkey => :publisher, :searchvalue => :publisher} %>
   <%= render :partial => "field_array", :locals => {:objs => @asset.rights_summaries, :field => "Rights", :value => :rights_summary} %>
 </dl>
 <h2>Instantiation Section</h2>

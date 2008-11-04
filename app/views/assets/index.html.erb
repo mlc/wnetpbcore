@@ -1,5 +1,8 @@
 <%= render :partial => 'search_form' %>
 
+<%- if @assets.empty? -%>
+<h2>Nothing found.</h2>
+<%- else -%>
 <ul>
   <%- @assets.each do |asset| -%>
     <li id="asset_<%= asset.id %>">
@@ -14,8 +17,4 @@
 </ul>
 
 <%= will_paginate @search_object %>
-
-<ul>
-  <li><%= link_to "create new asset", :action => 'new' %></li>
-  <li><%= link_to "upload assets", :controller => :xml %></li>
-</ul>
+<%- end -%>

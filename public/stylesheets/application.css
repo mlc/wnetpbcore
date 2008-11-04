@@ -58,3 +58,19 @@
   background-color: red;
   display: table;
 }
+
+#navbar {
+  width: 600px;
+  background-color: #7f7f7f;
+  padding: 4px;
+  margin: 2px;
+}
+
+#navbar li {
+  display: inline;
+  padding: 0px 1en;
+  background-color: #eee;
+  list-style-type: none;
+}
+
+a { color: inherit; text-decoration: underline; }

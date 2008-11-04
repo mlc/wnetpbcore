@@ -16,6 +16,11 @@
     <%- end %>
   </head>
   <body>
+    <ul id="navbar">
+      <li><%= link_to "home", "/" %></li>
+      <li><%= link_to "create new asset", :controller => :assets, :action => 'new' %></li>
+      <li><%= link_to "upload assets", :controller => :xml %></li>
+    </ul>
     <%= content_tag :h1, @page_title %>
     <%- [:error, :warning, :message].each do |severity| %>
       <%- if flash[severity] -%>
