@@ -2,7 +2,7 @@ class Asset < ActiveRecord::Base
   before_create :generate_uuid
   before_save :update_asset_terms
 
-  attr_protected :uuid
+  attr_protected :uuid, :asset_terms, :asset_terms_id
   
   include PbcoreXmlElement
   ALL_INCLUDES = [:identifiers, :titles, :subjects, :descriptions, :genres,
