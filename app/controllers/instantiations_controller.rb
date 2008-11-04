@@ -35,7 +35,8 @@ class InstantiationsController < ApplicationController
     params[:instantiation][:format_id_attributes] ||= {}
     params[:instantiation][:essence_track_attributes] ||= {}
     params[:instantiation][:annotation_attributes] ||= {}
-    if @instantiation.update(params[:instantiation])
+    params[:instantiation][:date_available_attributes] ||= {}
+    if @instantiation.update_attributes(params[:instantiation])
       flash[:message] = "Successfully updated your instantiation."
       redirect_to :action => 'index'
     else
@@ -43,7 +44,22 @@ class InstantiationsController < ApplicationController
       render :action => 'edit'
     end
   end
-  
+
+  def destroy
+    instantiation = @asset.instantiations.find(params[:id], :include => :format_ids)
+    identifier = instantiation.identifier
+    instantiation.destroy
+    @destroyed_id = params[:id]
+    
+    respond_to do |format|
+      format.html do
+        flash[:warning] = "<strong>#{identifier}</strong> has been deleted from the database."
+        redirect_to :action => 'index'
+      end
+      format.js
+    end
+  end
+
   protected
   def get_asset
     @asset = Asset.find(params[:asset_id], :include => [:titles, :instantiations])
