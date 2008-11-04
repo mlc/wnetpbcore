@@ -35,7 +35,7 @@ class XmlController < ApplicationController
           a = Asset.from_xml(params[:xml].read)
           a.destroy_existing
           a.save
-          flash.now[:message] = "thanks for #{a.titles[0].title}"
+          flash.now[:message] = "thanks for #{a.title}"
         rescue Exception => e
           flash.now[:error] = e.to_s
         end

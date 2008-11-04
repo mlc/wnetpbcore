@@ -74,6 +74,10 @@ class Asset < ActiveRecord::Base
       other.destroy if other
     end
   end
+  
+  def title
+    titles.map{|t| t.title}.join("; ")
+  end
  
   def update_asset_terms
     self.asset_terms ||= AssetTerms.new

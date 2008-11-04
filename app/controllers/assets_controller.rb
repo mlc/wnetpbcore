@@ -18,7 +18,7 @@ class AssetsController < ApplicationController
   
   def destroy
     asset = Asset.find(params[:id], :include => :titles)
-    titles = asset.titles.map{|t| t.title}.join("; ")
+    titles = asset.title
     asset.destroy
     @destroyed_id = params[:id]
     
