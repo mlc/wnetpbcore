@@ -12,7 +12,9 @@ class Instantiation < ActiveRecord::Base
   has_many :annotations, :dependent => :destroy
 
   validates_presence_of :format_location
+  validates_size_of :format_ids, :minimum => 1
   
+  xml_subelements "pbcoreFormatID", :format_ids
   xml_string "dateCreated"
   xml_string "dateIssued"
   xml_picklist "formatPhysical", :format, FormatPhysical
@@ -32,4 +34,8 @@ class Instantiation < ActiveRecord::Base
   xml_subelements "pbcoreEssenceTrack", :essence_tracks
   xml_subelements "pbcoreDateAvailable", :date_availables
   xml_subelements "pbcoreAnnotation", :annotations
+  
+  def identifier
+    format_ids.map{|i| i.format_identifier}.join("; ")
+  end
 end
