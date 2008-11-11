@@ -12,9 +12,11 @@ This needs the following gems:
 Other gems are unpacked into vendor/gems/ and don't need to be
 installed specially.
 
+The sphinx libraries apparently need OpenSSL for Ruby, which is not a gem.
+
 Also you need sphinx, from http://www.sphinxsearch.com/
 
-If you plan to deploy, you need capistrano as well.
+If you plan to deploy, you need capistrano and capistrano-ext as well.
 
 
 SERVER SET-UP
@@ -23,8 +25,9 @@ SERVER SET-UP
 On the server, install ruby (including rubygems), nginx, git,
 sphinxsearch. Then install the required gems as above.
 
-Then, copy config/deploy-securerb.example to deploy-secure.rb and put
-in the database password. Create the 'pbcore' database and grant
-access as specified.
+Then, copy config/deploy/site.rb.example to config/deploy/mysite.rb and
+fill in the blanks. Create the 'pbcore' database and grant access as
+specified.
 
-If you're lucky, you can then do 'cap deploy:setup' and 'cap deploy'!
+If you're lucky, you can then do 'cap mysite deploy:setup' and
+'cap mysite deploy'!

@@ -1,6 +1,5 @@
 require 'erb'
-
-load 'config/deploy-secure'
+require 'capistrano/ext/multistage'
 
 set :application, "pbcore"
 set :repository,  "git://git.mlcastle.net/pbcore.git"
@@ -14,14 +13,7 @@ set :deploy_to, "/var/www/#{application}"
 # your SCM below:
 set :scm, :git
 
-set :user, "pbcore"
-set :use_sudo, false
-
 set :keep_releases, 5
-
-role :web, "z.mlcastle.net"
-role :app, "z.mlcastle.net"
-role :db, "z.mlcastle.net", :primary=>true
 
 # database yml from http://shanesbrain.net/2007/5/30/managing-database-yml-with-capistrano-2-0
 

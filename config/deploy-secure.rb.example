@@ -1,3 +1,0 @@
-set :app_db_host, 'localhost'
-set :app_db_user, 'pbcore'
-set :app_db_pass, 'xxxxxxxxxxx'

@@ -1,0 +1,12 @@
+set :app_db_host, 'localhost'
+set :app_db_user, 'pbcore'
+set :app_db_pass, 'xxxxxxxxxxx'
+
+# note: i've never actually tested setting these to different things...
+# i don't know if it'll work or not...
+role :web, "my-webserver"
+role :app, "my-appserver"
+role :db,  "my-dbserver", :primary=>true
+
+set :user, "www"
+set :use_sudo, false
