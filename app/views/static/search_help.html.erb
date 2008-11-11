@@ -1,0 +1,37 @@
+<%- title "Search Help" -%>
+<%- content_for :style do %>
+code { background-color: #aaa; }
+<%- end -%>
+<h1>Search Help</h1>
+<p>The PBCore search engine is based on <a href="http://sphinxsearch.com/doc.html#extended-syntax">Sphinx extended query syntax</a>.</p>
+<p>Here are some example searches:</p>
+<ul>
+  <li>
+    Search for an asset containing both <q>wnet</q> <em>and</em> <q>television</q>: <code>wnet television</code>
+  </li>
+  <li>
+    Search for an asset containing either <q>wnet</q> <em>or</em> <q>television</q>: <code>wnet | television</code>
+  </li>
+  <li>
+    Search for an asset containing <q>wnet</q> but <strong>not</strong> <q>television</q>: <code>wnet !television</code> or <code>wnet -television</code>
+  </li>
+  <li>
+    Search for an asset containing the phrase <q>wnet television</q>: <code>"wnet television"</code>
+  </li>
+  <li>
+    Search for an asset containing the words <q>wnet</q> and <q>television</q> within ten words of each other: <code>"wnet television"~10</code>
+  </li>
+  <li>
+    Search for <q>wnet</q> in the creator of an asset: <code>@creator wnet</code>
+  </li>
+</ul>
+
+<p>The following are the allowed search fields:</p>
+<ul>
+  <%- [:identifier, :title, :subject, :description, :genre, :relation,
+    :coverage, :audience_level, :audience_rating, :creator, :contributor,
+    :publisher, :rights, :extension, :location, :annotation, :date].each do |fld| -%>
+  <li><code>@<%= fld.to_s %></code></li>
+  <%- end -%>
+</ul>
+</ul>
