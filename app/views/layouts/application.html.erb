@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title>
-      pbcore || <%= yield :title %>
+      pbcore || <%= h(yield(:title)) %>
     </title>
     <%= stylesheet_link_tag "application"  %>
     <%= opensearch_headers(@search_object) %>
@@ -19,7 +19,7 @@
       <li><%= link_to "upload assets", :controller => :xml %></li>
       <%= yield :navbaritems %>
     </ul>
-    <%= content_tag :h1, yield(:title) %>
+    <%= content_tag :h1, h(yield(:title)) %>
     <%- [:error, :warning, :message].each do |severity| %>
       <%- if flash[severity] -%>
         <div id="<%= severity.to_s %>">
