@@ -4,6 +4,12 @@ module ApplicationHelper
     content_for(:title) { title }
   end
   
+  def add_navbar(*link_to_args)
+    content_for :navbaritems do
+      content_tag :li, link_to(*link_to_args)
+    end
+  end
+  
   def opensearch_headers(collection = nil)
     msg = tag("link",  {:href=>"/assets/opensearch.xml",
       :rel=>"search",

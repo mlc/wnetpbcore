@@ -1,4 +1,6 @@
 <%- title "Instantiations of #{@asset.title}" -%>
+<%- add_navbar("edit asset", edit_asset_url(@asset)) -%>
+
 <%- if @instantiations.empty? -%>
 <p><em>No instantiations yet.</em></p>
 <%- end -%>

@@ -1,3 +1,5 @@
+<%- add_navbar "edit asset", edit_asset_url(@asset) -%>
+<%- add_navbar "edit instantiations", asset_instantiations_url(@asset) %>
 <% form_for([@asset, @instantiation]) do |f| %>
   <%= error_messages_for :instantiation %>
   <h3>Format Identifiers</h3>

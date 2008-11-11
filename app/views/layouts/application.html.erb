@@ -17,6 +17,7 @@
       <li><%= link_to "home", "/" %></li>
       <li><%= link_to "create new asset", :controller => :assets, :action => 'new' %></li>
       <li><%= link_to "upload assets", :controller => :xml %></li>
+      <%= yield :navbaritems %>
     </ul>
     <%= content_tag :h1, yield(:title) %>
     <%- [:error, :warning, :message].each do |severity| %>
