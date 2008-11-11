@@ -14,14 +14,14 @@ set :deploy_to, "/var/www/#{application}"
 # your SCM below:
 set :scm, :git
 
-set :user, "www"
+set :user, "pbcore"
 set :use_sudo, false
 
 set :keep_releases, 5
 
-role :web, "wnet-archive1"
-role :app, "wnet-archive1"
-role :db, "wnet-archive1", :primary=>true
+role :web, "z.mlcastle.net"
+role :app, "z.mlcastle.net"
+role :db, "z.mlcastle.net", :primary=>true
 
 # database yml from http://shanesbrain.net/2007/5/30/managing-database-yml-with-capistrano-2-0
 

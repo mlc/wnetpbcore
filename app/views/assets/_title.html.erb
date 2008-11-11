@@ -1,8 +1,10 @@
 <div class="title">
   <p>
     <%= f.label(:title, "Title:") %> <%= f.text_field :title %>
-    <%= f.select :title_type_id, TitleType.all.map{|i| [i.name, i.id]} %>
-    <%#= f.select_tag :title_type, option_groups_from_collection_for_select(TitleTypeCategory.all(:include => :title_types), :title_types, :name, :id, :name, title.title_type_id) %>
+    <%#= f.select :title_type_id, TitleType.all.map{|i| [i.name, i.id]} %>
+    <%= f.custom_select :title_type_id do 
+        option_groups_from_collection_for_select(TitleTypeCategory.all(:include => :title_types), :title_types, :name, :id, :name, title.title_type_id)
+    end %>
     <%= f.remove_link "remove" %>
   </p>
 </div>

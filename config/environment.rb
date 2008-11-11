@@ -72,3 +72,4 @@ Rails::Initializer.run do |config|
 end
 
 require 'iso639-2'
+require 'form_extensions'
