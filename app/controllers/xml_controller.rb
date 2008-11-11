@@ -2,7 +2,6 @@ require 'zip_extensions'
 
 class XmlController < ApplicationController
   def index
-    @page_title = "Upload XML"
     if request.post?
       havezip = MIME::Types.of(params[:xml].original_filename).any?{|t| t.content_type == "application/zip"}
       if havezip

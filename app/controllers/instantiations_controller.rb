@@ -3,13 +3,11 @@ class InstantiationsController < ApplicationController
   
   def index
     @instantiations = @asset.instantiations
-    @page_title = "Instantiations of #{@asset.title}"
   end
   
   def new
     @instantiation = Instantiation.new(:asset => @asset)
     @instantiation.format_ids.build
-    @page_title = "New instantiation of #{@asset.title}"
   end
   
   def create
@@ -19,14 +17,12 @@ class InstantiationsController < ApplicationController
       flash[:message] = "Successfully created new instantiation."
       redirect_to :action => 'index'
     else
-      @page_title = "New instantiation of #{@asset.title}"
       render :action => 'new'
     end
   end
   
   def edit
     @instantiation = @asset.instantiations.find(params[:id])
-    @page_title = "Edit instantiation #{@instantiation.identifier} of #{@asset.title}"
   end
   
   def update
@@ -40,7 +36,6 @@ class InstantiationsController < ApplicationController
       flash[:message] = "Successfully updated your instantiation."
       redirect_to :action => 'index'
     else
-      @page_title = "Edit instantiation of #{@asset.title}"
       render :action => 'edit'
     end
   end

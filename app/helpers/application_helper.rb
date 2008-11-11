@@ -1,5 +1,9 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+  def title(title)
+    content_for(:title) { title }
+  end
+  
   def opensearch_headers(collection = nil)
     msg = tag("link",  {:href=>"/assets/opensearch.xml",
       :rel=>"search",
@@ -22,6 +26,6 @@ module ApplicationHelper
   end
   
   def alternate_views
-    @alternates.map{|href,type| tag(:link,:href=>href, :rel=>:alternate, :type=>type, :title=>@page_title)}.join
+    @alternates.map{|href,type| tag(:link,:href=>href, :rel=>:alternate, :type=>type)}.join
   end
 end

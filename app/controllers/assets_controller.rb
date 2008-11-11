@@ -2,7 +2,6 @@ class AssetsController < ApplicationController
   def index
     alternate "application/atom+xml", :format => "atom", :q => params[:q]
     @query = params[:q]
-    @page_title = @query ? "Search for #{@query}" : "Assets"
     pageopts = {:page => params[:page] || 1, :per_page => 20}
     pageopts[:page] = 1 if pageopts[:page] == ""
     @search_object = @query ? 
@@ -39,7 +38,6 @@ class AssetsController < ApplicationController
       @asset = Asset.find_by_uuid(params[:id].gsub(/^urn:uuid:/, ''), :include => Asset::ALL_INCLUDES)
     end
     if @asset
-      @page_title = "View Asset"
       respond_to do |format|
         format.html
         format.xml { render :xml => @asset.to_xml }
@@ -54,12 +52,10 @@ class AssetsController < ApplicationController
     @asset = Asset.new
     @asset.identifiers.build
     @asset.titles.build
-    @page_title = "New Asset"
   end
   
   def edit
     @asset = Asset.find(params[:id], :include => Asset::ALL_INCLUDES)
-    @page_title = "Edit Asset"
   end
   
   def create
@@ -68,7 +64,6 @@ class AssetsController < ApplicationController
       flash[:message] = "Successfully created new Asset."
       redirect_to :action => 'index'
     else
-      @page_title = "New Asset"
       render :action => 'new'
     end
   end
@@ -89,7 +84,6 @@ class AssetsController < ApplicationController
       flash[:message] = "Successfully updated your Asset."
       redirect_to :action => 'index'
     else
-      @page_title = 'Edit Asset'
       render :action => 'edit'
     end
   end

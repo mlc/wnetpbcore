@@ -1,3 +1,4 @@
+<%- title(@query ? "Search for #{@query}" : "Assets") -%>
 <%= render :partial => 'search_form' %>
 
 <%- if @assets.empty? -%>

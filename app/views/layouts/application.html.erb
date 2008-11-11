@@ -2,10 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title>
-      pbcore
-      <%- if @page_title -%>
-        || <%= @page_title %>
-      <%- end -%>
+      pbcore || <%= yield :title %>
     </title>
     <%= stylesheet_link_tag "application"  %>
     <%= opensearch_headers(@search_object) %>
@@ -21,7 +18,7 @@
       <li><%= link_to "create new asset", :controller => :assets, :action => 'new' %></li>
       <li><%= link_to "upload assets", :controller => :xml %></li>
     </ul>
-    <%= content_tag :h1, @page_title %>
+    <%= content_tag :h1, yield(:title) %>
     <%- [:error, :warning, :message].each do |severity| %>
       <%- if flash[severity] -%>
         <div id="<%= severity.to_s %>">
