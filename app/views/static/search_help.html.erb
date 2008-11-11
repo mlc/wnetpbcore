@@ -1,6 +1,6 @@
 <%- title "Search Help" -%>
 <%- content_for :style do %>
-code { background-color: #aaa; }
+code { background-color: #eee; }
 <%- end -%>
 <h1>Search Help</h1>
 <p>The PBCore search engine is based on <a href="http://sphinxsearch.com/doc.html#extended-syntax">Sphinx extended query syntax</a>.</p>
@@ -33,5 +33,4 @@ code { background-color: #aaa; }
     :publisher, :rights, :extension, :location, :annotation, :date].each do |fld| -%>
   <li><code>@<%= fld.to_s %></code></li>
   <%- end -%>
-</ul>
 </ul>
