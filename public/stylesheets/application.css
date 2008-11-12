@@ -75,3 +75,10 @@
 }
 
 a { color: inherit; text-decoration: underline; }
+
+#aboutlink {
+  border-top: 1px solid #777;
+  padding-top: 2px; 
+  font-size: smaller;
+  color: #444;
+}
