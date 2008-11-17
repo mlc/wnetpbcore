@@ -1,4 +1,8 @@
 <%- title "About this software" -%>
+<%- content_for :style do -%>
+.rev { font-family: monospace; }
+#revpara { font-size: smaller; }
+<%- end -%>
 <h1>About this software</h1>
 <p>
   The web PBCore database was developed by <a href="http://vermicel.li/">Roasted
@@ -25,3 +29,8 @@
   <a href="http://nginx.net/">nginx</a>,
   and other third-party modules.
 </p>
+<%- unless @revision.nil? -%>
+<p id="revpara">
+  Code revision <code class="rev"><%= @revision %></code>.
+</p>
+<%- end -%>
