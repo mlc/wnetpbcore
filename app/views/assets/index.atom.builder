@@ -1,6 +1,6 @@
 xml.instruct!
 xml.feed :xmlns => 'http://www.w3.org/2005/Atom', "xmlns:opensearch" => "http://a9.com/-/spec/opensearch/1.1/" do |atom|
-  atom.title @page_title, :type => :text
+  atom.title @query || 'Assets', :type => :text
   atom.link :href => url_for(:action => 'index', :q => @query, :only_path => false, :escape => false), :type => 'text/html', :rel => :alternate
   atom.link :href => url_for(:action => 'index', :q => @query, :format => :atom, :only_path => false, :escape => false), :rel => :self, :type => 'application/atom+xml'
   atom.link :href => url_for(:controller => "/pbcore.opensearch.xml", :only_path => false, :escape => false), :rel => 'search', :type => 'application/opensearch+xml'
