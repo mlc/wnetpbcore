@@ -1,4 +1,9 @@
 <%- title @class_name.pluralize -%>
+<%- if @emit_warning -%>
+  <p><strong>Note:</strong> The values for this picklist are pre-defined by
+  the PBCore standard. Adding custom options here may lead to invalid or
+  nonstandard PBCore XML.</p>
+<%- end -%>
 <ul id="objs">
   <%- @objects.each do |obj| -%>
     <%= render :partial => 'item', :locals => {:obj => obj} %>

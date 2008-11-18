@@ -2,7 +2,12 @@
 class PicklistsController < ApplicationController
   before_filter :set_class_name
   
+  def should_emit_warning
+    true
+  end
+  
   def index
+    @emit_warning = should_emit_warning
     if @klass.nil?
       @controllers = 'identifier_sources'
       render :action => 'picklists_index'
