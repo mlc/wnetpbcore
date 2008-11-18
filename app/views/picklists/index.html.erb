@@ -1,0 +1,8 @@
+<%- title @class_name.pluralize -%>
+<ul id="objs">
+  <%- @objects.each do |obj| -%>
+    <%= render :partial => 'item', :locals => {:obj => obj} %>
+    <%= render :partial => 'mini_form', :locals => {:obj => obj} %>
+  <%- end -%>
+  <%= render :partial => 'mini_form', :locals => { :obj => @klass.new } %>
+</ul>

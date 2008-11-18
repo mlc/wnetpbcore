@@ -1,0 +1,2 @@
+class IdentifierSourcesController < PicklistsController
+end

@@ -1,0 +1,3 @@
+page.hide("edit_#{@obj.id}")
+page.replace("obj_#{@obj.id}", render(:partial => "item", :locals => {:obj => @obj}))
+page.visual_effect(:highlight, "obj_#{@obj.id}", :duration => 1.0)

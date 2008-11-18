@@ -1,0 +1,10 @@
+page << '$("#new_identifier_source > input[type=text]").get(0).value = ""'
+new_html = render(:partial => "item", :locals => {:obj => @obj}) +
+  render(:partial => "mini_form", :locals => {:obj => @obj})
+previous = @klass.find(:first, :conditions => [ "name < ?", @obj.name ], :order => "name DESC")
+if previous
+  page.insert_html(:after, "edit_#{previous.id}", new_html)
+else
+  page.insert_html(:bottom, :objs, new_html)
+end
+page.visual_effect(:highlight, "obj_#{@obj.id}", :duration => 1.0)

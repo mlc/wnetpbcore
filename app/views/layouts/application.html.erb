@@ -17,6 +17,7 @@
       <li><%= link_to_unless_current "home", "/" %></li>
       <li><%= link_to_unless_current "create new asset", :controller => :assets, :action => 'new' %></li>
       <li><%= link_to_unless_current "upload assets", :controller => :xml %></li>
+      <li><%= link_to_unless_current "picklists", :controller => :picklists %></li>
       <%= yield :navbaritems %>
     </ul>
     <%= content_tag :h1, h(yield(:title)) %>

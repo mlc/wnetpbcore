@@ -1,0 +1,2 @@
+module PicklistsHelper
+end
