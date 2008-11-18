@@ -49,6 +49,19 @@ EOF
   task :symlink do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
   end
+
+  desc "Synchronize the remote database to your local system"
+  task :sync do
+    IO.popen("mysql #{application}_development", "w") do |local_mysql|
+      run "mysqldump --opt -h#{app_db_host} -u#{app_db_user} -p #{application}" do |channel, stream, data|
+        if data =~ /^Enter password:/
+          channel.send_data "#{app_db_pass}\n"
+        else
+          local_mysql.write data
+        end
+      end
+    end
+  end
 end
 
 after "deploy:setup", :db
