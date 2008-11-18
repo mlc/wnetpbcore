@@ -1,7 +1,10 @@
 <div class="identifier">
   <p>
     <%= f.label(:identifier, "Identifier:") %> <%= f.text_field :identifier %>
-    <%= f.select :identifier_source_id, (IdentifierSource.all(:order => "name ASC") - [IdentifierSource::OUR_UUID_SOURCE]).map{|i| [i.name, i.id]}, :include_blank => true %>
+    <%= f.select :identifier_source_id,
+      IdentifierSource.all(:order => "name ASC",
+      :conditions => ["visible = 1 OR id = ?", identifier.identifier_source_id]).map{|i| [i.name, i.id]},
+      :include_blank => true %>
     <%= f.remove_link "remove" %>
   </p>
 </div>

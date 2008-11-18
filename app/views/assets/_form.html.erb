@@ -46,7 +46,7 @@
 
   <h3>Audience Levels</h3>
   <div id="audience_levels">
-    <%- AudienceLevel.all.each do |level| -%>
+    <%- AudienceLevel.all(:conditions => "visible = 1 OR id IN (#{([0]+@asset.audience_levels.map{|k| k.id.to_s}).join(",")})").each do |level| -%>
     <span style="white-space: nowrap;">
     <%= check_box_tag "asset[audience_level_ids][]", level.id, @asset.audience_levels.include?(level), :id => "level_box_#{level.id}" %>
     <label for="level_box_<%= level.id %>"><%= level.name %></label>
@@ -57,7 +57,7 @@
 
   <h3>Audience Ratings</h3>
   <div id="audience_ratings">
-    <%- AudienceRating.all.each do |rating| -%>
+    <%- AudienceRating.all(:conditions => "visible = 1 OR id IN (#{([0]+@asset.audience_ratings.map{|k| k.id.to_s}).join(",")})").each do |rating| -%>
     <span style="white-space: nowrap;">
     <%= check_box_tag "asset[audience_rating_ids][]", rating.id, @asset.audience_ratings.include?(rating), :id => "rating_box_#{rating.id}" %>
     <label for="rating_box_<%= rating.id %>"><%= rating.name %></label>

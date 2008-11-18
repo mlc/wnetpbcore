@@ -15,15 +15,15 @@
     <%= f.label(:date_issued, "Date Issued:") %> <%= f.text_field(:date_issued) %>
     <br />
     <%= f.label(:format_id, "Format:") %>
-    <%= f.select :format_id, Format.all.map{|i| [i.name, i.id]}, :include_blank => true %>
+    <%= f.select :format_id, Format.all(:conditions => ["visible = 1 OR id = ?", @instantiation.format_id]).map{|i| [i.name, i.id]}, :include_blank => true %>
     <br />
     <%= f.label(:format_location, "Format Location:") %> <%= f.text_field(:format_location) %>
     <br />
     <%= f.label(:format_media_type_id, "Format Media Type:") %>
-    <%= f.select :format_media_type_id, FormatMediaType.all.map{|i| [i.name, i.id]}, :include_blank => true %>
+    <%= f.select :format_media_type_id, FormatMediaType.all(:conditions => ["visible = 1 OR id = ?", @instantiation.format_media_type_id]).map{|i| [i.name, i.id]}, :include_blank => true %>
     <br />
     <%= f.label(:format_generation_id, "Format Generations:") %>
-    <%= f.select :format_generation_id, FormatGeneration.all.map{|i| [i.name, i.id]}, :include_blank => true %>
+    <%= f.select :format_generation_id, FormatGeneration.all(:conditions => ["visible = 1 OR id = ?", @instantiation.format_generation_id]).map{|i| [i.name, i.id]}, :include_blank => true %>
     <br />
     <%= f.label(:format_file_size, "Format File Size:") %> <%= f.text_field(:format_file_size) %>
     <br />
@@ -34,7 +34,7 @@
     <%= f.label(:format_data_rate, "Format Data Rate:") %> <%= f.text_field(:format_data_rate) %>
     <br />
     <%= f.label(:format_color, "Format Colors:") %>
-    <%= f.select :format_color_id, FormatColor.all.map{|i| [i.name, i.id]}, :include_blank => true %>
+    <%= f.select :format_color_id, FormatColor.all(:conditions => ["visible = 1 OR id = ?", @instantiation.format_color_id]).map{|i| [i.name, i.id]}, :include_blank => true %>
     <br />
     <%= f.label(:format_tracks, "Format Tracks:") %> <%= f.text_field(:format_tracks) %>
     <br />
