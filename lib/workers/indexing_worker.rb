@@ -5,7 +5,7 @@ class IndexingWorker < BackgrounDRb::MetaWorker
   end
   
   def reindex
-    Kernel.system("rake", "RAILS_ENV=#{RAILS_ENV}", "thinking_sphinx:index")
+    AssetTerms.reindex
   end
 end
 

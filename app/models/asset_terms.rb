@@ -25,4 +25,16 @@ class AssetTerms < ActiveRecord::Base
     
     set_property :delta => true
   end
+  
+  def self.async_reindex
+    begin
+      MiddleMan.worker(:indexing_worker).async_reindex
+    rescue
+      reindex
+    end
+  end
+  
+  def reindex
+    Kernel.system("rake", "RAILS_ENV=#{RAILS_ENV}", "thinking_sphinx:index")
+  end
 end
