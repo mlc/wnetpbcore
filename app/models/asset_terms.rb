@@ -34,7 +34,7 @@ class AssetTerms < ActiveRecord::Base
     end
   end
   
-  def reindex
+  def self.reindex
     Kernel.system("rake", "RAILS_ENV=#{RAILS_ENV}", "thinking_sphinx:index")
   end
 end

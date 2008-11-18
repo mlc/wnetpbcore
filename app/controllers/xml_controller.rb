@@ -7,7 +7,7 @@ class XmlController < ApplicationController
       if havezip
         begin
           ThinkingSphinx.updates_enabled = false
-          successes = []
+          successes = 0
           failures = []
           zip = Zip::ZipInputStream.new(params[:xml])
           while (entry = zip.get_next_entry) do
@@ -19,7 +19,7 @@ class XmlController < ApplicationController
               if a.valid?
                 a.destroy_existing
                 a.save
-                successes << a.titles[0].title
+                successes += 1
               else
                 failures << "#{entry.name} is not valid"
               end
@@ -31,7 +31,7 @@ class XmlController < ApplicationController
           ThinkingSphinx.updates_enabled = true
           AssetTerms.async_reindex
         end
-        flash.now[:message] = "read " + successes.join(", ")
+        flash.now[:message] = "#{successes} #{successes == 1 ? "record" : "records"} imported"
         flash.now[:warning] = failures.join(", ") unless failures.empty?
       else
         begin
