@@ -6,7 +6,7 @@ module ApplicationHelper
   
   def add_navbar(*link_to_args)
     content_for :navbaritems do
-      content_tag(:li, link_to(*link_to_args)) + "\n"
+      content_tag(:li, link_to_unless_current(*link_to_args)) + "\n"
     end
   end
   
