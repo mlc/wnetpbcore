@@ -7,11 +7,14 @@ class PicklistsController < ApplicationController
   end
   
   def index
-    @emit_warning = should_emit_warning
     if @klass.nil?
-      @controllers = 'identifier_sources'
+      @controllers = ['audience_levels', 'audience_ratings', 'contributor_roles',
+        'creator_roles', 'description_types', 'format_digitals', 'format_colors',
+        'format_generations', 'format_media_types', 'format_physicals',
+        'identifier_sources', 'publisher_roles', 'relation_types', 'title_types']
       render :action => 'picklists_index'
     else
+      @emit_warning = should_emit_warning
       @objects = @klass.all(:order => "name ASC")
     end
   end

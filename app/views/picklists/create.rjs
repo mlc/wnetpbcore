@@ -5,6 +5,6 @@ previous = @klass.find(:first, :conditions => [ "name < ?", @obj.name ], :order 
 if previous
   page.insert_html(:after, "edit_#{previous.id}", new_html)
 else
-  page.insert_html(:bottom, :objs, new_html)
+  page.insert_html(:top, :objs, new_html)
 end
 page.visual_effect(:highlight, "obj_#{@obj.id}", :duration => 1.0)

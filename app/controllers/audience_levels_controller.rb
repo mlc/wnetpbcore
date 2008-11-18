@@ -1,0 +1,2 @@
+class AudienceLevelsController < PicklistsController
+end

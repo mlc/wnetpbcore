@@ -1,0 +1,2 @@
+class PublisherRolesController < PicklistsController
+end

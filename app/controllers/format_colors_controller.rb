@@ -1,0 +1,2 @@
+class FormatColorsController < PicklistsController
+end

@@ -1,0 +1,2 @@
+class RelationTypesController < PicklistsController
+end

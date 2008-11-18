@@ -1,0 +1,2 @@
+class ContributorRolesController < PicklistsController
+end

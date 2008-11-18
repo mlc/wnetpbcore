@@ -1,0 +1,2 @@
+class DescriptionTypesController < PicklistsController
+end

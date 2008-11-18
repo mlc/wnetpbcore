@@ -1,0 +1,2 @@
+class TitleTypesController < PicklistsController
+end

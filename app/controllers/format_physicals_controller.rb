@@ -1,0 +1,2 @@
+class FormatPhysicalsController < PicklistsController
+end
