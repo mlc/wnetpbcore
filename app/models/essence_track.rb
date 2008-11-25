@@ -1,10 +1,12 @@
 class EssenceTrack < ActiveRecord::Base
   include PbcoreXmlElement
   belongs_to :instantiation
+  belongs_to :essence_track_type
+  belongs_to :essence_track_identifier_source
   
-  xml_string "essenceTrackType"
+  xml_picklist "essenceTrackType"
   xml_string "essenceTrackIdentifier"
-  xml_string "essenceTrackIdentifierSource"
+  xml_picklist "essenceTrackIdentifierSource"
   xml_string "essenceTrackStandard"
   xml_string "essenceTrackEncoding"
   xml_string "essenceTrackDataRate"

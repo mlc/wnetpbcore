@@ -1,8 +1,13 @@
 <%- title @class_name.pluralize -%>
-<%- if @emit_warning -%>
+<%- case @emit_warning
+when true -%>
   <p><strong>Note:</strong> The values for this picklist are pre-defined by
   the PBCore standard. Adding custom options here may lead to invalid or
   nonstandard PBCore XML.</p>
+<%- when false
+  # nothing
+  else -%>
+  <%= @emit_warning %>
 <%- end -%>
 <ul id="objs">
   <%- @objects.each do |obj| -%>

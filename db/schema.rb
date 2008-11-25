@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081118204820) do
+ActiveRecord::Schema.define(:version => 20081125192140) do
 
   create_table "annotations", :force => true do |t|
     t.integer "instantiation_id", :limit => 11
@@ -165,23 +165,33 @@ ActiveRecord::Schema.define(:version => 20081118204820) do
 
   add_index "descriptions", ["asset_id"], :name => "index_descriptions_on_asset_id"
 
+  create_table "essence_track_identifier_sources", :force => true do |t|
+    t.string  "name",                       :null => false
+    t.boolean "visible", :default => false, :null => false
+  end
+
+  create_table "essence_track_types", :force => true do |t|
+    t.string  "name",                       :null => false
+    t.boolean "visible", :default => false, :null => false
+  end
+
   create_table "essence_tracks", :force => true do |t|
-    t.integer "instantiation_id",                :limit => 11
-    t.text    "essence_track_type",              :limit => 16777215
-    t.text    "essence_track_identifier",        :limit => 16777215
-    t.text    "essence_track_identifier_source", :limit => 16777215
-    t.text    "essence_track_standard",          :limit => 16777215
-    t.text    "essence_track_encoding",          :limit => 16777215
-    t.text    "essence_track_data_rate",         :limit => 16777215
-    t.text    "essence_track_time_start",        :limit => 16777215
-    t.text    "essence_track_duration",          :limit => 16777215
-    t.text    "essence_track_bit_depth",         :limit => 16777215
-    t.text    "essence_track_sampling_rate",     :limit => 16777215
-    t.text    "essence_track_frame_size",        :limit => 16777215
-    t.text    "essence_track_aspect_ratio",      :limit => 16777215
-    t.text    "essence_track_frame_rate",        :limit => 16777215
-    t.text    "essence_track_language",          :limit => 16777215
-    t.text    "essence_track_annotation",        :limit => 16777215
+    t.integer "instantiation_id",                   :limit => 11
+    t.text    "essence_track_identifier",           :limit => 16777215
+    t.text    "essence_track_standard",             :limit => 16777215
+    t.text    "essence_track_encoding",             :limit => 16777215
+    t.text    "essence_track_data_rate",            :limit => 16777215
+    t.text    "essence_track_time_start",           :limit => 16777215
+    t.text    "essence_track_duration",             :limit => 16777215
+    t.text    "essence_track_bit_depth",            :limit => 16777215
+    t.text    "essence_track_sampling_rate",        :limit => 16777215
+    t.text    "essence_track_frame_size",           :limit => 16777215
+    t.text    "essence_track_aspect_ratio",         :limit => 16777215
+    t.text    "essence_track_frame_rate",           :limit => 16777215
+    t.text    "essence_track_language",             :limit => 16777215
+    t.text    "essence_track_annotation",           :limit => 16777215
+    t.integer "essence_track_type_id",              :limit => 11,       :null => false
+    t.integer "essence_track_identifier_source_id", :limit => 11,       :null => false
   end
 
   add_index "essence_tracks", ["instantiation_id"], :name => "index_essence_tracks_on_instantiation_id"
@@ -206,12 +216,17 @@ ActiveRecord::Schema.define(:version => 20081118204820) do
 
   add_index "format_generations", ["name"], :name => "index_format_generations_on_name"
 
+  create_table "format_identifier_sources", :force => true do |t|
+    t.string  "name",                       :null => false
+    t.boolean "visible", :default => false, :null => false
+  end
+
   create_table "format_ids", :force => true do |t|
-    t.integer  "instantiation_id",         :limit => 11
-    t.text     "format_identifier",        :limit => 16777215, :null => false
-    t.text     "format_identifier_source", :limit => 16777215
+    t.integer  "instantiation_id",            :limit => 11
+    t.text     "format_identifier",           :limit => 16777215, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "format_identifier_source_id", :limit => 11,       :null => false
   end
 
   add_index "format_ids", ["instantiation_id"], :name => "index_format_ids_on_instantiation_id"

@@ -3,9 +3,18 @@
   <p>
   <%= f.remove_link "remove this essence track" %>
   <br />
+  <%= f.label :essence_track_type_id, "Type:" %>
+  <%= f.select :essence_track_type_id, EssenceTrackType.all(:conditions => ["visible = 1 OR id = ?", essence_track.essence_track_type_id]).map{|i| [i.name, i.id]}, :include_blank => true %>
+  <br />
+  <%= f.label :essence_track_identifier, "Identifier:" %>
+  <%= f.text_field :essence_track_identifier %>
+  <br />
+  <%= f.label :essence_track_identifier_source_id, "Identifier source:" %>
+  <%= f.select :essence_track_identifier_source_id, EssenceTrackIdentifierSource.all(:conditions => ["visible = 1 or id = ?", essence_track.essence_track_identifier_source_id]).map{|i| [i.name, i.id]}, :include_blank => true %>
+  <br />
   <%- 
   [
-    :type, :identifier, :identifier_source, :standard, :encoding, :data_rate,
+    :standard, :encoding, :data_rate,
     :time_start, :duration, :bit_depth, :sampling_rate, :frame_size,
     :aspect_ratio, :frame_rate, :annotation
   ].each do |fld|
@@ -14,7 +23,7 @@
   <%= f.text_field("essence_track_#{fld}".to_sym) %>
   <br />
   <%- end -%>
-  <%= f.label "Language:" %>
+  <%= f.label :essence_track_language, "Language:" %>
   <%= f.select :essence_track_language, ISO639::FOR_SELECT, :include_blank => true %>
   </p>
 </div>

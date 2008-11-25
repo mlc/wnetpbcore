@@ -33,7 +33,7 @@
     <br />
     <%= f.label(:format_data_rate, "Format Data Rate:") %> <%= f.text_field(:format_data_rate) %>
     <br />
-    <%= f.label(:format_color, "Format Colors:") %>
+    <%= f.label(:format_color_id, "Format Colors:") %>
     <%= f.select :format_color_id, FormatColor.all(:conditions => ["visible = 1 OR id = ?", @instantiation.format_color_id]).map{|i| [i.name, i.id]}, :include_blank => true %>
     <br />
     <%= f.label(:format_tracks, "Format Tracks:") %> <%= f.text_field(:format_tracks) %>
@@ -61,5 +61,5 @@
   </div>
   <p><%= f.add_associated_link "Add an annotation…", @instantiation.annotations.build %></p>
   
-  <p><%= f.submit "Submit" %>
+  <p><%= f.submit "Submit" %></p>
 <% end %>

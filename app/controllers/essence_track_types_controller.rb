@@ -1,0 +1,2 @@
+class EssenceTrackTypesController < PicklistsController
+end

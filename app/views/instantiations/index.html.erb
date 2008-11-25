@@ -10,7 +10,7 @@
       <%= instantiation.identifier %>
       (<%= instantiation.format.nil? ? "unknown format" : instantiation.format.name %>,
       <%= instantiation.format_media_type.nil? ? "unknown media type" : instantiation.format_media_type.name %>)
-      <%= link_to "Edit", :action => 'edit', :id => instantiation.id %>
+      <%= link_to "edit", :action => 'edit', :id => instantiation.id %>
       <%= link_to_remote "destroy",  :url => { :action => 'destroy', :id => instantiation.id }, :method => :delete, :confirm => "Are you sure you wish to delete #{instantiation.identifier}?", :html => { :class => "destroy_link" } %>
     </li>
   <%- end -%>
