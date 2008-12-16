@@ -2,10 +2,12 @@ require 'zip_extensions'
 
 class XmlController < ApplicationController
 
+  # we want to use our own XML parsing, so let's disable rails'
   param_parsers[Mime::XML] = Proc.new do |data|
     {:xml => data}
   end
 
+  # gah, this method is awful code. no one look at it please. kthxbye.
   def index
     if request.post?
       havezip = MIME::Types.of(params[:xml].original_filename).any?{|t| t.content_type == "application/zip"}
