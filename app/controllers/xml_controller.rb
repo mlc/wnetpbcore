@@ -1,6 +1,11 @@
 require 'zip_extensions'
 
 class XmlController < ApplicationController
+
+  param_parsers[Mime::XML] = Proc.new do |data|
+    {:xml => data}
+  end
+
   def index
     if request.post?
       havezip = MIME::Types.of(params[:xml].original_filename).any?{|t| t.content_type == "application/zip"}
@@ -46,6 +51,20 @@ class XmlController < ApplicationController
           end
         rescue Exception => e
           flash.now[:error] = e.to_s
+        end
+      end
+    elsif request.put?
+      respond_to do |format|
+        format.xml do
+          a = Asset.from_xml(params[:xml])
+          if a.valid?
+            a.destroy_existing
+            a.save
+            render :xml => a.to_xml
+          else
+            render :xml => "<message severity='error'>sorry, couldn't import.</message>"
+            raise ActiveRecord::Rollback
+          end
         end
       end
     end
