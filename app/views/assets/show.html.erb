@@ -46,5 +46,33 @@
     <%= render :partial => "field_one", :locals => {:key => "Language", :value => instantiation.language } %>
     <%= render :partial => "field_one", :locals => {:key => "Alternative Modes", :value => instantiation.alternative_modes } %>
     <%= render :partial => "field_array", :locals => {:objs => instantiation.date_availables, :field => "Date Available", :value => :to_s } %>
+    <%= render :partial => "field_array", :locals => {:objs => instantiation.annotations, :field => "Annotation", :value => :annotation} %>
   </dl>
+  <%- if instantiation.essence_tracks.any? -%>
+    <p><strong>Essence Tracks (<%= instantiation.essence_tracks.size %>)</strong>
+      <%= link_to_function("show", eltshow("tracks_#{instantiation.id}"), :id => "show_tracks_#{instantiation.id}") %>
+      <%= link_to_function("hide", elthide("tracks_#{instantiation.id}"), :id => "hide_tracks_#{instantiation.id}", :style => 'display: none;') %>
+    </p>
+    <div id="tracks_<%= instantiation.id %>" style="display: none;">
+    <%- instantiation.essence_tracks.each do |track| %>
+      <h4>Essence Track</h4>
+      <dl id="track_<%= track.id %>">
+        <%= render :partial => "field_one", :locals => {:key => "Type", :value => track.essence_track_type, :field => :name } %>
+        <%= render :partial => "field_one", :locals => {:key => "Identifier (#{track.essence_track_identifier_source.name})", :value => track.essence_track_identifier } %>
+        <%= render :partial => "field_one", :locals => {:key => "Standard", :value => track.essence_track_standard } %>
+        <%= render :partial => "field_one", :locals => {:key => "Encoding", :value => track.essence_track_encoding } %>
+        <%= render :partial => "field_one", :locals => {:key => "Data Rate", :value => track.essence_track_data_rate } %>
+        <%= render :partial => "field_one", :locals => {:key => "Time Start", :value => track.essence_track_time_start } %>
+        <%= render :partial => "field_one", :locals => {:key => "Duration", :value => track.essence_track_duration } %>
+        <%= render :partial => "field_one", :locals => {:key => "Bit Depth", :value => track.essence_track_bit_depth } %>
+        <%= render :partial => "field_one", :locals => {:key => "Sampling Rate", :value => track.essence_track_sampling_rate } %>
+        <%= render :partial => "field_one", :locals => {:key => "Frame Size", :value => track.essence_track_frame_size } %>
+        <%= render :partial => "field_one", :locals => {:key => "Aspect Ratio", :value => track.essence_track_aspect_ratio } %>
+        <%= render :partial => "field_one", :locals => {:key => "Frame Rate", :value => track.essence_track_frame_rate } %>
+        <%= render :partial => "field_one", :locals => {:key => "Language", :value => track.essence_track_language } %>
+        <%= render :partial => "field_one", :locals => {:key => "Annotation", :value => track.essence_track_annotation } %>
+      </dl>
+    <%- end -%>
+    </div>
+  <%- end -%>
 <%- end -%>
