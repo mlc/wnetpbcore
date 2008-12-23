@@ -1,3 +1,4 @@
 database.yml
 deploy/*.rb
 *.sphinx.conf
+site_key.txt

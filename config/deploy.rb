@@ -88,6 +88,11 @@ namespace :configuration do
   task :make_default_folders, :roles => :app do
     run "mkdir -p #{shared_config_path}"
   end
+
+  desc "Symlinks the site_key.txt file"
+  task :symlink_site_key, :roles => :app do
+    run "ln -nsf #{shared_configuration_location_for('site_key.txt')} #{public_configuration_location_for('site_key.txt')}"
+  end
 end
 
 namespace :thin do
@@ -149,6 +154,7 @@ after "deploy:setup", "configuration:make_default_folders"
 after "deploy:setup", "#{server_type}:build_configuration"
 
 after "deploy:symlink", "#{server_type}:link_configuration_file"
+after "deploy:symlink", "configuration:symlink_site_key"
 
 # http://www.updrift.com/article/deploying-a-rails-app-with-thinking-sphinx
 namespace :sphinx do

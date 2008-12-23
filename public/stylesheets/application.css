@@ -66,6 +66,11 @@
   margin: 2px;
 }
 
+#navbar ul {
+  padding: 0px;
+  margin: 0px;
+}
+
 #navbar li {
   display: inline;
   padding: 2px 4px;
@@ -73,6 +78,18 @@
   background-color: #eee;
   list-style-type: none;
 }
+
+#navbar #user-bar {
+  font-size: smaller;
+  margin: 0px 4px;
+  clear: both;
+}
+
+#navbar #user-bar .user-bar-greeting { float: left; margin-bottom: 6px; }
+
+#navbar #user-bar .user-bar-action { float: right; margin-bottom: 6px; }
+
+#navbar .post-user-bar { clear: both; }
 
 a { color: inherit; text-decoration: underline; }
 

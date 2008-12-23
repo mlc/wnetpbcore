@@ -8,18 +8,21 @@
     <%= opensearch_headers(@search_object) %>
     <%= alternate_views %>
     <% bundle do -%>
-    <%= javascript_include_tag :defaults %>
-    <%= javascript_include_tag "jquery.template.js" %>
+      <%= javascript_include_tag :defaults %>
+      <%= javascript_include_tag "jquery.template.js" %>
     <%- end %>
   </head>
   <body>
-    <ul id="navbar">
-      <li><%= link_to_unless_current "home", "/" %></li>
-      <li><%= link_to_unless_current "create new asset", :controller => :assets, :action => 'new' %></li>
-      <li><%= link_to_unless_current "upload assets", :controller => :xml %></li>
-      <li><%= link_to_unless_current "picklists", :controller => :picklists %></li>
-      <%= yield :navbaritems %>
-    </ul>
+    <div id="navbar">
+      <%= render :partial => "users/user_bar" %>
+      <ul class="post-user-bar">
+        <li><%= link_to_unless_current "home", "/" %></li>
+        <li><%= link_to_unless_current "create new asset", :controller => :assets, :action => 'new' %></li>
+        <li><%= link_to_unless_current "upload assets", :controller => :xml %></li>
+        <li><%= link_to_unless_current "picklists", :controller => :picklists %></li>
+        <%= yield :navbaritems %>
+      </ul>
+   </div>
     <%= content_tag :h1, h(yield(:title)) %>
     <%- [:error, :warning, :message].each do |severity| %>
       <%- if flash[severity] -%>
