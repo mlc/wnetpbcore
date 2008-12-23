@@ -91,7 +91,7 @@ namespace :configuration do
 
   desc "Symlinks the site_key.txt file"
   task :symlink_site_key, :roles => :app do
-    run "ln -nsf #{shared_configuration_path}/site_key.txt #{current_path}/config/site_key.txt"
+    run "ln -nsf #{shared_config_path}/site_key.txt #{current_path}/config/site_key.txt"
   end
 end
 
