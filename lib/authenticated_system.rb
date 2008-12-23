@@ -31,8 +31,10 @@ module AuthenticatedSystem
     #    current_user.login != "bob"
     #  end
     #
+    # DEFAULT: allow anyone to view; editing requires login.
+    # to be overridden in subclasses.
     def authorized?(action = action_name, resource = nil)
-      logged_in?
+      ["index", "show"].include?(action) || logged_in?
     end
 
     # Filter method to enforce a login requirement.
@@ -65,7 +67,8 @@ module AuthenticatedSystem
       respond_to do |format|
         format.html do
           store_location
-          redirect_to new_session_path
+          flash[:warning] = "Please log in, and then you can continue."
+          redirect_to login_path
         end
         # format.any doesn't work in rails version < http://dev.rubyonrails.org/changeset/8987
         # Add any other API formats here.  (Some browsers, notably IE6, send Accept: */* and trigger 
@@ -73,6 +76,9 @@ module AuthenticatedSystem
         # for a workaround.)
         format.any(:json, :xml) do
           request_http_basic_authentication 'Web Password'
+        end
+        format.js do
+          render :text => "alert('You are not authorized to perform that action!')" and return
         end
       end
     end

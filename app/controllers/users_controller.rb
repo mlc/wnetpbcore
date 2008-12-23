@@ -21,4 +21,10 @@ class UsersController < ApplicationController
       render :action => 'new'
     end
   end
+
+  protected
+  def authorized?(action = action_name, resource = nil)
+    logged_in? && current_user.is_admin?
+  end
+
 end

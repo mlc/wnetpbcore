@@ -49,6 +49,10 @@ class PicklistsController < ApplicationController
   end
   
   protected
+  def authorized?(action = action_name, resource = nil)
+    logged_in? && current_user.is_admin?
+  end
+
   def obj_type
     params[:controller] == 'picklists' ? nil : params[:controller].camelcase.singularize.constantize
   end

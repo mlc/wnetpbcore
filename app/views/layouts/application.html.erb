@@ -17,9 +17,13 @@
       <%= render :partial => "users/user_bar" %>
       <ul class="post-user-bar">
         <li><%= link_to_unless_current "home", "/" %></li>
-        <li><%= link_to_unless_current "create new asset", :controller => :assets, :action => 'new' %></li>
-        <li><%= link_to_unless_current "upload assets", :controller => :xml %></li>
-        <li><%= link_to_unless_current "picklists", :controller => :picklists %></li>
+        <%- if current_user -%>
+          <li><%= link_to_unless_current "create new asset", :controller => :assets, :action => 'new' %></li>
+          <li><%= link_to_unless_current "upload assets", :controller => :xml %></li>
+        <%- end -%>
+        <%- if current_user && current_user.is_admin? -%>
+          <li><%= link_to_unless_current "picklists", :controller => :picklists %></li>
+        <%- end -%>
         <%= yield :navbaritems %>
       </ul>
    </div>
