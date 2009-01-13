@@ -99,3 +99,5 @@ a { color: inherit; text-decoration: underline; }
   font-size: smaller;
   color: #444;
 }
+
+.asset-summary { padding-bottom: 1ex; }

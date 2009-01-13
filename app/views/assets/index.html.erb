@@ -6,12 +6,23 @@
 <%- else -%>
 <ul>
   <%- @assets.each do |asset| -%>
-    <li id="asset_<%= asset.id %>">
-      <%= h asset.title %>
+    <li class="asset-summary" id="asset_<%= asset.id %>">
+      <%= h asset.identifiers.map{|id| id.identifier}.join(" / ") %>
       <%= link_to "view", asset_url(asset.uuid) if authorized?('show', asset) %>
       <%= link_to "xml", formatted_asset_url(asset.uuid, "xml") if authorized?('show', asset) %>
       <%= link_to "edit", edit_asset_url(asset) if authorized?('edit', asset) %>
       <%= link_to_remote "destroy", :url => { :action => 'destroy', :id => asset.id }, :method => :delete, :confirm => "Are you sure you wish to delete #{asset.title}?", :html => { :class => "destroy_link" } if authorized?('destroy', asset)%>
+      <br />
+      <strong><%= h asset.title %></strong>
+      <ul>
+        <%- asset.instantiations.each do |instantiation| -%>
+          <li>
+            <%= h instantiation.format_ids.map{|id| id.format_identifier}.join(" / ") %>
+            <%= instantiation.format.nil? ? '' : "(#{instantiation.format.name})" %>
+            <%= h instantiation.date_issued %>
+          </li>
+        <%- end -%>
+      </ul>
     </li>
   <%- end -%>
 </ul>
