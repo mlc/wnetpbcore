@@ -4,9 +4,10 @@ class AssetsController < ApplicationController
     @query = params[:q]
     pageopts = {:page => params[:page] || 1, :per_page => 20}
     pageopts[:page] = 1 if pageopts[:page] == ""
+    asset_includes = [:titles, :identifiers, {:instantiations => [:format, :format_ids]}]
     @search_object = @query ? 
-      AssetTerms.search(@query, {:match_mode => :extended, :include => {:asset => [:titles, :identifiers, {:instantiations => [:format, :format_ids]}]}}.merge(pageopts)) :
-      Asset.paginate(:all, {:order => 'updated_at DESC', :include => [:titles, :identifiers, {:instantiations => [:format, :format_ids]}]}.merge(pageopts))
+      AssetTerms.search(@query, {:match_mode => :extended, :include => {:asset => asset_includes}}.merge(pageopts)) :
+      Asset.paginate(:all, {:order => 'updated_at DESC', :include => asset_includes}.merge(pageopts))
     @assets = @query ? @search_object.map{|at| at.asset} : @search_object
     
     respond_to do |format|
