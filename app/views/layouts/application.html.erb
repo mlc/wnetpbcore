@@ -23,7 +23,10 @@
         <%- end -%>
         <%- if current_user && current_user.is_admin? -%>
           <li><%= link_to_unless_current "picklists", :controller => :picklists %></li>
+          <li><%= link_to_unless_current "users", :controller => :users %></li>
         <%- end -%>
+      </ul>
+      <ul class="post-user-bar navbar2">
         <%= yield :navbaritems %>
       </ul>
    </div>

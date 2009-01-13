@@ -1,0 +1,1 @@
+page.visual_effect :fade, "user_#{@destroyed_id}", :duration => 0.5

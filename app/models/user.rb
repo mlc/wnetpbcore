@@ -47,6 +47,14 @@ class User < ActiveRecord::Base
     write_attribute :email, (value ? value.downcase : nil)
   end
 
+  def display_name
+    name.empty? ? login : name
+  end
+
+  def to_s
+    login + (display_name == login ? "" : " (#{name})")
+  end
+
   protected
     
 

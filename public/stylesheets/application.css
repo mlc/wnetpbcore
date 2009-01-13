@@ -91,6 +91,8 @@
 
 #navbar .post-user-bar { clear: both; }
 
+#navbar .navbar2 { margin-top: 8px; }
+
 a { color: inherit; text-decoration: underline; }
 
 #aboutlink {
