@@ -154,7 +154,7 @@ after "deploy:setup", "configuration:make_default_folders"
 after "deploy:setup", "#{server_type}:build_configuration"
 
 after "deploy:symlink", "#{server_type}:link_configuration_file"
-after "deploy:update_code", "configuration:symlink_site_key"
+after "deploy:symlink", "configuration:symlink_site_key"
 
 # http://www.updrift.com/article/deploying-a-rails-app-with-thinking-sphinx
 namespace :sphinx do
