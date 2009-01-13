@@ -1,5 +1,6 @@
 class StaticController < ApplicationController
   session :off
+  skip_before_filter :login_required
 
   def about
     filename = "#{RAILS_ROOT}/REVISION"
