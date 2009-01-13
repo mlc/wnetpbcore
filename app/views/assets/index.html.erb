@@ -17,9 +17,7 @@
       <ul>
         <%- asset.instantiations.each do |instantiation| -%>
           <li>
-            <%= h instantiation.format_ids.map{|id| id.format_identifier}.join(" / ") %>
-            <%= instantiation.format.nil? ? '' : "(#{instantiation.format.name})" %>
-            <%= h instantiation.date_issued %>
+            <%= h instantiation.summary %>
           </li>
         <%- end -%>
       </ul>
