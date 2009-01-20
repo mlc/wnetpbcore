@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081223212720) do
+ActiveRecord::Schema.define(:version => 20090120195545) do
 
   create_table "annotations", :force => true do |t|
     t.integer "instantiation_id", :limit => 11
@@ -65,6 +65,13 @@ ActiveRecord::Schema.define(:version => 20081223212720) do
   end
 
   add_index "assets_audience_ratings", ["asset_id"], :name => "index_assets_audience_ratings_on_asset_id"
+
+  create_table "assets_genres", :id => false, :force => true do |t|
+    t.integer "asset_id", :limit => 11, :null => false
+    t.integer "genre_id", :limit => 11, :null => false
+  end
+
+  add_index "assets_genres", ["asset_id"], :name => "index_assets_genres_on_asset_id"
 
   create_table "audience_levels", :force => true do |t|
     t.string  "name",                       :null => false
@@ -247,14 +254,12 @@ ActiveRecord::Schema.define(:version => 20081223212720) do
   add_index "formats", ["type", "name"], :name => "index_formats_on_type_and_name"
 
   create_table "genres", :force => true do |t|
-    t.integer  "asset_id",             :limit => 11
-    t.text     "genre",                :limit => 16777215, :null => false
-    t.text     "genre_authority_used", :limit => 16777215
+    t.text     "name",                                   :null => false
+    t.text     "genre_authority_used"
+    t.boolean  "visible",              :default => true, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "genres", ["asset_id"], :name => "index_genres_on_asset_id"
 
   create_table "identifier_sources", :force => true do |t|
     t.text     "name",       :limit => 16777215,                    :null => false

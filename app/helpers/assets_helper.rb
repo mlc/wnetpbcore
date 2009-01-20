@@ -14,4 +14,16 @@ module AssetsHelper
       page.show "show_#{fld}"
     end
   end
+
+  # return all visible genres, plus possibly one selected genre, in a format
+  # suitable for passing to option_groups_from_collection_for_select
+  def genres_including(genre)
+    genres = Genre.find(:all, :conditions => genre.nil? ? "visible = 1" : ["visible = 1 OR id = ?", genre.id], :order => "genre_authority_used ASC, name ASC")
+    gentypes = {}
+    genres.each do |g|
+      gentypes[g.genre_authority_used] ||= []
+      gentypes[g.genre_authority_used] << g
+    end
+    return gentypes
+  end
 end

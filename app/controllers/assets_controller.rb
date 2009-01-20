@@ -76,7 +76,7 @@ class AssetsController < ApplicationController
     params[:asset][:title_attributes] ||= {}
     params[:asset][:subject_attributes] ||= {}
     params[:asset][:description_attributes] ||= {}
-    params[:asset][:genre_attributes] ||= {}
+    params[:asset][:genre_ids] ||= {}
     params[:asset][:relation_attributes] ||= {}
     params[:asset][:coverage_attributes] ||= {}
     params[:asset][:audience_rating_ids] ||= []

@@ -13,7 +13,7 @@ class Asset < ActiveRecord::Base
   has_many :titles, :dependent => :destroy, :attributes => true
   has_many :subjects, :dependent => :destroy, :attributes => true
   has_many :descriptions, :dependent => :destroy, :attributes => true
-  has_many :genres, :dependent => :destroy, :attributes => true
+  has_and_belongs_to_many :genres
   has_many :relations, :dependent => :destroy, :attributes => true
   has_many :coverages, :dependent => :destroy, :attributes => true
   has_and_belongs_to_many :audience_levels
@@ -88,7 +88,7 @@ class Asset < ActiveRecord::Base
     asset_terms.title = titles.map{|a| a.title}.join(' ')
     asset_terms.subject = subjects.map{|a| a.subject}.join(' ')
     asset_terms.description = descriptions.map{|a| a.description}.join(' ')
-    asset_terms.genre = genres.map{|a| a.genre}.join(' ')
+    asset_terms.genre = genres.map{|a| a.name}.join(' ')
     asset_terms.relation = relations.map{|a| a.relation_identifier}.join(' ')
     asset_terms.coverage = coverages.map{|a| a.coverage}.join(' ')
     asset_terms.audience_level = audience_levels.map{|a| a.name}.join(' ')

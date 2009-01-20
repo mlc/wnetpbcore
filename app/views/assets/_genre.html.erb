@@ -1,8 +1,9 @@
 <div class="genre">
   <p>
-    <%= f.label(:genre, "Genre:") %> <%= f.text_field :genre %>
+    <select name="asset[genre_ids][]">
+    <%= option_groups_from_collection_for_select(genres_including(genre), :last, :first, :id, :name, genre.nil? ? nil : genre.id) %>
+    </select>
     <%= f.remove_link "remove" %>
     <br />
-    <%= f.label(:genre_authority_used, "Genre authority used:") %> <%= f.text_field :genre_authority_used %>
   </p>
 </div>
