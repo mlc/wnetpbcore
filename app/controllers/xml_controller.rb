@@ -51,7 +51,7 @@ class XmlController < ApplicationController
             flash.now[:error] = "Sorry, couldn't import that record: <ul>" + a.errors.full_messages.map{|err| "<li>#{err}</li>"}.join + "</ul>"
             raise ActiveRecord::Rollback
           end
-        rescue SyntaxError => e
+        rescue Exception => e
           flash.now[:error] = e.to_s
         end
       end
