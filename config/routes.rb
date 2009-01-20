@@ -15,7 +15,7 @@ ActionController::Routing::Routes.draw do |map|
     :description_types, :format_colors, :format_generations, :format_media_types,
     :format_digitals, :format_physicals, :identifier_sources, :publisher_roles,
     :relation_types, :title_types, :essence_track_types, :essence_track_identifier_sources,
-    :format_identifier_sources].each do |t|
+    :format_identifier_sources, :genres].each do |t|
     map.resources t
   end
   

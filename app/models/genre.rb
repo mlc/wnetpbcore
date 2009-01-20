@@ -16,4 +16,8 @@ class Genre < ActiveRecord::Base
 
     Genre.find_or_create_by_name_and_genre_authority_used(genrename, authorityused)
   end
+
+  def safe_to_delete?
+    assets.empty?
+  end
 end
