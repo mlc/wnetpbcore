@@ -9,6 +9,8 @@ class Person < ActiveRecord::Base
     indexes [first_name, middle_initial, last_name], :as => :name
     indexes team.name, :as => :team_name
     indexes contacts.phone_number, :as => :phone_numbers
+    indexes city,   :prefixes => true
+    indexes state,  :infixes  => true
     
     has [first_name, middle_initial, last_name], :as => :name_sort
     has team.name, :as => :team_name_sort
@@ -22,6 +24,8 @@ class Person < ActiveRecord::Base
     has birthday
     
     has friendships.person_id, :as => :friendly_ids
+    
+    set_property :delta => true
   end
 end
 
@@ -49,7 +53,7 @@ end
 
 class Friendship < ActiveRecord::Base
   belongs_to :person
-  belongs_to :friend, :class_name => "Person"
+  belongs_to :friend, :class_name => "Person", :foreign_key => :friend_id
   
   define_index do
     has person_id, friend_id
@@ -59,6 +63,8 @@ end
 class Alpha < ActiveRecord::Base
   define_index do
     indexes :name, :sortable => true
+    
+    set_property :field_weights => {"name" => 10}
   end
 end
 
@@ -68,4 +74,8 @@ class Beta < ActiveRecord::Base
     
     set_property :delta => true
   end
+end
+
+class Search < ActiveRecord::Base
+  #
 end

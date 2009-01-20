@@ -99,27 +99,19 @@ describe "ThinkingSphinx::ActiveRecord" do
       Person.to_crc32.should be_a_kind_of(Integer)
     end
   end
-  
-  describe "in_core_index? method" do
-    it "should return the model's corresponding search_for_id value" do
-      Person.stub_method(:search_for_id => :searching_for_id)
-      
-      person = Person.find(:first)
-      person.in_core_index?.should == :searching_for_id
-      Person.should have_received(:search_for_id).with(person.sphinx_document_id, "person_core")
-    end
-  end
-  
+    
   describe "toggle_deleted method" do
     before :each do
-      @configuration = ThinkingSphinx::Configuration.stub_instance(
+      ThinkingSphinx.stub_method(:sphinx_running? => true)
+      
+      @configuration = ThinkingSphinx::Configuration.instance
+      @configuration.stub_methods(
         :address  => "an address",
         :port     => 123
       )
       @client = Riddle::Client.stub_instance(:update => true)
       @person = Person.find(:first)
       
-      ThinkingSphinx::Configuration.stub_method(:new => @configuration)
       Riddle::Client.stub_method(:new => @client)
       Person.sphinx_indexes.each { |index| index.stub_method(:delta? => false) }
       @person.stub_method(:in_core_index? => true)
@@ -149,6 +141,15 @@ describe "ThinkingSphinx::ActiveRecord" do
       @client.should_not have_received(:update).with(
         "person_core", ["sphinx_deleted"], {@person.sphinx_document_id => 1}
       )
+    end
+    
+    it "shouldn't attempt to update the deleted flag if sphinx isn't running" do
+      ThinkingSphinx.stub_method(:sphinx_running? => false)
+      
+      @person.toggle_deleted
+      
+      @person.should_not have_received(:in_core_index?)
+      @client.should_not have_received(:update)
     end
     
     it "should update the delta index's deleted flag if delta indexes are enabled and the instance's delta is true" do
@@ -229,7 +230,8 @@ describe "ThinkingSphinx::ActiveRecord" do
 
     it "should allow associations to other STI models" do
       Child.sphinx_indexes.last.link!
-      sql = Child.sphinx_indexes.last.to_sql.gsub('$start', '0').gsub('$end', '100')
+      sql = Child.sphinx_indexes.last.to_riddle_for_core(0, 0).sql_query
+      sql.gsub!('$start', '0').gsub!('$end', '100')
       lambda { Child.connection.execute(sql) }.should_not raise_error(ActiveRecord::StatementInvalid)
     end
   end
@@ -250,37 +252,5 @@ describe "ThinkingSphinx::ActiveRecord" do
     offset      = ThinkingSphinx.indexed_models.index("Beta")
     
     (beta.id * model_count + offset).should == beta.sphinx_document_id
-  end
-  
-  it "should remove instances from the core index if they're in it" do
-    Beta.search("three").should_not be_empty
-    
-    beta = Beta.find(:first, :conditions => {:name => "three"})
-    beta.destroy
-    
-    Beta.search("three").should be_empty
-  end
-  
-  it "should remove destroyed new instances from the delta index if they're in it" do
-    beta = Beta.create(:name => "eleven")
-    sleep(1) # wait for Sphinx to catch up
-    
-    Beta.search("eleven").should_not be_empty
-    
-    beta.destroy
-    
-    Beta.search("eleven").should be_empty
-  end
-  
-  it "should remove destroyed edited instances from the delta index if they're in it" do
-    beta = Beta.find(:first, :conditions => {:name => "four"})
-    beta.update_attributes(:name => "fourteen")
-    sleep(1) # wait for Sphinx to catch up
-    
-    Beta.search("fourteen").should_not be_empty
-    
-    beta.destroy
-    
-    Beta.search("fourteen").should be_empty
   end
 end

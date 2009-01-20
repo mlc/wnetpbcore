@@ -12,12 +12,16 @@ module ThinkingSphinx
       # return the ids for the matching objects. See #search for syntax
       # examples.
       #
+      # Note that this only searches the Sphinx index, with no ActiveRecord
+      # queries. Thus, if your index is not in sync with the database, this
+      # method may return ids that no longer exist there.
+      #
       def search_for_ids(*args)
         results, client = search_results(*args.clone)
         
         options = args.extract_options!
         page    = options[:page] ? options[:page].to_i : 1
-
+        
         ThinkingSphinx::Collection.ids_from_results(results, page, client.limit, options)
       end
 
@@ -44,7 +48,7 @@ module ThinkingSphinx
       # 
       #   User.search "pat", :include => :posts
       #
-      # == Advanced Searching
+      # == Match Modes
       #
       # Sphinx supports 5 different matching modes. By default Thinking Sphinx
       # uses :all, which unsurprisingly requires all the supplied search terms
@@ -61,6 +65,20 @@ module ThinkingSphinx
       # terms a single phrase instead of individual words. Boolean and extended allow
       # for more complex query syntax, refer to the sphinx documentation for further
       # details.
+      #
+      # == Weighting
+      #
+      # Sphinx has support for weighting, where matches in one field can be considered
+      # more important than in another. Weights are integers, with 1 as the default.
+      # They can be set per-search like this:
+      #
+      #   User.search "pat allan", :field_weights => { :alias => 4, :aka => 2 }
+      #
+      # If you're searching multiple models, you can set per-index weights:
+      #
+      #   ThinkingSphinx::Search.search "pat", :index_weights => { User => 10 }
+      #
+      # See http://sphinxsearch.com/doc.html#weighting for further details.
       #
       # == Searching by Fields
       # 
@@ -99,7 +117,52 @@ module ThinkingSphinx
       # attribute values to exclude. This is done with the :without option:
       #
       #   User.search :without => {:role_id => 1}
-      # 
+      #
+      # == Excluding by Primary Key
+      #
+      # There is a shortcut to exclude records by their ActiveRecord primary key:
+      #
+      #   User.search :without_ids => 1
+      #
+      # Pass an array or a single value.
+      #
+      # The primary key must be an integer as a negative filter is used. Note
+      # that for multi-model search, an id may occur in more than one model.
+      #
+      # == Infix (Star) Searching
+      #
+      # By default, Sphinx uses English stemming, e.g. matching "shoes" if you
+      # search for "shoe". It won't find "Melbourne" if you search for
+      # "elbourn", though.
+      #
+      # Enable infix searching by something like this in config/sphinx.yml:
+      #
+      #   development:
+      #     enable_star: 1
+      #     min_infix_length: 2
+      #
+      # Note that this will make indexing take longer.
+      #
+      # With those settings (and after reindexing), wildcard asterisks can be used
+      # in queries:
+      #
+      #   Location.search "*elbourn*"
+      #
+      # To automatically add asterisks around every token (but not operators),
+      # pass the :star option:
+      #
+      #   Location.search "elbourn -ustrali", :star => true, :match_mode => :boolean
+      #
+      # This would become "*elbourn* -*ustrali*". The :star option only adds the
+      # asterisks. You need to make the config/sphinx.yml changes yourself.
+      #
+      # By default, the tokens are assumed to match the regular expression /\w+/u.
+      # If you've modified the charset_table, pass another regular expression, e.g.
+      #
+      #   User.search("oo@bar.c", :star => /[\w@.]+/u)
+      #
+      # to search for "*oo@bar.c*" and not "*oo*@*bar*.*c*".
+      #
       # == Sorting
       #
       # Sphinx can only sort by attributes, so generally you will need to avoid
@@ -184,23 +247,80 @@ module ThinkingSphinx
       # The distance value is returned as a float, representing the distance in
       # metres.
       # 
+      # == Handling a Stale Index
+      #
+      # Especially if you don't use delta indexing, you risk having records in the
+      # Sphinx index that are no longer in the database. By default, those will simply
+      # come back as nils:
+      #
+      #   >> pat_user.delete
+      #   >> User.search("pat")
+      #   Sphinx Result: [1,2]
+      #   => [nil, <#User id: 2>]
+      #
+      # (If you search across multiple models, you'll get ActiveRecord::RecordNotFound.)
+      #
+      # You can simply Array#compact these results or handle the nils in some other way, but
+      # Sphinx will still report two results, and the missing records may upset your layout.
+      #
+      # If you pass :retry_stale => true to a single-model search, missing records will
+      # cause Thinking Sphinx to retry the query but excluding those records. Since search
+      # is paginated, the new search could potentially include missing records as well, so by
+      # default Thinking Sphinx will retry three times. Pass :retry_stale => 5 to retry five
+      # times, and so on. If there are still missing ids on the last retry, they are
+      # shown as nils.
+      # 
       def search(*args)
-        results, client = search_results(*args.clone)
+        query = args.clone  # an array
+        options = query.extract_options!
         
-        ::ActiveRecord::Base.logger.error(
-          "Sphinx Error: #{results[:error]}"
-        ) if results[:error]
+        retry_search_on_stale_index(query, options) do
+          results, client = search_results(*(query + [options]))
         
-        options = args.extract_options!
-        klass   = options[:class]
-        page    = options[:page] ? options[:page].to_i : 1
+          ::ActiveRecord::Base.logger.error(
+            "Sphinx Error: #{results[:error]}"
+          ) if results[:error]
         
-        ThinkingSphinx::Collection.create_from_results(results, page, client.limit, options)
+          klass   = options[:class]
+          page    = options[:page] ? options[:page].to_i : 1
+        
+          ThinkingSphinx::Collection.create_from_results(results, page, client.limit, options)
+        end
+      end
+      
+      def retry_search_on_stale_index(query, options, &block)
+        stale_ids = []
+        stale_retries_left = case options[:retry_stale]
+                              when true:       3  # default to three retries
+                              when nil, false: 0  # no retries
+                              else             options[:retry_stale].to_i
+                              end
+        begin
+          # Passing this in an option so Collection.create_from_results can see it.
+          # It should only raise on stale records if there are any retries left.
+          options[:raise_on_stale] = stale_retries_left > 0
+          block.call
+        # If ThinkingSphinx::Collection.create_from_results found records in Sphinx but not
+        # in the DB and the :raise_on_stale option is set, this exception is raised. We retry
+        # a limited number of times, excluding the stale ids from the search.
+        rescue StaleIdsException => e
+          stale_retries_left -= 1
+
+          stale_ids |= e.ids  # For logging
+          options[:without_ids] = Array(options[:without_ids]) | e.ids  # Actual exclusion
+
+          tries = stale_retries_left
+          ::ActiveRecord::Base.logger.debug("Sphinx Stale Ids (%s %s left): %s" % [
+              tries, (tries==1 ? 'try' : 'tries'), stale_ids.join(', ')
+          ])
+          
+          retry
+        end
       end
 
       def count(*args)
         results, client = search_results(*args.clone)
-        results[:total] || 0
+        results[:total_found] || 0
       end
 
       # Checks if a document with the given id exists within a specific index.
@@ -232,6 +352,18 @@ module ThinkingSphinx
         end
       end
       
+      def facets(*args)
+        hash    = ThinkingSphinx::FacetCollection.new args
+        options = args.extract_options!.clone.merge! :group_function => :attr
+        
+        options[:class].sphinx_facets.inject(hash) do |hash, facet|
+          options[:group_by] = facet.attribute_name
+          
+          hash.add_from_results facet, search(*(args + [options]))
+          hash
+        end
+      end
+      
       private
       
       # This method handles the common search functionality, and returns both
@@ -240,15 +372,19 @@ module ThinkingSphinx
       # 
       def search_results(*args)
         options = args.extract_options!
+        query   = args.join(' ')
         client  = client_from_options options
         
-        query, filters    = search_conditions(
+        query = star_query(query, options[:star]) if options[:star]
+        
+        extra_query, filters = search_conditions(
           options[:class], options[:conditions] || {}
         )
         client.filters   += filters
-        client.match_mode = :extended unless query.empty?
-        query             = args.join(" ") + query
-        
+        client.match_mode = :extended unless extra_query.empty?
+        query             = [query, extra_query].join(' ')
+        query.strip!  # Because "" and " " are not equivalent
+                
         set_sort_options! client, options
         
         client.limit  = options[:per_page].to_i if options[:per_page]
@@ -270,10 +406,33 @@ module ThinkingSphinx
       # options hash.
       # 
       def client_from_options(options = {})
-        config = ThinkingSphinx::Configuration.new
+        config = ThinkingSphinx::Configuration.instance
         client = Riddle::Client.new config.address, config.port
         klass  = options[:class]
-        index_options = klass ? klass.sphinx_indexes.last.options : {}
+        index_options = klass ? klass.sphinx_index_options : {}
+
+        # The Riddle default is per-query max_matches=1000. If we set the
+        # per-server max to a smaller value in sphinx.yml, we need to override
+        # the Riddle default or else we get search errors like
+        # "per-query max_matches=1000 out of bounds (per-server max_matches=200)"
+        if per_server_max_matches = config.configuration.searchd.max_matches
+          options[:max_matches] ||= per_server_max_matches
+        end
+        
+        # Turn :index_weights => { "foo" => 2, User => 1 }
+        # into :index_weights => { "foo" => 2, "user_core" => 1, "user_delta" => 1 }
+        if iw = options[:index_weights]
+          options[:index_weights] = iw.inject({}) do |hash, (index,weight)|
+            if index.is_a?(Class)
+              name = ThinkingSphinx::Index.name(index)
+              hash["#{name}_core"]  = weight
+              hash["#{name}_delta"] = weight
+            else
+              hash[index] = weight
+            end
+            hash
+          end
+        end
         
         [
           :max_matches, :match_mode, :sort_mode, :sort_by, :id_range,
@@ -310,18 +469,52 @@ module ThinkingSphinx
           Riddle::Client::Filter.new attr.to_s, filter_value(val), true
         } if options[:without]
         
+        # exclusive attribute filter on primary key
+        client.filters += Array(options[:without_ids]).collect { |id|
+          Riddle::Client::Filter.new 'sphinx_internal_id', filter_value(id), true
+        } if options[:without_ids]
+        
         client
+      end
+      
+      def star_query(query, custom_token = nil)
+        token = custom_token.is_a?(Regexp) ? custom_token : /\w+/u
+
+        query.gsub(/("#{token}(.*?#{token})?"|(?![!-])#{token})/u) do
+          pre, proper, post = $`, $&, $'
+          is_operator = pre.match(%r{(\W|^)[@~/]\Z})  # E.g. "@foo", "/2", "~3", but not as part of a token
+          is_quote    = proper.starts_with?('"') && proper.ends_with?('"')  # E.g. "foo bar", with quotes
+          has_star    = pre.ends_with?("*") || post.starts_with?("*")
+          if is_operator || is_quote || has_star
+            proper
+          else
+            "*#{proper}*"
+          end
+        end
       end
       
       def filter_value(value)
         case value
         when Range
-          value.first.is_a?(Time) ? value.first.to_i..value.last.to_i : value
+          value.first.is_a?(Time) ? timestamp(value.first)..timestamp(value.last) : value
         when Array
-          value.collect { |val| val.is_a?(Time) ? val.to_i : val }
+          value.collect { |val| val.is_a?(Time) ? timestamp(val) : val }
         else
           Array(value)
         end
+      end
+      
+      # Returns the integer timestamp for a Time object.
+      # 
+      # If using Rails 2.1+, need to handle timezones to translate them back to
+      # UTC, as that's what datetimes will be stored as by MySQL.
+      # 
+      # in_time_zone is a method that was added for the timezone support in
+      # Rails 2.1, which is why it's used for testing. I'm sure there's better
+      # ways, but this does the job.
+      # 
+      def timestamp(value)
+        value.respond_to?(:in_time_zone) ? value.utc.to_i : value.to_i
       end
       
       # Translate field and attribute conditions to the relevant search string
@@ -332,7 +525,7 @@ module ThinkingSphinx
           index.attributes.collect { |attrib| attrib.unique_name }
         }.flatten : []
         
-        search_string = ""
+        search_string = []
         filters       = []
         
         conditions.each do |key,val|
@@ -341,11 +534,11 @@ module ThinkingSphinx
               key.to_s, filter_value(val)
             )
           else
-            search_string << "@#{key} #{val} "
+            search_string << "@#{key} #{val}"
           end
         end
         
-        return search_string, filters
+        return search_string.join(' '), filters
       end
       
       # Return the appropriate latitude and longitude values, depending on
@@ -399,8 +592,10 @@ module ThinkingSphinx
         fields = klass ? klass.sphinx_indexes.collect { |index|
           index.fields.collect { |field| field.unique_name }
         }.flatten : []
-        
-        case order = options[:order]
+        index_options = klass ? klass.sphinx_index_options : {}
+
+        order = options[:order] || index_options[:order]        
+        case order
         when Symbol
           client.sort_mode = :attr_asc if client.sort_mode == :relevance || client.sort_mode.nil?
           if fields.include?(order)

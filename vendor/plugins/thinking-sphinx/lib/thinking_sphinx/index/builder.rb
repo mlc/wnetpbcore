@@ -18,7 +18,11 @@ module ThinkingSphinx
         # rails documentation. It's not needed though, so it gets undef'd.
         # Hopefully the list of methods that get in the way doesn't get too
         # long.
-        undef_method :parent
+        HiddenMethods = [:parent, :name, :id, :type].each { |method|
+          define_method(method) {
+            caller.grep(/irb.completion/).empty? ? method_missing(method) : super
+          }
+        }
         
         attr_accessor :fields, :attributes, :properties, :conditions,
           :groupings
@@ -85,13 +89,13 @@ module ThinkingSphinx
           args.each do |columns|
             fields << Field.new(FauxColumn.coerce(columns), options)
             
-            if fields.last.sortable
+            if fields.last.sortable || fields.last.faceted
               attributes << Attribute.new(
                 fields.last.columns.collect { |col| col.clone },
                 options.merge(
                   :type => :string,
                   :as => fields.last.unique_name.to_s.concat("_sort").to_sym
-                )
+                ).except(:facet)
               )
             end
           end
@@ -130,7 +134,7 @@ module ThinkingSphinx
         # when you would like to index a calculated value. Don't forget to set
         # the type of the attribute though:
         #
-        #   indexes "age < 18", :as => :minor, :type => :boolean
+        #   has "age < 18", :as => :minor, :type => :boolean
         # 
         # If you're creating attributes for latitude and longitude, don't
         # forget that Sphinx expects these values to be in radians.
@@ -142,6 +146,15 @@ module ThinkingSphinx
           end
         end
         alias_method :attribute, :has
+        
+        def facet(*args)
+          options = args.extract_options!
+          options[:facet] = true
+          
+          args.each do |columns|
+            attributes << Attribute.new(FauxColumn.coerce(columns), options)
+          end
+        end
         
         # Use this method to add some manual SQL conditions for your index
         # request. You can pass in as many strings as you like, they'll get
@@ -172,6 +185,9 @@ module ThinkingSphinx
         # 
         #   set_property :delta => true
         #   set_property :field_weights => {"name" => 100}
+        #   set_property :order => "name ASC"
+        #   set_property :include => :picture
+        #   set_property :select => 'name'
         # 
         # Also, the following two properties are particularly relevant for
         # geo-location searching - latitude_attr and longitude_attr. If your

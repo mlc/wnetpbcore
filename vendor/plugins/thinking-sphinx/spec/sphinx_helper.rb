@@ -43,13 +43,13 @@ class SphinxHelper
     
     File.open("spec/fixtures/data.sql") { |f|
       while line = f.gets
-        ActiveRecord::Base.connection.execute line
+        ActiveRecord::Base.connection.execute line unless line.blank?
       end
     }
   end
   
   def setup_sphinx
-    @configuration = ThinkingSphinx::Configuration.new
+    @configuration = ThinkingSphinx::Configuration.instance.reset
     File.open("spec/fixtures/sphinx/database.yml", "w") do |file|
       YAML.dump({@configuration.environment => {
         :adapter  => 'mysql',
