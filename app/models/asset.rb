@@ -11,7 +11,7 @@ class Asset < ActiveRecord::Base
     ]
   has_many :identifiers, :dependent => :destroy, :attributes => true
   has_many :titles, :dependent => :destroy, :attributes => true
-  has_many :subjects, :dependent => :destroy, :attributes => true
+  has_and_belongs_to_many :subjects
   has_many :descriptions, :dependent => :destroy, :attributes => true
   has_and_belongs_to_many :genres
   has_many :relations, :dependent => :destroy, :attributes => true

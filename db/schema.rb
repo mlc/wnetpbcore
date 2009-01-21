@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090120195545) do
+ActiveRecord::Schema.define(:version => 20090120225338) do
 
   create_table "annotations", :force => true do |t|
     t.integer "instantiation_id", :limit => 11
@@ -72,6 +72,13 @@ ActiveRecord::Schema.define(:version => 20090120195545) do
   end
 
   add_index "assets_genres", ["asset_id"], :name => "index_assets_genres_on_asset_id"
+
+  create_table "assets_subjects", :id => false, :force => true do |t|
+    t.integer "asset_id",   :limit => 11, :null => false
+    t.integer "subject_id", :limit => 11, :null => false
+  end
+
+  add_index "assets_subjects", ["asset_id"], :name => "index_assets_subjects_on_asset_id"
 
   create_table "audience_levels", :force => true do |t|
     t.string  "name",                       :null => false
@@ -345,14 +352,12 @@ ActiveRecord::Schema.define(:version => 20090120195545) do
   add_index "rights_summaries", ["asset_id"], :name => "index_rights_summaries_on_asset_id"
 
   create_table "subjects", :force => true do |t|
-    t.integer  "asset_id",          :limit => 11
-    t.text     "subject",           :limit => 16777215
-    t.text     "subject_authority", :limit => 16777215
+    t.text     "subject",                              :null => false
+    t.text     "subject_authority"
+    t.boolean  "visible",           :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "subjects", ["asset_id"], :name => "index_subjects_on_asset_id"
 
   create_table "title_type_categories", :force => true do |t|
     t.string "name", :null => false
