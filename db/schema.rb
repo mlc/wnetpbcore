@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090127160434) do
+ActiveRecord::Schema.define(:version => 20090127224755) do
 
   create_table "annotations", :force => true do |t|
     t.integer "instantiation_id", :limit => 11
@@ -210,6 +210,17 @@ ActiveRecord::Schema.define(:version => 20090127160434) do
 
   add_index "essence_tracks", ["instantiation_id"], :name => "index_essence_tracks_on_instantiation_id"
 
+  create_table "extension_names", :force => true do |t|
+    t.string   "extension_key"
+    t.string   "extension_authority"
+    t.text     "description"
+    t.boolean  "visible",             :default => false, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "extension_names", ["extension_authority", "extension_key"], :name => "index_extension_names_on_extension_authority_and_extension_key", :unique => true
+
   create_table "extensions", :force => true do |t|
     t.integer "asset_id",                 :limit => 11
     t.text    "extension",                :limit => 16777215
@@ -261,9 +272,9 @@ ActiveRecord::Schema.define(:version => 20090127160434) do
   add_index "formats", ["type", "name"], :name => "index_formats_on_type_and_name"
 
   create_table "genres", :force => true do |t|
-    t.text     "name",                                   :null => false
+    t.text     "name",                                    :null => false
     t.text     "genre_authority_used"
-    t.boolean  "visible",              :default => true, :null => false
+    t.boolean  "visible",              :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
