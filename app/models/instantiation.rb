@@ -45,6 +45,7 @@ class Instantiation < ActiveRecord::Base
     result = (format_ids.map{|id| id.format_identifier}.join(" / ") +
       (format.nil? ? '' : " (#{format.name})") +
       " " + date_issued.to_s).strip
-    result.empty? ? "(instantiation)" : result
+    (result.empty? ? "(instantiation)" : result) +
+      (annotations.empty? ? "" : " [#{annotations.map{|ann| ann.annotation}.join("; ")}]")
   end
 end
