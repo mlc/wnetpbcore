@@ -1,0 +1,19 @@
+<%- title "Advanced Search" -%>
+
+<p>
+  This form will help you construct a search query.
+</p>
+
+<% form_tag({:action => 'search'}, :id => 'advanced_search') do %>
+  <table><tbody>
+  <%- even = false -%>
+  <%- @fields.each do |field| -%>
+    <%- even = !even -%>
+    <tr class="<%=  even ? "even" : "odd" %>">
+      <th><%= label_tag field.to_s %></th>
+      <td><%= text_field_tag field.to_s %></td>
+    </tr>
+  <%- end -%>
+  </tbody></table>
+  <p><%= submit_tag("Search") %></p>
+<% end %>

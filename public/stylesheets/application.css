@@ -111,3 +111,13 @@ a { color: inherit; text-decoration: underline; }
 #toggle_annotations_link {
   color: #444;
 }
+
+#advanced_search td input {
+  width: 600px;
+  margin: 3px;
+}
+
+#advanced_search td, #advanced_search th { margin: 0px; }
+
+#advanced_search tr.odd { background-color: #ddd; }
+#advanced_search tr.even { background-color: #eee; }
