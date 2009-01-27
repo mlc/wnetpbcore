@@ -96,6 +96,8 @@ class AssetsController < ApplicationController
     end
   end
 
+  # if I were better at javascript, I'd do this all (including setting a cookie)
+  # without talking to the server...
   def toggleannotations
     session[:hide_annotations] = !session[:hide_annotations]
     @visible = !session[:hide_annotations]
