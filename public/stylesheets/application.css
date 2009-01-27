@@ -103,3 +103,11 @@ a { color: inherit; text-decoration: underline; }
 }
 
 .asset-summary { padding-bottom: 1ex; }
+
+#record_count {
+  margin-right: 3em;
+}
+
+#toggle_annotations_link {
+  color: #444;
+}

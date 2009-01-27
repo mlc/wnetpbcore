@@ -1,0 +1,2 @@
+page << "$('.annotations').#{@visible ? 'show' : 'hide'}();"
+page['toggle_annotations_link'].text("#{@visible ? 'hide' : 'show'} annotations")

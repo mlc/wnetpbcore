@@ -4,7 +4,10 @@
 <%- if @assets.empty? -%>
 <h2>Nothing found.</h2>
 <%- else -%>
-<p id="record_count">Showing records <strong><%= @search_object.offset + 1 %></strong>–<strong><%= @search_object.offset + @assets.size %></strong> of <strong><%= @search_object.total_entries %></strong>.</p>
+<p>
+  <span id="record_count">Showing records <strong><%= @search_object.offset + 1 %></strong>–<strong><%= @search_object.offset + @assets.size %></strong> of <strong><%= @search_object.total_entries %></strong>.</span>
+  <%= link_to_remote "#{session[:hide_annotations] ? "show" : "hide"} annotations", :url => { :action => "toggleannotations" }, :html => { :id => "toggle_annotations_link", :href => url_for(:action => "toggleannotations") }, :method => :get %>
+</p>
 <ul>
   <%- @assets.each do |asset| -%>
     <li class="asset-summary" id="asset_<%= asset.id %>">
@@ -19,6 +22,7 @@
         <%- asset.instantiations.each do |instantiation| -%>
           <li>
             <%= h instantiation.summary %>
+            <span class="annotations" style="<%= "display: none;" if session[:hide_annotations] %>"><%= h instantiation.annotation %></span>
           </li>
         <%- end -%>
       </ul>

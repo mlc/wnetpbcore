@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.home '', :controller => "assets", :action => "index"
 
-  map.resources :assets, :collection => { "opensearch" => :get } do |assets|
+  map.resources :assets, :collection => { "opensearch" => :get, "toggleannotations" => :get } do |assets|
     assets.resources :instantiations
   end
   

@@ -95,4 +95,18 @@ class AssetsController < ApplicationController
       format.xml
     end
   end
+
+  def toggleannotations
+    session[:hide_annotations] = !session[:hide_annotations]
+    @visible = !session[:hide_annotations]
+    respond_to do |format|
+      #format.html { redirect_to :action => "index" }
+      format.js
+    end
+  end
+
+  protected
+  def authorized?(action = action_name, resource = nil)
+    ["index", "show", "opensearch", "toggleannotations"].include?(action) || logged_in?
+  end
 end
