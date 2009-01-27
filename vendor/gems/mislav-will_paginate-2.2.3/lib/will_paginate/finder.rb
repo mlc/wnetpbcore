@@ -180,7 +180,7 @@ module WillPaginate
       # Does the not-so-trivial job of finding out the total number of entries
       # in the database. It relies on the ActiveRecord +count+ method.
       def wp_count(options, args, finder)
-        excludees = [:count, :order, :limit, :offset, :readonly]
+        excludees = [:count, :order, :limit, :offset, :readonly, :include]
         unless options[:select] and options[:select] =~ /^\s*DISTINCT\b/i
           excludees << :select # only exclude the select param if it doesn't begin with DISTINCT
         end
