@@ -4,6 +4,7 @@
 <%- if @assets.empty? -%>
 <h2>Nothing found.</h2>
 <%- else -%>
+<p id="record_count">Showing records <strong><%= @search_object.offset + 1 %></strong>–<strong><%= @search_object.offset + @assets.size %></strong> of <strong><%= @search_object.total_entries %></strong>.</p>
 <ul>
   <%- @assets.each do |asset| -%>
     <li class="asset-summary" id="asset_<%= asset.id %>">
