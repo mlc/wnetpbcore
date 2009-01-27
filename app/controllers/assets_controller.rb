@@ -102,7 +102,7 @@ class AssetsController < ApplicationController
     session[:hide_annotations] = !session[:hide_annotations]
     @visible = !session[:hide_annotations]
     respond_to do |format|
-      #format.html { redirect_to :action => "index" }
+      format.html { redirect_to :action => "index" }
       format.js
     end
   end
