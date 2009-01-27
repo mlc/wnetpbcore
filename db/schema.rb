@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090120225338) do
+ActiveRecord::Schema.define(:version => 20090127160434) do
 
   create_table "annotations", :force => true do |t|
     t.integer "instantiation_id", :limit => 11
@@ -269,10 +269,11 @@ ActiveRecord::Schema.define(:version => 20090120225338) do
   end
 
   create_table "identifier_sources", :force => true do |t|
-    t.text     "name",       :limit => 16777215,                    :null => false
+    t.text     "name",          :limit => 16777215,                    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "visible",                        :default => false, :null => false
+    t.boolean  "visible",                           :default => false, :null => false
+    t.boolean  "show_in_index",                     :default => true,  :null => false
   end
 
   create_table "identifiers", :force => true do |t|

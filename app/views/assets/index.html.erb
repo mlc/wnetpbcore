@@ -8,7 +8,7 @@
 <ul>
   <%- @assets.each do |asset| -%>
     <li class="asset-summary" id="asset_<%= asset.id %>">
-      <%= h asset.identifiers.map{|id| id.identifier}.join(" / ") %>
+      <%= h asset.identifier %>
       <%= link_to "view", asset_url(asset.uuid) if authorized?('show', asset) %>
       <%= link_to "xml", formatted_asset_url(asset.uuid, "xml") if authorized?('show', asset) %>
       <%= link_to "edit", edit_asset_url(asset) if authorized?('edit', asset) %>

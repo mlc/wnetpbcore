@@ -78,7 +78,12 @@ class Asset < ActiveRecord::Base
   def title
     titles.map{|t| t.title}.join("; ")
   end
- 
+
+  def identifier
+    result = identifiers.select{|id| id.identifier_source.show_in_index?}
+    (result.empty? ? identifiers : result).map{|id| id.identifier}.join(" / ")
+  end
+
   def update_asset_terms
     self.asset_terms ||= AssetTerms.new
     asset_terms.identifier = (
