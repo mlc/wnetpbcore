@@ -8,11 +8,9 @@ class SearchController < ApplicationController
   end
 
   def search
-    query = params[:full_text]
-    FIELDS.each do |field|
-      query += " @#{field.to_s} #{params[field]}" unless params[field].empty?
-    end
-    redirect_to :controller => 'assets', :action => 'index', :q => query
+    query = (params.has_key?(:full_text) && !params[:full_text].empty?) ? [params[:full_text]] : []
+    query += FIELDS.select{|f| params.has_key?(f) && !params[f].empty?}.map{|f| "@#{f.to_s} #{params[f]}"}
+    redirect_to :controller => 'assets', :action => 'index', :q => query.join(" ")
   end
 
   def authorized?(action = action_name, resource = nil)
