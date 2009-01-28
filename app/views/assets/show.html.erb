@@ -76,3 +76,7 @@
     </div>
   <%- end -%>
 <%- end -%>
+<h2>Extension Section</h2>
+<dl id="extensions">
+  <%= render :partial => "field_array", :locals => {:objs => @asset.extensions, :field => "Extension", :key => :extension_name_str, :value => :extension_value } %>
+</dl>

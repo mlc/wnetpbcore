@@ -25,11 +25,17 @@ class Extension < ActiveRecord::Base
   end
 
   def extension_name
+    return nil if extension.nil?
     @extension_name ||= ExtensionName.find_or_create_by_extension_key_and_extension_authority(extension_key, extension_authority_used)
   end
 
   def extension_name_id
+    return nil if extension_name.nil?
     extension_name.id
+  end
+
+  def extension_name_str
+    extension_name.description
   end
   
   def extension_name=(value)
@@ -44,6 +50,7 @@ class Extension < ActiveRecord::Base
 
   protected
   def extension_key_value
+    return [nil, nil] if extension.nil?
     answer = extension.split(/:/, 2)
     answer.size == 1 ? [nil, answer[0]] : answer
   end

@@ -1,0 +1,18 @@
+<li <%= !obj.id.nil? ? "id=\"edit_#{obj.id}\" style=\"display: none;\"" : "id='new_form'" %>>
+<% remote_form_for(obj) do |f| %>
+<%= f.text_field :description %>
+&nbsp;
+Authority:<%= f.text_field :extension_authority %>
+&nbsp;
+Key:<%= f.text_field :extension_key %>
+&nbsp;
+<%= f.check_box :visible %>Show in edit form
+&nbsp;&nbsp;
+<%= f.submit(obj.id ? "Save changes" : "Add new") %>
+<%=
+if obj.id
+  link_to_function "cancel", "$('#obj_#{obj.id}').show(); $('#edit_#{obj.id}').hide();"
+end
+%>
+<% end %>
+</li>

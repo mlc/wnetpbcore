@@ -7,8 +7,12 @@
 class ExtensionName < ActiveRecord::Base
   before_save :synthesize_description
 
+  def name
+    description
+  end
+
   def synthesize_description
-    if description.nil? || description.empty
+    if description.nil? || description.empty?
       self.description = if extension_key.nil?
         extension_authority
       elsif extension_authority.nil?
@@ -17,5 +21,10 @@ class ExtensionName < ActiveRecord::Base
         "#{extension_key} (#{extension_authority})"
       end
     end
+  end
+
+  #hm. is this okay?
+  def safe_to_delete?
+    true
   end
 end
