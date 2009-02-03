@@ -71,4 +71,9 @@ class XmlController < ApplicationController
       end
     end
   end
+
+  protected
+  def authorized?(action = action_name, resource = nil)
+    logged_in?
+  end
 end
