@@ -8,11 +8,11 @@
   <%= @asset.uuid %>
 </p>
 <dl>
-  <%= render :partial => "field_array", :locals => {:objs => @asset.identifiers, :field => "Identifier", :key => :identifier_source, :value => :identifier} %>
-  <%= render :partial => "field_array", :locals => {:objs => @asset.titles, :field => "Title", :key => :title_type, :value => :title} %>
-  <%= render :partial => "field_array", :locals => {:objs => @asset.subjects, :field => "Subject", :key => :subject_authority, :value => :subject} %>
+  <%= render :partial => "field_array", :locals => {:objs => @asset.identifiers, :field => "Identifier", :key => :identifier_source, :value => :identifier, :searchkey => :identifier, :searchvalue => :identifier} %>
+  <%= render :partial => "field_array", :locals => {:objs => @asset.titles, :field => "Title", :key => :title_type, :value => :title, :searchkey => :title, :searchvalue => :title} %>
+  <%= render :partial => "field_array", :locals => {:objs => @asset.subjects, :field => "Subject", :key => :subject_authority, :value => :subject, :searchkey => :subject, :searchvalue => :subject} %>
   <%= render :partial => "field_array", :locals => {:objs => @asset.descriptions, :field => "Description", :key => :description_type, :value => :description} %>
-  <%= render :partial => "field_array", :locals => {:objs => @asset.genres, :field => "Genre", :key => :genre_authority_used, :value => :name} %>
+  <%= render :partial => "field_array", :locals => {:objs => @asset.genres, :field => "Genre", :key => :genre_authority_used, :value => :name, :searchkey => :genre, :searchvalue => :name} %>
   <%= render :partial => "field_array", :locals => {:objs => @asset.relations, :field => "Relation", :value => :to_s, :searchkey => :identifier, :searchvalue => :relation_identifier} %>
   <%= render :partial => "field_array", :locals => {:objs => @asset.coverages, :field => "Coverage", :key => :coverage_type, :value => :coverage} %>
   <%= render :partial => "field_array", :locals => {:objs => @asset.audience_levels, :field => "Audience Level", :value => :name} %>
@@ -29,7 +29,7 @@
 <%- @asset.instantiations.each do |instantiation| -%>
   <h3>Instantiation</h3>
   <dl>
-    <%= render :partial => "field_array", :locals => {:objs => instantiation.format_ids, :field => "Format ID", :key => :format_identifier_source, :value => :format_identifier} %>
+    <%= render :partial => "field_array", :locals => {:objs => instantiation.format_ids, :field => "Format ID", :key => :format_identifier_source, :value => :format_identifier, :searchkey => :identifier, :searchvalue => :format_identifier} %>
     <%= render :partial => "field_one", :locals => {:key => "Date Created", :value => instantiation.date_created} %>
     <%= render :partial => "field_one", :locals => {:key => "Date Issued", :value => instantiation.date_issued} %>
     <%= render :partial => "field_one", :locals => {:key => "Format", :value => instantiation.format, :field => :name } %>
