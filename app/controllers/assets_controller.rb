@@ -62,8 +62,8 @@ class AssetsController < ApplicationController
   def create
     @asset = Asset.new(params[:asset])
     if @asset.save
-      flash[:message] = "Successfully created new Asset."
-      redirect_to :action => 'index'
+      flash[:message] = "Successfully created new Asset. You must now add an instantiation for the record to be valid PBCore."
+      redirect_to asset_instantiations_url(@asset)
     else
       render :action => 'new'
     end
