@@ -4,14 +4,12 @@
   This form will help you construct a search query.
 </p>
 
-<% form_tag({:action => 'search'}, :id => 'advanced_search') do %>
+<% form_for(:search, :url => {:action => 'search'}, :html => { :id => 'advanced_search' }) do |f| %>
   <table><tbody>
-  <%- even = false -%>
-  <%- @fields.each do |field| -%>
-    <%- even = !even -%>
-    <tr class="<%=  even ? "even" : "odd" %>">
-      <th><%= label_tag field.to_s %></th>
-      <td><%= text_field_tag field.to_s %></td>
+  <%- ([:full_text] + GuidedSearchContainer::FIELD_NAMES).each do |field| -%>
+    <tr class="<%= cycle("even", "odd") %>">
+      <th><%= f.label field %></th>
+      <td><%= f.text_field field %></td>
     </tr>
   <%- end -%>
   </tbody></table>
