@@ -7,4 +7,11 @@ class FormatId < ActiveRecord::Base
   
   xml_string "formatIdentifier"
   xml_picklist "formatIdentifierSource"
+  def validate
+    super
+    unless doing_xml? || format_identifier_source.nil? || format_identifier_source.regex.empty? ||
+        Regexp.new(format_identifier_source.regex).match(format_identifier)
+      self.errors.add("format_identifier", "does not match the rules for the selected identifier source")
+    end
+  end
 end

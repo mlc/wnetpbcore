@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090127224755) do
+ActiveRecord::Schema.define(:version => 20090210222857) do
 
   create_table "annotations", :force => true do |t|
     t.integer "instantiation_id", :limit => 11
@@ -244,6 +244,7 @@ ActiveRecord::Schema.define(:version => 20090127224755) do
   create_table "format_identifier_sources", :force => true do |t|
     t.string  "name",                       :null => false
     t.boolean "visible", :default => false, :null => false
+    t.string  "regex"
   end
 
   create_table "format_ids", :force => true do |t|
@@ -285,6 +286,7 @@ ActiveRecord::Schema.define(:version => 20090127224755) do
     t.datetime "updated_at"
     t.boolean  "visible",                           :default => false, :null => false
     t.boolean  "show_in_index",                     :default => true,  :null => false
+    t.string   "regex"
   end
 
   create_table "identifiers", :force => true do |t|

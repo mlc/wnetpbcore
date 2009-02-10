@@ -85,6 +85,10 @@ module PbcoreXmlElement
     run_callbacks(:to_xml_elt)
     self._working_xml = nil
   end
+
+  def doing_xml?
+    !(_working_xml.nil?)
+  end
   
   def self.included(base)
     base.extend(ClassMethods)
