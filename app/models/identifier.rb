@@ -9,7 +9,7 @@ class Identifier < ActiveRecord::Base
   validates_presence_of :identifier_source
   def validate
     super
-    unless doing_xml? || identifier_source.nil? || identifier_source.regex.empty? ||
+    unless doing_xml? || identifier_source.nil? || identifier_source.regex.nil? ||
         Regexp.new(identifier_source.regex).match(identifier)
       self.errors.add("identifier", "does not match the rules for the selected identifier source")
     end
