@@ -14,7 +14,7 @@ module ApplicationHelper
     msg = tag("link",  {:href=>"/assets/opensearch.xml",
       :rel=>"search",
       :type=>"application/opensearchdescription+xml",
-      :title=>"PBCore Search"})
+      :title=>"pbcore"})
     unless collection.nil?
       opensearch_properties(collection).each do |k,v|
         msg << "\n    " + tag("meta", { "name" => k, "content" => v })

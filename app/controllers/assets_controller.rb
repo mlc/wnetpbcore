@@ -96,6 +96,51 @@ class AssetsController < ApplicationController
     end
   end
 
+  def zip
+    @query = params[:q]
+    if !@query
+      unless current_user.is_admin?
+        flash[:error] = "Only administrators can download a zip file of the entire database."
+        redirect_to :index and return
+      end
+      @assets = Asset.find(:all, :include => Asset::ALL_INCLUDES)
+    else
+      if !current_user.is_admin? && AssetTerms.search_count(@query) > 250
+        flash[:error] = "Sorry, the current search is too big to be downloaded by a non-administrator."
+        redirect_to :index and return
+      end
+      @assets = AssetTerms.search(@query, :include => {:asset => Asset::ALL_INCLUDES}).map{|at| at.asset}
+    end
+    # HACK HACK HACK
+    zippath = File.join(Dir::tmpdir, "pbcore-#{Kernel.rand(100000)}.zip")
+    Zip::ZipFile.open(zippath, Zip::ZipFile::CREATE) do |zip|
+      zip.get_output_stream("README.txt") do |f|
+        f.puts "This is a zipfile of PBCore data exported from the PBCore database."
+        f.puts "The export was run at " + Time.new.to_s
+        if @query
+          f.puts "The query run was: " + @query
+        else
+          f.puts "All records were exported."
+        end
+        f.puts "#{@assets.size} results found."
+        f.puts
+        @assets.each do |asset|
+          f.puts asset.uuid + ".xml " + asset.title
+        end
+      end
+      @assets.each do |asset|
+        zip.get_output_stream("#{asset.uuid}.xml") do |f|
+          f.write asset.to_xml
+        end
+      end
+    end
+
+    headers['Content-Type'] = "application/zip"
+    headers['Content-Disposition'] = "attachment; filename=\"pbcore-download.zip\""
+    render :file => zippath
+    File.unlink(zippath)
+  end
+
   # if I were better at javascript, I'd do this all (including setting a cookie)
   # without talking to the server...
   def toggleannotations

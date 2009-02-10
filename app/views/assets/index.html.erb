@@ -31,4 +31,5 @@
 </ul>
 
 <%= will_paginate @search_object %>
+<p><%= link_to "download results as zipfile", :action => 'zip', :q => @query %></p>
 <%- end -%>
