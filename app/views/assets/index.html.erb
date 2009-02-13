@@ -23,6 +23,9 @@
           <li>
             <%= h instantiation.summary %>
             <span class="annotations" style="<%= "display: none;" if session[:hide_annotations] %>"><%= h instantiation.annotation %></span>
+            <%- if instantiation.format_location =~ /^(f|ht)tp:\/\// -%>
+              <%= link_to "[link]", instantiation.format_location %>
+            <%- end -%>
           </li>
         <%- end -%>
       </ul>
