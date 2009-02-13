@@ -35,7 +35,28 @@ class AssetTerms < ActiveRecord::Base
       reindex
     end
   end
-  
+
+  def self.regenerate_all(blocksize = 100)
+    offset = 1
+    begin
+      ThinkingSphinx.updates_enabled = false
+
+      while true do
+        assets = Asset.find(:all, :include => Asset::ALL_INCLUDES, :offset => offset, :limit => blocksize)
+        break if assets.empty?
+        assets.each do |asset|
+          asset.update_asset_terms
+          asset.asset_terms.save
+        end
+        offset += assets.size
+        puts "#{offset-1} asset_terms regenerated"
+      end
+    ensure
+      ThinkingSphinx.updates_enabled = true
+      reindex
+    end
+  end
+
   def self.reindex
     Kernel.system("rake", "RAILS_ENV=#{RAILS_ENV}", "thinking_sphinx:index")
   end
