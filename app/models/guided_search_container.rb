@@ -6,16 +6,22 @@ class GuidedSearchContainer
   attr_accessor :full_text
 
   def initialize(params = nil)
-    @fields = HashWithIndifferentAccess.new(params.to_hash)
+    @fields = params.nil? ?
+      HashWithIndifferentAccess.new :
+      HashWithIndifferentAccess.new(params.to_hash)
     self.full_text = @fields.delete(:full_text)
   end
 
   def self.from_string(query_string)
-    args = query_string.split(/ *@/)
-    h = { :full_text => args.shift }
-    args.each do |arg|
-      key, value = arg.split(/ +/, 2)
-      h[key] = value
+    if query_string.nil?
+      h = nil
+    else
+      args = query_string.split(/ *@/)
+      h = { :full_text => args.shift }
+      args.each do |arg|
+        key, value = arg.split(/ +/, 2)
+        h[key] = value
+      end
     end
     GuidedSearchContainer.new(h)
   end
