@@ -1,0 +1,46 @@
+<% title "Borrowing history for " + @instantiation.identifier %>
+
+<%- if @borrowings.empty? -%>
+  <p>Never borrowed.</p>
+<%- else -%>
+  <table id="borrowings">
+    <thead>
+      <tr>
+        <th>Person</th>
+        <th>Department</th>
+        <th>Borrowed</th>
+        <th>Returned</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%- @borrowings.each do |borrowing| -%>
+        <tr class="<%= cycle("even", "odd") %>">
+          <td><%= h borrowing.person %></td>
+          <td><%= h borrowing.department %></td>
+          <td><%= borrowing.borrowed.strftime("%Y-%m-%d %H:%M") %></td>
+          <td>
+            <%- if borrowing.active? %>
+              <span id="current_borrowing">
+                <%= content_tag(:em, "(not yet)") %>
+                <%= link_to_remote("Return", :url => {:action => "return"}, :method => :post) %>
+              </span>
+            <%- else -%>
+              <%=  borrowing.returned.strftime("%Y-%m-%d %H:%M") %>
+            <%- end -%>
+          </td>
+        </tr>
+      <%- end -%>
+    </tbody>
+  </table>
+<%- end -%>
+
+<% form_tag({:action => :borrow}, {:method => :post, :id => "new_borrowing_form", :style => (@instantiation.borrowed? ? "display:none" : nil)}) do %>
+  <h2>Lend this item</h2>
+  <p>
+    <%= label_tag :person, "Person:" %> <%= text_field_tag :person %><br />
+    <%= label_tag :department, "Department" %> <%= text_field_tag :department %>
+  </p>
+  <p>
+    <%= submit_tag("Borrow") %>
+  </p>
+<% end -%>

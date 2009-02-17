@@ -74,6 +74,38 @@ class InstantiationsController < ApplicationController
     end
   end
 
+  def borrowings
+    @instantiation = @asset.instantiations.find(params[:id])
+    @borrowings = @instantiation.borrowings.all(:order => "borrowed ASC")
+  end
+
+  def return
+    @instantiation = @asset.instantiations.find(params[:id])
+    @borrowing = @instantiation.current_borrowing
+    unless @borrowing.nil?
+      @borrowing.update_attribute(:returned, Time.now)
+    end
+    respond_to do |format|
+      format.js
+      format.html {
+        flash[:message] = "The instantiation has been returned."
+        redirect_to :action => :borrowings
+      }
+    end
+  end
+
+  def borrow
+    @instantiation = @asset.instantiations.find(params[:id])
+    if params[:person].nil? || params[:person].empty?
+      flash[:error] = "You must specify the name of the person borrowing the item."
+    else
+      @instantiation.borrowings << Borrowing.new(:person => params[:person], :department => params[:department], :borrowed => Time.new)
+      @instantiation.save
+      flash[:message] = "The item has been marked as borrowed."
+    end
+    redirect_to :action => :borrowings
+  end
+
   protected
   def get_asset
     if params[:asset_id] =~ /^\d+$/

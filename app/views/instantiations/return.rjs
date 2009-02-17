@@ -1,0 +1,2 @@
+page["current_borrowing"].replace(@borrowing.returned.strftime("%Y-%m-%d %H:%M"))
+page["new_borrowing_form"].show

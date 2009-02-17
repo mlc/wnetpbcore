@@ -27,7 +27,14 @@
 </dl>
 <h2>Instantiation Section</h2>
 <%- @asset.instantiations.each do |instantiation| -%>
-  <h3>Instantiation</h3>
+  <h3>
+    Instantiation
+    <%- if instantiation.borrowed? -%>
+      <%= link_to_if((logged_in? && current_user.is_admin?), "[on loan]", borrowings_asset_instantiation_url(@asset, instantiation), :class => :borrowednote) %>
+    <%- elsif (logged_in? && current_user.is_admin?) -%>
+      <%= link_to "(borrow)", borrowings_asset_instantiation_url(@asset, instantiation) %>
+    <%- end -%>
+  </h3>
   <dl>
     <%= render :partial => "field_array", :locals => {:objs => instantiation.format_ids, :field => "Format ID", :key => :format_identifier_source, :value => :format_identifier, :searchkey => :identifier, :searchvalue => :format_identifier} %>
     <%= render :partial => "field_one", :locals => {:key => "Date Created", :value => instantiation.date_created} %>

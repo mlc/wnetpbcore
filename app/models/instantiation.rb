@@ -10,6 +10,7 @@ class Instantiation < ActiveRecord::Base
   has_many :essence_tracks, :dependent => :destroy, :attributes => true
   has_many :date_availables, :dependent => :destroy, :attributes => true
   has_many :annotations, :dependent => :destroy, :attributes => true
+  has_many :borrowings, :dependent => :destroy
   
   attr_protected :asset, :asset_id
 
@@ -50,5 +51,13 @@ class Instantiation < ActiveRecord::Base
 
   def annotation
      annotations.empty? ? nil : "[#{annotations.map{|ann| ann.annotation}.join("; ")}]"
+  end
+
+  def borrowed?
+    borrowings.any?{|b| b.active?}
+  end
+
+  def current_borrowing
+    borrowings.find(:first, :conditions => "returned IS NULL")
   end
 end

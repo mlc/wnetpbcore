@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090210222857) do
+ActiveRecord::Schema.define(:version => 20090217211320) do
 
   create_table "annotations", :force => true do |t|
     t.integer "instantiation_id", :limit => 11
@@ -109,6 +109,16 @@ ActiveRecord::Schema.define(:version => 20090210222857) do
     t.string   "worker_key"
     t.datetime "scheduled_at"
   end
+
+  create_table "borrowings", :force => true do |t|
+    t.integer  "instantiation_id", :limit => 11, :null => false
+    t.string   "person",                         :null => false
+    t.string   "department"
+    t.datetime "borrowed"
+    t.datetime "returned"
+  end
+
+  add_index "borrowings", ["instantiation_id"], :name => "index_borrowings_on_instantiation_id"
 
   create_table "contributor_roles", :force => true do |t|
     t.string  "name",                       :null => false

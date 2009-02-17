@@ -119,9 +119,15 @@ a { color: inherit; text-decoration: underline; }
 
 #advanced_search td, #advanced_search th { margin: 0px; }
 
-#advanced_search tr.odd { background-color: #ddd; }
-#advanced_search tr.even { background-color: #eee; }
+tr.odd { background-color: #ddd; }
+tr.even { background-color: #eee; }
+
+table#borrowings td { padding: 2px 5px; }
 
 .required {
     background-color: #fcc;
+}
+
+.borrowednote {
+    color: red;
 }

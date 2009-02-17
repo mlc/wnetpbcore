@@ -8,7 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   map.home '', :controller => "assets", :action => "index"
 
   map.resources :assets, :collection => { "opensearch" => :get, "toggleannotations" => :get , "zip" => :get } do |assets|
-    assets.resources :instantiations
+    assets.resources :instantiations, :member => { "borrowings" => :get, "borrow" => :post, "return" => :post }
   end
   
   [:audience_levels, :audience_ratings, :contributor_roles, :creator_roles,

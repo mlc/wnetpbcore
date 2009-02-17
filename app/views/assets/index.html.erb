@@ -26,6 +26,9 @@
             <%- if instantiation.format_location =~ /^(f|ht)tp:\/\// -%>
               <%= link_to "[link]", instantiation.format_location %>
             <%- end -%>
+            <%- if instantiation.borrowed? -%>
+              <span class="borrowednote">[on loan]</span>
+            <%- end -%>
           </li>
         <%- end -%>
       </ul>
