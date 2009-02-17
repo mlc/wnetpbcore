@@ -17,7 +17,7 @@
     <%= f.label(:format_id, "Format:") %>
     <%= f.select :format_id, Format.all(:conditions => ["visible = 1 OR id = ?", @instantiation.format_id]).map{|i| [i.name, i.id]}, :include_blank => true %>
     <br />
-    <%= f.label(:format_location, "Format Location:") %> <%= f.text_field(:format_location) %>
+    <%= f.label(:format_location, "Format Location:") %> <%= f.text_field(:format_location, :class => 'required') %>
     <br />
     <%= f.label(:format_media_type_id, "Format Media Type:") %>
     <%= f.select :format_media_type_id, FormatMediaType.all(:conditions => ["visible = 1 OR id = ?", @instantiation.format_media_type_id]).map{|i| [i.name, i.id]}, :include_blank => true %>

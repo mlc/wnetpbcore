@@ -121,3 +121,7 @@ a { color: inherit; text-decoration: underline; }
 
 #advanced_search tr.odd { background-color: #ddd; }
 #advanced_search tr.even { background-color: #eee; }
+
+.required {
+    background-color: #fcc;
+}

@@ -1,10 +1,10 @@
 <div class="identifier">
   <p>
-    <%= f.label(:identifier, "Identifier:") %> <%= f.text_field :identifier %>
+    <%= f.label(:identifier, "Identifier:") %> <%= f.text_field :identifier, :class => "required" %>
     <%= f.select :identifier_source_id,
       IdentifierSource.all(:order => "name ASC",
       :conditions => ["visible = 1 OR id = ?", identifier.identifier_source_id]).map{|i| [i.name, i.id]},
-      :include_blank => true %>
+      {:include_blank => true}, {:class => "required"} %>
     <%= f.remove_link "remove" %>
   </p>
 </div>

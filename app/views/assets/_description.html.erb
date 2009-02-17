@@ -4,6 +4,6 @@
     <%= f.select :description_type_id, DescriptionType.all(:conditions => ["visible = 1 OR id = ?", description.description_type_id]).map{|i| [i.name, i.id]} %>
     <%= f.remove_link "remove" %>
     <br />
-    <%= f.text_area :description, :size => "80x5" %>
+    <%= f.text_area :description, :size => "80x5", :class => 'required' %>
   </p>
 </div>
