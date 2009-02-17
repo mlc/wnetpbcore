@@ -1,5 +1,9 @@
 class InstantiationsController < ApplicationController
   before_filter :get_asset
+
+  param_parsers[Mime::XML] = Proc.new do |data|
+    {:xml => data}
+  end
   
   def index
     @instantiations = @asset.instantiations
@@ -11,13 +15,28 @@ class InstantiationsController < ApplicationController
   end
   
   def create
-    @instantiation = Instantiation.new(params[:instantiation])
-    @instantiation.asset = @asset
-    if @instantiation.save
-      flash[:message] = "Successfully created new instantiation."
-      redirect_to :action => 'index'
+    if params[:xml]
+      @instantiation = Instantiation.from_xml(params[:xml])
     else
-      render :action => 'new'
+      @instantiation = Instantiation.new(params[:instantiation])
+    end
+    @asset.instantiations << @instantiation
+    respond_to do |format|
+      format.html do
+        if @asset.save
+          flash[:message] = "Successfully created new instantiation."
+          redirect_to :action => 'index'
+        else
+          render :action => 'new'
+        end
+      end
+      format.xml do
+        if @asset.save
+          render :xml => @asset.to_xml
+        else
+          render :xml => "<message severity='error'>sorry, couldn't import.</message>"
+        end
+      end
     end
   end
   
@@ -57,6 +76,10 @@ class InstantiationsController < ApplicationController
 
   protected
   def get_asset
-    @asset = Asset.find(params[:asset_id], :include => [:titles, :instantiations])
+    if params[:asset_id] =~ /^\d+$/
+      @asset = Asset.find(params[:asset_id], :include => [:titles, :instantiations])
+    else
+      @asset = Asset.find_by_uuid(params[:asset_id], :include => [:titles, :instantiations])
+    end
   end
 end
