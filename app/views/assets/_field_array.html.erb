@@ -13,9 +13,19 @@ objs.each do |obj|
     <dt><%= h keystr %></dt>
     <%-
   end
+  query = nil
+  unless local_assigns[:searchkey].nil?
+    query = "@#{local_assigns[:searchkey].to_s} \""
+    if local_assigns[:searchxtra]
+      xtra = obj.send(searchxtra)
+      query += "#{xtra.name} " unless xtra.nil?
+    end
+    query += obj.send(local_assigns[:searchvalue] || value)
+    query += '"'
+  end
 -%>
   <dd><%= link_to_unless(local_assigns[:searchkey].nil?, h(obj.send(value)).gsub(/[\r\n]+/, "<br />"),
-            { :action => 'index', :q => "@#{local_assigns[:searchkey].to_s} \"#{local_assigns[:searchxtra] ? obj.send(local_assigns[:searchxtra]).name + ' ' : ''}#{obj.send(local_assigns[:searchvalue] || value)}\"" })
+            { :action => 'index', :q => query })
   %></dd>
 <%-
 end
