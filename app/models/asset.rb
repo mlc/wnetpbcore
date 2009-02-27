@@ -90,7 +90,7 @@ class Asset < ActiveRecord::Base
       identifiers.map{|a| [a.identifier, a.identifier_source.name]} +
       instantiations.map{|a| a.format_ids.map{|b| b.format_identifier}}
     ).flatten.join(' ')
-    asset_terms.title = titles.map{|a| [a.title_type.name, a.title]}.flatten.join(' ')
+    asset_terms.title = titles.map{|a| [a.title_type.nil? ? [] : a.title_type.name, a.title]}.flatten.join(' ')
     asset_terms.subject = subjects.map{|a| a.subject}.join(' ')
     asset_terms.description = descriptions.map{|a| a.description}.join(' ')
     asset_terms.genre = genres.map{|a| a.name}.join(' ')
