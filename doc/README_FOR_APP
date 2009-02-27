@@ -1,3 +1,43 @@
+INTRODUCTION
+============
+
+This is a PBCore-compliant media asset database developed in Ruby on 
+Rails.
+
+This software was developed by Roasted Vermicelli, LLC for the
+WNET Digital Archive. Copyright © 2008-2009 Educational Broadcasting 
+Corporation.
+
+This program is free software: you can redistribute it and/or modify it 
+under the terms of the GNU General Public License as published by the 
+Free Software Foundation, either version 3 of the License, or (at your 
+option) any later version.
+
+This program is distributed in the hope that it will be useful, but 
+WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU 
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License along 
+with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+A copy of the GNU General Public License can also be found in the 
+'GPL-3' file in the root directory of the project.
+
+Code in the vendor and gems directories of this project was created by 
+other authors under potentially different Free Software licenses; look 
+in those directories for further information.
+
+This work employs PBCore. The PBCore (Public Broadcasting Metadata 
+Dictionary) was created by the public broadcasting community in the 
+United States of America for use by public broadcasters and others. 
+Initial development funding for PBCore was provided by the Corporation 
+for Public Broadcasting. The PBCore is built on the foundation of the 
+Dublin Core (ISO 15836), an international standard for resource 
+discovery (http://dublincore.org), and has been reviewed by the Dublin 
+Core Metadata Initiative Usage Board. Copyright: 2005, Corporation for 
+Public Broadcasting.
+
 LOCAL DEVELOPMENT SET-UP
 ========================
 
