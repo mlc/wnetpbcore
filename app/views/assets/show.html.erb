@@ -1,7 +1,5 @@
 <%- title @asset.title -%>
-<%- add_navbar("edit asset", edit_asset_url(@asset)) -%>
-<%- add_navbar("edit instantiations", asset_instantiations_url(@asset)) %>
-<%- add_navbar("xml", :format => 'xml') %>
+<%- assets_navbar -%>
 <h2>Intellectual Content Section</h2>
 <p>
   Asset <acronym title="Universally Unique Identifier">UUID</acronym>:
