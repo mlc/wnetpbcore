@@ -112,9 +112,34 @@ class Asset < ActiveRecord::Base
       instantiations.map{|a| a.date_availables.map{|b| [b.date_available_start, b.date_available_end]}}
     ).flatten.join(' ')
   end
+
+  def self.dedupe
+    dedupe_field(:titles, :title, :title_type_id)
+    dedupe_field(:identifiers, :identifier, :identifier_source_id)
+    dedupe_field(:descriptions, :description, :description_type_id)
+    dedupe_field(:creators, :creator, :creator_role_id)
+    dedupe_field(:contributors, :contributor, :contributor_role_id)
+    dedupe_field(:publishers, :publisher, :publisher_role_id)
+    dedupe_trivial_field(:assets_subjects, :asset_id, :subject_id)
+    dedupe_trivial_field(:assets_genres, :asset_id, :genre_id)
+  end
   
   protected
   def generate_uuid
     self.uuid = UUID.random_create.to_s unless (self.uuid && !self.uuid.empty?)
+  end
+
+  def self.dedupe_field(table, *fields)
+    connection.execute("create temporary table tmp_#{table}_ids select distinct b.id from #{table} a, #{table} b where " + fields.map{|f| "a.#{f} = b.#{f}"}.join(" and ") + " and a.asset_id = b.asset_id and a.id < b.id")
+    connection.execute("delete from #{table} where id in (select * from tmp_#{table}_ids)")
+    connection.execute("drop temporary table tmp_#{table}_ids")
+  end
+
+  def self.dedupe_trivial_field(table, *fields)
+    fieldlist = fields.join(", ")
+    connection.execute("CREATE TEMPORARY TABLE tmp_#{table}_t1 SELECT *, COUNT(*) AS c FROM #{table} GROUP BY #{fieldlist}")
+    connection.execute("DELETE FROM #{table} WHERE (#{fieldlist}) IN (SELECT #{fieldlist} FROM tmp_#{table}_t1 WHERE c > 1)")
+    connection.execute("INSERT INTO #{table} (SELECT #{fieldlist} FROM tmp_#{table}_t1 WHERE c > 1)")
+    connection.execute("DROP TEMPORARY TABLE tmp_#{table}_t1")
   end
 end
