@@ -55,6 +55,10 @@ class User < ActiveRecord::Base
     login + (display_name == login ? "" : " (#{name})")
   end
 
+  def role_symbols
+    is_admin? ? [:admin] : [:user]
+  end
+
   protected
     
 

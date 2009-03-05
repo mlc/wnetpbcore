@@ -1,4 +1,8 @@
 class AssetsController < ApplicationController
+  filter_access_to :all
+  filter_access_to :opensearch, :require => :read
+  filter_access_to :toggleannotations, :require => :read
+  
   def index
     alternate "application/atom+xml", :format => "atom", :q => params[:q]
     @query = params[:q]
@@ -150,10 +154,5 @@ class AssetsController < ApplicationController
       format.html { redirect_to :action => "index" }
       format.js
     end
-  end
-
-  protected
-  def authorized?(action = action_name, resource = nil)
-    ["index", "show", "opensearch", "toggleannotations"].include?(action) || logged_in?
   end
 end

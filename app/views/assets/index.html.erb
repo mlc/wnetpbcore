@@ -12,10 +12,16 @@
   <%- @assets.each do |asset| -%>
     <li class="asset-summary" id="asset_<%= asset.id %>">
       <%= h asset.identifier %>
-      <%= link_to "view", asset_url(asset.uuid) if authorized?('show', asset) %>
-      <%= link_to "xml", formatted_asset_url(asset.uuid, "xml") if authorized?('show', asset) %>
-      <%= link_to "edit", edit_asset_url(asset) if authorized?('edit', asset) %>
-      <%= link_to_remote "destroy", :url => { :action => 'destroy', :id => asset.id }, :method => :delete, :confirm => "Are you sure you wish to delete #{asset.title}?", :html => { :class => "destroy_link" } if authorized?('destroy', asset)%>
+      <%- permitted_to? :show, :assets do %>
+        <%= link_to "view", asset_url(asset.uuid) %>
+        <%= link_to "xml", formatted_asset_url(asset.uuid, "xml") %>
+      <%- end -%>
+      <%- permitted_to? :edit, :assets do %>
+        <%= link_to "edit", edit_asset_url(asset) %>
+      <%- end -%>
+      <%- permitted_to? :destroy, :assets do %>
+        <%= link_to_remote "destroy", :url => { :action => 'destroy', :id => asset.id }, :method => :delete, :confirm => "Are you sure you wish to delete #{asset.title}?", :html => { :class => "destroy_link" } %>
+      <%- end -%>
       <br />
       <strong><%= h asset.title %></strong>
       <ul>
@@ -37,5 +43,7 @@
 </ul>
 
 <%= will_paginate @search_object %>
+<!--
 <p><%= link_to "download results as zipfile", :action => 'zip', :q => @query %></p>
+-->
 <%- end -%>
