@@ -21,5 +21,7 @@
       <%- end -%>
     </li>
   <%- end -%>
-  <li><%= link_to("Add a new instantiation…", :action => 'new') %></li>
+  <%- permitted_to? :new, :instantiations do %>
+    <li><%= link_to("Add a new instantiation…", :action => 'new') %></li>
+  <%- end -%>
 </ul>
