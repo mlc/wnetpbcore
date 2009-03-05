@@ -4,6 +4,8 @@
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
 
+  before_filter :set_current_user
+
   helper :all # include all helpers, all the time
 
   # See ActionController::RequestForgeryProtection for details
@@ -22,5 +24,10 @@ class ApplicationController < ActionController::Base
   
   def alternate(type, *args_for_url)
     @alternates << [url_for(*args_for_url), type]
+  end
+
+  protected
+  def set_current_user
+     Authorization.current_user = current_user
   end
 end

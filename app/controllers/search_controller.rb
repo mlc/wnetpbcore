@@ -10,8 +10,4 @@ class SearchController < ApplicationController
       redirect_to :action => 'index'
     end
   end
-
-  def authorized?(action = action_name, resource = nil)
-    true
-  end
 end

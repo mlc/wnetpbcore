@@ -30,8 +30,8 @@
   <h3>
     Instantiation
     <%- if instantiation.borrowed? -%>
-      <%= link_to_if((logged_in? && current_user.is_admin?), "[on loan]", borrowings_asset_instantiation_url(@asset, instantiation), :class => :borrowednote) %>
-    <%- elsif (logged_in? && current_user.is_admin?) -%>
+      <%= link_to_if(permitted_to?(:borrowings, instantiation), "[on loan]", borrowings_asset_instantiation_url(@asset, instantiation), :class => :borrowednote) %>
+    <%- elsif permitted_to?(:borrowings, instantiation) -%>
       <%= link_to "(borrow)", borrowings_asset_instantiation_url(@asset, instantiation) %>
     <%- end -%>
   </h3>

@@ -2,6 +2,8 @@ require 'zip_extensions'
 
 class XmlController < ApplicationController
 
+  filter_access_to :index, :context => :assets, :require => :create
+
   # we want to use our own XML parsing, so let's disable rails'
   param_parsers[Mime::XML] = Proc.new do |data|
     {:xml => data}
@@ -70,10 +72,5 @@ class XmlController < ApplicationController
         end
       end
     end
-  end
-
-  protected
-  def authorized?(action = action_name, resource = nil)
-    logged_in?
   end
 end

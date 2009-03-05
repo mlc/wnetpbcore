@@ -1,4 +1,6 @@
 class InstantiationsController < ApplicationController
+  filter_access_to :all
+
   before_filter :get_asset
 
   param_parsers[Mime::XML] = Proc.new do |data|

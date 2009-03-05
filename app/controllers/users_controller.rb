@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   prepend_before_filter :fetch_user
+  filter_access_to :all
+
   filter_parameter_logging :password, :password_confirmation
 
   # render new.rhtml
@@ -61,16 +63,4 @@ class UsersController < ApplicationController
   def fetch_user
     @user = User.find(params[:id]) if params[:id]
   end
-
-  def authorized?(action = action_name, resource = @user)
-    # anonymous users can't do anything
-    # normal users can see and edit themselves (only)
-    # admins can do anything except delete themselves
-
-    logged_in? &&
-      (current_user.is_admin? ||
-        (['edit', 'show', 'update'].include?(action) && resource == current_user)) &&
-      !(['destroy'].include?(action) && resource == current_user)
-  end
-
 end
