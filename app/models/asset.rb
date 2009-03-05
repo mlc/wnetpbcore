@@ -138,8 +138,10 @@ class Asset < ActiveRecord::Base
   def self.dedupe_trivial_field(table, *fields)
     fieldlist = fields.join(", ")
     connection.execute("CREATE TEMPORARY TABLE tmp_#{table}_t1 SELECT *, COUNT(*) AS c FROM #{table} GROUP BY #{fieldlist}")
-    connection.execute("DELETE FROM #{table} WHERE (#{fieldlist}) IN (SELECT #{fieldlist} FROM tmp_#{table}_t1 WHERE c > 1)")
-    connection.execute("INSERT INTO #{table} (SELECT #{fieldlist} FROM tmp_#{table}_t1 WHERE c > 1)")
+    connection.execute("CREATE TEMPORARY TABLE tmp_#{table}_t2 SELECT #{fieldlist} FROM tmp_#{table}_t1 WHERE c > 1")
+    connection.execute("DELETE FROM #{table} WHERE (#{fieldlist}) IN (SELECT * FROM tmp_#{table}_t2)")
+    connection.execute("INSERT INTO #{table} (SELECT * FROM tmp_#{table}_t2)")
     connection.execute("DROP TEMPORARY TABLE tmp_#{table}_t1")
+    connection.execute("DROP TEMPORARY TABLE tmp_#{table}_t2")
   end
 end
