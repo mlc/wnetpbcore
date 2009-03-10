@@ -18,6 +18,9 @@ authorization do
     has_permission_on :assets, :to => :destroy
     has_permission_on :instantiations, :to => [:destroy, :borrow]
     has_permission_on :users, :to => :crud
+    has_permission_on :users, :to => :make_admin do
+      if_attribute :id => is_not { user.id }
+    end
     has_permission_on :picklists, :to => :crud
     PicklistsController::SUBCLASSES.each do |kl|
       has_permission_on kl.to_sym, :to => :crud

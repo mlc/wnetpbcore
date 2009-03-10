@@ -11,7 +11,7 @@ class UsersController < ApplicationController
  
   def create
     @user = User.new(params[:user])
-    @user.is_admin = params[:user][:is_admin] if current_user.is_admin?
+    @user.is_admin = params[:user][:is_admin] if permitted_to?(:make_admin, @user)
     success = @user && @user.save
     if success && @user.errors.empty?
       flash[:message] = "#{@user.login} created"
@@ -31,12 +31,12 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(params[:user])
-      if current_user.is_admin? && @user.id != current_user.id
+      permitted_to?(:make_admin, @user) do
         @user.is_admin = params[:user][:is_admin]
         @user.save
       end
       flash[:message] = "Successfully updated."
-      redirect_to(current_user.is_admin? ? {:action => 'index'} : '/')
+      redirect_to(permitted_to?(:index, :users) ? {:action => 'index'} : '/')
     else
       render :action => 'edit'
     end

@@ -17,7 +17,7 @@
 <p><%= label_tag 'password_confirmation', 'Confirm Password' %><br/>
 <%= f.password_field :password_confirmation %></p>
 
-<%- if current_user.is_admin? -%>
+<%- permitted_to?(:make_admin, @user) do -%>
 <p><%= f.check_box :is_admin %>
 <%= label_tag 'is_admin', "User is an administrator" %></p>
 <%- end -%>
