@@ -12,12 +12,21 @@ class Instantiation < ActiveRecord::Base
   has_many :annotations, :dependent => :destroy, :attributes => true
   has_many :borrowings, :dependent => :destroy
   
-  attr_protected :asset, :asset_id
+  attr_protected :asset, :asset_id, :uuid
 
   validates_presence_of :format_location
   validates_size_of :format_ids, :minimum => 1
+
+  before_create :generate_uuid
   
   xml_subelements "pbcoreFormatID", :format_ids
+  to_xml_elt do |obj|
+    xml = obj._working_xml
+    xml.pbcoreFormatID do
+      xml.formatIdentifier obj.uuid
+      xml.formatIdentifierSource "pbcore XML database UUID"
+    end
+  end
   xml_string "dateCreated"
   xml_string "dateIssued"
   xml_picklist "formatPhysical", :format, FormatPhysical
@@ -59,5 +68,10 @@ class Instantiation < ActiveRecord::Base
 
   def current_borrowing
     borrowings.find(:first, :conditions => "returned IS NULL")
+  end
+
+  protected
+  def generate_uuid
+    self.uuid = UUID.random_create.to_s unless (self.uuid && !self.uuid.empty?)
   end
 end

@@ -22,7 +22,18 @@ class InstantiationsController < ApplicationController
     else
       @instantiation = Instantiation.new(params[:instantiation])
     end
+    uuid = @instantiation.format_ids.detect{|fid| fid.format_identifier_source == FormatIdentifierSource::OUR_UUID_SOURCE}
+    unless uuid.nil?
+      @instantiation.format_ids -= [uuid]
+      uuid = uuid.format_identifier
+      old_us = @asset.instantiations.select{|inst| inst.uuid == uuid}
+      @instantiation.uuid = uuid
+      @asset.instantiations -= old_us
+    end
     @asset.instantiations << @instantiation
+    if @asset.valid? && !old_us.nil?
+      old_us.each{|ou| ou.destroy}
+    end
     respond_to do |format|
       format.html do
         if @asset.save

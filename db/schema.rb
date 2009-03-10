@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090217211320) do
+ActiveRecord::Schema.define(:version => 20090310191512) do
 
   create_table "annotations", :force => true do |t|
     t.integer "instantiation_id", :limit => 11
@@ -329,8 +329,10 @@ ActiveRecord::Schema.define(:version => 20090217211320) do
     t.text     "alternative_modes",            :limit => 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "uuid",                         :limit => 36,       :null => false
   end
 
+  add_index "instantiations", ["uuid"], :name => "index_instantiations_on_uuid", :unique => true
   add_index "instantiations", ["asset_id"], :name => "index_instantiations_on_asset_id"
 
   create_table "publisher_roles", :force => true do |t|
