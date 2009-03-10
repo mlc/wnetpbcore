@@ -26,6 +26,9 @@
         <%- permitted_to? :show, :picklists do %>
           <li><%= link_to_unless_current "picklists", :controller => :picklists %></li>
         <%- end -%>
+        <%- permitted_to? :index, :borrowings do %>
+          <li><%= link_to_unless_current "borrowings", :controller => :borrowings, :action => :index %></li>
+        <%- end -%>
         <%- permitted_to? :index, :users do %>
           <li><%= link_to_unless_current "users", :controller => :users %></li>
         <%- end -%>

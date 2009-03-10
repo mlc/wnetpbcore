@@ -18,7 +18,7 @@
         <tr class="<%= cycle("even", "odd") %>">
           <td><%= h borrowing.person %></td>
           <td><%= h borrowing.department %></td>
-          <td><%= borrowing.borrowed.strftime("%Y-%m-%d %H:%M") %></td>
+          <td><%= borrowing.borrowed.localtime.strftime("%Y-%m-%d %H:%M") %></td>
           <td>
             <%- if borrowing.active? %>
               <span id="current_borrowing">
@@ -26,7 +26,7 @@
                 <%= link_to_remote("Return", :url => {:action => "return"}, :method => :post) %>
               </span>
             <%- else -%>
-              <%=  borrowing.returned.strftime("%Y-%m-%d %H:%M") %>
+              <%=  borrowing.returned.localtime.strftime("%Y-%m-%d %H:%M") %>
             <%- end -%>
           </td>
         </tr>

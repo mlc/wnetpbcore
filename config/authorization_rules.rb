@@ -25,6 +25,7 @@ authorization do
     PicklistsController::SUBCLASSES.each do |kl|
       has_permission_on kl.to_sym, :to => :crud
     end
+    has_permission_on :borrowings, :to => :index
   end
 end
 

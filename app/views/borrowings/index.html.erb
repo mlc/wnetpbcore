@@ -1,0 +1,28 @@
+<%- title "Borrowed Items" -%>
+<%- if @borrowings.empty? -%>
+  <p>No currently borrowed items.</p>
+<%- else -%>
+  <table id="borrowings">
+    <thead>
+      <tr>
+        <th>Asset</th>
+        <th>Instantiation</th>
+        <th>Person</th>
+        <th>Department</th>
+        <th>Borrowed</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%- @borrowings.each do |borrowing| %>
+        <tr class="<%= cycle("even", "odd") %>">
+          <td><%= link_to h(borrowing.instantiation.asset.title), asset_url(borrowing.instantiation.asset.uuid) %></td>
+          <td><%= h borrowing.instantiation.identifier %></td>
+          <td><%= h borrowing.person %></td>
+          <td><%= h borrowing.department %></td>
+          <td><%= link_to borrowing.borrowed.localtime.strftime("%Y-%m-%d %H:%M"),
+                          borrowings_asset_instantiation_url(borrowing.instantiation.asset, borrowing.instantiation)%></td>
+        </tr>
+      <%- end -%>
+    </tbody>
+  </table>
+<%- end -%>
