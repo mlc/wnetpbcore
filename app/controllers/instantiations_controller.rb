@@ -45,7 +45,7 @@ class InstantiationsController < ApplicationController
       end
       format.xml do
         if @asset.save
-          render :xml => @asset.to_xml
+          render :xml => "<message severity='notice'>instantiation #{@instantiation.uuid} #{old_us.nil? ? "created" : "updated"}</message>"
         else
           render :xml => "<message severity='error'>sorry, couldn't import.</message>"
         end
