@@ -131,3 +131,7 @@ table#borrowings td { padding: 2px 5px; }
 .borrowednote {
     color: red;
 }
+
+input#q {
+    width: 400px;
+}
