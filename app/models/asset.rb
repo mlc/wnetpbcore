@@ -109,7 +109,7 @@ class Asset < ActiveRecord::Base
       instantiations.map{|a| a.essence_tracks.map{|b| b.essence_track_annotation}}
     ).flatten.join(' ')
     asset_terms.date = (
-      instantiations.map{|a| a.date_availables.map{|b| [b.date_available_start, b.date_available_end]}}
+      instantiations.map{|a| [a.date_created, a.date_issued]+a.date_availables.map{|b| [b.date_available_start, b.date_available_end]}}
     ).flatten.join(' ')
   end
 
