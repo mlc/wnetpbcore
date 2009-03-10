@@ -148,8 +148,8 @@ class AssetsController < ApplicationController
   # if I were better at javascript, I'd do this all (including setting a cookie)
   # without talking to the server...
   def toggleannotations
-    session[:hide_annotations] = !session[:hide_annotations]
-    @visible = !session[:hide_annotations]
+    session[:show_annotations] = !session[:show_annotations]
+    @visible = session[:show_annotations]
     respond_to do |format|
       format.html { redirect_to :action => "index" }
       format.js
