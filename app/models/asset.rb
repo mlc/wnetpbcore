@@ -5,9 +5,17 @@ class Asset < ActiveRecord::Base
   attr_protected :uuid, :asset_terms, :asset_terms_id
   
   include PbcoreXmlElement
-  ALL_INCLUDES = [:identifiers, :titles, :subjects, :descriptions, :genres,
-    :relations, :coverages, :audience_levels, :audience_ratings, :creators,
-    :contributors, :publishers, :rights_summaries, :instantiations, :extensions
+
+  ALL_INCLUDES = [{:identifiers => [:identifier_source]},
+    {:titles => [:title_type]}, :subjects, {:descriptions => [:description_type]},
+    :genres, {:relations => [:relation_type]}, :coverages, :audience_levels,
+    :audience_ratings, {:creators => [:creator_role]},
+    {:contributors => [:contributor_role]}, {:publishers => [:publisher_role]},
+    :rights_summaries, :extensions,
+    {:instantiations => [{:format_ids => :format_identifier_source}, :format,
+      :format_media_type, :format_generation, :format_color,
+      {:essence_tracks => [:essence_track_type, :essence_track_identifier_source]},
+      :date_availables, :annotations]}
     ]
   has_many :identifiers, :dependent => :destroy, :attributes => true
   has_many :titles, :dependent => :destroy, :attributes => true
