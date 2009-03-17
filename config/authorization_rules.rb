@@ -15,7 +15,7 @@ authorization do
 
   role :admin do
     includes :user
-    has_permission_on :assets, :to => :destroy
+    has_permission_on :assets, :to => [:destroy, :merge]
     has_permission_on :instantiations, :to => [:destroy, :borrow]
     has_permission_on :users, :to => :crud
     has_permission_on :users, :to => :make_admin do

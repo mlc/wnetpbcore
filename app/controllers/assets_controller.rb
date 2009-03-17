@@ -145,6 +145,28 @@ class AssetsController < ApplicationController
     File.unlink(zippath)
   end
 
+  def merge
+    assets = params[:asset_ids] ? Asset.find(params[:asset_ids]) : nil
+    if assets.nil? || assets.size < 2
+      flash[:warning] = "You must select at least two assets to merge."
+    else
+      first = assets.shift
+      assets.each do |asset|
+        first.merge(asset)
+      end
+      if first.save
+        assets.each do |asset|
+          asset.reload
+          asset.destroy
+        end
+        flash[:message] = "Your assets have been merged."
+      else
+        flash[:error] = "An error occurred merging the selected assets."
+      end
+    end
+    redirect_to :action => "index", :q => params[:q], :page => params[:page]
+  end
+
   # if I were better at javascript, I'd do this all (including setting a cookie)
   # without talking to the server...
   def toggleannotations

@@ -92,6 +92,25 @@ class Asset < ActiveRecord::Base
     (result.empty? ? identifiers : result).map{|id| id.identifier}.join(" / ")
   end
 
+  # Copies the stuff from some other asset object into us.
+  def merge(other)
+    [:identifiers, :titles, :descriptions, :relations, :coverages, :creators, :contributors,
+      :publishers, :rights_summaries, :instantiations, :extensions].each do |field|
+      ours = self.send(field)
+      theirs = other.send(field)
+
+      our_attrs = ours.map{|o| clean_attributes(o.attributes)}
+
+      # this is O(n²), but hopefully n is small enough that this isn't a huge problem
+      theirs.each do |object|
+        ours << object unless our_attrs.include?(clean_attributes(object.attributes))
+      end
+    end
+    [:genre_ids, :subject_ids, :audience_level_ids, :audience_rating_ids].each do |field|
+      self.send("#{field}=".to_sym, self.send(field) | other.send(field))
+    end
+  end
+
   def update_asset_terms
     self.asset_terms ||= AssetTerms.new
     asset_terms.identifier = (
@@ -152,5 +171,14 @@ class Asset < ActiveRecord::Base
     connection.execute("INSERT INTO #{table} (SELECT * FROM tmp_#{table}_t2)")
     connection.execute("DROP TEMPORARY TABLE tmp_#{table}_t1")
     connection.execute("DROP TEMPORARY TABLE tmp_#{table}_t2")
+  end
+
+  def clean_attributes(hash)
+    hash.delete("asset_id")
+    hash.delete("id")
+    hash.delete("uuid")
+    hash.delete("created_at")
+    hash.delete("updated_at")
+    hash
   end
 end

@@ -25,6 +25,15 @@
     font-size: smaller;
 }
 
+.mergebox {
+    color: blue;
+    font-size: smaller;
+}
+
+#mergebutton {
+    color: blue;
+}
+
 #errorExplanation {
   width: 400px;
   border: 2px solid red;
