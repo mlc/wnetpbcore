@@ -19,6 +19,7 @@ class AssetTerms < ActiveRecord::Base
     indexes :location
     indexes :annotation
     indexes :date
+    indexes :format
     has :asset_id
     has :created_at
     has :updated_at

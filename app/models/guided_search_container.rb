@@ -1,7 +1,7 @@
 class GuidedSearchContainer
   FIELD_NAMES = [:identifier, :title, :subject, :description, :genre, :relation,
     :coverage, :audience_level, :audience_rating, :creator, :contributor,
-    :publisher, :rights, :extension, :location, :annotation, :date]
+    :publisher, :rights, :extension, :location, :annotation, :date, :format]
 
   attr_accessor :full_text
 

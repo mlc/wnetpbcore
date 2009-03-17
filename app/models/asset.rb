@@ -119,6 +119,7 @@ class Asset < ActiveRecord::Base
     asset_terms.date = (
       instantiations.map{|a| [a.date_created, a.date_issued]+a.date_availables.map{|b| [b.date_available_start, b.date_available_end]}}
     ).flatten.join(' ')
+    asset_terms.format = instantiations.map{|a| a.format.nil? ? '' : a.format.name}.join(' ')
   end
 
   def self.dedupe

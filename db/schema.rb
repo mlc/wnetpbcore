@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090310191512) do
+ActiveRecord::Schema.define(:version => 20090317160459) do
 
   create_table "annotations", :force => true do |t|
     t.integer "instantiation_id", :limit => 11
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20090310191512) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "delta",                         :null => false
+    t.text     "format"
   end
 
   add_index "asset_terms", ["asset_id"], :name => "index_asset_terms_on_asset_id", :unique => true

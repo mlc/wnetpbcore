@@ -31,9 +31,7 @@ code { background-color: #eee; }
 
 <p>The following are the allowed search fields:</p>
 <ul>
-  <%- [:identifier, :title, :subject, :description, :genre, :relation,
-    :coverage, :audience_level, :audience_rating, :creator, :contributor,
-    :publisher, :rights, :extension, :location, :annotation, :date].each do |fld| -%>
+  <%- GuidedSearchContainer::FIELD_NAMES.each do |fld| -%>
   <li><code>@<%= fld.to_s %></code></li>
   <%- end -%>
 </ul>
@@ -42,4 +40,5 @@ code { background-color: #eee; }
 <p>Here are some more advanced queries you might wish to use as examples.</p>
 <ul>
   <li><code>@identifier PODS ADMS_001103</code> — search for asset with PBS PODS identifier <q>ADMS_001103</q></li>
+  <li><code>moyers @format vhs</code> — search for assets containing <q>moyers</q> where we have an instantiation of format <q>vhs</q></li>
 </ul>

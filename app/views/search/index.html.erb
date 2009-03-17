@@ -8,8 +8,14 @@
   <table><tbody>
   <%- ([:full_text] + GuidedSearchContainer::FIELD_NAMES).each do |field| -%>
     <tr class="<%= cycle("even", "odd") %>">
+      <%- logger.warn field -%>
       <th><%= f.label field %></th>
-      <td><%= f.text_field field %></td>
+      <%- # why? -%>
+      <%- if field == :format -%>
+        <td><%= text_field_tag 'search[format]', @search.format, :id => 'search_format' %></td>
+      <%- else -%>
+        <td><%= f.text_field field %></td>
+      <%- end -%>
     </tr>
   <%- end -%>
   </tbody></table>
