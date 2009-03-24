@@ -1,5 +1,6 @@
 class Instantiation < ActiveRecord::Base
   include PbcoreXmlElement
+  include ActionView::Helpers::NumberHelper
   
   belongs_to :asset
   has_many :format_ids, :dependent => :destroy, :attributes => true
@@ -68,6 +69,14 @@ class Instantiation < ActiveRecord::Base
 
   def current_borrowing
     borrowings.find(:first, :conditions => "returned IS NULL")
+  end
+
+  def pretty_file_size
+    if format_file_size =~ /^\d+$/
+      number_to_human_size(format_file_size)
+    else
+      format_file_size
+    end
   end
 
   protected

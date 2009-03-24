@@ -41,7 +41,7 @@
     <%= render :partial => "field_one", :locals => {:key => "Format Location", :value => instantiation.format_location, :url => true } %>
     <%= render :partial => "field_one", :locals => {:key => "Media Type", :value => instantiation.format_media_type, :field => :name } %>
     <%= render :partial => "field_one", :locals => {:key => "Generations", :value => instantiation.format_generation, :field => :name } %>
-    <%= render :partial => "field_one", :locals => {:key => "File Size", :value => instantiation.format_file_size } %>
+    <%= render :partial => "field_one", :locals => {:key => "File Size", :value => instantiation.pretty_file_size } %>
     <%= render :partial => "field_one", :locals => {:key => "Time Start", :value => instantiation.format_time_start } %>
     <%= render :partial => "field_one", :locals => {:key => "Duration", :value => instantiation.format_duration } %>
     <%= render :partial => "field_one", :locals => {:key => "Data Rate", :value => instantiation.format_data_rate } %>
