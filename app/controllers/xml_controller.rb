@@ -27,7 +27,7 @@ class XmlController < ApplicationController
               a = Asset.from_xml(zip.read(nil, String.new))
               if a.valid?
                 a.destroy_existing
-                a.save
+                a.save unless a.merge_existing
                 successes += 1
               else
                 failures << "#{entry.name} is not valid"
@@ -47,14 +47,18 @@ class XmlController < ApplicationController
           a = Asset.from_xml(params[:xml].read)
           if a.valid?
             a.destroy_existing
-            a.save
-            flash.now[:message] = "thanks for #{a.title}"
+            if (other = a.merge_existing)
+              flash.now[:message] = "merged with #{other.title}"
+            else
+              a.save
+              flash.now[:message] = "thanks for #{a.title}"
+            end
           else
             flash.now[:error] = "Sorry, couldn't import that record: <ul>" + a.errors.full_messages.map{|err| "<li>#{err}</li>"}.join + "</ul>"
             raise ActiveRecord::Rollback
           end
         rescue Exception => e
-          flash.now[:error] = e.to_s
+          flash.now[:error] = h(e.to_s)
         end
       end
     elsif request.put?
@@ -63,8 +67,12 @@ class XmlController < ApplicationController
           a = Asset.from_xml(params[:xml])
           if a.valid?
             a.destroy_existing
-            a.save
-            render :xml => a.to_xml
+            if (other = a.merge_existing)
+              render :xml => other.to_xml
+            else
+              a.save
+              render :xml => a.to_xml
+            end
           else
             render :xml => "<message severity='error'>sorry, couldn't import.</message>"
             raise ActiveRecord::Rollback

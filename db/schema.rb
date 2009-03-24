@@ -9,17 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090317160459) do
+ActiveRecord::Schema.define(:version => 20090324151112) do
 
   create_table "annotations", :force => true do |t|
-    t.integer "instantiation_id", :limit => 11
+    t.integer "instantiation_id"
     t.text    "annotation",       :limit => 16777215
   end
 
   add_index "annotations", ["instantiation_id"], :name => "index_annotation_on_instantiation_id"
 
   create_table "asset_terms", :force => true do |t|
-    t.integer  "asset_id",        :limit => 11, :null => false
+    t.integer  "asset_id",        :null => false
     t.text     "identifier"
     t.text     "title"
     t.text     "subject"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20090317160459) do
     t.text     "date"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "delta",                         :null => false
+    t.boolean  "delta",           :null => false
     t.text     "format"
   end
 
@@ -54,29 +54,29 @@ ActiveRecord::Schema.define(:version => 20090317160459) do
   add_index "assets", ["uuid"], :name => "index_assets_on_uuid", :unique => true
 
   create_table "assets_audience_levels", :id => false, :force => true do |t|
-    t.integer "asset_id",          :limit => 11
-    t.integer "audience_level_id", :limit => 11
+    t.integer "asset_id"
+    t.integer "audience_level_id"
   end
 
   add_index "assets_audience_levels", ["asset_id"], :name => "index_assets_audience_levels_on_asset_id"
 
   create_table "assets_audience_ratings", :id => false, :force => true do |t|
-    t.integer "asset_id",           :limit => 11
-    t.integer "audience_rating_id", :limit => 11
+    t.integer "asset_id"
+    t.integer "audience_rating_id"
   end
 
   add_index "assets_audience_ratings", ["asset_id"], :name => "index_assets_audience_ratings_on_asset_id"
 
   create_table "assets_genres", :id => false, :force => true do |t|
-    t.integer "asset_id", :limit => 11, :null => false
-    t.integer "genre_id", :limit => 11, :null => false
+    t.integer "asset_id", :null => false
+    t.integer "genre_id", :null => false
   end
 
   add_index "assets_genres", ["asset_id"], :name => "index_assets_genres_on_asset_id"
 
   create_table "assets_subjects", :id => false, :force => true do |t|
-    t.integer "asset_id",   :limit => 11, :null => false
-    t.integer "subject_id", :limit => 11, :null => false
+    t.integer "asset_id",   :null => false
+    t.integer "subject_id", :null => false
   end
 
   add_index "assets_subjects", ["asset_id"], :name => "index_assets_subjects_on_asset_id"
@@ -96,10 +96,10 @@ ActiveRecord::Schema.define(:version => 20090317160459) do
     t.string   "worker_name"
     t.string   "worker_method"
     t.string   "job_key"
-    t.integer  "taken",          :limit => 11
-    t.integer  "finished",       :limit => 11
-    t.integer  "timeout",        :limit => 11
-    t.integer  "priority",       :limit => 11
+    t.integer  "taken"
+    t.integer  "finished"
+    t.integer  "timeout"
+    t.integer  "priority"
     t.datetime "submitted_at"
     t.datetime "started_at"
     t.datetime "finished_at"
@@ -112,8 +112,8 @@ ActiveRecord::Schema.define(:version => 20090317160459) do
   end
 
   create_table "borrowings", :force => true do |t|
-    t.integer  "instantiation_id", :limit => 11, :null => false
-    t.string   "person",                         :null => false
+    t.integer  "instantiation_id", :null => false
+    t.string   "person",           :null => false
     t.string   "department"
     t.datetime "borrowed"
     t.datetime "returned"
@@ -129,9 +129,9 @@ ActiveRecord::Schema.define(:version => 20090317160459) do
   add_index "contributor_roles", ["name"], :name => "index_contributor_roles_on_name"
 
   create_table "contributors", :force => true do |t|
-    t.integer  "asset_id",            :limit => 11
+    t.integer  "asset_id"
     t.text     "contributor",         :limit => 16777215, :null => false
-    t.integer  "contributor_role_id", :limit => 11
+    t.integer  "contributor_role_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -139,7 +139,7 @@ ActiveRecord::Schema.define(:version => 20090317160459) do
   add_index "contributors", ["asset_id"], :name => "index_contributors_on_asset_id"
 
   create_table "coverages", :force => true do |t|
-    t.integer  "asset_id",      :limit => 11
+    t.integer  "asset_id"
     t.text     "coverage",      :limit => 16777215, :null => false
     t.string   "coverage_type",                     :null => false
     t.datetime "created_at"
@@ -156,9 +156,9 @@ ActiveRecord::Schema.define(:version => 20090317160459) do
   add_index "creator_roles", ["name"], :name => "index_creator_roles_on_name"
 
   create_table "creators", :force => true do |t|
-    t.integer  "asset_id",        :limit => 11
+    t.integer  "asset_id"
     t.text     "creator",         :limit => 16777215, :null => false
-    t.integer  "creator_role_id", :limit => 11
+    t.integer  "creator_role_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -166,7 +166,7 @@ ActiveRecord::Schema.define(:version => 20090317160459) do
   add_index "creators", ["asset_id"], :name => "index_creators_on_asset_id"
 
   create_table "date_availables", :force => true do |t|
-    t.integer "instantiation_id",     :limit => 11
+    t.integer "instantiation_id"
     t.string  "date_available_start"
     t.string  "date_available_end"
   end
@@ -181,9 +181,9 @@ ActiveRecord::Schema.define(:version => 20090317160459) do
   add_index "description_types", ["name"], :name => "index_description_types_on_name"
 
   create_table "descriptions", :force => true do |t|
-    t.integer  "asset_id",            :limit => 11
+    t.integer  "asset_id"
     t.text     "description",         :limit => 16777215, :null => false
-    t.integer  "description_type_id", :limit => 11
+    t.integer  "description_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -201,7 +201,7 @@ ActiveRecord::Schema.define(:version => 20090317160459) do
   end
 
   create_table "essence_tracks", :force => true do |t|
-    t.integer "instantiation_id",                   :limit => 11
+    t.integer "instantiation_id"
     t.text    "essence_track_identifier",           :limit => 16777215
     t.text    "essence_track_standard",             :limit => 16777215
     t.text    "essence_track_encoding",             :limit => 16777215
@@ -215,8 +215,8 @@ ActiveRecord::Schema.define(:version => 20090317160459) do
     t.text    "essence_track_frame_rate",           :limit => 16777215
     t.text    "essence_track_language",             :limit => 16777215
     t.text    "essence_track_annotation",           :limit => 16777215
-    t.integer "essence_track_type_id",              :limit => 11,       :null => false
-    t.integer "essence_track_identifier_source_id", :limit => 11,       :null => false
+    t.integer "essence_track_type_id",                                  :null => false
+    t.integer "essence_track_identifier_source_id",                     :null => false
   end
 
   add_index "essence_tracks", ["instantiation_id"], :name => "index_essence_tracks_on_instantiation_id"
@@ -233,7 +233,7 @@ ActiveRecord::Schema.define(:version => 20090317160459) do
   add_index "extension_names", ["extension_authority", "extension_key"], :name => "index_extension_names_on_extension_authority_and_extension_key", :unique => true
 
   create_table "extensions", :force => true do |t|
-    t.integer "asset_id",                 :limit => 11
+    t.integer "asset_id"
     t.text    "extension",                :limit => 16777215
     t.text    "extension_authority_used", :limit => 16777215
   end
@@ -259,11 +259,11 @@ ActiveRecord::Schema.define(:version => 20090317160459) do
   end
 
   create_table "format_ids", :force => true do |t|
-    t.integer  "instantiation_id",            :limit => 11
+    t.integer  "instantiation_id"
     t.text     "format_identifier",           :limit => 16777215, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "format_identifier_source_id", :limit => 11,       :null => false
+    t.integer  "format_identifier_source_id",                     :null => false
   end
 
   add_index "format_ids", ["instantiation_id"], :name => "index_format_ids_on_instantiation_id"
@@ -298,12 +298,13 @@ ActiveRecord::Schema.define(:version => 20090317160459) do
     t.boolean  "visible",                           :default => false, :null => false
     t.boolean  "show_in_index",                     :default => true,  :null => false
     t.string   "regex"
+    t.boolean  "auto_merge",                        :default => false, :null => false
   end
 
   create_table "identifiers", :force => true do |t|
-    t.integer  "asset_id",             :limit => 11
-    t.string   "identifier",                         :null => false
-    t.integer  "identifier_source_id", :limit => 11
+    t.integer  "asset_id"
+    t.string   "identifier",           :null => false
+    t.integer  "identifier_source_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -312,18 +313,18 @@ ActiveRecord::Schema.define(:version => 20090317160459) do
   add_index "identifiers", ["identifier", "identifier_source_id"], :name => "index_identifiers_on_identifier_and_identifier_source_id"
 
   create_table "instantiations", :force => true do |t|
-    t.integer  "asset_id",                     :limit => 11
+    t.integer  "asset_id"
     t.string   "date_created"
     t.string   "date_issued"
-    t.integer  "format_id",                    :limit => 11
+    t.integer  "format_id"
     t.text     "format_location",              :limit => 16777215, :null => false
-    t.integer  "format_media_type_id",         :limit => 11
-    t.integer  "format_generation_id",         :limit => 11
+    t.integer  "format_media_type_id"
+    t.integer  "format_generation_id"
     t.string   "format_file_size"
     t.string   "format_time_start"
     t.string   "format_duration"
     t.string   "format_data_rate"
-    t.integer  "format_color_id",              :limit => 11
+    t.integer  "format_color_id"
     t.text     "format_tracks",                :limit => 16777215
     t.text     "format_channel_configuration", :limit => 16777215
     t.string   "language"
@@ -344,9 +345,9 @@ ActiveRecord::Schema.define(:version => 20090317160459) do
   add_index "publisher_roles", ["name"], :name => "index_publisher_roles_on_name"
 
   create_table "publishers", :force => true do |t|
-    t.integer  "asset_id",          :limit => 11
+    t.integer  "asset_id"
     t.text     "publisher",         :limit => 16777215, :null => false
-    t.integer  "publisher_role_id", :limit => 11
+    t.integer  "publisher_role_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -359,8 +360,8 @@ ActiveRecord::Schema.define(:version => 20090317160459) do
   end
 
   create_table "relations", :force => true do |t|
-    t.integer  "asset_id",            :limit => 11
-    t.integer  "relation_type_id",    :limit => 11
+    t.integer  "asset_id"
+    t.integer  "relation_type_id"
     t.string   "relation_identifier"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -370,7 +371,7 @@ ActiveRecord::Schema.define(:version => 20090317160459) do
   add_index "relations", ["relation_identifier"], :name => "index_relations_on_relation_identifier"
 
   create_table "rights_summaries", :force => true do |t|
-    t.integer  "asset_id",       :limit => 11
+    t.integer  "asset_id"
     t.text     "rights_summary", :limit => 16777215, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -391,17 +392,17 @@ ActiveRecord::Schema.define(:version => 20090317160459) do
   end
 
   create_table "title_types", :force => true do |t|
-    t.string  "name",                                         :null => false
-    t.integer "category_id", :limit => 11
-    t.boolean "visible",                   :default => false, :null => false
+    t.string  "name",                           :null => false
+    t.integer "category_id"
+    t.boolean "visible",     :default => false, :null => false
   end
 
   add_index "title_types", ["name"], :name => "index_title_types_on_name"
 
   create_table "titles", :force => true do |t|
-    t.integer  "asset_id",      :limit => 11
+    t.integer  "asset_id"
     t.text     "title",         :limit => 16777215, :null => false
-    t.integer  "title_type_id", :limit => 11
+    t.integer  "title_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

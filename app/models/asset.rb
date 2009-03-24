@@ -111,6 +111,25 @@ class Asset < ActiveRecord::Base
     end
   end
 
+  def merge_existing
+    return nil unless new_record?
+
+    found = nil
+    self.identifiers.each do |identifier|
+      if identifier.identifier_source.auto_merge && (them = Identifier.find_by_identifier_and_identifier_source_id(identifier.identifier, identifier.identifier_source_id))
+        found = Asset.find(them.asset_id, :include => ALL_INCLUDES)
+        break
+      end
+    end
+
+    if found
+      found.merge(self)
+      found.save
+    end
+
+    found
+  end
+
   def update_asset_terms
     self.asset_terms ||= AssetTerms.new
     asset_terms.identifier = (
