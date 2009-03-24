@@ -9,7 +9,14 @@
   <%= link_to_remote "#{session[:show_annotations] ? "hide" : "show"} annotations", :url => { :action => "toggleannotations" }, :html => { :id => "toggle_annotations_link", :href => url_for(:action => "toggleannotations") }, :method => :get %>
 </p>
 <%- permitted_to? :merge, :assets do -%>
-  <%= form_tag({:action => 'merge'}, :method => :post) %>
+  <%- content_for :javascript do -%>
+    $(function(){
+      $('.mergebox input').bind("change", checkMerge);
+      checkMerge();
+
+    });
+  <%- end -%>
+  <%= form_tag({:action => 'merge'}, :onsubmit => 'return approveMerge();', :method => :post) %>
   <%- if params[:q] -%>
     <%= hidden_field_tag "q", params[:q] %>
   <%- end -%>

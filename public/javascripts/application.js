@@ -10,3 +10,21 @@ function searchHelp() {
     "resizable=0,scrollbars=1,status=1,toolbar=0"
   );
 }
+
+function checkMerge() {
+  var count = $(".mergebox input:checked").length;
+  if (count >= 2)
+    $("#mergebutton").removeAttr("disabled");
+  else
+    $("#mergebutton").attr("disabled", "disabled");
+}
+
+function approveMerge() {
+   var titles = $(".mergebox input:checked").parents('li').children('strong');
+   var message = "Are you sure you wish to merge these records?\n";
+   titles.each(function(i) {
+       message += "\n * " + $(this).text();
+   })
+
+   return confirm(message);
+}
