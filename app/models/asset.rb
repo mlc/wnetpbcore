@@ -161,12 +161,15 @@ class Asset < ActiveRecord::Base
   end
 
   def self.dedupe
-    dedupe_field(:titles, :title, :title_type_id)
-    dedupe_field(:identifiers, :identifier, :identifier_source_id)
-    dedupe_field(:descriptions, :description, :description_type_id)
-    dedupe_field(:creators, :creator, :creator_role_id)
-    dedupe_field(:contributors, :contributor, :contributor_role_id)
-    dedupe_field(:publishers, :publisher, :publisher_role_id)
+    dedupe_field(:titles, :title, :title_type_id, :asset_id)
+    dedupe_field(:identifiers, :identifier, :identifier_source_id, :asset_id)
+    dedupe_field(:descriptions, :description, :description_type_id, :asset_id)
+    dedupe_field(:creators, :creator, :creator_role_id, :asset_id)
+    dedupe_field(:contributors, :contributor, :contributor_role_id, :asset_id)
+    dedupe_field(:publishers, :publisher, :publisher_role_id, :asset_id)
+    dedupe_field(:format_ids, :instantiation_id, :format_identifier, :format_identifier_source_id)
+    dedupe_field(:annotations, :instantiation_id, :annotation)
+    dedupe_field(:date_availables, :instantiation_id, :date_available_start, :date_available_end)
     dedupe_trivial_field(:assets_subjects, :asset_id, :subject_id)
     dedupe_trivial_field(:assets_genres, :asset_id, :genre_id)
   end
@@ -177,8 +180,9 @@ class Asset < ActiveRecord::Base
   end
 
   def self.dedupe_field(table, *fields)
-    connection.execute("create temporary table tmp_#{table}_ids select distinct b.id from #{table} a, #{table} b where " + fields.map{|f| "a.#{f} = b.#{f}"}.join(" and ") + " and a.asset_id = b.asset_id and a.id < b.id")
+    connection.execute("create temporary table tmp_#{table}_ids select distinct b.id from #{table} a, #{table} b where " + fields.map{|f| "a.#{f} = b.#{f}"}.join(" and ") + " and a.id < b.id")
     connection.execute("delete from #{table} where id in (select * from tmp_#{table}_ids)")
+    $stdout.puts("#{count_by_sql("SELECT COUNT(*) FROM tmp_#{table}_ids")} #{table} deleted")
     connection.execute("drop temporary table tmp_#{table}_ids")
   end
 
@@ -188,6 +192,7 @@ class Asset < ActiveRecord::Base
     connection.execute("CREATE TEMPORARY TABLE tmp_#{table}_t2 SELECT #{fieldlist} FROM tmp_#{table}_t1 WHERE c > 1")
     connection.execute("DELETE FROM #{table} WHERE (#{fieldlist}) IN (SELECT * FROM tmp_#{table}_t2)")
     connection.execute("INSERT INTO #{table} (SELECT * FROM tmp_#{table}_t2)")
+    $stdout.puts("#{count_by_sql("SELECT COUNT(*) FROM tmp_#{table}_t2")} duplicate #{table} cleaned up")
     connection.execute("DROP TEMPORARY TABLE tmp_#{table}_t1")
     connection.execute("DROP TEMPORARY TABLE tmp_#{table}_t2")
   end
