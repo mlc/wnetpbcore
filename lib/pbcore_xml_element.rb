@@ -12,7 +12,8 @@ module PbcoreXmlElement
       end
       to_xml_elt do |record|
         builder = record._working_xml
-        builder.tag!(attr, record.send(field)) unless record.send(field).nil?
+        value = record.send(field)
+        builder.tag!(attr, value) unless value.nil? || value.empty?
       end
     end
 
