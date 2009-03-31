@@ -79,6 +79,18 @@ class Instantiation < ActiveRecord::Base
     end
   end
 
+  # TODO: it would be nice to make this configurable somehow for non-WNET installs
+  def availability
+    case self.format_location
+    when /^archive/i, /^wnet/i, /^\//, /^[a-z]{1,8}:\/\//
+      2
+    when /^offsite/i, /^tbd/i
+      1
+    else
+      0
+    end
+  end
+
   protected
   def generate_uuid
     self.uuid = UUID.random_create.to_s unless (self.uuid && !self.uuid.empty?)

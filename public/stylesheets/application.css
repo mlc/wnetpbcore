@@ -144,3 +144,16 @@ table#borrowings td { padding: 2px 5px; }
 input#q {
     width: 400px;
 }
+
+.instantiation_avail_0 {
+    background-color: #e68989;
+}
+
+.instantiation_avail_1 {
+    background-color: #e6e62e;
+}
+
+.instantiation_avail_2 {
+    background-color: #8ae68a;
+}
+

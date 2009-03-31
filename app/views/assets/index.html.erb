@@ -47,7 +47,7 @@
       <strong><%= h asset.title %></strong>
       <ul>
         <%- asset.instantiations.each do |instantiation| -%>
-          <li>
+          <li class="instantiation_avail_<%= instantiation.availability %>">
             <%= h instantiation.summary %>
             <span class="annotations" style="<%= "display: none;" unless session[:show_annotations] %>"><%= h instantiation.annotation %></span>
             <%- if instantiation.format_location =~ /^(f|ht)tp:\/\// -%>
