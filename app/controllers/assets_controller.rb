@@ -2,18 +2,21 @@ class AssetsController < ApplicationController
   filter_access_to :all
   filter_access_to :opensearch, :require => :read
   filter_access_to :toggleannotations, :require => :read
+  filter_access_to :lastsearch, :require => :read
   
   def index
     alternate "application/atom+xml", :format => "atom", :q => params[:q]
     @query = params[:q]
     pageopts = {:page => params[:page] || 1, :per_page => 20}
-    pageopts[:page] = 1 if pageopts[:page] == ""
+    pageopts[:page] = 1 if pageopts[:page] == "" || pageopts[:page].to_i < 1
     asset_includes = [:titles, {:identifiers => [:identifier_source]}, {:instantiations => [:format, :format_ids, :annotations, :borrowings]}]
     @search_object = @query ? 
       AssetTerms.search(@query, {:match_mode => :extended, :include => {:asset => asset_includes}}.merge(pageopts)) :
       Asset.paginate(:all, {:order => 'updated_at DESC', :include => asset_includes}.merge(pageopts))
     @assets = @query ? @search_object.map{|at| at.asset} : @search_object
-    
+
+    session[:search] = {:q => @query, :page => pageopts[:page].to_i == 1 ? nil : pageopts[:page]}
+
     respond_to do |format|
       format.html
       format.atom
@@ -29,7 +32,7 @@ class AssetsController < ApplicationController
     respond_to do |format|
       format.html do
         flash[:warning] = "<strong>#{titles}</strong> has been deleted from the database."
-        redirect_to :action => 'index'
+        lastsearch
       end
       format.js
     end
@@ -87,7 +90,7 @@ class AssetsController < ApplicationController
     params[:asset][:audience_level_ids] ||= []
     if @asset.update_attributes(params[:asset])
       flash[:message] = "Successfully updated your Asset."
-      redirect_to :action => 'index'
+      lastsearch
     else
       render :action => 'edit'
     end
@@ -175,6 +178,14 @@ class AssetsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to :action => "index" }
       format.js
+    end
+  end
+
+  def lastsearch
+    if session[:search].is_a?(Hash)
+      redirect_to :action => 'index', :q => session[:search][:q], :page => session[:search][:page]
+    else
+      redirect_to :action => 'index'
     end
   end
 end

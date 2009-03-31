@@ -6,6 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :session
 
   map.home '', :controller => "assets", :action => "index"
+  map.lastsearch 'lastsearch', :controller => "assets", :action => "lastsearch"
 
   map.resources :assets, :collection => { "opensearch" => :get, "toggleannotations" => :get , "zip" => :get } do |assets|
     assets.resources :instantiations, :member => { "borrowings" => :get, "borrow" => :post, "return" => :post }
