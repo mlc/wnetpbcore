@@ -46,7 +46,7 @@
       <br />
       <strong><%= h asset.title %></strong>
       <ul>
-        <%- asset.instantiations.each do |instantiation| -%>
+        <%- asset.instantiations.sort{|a,b| [-a.availability, a.summary] <=> [-b.availability, b.summary]}.each do |instantiation| -%>
           <li class="instantiation_avail_<%= instantiation.availability %>">
             <%= h instantiation.summary %>
             <span class="annotations" style="<%= "display: none;" unless session[:show_annotations] %>"><%= h instantiation.annotation %></span>
