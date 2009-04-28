@@ -82,7 +82,7 @@ class Instantiation < ActiveRecord::Base
   # TODO: it would be nice to make this configurable somehow for non-WNET installs
   def availability
     case self.format_location
-    when /^archive/i, /^wnet/i, /^\//, /^[a-z]{1,8}:\/\//
+    when /^archive/i, /^wnet/i, /^\//, /^[a-z]{1,8}:\/\//, /^job[0-9]{4}/
       2
     when /^offsite/i, /^tbd/i
       1
