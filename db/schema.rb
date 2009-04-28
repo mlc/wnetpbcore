@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090324151112) do
+ActiveRecord::Schema.define(:version => 20090428170106) do
 
   create_table "annotations", :force => true do |t|
     t.integer "instantiation_id"
@@ -260,13 +260,14 @@ ActiveRecord::Schema.define(:version => 20090324151112) do
 
   create_table "format_ids", :force => true do |t|
     t.integer  "instantiation_id"
-    t.text     "format_identifier",           :limit => 16777215, :null => false
+    t.string   "format_identifier",           :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "format_identifier_source_id",                     :null => false
+    t.integer  "format_identifier_source_id", :null => false
   end
 
   add_index "format_ids", ["instantiation_id"], :name => "index_format_ids_on_instantiation_id"
+  add_index "format_ids", ["format_identifier_source_id", "format_identifier"], :name => "by_source_and_identifier"
 
   create_table "format_media_types", :force => true do |t|
     t.string  "name",                       :null => false
@@ -310,7 +311,7 @@ ActiveRecord::Schema.define(:version => 20090324151112) do
   end
 
   add_index "identifiers", ["asset_id"], :name => "index_identifiers_on_asset_id"
-  add_index "identifiers", ["identifier", "identifier_source_id"], :name => "index_identifiers_on_identifier_and_identifier_source_id"
+  add_index "identifiers", ["identifier_source_id", "identifier"], :name => "index_identifiers_on_identifier_source_id_and_identifier"
 
   create_table "instantiations", :force => true do |t|
     t.integer  "asset_id"
