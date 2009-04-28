@@ -13,10 +13,12 @@
     $(function(){
       $('.mergebox input').bind("change", checkMerge);
       checkMerge();
+      $('.lendbox input').bind("change", checkLend);
+      checkLend();
 
     });
   <%- end -%>
-  <%= form_tag({:action => 'merge'}, :onsubmit => 'return approveMerge();', :method => :post) %>
+  <%= form_tag({:action => 'multiprocess'}, :method => :post) %>
   <%- if params[:q] -%>
     <%= hidden_field_tag "q", params[:q] %>
   <%- end -%>
@@ -48,6 +50,14 @@
       <ul>
         <%- asset.instantiations.sort{|a,b| [-a.availability, a.summary] <=> [-b.availability, b.summary]}.each do |instantiation| -%>
           <li class="instantiation_avail_<%= instantiation.availability %>">
+            <%- permitted_to? :merge, :assets do -%>
+              <%- unless instantiation.borrowed? -%>
+                <span class="lendbox">
+                  <%= check_box_tag "instantiation_ids[]", instantiation.id, false, :id => "lend_#{instantiation.id}" %><label for="lend_<%= instantiation.id %>">lend</label>
+                </span>
+                &nbsp;
+              <%- end -%>
+            <%- end -%>
             <%= h instantiation.summary %>
             <span class="annotations" style="<%= "display: none;" unless session[:show_annotations] %>"><%= h instantiation.annotation %></span>
             <%- if instantiation.format_location =~ /^(f|ht)tp:\/\// -%>
@@ -63,7 +73,10 @@
   <%- end -%>
 </ul>
 <%- permitted_to? :merge, :assets do -%>
-  <%= submit_tag "Merge Selected Records", :id => "mergebutton" %>
+  <p>
+    <%= submit_tag "Merge Selected Assets", :onclick => 'return approveMerge();', :id => "mergebutton" %>
+    <%= submit_tag "Lend Selected Instantiations", :id => "lendbutton" %>
+  </p>
   </form>
 <%- end -%>
 

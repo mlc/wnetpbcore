@@ -1,0 +1,27 @@
+<%- title "Borrow Assets" -%>
+
+<%= form_tag :action => "multilend" %>
+
+<p>
+  Borrowing the following <%= @instantiations.size %>
+  <%= @instantiations.size == 1 ? "asset" : "assets" %>:
+</p>
+
+<ul>
+  <%- @instantiations.each do |instantiation| -%>
+    <li>
+      <%= hidden_field_tag "instantiation_ids[]", instantiation.id, :id => nil %>
+      <%= h instantiation.summary %>
+      (instantiation of <%= link_to(h(instantiation.asset.title), :action => "show", :id => instantiation.asset.uuid) %>)
+    </li>
+  <%- end -%>
+</ul>
+
+  <p>
+    <%= label_tag :person, "Person:" %> <%= text_field_tag :person %><br />
+    <%= label_tag :department, "Department" %> <%= text_field_tag :department %>
+  </p>
+  <p>
+    <%= submit_tag("Borrow") %>
+  </p>
+</form>

@@ -34,6 +34,15 @@
     color: blue;
 }
 
+.lendbox {
+    color: #7f7f00;
+    font-size: smaller;
+}
+
+#lendbutton {
+    color: #7f7f00;
+}
+
 #errorExplanation {
   width: 400px;
   border: 2px solid red;

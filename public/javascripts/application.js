@@ -19,6 +19,14 @@ function checkMerge() {
     $("#mergebutton").attr("disabled", "disabled");
 }
 
+function checkLend() {
+  var count = $(".lendbox input:checked").length;
+  if (count >= 1)
+    $("#lendbutton").removeAttr("disabled");
+  else
+    $("#lendbutton").attr("disabled", "disabled");
+}
+
 function approveMerge() {
    var titles = $(".mergebox input:checked").parents('li').children('strong');
    var message = "Are you sure you wish to merge these records?\n";

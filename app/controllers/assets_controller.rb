@@ -148,6 +148,39 @@ class AssetsController < ApplicationController
     File.unlink(zippath)
   end
 
+  def multiprocess
+    case params[:commit]
+    when /^merge/i
+      merge
+    when /^lend/i
+      multilend
+    else
+      lastsearch
+    end
+  end
+
+  def multilend
+    @instantiations = params[:instantiation_ids] ? Instantiation.find(params[:instantiation_ids], :include => [:borrowings, {:asset => [:titles]}, :format_ids, :format]) : nil
+    @instantiations = @instantiations.select{|i| !i.borrowed?}
+
+    if @instantiations.empty?
+      return lastsearch
+    elsif params[:person]
+      if params[:person].empty?
+        flash.now[:warning] = "You must specify a person to lend to."
+        render :action => 'multilend' and return
+      end
+      @instantiations.each do |instantiation|
+        instantiation.borrowings << Borrowing.new(:person => params[:person], :department => params[:department], :borrowed => Time.new)
+        instantiation.save
+      end
+      flash[:message] = "The items have been marked as borrowed."
+      return lastsearch
+    else
+      render :action => 'multilend'
+    end
+  end
+
   def merge
     assets = params[:asset_ids] ? Asset.find(params[:asset_ids]) : nil
     if assets.nil? || assets.size < 2

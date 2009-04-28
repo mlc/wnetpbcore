@@ -26,6 +26,7 @@ authorization do
       has_permission_on kl.to_sym, :to => :crud
     end
     has_permission_on :borrowings, :to => :index
+    has_permission_on :assets, :to => :multilend
   end
 end
 
@@ -35,4 +36,5 @@ privileges do
   privilege :update, :includes => :edit
   privilege :borrow, :includes => [:borrowings, :return]
   privilege :crud, :includes => [:create, :read, :update, :destroy]
+  privilege :merge, :includes => :multiprocess
 end
