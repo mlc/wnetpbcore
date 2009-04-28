@@ -36,6 +36,9 @@
         <%- permitted_to? :index, :users do %>
           <li><%= link_to_unless_current "users", :controller => :users %></li>
         <%- end -%>
+        <%- permitted_to? :index, :last_used_ids do -%>
+          <li><%= link_to_unless_current "ids", :controller => :last_used_ids %></li>
+        <%- end -%>
       </ul>
       <ul class="post-user-bar navbar2">
         <%= yield :navbaritems %>

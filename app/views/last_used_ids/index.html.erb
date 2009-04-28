@@ -1,0 +1,6 @@
+<%- title "Last Used Identifiers" -%>
+<h2>Asset Identifiers</h2>
+<%= render :partial => "table", :locals => {:ids => @identifier_sources} %>
+
+<h2>Format Identifiers</h2>
+<%= render :partial => "table", :locals => {:ids => @format_identifier_sources} %>

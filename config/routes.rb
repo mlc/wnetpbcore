@@ -19,6 +19,8 @@ ActionController::Routing::Routes.draw do |map|
     :format_identifier_sources, :genres, :extension_names].each do |t|
     map.resources t
   end
+
+  map.ids 'ids', :controller => 'last_used_ids', :action => 'index'
   
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'

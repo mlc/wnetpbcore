@@ -1,0 +1,16 @@
+<table>
+  <thead>
+    <tr>
+      <th>Identifier Source</th>
+      <th>Last Used ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%- ids.each do |id| -%>
+      <tr class="<%= cycle("even", "odd") %>">
+        <td><%= h id.name %></td>
+        <td><%= h id.maxid %></td>
+      </tr>
+    <%- end -%>
+  </tbody>
+</table>
