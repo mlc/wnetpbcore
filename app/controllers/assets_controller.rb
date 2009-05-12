@@ -11,7 +11,7 @@ class AssetsController < ApplicationController
     pageopts[:page] = 1 if pageopts[:page] == "" || pageopts[:page].to_i < 1
     asset_includes = [:titles, {:identifiers => [:identifier_source]}, {:instantiations => [:format, :format_ids, :annotations, :borrowings]}]
     @search_object = @query ? 
-      AssetTerms.search(@query, {:match_mode => :extended, :include => {:asset => asset_includes}}.merge(pageopts)) :
+      AssetTerms.search(@query, {:match_mode => :extended, :include => {:asset => asset_includes}, :order => params[:bydate] ? "updated_at DESC" : nil}.merge(pageopts)) :
       Asset.paginate(:all, {:order => 'updated_at DESC', :include => asset_includes}.merge(pageopts))
     @assets = @query ? @search_object.map{|at| at.asset} : @search_object
 
