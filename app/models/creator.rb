@@ -6,6 +6,6 @@ class Creator < ActiveRecord::Base
   xml_picklist "creatorRole", :creator_role, CreatorRole
   
   def to_s
-    "#{creator_role.name}: #{creator}"
+    creator_role.nil? ? creator : "#{creator_role.name}: #{creator}"
   end
 end

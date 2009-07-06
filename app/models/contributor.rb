@@ -9,6 +9,6 @@ class Contributor < ActiveRecord::Base
   validates_length_of :contributor, :minimum => 1
 
   def to_s
-    "#{contributor_role.name}: #{contributor}"
+    contributor_role.nil? ? contributor : "#{contributor_role.name}: #{contributor}"
   end
 end

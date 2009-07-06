@@ -8,6 +8,6 @@ class Publisher < ActiveRecord::Base
   validates_length_of :publisher, :minimum => 1
 
   def to_s
-    "#{publisher_role.name}: #{publisher}"
+    publisher_role.nil? ? publisher : "#{publisher_role.name}: #{publisher}"
   end
 end
