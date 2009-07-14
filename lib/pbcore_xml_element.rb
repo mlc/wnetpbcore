@@ -7,7 +7,7 @@ module PbcoreXmlElement
       from_xml_elt do |record|
         elts = record._working_xml.find("pbcore:#{attr}", PBCORE_NAMESPACE)
         unless elts.empty? || elts[0].child.nil?
-          record.send("#{field}=".to_sym, elts[0].child.content)
+          record.send("#{field}=".to_sym, elts[0].content)
         end
       end
       to_xml_elt do |record|
