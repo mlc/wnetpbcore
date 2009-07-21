@@ -58,7 +58,8 @@ class XmlController < ApplicationController
             raise ActiveRecord::Rollback
           end
         rescue Exception => e
-          flash.now[:error] = h(e.to_s)
+          flash.now[:error] = "We're sorry, an error occurred importing that record."
+          logger.error e
         end
       end
     elsif request.put?
