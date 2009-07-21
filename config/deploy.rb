@@ -99,8 +99,8 @@ namespace :thin do
   desc "Generate a thin configuration file"
   task :build_configuration, :roles => :app do
     config_options = {
-      # "user" => (runner || user),
-      # "group" => (runner || user),
+      "user" => user,
+      "group" => user,
       "log" => "#{current_path}/log/thin.log",
       "chdir" => current_path,
       "port" => deploy_port,
