@@ -1,14 +1,13 @@
 authorization do
   role :guest do
-    has_permission_on :assets, :to => :read
-    has_permission_on :instantiations, :to => :read
-    has_permission_on :last_used_ids, :to => :index
+    # NO PERMISSIONS
   end
 
   role :user do
     includes :guest
-    has_permission_on :assets, :to => [:create, :update]
-    has_permission_on :instantiations, :to => [:create, :update]
+    has_permission_on :assets, :to => [:read, :create, :update]
+    has_permission_on :instantiations, :to => [:read, :create, :update]
+    has_permission_on :last_used_ids, :to => :index
     has_permission_on :users, :to => [:show, :update] do
       if_attribute :id => is { user.id }
     end
