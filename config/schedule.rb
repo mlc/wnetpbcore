@@ -8,7 +8,7 @@
 set :cron_log, "#{RAILS_ROOT}/log/cron_log.log"
 
 every 1.day, :at => "3:37 am" do
-  command "thin restart -C config/thin.yml"
+  command "thin restart -C #{RAILS_ROOT}/config/thin.yml"
 end
 
 every 8.hours, :at => 37 do
