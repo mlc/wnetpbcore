@@ -4,6 +4,10 @@ class Subject < ActiveRecord::Base
   xml_string "subject", :subject
   xml_string "subjectAuthorityUsed", :subject_authority
 
+  def name
+    subject
+  end
+
   # we use the standard PbcoreXmlElement definition of to_xml, but we have
   # to customize the from_xml direction...
   def self.from_xml(xml)
