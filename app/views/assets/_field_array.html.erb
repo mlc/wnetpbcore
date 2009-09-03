@@ -24,7 +24,7 @@ objs.each do |obj|
     query += '"'
   end
 -%>
-  <dd><%= link_to_unless(local_assigns[:searchkey].nil?, h(obj.send(value)).gsub(/[\r\n]+/, "<br />"),
+  <dd><%= link_to_unless(local_assigns[:searchkey].nil?, h(obj.send(value)).gsub(/\r\n|\r|\n/, "<br />"),
             { :action => 'index', :q => query })
   %></dd>
 <%-
