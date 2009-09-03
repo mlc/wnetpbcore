@@ -8,7 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   map.home '', :controller => "assets", :action => "index"
   map.lastsearch 'lastsearch', :controller => "assets", :action => "lastsearch"
 
-  map.resources :assets, :collection => { "opensearch" => :get, "toggleannotations" => :get , "zip" => :get } do |assets|
+  map.resources :assets, :collection => { "opensearch" => :get, "toggleannotations" => :get , "zip" => :get, "destroy_found_set" => :delete } do |assets|
     assets.resources :instantiations, :member => { "borrowings" => :get, "borrow" => :post, "return" => :post }
   end
   

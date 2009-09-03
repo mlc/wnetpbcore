@@ -5,9 +5,19 @@
 <h2>Nothing found.</h2>
 <%- else -%>
 <p>
-  <span id="record_count">Showing records <strong><%= @search_object.offset + 1 %></strong>–<strong><%= @search_object.offset + @assets.size %></strong> of <strong><%= @search_object.total_entries %></strong>.</span>
+  <span id="record_count">Showing records <strong><%= @search_object.offset + 1 %></strong>–<strong><%= @search_object.offset + @assets.size %></strong> of <strong id="total_entries"><%= @search_object.total_entries %></strong>.</span>
   <%= link_to_remote "#{session[:show_annotations] ? "hide" : "show"} annotations", :url => { :action => "toggleannotations" }, :html => { :id => "toggle_annotations_link", :href => url_for(:action => "toggleannotations") }, :method => :get %>
 </p>
+<%- permitted_to? :destroy_found_set, :assets do -%>
+  <%- if params[:q] -%>
+    <% form_tag destroy_found_set_assets_path, :method => :delete, :id => "super-dangerous" do %>
+      <p>
+        <%= hidden_field_tag :q, params[:q], :id => "destroy_found_set_q" %>
+        <%= submit_tag "destroy found set", :disabled => true %>
+      </p>
+    <% end %>
+  <%- end -%>
+<%- end -%>
 <%- permitted_to? :merge, :assets do -%>
   <%- content_for :javascript do -%>
     $(function(){
@@ -15,7 +25,6 @@
       checkMerge();
       $('.lendbox input').bind("change", checkLend);
       checkLend();
-
     });
   <%- end -%>
   <%= form_tag({:action => 'multiprocess'}, :method => :post) %>

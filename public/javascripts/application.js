@@ -36,3 +36,19 @@ function approveMerge() {
 
    return confirm(message);
 }
+
+$(function() {
+   $("#super-dangerous").submit(function() {
+       var prompt = 'Are you sure you wish to permanently destroy all ' + $("#total_entries").text() + ' records '
+       prompt += 'matching the query "' + $("#destroy_found_set_q").val() + '"?'
+       prompt += "\n\nThis functionality is EXTREMELY dangerous, and there is NO undo available."
+       if (confirm(prompt)) {
+           $("#super-dangerous input[type='submit']").attr("value", "Please wait\u2026").attr("disabled", true);
+           return true;
+       } else {
+           return false;
+       }
+   });
+   /* default to disabling the button, so it can not be clicked without JS */
+   $("#super-dangerous input:disabled").removeAttr("disabled");
+});

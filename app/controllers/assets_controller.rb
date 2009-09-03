@@ -37,6 +37,24 @@ class AssetsController < ApplicationController
       format.js
     end
   end
+
+  # DANGEROUS!
+  def destroy_found_set
+    if params[:q].nil? || params[:q].strip.blank?
+      flash[:error] = "No search query provided."
+      redirect_to :action => "index" and return
+    end
+
+    query = params[:q]
+    asset_terms = AssetTerms.search(query, {:match_mode => :extended, :per_page => 10000, :include => { :asset => Asset::ALL_INCLUDES }})
+    asset_terms.each do |at|
+      at.asset.destroy
+    end
+
+    flash[:message] = "#{asset_terms.size} assets matching the query <tt>#{params[:q]}</tt> destroyed."
+    session[:search] = nil
+    redirect_to :action => "index"
+  end
   
   def show
     alternate "application/xml", :format => "xml"
