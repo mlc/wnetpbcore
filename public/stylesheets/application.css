@@ -166,3 +166,6 @@ input#q {
     background-color: #8ae68a;
 }
 
+#super-dangerous input {
+    color: red; font-size: smaller;
+}
