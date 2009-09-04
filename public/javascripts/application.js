@@ -39,9 +39,9 @@ function approveMerge() {
 
 $(function() {
    $("#super-dangerous").submit(function() {
-       var prompt = 'Are you sure you wish to permanently destroy all ' + $("#total_entries").text() + ' records '
-       prompt += 'matching the query "' + $("#destroy_found_set_q").val() + '"?'
-       prompt += "\n\nThis functionality is EXTREMELY dangerous, and there is NO undo available."
+       var prompt = 'Are you sure you wish to permanently destroy all ' + $("#total_entries").text() + ' records ';
+       prompt += 'matching the query \u201c' + $("#destroy_found_set_q").val() + '\u201d?';
+       prompt += "\n\nThis functionality is EXTREMELY dangerous, and there is NO undo available.";
        if (confirm(prompt)) {
            $("#super-dangerous input[type='submit']").attr("value", "Please wait\u2026").attr("disabled", true);
            return true;
