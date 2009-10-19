@@ -2,6 +2,10 @@ set :app_db_host, 'localhost'
 set :app_db_user, 'pbcore'
 set :app_db_pass, 'xxxxxxxxxxx'
 
+set :server_type, :unicorn
+# or
+# set :server_type, :thin
+
 # note: i've never actually tested setting these to different things...
 # i don't know if it'll work or not...
 role :web, "my-webserver"
