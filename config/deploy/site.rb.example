@@ -2,6 +2,7 @@ set :app_db_host, 'localhost'
 set :app_db_user, 'pbcore'
 set :app_db_pass, 'xxxxxxxxxxx'
 
+set :rb_bin_path, '/usr/bin'
 set :server_type, :unicorn
 # or
 # set :server_type, :thin

@@ -128,7 +128,7 @@ namespace :thin do
   %w(start stop restart).each do |action|
     desc "#{action} this app's Thin Cluster"
     task action.to_sym, :roles => :app do
-      run "thin #{action} -C #{shared_configuration_location_for(:thin)}"
+      run "#{rb_bin_path}/thin #{action} -C #{shared_configuration_location_for(:thin)}"
     end
   end
 end
@@ -148,7 +148,7 @@ namespace :unicorn do
 
   desc "Start unicorn"
   task :start, :roles => :app do
-    run "cd #{current_path} && unicorn_rails -c #{shared_configuration_location_for(:unicorn)} -E production -D"
+    run "cd #{current_path} && #{rb_bin_path}/unicorn_rails -c #{shared_configuration_location_for(:unicorn)} -E production -D"
   end
 
   desc "Gracefully stop unicorn"
@@ -218,23 +218,23 @@ namespace :sphinx do
 
   desc "Stop the sphinx server"
   task :stop, :roles => :app do
-    run "cd #{current_path} && rake RAILS_ENV=production thinking_sphinx:stop"
+    run "cd #{current_path} && #{rb_bin_path}/rake RAILS_ENV=production thinking_sphinx:stop"
   end
 
   desc "Start the sphinx server"
   task :start, :roles => :app do
-    run "cd #{current_path} && rake RAILS_ENV=production thinking_sphinx:configure && rake RAILS_ENV=production thinking_sphinx:start"
+    run "cd #{current_path} && #{rb_bin_path}/rake RAILS_ENV=production thinking_sphinx:configure && rake RAILS_ENV=production thinking_sphinx:start"
   end
 
   desc "Restart the sphinx server"
   task :restart, :roles => :app do
-    run "cd #{current_path} && rake RAILS_ENV=production thinking_sphinx:configure && rake RAILS_ENV=production thinking_sphinx:running_start"
+    run "cd #{current_path} && #{rb_bin_path}/rake RAILS_ENV=production thinking_sphinx:configure && rake RAILS_ENV=production thinking_sphinx:running_start"
 
   end
 
   desc "Ask sphinx to re-index"
   task :index, :roles => :app do
-    run "cd #{current_path} && rake RAILS_ENV=production thinking_sphinx:index"
+    run "cd #{current_path} && #{rb_bin_path}/rake RAILS_ENV=production thinking_sphinx:index"
   end
 end
 
@@ -247,12 +247,12 @@ after "deploy:symlink", "sphinx:symlink"
 namespace :backgroundrb do
   desc "Stop the backgroundrb server"
   task :stop, :roles => :app do
-    run "cd #{current_path} && ./script/backgroundrb stop -e production"
+    run "cd #{current_path} && #{rb_bin_path}/ruby ./script/backgroundrb stop -e production"
   end
 
   desc "Start the backgroundrb server"
   task :start, :roles => :app do
-    run "cd #{current_path} && RAILS_ENV=production nohup ./script/backgroundrb start -e production > /dev/null 2>&1"
+    run "cd #{current_path} && RAILS_ENV=production nohup #{rb_bin_path}/ruby ./script/backgroundrb start -e production > /dev/null 2>&1"
   end
 
   desc "Start the backgroundrb server"
@@ -269,6 +269,6 @@ after "deploy:symlink", "deploy:update_crontab"
 namespace :deploy do
   desc "Update the crontab file"
   task :update_crontab, :roles => :db do
-    run "cd #{release_path} && whenever --update-crontab #{application}"
+    run "cd #{release_path} && #{rb_bin_path}/whenever --update-crontab #{application}"
   end
 end
