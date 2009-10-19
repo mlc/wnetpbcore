@@ -70,7 +70,6 @@ after "deploy:update_code", "db:symlink"
 
 # http://blog.ninjahideout.com/posts/busting-a-cap-in-yo-ass
 
-set :server_type, :thin unless exists?(:server_type)
 set :deploy_port, 9000 unless exists?(:deploy_port)
 set :cluster_instances, 3 unless exists?(:cluster_instances)
 
@@ -82,6 +81,10 @@ end
 
 def shared_configuration_location_for(server = :thin)
   "#{shared_config_path}/#{server}.yml"
+end
+
+def pidfile_location_for(server = :thin)
+  "#{shared_path}/pids/#{server}.pid"
 end
 
 namespace :configuration do
@@ -108,7 +111,7 @@ namespace :thin do
       "servers" => cluster_instances.to_i,
       "environment" => "production",
       "address" => "localhost",
-      "pid" => "#{current_path}/tmp/pids/log.pid"
+      "pid" => pidfile_location_for(:thin)
     }.to_yaml
     put config_options, shared_configuration_location_for(:thin)
   end
@@ -128,6 +131,42 @@ namespace :thin do
     task action.to_sym, :roles => :app do
       run "thin #{action} -C #{shared_configuration_location_for(:thin)}"
     end
+  end
+end
+
+namespace :unicorn do
+  desc "Generate a unicorn configuration file"
+  task :build_configuration, :roles => :app do
+    unicorn_config = ERB.new(File.read(File.join("config", "unicorn.cfg.erb")))
+    put unicorn_config.result(binding), shared_configuration_location_for(:unicorn)
+  end
+
+  desc "Links the configuration file"
+  task :link_configuration_file, :roles => :app do
+    run "ln -nsf #{shared_configuration_location_for(:unicorn)} #{public_configuration_location_for(:unicorn)}"
+  end
+
+
+  desc "Start unicorn"
+  task :start, :roles => :app do
+    run "cd #{current_path} && unicorn_rails -c #{shared_configuration_location_for(:unicorn)} -E production -D"
+  end
+
+  desc "Gracefully stop unicorn"
+  task :stop, :roles => :app do
+    run "[ -f #{pidfile_location_for(:unicorn)} ] && kill -QUIT `cat #{pidfile_location_for(:unicorn)}`"
+  end
+
+  desc "Restart unicorn"
+  task :restart, :roles => :app do
+    # gracefully stop
+    begin
+      run "[ -f #{pidfile_location_for(:unicorn)} ] && kill -USR2 `cat #{pidfile_location_for(:unicorn)}`"
+    rescue CommandError => e
+      logger.info "restarting failed; trying just to start" if logger
+    end
+
+    start
   end
 end
 

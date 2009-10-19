@@ -1,0 +1,38 @@
+worker_processes <%= cluster_instances %>
+listen <%= deploy_port %>, :tcp_nodelay => true
+pid "<%= pidfile_location_for(:unicorn) %>"
+
+preload_app true
+
+GC.respond_to?(:copy_on_write_friendly=) and
+  GC.copy_on_write_friendly = true
+
+before_fork do |server, worker|
+  # the following is recomended for Rails + "preload_app true"
+  # as there's no need for the master process to hold a connection
+  defined?(ActiveRecord::Base) and
+    ActiveRecord::Base.connection.disconnect!
+
+  # c.f. http://github.com/blog/517-unicorn
+  old_pid = RAILS_ROOT + '/tmp/pids/unicorn.pid.oldbin'
+  if File.exists?(old_pid) && server.pid != old_pid
+    begin
+      Process.kill("QUIT", File.read(old_pid).to_i)
+    rescue Errno::ENOENT, Errno::ESRCH
+      # someone else did our job for us
+    end
+  end
+  
+  # optionally throttle the master from forking too quickly by sleeping
+  sleep 1
+end
+
+after_fork do |server, worker|
+  # per-process listener ports for debugging/admin/migrations
+  addr = "127.0.0.1:#{9293 + worker.nr}"
+  server.listen(addr, :tries => -1, :delay => 5)
+  
+  # the following is required for Rails + "preload_app true",
+  defined?(ActiveRecord::Base) and
+    ActiveRecord::Base.establish_connection
+end

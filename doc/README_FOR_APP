@@ -4,8 +4,7 @@ INTRODUCTION
 This is a PBCore-compliant media asset database developed in Ruby on 
 Rails.
 
-To report bugs, go to 
-http://pasta.lighthouseapp.com/projects/27016-pbcore-database
+To report bugs, email the author at mike@vermicel.li
 
 To browse the source, go to
 http://git.mlcastle.net/?p=pbcore.git;a=summary
