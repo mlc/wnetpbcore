@@ -182,17 +182,25 @@ namespace :deploy do
   %w(start stop restart).each do |action|
     desc "#{action} our server"
     task action.to_sym do
-      find_and_execute_task("#{server_type}:#{action}")
+      find_and_execute_task("ourserver:#{action}")
       find_and_execute_task("sphinx:#{action}")
       find_and_execute_task("backgroundrb:#{action}")
     end
   end
 end
 
-after "deploy:setup", "configuration:make_default_folders"
-after "deploy:setup", "#{server_type}:build_configuration"
+namespace :ourserver do
+  %w(start stop restart build_configuration link_configuration).each do |action|
+    task action.to_sym do
+      find_and_execute_task("#{server_type}:#{action}")
+    end
+  end
+end
 
-after "deploy:symlink", "#{server_type}:link_configuration_file"
+after "deploy:setup", "configuration:make_default_folders"
+after "deploy:setup", "ourserver:build_configuration"
+
+after "deploy:symlink", "ourserver:link_configuration_file"
 after "deploy:symlink", "configuration:symlink_site_key"
 
 # http://www.updrift.com/article/deploying-a-rails-app-with-thinking-sphinx
