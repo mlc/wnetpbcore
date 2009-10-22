@@ -190,7 +190,7 @@ namespace :deploy do
 end
 
 namespace :ourserver do
-  %w(start stop restart build_configuration link_configuration).each do |action|
+  %w(start stop restart build_configuration link_configuration_file).each do |action|
     task action.to_sym do
       find_and_execute_task("#{server_type}:#{action}")
     end
@@ -223,12 +223,12 @@ namespace :sphinx do
 
   desc "Start the sphinx server"
   task :start, :roles => :app do
-    run "cd #{current_path} && #{rb_bin_path}/rake RAILS_ENV=production thinking_sphinx:configure && rake RAILS_ENV=production thinking_sphinx:start"
+    run "cd #{current_path} && #{rb_bin_path}/rake RAILS_ENV=production thinking_sphinx:configure && #{rb_bin_path}/rake RAILS_ENV=production thinking_sphinx:start"
   end
 
   desc "Restart the sphinx server"
   task :restart, :roles => :app do
-    run "cd #{current_path} && #{rb_bin_path}/rake RAILS_ENV=production thinking_sphinx:configure && rake RAILS_ENV=production thinking_sphinx:running_start"
+    run "cd #{current_path} && #{rb_bin_path}/rake RAILS_ENV=production thinking_sphinx:configure && #{rb_bin_path}/rake RAILS_ENV=production thinking_sphinx:running_start"
 
   end
 
