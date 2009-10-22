@@ -3,6 +3,8 @@
 
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
+  include Oink::MemoryUsageLogger
+  include Oink::InstanceTypeCounter
 
   before_filter :set_current_user
 
