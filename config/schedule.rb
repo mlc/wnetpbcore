@@ -6,9 +6,18 @@
 # Learn more: http://github.com/javan/whenever
 
 set :cron_log, "#{RAILS_ROOT}/log/cron_log.log"
+set :server_type, nil
 
-every 1.day, :at => "3:37 am" do
-  command "thin restart -C #{RAILS_ROOT}/config/thin.yml"
+case server_type
+when 'thin'
+  every 1.day, :at => "3:37 am" do
+    command "thin restart -C #{RAILS_ROOT}/config/thin.yml"
+  end
+
+when 'unicorn'
+  every 1.day, :at => "3:37 am" do
+    command "[ -f #{RAILS_ROOT}/tmp/pids/unicorn.pid ] && kill -HUP `cat #{RAILS_ROOT}/tmp/pids/unicorn.pid`"
+  end
 end
 
 every 8.hours, :at => 37 do
