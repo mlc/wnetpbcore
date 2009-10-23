@@ -52,7 +52,11 @@ This needs the following gems:
  * rake
  * thin
  * packet
- * mysql (optional, but highly recommended)
+ * whenever (from http://gemcutter.org/)
+
+These gems are optional but will magically improve performance if present:
+ * mysql
+ * fast_xs
 
 Other gems are unpacked into vendor/gems/ and don't need to be
 installed specially.
