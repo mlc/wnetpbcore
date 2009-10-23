@@ -269,6 +269,7 @@ after "deploy:symlink", "deploy:update_crontab"
 namespace :deploy do
   desc "Update the crontab file"
   task :update_crontab, :roles => :db do
-    run "cd #{release_path} && PATH=\"#{rb_bin_path}:$PATH\" /usr/bin/env whenever -s server_type=#{server_type} --update-crontab #{application}"
+    god_str = exists?(:using_god) ? "-s have_god=1" : ''
+    run "cd #{release_path} && PATH=\"#{rb_bin_path}:$PATH\" /usr/bin/env whenever -s server_type=#{server_type} #{god_str} --update-crontab #{application}"
   end
 end
