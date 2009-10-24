@@ -5,13 +5,15 @@ module Picklist
     # avoid instantiating lots and lots of ActiveRecord objects when
     # all we need is a select box
     def quick_load_for_select(conditions = nil)
-      sql = "SELECT #{get_quick_column} AS quick, id FROM #{connection.quote_table_name(table_name)}"
+      columns = (["#{get_quick_column} AS quick"] + (extra_quick_columns.to_a || []) + ["id"]).join(", ")
+      sql = "SELECT #{columns} FROM #{connection.quote_table_name(table_name)}"
       sanitized_conditions = sanitize_sql_for_conditions(conditions)
       sql << " WHERE #{sanitized_conditions}" if sanitized_conditions
       sql << " ORDER BY quick ASC"
+
       result = connection.execute(sql)
       rows = []
-      result.each{|row| rows << row}
+      result.each{|row| row[-1] = row[-1].to_i; rows << row}
       result.free
 
       rows
@@ -23,8 +25,17 @@ module Picklist
       write_inheritable_attribute("quick_column", column)
     end
 
-    def get_quick_column #:nodoc:
+    def get_quick_column # :nodoc:
       read_inheritable_attribute("quick_column")
+    end
+
+    # specify one or more extra columns to be returned by quick_load
+    def extra_quick_column(*columns)
+      write_inheritable_attribute("extra_quick_column", Set.new(columns.map(&:to_s)) + (extra_quick_columns || []))
+    end
+
+    def extra_quick_columns # :nodoc:
+      read_inheritable_attribute("extra_quick_column")
     end
   end
 
