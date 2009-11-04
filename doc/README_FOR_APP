@@ -1,5 +1,4 @@
-INTRODUCTION
-============
+= INTRODUCTION
 
 This is a PBCore-compliant media asset database developed in Ruby on 
 Rails.
@@ -24,7 +23,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 General Public License for more details.
 
 You should have received a copy of the GNU General Public License along 
-with this program.  If not, see <http://www.gnu.org/licenses/>.
+with this program.  If not, see http://www.gnu.org/licenses/.
 
 A copy of the GNU General Public License can also be found in the 
 'GPL-3' file in the root directory of the project.
@@ -43,20 +42,19 @@ discovery (http://dublincore.org), and has been reviewed by the Dublin
 Core Metadata Initiative Usage Board. Copyright: 2005, Corporation for 
 Public Broadcasting.
 
-LOCAL DEVELOPMENT SET-UP
-========================
+== LOCAL DEVELOPMENT SET-UP
 
 This needs the following gems:
- * chronic
- * libxml-ruby
- * rake
- * thin
- * packet
- * whenever (from http://gemcutter.org/)
+* chronic
+* libxml-ruby
+* rake
+* thin
+* packet
+* whenever (from http://gemcutter.org/)
 
 These gems are optional but will magically improve performance if present:
- * mysql
- * fast_xs
+* mysql
+* fast_xs
 
 Other gems are unpacked into vendor/gems/ and don't need to be
 installed specially.
@@ -68,15 +66,5 @@ Also you need sphinx, from http://www.sphinxsearch.com/
 If you plan to deploy, you need capistrano and capistrano-ext as well.
 
 
-SERVER SET-UP
-=============
-
-On the server, install ruby (including rubygems), nginx, git,
-sphinxsearch. Then install the required gems as above.
-
-Then, copy config/deploy/site.rb.example to config/deploy/mysite.rb and
-fill in the blanks. Create the 'pbcore' database and grant access as
-specified.
-
-If you're lucky, you can then do 'cap mysite deploy:setup' and
-'cap mysite deploy'!
+== SERVER SET-UP
+See doc/INSTALL.rdoc
