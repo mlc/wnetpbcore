@@ -94,7 +94,7 @@ namespace :configuration do
 
   desc "Symlinks the site_key.txt file"
   task :symlink_site_key, :roles => :app do
-    run "ln -nsf #{shared_config_path}/site_key.txt #{current_path}/config/site_key.txt"
+    run "ln -nsf #{shared_config_path}/site_key.txt #{release_path}/config/site_key.txt"
   end
 end
 
@@ -201,7 +201,7 @@ after "deploy:setup", "configuration:make_default_folders"
 after "deploy:setup", "ourserver:build_configuration"
 
 after "deploy:symlink", "ourserver:link_configuration_file"
-after "deploy:symlink", "configuration:symlink_site_key"
+after "deploy:update_code", "configuration:symlink_site_key"
 
 # http://www.updrift.com/article/deploying-a-rails-app-with-thinking-sphinx
 namespace :sphinx do
