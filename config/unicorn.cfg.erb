@@ -1,5 +1,5 @@
 worker_processes <%= cluster_instances %>
-listen <%= deploy_port %>, :tcp_nodelay => true
+listen "127.0.0.1:<%= deploy_port %>", :tcp_nodelay => true
 pid "<%= pidfile_location_for(:unicorn) %>"
 
 preload_app true
