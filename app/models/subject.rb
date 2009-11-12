@@ -1,6 +1,9 @@
 class Subject < ActiveRecord::Base
   include PbcoreXmlElement
+  include Picklist
+
   has_and_belongs_to_many :assets
+  quick_column 'CONCAT(subject, " (", COALESCE(subject_authority, ""), ")")'
   xml_string "subject", :subject
   xml_string "subjectAuthorityUsed", :subject_authority
 

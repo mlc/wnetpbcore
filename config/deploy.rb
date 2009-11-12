@@ -95,7 +95,7 @@ namespace :configuration do
 
   desc "Symlinks the site_key.txt file"
   task :symlink_site_key, :roles => :app do
-    run "ln -nsf #{shared_config_path}/site_key.txt #{current_path}/config/site_key.txt"
+    run "ln -nsf #{shared_config_path}/site_key.txt #{release_path}/config/site_key.txt"
   end
 end
 
@@ -129,7 +129,7 @@ namespace :thin do
   %w(start stop restart).each do |action|
     desc "#{action} this app's Thin Cluster"
     task action.to_sym, :roles => :app do
-      run "thin #{action} -C #{shared_configuration_location_for(:thin)}"
+      run "#{rb_bin_path}/thin #{action} -C #{shared_configuration_location_for(:thin)}"
     end
   end
 end
@@ -149,7 +149,7 @@ namespace :unicorn do
 
   desc "Start unicorn"
   task :start, :roles => :app do
-    run "cd #{current_path} && unicorn_rails -c #{shared_configuration_location_for(:unicorn)} -E production -D"
+    run "cd #{current_path} && #{rb_bin_path}/unicorn_rails -c #{shared_configuration_location_for(:unicorn)} -E production -D"
   end
 
   desc "Gracefully stop unicorn"
@@ -183,18 +183,26 @@ namespace :deploy do
   %w(start stop restart).each do |action|
     desc "#{action} our server"
     task action.to_sym do
-      find_and_execute_task("#{server_type}:#{action}")
+      find_and_execute_task("ourserver:#{action}")
       find_and_execute_task("sphinx:#{action}")
       find_and_execute_task("backgroundrb:#{action}")
     end
   end
 end
 
-after "deploy:setup", "configuration:make_default_folders"
-after "deploy:setup", "#{server_type}:build_configuration"
+namespace :ourserver do
+  %w(start stop restart build_configuration link_configuration_file).each do |action|
+    task action.to_sym do
+      find_and_execute_task("#{server_type}:#{action}")
+    end
+  end
+end
 
-after "deploy:symlink", "#{server_type}:link_configuration_file"
-after "deploy:symlink", "configuration:symlink_site_key"
+after "deploy:setup", "configuration:make_default_folders"
+after "deploy:setup", "ourserver:build_configuration"
+
+after "deploy:symlink", "ourserver:link_configuration_file"
+after "deploy:update_code", "configuration:symlink_site_key"
 
 # http://www.updrift.com/article/deploying-a-rails-app-with-thinking-sphinx
 namespace :sphinx do
@@ -211,23 +219,23 @@ namespace :sphinx do
 
   desc "Stop the sphinx server"
   task :stop, :roles => :app do
-    run "cd #{current_path} && rake RAILS_ENV=production thinking_sphinx:stop"
+    run "cd #{current_path} && #{rb_bin_path}/rake RAILS_ENV=production thinking_sphinx:stop"
   end
 
   desc "Start the sphinx server"
   task :start, :roles => :app do
-    run "cd #{current_path} && rake RAILS_ENV=production thinking_sphinx:configure && rake RAILS_ENV=production thinking_sphinx:start"
+    run "cd #{current_path} && #{rb_bin_path}/rake RAILS_ENV=production thinking_sphinx:configure && #{rb_bin_path}/rake RAILS_ENV=production thinking_sphinx:start"
   end
 
   desc "Restart the sphinx server"
   task :restart, :roles => :app do
-    run "cd #{current_path} && rake RAILS_ENV=production thinking_sphinx:configure && rake RAILS_ENV=production thinking_sphinx:running_start"
+    run "cd #{current_path} && #{rb_bin_path}/rake RAILS_ENV=production thinking_sphinx:configure && #{rb_bin_path}/rake RAILS_ENV=production thinking_sphinx:running_start"
 
   end
 
   desc "Ask sphinx to re-index"
   task :index, :roles => :app do
-    run "cd #{current_path} && rake RAILS_ENV=production thinking_sphinx:index"
+    run "cd #{current_path} && #{rb_bin_path}/rake RAILS_ENV=production thinking_sphinx:index"
   end
 end
 
@@ -240,12 +248,12 @@ after "deploy:symlink", "sphinx:symlink"
 namespace :backgroundrb do
   desc "Stop the backgroundrb server"
   task :stop, :roles => :app do
-    run "cd #{current_path} && ./script/backgroundrb stop -e production"
+    run "cd #{current_path} && #{rb_bin_path}/ruby ./script/backgroundrb stop -e production"
   end
 
   desc "Start the backgroundrb server"
   task :start, :roles => :app do
-    run "cd #{current_path} && RAILS_ENV=production nohup ./script/backgroundrb start -e production > /dev/null 2>&1"
+    run "cd #{current_path} && RAILS_ENV=production nohup #{rb_bin_path}/ruby ./script/backgroundrb start -e production > /dev/null 2>&1"
   end
 
   desc "Start the backgroundrb server"
@@ -262,6 +270,7 @@ after "deploy:symlink", "deploy:update_crontab"
 namespace :deploy do
   desc "Update the crontab file"
   task :update_crontab, :roles => :db do
-    run "cd #{release_path} && whenever --update-crontab #{application}"
+    god_str = exists?(:have_god) ? "-s have_god=1" : ''
+    run "cd #{release_path} && PATH=\"#{rb_bin_path}:$PATH\" /usr/bin/env whenever -s server_type=#{server_type} #{god_str} --update-crontab #{application}"
   end
 end

@@ -15,7 +15,7 @@
     <%= f.label(:date_issued, "Date Issued:") %> <%= f.text_field(:date_issued) %>
     <br />
     <%= f.label(:format_id, "Format:") %>
-    <%= f.select :format_id, Format.all(:conditions => ["visible = 1 OR id = ?", @instantiation.format_id]).map{|i| [i.name, i.id]}, :include_blank => true %>
+    <%= f.select :format_id, Format.quick_load_for_select(["visible = 1 OR id = ?", @instantiation.format_id]), :include_blank => true %>
     <br />
     <%= f.label(:format_location, "Format Location:") %> <%= f.text_field(:format_location, :class => 'required') %>
     <br />
@@ -23,7 +23,7 @@
     <%= f.select :format_media_type_id, FormatMediaType.all(:conditions => ["visible = 1 OR id = ?", @instantiation.format_media_type_id]).map{|i| [i.name, i.id]}, :include_blank => true %>
     <br />
     <acronym title="identifies the particular use or manner in which a version or rendition of a media item is used"><%= f.label(:format_generation_id, "Format Generations:") %></acronym>
-    <%= f.select :format_generation_id, FormatGeneration.all(:conditions => ["visible = 1 OR id = ?", @instantiation.format_generation_id]).map{|i| [i.name, i.id]}, :include_blank => true %>
+    <%= f.select :format_generation_id, FormatGeneration.quick_load_for_select(["visible = 1 OR id = ?", @instantiation.format_generation_id]), :include_blank => true %>
     <br />
     <%= f.label(:format_file_size, "Format File Size:") %> <%= f.text_field(:format_file_size) %>
     <br />

@@ -41,11 +41,11 @@ module AssetsHelper
   # return all visible genres, plus possibly one selected genre, in a format
   # suitable for passing to option_groups_from_collection_for_select
   def genres_including(genre)
-    genres = Genre.find(:all, :conditions => genre.nil? ? "visible = 1" : ["visible = 1 OR id = ?", genre.id], :order => "genre_authority_used ASC, name ASC")
+    genres = Genre.quick_load_for_select(genre.nil? ? "visible = 1" : ["visible = 1 OR id = ?", genre.id])
     gentypes = {}
-    genres.each do |g|
-      gentypes[g.genre_authority_used] ||= []
-      gentypes[g.genre_authority_used] << g
+    genres.each do |name, authority, id|
+      gentypes[authority] ||= []
+      gentypes[authority] << [name, id]
     end
     return gentypes
   end

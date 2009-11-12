@@ -1,9 +1,9 @@
 <div class="subject">
   <p>
     <select name="asset[subject_ids][]">
-      <%= options_for_select(Subject.all(:conditions => (subject.nil? ?
+      <%= options_for_select(Subject.quick_load_for_select(subject.nil? ?
             "visible = 1" : ["visible = 1 OR id = ?", subject.id]),
-            :order => "subject ASC").map{|s| ["#{s.subject} (#{s.subject_authority})", s.id]}, subject.id) %>
+            subject.id) %>
     </select>
     <%= f.remove_link "remove" %>
   </p>

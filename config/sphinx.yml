@@ -1,0 +1,5 @@
+development:
+  mem_limit: 128M
+
+production:
+  mem_limit: 128M
