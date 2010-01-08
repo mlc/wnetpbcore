@@ -138,6 +138,7 @@ package com.adobe.net
 			["text/vnd.wap.wmlscript","wmls"],
 			["text/x-setext","etx"],
 			["video/mpeg","mpg","mpeg","mpe"],
+			["video/mp4", "mp4"],
 			["video/quicktime","mov","qt"],
 			["video/vnd.mpegurl","m4u","mxu"],
 			["video/x-flv","flv"],
