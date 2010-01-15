@@ -54,7 +54,7 @@ the 0.9.9 series. Install by doing the standard
 And, finally, install some needed ruby packages by doing
  gem install chronic libxml-ruby rake rack thin packet fast_xs --no-ri --no-rdoc
  gem install mysql --no-ri --no-rdoc -- --with-mysql-config=/usr/bin/mysql_config
- gem install whenever --source http://gemcutter.org/ --no-ri --no-rdoc
+ gem install whenever thinking-sphinx --source http://gemcutter.org/ --no-ri --no-rdoc
 
 If you're using the Debian-provided rubygems package, then the
 binaries for the install gems will not automatically be in your
