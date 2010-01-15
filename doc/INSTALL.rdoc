@@ -52,6 +52,7 @@ the 0.9.9 series. Install by doing the standard
  ./configure && make && make install
 
 And, finally, install some needed ruby packages by doing
+ gem install -v 2.1.2 rails --no-ri --no-rdoc
  gem install chronic libxml-ruby rake rack thin fast_xs --no-ri --no-rdoc
  gem install mysql --no-ri --no-rdoc -- --with-mysql-config=/usr/bin/mysql_config
  gem install whenever thinking-sphinx ts-delayed-delta --source http://gemcutter.org/ --no-ri --no-rdoc
@@ -165,7 +166,9 @@ yet, it will create an empty index). Then, start everything up:
 
 Things can be a bit hairy on the first deployment, so you might have
 to manually start one or more services:
- cap my_site thin:start sphinx:start backgroundrb:start
+ cap my_site thin:start sphinx:start
+
+FIXME: we need to figure out how to get the delayed jobs worker working.
 
 (If you'd like to have a list of all defined cap tasks, just do
 <tt>cap -T</tt>).
