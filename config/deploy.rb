@@ -184,7 +184,6 @@ namespace :deploy do
     task action.to_sym do
       find_and_execute_task("ourserver:#{action}")
       find_and_execute_task("sphinx:#{action}")
-      find_and_execute_task("backgroundrb:#{action}")
     end
   end
 end
@@ -240,27 +239,6 @@ end
 
 after "deploy:setup", "sphinx:setup"
 after "deploy:symlink", "sphinx:symlink"
-
-# http://www.brynary.com/2007/4/8/capistrano-tasks-for-backgroundrb
-# but some pretty heavy modifications
-
-namespace :backgroundrb do
-  desc "Stop the backgroundrb server"
-  task :stop, :roles => :app do
-    run "cd #{current_path} && #{rb_bin_path}/ruby ./script/backgroundrb stop -e production"
-  end
-
-  desc "Start the backgroundrb server"
-  task :start, :roles => :app do
-    run "cd #{current_path} && RAILS_ENV=production nohup #{rb_bin_path}/ruby ./script/backgroundrb start -e production > /dev/null 2>&1"
-  end
-
-  desc "Start the backgroundrb server"
-  task :restart, :roles => :app do
-    stop
-    start
-  end
-end
 
 # http://github.com/javan/whenever/tree/master
 

@@ -1,6 +1,10 @@
-class <%= class_name %> < ActiveRecord::Migration
+class DropBackgroundrbQueueTable < ActiveRecord::Migration
   def self.up
-    create_table :<%= bdrb_table_name %> do |t|
+    drop_table :bdrb_job_queues
+  end
+
+  def self.down
+    create_table :bdrb_job_queues do |t|
       t.column :args, :binary
       t.column :worker_name, :string
       t.column :worker_method, :string
@@ -19,9 +23,5 @@ class <%= class_name %> < ActiveRecord::Migration
       t.column :worker_key, :string
       t.column :scheduled_at, :datetime
     end
-  end
-
-  def self.down
-    drop_table :<%= bdrb_table_name %>
   end
 end

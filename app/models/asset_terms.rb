@@ -29,14 +29,6 @@ class AssetTerms < ActiveRecord::Base
     set_property :min_infix_len => 3
   end
   
-  def self.async_reindex
-    begin
-      MiddleMan.worker(:indexing_worker).async_reindex
-    rescue
-      reindex
-    end
-  end
-
   def self.regenerate_all(blocksize = 100)
     offset = 1
     begin

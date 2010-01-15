@@ -14,31 +14,25 @@ class XmlController < ApplicationController
     if request.post?
       havezip = MIME::Types.of(params[:xml].original_filename).any?{|t| t.content_type == "application/zip"}
       if havezip
-        begin
-          ThinkingSphinx.updates_enabled = false
-          successes = 0
-          failures = []
-          zip = Zip::ZipInputStream.new(params[:xml])
-          while (entry = zip.get_next_entry) do
-            next unless entry.file? && entry.size > 0
-            next if entry.name =~ /__MACOS/ # attempt to ignore resource fork
-            next if entry.name =~ /[\/\\]\.[^\/\\]*/ # and hidden files too
-            begin
-              a = Asset.from_xml(zip.read(nil, String.new))
-              if a.valid?
-                a.destroy_existing
-                a.save unless a.merge_existing
-                successes += 1
-              else
-                failures << "#{entry.name} is not valid"
-              end
-            rescue Exception => e
-              failures << "#{e.to_s} on #{entry.name}"
+        successes = 0
+        failures = []
+        zip = Zip::ZipInputStream.new(params[:xml])
+        while (entry = zip.get_next_entry) do
+          next unless entry.file? && entry.size > 0
+          next if entry.name =~ /__MACOS/ # attempt to ignore resource fork
+          next if entry.name =~ /[\/\\]\.[^\/\\]*/ # and hidden files too
+          begin
+            a = Asset.from_xml(zip.read(nil, String.new))
+            if a.valid?
+              a.destroy_existing
+              a.save unless a.merge_existing
+              successes += 1
+            else
+              failures << "#{entry.name} is not valid"
             end
+          rescue Exception => e
+            failures << "#{e.to_s} on #{entry.name}"
           end
-        ensure
-          ThinkingSphinx.updates_enabled = true
-          AssetTerms.async_reindex
         end
         flash.now[:message] = "#{successes} #{successes == 1 ? "record" : "records"} imported"
         flash.now[:warning] = failures.join(", ") unless failures.empty?
