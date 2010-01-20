@@ -28,8 +28,6 @@ Rails::Initializer.run do |config|
   config.gem 'uuidtools'
   config.gem 'mislav-will_paginate', :version => '~> 2.2.3', :lib => 'will_paginate', :source => 'http://gems.github.com'
   config.gem 'whenever', :lib => false, :source => 'http://gemcutter.org'
-  config.gem 'thinking-sphinx', :lib => "thinking_sphinx", :version => ">=1.3.14", :source => 'http://gemcutter.org'
-  config.gem 'ts-delayed-delta', :lib => 'thinking_sphinx/deltas/delayed_delta', :version => '>= 1.0.0', :source  => 'http://gemcutter.org'
   config.gem 'rsolr', :version => '0.9.6' # NEWER VERSIONS ARE BUGGY!
   config.gem 'sunspot', :lib => 'sunspot', :source  => 'http://gemcutter.org'
   config.gem 'sunspot_rails', :lib => 'sunspot/rails', :source  => 'http://gemcutter.org'
