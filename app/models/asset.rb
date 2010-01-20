@@ -1,8 +1,7 @@
 class Asset < ActiveRecord::Base
   before_create :generate_uuid
-  before_save :update_asset_terms
 
-  attr_protected :uuid, :asset_terms, :asset_terms_id
+  attr_protected :uuid
   
   include PbcoreXmlElement
 
@@ -32,7 +31,6 @@ class Asset < ActiveRecord::Base
   has_many :rights_summaries, :dependent => :destroy, :attributes => true
   has_many :instantiations, :dependent => :destroy
   has_many :extensions, :dependent => :destroy, :attributes => true
-  has_one :asset_terms, :dependent => :destroy
 
   validates_size_of :identifiers, :minimum => 1, :message => "must have at least one entry"
   validates_size_of :titles, :minimum => 1, :message => "must have at least one entry"
@@ -130,34 +128,43 @@ class Asset < ActiveRecord::Base
     found
   end
 
-  def update_asset_terms
-    self.asset_terms ||= AssetTerms.new
-    asset_terms.identifier = (
-      identifiers.map{|a| [a.identifier, a.identifier_source.name]} +
-      instantiations.map{|a| a.format_ids.map{|b| b.format_identifier}}
-    ).flatten.join(' ')
-    asset_terms.title = titles.map{|a| [a.title_type.nil? ? [] : a.title_type.name, a.title]}.flatten.join(' ')
-    asset_terms.subject = subjects.map{|a| a.subject}.join(' ')
-    asset_terms.description = descriptions.map{|a| a.description}.join(' ')
-    asset_terms.genre = genres.map{|a| a.name}.join(' ')
-    asset_terms.relation = relations.map{|a| a.relation_identifier}.join(' ')
-    asset_terms.coverage = coverages.map{|a| a.coverage}.join(' ')
-    asset_terms.audience_level = audience_levels.map{|a| a.name}.join(' ')
-    asset_terms.audience_rating = audience_ratings.map{|a| a.name}.join(' ')
-    asset_terms.creator = creators.map{|a| a.creator}.join(' ')
-    asset_terms.contributor = contributors.map{|a| a.contributor}.join(' ')
-    asset_terms.publisher = publishers.map{|a| a.publisher}.join(' ')
-    asset_terms.rights = rights_summaries.map{|a| a.rights_summary}.join(' ')
-    asset_terms.extension = extensions.map{|a| "#{a.extension} #{a.extension_authority_used}"}.join(' ')
-    asset_terms.location = instantiations.map{|a| a.format_location}.join(' ')
-    asset_terms.annotation = (
-      instantiations.map{|a| a.annotations.map{|b| b.annotation}} +
-      instantiations.map{|a| a.essence_tracks.map{|b| b.essence_track_annotation}}
-    ).flatten.join(' ')
-    asset_terms.date = (
-      instantiations.map{|a| [a.date_created, a.date_issued]+a.date_availables.map{|b| [b.date_available_start, b.date_available_end]}}
-    ).flatten.join(' ')
-    asset_terms.format = instantiations.map{|a| a.format.nil? ? '' : a.format.name}.join(' ')
+  searchable do
+    text :identifier do
+      identifiers.map{|a| "#{a.identifier} #{a.identifier_source.name}"} +
+        (instantiations.map{|a| a.format_ids.map(&:format_identifier)}.flatten)
+    end
+    text(:title, :boost => 1.2) { titles.map(&:title) }
+    text(:subject) { subjects.map(&:subject) }
+    string(:subject, :multiple => :true) { subjects.map(&:subject) }
+    text(:description) { descriptions.map(&:description) }
+    text(:genre) { genres.map(&:name) }
+    string(:genres, :multiple => :true) { genres.map(&:name) }
+    text(:relation) { relations.map(&:relation_identifier) }
+    text(:coverage) { coverages.map(&:coverage) }
+    string(:coverage, :multiple => :true) { coverages.map(&:coverage) }
+    text(:audience_level) { audience_levels.map(&:name) }
+    text(:audience_rating) { audience_ratings.map(&:name) }
+    text(:creator) { creators.map(&:creator) }
+    string(:creator, :multiple => :true) { creators.map(&:creator) }
+    text(:contributor) { contributors.map(&:contributor) }
+    string(:contributor, :multiple => :true) { contributors.map(&:contributor) }
+    text(:publisher) { publishers.map(&:publisher) }
+    string(:publisher, :multiple => :true) { publishers.map(&:publisher) }
+    text(:rights) { rights_summaries.map(&:rights_summary) }
+    text(:extension) { extensions.map{|a| "#{a.extension} #{a.extension_authority_used}"} }
+    text(:location) { instantiations.map{|a| a.format_location} }
+    text(:annotation) do
+      (
+       instantiations.map{|a| a.annotations.map{|b| b.annotation}} +
+       instantiations.map{|a| a.essence_tracks.map{|b| b.essence_track_annotation}}
+      ).flatten
+    end
+    text(:date) do
+      (
+       instantiations.map{|a| [a.date_created, a.date_issued]+a.date_availables.map{|b| [b.date_available_start, b.date_available_end]}}
+      ).flatten
+    end
+    text(:format) { instantiations.map{|a| a.format.nil? ? '' : a.format.name} }
   end
 
   def self.dedupe
