@@ -4,16 +4,16 @@ class AssetTerms < ActiveRecord::Base
   define_index do
     indexes :identifier
     indexes :title
-    indexes :subject
+    indexes asset.subjects.subject, :as => :subject, :facet => true
     indexes :description
-    indexes :genre
+    indexes asset.genres.name, :as => :genre, :facet => true
     indexes :relation
-    indexes :coverage
+    indexes asset.coverages.coverage, :as => :coverage, :facet => true
     indexes :audience_level
     indexes :audience_rating
-    indexes :creator
-    indexes :contributor
-    indexes :publisher
+    indexes asset.creators.creator, :as => :creator, :facet => true
+    indexes asset.contributors.contributor, :as => :contributor, :facet => true
+    indexes asset.publishers.publisher, :as => :publisher, :facet => true
     indexes :rights
     indexes :extension
     indexes :location
