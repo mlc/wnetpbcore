@@ -46,16 +46,17 @@ rubygems</tt> (on Debian).
 You'll need at least version 1.3 of rubygems, so if you're using
 Debian lenny or earlier, you'll need to get this from backports.
 
-Next, download Sphinx (http://www.sphinxsearch.com/) . Get the latest
-version in the 0.9.8 series. There may be compatibility issues with
-the 0.9.9 series. Install by doing the standard
- ./configure && make && make install
+Make sure also that you have Java available, for the Solr search
+engine.
+
+TODO: Explain how to get Java.
 
 And, finally, install some needed ruby packages by doing
  gem install -v 2.1.2 rails --no-ri --no-rdoc
+ gem install -v 0.9.6 rsolr --no-ri --no-rdoc
  gem install chronic libxml-ruby rake rack thin fast_xs --no-ri --no-rdoc
  gem install mysql --no-ri --no-rdoc -- --with-mysql-config=/usr/bin/mysql_config
- gem install whenever thinking-sphinx ts-delayed-delta --source http://gemcutter.org/ --no-ri --no-rdoc
+ gem install whenever sunspot sunspot_rails --source http://gemcutter.org/ --no-ri --no-rdoc
 
 If you're using the Debian-provided rubygems package, then the
 binaries for the install gems will not automatically be in your
