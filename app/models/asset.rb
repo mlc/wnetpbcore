@@ -16,6 +16,8 @@ class Asset < ActiveRecord::Base
       {:essence_tracks => [:essence_track_type, :essence_track_identifier_source]},
       :date_availables, :annotations]}
     ]
+
+  FACET_NAMES = [:subject, :genres, :coverage, :creator, :contributor, :publisher]
   has_many :identifiers, :dependent => :destroy, :attributes => true
   has_many :titles, :dependent => :destroy, :attributes => true
   has_and_belongs_to_many :subjects
@@ -165,6 +167,10 @@ class Asset < ActiveRecord::Base
       ).flatten
     end
     text(:format) { instantiations.map{|a| a.format.nil? ? '' : a.format.name} }
+    time :created_at
+    time :updated_at
+    string :uuid
+    boolean(:online_asset) { false } # FIXME: sometimes this should be true
   end
 
   def self.dedupe

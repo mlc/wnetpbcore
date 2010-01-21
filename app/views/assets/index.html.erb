@@ -5,9 +5,11 @@
 <h2>Nothing found.</h2>
 <%- else -%>
 <p>
-  <span id="record_count">Showing records <strong><%= @search_object.offset + 1 %></strong>–<strong><%= @search_object.offset + @assets.size %></strong> of <strong id="total_entries"><%= @search_object.total_entries %></strong>.</span>
+  <span id="record_count">Showing records <strong><%= @assets.offset + 1 %></strong>–<strong><%= @assets.offset + @assets.size %></strong> of <strong id="total_entries"><%= @assets.total_entries %></strong>.</span>
   <%= link_to_remote "#{session[:show_annotations] ? "hide" : "show"} annotations", :url => { :action => "toggleannotations" }, :html => { :id => "toggle_annotations_link", :href => url_for(:action => "toggleannotations") }, :method => :get %>
 </p>
+<%= render :partial => "facets" %>
+<!-- FIXME: make this respect facets
 <%- permitted_to? :destroy_found_set, :assets do -%>
   <%- if params[:q] -%>
     <% form_tag destroy_found_set_assets_path, :method => :delete, :id => "super-dangerous" do %>
@@ -18,6 +20,7 @@
     <% end %>
   <%- end -%>
 <%- end -%>
+-->
 <%- permitted_to? :merge, :assets do -%>
   <%- content_for :javascript do -%>
     $(function(){
@@ -89,5 +92,5 @@
   </form>
 <%- end -%>
 
-<%= will_paginate @search_object %>
+<%= will_paginate @assets %>
 <%- end -%>

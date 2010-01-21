@@ -6,16 +6,33 @@ class AssetsController < ApplicationController
   
   def index
     alternate "application/atom+xml", :format => "atom", :q => params[:q]
-    @query = params[:q]
+    the_query = params[:q]
     pageopts = {:page => params[:page] || 1, :per_page => 20}
     pageopts[:page] = 1 if pageopts[:page] == "" || pageopts[:page].to_i < 1
     asset_includes = [:titles, {:identifiers => [:identifier_source]}, {:instantiations => [:format, :format_ids, :annotations, :borrowings]}, :descriptions]
-    @search_object = @query ? 
-      AssetTerms.search(@query, {:match_mode => :extended, :include => {:asset => asset_includes}, :order => params[:bydate] ? "updated_at DESC" : nil}.merge(pageopts)) :
-      Asset.paginate(:all, {:order => 'updated_at DESC', :include => asset_includes}.merge(pageopts))
-    @assets = @query ? @search_object.map{|at| at.asset} : @search_object
+    the_params = params # so it can be seen inside the search DSL.
 
-    session[:search] = {:q => @query, :page => pageopts[:page].to_i == 1 ? nil : pageopts[:page]}
+    @search_object = Asset.search do
+      paginate pageopts
+      data_accessor_for(Asset).include = asset_includes
+      if the_query
+        fulltext the_query
+      else
+        order_by :updated_at, :desc
+      end
+      Asset::FACET_NAMES.each do |facet_name|
+        facet facet_name
+        if the_params["facet_#{facet_name}"]
+          the_params["facet_#{facet_name}"].each do |value|
+            with facet_name, value
+          end
+        end
+      end
+    end
+    @query = the_query
+    @assets = @search_object.results
+
+    session[:search] = params
 
     respond_to do |format|
       format.html
@@ -189,7 +206,7 @@ class AssetsController < ApplicationController
 
   def lastsearch
     if session[:search].is_a?(Hash)
-      redirect_to :action => 'index', :q => session[:search][:q], :page => session[:search][:page]
+      redirect_to session[:search]
     else
       redirect_to :action => 'index'
     end

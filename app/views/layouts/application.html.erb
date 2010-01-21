@@ -21,7 +21,7 @@
       <ul class="post-user-bar">
         <%- permitted_to? :index, :assets do -%>
           <li><%= link_to_unless_current "home", "/" %></li>
-          <li><%= link_to "last search", :controller => :assets, :action => 'lastsearch' %></li>
+          <li><%= link_to "last search", session[:search] || {:controller => :assets, :action => 'lastsearch'} %></li>
         <%- end -%>
         <%- permitted_to? :create, :assets do -%>
           <li><%= link_to_unless_current "new asset", :controller => :assets, :action => 'new' %></li>
