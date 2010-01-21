@@ -24,7 +24,7 @@ module ApplicationHelper
   end
   
   def opensearch_properties(collection)
-    collection = collection.raw_results if collection.respond_to?(:raw_results)
+    collection = collection.results if collection.respond_to?(:results)
     {
       "totalResults" => collection.total_entries,
       "startIndex" => collection.offset + 1,
