@@ -5,7 +5,8 @@ class AssetsController < ApplicationController
   filter_access_to :lastsearch, :require => :read
   
   def index
-    alternate "application/atom+xml", :format => "atom", :q => params[:q]
+    params.delete("commit")
+    alternate "application/atom+xml", params.merge(:format => "atom")
     the_query = params[:q]
     pageopts = {:page => params[:page] || 1, :per_page => 20}
     pageopts[:page] = 1 if pageopts[:page] == "" || pageopts[:page].to_i < 1
