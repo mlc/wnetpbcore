@@ -183,7 +183,7 @@ namespace :deploy do
     desc "#{action} our server"
     task action.to_sym do
       find_and_execute_task("ourserver:#{action}")
-      find_and_execute_task("sphinx:#{action}")
+      find_and_execute_task("solr:#{action}")
     end
   end
 end
@@ -202,43 +202,42 @@ after "deploy:setup", "ourserver:build_configuration"
 after "deploy:symlink", "ourserver:link_configuration_file"
 after "deploy:update_code", "configuration:symlink_site_key"
 
-# http://www.updrift.com/article/deploying-a-rails-app-with-thinking-sphinx
-namespace :sphinx do
+namespace :solr do
 
-  desc "Set up db/sphinx dir"
+  desc "Set up solr dir"
   task :setup do
-    run "mkdir -p #{shared_path}/db/sphinx"
+    run "mkdir -p #{shared_path}/solr"
   end
 
   desc "Re-establish symlinks"
   task :symlink do
-    run "ln -nfs #{shared_path}/db/sphinx #{current_path}/db/sphinx"
+    run "ln -nfs #{shared_path}/solr #{current_path}/solr"
   end
 
-  desc "Stop the sphinx server"
+  desc "Stop the solr server"
   task :stop, :roles => :app do
-    run "cd #{current_path} && #{rb_bin_path}/rake RAILS_ENV=production thinking_sphinx:stop"
+    run "cd #{current_path} && #{rb_bin_path}/rake RAILS_ENV=production sunspot:solr:stop"
   end
 
-  desc "Start the sphinx server"
+  desc "Start the solr server"
   task :start, :roles => :app do
-    run "cd #{current_path} && #{rb_bin_path}/rake RAILS_ENV=production thinking_sphinx:configure && #{rb_bin_path}/rake RAILS_ENV=production thinking_sphinx:start"
+    run "cd #{current_path} && #{rb_bin_path}/rake RAILS_ENV=production sunspot:solr:start"
   end
 
-  desc "Restart the sphinx server"
+  desc "Restart the solr server"
   task :restart, :roles => :app do
-    run "cd #{current_path} && #{rb_bin_path}/rake RAILS_ENV=production thinking_sphinx:configure && #{rb_bin_path}/rake RAILS_ENV=production thinking_sphinx:running_start"
-
+    find_and_execute_task("solr:stop")
+    find_and_execute_task("solr:start")
   end
 
-  desc "Ask sphinx to re-index"
+  desc "Re-index"
   task :index, :roles => :app do
-    run "cd #{current_path} && #{rb_bin_path}/rake RAILS_ENV=production thinking_sphinx:index"
+    run "cd #{current_path} && #{rb_bin_path}/ruby ./script/runner -e production 'Asset.reindex(:include => Asset::ALL_INCLUDES)'"
   end
 end
 
-after "deploy:setup", "sphinx:setup"
-after "deploy:symlink", "sphinx:symlink"
+after "deploy:setup", "solr:setup"
+after "deploy:symlink", "solr:symlink"
 
 # http://github.com/javan/whenever/tree/master
 

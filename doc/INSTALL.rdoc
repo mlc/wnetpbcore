@@ -163,13 +163,11 @@ necessary:
 
 Now, ask the search server to index the data (even if there is no data
 yet, it will create an empty index). Then, start everything up:
- cap my_site sphinx:index cap my_site deploy:start
+ cap my_site cap my_site deploy:start
 
 Things can be a bit hairy on the first deployment, so you might have
 to manually start one or more services:
- cap my_site thin:start sphinx:start
-
-FIXME: we need to figure out how to get the delayed jobs worker working.
+ cap my_site thin:start
 
 (If you'd like to have a list of all defined cap tasks, just do
 <tt>cap -T</tt>).
