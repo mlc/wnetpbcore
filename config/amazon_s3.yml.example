@@ -1,3 +1,4 @@
+# note: the access key here is just a sample; it doesn't actually work.
 development:
   bucket_name: dhc-assets
   access_key_id: AKIAJHYYKGSZ5KWK4M4Q

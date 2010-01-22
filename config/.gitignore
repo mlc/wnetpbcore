@@ -1,3 +1,4 @@
+amazon_s3.yml
 database.yml
 deploy/*.rb
 *.sphinx.conf
