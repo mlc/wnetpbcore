@@ -67,6 +67,29 @@ end
 after "deploy:setup", :db
 after "deploy:update_code", "db:symlink"
 
+namespace :aws do
+  desc "Create AWS YAML File"
+  task :default do
+    aws_config = ERB.new <<-EOF
+<% ["development", "test", "production"].each do |env| %>
+<%= env %>:
+  bucket_name: #{aws_bucket}
+  access_key_id: #{aws_access}
+  secret_access_key: #{aws_secret}
+<% end %>
+EOF
+    put aws_config.result, "#{shared_path}/config/amazon_s3.yml"
+  end
+
+  desc "Symlink the AWS YAML"
+  task :symlink do
+    run "ln -nfs #{shared_path}/config/amazon_s3.yml #{release_path}/config/amazon_s3.yml"
+  end
+end
+
+after "deploy:setup", :aws
+after "deploy:update_code", "aws:yaml"
+
 # http://blog.ninjahideout.com/posts/busting-a-cap-in-yo-ass
 
 set :deploy_port, 9000 unless exists?(:deploy_port)
