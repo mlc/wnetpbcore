@@ -209,6 +209,11 @@ namespace :deploy do
       find_and_execute_task("solr:#{action}")
     end
   end
+
+  desc "Shrink and bundle js and css"
+  task :bundle, :roles => :web, :except => { :no_release => true } do
+    run "cd #{release_path}; RAILS_ROOT=#{release_path} rake bundle:all"
+  end
 end
 
 namespace :ourserver do
@@ -224,6 +229,7 @@ after "deploy:setup", "ourserver:build_configuration"
 
 after "deploy:symlink", "ourserver:link_configuration_file"
 after "deploy:update_code", "configuration:symlink_site_key"
+after "deploy:update_code", "deploy:bundle"
 
 namespace :solr do
 
