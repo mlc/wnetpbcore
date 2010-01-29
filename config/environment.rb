@@ -32,6 +32,7 @@ Rails::Initializer.run do |config|
   config.gem 'sunspot', :lib => 'sunspot', :source  => 'http://gemcutter.org'
   config.gem 'sunspot_rails', :lib => 'sunspot/rails', :source  => 'http://gemcutter.org'
   config.gem 'grit', :source => 'http://gemcutter.org/'
+  config.gem 'aws-s3', :lib => 'aws/s3', :source => 'http://gemcutter.org/'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.

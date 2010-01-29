@@ -88,7 +88,7 @@ EOF
 end
 
 after "deploy:setup", :aws
-after "deploy:update_code", "aws:yaml"
+after "deploy:update_code", "aws:symlink"
 
 # http://blog.ninjahideout.com/posts/busting-a-cap-in-yo-ass
 
