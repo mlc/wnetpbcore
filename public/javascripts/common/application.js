@@ -1,5 +1,5 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+/* make transparent PNGs work in IE6 */
+$(function(){$('body').supersleight({shim: '/imgages/x.gif'})});
 
 function searchHelp() {
   window.open( 
