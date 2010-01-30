@@ -1,0 +1,17 @@
+a#all_asset_link { background-image: url(/images/buttons/btnAssets.png); }
+a#streamable_asset_link { background-image: url(/images/buttons/btnStreamable.png); }
+
+a#all_asset_link, a#streamable_asset_link {
+    height: 22px;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    color: #999;
+    padding: 5px 0px 5px 26px;
+    margin-left: 10px;
+    display: inline;
+}
+
+a#all_asset_link:hover, a#streamable_asset_link:hover {
+    background-position: 0px -22px;
+    color: #a2c0c0;
+}

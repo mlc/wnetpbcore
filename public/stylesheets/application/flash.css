@@ -1,0 +1,12 @@
+div.flash {
+    padding: 5px 0px 10px 30px;
+    margin-botton: 10px;
+    border-bottom: 1px dotted #999;
+    color: #666;
+    background-repeat: no-repeat;
+    min-height: 24px;
+}
+
+div#error { background-image: url(/images/icons/iconError.jpg); }
+div#warning { background-image: url(/images/icons/iconWarning.jpg); }
+div#message { background-image: url(/images/icons/iconInfo.jpg); }

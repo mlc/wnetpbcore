@@ -11,16 +11,16 @@ module ApplicationHelper
   end
   
   def opensearch_headers(collection = nil)
-    msg = tag("link",  {:href=>"/assets/opensearch.xml",
+    msg = [tag("link",  {:href=>"/assets/opensearch.xml",
       :rel=>"search",
       :type=>"application/opensearchdescription+xml",
-      :title=>"pbcore"})
+      :title=>"pbcore"})]
     unless collection.nil?
       opensearch_properties(collection).each do |k,v|
-        msg << "\n    " + tag("meta", { "name" => k, "content" => v })
+        msg << tag("meta", { "name" => k, "content" => v })
       end
     end
-    msg
+    msg.join("\n")
   end
   
   def opensearch_properties(collection)

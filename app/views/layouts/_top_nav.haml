@@ -1,0 +1,16 @@
+%ul.topnavLi
+  - permitted_to? :index, :assets do
+    %li= link_to_unless_current "home", "/"
+    /
+      %li= link_to "last search", session[:search] || {:controller => :assets, :action => 'lastsearch'}
+  - permitted_to? :create, :assets do
+    %li= link_to_unless_current "new asset", :controller => :assets, :action => 'new'
+    %li= link_to_unless_current "upload assets", :controller => :xml
+  - permitted_to? :show, :picklists do
+    %li= link_to_unless_current "picklists", :controller => :picklists
+  - permitted_to? :index, :borrowings do
+    %li= link_to_unless_current "borrowings", :controller => :borrowings, :action => :index
+  - permitted_to? :index, :users do
+    %li= link_to_unless_current "users", :controller => :users
+  - permitted_to? :index, :last_used_ids do
+    %li= link_to_unless_current "ids", :controller => :last_used_ids

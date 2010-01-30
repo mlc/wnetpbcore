@@ -1,0 +1,105 @@
+!!! XML
+!!!
+%html{ :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %title& pbcore || #{yield(:title)}
+    = stylesheet_bundle 'application'
+    = javascript_dev ['jquery-1.4.1.min', 'https://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js'], ['jquery-ui-1.7.2.min', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js']
+    = javascript_bundle 'common'
+    = opensearch_headers(@search_object)
+    = alternate_views
+  %body
+    %table.holder{ :cellspacing => "0", :border => "0", :width => "100%", :cellpadding => "0" }
+      %tr
+        %td{ :align => "center" }
+          %table#header.header{ :cellspacing => "3", :border => "0", :width => "100%", :cellpadding => "3" }
+            %tr
+              %td &nbsp;
+          %table#body{ :cellspacing => "0", :border => "0", :cellpadding => "0" }
+            %tr
+              %td{ :colspan => "2" }
+                %table{ :cellspacing => "0", :border => "0", :cellpadding => "0" }
+                  %tr
+                    %td.topnavBar{ :align => "left" }
+                      = render :partial => 'layouts/top_nav'
+                    %td.topnavuserBar
+                      = render :partial => 'users/user_bar'
+            %tr
+              %td.sidebarTop{ :align => "left" }
+                %h1 Search
+              %td.contentTop
+                %table.contentTopLinksArea{ :cellspacing => "0", :border => "0", :width => "93%", :cellpadding => "0" }
+                  %tr
+                    %td{ :nowrap => "nowrap", :align => "left", :valign => "top" }
+                      %h1&= yield(:title)
+                    %td{ :align => "right", :valign => "middle" }
+                      = link_to("All Assets", "/", :id => "all_asset_link")
+                      = link_to("Streamable Assets", "/", :id => "streamable_asset_link")
+            -#
+              %tr
+              %td.sidebarSearch{ :align => "center" }
+                %table{ :cellspacing => "0", :border => "0", :bgcolor => "#FFFFFF", :width => "170", :cellpadding => "0" }
+                  %tr
+                    %td{ :align => "right", :valign => "top", :width => "15" }
+                      %input#search2{ :name => "search2", :size => "17", :type => "text" }
+                    %td{ :align => "center", :width => "35" }
+                      %img{ :src => "/images/buttons/btnSearch.jpg", :height => "22", :alt => "search", :width => "24" }
+              %td.contentMiddle
+                %table.pagination{ :cellspacing => "0", :border => "0", :bgcolor => "#FFFFFF", :width => "91%", :cellpadding => "0" }
+                  %tr
+                    %td{ :nowrap => "nowrap", :align => "left", :valign => "top" }
+                      Showing records
+                      %strong
+                        1–20
+                      of
+                      %strong
+                        24461
+                    %td{ :align => "right", :valign => "middle" }
+                         
+                      %a{ :href => "test" }
+                        «
+                      %a{ :href => "test" }
+                        Previous
+                      %a{ :href => "test" }
+                        1
+                      %a{ :href => "test" }
+                        2
+                        %a{ :href => "test" }
+                          3
+                        %a{ :href => "test" }
+                          4
+                        %a{ :href => "test" }
+                          5
+                        %a{ :href => "test" }
+                          6
+                        %a{ :href => "test" }
+                          7
+                        %a{ :href => "test" }
+                          8
+                        %a{ :href => "test" }
+                          9
+                        …
+                        %a{ :href => "test" }
+                          1223
+                        %a{ :href => "test" }
+                          1224
+                        %a{ :href => "test" }
+                          Next
+                        %a{ :href => "test" }
+                          »
+            %tr
+              %td.sidebarMiddle
+                = render :partial => "assets/search"
+              %td.contentMiddle{ :align => "left", :bgcolor => "#FFFFFF" }
+                - [:error, :warning, :message].each do |severity|
+                  - if flash[severity]
+                    .flash{ :id => severity.to_s }= flash[severity]
+                = yield
+            %tr
+              %td.sidebarBottom &nbsp;
+              %td.contentBottom &nbsp;
+          %table#footer.footer{ :cellspacing => "3", :border => "0", :cellpadding => "3" }
+            %tr
+              %td
+                = link_to 'About this site', {:controller => 'static', :action => 'about'}, :class => "footerLink"
+                = link_to 'www.danceheritage.org', 'http://www.danceheritage.org/', :class => "footerLink"
