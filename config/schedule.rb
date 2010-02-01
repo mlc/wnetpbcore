@@ -21,12 +21,4 @@ unless have_god
       command "[ -f #{RAILS_ROOT}/tmp/pids/unicorn.pid ] && kill -HUP `cat #{RAILS_ROOT}/tmp/pids/unicorn.pid`"
     end
   end
-
-  every :reboot do
-    rake 'ts:start'
-  end
-end
-
-every 8.hours, :at => 37 do
-  rake "ts:in"
 end
