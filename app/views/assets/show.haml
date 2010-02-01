@@ -45,34 +45,34 @@
     %tr
       %td.contentDivider &nbsp;
 
-      %tr
-        %td
-          %h2
-            Instantiation
-            - if instantiation.borrowed?
-              = link_to_if(permitted_to?(:borrowings, instantiation), "[on loan]", borrowings_asset_instantiation_url(@asset, instantiation), :class => :borrowednote)
-            - elsif permitted_to?(:borrowings, instantiation)
-              = link_to "(borrow)", borrowings_asset_instantiation_url(@asset, instantiation)
+    %tr
+      %td
+        %h2
+          Instantiation
+          - if instantiation.borrowed?
+            = link_to_if(permitted_to?(:borrowings, instantiation), "[on loan]", borrowings_asset_instantiation_url(@asset, instantiation), :class => :borrowednote)
+          - elsif permitted_to?(:borrowings, instantiation)
+            = link_to "(borrow)", borrowings_asset_instantiation_url(@asset, instantiation)
 
-          %p
-            = render :partial => "field_array", :locals => {:objs => instantiation.format_ids, :field => "Format ID", :key => :format_identifier_source, :value => :format_identifier, :searchkey => :identifier, :searchvalue => :format_identifier}
-            = render :partial => "field_one", :locals => {:key => "Date Created", :value => instantiation.date_created}
-            = render :partial => "field_one", :locals => {:key => "Date Issued", :value => instantiation.date_issued}
-            = render :partial => "field_one", :locals => {:key => "Format", :value => instantiation.format, :field => :name }
-            = render :partial => "field_one", :locals => {:key => "Format Location", :value => instantiation.format_location, :url => true }
-            = render :partial => "field_one", :locals => {:key => "Media Type", :value => instantiation.format_media_type, :field => :name }
-            = render :partial => "field_one", :locals => {:key => "Generations", :value => instantiation.format_generation, :field => :name }
-            = render :partial => "field_one", :locals => {:key => "File Size", :value => instantiation.pretty_file_size }
-            = render :partial => "field_one", :locals => {:key => "Time Start", :value => instantiation.format_time_start }
-            = render :partial => "field_one", :locals => {:key => "Duration", :value => instantiation.format_duration }
-            = render :partial => "field_one", :locals => {:key => "Data Rate", :value => instantiation.format_data_rate }
-            = render :partial => "field_one", :locals => {:key => "Colors", :value => instantiation.format_color, :field => :name }
-            = render :partial => "field_one", :locals => {:key => "Tracks", :value => instantiation.format_tracks }
-            = render :partial => "field_one", :locals => {:key => "Channel Configuration", :value => instantiation.format_channel_configuration }
-            = render :partial => "field_one", :locals => {:key => "Language", :value => instantiation.language }
-            = render :partial => "field_one", :locals => {:key => "Alternative Modes", :value => instantiation.alternative_modes }
-            = render :partial => "field_array", :locals => {:objs => instantiation.date_availables, :field => "Date Available", :value => :to_s }
-            = render :partial => "field_array", :locals => {:objs => instantiation.annotations, :field => "Annotation", :value => :annotation}
+        %p
+          = render :partial => "field_array", :locals => {:objs => instantiation.format_ids, :field => "Format ID", :key => :format_identifier_source, :value => :format_identifier, :searchkey => :identifier, :searchvalue => :format_identifier}
+          = render :partial => "field_one", :locals => {:key => "Date Created", :value => instantiation.date_created}
+          = render :partial => "field_one", :locals => {:key => "Date Issued", :value => instantiation.date_issued}
+          = render :partial => "field_one", :locals => {:key => "Format", :value => instantiation.format, :field => :name }
+          = render :partial => "field_one", :locals => {:key => "Format Location", :value => instantiation.format_location, :url => true }
+          = render :partial => "field_one", :locals => {:key => "Media Type", :value => instantiation.format_media_type, :field => :name }
+          = render :partial => "field_one", :locals => {:key => "Generations", :value => instantiation.format_generation, :field => :name }
+          = render :partial => "field_one", :locals => {:key => "File Size", :value => instantiation.pretty_file_size }
+          = render :partial => "field_one", :locals => {:key => "Time Start", :value => instantiation.format_time_start }
+          = render :partial => "field_one", :locals => {:key => "Duration", :value => instantiation.format_duration }
+          = render :partial => "field_one", :locals => {:key => "Data Rate", :value => instantiation.format_data_rate }
+          = render :partial => "field_one", :locals => {:key => "Colors", :value => instantiation.format_color, :field => :name }
+          = render :partial => "field_one", :locals => {:key => "Tracks", :value => instantiation.format_tracks }
+          = render :partial => "field_one", :locals => {:key => "Channel Configuration", :value => instantiation.format_channel_configuration }
+          = render :partial => "field_one", :locals => {:key => "Language", :value => instantiation.language }
+          = render :partial => "field_one", :locals => {:key => "Alternative Modes", :value => instantiation.alternative_modes }
+          = render :partial => "field_array", :locals => {:objs => instantiation.date_availables, :field => "Date Available", :value => :to_s }
+          = render :partial => "field_array", :locals => {:objs => instantiation.annotations, :field => "Annotation", :value => :annotation}
 
   %tr
     %td.contentDivider &nbsp;
