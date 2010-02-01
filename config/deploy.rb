@@ -245,12 +245,12 @@ namespace :solr do
 
   desc "Stop the solr server"
   task :stop, :roles => :app do
-    run "cd #{current_path} && #{rb_bin_path}/rake RAILS_ENV=production sunspot:solr:stop"
+    run "cd #{current_path} && PATH=\"#{rb_bin_path}:$PATH\" #{rb_bin_path}/rake RAILS_ENV=production sunspot:solr:stop"
   end
 
   desc "Start the solr server"
   task :start, :roles => :app do
-    run "cd #{current_path} && #{rb_bin_path}/rake RAILS_ENV=production sunspot:solr:start"
+    run "cd #{current_path} && PATH=\"#{rb_bin_path}:$PATH\" #{rb_bin_path}/rake RAILS_ENV=production sunspot:solr:start"
   end
 
   desc "Restart the solr server"
