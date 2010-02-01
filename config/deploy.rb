@@ -68,6 +68,29 @@ end
 after "deploy:setup", :db
 after "deploy:update_code", "db:symlink"
 
+namespace :aws do
+  desc "Create AWS YAML File"
+  task :default do
+    aws_config = ERB.new <<-EOF
+<% ["development", "test", "production"].each do |env| %>
+<%= env %>:
+  bucket_name: #{aws_bucket}
+  access_key_id: #{aws_access}
+  secret_access_key: #{aws_secret}
+<% end %>
+EOF
+    put aws_config.result, "#{shared_path}/config/amazon_s3.yml"
+  end
+
+  desc "Symlink the AWS YAML"
+  task :symlink do
+    run "ln -nfs #{shared_path}/config/amazon_s3.yml #{release_path}/config/amazon_s3.yml"
+  end
+end
+
+after "deploy:setup", :aws
+after "deploy:update_code", "aws:symlink"
+
 # http://blog.ninjahideout.com/posts/busting-a-cap-in-yo-ass
 
 set :deploy_port, 9000 unless exists?(:deploy_port)
@@ -184,9 +207,13 @@ namespace :deploy do
     desc "#{action} our server"
     task action.to_sym do
       find_and_execute_task("ourserver:#{action}")
-      find_and_execute_task("sphinx:#{action}")
-      find_and_execute_task("backgroundrb:#{action}")
+      find_and_execute_task("solr:#{action}")
     end
+  end
+
+  desc "Shrink and bundle js and css"
+  task :bundle, :roles => :web, :except => { :no_release => true } do
+    run "cd #{release_path}; RAILS_ROOT=#{release_path} rake bundle:all"
   end
 end
 
@@ -203,65 +230,44 @@ after "deploy:setup", "ourserver:build_configuration"
 
 after "deploy:symlink", "ourserver:link_configuration_file"
 after "deploy:update_code", "configuration:symlink_site_key"
+after "deploy:update_code", "deploy:bundle"
 
-# http://www.updrift.com/article/deploying-a-rails-app-with-thinking-sphinx
-namespace :sphinx do
+namespace :solr do
 
-  desc "Set up db/sphinx dir"
+  desc "Set up solr dir"
   task :setup do
-    run "mkdir -p #{shared_path}/db/sphinx"
+    run "mkdir -p #{shared_path}/solr"
   end
 
   desc "Re-establish symlinks"
   task :symlink do
-    run "ln -nfs #{shared_path}/db/sphinx #{current_path}/db/sphinx"
+    run "ln -nfs #{shared_path}/solr #{current_path}/solr"
   end
 
-  desc "Stop the sphinx server"
+  desc "Stop the solr server"
   task :stop, :roles => :app do
-    run "cd #{current_path} && #{rb_bin_path}/rake RAILS_ENV=production thinking_sphinx:stop"
+    run "cd #{current_path} && #{rb_bin_path}/rake RAILS_ENV=production sunspot:solr:stop"
   end
 
-  desc "Start the sphinx server"
+  desc "Start the solr server"
   task :start, :roles => :app do
-    run "cd #{current_path} && #{rb_bin_path}/rake RAILS_ENV=production thinking_sphinx:configure && #{rb_bin_path}/rake RAILS_ENV=production thinking_sphinx:start"
+    run "cd #{current_path} && #{rb_bin_path}/rake RAILS_ENV=production sunspot:solr:start"
   end
 
-  desc "Restart the sphinx server"
+  desc "Restart the solr server"
   task :restart, :roles => :app do
-    run "cd #{current_path} && #{rb_bin_path}/rake RAILS_ENV=production thinking_sphinx:configure && #{rb_bin_path}/rake RAILS_ENV=production thinking_sphinx:running_start"
-
+    find_and_execute_task("solr:stop")
+    find_and_execute_task("solr:start")
   end
 
-  desc "Ask sphinx to re-index"
+  desc "Re-index"
   task :index, :roles => :app do
-    run "cd #{current_path} && #{rb_bin_path}/rake RAILS_ENV=production thinking_sphinx:index"
+    run "cd #{current_path} && #{rb_bin_path}/ruby ./script/runner -e production 'Asset.reindex(:include => Asset::ALL_INCLUDES)'"
   end
 end
 
-after "deploy:setup", "sphinx:setup"
-after "deploy:symlink", "sphinx:symlink"
-
-# http://www.brynary.com/2007/4/8/capistrano-tasks-for-backgroundrb
-# but some pretty heavy modifications
-
-namespace :backgroundrb do
-  desc "Stop the backgroundrb server"
-  task :stop, :roles => :app do
-    run "cd #{current_path} && #{rb_bin_path}/ruby ./script/backgroundrb stop -e production"
-  end
-
-  desc "Start the backgroundrb server"
-  task :start, :roles => :app do
-    run "cd #{current_path} && RAILS_ENV=production nohup #{rb_bin_path}/ruby ./script/backgroundrb start -e production > /dev/null 2>&1"
-  end
-
-  desc "Start the backgroundrb server"
-  task :restart, :roles => :app do
-    stop
-    start
-  end
-end
+after "deploy:setup", "solr:setup"
+after "deploy:symlink", "solr:symlink"
 
 # http://github.com/javan/whenever/tree/master
 

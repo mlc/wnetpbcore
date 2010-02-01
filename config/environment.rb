@@ -5,7 +5,7 @@
 # ENV['RAILS_ENV'] ||= 'production'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '2.1.0' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.1.2' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
@@ -22,12 +22,18 @@ Rails::Initializer.run do |config|
 
   # Specify gems that this application depends on. 
   # They can then be installed with "rake gems:install" on new installations.
+  config.gem 'haml', :version => '>= 2.2.8'
   config.gem 'libxml-ruby', :lib => 'libxml', :version => '>=0.8.0'
   config.gem 'rubyzip', :lib => 'zip/zip'
   config.gem 'mime-types', :lib => 'mime/types'
   config.gem 'uuidtools'
   config.gem 'mislav-will_paginate', :version => '~> 2.2.3', :lib => 'will_paginate', :source => 'http://gems.github.com'
   config.gem 'whenever', :lib => false, :source => 'http://gemcutter.org'
+  config.gem 'rsolr', :version => '0.9.6' # NEWER VERSIONS ARE BUGGY!
+  config.gem 'sunspot', :lib => 'sunspot', :source  => 'http://gemcutter.org'
+  config.gem 'sunspot_rails', :lib => 'sunspot/rails', :source  => 'http://gemcutter.org'
+  config.gem 'grit', :source => 'http://gemcutter.org/'
+  config.gem 'aws-s3', :lib => 'aws/s3', :source => 'http://gemcutter.org/'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.

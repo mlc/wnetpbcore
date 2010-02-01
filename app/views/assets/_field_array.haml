@@ -1,0 +1,10 @@
+- objs.each do |obj|
+  - if local_assigns[:key]
+    - objkey = obj.send(key)
+    - objkey = objkey.name if objkey.respond_to?(:name)
+    %span.title& #{field} (#{objkey}):
+  - else
+    %span.title& #{field}:
+  - query = nil
+  &= obj.send(value).gsub(/\r\n|\r|\n/, "<br />")
+  %br

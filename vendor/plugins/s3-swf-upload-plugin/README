@@ -1,0 +1,38 @@
+S3SwfUpload
+===========
+
+S3SwfUpload allow user uploading a file to S3 directly, so you can save the cost of uploading process in your app server.
+
+Install
+=======
+
+$ script/plugin install git://github.com/elcgit/s3-swf-upload-plugin.git
+
+Usage
+=======
+
+1. $ script/generate s3_swf_upload
+
+2. configure amazon_s3.yml, and run below two tasks to create bucket and crossdomain.xml:
+
+  $ rake s3:make_bucket
+  $ rake s3:make_crossdomain
+
+3. init s3_swf object:
+
+  <%= s3_swf_upload_tag %>
+
+4. when you click upload, your file will be upload to http://bucket.s3.amazonasw.com/s3_swf/ by default.
+
+5. if you want to custom its behavior, here's a more complex example:
+
+  <%= s3_swf_upload_tag(:width => 310, 
+        :height => 40, 
+        :success => 'alert("success");',
+        :failed => 'alert("failed");',
+        :selected => 'alert("selected");',
+        :canceled => 'alert("canceled");',
+        :prefix => 's3') 
+  %>
+
+Copyright (c) 2008 elctech, released under the MIT license

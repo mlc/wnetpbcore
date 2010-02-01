@@ -1,0 +1,10 @@
+- if logged_in?
+  %span.user-bar-greeting
+    Logged in as
+    %strong= link_to_current_user :content_method => :login
+  %span.user-bar-action
+    (#{link_to "Log out", logout_path, { :title => "Log out" }})
+- else
+  %span.user-bar-greeting Not logged in
+  %span.user-bar-action
+    (#{link_to "Log in",  login_path,  { :title => "Log in" }})

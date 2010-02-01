@@ -1,5 +1,8 @@
 *~
 log
 nbproject
+solr
 tmp
 TAGS
+public/javascripts/bundle_*
+public/stylesheets/bundle_*

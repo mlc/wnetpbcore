@@ -5,17 +5,44 @@ class AssetsController < ApplicationController
   filter_access_to :lastsearch, :require => :read
   
   def index
-    alternate "application/atom+xml", :format => "atom", :q => params[:q]
-    @query = params[:q]
+    params.delete("x")
+    params.delete("y")
+    alternate "application/atom+xml", params.merge(:format => "atom")
+    the_query = params[:q]
     pageopts = {:page => params[:page] || 1, :per_page => 20}
     pageopts[:page] = 1 if pageopts[:page] == "" || pageopts[:page].to_i < 1
     asset_includes = [:titles, {:identifiers => [:identifier_source]}, {:instantiations => [:format, :format_ids, :annotations, :borrowings]}, :descriptions]
-    @search_object = @query ? 
-      AssetTerms.search(@query, {:match_mode => :extended, :include => {:asset => asset_includes}, :order => params[:bydate] ? "updated_at DESC" : nil}.merge(pageopts)) :
-      Asset.paginate(:all, {:order => 'updated_at DESC', :include => asset_includes}.merge(pageopts))
-    @assets = @query ? @search_object.map{|at| at.asset} : @search_object
+    the_params = params # so it can be seen inside the search DSL.
+    streamable = session[:streamable] # ditto
 
-    session[:search] = {:q => @query, :page => pageopts[:page].to_i == 1 ? nil : pageopts[:page]}
+    @search_object = Asset.search do
+      paginate pageopts
+      data_accessor_for(Asset).include = asset_includes
+      if the_query
+        fulltext the_query
+      else
+        order_by :updated_at, :desc
+      end
+      Asset::FACET_NAMES.each do |facet_name|
+        facet facet_name, :limit => 15
+        if the_params["facet_#{facet_name}"]
+          the_params["facet_#{facet_name}"].each do |value|
+            with facet_name, value
+          end
+        end
+      end
+      if streamable
+        with :online_asset, true
+      end
+    end
+    @query = the_query
+    @assets = @search_object.results
+
+    session[:search] = params
+    
+    if @assets.empty?
+      flash.now[:message] = "Nothing found."
+    end
 
     respond_to do |format|
       format.html
@@ -121,51 +148,6 @@ class AssetsController < ApplicationController
     end
   end
 
-  def zip
-    @query = params[:q]
-    if !@query
-      unless current_user.is_admin?
-        flash[:error] = "Only administrators can download a zip file of the entire database."
-        redirect_to :index and return
-      end
-      @assets = Asset.find(:all, :include => Asset::ALL_INCLUDES)
-    else
-      if !current_user.is_admin? && AssetTerms.search_count(@query) > 250
-        flash[:error] = "Sorry, the current search is too big to be downloaded by a non-administrator."
-        redirect_to :index and return
-      end
-      @assets = AssetTerms.search(@query, :include => {:asset => Asset::ALL_INCLUDES}).map{|at| at.asset}
-    end
-    # HACK HACK HACK
-    zippath = File.join(Dir::tmpdir, "pbcore-#{Kernel.rand(100000)}.zip")
-    Zip::ZipFile.open(zippath, Zip::ZipFile::CREATE) do |zip|
-      zip.get_output_stream("README.txt") do |f|
-        f.puts "This is a zipfile of PBCore data exported from the PBCore database."
-        f.puts "The export was run at " + Time.new.to_s
-        if @query
-          f.puts "The query run was: " + @query
-        else
-          f.puts "All records were exported."
-        end
-        f.puts "#{@assets.size} results found."
-        f.puts
-        @assets.each do |asset|
-          f.puts asset.uuid + ".xml " + asset.title
-        end
-      end
-      @assets.each do |asset|
-        zip.get_output_stream("#{asset.uuid}.xml") do |f|
-          f.write asset.to_xml
-        end
-      end
-    end
-
-    headers['Content-Type'] = "application/zip"
-    headers['Content-Disposition'] = "attachment; filename=\"pbcore-download.zip\""
-    render :file => zippath
-    File.unlink(zippath)
-  end
-
   def multiprocess
     case params[:commit]
     when /^merge/i
@@ -234,7 +216,7 @@ class AssetsController < ApplicationController
 
   def lastsearch
     if session[:search].is_a?(Hash)
-      redirect_to :action => 'index', :q => session[:search][:q], :page => session[:search][:page]
+      redirect_to session[:search]
     else
       redirect_to :action => 'index'
     end

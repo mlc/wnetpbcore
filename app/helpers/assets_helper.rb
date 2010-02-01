@@ -2,11 +2,11 @@ module AssetsHelper
   def assets_navbar
     if @asset && !@asset.new_record?
       if permitted_to?(:show, @asset)
-        add_navbar("view asset", asset_url(@asset.uuid))
+        add_navbar("asset", asset_url(@asset.uuid))
         add_navbar("xml", formatted_asset_url(@asset.uuid, 'xml'))
       end
       if permitted_to?(:edit, @asset)
-        add_navbar("edit asset", edit_asset_url(@asset))
+        add_navbar("edit", edit_asset_url(@asset))
       end
       if permitted_to?(:index, :instantiations)
         add_navbar("instantiations", asset_instantiations_url(@asset))
@@ -14,7 +14,7 @@ module AssetsHelper
     end
     if @instantiation && !@instantiation.new_record?
       if permitted_to?(:edit, @instantiation)
-        add_navbar("edit instantiation", edit_asset_instantiation_url(@asset, @instantiation))
+        add_navbar("instantiation", edit_asset_instantiation_url(@asset, @instantiation))
       end
       if permitted_to?(:borrowings, @instantiation)
         add_navbar("borrowings", borrowings_asset_instantiation_url(@asset, @instantiation))

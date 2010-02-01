@@ -1,0 +1,9 @@
+%table.pagination{ :cellspacing => "0", :border => "0", :bgcolor => "#FFFFFF", :width => "100%", :cellpadding => "0" }
+  %tr
+    %td{ :nowrap => "nowrap", :align => "left", :valign => "top" }
+      Showing records
+      %strong #{@assets.offset + 1}–#{@assets.offset + @assets.size}
+      of
+      %strong= @assets.total_entries
+    %td{ :align => "right", :valign => "middle" }
+      = will_paginate @assets

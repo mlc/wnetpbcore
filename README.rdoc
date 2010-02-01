@@ -44,27 +44,7 @@ Public Broadcasting.
 
 == LOCAL DEVELOPMENT SET-UP
 
-This needs the following gems:
-* chronic
-* libxml-ruby
-* rake
-* thin
-* packet
-* whenever (from http://gemcutter.org/)
-
-These gems are optional but will magically improve performance if present:
-* mysql
-* fast_xs
-
-Other gems are unpacked into vendor/gems/ and don't need to be
-installed specially.
-
-The sphinx libraries apparently need OpenSSL for Ruby, which is not a gem.
-
-Also you need sphinx, from http://www.sphinxsearch.com/
-
-If you plan to deploy, you need capistrano and capistrano-ext as well.
-
+Refer to the server set-up, but don't actually set up a server.
 
 == SERVER SET-UP
 See doc/INSTALL.rdoc

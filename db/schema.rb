@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090428170106) do
+ActiveRecord::Schema.define(:version => 20100120222132) do
 
   create_table "annotations", :force => true do |t|
     t.integer "instantiation_id"
@@ -17,33 +17,6 @@ ActiveRecord::Schema.define(:version => 20090428170106) do
   end
 
   add_index "annotations", ["instantiation_id"], :name => "index_annotation_on_instantiation_id"
-
-  create_table "asset_terms", :force => true do |t|
-    t.integer  "asset_id",        :null => false
-    t.text     "identifier"
-    t.text     "title"
-    t.text     "subject"
-    t.text     "description"
-    t.text     "genre"
-    t.text     "relation"
-    t.text     "coverage"
-    t.text     "audience_level"
-    t.text     "audience_rating"
-    t.text     "creator"
-    t.text     "contributor"
-    t.text     "publisher"
-    t.text     "rights"
-    t.text     "extension"
-    t.text     "location"
-    t.text     "annotation"
-    t.text     "date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "delta",           :null => false
-    t.text     "format"
-  end
-
-  add_index "asset_terms", ["asset_id"], :name => "index_asset_terms_on_asset_id", :unique => true
 
   create_table "assets", :force => true do |t|
     t.datetime "created_at"
@@ -89,26 +62,6 @@ ActiveRecord::Schema.define(:version => 20090428170106) do
   create_table "audience_ratings", :force => true do |t|
     t.string  "name",                       :null => false
     t.boolean "visible", :default => false, :null => false
-  end
-
-  create_table "bdrb_job_queues", :force => true do |t|
-    t.binary   "args"
-    t.string   "worker_name"
-    t.string   "worker_method"
-    t.string   "job_key"
-    t.integer  "taken"
-    t.integer  "finished"
-    t.integer  "timeout"
-    t.integer  "priority"
-    t.datetime "submitted_at"
-    t.datetime "started_at"
-    t.datetime "finished_at"
-    t.datetime "archived_at"
-    t.string   "tag"
-    t.string   "submitter_info"
-    t.string   "runner_info"
-    t.string   "worker_key"
-    t.datetime "scheduled_at"
   end
 
   create_table "borrowings", :force => true do |t|
@@ -172,6 +125,19 @@ ActiveRecord::Schema.define(:version => 20090428170106) do
   end
 
   add_index "date_availables", ["instantiation_id"], :name => "index_date_availables_on_instantiation_id"
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "description_types", :force => true do |t|
     t.string  "name"

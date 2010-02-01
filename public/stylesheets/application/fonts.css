@@ -1,0 +1,32 @@
+/* for IE */
+
+@font-face {
+    font-family: 'Switzera ADF Cd';
+    src: url('/fonts/SwitzeraADFCd-Regular.eot');
+}
+
+/* for modern browsers */
+
+@font-face {
+    font-family: 'Switzera ADF Cd';
+    src: local('Switzera ADF Cd Regular'), local('SwitzeraADFCd-Regular'), url('/fonts/SwitzeraADFCd-Regular.woff') format('woff'), url('/fonts/SwitzeraADFCd-Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Switzera ADF Cd';
+    font-weight: bold;
+    src: local('Switzera ADF Cd Bold'), local('SwitzeraADFCd-Bold'), url('/fonts/SwitzeraADFCd-Bold.woff') format('woff'), url('/fonts/SwitzeraADFCd-Bold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Switzera ADF Cd';
+    font-style: italic;
+    src: local('Switzera ADF Cd Italic'), local('SwitzeraADFCd-Italic'), url('/fonts/SwitzeraADFCd-Italic.woff') format('woff'), url('/fonts/SwitzeraADFCd-Italic.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Switzera ADF Cd';
+    font-style: italic;
+    font-weight: bold;
+    src: local('Switzera ADF Cd Bold Italic'), local('SwitzeraADFCd-BoldItalic'), url('/fonts/SwitzeraADFCd-BoldItalic.woff') format('woff'), url('/fonts/SwitzeraADFCd-BoldItalic.otf') format('opentype');
+}

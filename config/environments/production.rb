@@ -20,3 +20,9 @@ config.action_view.cache_template_loading            = true
 
 # Disable delivery errors, bad email addresses will be ignored
 # config.action_mailer.raise_delivery_errors = false
+
+repo = Grit::Repo.new(RAILS_ROOT)
+js = repo.log('master', 'public/javascripts', :max_count => 1).first
+css = repo.log('master', 'public/stylesheets', :max_count => 1).first
+
+ENV['RAILS_ASSET_ID'] = js.committed_date > css.committed_date ? js.id : css.id

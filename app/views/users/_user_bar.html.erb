@@ -1,9 +1,0 @@
-<div id="user-bar">
-<% if logged_in? -%>
-  <span class="user-bar-greeting">Logged in as <%= link_to_current_user :content_method => :login %></span>
-  <span class="user-bar-action"  >(<%= link_to "Log out", logout_path, { :title => "Log out" }    %>)</span>
-<% else -%>
-  <span class="user-bar-greeting"><%= link_to_login_with_IP 'Not logged in' %></span>
-  <span class="user-bar-action"  ><%= link_to "Log in",  login_path,  { :title => "Log in" } %></span>
-<% end -%>
-</div>

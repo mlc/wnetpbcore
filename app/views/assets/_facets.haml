@@ -1,0 +1,18 @@
+- Asset::FACET_NAMES.each do |facet_name|
+  - facet = @search_object.facet(facet_name)
+  %tr
+    %td.sidebarSearchLinks
+      %a{ :href => "#" }= facet_name.to_s.capitalize
+  - if facet
+    - param_name = "facet_#{facet_name}"
+    - arr = params[param_name] || []
+    %tr.secondaryLinks{ :style => arr.empty? ? "display:none;" : nil }
+      %td
+        - facet.rows.each do |row|
+          - if arr.include?(row.value)
+            %strong& #{row.value} (#{row.count})
+            = link_to("[X]", params.merge(param_name => arr - [row.value]))
+          - else
+            = link_to(h(row.value), params.merge(param_name => arr + [row.value]), :class => "secondaryLink")
+            (#{row.count})
+          %br

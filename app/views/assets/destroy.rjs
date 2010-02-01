@@ -1,1 +1,0 @@
-page.visual_effect :fade, "asset_#{@destroyed_id}", :duration => 0.5

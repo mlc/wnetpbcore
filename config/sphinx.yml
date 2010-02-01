@@ -1,5 +1,10 @@
 development:
   mem_limit: 128M
+  morphology: stem_en
 
 production:
   mem_limit: 128M
+  morphology: stem_en
+
+test:
+  morphology: stem_en

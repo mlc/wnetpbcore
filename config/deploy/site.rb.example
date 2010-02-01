@@ -2,10 +2,14 @@ set :app_db_host, 'localhost'
 set :app_db_user, 'pbcore'
 set :app_db_pass, 'xxxxxxxxxxx'
 
+set :aws_bucket, "my-bucket"
+set :aws_access, "AKIAJHYYKGSZ5KWK4M4Q"
+set :aws_secret, "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
 set :rb_bin_path, '/usr/bin'
-set :server_type, :unicorn
+set :server_type, :thin
 # or
-# set :server_type, :thin
+# set :server_type, :unicorn
 
 # note: i've never actually tested setting these to different things...
 # i don't know if it'll work or not...

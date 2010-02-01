@@ -5,25 +5,27 @@ module ApplicationHelper
   end
   
   def add_navbar(*link_to_args)
+    @have_second_nav = true
     content_for :navbaritems do
-      content_tag(:li, link_to_unless_current(*link_to_args)) + "\n"
+      content_tag(:li, link_to_unless_current(*link_to_args))
     end
   end
   
   def opensearch_headers(collection = nil)
-    msg = tag("link",  {:href=>"/assets/opensearch.xml",
+    msg = [tag("link",  {:href=>"/assets/opensearch.xml",
       :rel=>"search",
       :type=>"application/opensearchdescription+xml",
-      :title=>"pbcore"})
+      :title=>"pbcore"})]
     unless collection.nil?
       opensearch_properties(collection).each do |k,v|
-        msg << "\n    " + tag("meta", { "name" => k, "content" => v })
+        msg << tag("meta", { "name" => k, "content" => v })
       end
     end
-    msg
+    msg.join("\n")
   end
   
   def opensearch_properties(collection)
+    collection = collection.results if collection.respond_to?(:results)
     {
       "totalResults" => collection.total_entries,
       "startIndex" => collection.offset + 1,

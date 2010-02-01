@@ -1,0 +1,58 @@
+!!! XML
+!!!
+%html{ :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %title& pbcore || #{yield(:title)}
+    = stylesheet_bundle 'application'
+    = javascript_dev ['jquery-1.4.1.min', 'https://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js'], ['jquery-ui-1.7.2.min', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js']
+    = javascript_bundle 'common'
+    = opensearch_headers(@search_object)
+    = alternate_views
+  %body
+    %table.holder{ :cellspacing => "0", :border => "0", :width => "100%", :cellpadding => "0" }
+      %tr
+        %td{ :align => "center" }
+          %table#header.header{ :cellspacing => "3", :border => "0", :width => "100%", :cellpadding => "3" }
+            %tr
+              %td &nbsp;
+          %table#body{ :cellspacing => "0", :border => "0", :cellpadding => "0" }
+            %tr
+              %td{ :colspan => "2" }
+                %table{ :cellspacing => "0", :border => "0", :cellpadding => "0" }
+                  %tr
+                    %td.topnavBar{ :align => "left" }
+                      = render :partial => 'layouts/top_nav'
+                    %td.topnavuserBar
+                      = render :partial => 'users/user_bar'
+            %tr
+              %td.sidebarTop{ :align => "left" }
+                %h1 Search
+              %td.contentTop
+                %table.contentTopLinksArea{ :cellspacing => "0", :border => "0", :width => "93%", :cellpadding => "0" }
+                  %tr
+                    %td{ :nowrap => "nowrap", :align => "left", :valign => "top" }
+                      - if @have_second_nav
+                        = render(:partial => "layouts/second_nav")
+                      - else
+                        %h1&= yield(:title)
+                    %td{ :align => "right", :valign => "middle" }
+                      = link_to("All Assets", set_streamable_path("off"), :id => "all_asset_link", :class => session[:streamable] ? nil : "selected_option")
+                      = link_to("Streamable Assets", set_streamable_path("on"), :id => "streamable_asset_link", :class => session[:streamable] ? "selected_option" : nil)
+            %tr
+              %td.sidebarMiddle
+                = render :partial => "assets/search"
+              %td.contentMiddle{ :align => "left", :bgcolor => "#FFFFFF" }
+                - if @have_second_nav
+                  %h1.inside&= yield(:title)
+                - [:error, :warning, :message].each do |severity|
+                  - if flash[severity]
+                    .flash{ :id => severity.to_s }= flash[severity]
+                = yield
+            %tr
+              %td.sidebarBottom &nbsp;
+              %td.contentBottom &nbsp;
+          %table#footer.footer{ :cellspacing => "3", :border => "0", :cellpadding => "3" }
+            %tr
+              %td
+                = link_to 'About this site', {:controller => 'static', :action => 'about'}, :class => "footerLink"
+                = link_to 'www.danceheritage.org', 'http://www.danceheritage.org/', :class => "footerLink"
