@@ -1,3 +1,7 @@
+/*
+ * why use javascript and four images when you can use CSS and only two?
+ */
+
 a#all_asset_link { background-image: url(/images/buttons/btnAssets.png); }
 a#streamable_asset_link { background-image: url(/images/buttons/btnStreamable.png); }
 
@@ -11,7 +15,7 @@ a#all_asset_link, a#streamable_asset_link {
     display: inline;
 }
 
-a#all_asset_link:hover, a#streamable_asset_link:hover {
+a#all_asset_link:hover, a#streamable_asset_link:hover, a#all_asset_link.selected_option, a#streamable_asset_link.selected_option {
     background-position: 0px -22px;
     color: #a2c0c0;
 }

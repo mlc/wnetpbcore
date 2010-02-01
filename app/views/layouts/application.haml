@@ -33,8 +33,8 @@
                     %td{ :nowrap => "nowrap", :align => "left", :valign => "top" }
                       %h1&= yield(:title)
                     %td{ :align => "right", :valign => "middle" }
-                      = link_to("All Assets", "/", :id => "all_asset_link")
-                      = link_to("Streamable Assets", "/", :id => "streamable_asset_link")
+                      = link_to("All Assets", set_streamable_path("off"), :id => "all_asset_link", :class => session[:streamable] ? nil : "selected_option")
+                      = link_to("Streamable Assets", set_streamable_path("on"), :id => "streamable_asset_link", :class => session[:streamable] ? "selected_option" : nil)
             -#
               %tr
               %td.sidebarSearch{ :align => "center" }

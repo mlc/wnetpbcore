@@ -13,6 +13,7 @@ class AssetsController < ApplicationController
     pageopts[:page] = 1 if pageopts[:page] == "" || pageopts[:page].to_i < 1
     asset_includes = [:titles, {:identifiers => [:identifier_source]}, {:instantiations => [:format, :format_ids, :annotations, :borrowings]}, :descriptions]
     the_params = params # so it can be seen inside the search DSL.
+    streamable = session[:streamable] # ditto
 
     @search_object = Asset.search do
       paginate pageopts
@@ -29,6 +30,9 @@ class AssetsController < ApplicationController
             with facet_name, value
           end
         end
+      end
+      if streamable
+        with :online_asset, true
       end
     end
     @query = the_query
