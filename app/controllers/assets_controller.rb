@@ -5,7 +5,8 @@ class AssetsController < ApplicationController
   filter_access_to :lastsearch, :require => :read
   
   def index
-    params.delete("commit")
+    params.delete("x")
+    params.delete("y")
     alternate "application/atom+xml", params.merge(:format => "atom")
     the_query = params[:q]
     pageopts = {:page => params[:page] || 1, :per_page => 20}
@@ -22,7 +23,7 @@ class AssetsController < ApplicationController
         order_by :updated_at, :desc
       end
       Asset::FACET_NAMES.each do |facet_name|
-        facet facet_name
+        facet facet_name, :limit => 15
         if the_params["facet_#{facet_name}"]
           the_params["facet_#{facet_name}"].each do |value|
             with facet_name, value
@@ -34,6 +35,10 @@ class AssetsController < ApplicationController
     @assets = @search_object.results
 
     session[:search] = params
+    
+    if @assets.empty?
+      flash.now[:message] = "Nothing found."
+    end
 
     respond_to do |format|
       format.html

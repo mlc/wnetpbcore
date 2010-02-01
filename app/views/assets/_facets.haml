@@ -13,6 +13,6 @@
             %strong& #{row.value} (#{row.count})
             = link_to("[X]", params.merge(param_name => arr - [row.value]))
           - else
-            = link_to(row.value, params.merge(param_name => arr + [row.value]), :class => "secondaryLink")
+            = link_to(h(row.value), params.merge(param_name => arr + [row.value]), :class => "secondaryLink")
             (#{row.count})
           %br

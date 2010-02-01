@@ -1,0 +1,44 @@
+- title(@query ? "Search for #{@query}" : "Assets")
+
+- unless @assets.empty?
+  = render :partial => "pagination"
+  %table.content{ :cellspacing => "0", :border => "0", :cellpadding => "0" }
+    %tr
+      %td.contentDivider{ :colspan => "2" } &nbsp;
+
+    - @assets.each do |asset|
+      %tr{ :id => "tr_asset_#{asset.id}" }
+        - if asset.has_thumbnail?
+          %td{ :width => "95" } "thumb"
+        %td{ :colspan => asset.has_thumbnail? ? 1 : 2 }
+          %span.title2&= asset.identifier
+          - permitted_to? :show, :assets do
+            = link_to "VIEW", asset_url(asset.uuid), :class => "title2"
+            = link_to "XML", formatted_asset_url(asset.uuid, "xml"), :class => "title2"
+          - permitted_to? :edit, :assets do
+            = link_to "EDIT", edit_asset_url(asset), :class => "title2"
+
+          - permitted_to? :merge, :assets do
+            %span.title2
+              = check_box_tag "asset_ids[]", asset.id, false, :id => "merge_#{asset.id}"
+              %label{ :for => "merge_#{asset.id}" } MERGE
+
+          - permitted_to? :destroy, :assets do
+            = link_to_remote "DELETE", :url => { :action => 'destroy', :id => asset.id }, :method => :delete, :confirm => "Are you sure you wish to delete #{asset.title}?", :html => { :class => "title2" }
+
+          %br
+          %strong&= asset.title
+
+          %br
+          - asset.instantiations.sort{ |a,b| a.summary <=> b.summary }.each do |instantiation|
+            &= instantiation.summary
+            - if instantiation.format_location =~ /^(f|ht)tp:\/\//
+              = link_to "[link]", instantiation.format_location
+            - if instantiation.borrowed?
+              [on loan]
+            %br
+
+      %tr{ :id => "tr_divider_#{asset.id}" }
+        %td.contentDivider{ :colspan => "2" } &nbsp;
+      
+  = render :partial => "pagination"
