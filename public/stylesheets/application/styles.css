@@ -48,6 +48,11 @@ h1 {
 	letter-spacing: 1px;
 }
 
+h1.inside {
+    line-height: 19px;
+    margin-bottom: 8px;
+}
+
 h2 {
 	color: #333333;
 	font-weight: bold;
@@ -142,6 +147,31 @@ a.secondaryLink:hover {
 
 .topnavLi li a:hover {
 	color: #a43b81;
+	text-decoration: none;	
+}
+
+/* second-level nav */
+.secondnav {
+    margin: 0px;
+    padding: 6px 0px 0px;
+}
+
+.secondnav li {
+    display: inline; padding: 0px 4px; margin: 0px 2px;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #999999;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.secondnav li a {
+	color: #d2849c;
+	text-decoration: none;	
+}
+
+.secondnav li a:hover {
+	color: #a2c0c0;
 	text-decoration: none;	
 }
 

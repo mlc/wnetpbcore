@@ -31,66 +31,19 @@
                 %table.contentTopLinksArea{ :cellspacing => "0", :border => "0", :width => "93%", :cellpadding => "0" }
                   %tr
                     %td{ :nowrap => "nowrap", :align => "left", :valign => "top" }
-                      %h1&= yield(:title)
+                      - if @have_second_nav
+                        = render(:partial => "layouts/second_nav")
+                      - else
+                        %h1&= yield(:title)
                     %td{ :align => "right", :valign => "middle" }
                       = link_to("All Assets", set_streamable_path("off"), :id => "all_asset_link", :class => session[:streamable] ? nil : "selected_option")
                       = link_to("Streamable Assets", set_streamable_path("on"), :id => "streamable_asset_link", :class => session[:streamable] ? "selected_option" : nil)
-            -#
-              %tr
-              %td.sidebarSearch{ :align => "center" }
-                %table{ :cellspacing => "0", :border => "0", :bgcolor => "#FFFFFF", :width => "170", :cellpadding => "0" }
-                  %tr
-                    %td{ :align => "right", :valign => "top", :width => "15" }
-                      %input#search2{ :name => "search2", :size => "17", :type => "text" }
-                    %td{ :align => "center", :width => "35" }
-                      %img{ :src => "/images/buttons/btnSearch.jpg", :height => "22", :alt => "search", :width => "24" }
-              %td.contentMiddle
-                %table.pagination{ :cellspacing => "0", :border => "0", :bgcolor => "#FFFFFF", :width => "91%", :cellpadding => "0" }
-                  %tr
-                    %td{ :nowrap => "nowrap", :align => "left", :valign => "top" }
-                      Showing records
-                      %strong
-                        1–20
-                      of
-                      %strong
-                        24461
-                    %td{ :align => "right", :valign => "middle" }
-                         
-                      %a{ :href => "test" }
-                        «
-                      %a{ :href => "test" }
-                        Previous
-                      %a{ :href => "test" }
-                        1
-                      %a{ :href => "test" }
-                        2
-                        %a{ :href => "test" }
-                          3
-                        %a{ :href => "test" }
-                          4
-                        %a{ :href => "test" }
-                          5
-                        %a{ :href => "test" }
-                          6
-                        %a{ :href => "test" }
-                          7
-                        %a{ :href => "test" }
-                          8
-                        %a{ :href => "test" }
-                          9
-                        …
-                        %a{ :href => "test" }
-                          1223
-                        %a{ :href => "test" }
-                          1224
-                        %a{ :href => "test" }
-                          Next
-                        %a{ :href => "test" }
-                          »
             %tr
               %td.sidebarMiddle
                 = render :partial => "assets/search"
               %td.contentMiddle{ :align => "left", :bgcolor => "#FFFFFF" }
+                - if @have_second_nav
+                  %h1.inside&= yield(:title)
                 - [:error, :warning, :message].each do |severity|
                   - if flash[severity]
                     .flash{ :id => severity.to_s }= flash[severity]
