@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* CSS Document */
 
 a {
@@ -30,8 +29,6 @@ body,td,th {
 	color: #777777;
 	font-style: normal;
 	font-family: 'Switzera ADF Cd', 'Arial Narrow', Arial, Helvetica, sans-serif; 
-	//background-image: url(/images/template/bg_color.jpg);
-	text-decoration: none;
 	vertical-align: top;
 	text-decoration: none;
 	font-size: 12px;
@@ -237,7 +234,7 @@ a.searchSelected:link{
 .sidebarSearch {
 	padding-left: 7px;
 	background-image: url(/images/template/sidebarBg.jpg);
-	float: center;	
+	/*float: center;	*/
 }
 
 .sidebarSearchLinks {
@@ -301,7 +298,6 @@ a.contentLink:hover {
 }
 
 .content{
-	//color: #ffffff;
 	width: 645px;
 	line-height: 18px;
 }
@@ -318,13 +314,10 @@ a.contentLink:hover {
 	background-repeat: no-repeat;
 	padding-top: 2px;
 	padding-left: 23px;
-	text-align: top;
-	float: center;
 }
 
 .contentMiddle {
 	width: 650px;
-	//color: #ffffff;
 	text-decoration: none;
 	background-image: url(/images/template/contentBg.jpg);
 	background-repeat: repeat-y;
