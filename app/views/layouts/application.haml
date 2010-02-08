@@ -4,6 +4,7 @@
   %head
     %title& pbcore || #{yield(:title)}
     = stylesheet_bundle 'application'
+    = stylesheet_bundle 'dhc'
     = javascript_dev ['jquery-1.4.1.min', 'https://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js'], ['jquery-ui-1.7.2.min', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js']
     = javascript_bundle 'common'
     = opensearch_headers(@search_object)
