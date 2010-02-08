@@ -116,7 +116,7 @@ a.secondaryLink:hover {
 	text-transform: uppercase;
 	color: #ffffff;
 	text-decoration: none;
-	background-image: url(/images/template/topnavBg.jpg);
+	background-image: url(/images/dhc/template/topnavBg.jpg);
 	background-repeat: no-repeat;
 	padding-top: 5px;
 	text-indent: 30px;
@@ -177,7 +177,7 @@ a.secondaryLink:hover {
 	width: 243px;
 	color: #ffffff;
 	text-decoration: none;
-	background-image: url(/images/template/topnavuserBg.jpg);
+	background-image: url(/images/dhc/template/topnavuserBg.jpg);
 	background-repeat: no-repeat;
 	padding-right: 22px;
 	padding-top: 8px;
@@ -214,7 +214,7 @@ a.searchSelected:link{
 .sidebarTop {
 	height: 35px;
 	width: 215px;
-	background-image: url(/images/template/sidebarTop.jpg);
+	background-image: url(/images/dhc/template/sidebarTop.jpg);
 	background-repeat: no-repeat;
 	padding-top: 7px;
 	text-indent: 30px;
@@ -225,7 +225,7 @@ a.searchSelected:link{
 	width: 180px;
 	color: #ffffff;
 	text-decoration: none;
-	background-image: url(/images/template/sidebarBg.jpg);
+	background-image: url(/images/dhc/template/sidebarBg.jpg);
 	background-repeat: repeat-y;
 	padding-left: 27px;
 	text-align: left;
@@ -233,7 +233,7 @@ a.searchSelected:link{
 
 .sidebarSearch {
 	padding-left: 7px;
-	background-image: url(/images/template/sidebarBg.jpg);
+	background-image: url(/images/dhc/template/sidebarBg.jpg);
 	/*float: center;	*/
 }
 
@@ -247,7 +247,7 @@ a.searchSelected:link{
 	width: 180px;
 	color: #ffffff;
 	text-decoration: none;
-	background-image: url(/images/template/sidebarBottom.jpg);
+	background-image: url(/images/dhc/template/sidebarBottom.jpg);
 	background-repeat: no-repeat;
 }
 
@@ -310,7 +310,7 @@ a.contentLink:hover {
 	text-transform: uppercase;
 	line-height: 5px;
 	text-decoration: none;
-	background-image: url(/images/template/contentTop.jpg);
+	background-image: url(/images/dhc/template/contentTop.jpg);
 	background-repeat: no-repeat;
 	padding-top: 2px;
 	padding-left: 23px;
@@ -319,7 +319,7 @@ a.contentLink:hover {
 .contentMiddle {
 	width: 650px;
 	text-decoration: none;
-	background-image: url(/images/template/contentBg.jpg);
+	background-image: url(/images/dhc/template/contentBg.jpg);
 	background-repeat: repeat-y;
 	padding: 0px 35px 0px 25px;
 	text-align: left;
@@ -330,7 +330,7 @@ a.contentLink:hover {
 	height: 30px;
 	color: #ffffff;
 	text-decoration: none;
-	background-image: url(/images/template/contentDivider.jpg);
+	background-image: url(/images/dhc/template/contentDivider.jpg);
 	background-repeat: no-repeat;
 }
 
@@ -340,13 +340,13 @@ a.contentLink:hover {
 	text-transform: uppercase;
 	color: #ffffff;
 	text-decoration: none;
-	background-image: url(/images/template/contentBottom.jpg);
+	background-image: url(/images/dhc/template/contentBottom.jpg);
 	background-repeat: no-repeat;
 }
 
 /* header*/
 .header{
-	background-image: url(/images/template/header.jpg);
+	background-image: url(/images/dhc/template/header.jpg);
 	background-repeat: no-repeat;
 	width:930px;
 	height:140px;
@@ -378,7 +378,7 @@ a.footerLink:hover {
 /* holder*/
 .holder{
 	width:100%;
-	background-image: url(/images/template/bg_color.jpg);
+	background-image: url(/images/dhc/template/bg_color.jpg);
 	
 }
 

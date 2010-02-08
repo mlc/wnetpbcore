@@ -2,8 +2,8 @@
  * why use javascript and four images when you can use CSS and only two?
  */
 
-a#all_asset_link { background-image: url(/images/buttons/btnAssets.png); }
-a#streamable_asset_link { background-image: url(/images/buttons/btnStreamable.png); }
+a#all_asset_link { background-image: url(/images/dhc/buttons/btnAssets.png); }
+a#streamable_asset_link { background-image: url(/images/dhc/buttons/btnStreamable.png); }
 
 a#all_asset_link, a#streamable_asset_link {
     height: 22px;
