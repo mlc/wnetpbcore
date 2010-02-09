@@ -95,8 +95,8 @@ namespace :app do
   desc "configure application"
   task :config do
     put app_config.to_json, "#{release_path}/config/application.json"
-    if app_config["auth_ruleset"]
-      run "cd #{release_path}/config && ln -fs auth_rules/#{app_config["auth_ruleset"]}.rb authorization_rules.rb"
+    if app_config[:auth_ruleset]
+      run "cd #{release_path}/config && ln -fs auth_rules/#{app_config[:auth_ruleset]}.rb authorization_rules.rb"
     end
   end
 end

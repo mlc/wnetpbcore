@@ -25,7 +25,8 @@ set :use_sudo, false
 set :app_config, {
   :theme => "gen",
   :footer_links => [ [ "pbcore.org", "http://www.pbcore.org/" ],
-                     [ "Roasted Vermicelli", "http://vermicel.li/" ] ]
+                     [ "Roasted Vermicelli", "http://vermicel.li/" ] ],
+  :auth_ruleset => "default"
 }
 
 # uncomment if you're using god for process management
