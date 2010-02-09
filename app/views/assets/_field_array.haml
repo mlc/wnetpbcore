@@ -6,5 +6,5 @@
   - else
     %span.title& #{field}:
   - query = nil
-  &= obj.send(value).gsub(/\r\n|\r|\n/, "<br />")
+  = h(obj.send(value)).gsub(/\r\n|\r|\n/, "<br />")
   %br

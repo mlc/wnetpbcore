@@ -79,7 +79,8 @@
 
   - if @asset.extensions.any?
     %tr
-      %h2 Extension Section
-      %p= render :partial => "field_array", :locals => {:objs => @asset.extensions, :field => "Extension", :key => :extension_name_str, :value => :extension_value }
+      %td
+        %h2 Extension Section
+        %p= render :partial => "field_array", :locals => {:objs => @asset.extensions, :field => "Extension", :key => :extension_name_str, :value => :extension_value }
     %tr
       %td.contentDivider &nbsp;

@@ -1,3 +1,5 @@
+# -*- ruby -*-
+
 set :app_db_host, 'localhost'
 set :app_db_user, 'pbcore'
 set :app_db_pass, 'xxxxxxxxxxx'
@@ -19,6 +21,12 @@ role :db,  "my-dbserver", :primary=>true
 
 set :user, "www"
 set :use_sudo, false
+
+set :app_config, {
+  :theme => "gen",
+  :footer_links => [ [ "pbcore.org", "http://www.pbcore.org/" ],
+                     [ "Roasted Vermicelli", "http://vermicel.li/" ] ]
+}
 
 # uncomment if you're using god for process management
 # set :have_god, true
