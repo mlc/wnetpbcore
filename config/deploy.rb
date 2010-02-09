@@ -1,4 +1,5 @@
 require 'erb'
+require 'json'
 require 'capistrano/ext/multistage'
 
 set :application, "pbcore"
@@ -89,6 +90,18 @@ end
 
 after "deploy:setup", :aws
 after "deploy:update_code", "aws:symlink"
+
+namespace :app do
+  desc "configure application"
+  task :config do
+    put app_config.to_json, "#{release_path}/config/application.json"
+    if app_config["auth_ruleset"]
+      run "cd #{release_path}/config && ln -fs auth_rules/#{app_config["auth_ruleset"]}.rb authorization_rules.rb"
+    end
+  end
+end
+
+after "deploy:update_code", "app:config"
 
 # http://blog.ninjahideout.com/posts/busting-a-cap-in-yo-ass
 
