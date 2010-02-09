@@ -4,7 +4,6 @@ require 'capistrano/ext/multistage'
 
 set :application, "pbcore"
 set :repository,  "git://git.mlcastle.net/pbcore.git"
-set :branch, "lockdown"
 
 # If you aren't deploying to /u/apps/#{application} on the target
 # servers (which is the default), you can specify the actual location
