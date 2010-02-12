@@ -62,7 +62,8 @@ module AssetsHelper
     {
       :clip => {
         :provider => 'rtmp',
-        :url => "mp4:#{video.format_location}"
+        :url => "mp4:#{video.format_location}",
+        :scaling => 'fit'
       },
       :plugins => {
         :rtmp => {
