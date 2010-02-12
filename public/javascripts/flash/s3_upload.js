@@ -5,28 +5,34 @@
 
 function s3_swf_init(id, options)
 {
-  width           = (options.width == undefined) ? 300 : options.width
-  height          = (options.height == undefined) ? 35 : options.height
-  version         = (options.version == undefined) ? '9.0.0' : options.version
-  onFileSelected  = (options.onFileSelected == undefined) ? function(){} : options.onFileSelected
-  onSuccess       = (options.onSuccess == undefined) ? function(){} : options.onSuccess
-  onFailed        = (options.onFailed == undefined) ? function(){} : options.onFailed
-  onCancel        = (options.onCancel == undefined) ? function(){} : options.onCancel
+  var width       = (options.width == undefined) ? 300 : options.width,
+  height          = (options.height == undefined) ? 35 : options.height,
+  version         = (options.version == undefined) ? [9,0,0] : options.version,
+  onFileSelected  = (options.onFileSelected == undefined) ? function(){} : options.onFileSelected,
+  onSuccess       = (options.onSuccess == undefined) ? function(){} : options.onSuccess,
+  onFailed        = (options.onFailed == undefined) ? function(){} : options.onFailed,
+  onCancel        = (options.onCancel == undefined) ? function(){} : options.onCancel,
 
   flashvars = {
     signature_query_url: window.location.protocol + '//' + window.location.host + '/s3_uploads',
     id: id
-  }
+  };
   var s3_swf = {
-    obj: function() { return document.getElementById(id); },
+    obj: function() { return $('#' + id + ' object')[0]; },
     upload: function(prefix) { this.obj().upload(prefix); },
     onSuccess: onSuccess,
     onFailed: onFailed,
-    onSelected: onFileSelected, 
+    onSelected: onFileSelected,
     onCancel: onCancel
-  }
-  
-  swfobject.embedSWF("/swf/s3_upload.swf", id, width, height, version, null, flashvars);
-  
+  };
+
+  flashembed(id, {
+      src: '/swf/s3_upload.swf',
+      version: version,
+      width: width,
+      height: height
+  }, flashvars);
+  // swfobject.embedSWF("/swf/s3_upload.swf", id, width, height, version, null, flashvars);
+
   return(s3_swf);
 }
