@@ -35,7 +35,7 @@ module Importers
 
   class ImageImportJob < Struct.new(:asset_id, :image_path)
     SIZES = {
-      :thumb => ["80x60", "white"]
+      :thumb => ["80x60", "white"],
       :preview => ["640x480", "black"]
     }
 
