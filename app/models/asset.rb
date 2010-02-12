@@ -92,10 +92,6 @@ class Asset < ActiveRecord::Base
     (result.empty? ? identifiers : result).map{|id| id.identifier}.join(" / ")
   end
 
-  def has_thumbnail?
-    false
-  end
-
   # Copies the stuff from some other asset object into us.
   def merge(other)
     [:identifiers, :titles, :descriptions, :relations, :coverages, :creators, :contributors,
@@ -117,6 +113,14 @@ class Asset < ActiveRecord::Base
 
   def online?
     instantiations.any?(&:online?)
+  end
+
+  def has_thumbnail?
+    instantiations.any?(&:thumbnail?)
+  end
+
+  def thumbnail
+    instantiations.detect(&:thumbnail?)
   end
 
   def merge_existing

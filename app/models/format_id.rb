@@ -18,4 +18,8 @@ class FormatId < ActiveRecord::Base
   def online?
     format_identifier_source_id == FormatIdentifierSource::OUR_ONLINE_SOURCE.id
   end
+
+  def thumbnail?
+    format_identifier_source_id == FormatIdentifierSource::OUR_THUMBNAIL_SOURCE.id
+  end
 end

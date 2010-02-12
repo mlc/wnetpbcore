@@ -9,7 +9,8 @@
     - @assets.each do |asset|
       %tr{ :id => "tr_asset_#{asset.id}" }
         - if asset.has_thumbnail?
-          %td{ :width => "95" } "thumb"
+          %td{ :width => "95" }<
+            = link_to img_thumb_tag(asset.thumbnail, "thumb", "80x60"), asset_url(asset.uuid), :class => "index_thumbnail"
         %td{ :colspan => asset.has_thumbnail? ? 1 : 2 }
           %span.title2&= asset.identifier
           - permitted_to? :show, :assets do

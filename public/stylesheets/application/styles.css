@@ -334,3 +334,7 @@ a.footerLink {
 .left_search_field {
     width: 145px;
 }
+
+a.index_thumbnail img {
+    border: none ;
+}

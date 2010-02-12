@@ -77,4 +77,12 @@ module AssetsHelper
       }
     }
   end
+
+  def img_thumb_tag(thumbnail, variant, size)
+    image_tag(img_thumb_url(thumbnail, variant), :size => size, :alt => "thumbnail")
+  end
+
+  def img_thumb_url(thumbnail, variant)
+    AWS::S3::S3Object.url_for("#{thumbnail.uuid}/#{variant}", S3SwfUpload::S3Config.bucket)
+  end
 end

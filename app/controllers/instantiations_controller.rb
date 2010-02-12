@@ -17,18 +17,29 @@ class InstantiationsController < ApplicationController
     @instantiation.format_ids.build
   end
 
-  def new_video
-    # just show the form
-  end
-
   def upload_video
     if params[:uploaded_filename] && !(params[:uploaded_filename].empty?)
       flash[:message] = 'Your video has been uploaded and will now be processed. Please wait a few minutes for it to appear on the site.'
-      Delayed::Job.enqueue VideoImportJob.new(@asset.id, params[:uploaded_filename])
+      Delayed::Job.enqueue Importers::VideoImportJob.new(@asset.id, params[:uploaded_filename])
     else
       flash[:warning] = 'No video was uploaded.'
     end
     redirect_to :action => 'index'
+  end
+
+  def upload_thumbnail
+    if params[:thumbnail] && params[:thumbnail].respond_to?(:read)
+      tmpfn = "/tmp/thumbnail-#{UUID.random_create}"
+      File.open(tmpfn, "w") do |f|
+        f << params[:thumbnail].read
+      end
+      flash[:message] = 'Your thumbnail has been uploaded and will now be processed. Please wait a few minutes for it to appear on the site.'
+      Delayed::Job.enqueue Importers::ImageImportJob.new(@asset.id, tmpfn)
+      redirect_to :action => 'index'
+    else
+      flash[:error] = 'You must select a thumbnail image in order to upload a thumbnail.'
+      redirect_to :action => 'thumbnail'
+    end
   end
   
   def create

@@ -23,6 +23,9 @@
   <%- end -%>
   <%- permitted_to? :new, :instantiations do %>
     <li><%= link_to("Add a new instantiation…", :action => 'new') %></li>
+  <%- end -%>
+  <%- permitted_to? :video, :instantiations do %>
     <li><%= link_to("Upload a video instantiation…", :action => 'video') %></li>
+    <li><%= link_to("Upload a thumbnail…", :action => 'thumbnail') %></li>
   <%- end -%>
 </ul>

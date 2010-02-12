@@ -2,7 +2,7 @@
 $(function(){$('body').supersleight({shim: '/imgages/x.gif'})});
 
 function searchHelp() {
-  window.open( 
+  window.open(
     "/static/search_help",
     "searchHelp",
     "height=600,width=750/inv,channelmode=0,dependent=0," +
@@ -51,4 +51,11 @@ $(function() {
    });
    /* default to disabling the button, so it can not be clicked without JS */
    $("#super-dangerous input:disabled").removeAttr("disabled");
+});
+
+$(function() {
+    $('#thumbnail_form').submit(function() {
+	$("input[type='submit'])").attr({"disabled": true, "value": "Uploading\u2026"});
+	return true;
+    });
 });

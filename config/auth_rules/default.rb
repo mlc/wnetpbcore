@@ -39,5 +39,5 @@ privileges do
   privilege :borrow, :includes => [:borrowings, :return]
   privilege :crud, :includes => [:create, :read, :update, :destroy]
   privilege :merge, :includes => :multiprocess
-  privilege :video, :includes => :upload_video
+  privilege :video, :includes => [:upload_video, :thumbnail, :upload_thumbnail]
 end

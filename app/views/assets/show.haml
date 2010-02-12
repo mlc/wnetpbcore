@@ -8,10 +8,15 @@
   - if @video
     %tr
       %td
-        #flowplayer
+        #flowplayer{ :style => @asset.has_thumbnail? ? "background-image: url(#{img_thumb_url(@asset.thumbnail, 'preview')})" : nil }
           %img{ :src => '/images/play_large.png', :height => 83, :width => 83, :style => 'cursor: pointer; position: relative; left: 278px; top: 198px;', :alt => 'Play Video' }
         :javascript
           $(function(){ $('#flowplayer').flowplayer(#{flashembed_params.to_json}, #{flowplayer_params(@video).to_json})});
+    %tr
+      %td.contentDivider &nbsp;
+  - elsif @asset.has_thumbnail?
+    %tr
+      %td= img_thumb_tag(@asset.thumbnail, 'preview', '640x480')
     %tr
       %td.contentDivider &nbsp;
 

@@ -95,6 +95,10 @@ class Instantiation < ActiveRecord::Base
     format_ids.any?(&:online?)
   end
 
+  def thumbnail?
+    format_ids.any?(&:thumbnail?)
+  end
+
   protected
   def generate_uuid
     self.uuid = UUID.random_create.to_s unless (self.uuid && !self.uuid.empty?)

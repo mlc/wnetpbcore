@@ -1,0 +1,6 @@
+- title "Upload Thumbnail"
+- form_tag({:action => 'upload_thumbnail'}, :method => 'put', :multipart => true, :id => 'thumbnail_form') do
+  %p Please select a thumbnail to upload:
+  %p
+    = file_field_tag 'thumbnail'
+    = submit_tag 'Upload Thumbnail'
