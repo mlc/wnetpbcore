@@ -91,6 +91,10 @@ class Instantiation < ActiveRecord::Base
     end
   end
 
+  def online?
+    format_ids.any?(&:online?)
+  end
+
   protected
   def generate_uuid
     self.uuid = UUID.random_create.to_s unless (self.uuid && !self.uuid.empty?)

@@ -2,6 +2,7 @@ class InstantiationsController < ApplicationController
   filter_access_to :all
 
   before_filter :get_asset
+  before_filter :enable_flash, :only => :video
 
   param_parsers[Mime::XML] = Proc.new do |data|
     {:xml => data}
@@ -14,6 +15,20 @@ class InstantiationsController < ApplicationController
   def new
     @instantiation = Instantiation.new(:asset => @asset)
     @instantiation.format_ids.build
+  end
+
+  def new_video
+    # just show the form
+  end
+
+  def upload_video
+    if params[:uploaded_filename] && !(params[:uploaded_filename].empty?)
+      flash[:message] = 'Your video has been uploaded and will now be processed. Please wait a few minutes for it to appear on the site.'
+      Delayed::Job.enqueue VideoImportJob.new(@asset.id, params[:uploaded_filename])
+    else
+      flash[:warning] = 'No video was uploaded.'
+    end
+    redirect_to :action => 'index'
   end
   
   def create

@@ -8,7 +8,7 @@ authorization do
   role :user do
     includes :guest
     has_permission_on :assets, :to => [:create, :update]
-    has_permission_on :instantiations, :to => [:create, :update]
+    has_permission_on :instantiations, :to => [:create, :update, :video]
     has_permission_on :users, :to => [:show, :update] do
       if_attribute :id => is { user.id }
     end
@@ -39,4 +39,5 @@ privileges do
   privilege :borrow, :includes => [:borrowings, :return]
   privilege :crud, :includes => [:create, :read, :update, :destroy]
   privilege :merge, :includes => :multiprocess
+  privilege :video, :includes => :upload_video
 end

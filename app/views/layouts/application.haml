@@ -5,8 +5,10 @@
     %title& pbcore || #{yield(:title)}
     = stylesheet_bundle 'application'
     = stylesheet_bundle PBCore.config[:theme]
-    = javascript_dev ['jquery-1.4.1.min', 'https://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js'], ['jquery-ui-1.7.2.min', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js']
+    = google_javascript_libraries(@page_has_flash)
     = javascript_bundle 'common'
+    - if @page_has_flash
+      = javascript_bundle 'flash'
     = opensearch_headers(@search_object)
     = alternate_views
   %body

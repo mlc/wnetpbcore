@@ -1,5 +1,11 @@
 require 'find'
 module BundleHelper
+  AJAX_LIBRARIES = {
+    :jquery => ['jquery-1.4.1.min', 'https://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js'],
+    :jquery_ui => ['jquery-ui-1.7.2.min', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js'],
+    :swfobject => ['swfobject', 'http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js']
+  }.freeze
+
   def bundle_files?
     RAILS_ENV == 'production' || params[:bundle] || cookies[:bundle] == "yes"
   end
@@ -77,5 +83,11 @@ module BundleHelper
       files << path.gsub(RAILS_ROOT + '/', '') if File.extname(path) == extname
     end
     files.sort
+  end
+
+  def google_javascript_libraries(flash = false)
+    libs = [:jquery, :jquery_ui]
+    libs << :swfobject if flash
+    javascript_dev(*AJAX_LIBRARIES.values_at(*libs))
   end
 end

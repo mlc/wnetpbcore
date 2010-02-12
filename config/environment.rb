@@ -24,6 +24,7 @@ Rails::Initializer.run do |config|
   # They can then be installed with "rake gems:install" on new installations.
   config.gem 'haml', :version => '>= 2.2.8'
   config.gem 'libxml-ruby', :lib => 'libxml', :version => '>=0.8.0'
+  config.gem 'libxslt-ruby', :lib => 'libxslt', :version => '>=0.9.0'
   config.gem 'rubyzip', :lib => 'zip/zip'
   config.gem 'mime-types', :lib => 'mime/types'
   config.gem 'uuidtools'
@@ -34,6 +35,7 @@ Rails::Initializer.run do |config|
   config.gem 'sunspot_rails', :lib => 'sunspot/rails', :source  => 'http://gemcutter.org'
   config.gem 'grit', :source => 'http://gemcutter.org/'
   config.gem 'aws-s3', :lib => 'aws/s3', :source => 'http://gemcutter.org/'
+  config.gem 'delayed_job', :lib => 'delayed_job', :source => 'http://gemcutter.org/'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.

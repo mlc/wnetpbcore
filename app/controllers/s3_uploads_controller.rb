@@ -3,6 +3,8 @@ require 'base64'
 class S3UploadsController < ApplicationController
   skip_before_filter :verify_authenticity_token
   include S3SwfUpload::Signature
+
+  filter_access_to :index, :context => :instantiations, :require => :video
   
   def index
     bucket          = S3SwfUpload::S3Config.bucket
@@ -14,18 +16,19 @@ class S3UploadsController < ApplicationController
     https           = 'false'
     expiration_date = 1.hours.from_now.utc.strftime('%Y-%m-%dT%H:%M:%S.000Z')
 
-    policy = Base64.encode64(
-"{
-    'expiration': '#{expiration_date}',
-    'conditions': [
-        {'bucket': '#{bucket}'},
-        {'key': '#{key}'},
-        {'acl': '#{acl}'},
-        {'Content-Type': '#{content_type}'},
-        ['starts-with', '$Filename', ''],
-        ['eq', '$success_action_status', '201']
-    ]
-}").gsub(/\n|\r/, '')
+    policy_doc = {                               
+    :expiration => expiration_date,
+    :conditions => [
+                    {:bucket => bucket},
+                    {:key => key},
+                    {:acl => acl},
+                    {'Content-Type' => content_type},
+                    ['starts-with', '$Filename', ''],
+                    ['eq', '$success_action_status', '201']
+                   ]
+    }
+
+    policy = Base64.encode64(policy_doc.to_json).gsub(/\n|\r/, '')
 
     signature = b64_hmac_sha1(S3SwfUpload::S3Config.secret_access_key, policy)
 

@@ -14,4 +14,8 @@ class FormatId < ActiveRecord::Base
       self.errors.add("format_identifier", "does not match the rules for the selected identifier source")
     end
   end
+
+  def online?
+    format_identifier_source_id == FormatIdentifierSource::OUR_ONLINE_SOURCE.id
+  end
 end

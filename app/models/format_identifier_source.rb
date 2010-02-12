@@ -3,8 +3,9 @@ class FormatIdentifierSource < ActiveRecord::Base
   has_many :format_ids
 
   OUR_UUID_SOURCE = find_or_create_by_name("pbcore XML database UUID") rescue nil
+  OUR_ONLINE_SOURCE = find_or_create_by_name("pbcore XML database online asset") rescue nil
   
   def safe_to_delete?
-    self.id != OUR_UUID_SOURCE.id && format_ids.count == 0
+    !([OUR_UUID_SOURCE.id, OUR_ONLINE_SOURCE.id].include?(self.id)) && format_ids.count == 0
   end
 end

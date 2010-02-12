@@ -115,6 +115,10 @@ class Asset < ActiveRecord::Base
     end
   end
 
+  def online?
+    instantiations.any?(&:online?)
+  end
+
   def merge_existing
     return nil unless new_record?
 
@@ -174,7 +178,7 @@ class Asset < ActiveRecord::Base
     time :created_at
     time :updated_at
     string :uuid
-    boolean(:online_asset) { false } # FIXME: sometimes this should be true
+    boolean(:online_asset) { self.online? }
   end
 
   def self.dedupe

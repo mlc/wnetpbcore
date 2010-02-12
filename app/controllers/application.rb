@@ -41,4 +41,8 @@ class ApplicationController < ActionController::Base
       redirect_to login_path
     end
   end
+
+  def enable_flash
+    @page_has_flash = true
+  end
 end
