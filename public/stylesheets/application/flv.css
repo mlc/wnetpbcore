@@ -5,3 +5,9 @@
 #s3_prefix {
     display: none;
 }
+
+#flowplayer {
+    width: 640px;
+    height: 480px;
+    background-color: #222;
+}

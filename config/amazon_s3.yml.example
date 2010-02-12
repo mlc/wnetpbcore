@@ -3,13 +3,16 @@ development:
   bucket_name: dhc-assets
   access_key_id: AKIAJHYYKGSZ5KWK4M4Q
   secret_access_key: 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
+  cloudfront_distro: sXXXXXXXXXXXX.cloudfront.net
 
 test:
   bucket_name: test_bucket
   access_key_id: 
   secret_access_key: 
+  cloudfront_distro: 
 
 production:
   bucket_name: production_bucket
   access_key_id: 
   secret_access_key: 
+  cloudfront_distro: 

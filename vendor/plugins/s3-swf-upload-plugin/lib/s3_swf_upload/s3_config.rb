@@ -2,7 +2,7 @@ module S3SwfUpload
   class S3Config
     require 'yaml'
 
-    cattr_reader :access_key_id, :secret_access_key, :bucket
+    cattr_reader :access_key_id, :secret_access_key, :bucket, :distro
 
     def self.load_config
       filename = "#{RAILS_ROOT}/config/amazon_s3.yml"
@@ -12,6 +12,7 @@ module S3SwfUpload
       @@access_key_id     = config[RAILS_ENV]['access_key_id']
       @@secret_access_key = config[RAILS_ENV]['secret_access_key']
       @@bucket            = config[RAILS_ENV]['bucket_name']
+      @@distro            = config[RAILS_ENV]['cloudfront_distro']
       
       unless @@access_key_id && @@secret_access_key
         raise "Please configure your S3 settings in #{filename}."

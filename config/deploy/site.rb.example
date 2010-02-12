@@ -7,6 +7,7 @@ set :app_db_pass, 'xxxxxxxxxxx'
 set :aws_bucket, "my-bucket"
 set :aws_access, "AKIAJHYYKGSZ5KWK4M4Q"
 set :aws_secret, "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+set :cloudfront_distro, "sXXXXXXXXXXXX.cloudfront.net"
 
 set :rb_bin_path, '/usr/bin'
 set :server_type, :thin

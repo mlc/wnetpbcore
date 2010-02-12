@@ -87,7 +87,7 @@ module BundleHelper
 
   def google_javascript_libraries(flash = false)
     libs = [:jquery, :jquery_ui]
-    libs << :swfobject if flash
+    # libs << :swfobject if flash
     javascript_dev(*AJAX_LIBRARIES.values_at(*libs))
   end
 end

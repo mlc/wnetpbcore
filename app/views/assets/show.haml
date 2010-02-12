@@ -5,10 +5,13 @@
   %tr
     %td.contentDivider &nbsp;
 
-  - if @asset.has_thumbnail?
+  - if @video
     %tr
       %td
-        %strong TODO: put a flowplayer here
+        #flowplayer
+          %img{ :src => '/images/play_large.png', :height => 83, :width => 83, :style => 'cursor: pointer; position: relative; left: 278px; top: 198px;', :alt => 'Play Video' }
+        :javascript
+          $(function(){ $('#flowplayer').flowplayer(#{flashembed_params.to_json}, #{flowplayer_params(@video).to_json})});
     %tr
       %td.contentDivider &nbsp;
 

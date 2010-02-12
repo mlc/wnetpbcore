@@ -92,7 +92,12 @@ class AssetsController < ApplicationController
     end
     if @asset
       respond_to do |format|
-        format.html
+        format.html do
+          if @asset.online?
+            enable_flash
+            @video = @asset.instantiations.detect(&:online?)
+          end
+        end
         format.xml { render :xml => @asset.to_xml }
       end
     else

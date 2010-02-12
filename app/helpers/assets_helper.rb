@@ -49,4 +49,31 @@ module AssetsHelper
     end
     return gentypes
   end
+
+  def flashembed_params
+    {
+      :src => '/swf/flowplayer-3.1.5.swf',
+      :version => [9, 115],
+      :expressInstall => nil
+    }
+  end
+
+  def flowplayer_params(video)
+    {
+      :clip => {
+        :provider => 'rtmp',
+        :url => "mp4:#{video.format_location}"
+      },
+      :plugins => {
+        :rtmp => {
+          :url => 'flowplayer.rtmp-3.1.3.swf',
+          :netConnectionUrl => "rtmp://#{S3SwfUpload::S3Config.distro}/cfx/st",
+          :durationFunc => 'getStreamLength'
+        },
+        :controls => {
+          :autoHide => 'always'
+        }
+      }
+    }
+  end
 end

@@ -77,6 +77,7 @@ namespace :aws do
   bucket_name: #{aws_bucket}
   access_key_id: #{aws_access}
   secret_access_key: #{aws_secret}
+  cloudfront_distro: #{cloudfront_distro}
 <% end %>
 EOF
     put aws_config.result, "#{shared_path}/config/amazon_s3.yml"
