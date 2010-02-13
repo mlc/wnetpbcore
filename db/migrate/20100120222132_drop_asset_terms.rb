@@ -1,6 +1,6 @@
 class DropAssetTerms < ActiveRecord::Migration
   def self.up
-    drop_table :asset_terms
+    drop_table :asset_terms  rescue nil
   end
 
   def self.down
