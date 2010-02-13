@@ -16,7 +16,7 @@ authorization do
   role :admin do
     includes :user
     has_permission_on :assets, :to => [:destroy, :merge]
-    has_permission_on :instantiations, :to => [:destroy, :borrow]
+    has_permission_on :instantiations, :to => [:destroy]
     has_permission_on :users, :to => :crud
     has_permission_on :users, :to => :make_admin do
       if_attribute :id => is_not { user.id }
@@ -25,7 +25,6 @@ authorization do
     PicklistsController::SUBCLASSES.each do |kl|
       has_permission_on kl.to_sym, :to => :crud
     end
-    has_permission_on :borrowings, :to => :index
     has_permission_on :assets, :to => :multilend
     has_permission_on :assets, :to => :destroy_found_set
   end
