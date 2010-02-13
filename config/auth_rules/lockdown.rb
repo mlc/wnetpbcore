@@ -16,7 +16,7 @@ authorization do
   role :admin do
     includes :user
     has_permission_on :assets, :to => [:destroy, :merge]
-    has_permission_on :instantiations, :to => [:destroy]
+    has_permission_on :instantiations, :to => [:destroy, :video]
     has_permission_on :users, :to => :crud
     has_permission_on :users, :to => :make_admin do
       if_attribute :id => is_not { user.id }
@@ -37,4 +37,5 @@ privileges do
   privilege :borrow, :includes => [:borrowings, :return]
   privilege :crud, :includes => [:create, :read, :update, :destroy]
   privilege :merge, :includes => :multiprocess
+  privilege :video, :includes => [:upload_video, :thumbnail, :upload_thumbnail]
 end
