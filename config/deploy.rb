@@ -221,6 +221,7 @@ namespace :deploy do
     task action.to_sym do
       find_and_execute_task("ourserver:#{action}")
       find_and_execute_task("solr:#{action}")
+      find_and_execute_task("delayed_job:#{action}")
     end
   end
 
@@ -281,6 +282,15 @@ end
 
 after "deploy:setup", "solr:setup"
 after "deploy:symlink", "solr:symlink"
+
+namespace :delayed_job do
+  [:start, :stop, :restart].each do |action|
+    desc "#{action} dj worker"
+    task action do
+      run "cd #{current_path} && env RAILS_ENV=production #{rb_bin_path}/ruby ./script/delayed_job #{action}"
+    end
+  end
+end
 
 # http://github.com/javan/whenever/tree/master
 
