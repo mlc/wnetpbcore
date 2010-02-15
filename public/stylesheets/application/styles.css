@@ -338,3 +338,8 @@ a.footerLink {
 a.index_thumbnail img {
     border: none ;
 }
+
+.destroy_link {
+    color: red;
+    font-size: smaller;
+}
