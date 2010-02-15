@@ -1,8 +1,0 @@
-<li id="obj_<%= obj.id %>">
-  <%= h obj.name %>
-  <%= link_to_function "edit",
-    "$('#obj_#{obj.id}').hide(); $('#edit_#{obj.id}').show();",
-    { :href => url_for(:action => 'edit', :id => obj.id) }
-  %>
-  <%= link_to_remote "destroy", :url => { :action => 'destroy', :id => obj.id }, :method => :delete, :confirm => "Are you sure you wish to delete \"#{obj.name}\"?", :html => { :class => "destroy_link" } %>
-</li>

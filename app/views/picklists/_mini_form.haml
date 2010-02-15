@@ -1,0 +1,9 @@
+%li{ :id => (obj.id.nil? ? "new_form" : "edit_#{obj.id}"), :style => (obj.id.nil? ? nil : "display: none;") }
+  - remote_form_for(obj) do |f|
+    = f.text_field :name
+    \&nbsp;
+    #{f.check_box :visible}Show in edit form
+    \&nbsp;&nbsp;
+    = f.submit(obj.id ? "Save changes" : "Add new")
+    - if obj.id
+      = link_to_function "cancel", "$('#obj_#{obj.id}').show(); $('#edit_#{obj.id}').hide();"

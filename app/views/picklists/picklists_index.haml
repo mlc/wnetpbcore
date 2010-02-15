@@ -1,0 +1,6 @@
+- title "Edit Picklists"
+
+%p Select a type of picklist to edit:
+%ul
+  - @controllers.each do |controller|
+    %li= link_to controller.gsub('_', ' ').titlecase, :controller => controller, :action => 'index'
