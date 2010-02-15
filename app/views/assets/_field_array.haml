@@ -6,5 +6,5 @@
   - else
     %span.title& #{field}:
   - query = nil
-  = h(obj.send(value)).gsub(/\r\n|\r|\n/, "<br />")
+  = auto_link(h(obj.send(value)).gsub(/\r\n|\r|\n/, "<br />"))
   %br

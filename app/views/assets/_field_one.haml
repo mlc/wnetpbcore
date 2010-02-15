@@ -1,5 +1,5 @@
 - unless value.nil? || (value.respond_to?(:empty?) && value.empty?)
   - val = (local_assigns[:field] ? value.send(field) : value)
   %strong.title&= key
-  = (local_assigns[:url] && val =~ /^http/) ? link_to(h(val),val) : h(val)
+  = auto_link(h(val))
   %br
