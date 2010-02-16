@@ -343,3 +343,11 @@ a.index_thumbnail img {
     color: red;
     font-size: smaller;
 }
+
+.rev {
+    font-family: monospace;
+}
+
+#revpara {
+    font-size: smaller;
+}

@@ -1,0 +1,22 @@
+!!! XML
+!!!
+%html{ :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %title& pbcore || #{yield(:title)}
+    = stylesheet_bundle 'application'
+    = stylesheet_bundle PBCore.config[:theme]
+    = google_javascript_libraries(@page_has_flash)
+    = javascript_bundle 'common'
+    - if @page_has_flash
+      = javascript_bundle 'flash'
+    = alternate_views
+  %body
+    %table{ :cellspacing => 0, :cellpadding => 0, :border => 0 }
+      %tr
+        %td.contentTop
+          %h1= yield :title
+      %tr
+        %td.contentMiddle{ :style => 'padding-right: 25px;' }
+          = yield
+      %tr
+        %td.contentBottom

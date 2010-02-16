@@ -57,6 +57,6 @@
           %table#footer.footer{ :cellspacing => "3", :border => "0", :cellpadding => "3" }
             %tr
               %td
-                = link_to 'About this site', {:controller => 'static', :action => 'about'}, :class => "footerLink"
+                = link_to 'About this site', {:controller => 'static', :action => 'about'}, :class => "footerLink popmeup"
                 - PBCore.config[:footer_links].each do |text, url|
                   = link_to text, url, :class => "footerLink"
