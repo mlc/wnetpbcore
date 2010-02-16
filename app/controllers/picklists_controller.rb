@@ -1,6 +1,7 @@
 # this is the almost-abstract superclass of all the picklist controllers
 class PicklistsController < ApplicationController
   before_filter :set_class_name
+  before_filter :set_standard_pbcore
   filter_access_to :all
 
   SUBCLASSES = ['audience_levels', 'audience_ratings', 'contributor_roles',
@@ -18,6 +19,9 @@ class PicklistsController < ApplicationController
     else
       @emit_warning = should_emit_warning
       @objects = @klass.all(:order => "name ASC")
+      if @standard_pbcore
+        @donthave = (@standard_pbcore - @objects.map(&:name)).sort
+      end
     end
   end
   
@@ -61,7 +65,12 @@ class PicklistsController < ApplicationController
     @klass = obj_type
   end
 
+  # some subclasses override these two methods.
   def should_emit_warning
     true
+  end
+
+  def set_standard_pbcore
+    @standard_pbcore = nil
   end
 end

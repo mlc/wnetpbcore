@@ -351,3 +351,7 @@ a.index_thumbnail img {
 #revpara {
     font-size: smaller;
 }
+
+.nonstandardnote {
+    color: #77f;
+}
