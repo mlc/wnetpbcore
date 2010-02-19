@@ -43,7 +43,7 @@ $(function() {
     $("#super-dangerous input:disabled").removeAttr("disabled");
 
     $('#thumbnail_form').submit(function() {
-	$("input[type='submit'])").attr({"disabled": true, "value": "Uploading\u2026"});
+	$("input[type='submit']").attr({"disabled": true, "value": "Uploading\u2026"});
 	return true;
     });
 
