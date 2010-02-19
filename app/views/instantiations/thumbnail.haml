@@ -1,4 +1,8 @@
 - title "Upload Thumbnail"
+%h2& Upload a thumbnail of #{@asset.title}
+%p
+  Identifier:
+  &= @asset.identifier
 - form_tag({:action => 'upload_thumbnail'}, :method => 'put', :multipart => true, :id => 'thumbnail_form') do
   %p Please select a thumbnail to upload:
   %p

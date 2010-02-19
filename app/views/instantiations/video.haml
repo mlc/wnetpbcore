@@ -1,4 +1,8 @@
 - title "Upload Video"
+%h2& Upload a video of #{@asset.title}
+%p
+  Identifier:
+  &= @asset.identifier
 #s3_prefix= @asset.uuid
 %p Please select a video file to upload:
 - form_tag({:action => 'upload_video'}, :method => 'put', :id => 's3_form') do
