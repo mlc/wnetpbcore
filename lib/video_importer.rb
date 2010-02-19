@@ -50,16 +50,25 @@ module Importers
       s3orig = AWS::S3::S3Object.store("#{uuid}/original", File.read(image_path), S3SwfUpload::S3Config.bucket)
 
       SIZES.each do |size, opts|
-        image = MiniMagick::Image.from_file(image_path)
-        image.combine_options do |c|
-          dims, color = opts
+        itf = Tempfile.new("thumbnail")
+        itf.close
 
-          c.thumbnail "#{dims}>"
-          c.background color
-          c.gravity "center"
-          c.extent dims
-        end
-        AWS::S3::S3Object.store("#{uuid}/#{size}", image.to_blob, S3SwfUpload::S3Config.bucket, :content_type => 'image/jpeg')
+        dims, color = opts
+
+        args = ['convert', image_path]
+        args << '-thumbnail' << "#{dims}>"
+        args << '-background' << color
+        args << '-gravity' << 'center'
+        args << '-extent'  << dims
+        args << '-quality' << '75'
+        args << "jpeg:#{itf.path}"
+        Kernel.system(*args)
+        raise "imagemagick failed on #{args.join(' ')}" unless $?.success?
+
+        itf.open
+        AWS::S3::S3Object.store("#{uuid}/#{size}", itf.read, S3SwfUpload::S3Config.bucket, :content_type => 'image/jpeg')
+        itf.close
+        itf.unlink
       end
 
       asset = Asset.find(asset_id)
