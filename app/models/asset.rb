@@ -17,7 +17,10 @@ class Asset < ActiveRecord::Base
       :date_availables, :annotations]}
     ]
 
-  FACET_NAMES = [:subject, :genres, :coverage, :creator, :contributor, :publisher]
+  FACET_NAMES = [:subject, :genres, :coverage, :creator, :contributor, :publisher, :formatlocation]
+
+  UUID_REGEX = /[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}/
+
   has_many :identifiers, :dependent => :destroy, :attributes => true
   has_many :titles, :dependent => :destroy, :attributes => true
   has_and_belongs_to_many :subjects
@@ -167,6 +170,7 @@ class Asset < ActiveRecord::Base
     text(:rights) { rights_summaries.map(&:rights_summary) }
     text(:extension) { extensions.map{|a| "#{a.extension} #{a.extension_authority_used}"} }
     text(:location) { instantiations.map{|a| a.format_location} }
+    string(:formatlocation, :multiple => true) { instantiations.map{|a| a.format_location}.select{|fml| !(fml.index('/') || !fml.match(UUID_REGEX))  }
     text(:annotation) do
       (
        instantiations.map{|a| a.annotations.map{|b| b.annotation}} +
