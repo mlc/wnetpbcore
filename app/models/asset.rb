@@ -170,7 +170,7 @@ class Asset < ActiveRecord::Base
     text(:rights) { rights_summaries.map(&:rights_summary) }
     text(:extension) { extensions.map{|a| "#{a.extension} #{a.extension_authority_used}"} }
     text(:location) { instantiations.map{|a| a.format_location} }
-    string(:formatlocation, :multiple => true) { instantiations.map{|a| a.format_location}.select{|fml| !(fml.index('/') || !fml.match(UUID_REGEX))} }
+    string(:formatlocation, :multiple => true) { instantiations.map{|a| a.format_location}.select{|fml| !(fml.index('/') || fml.match(UUID_REGEX))} }
     text(:annotation) do
       (
        instantiations.map{|a| a.annotations.map{|b| b.annotation}} +
