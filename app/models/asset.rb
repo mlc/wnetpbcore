@@ -152,21 +152,21 @@ class Asset < ActiveRecord::Base
     end
     text(:title, :boost => 1.2) { titles.map(&:title) }
     text(:subject) { subjects.map(&:subject) }
-    string(:subject, :multiple => :true) { subjects.map(&:subject) }
+    string(:subject, :multiple => true) { subjects.map(&:subject) }
     text(:description) { descriptions.map(&:description) }
     text(:genre) { genres.map(&:name) }
-    string(:genres, :multiple => :true) { genres.map(&:name) }
+    string(:genres, :multiple => true) { genres.map(&:name) }
     text(:relation) { relations.map(&:relation_identifier) }
     text(:coverage) { coverages.map(&:coverage) }
-    string(:coverage, :multiple => :true) { coverages.map(&:coverage) }
+    string(:coverage, :multiple => true) { coverages.map(&:coverage) }
     text(:audience_level) { audience_levels.map(&:name) }
     text(:audience_rating) { audience_ratings.map(&:name) }
     text(:creator) { creators.map(&:creator) }
-    string(:creator, :multiple => :true) { creators.map(&:creator) }
+    string(:creator, :multiple => true) { creators.map(&:creator) }
     text(:contributor) { contributors.map(&:contributor) }
-    string(:contributor, :multiple => :true) { contributors.map(&:contributor) }
+    string(:contributor, :multiple => true) { contributors.map(&:contributor) }
     text(:publisher) { publishers.map(&:publisher) }
-    string(:publisher, :multiple => :true) { publishers.map(&:publisher) }
+    string(:publisher, :multiple => true) { publishers.map(&:publisher) }
     text(:rights) { rights_summaries.map(&:rights_summary) }
     text(:extension) { extensions.map{|a| "#{a.extension} #{a.extension_authority_used}"} }
     text(:location) { instantiations.map{|a| a.format_location} }
