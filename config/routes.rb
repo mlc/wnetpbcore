@@ -26,7 +26,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.ids 'ids', :controller => 'last_used_ids', :action => 'index'
 
-  map.set_streamable 'options/stremable/:value', :controller => 'options', :action => 'streamable'
+  map.set_streamable 'options/streamable/:value', :controller => 'options', :action => 'streamable'
   
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
