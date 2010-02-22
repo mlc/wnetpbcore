@@ -38,14 +38,12 @@ class AssetsController < ApplicationController
     @query = the_query
     @assets = @search_object.results
 
-    session[:search] = params
-    
     if @assets.empty?
       flash.now[:message] = "Nothing found."
     end
 
     respond_to do |format|
-      format.html
+      format.html { session[:search] = params }
       format.atom
     end
   end
