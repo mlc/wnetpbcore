@@ -18,7 +18,5 @@
   - permitted_to? :new, :instantiations do
     %li= link_to("Add a new instantiation…", :action => 'new')
   - permitted_to? :video, :instantiations do
-    - unless @asset.online?
-      %li= link_to("Upload a video instantiation…", :action => 'video')
-    - unless @asset.has_thumbnail?
-      %li= link_to("Upload a thumbnail…", :action => 'thumbnail')
+    %li#uploadinst{:style => @asset.online? ? "display: none;" : nil}= link_to("Upload a video instantiation…", :action => 'video')
+    %li#uploadthumb{:style => @asset.has_thumbnail? ? "display: none;" : nil}= link_to("Upload a thumbnail…", :action => 'thumbnail')

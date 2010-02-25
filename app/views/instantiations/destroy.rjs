@@ -1,1 +1,9 @@
 page.visual_effect :fade, "instantiation_#{@destroyed_id}", :duration => 0.5
+if permitted_to?(:video, :instantiations)
+  if @destroyed_online
+    page.show "uploadinst"
+  end
+  if @destroyed_thumb
+    page.show "uploadthumb"
+  end
+end

@@ -19,6 +19,7 @@ class Instantiation < ActiveRecord::Base
   validates_size_of :format_ids, :minimum => 1
 
   before_create :generate_uuid
+  after_destroy :delete_files
   
   xml_subelements "pbcoreFormatID", :format_ids
   to_xml_elt do |obj|
@@ -102,5 +103,15 @@ class Instantiation < ActiveRecord::Base
   protected
   def generate_uuid
     self.uuid = UUID.random_create.to_s unless (self.uuid && !self.uuid.empty?)
+  end
+
+  def delete_files
+    if online?
+      AWS::S3::S3Object.delete(self.format_location, S3SwfUpload::S3Config.bucket)
+    elsif thumbnail?
+      ["thumb", "original", "preview"].each do |size|
+        AWS::S3::S3Object.delete("#{self.format_location}/#{size}", S3SwfUpload::S3Config.bucket)
+      end
+    end
   end
 end

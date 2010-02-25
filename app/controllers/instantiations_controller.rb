@@ -102,6 +102,8 @@ class InstantiationsController < ApplicationController
     instantiation = @asset.instantiations.find(params[:id], :include => :format_ids)
     identifier = instantiation.identifier
     instantiation.destroy
+    @destroyed_online = instantiation.online?
+    @destroyed_thumb = instantiation.thumbnail?
     @destroyed_id = params[:id]
     
     respond_to do |format|
