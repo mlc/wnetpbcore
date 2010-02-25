@@ -107,10 +107,6 @@ Versions:
     						<xsl:when test="TextCount  > 0">Text</xsl:when>
     					</xsl:choose>
 					</formatMediaType>
-					<!-- formatGenerations -->
-					<xsl:if test="string-length($formatGenerations)>0">
-      					<formatGenerations><xsl:value-of select="$formatGenerations"/></formatGenerations><!-- currently I don't make any assumptions here, pass in formatGenerations as stringparam -->
-					</xsl:if>
 					<!-- formatFileSize -->
 					<xsl:if test="FileSize"><!-- this expresses filesize as an integer count of bytes -->
 						<formatFileSize><xsl:value-of select="FileSize"/><xsl:text> bytes</xsl:text></formatFileSize>
