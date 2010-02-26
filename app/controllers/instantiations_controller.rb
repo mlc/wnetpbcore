@@ -63,6 +63,7 @@ class InstantiationsController < ApplicationController
     respond_to do |format|
       format.html do
         if @asset.save
+          @asset.delayed_send(:index!)
           flash[:message] = "Successfully created new instantiation."
           redirect_to :action => 'index'
         else
@@ -71,6 +72,7 @@ class InstantiationsController < ApplicationController
       end
       format.xml do
         if @asset.save
+          @asset.delayed_send(:index!)
           render :xml => "<message severity='notice'>instantiation #{@instantiation.uuid} #{old_us.nil? ? "created" : "updated"}</message>"
         else
           render :xml => "<message severity='error'>sorry, couldn't import.</message>"
@@ -91,6 +93,7 @@ class InstantiationsController < ApplicationController
     params[:instantiation][:annotation_attributes] ||= {}
     params[:instantiation][:date_available_attributes] ||= {}
     if @instantiation.update_attributes(params[:instantiation])
+      @asset.delayed_send(:index!)
       flash[:message] = "Successfully updated your instantiation."
       redirect_to :action => 'index'
     else
@@ -105,7 +108,8 @@ class InstantiationsController < ApplicationController
     @destroyed_online = instantiation.online?
     @destroyed_thumb = instantiation.thumbnail?
     @destroyed_id = params[:id]
-    
+    @asset.delayed_send(:index!)
+
     respond_to do |format|
       format.html do
         flash[:warning] = "<strong>#{identifier}</strong> has been deleted from the database."
