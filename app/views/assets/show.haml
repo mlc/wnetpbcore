@@ -81,6 +81,8 @@
           = render :partial => "field_one", :locals => {:key => "Alternative Modes", :value => instantiation.alternative_modes }
           = render :partial => "field_array", :locals => {:objs => instantiation.date_availables, :field => "Date Available", :value => :to_s }
           = render :partial => "field_array", :locals => {:objs => instantiation.annotations, :field => "Annotation", :value => :annotation}
+        - if instantiation.essence_tracks.any?
+          = render :partial => "essence_tracks", :locals => {:instantiation => instantiation}
 
   %tr
     %td.contentDivider &nbsp;

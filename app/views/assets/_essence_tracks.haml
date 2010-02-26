@@ -1,0 +1,12 @@
+%p<
+  %a.showtracks{ :id => "hideshowtracks_#{instantiation.id}", :href => "#" }
+    %span.showhidelabel Show
+    #{maybe_pluralize(instantiation.essence_tracks.size, "essence track")}
+%table.tracks{ :style => "display: none;", :id => "tracks_#{instantiation.id}" }
+  %tbody
+    - EssenceTrack::DISPLAY_FIELDS.each do |name, sym|
+      - if instantiation.essence_tracks.any?{|t| t.send(sym) && !t.send(sym).empty?}
+        %tr
+          %th= name
+          - instantiation.essence_tracks.each do |track|
+            %td= auto_link(h(track.send(sym)).gsub(/\r\n|\r|\n/, "<br />"))

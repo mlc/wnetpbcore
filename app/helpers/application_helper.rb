@@ -36,4 +36,8 @@ module ApplicationHelper
   def alternate_views
     @alternates.map{|href,type| tag(:link,:href=>href, :rel=>:alternate, :type=>type)}.join
   end
+
+  def maybe_pluralize(n, text)
+    n.to_s + " " + (n == 1 ? text : text.pluralize)
+  end
 end

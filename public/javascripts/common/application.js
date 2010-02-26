@@ -57,4 +57,20 @@ $(function() {
 	);
 	return false;
     });
+
+    var mkshower = function(flag) {
+	return function() {
+	    var $this = $(this);
+	    var tracks = $this.parent().next("table.tracks");
+
+	    tracks.toggle(flag);
+	    if (flag)
+		tracks.highlight("slow");
+	    $this.find(".showhidelabel").text(flag ? "Hide" : "Show");
+	    
+	    return false;
+	};
+    };
+
+    $('a.showtracks').toggle(mkshower(true), mkshower(false));
 });
