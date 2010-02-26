@@ -17,15 +17,15 @@ class S3UploadsController < ApplicationController
     expiration_date = 1.hours.from_now.utc.strftime('%Y-%m-%dT%H:%M:%S.000Z')
 
     policy_doc = {                               
-    :expiration => expiration_date,
-    :conditions => [
-                    {:bucket => bucket},
-                    {:key => key},
-                    {:acl => acl},
-                    {'Content-Type' => content_type},
-                    ['starts-with', '$Filename', ''],
-                    ['eq', '$success_action_status', '201']
-                   ]
+      :expiration => expiration_date,
+      :conditions => [
+                      {:bucket => bucket},
+                      {:key => key},
+                      {:acl => acl},
+                      {'Content-Type' => content_type},
+                      ['starts-with', '$Filename', ''],
+                      ['eq', '$success_action_status', '201']
+                     ]
     }
 
     policy = Base64.encode64(policy_doc.to_json).gsub(/\n|\r/, '')
