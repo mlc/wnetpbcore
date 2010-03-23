@@ -1,0 +1,7 @@
+# -*- ruby -*-
+
+if @destroyed_id
+  page.visual_effect :fade, "block_#{@destroyed_id}", :duration => 0.5
+else
+  page.call 'alert', "That IP block can not be removed as it is still in use by one or more users."
+end

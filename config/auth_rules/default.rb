@@ -29,6 +29,7 @@ authorization do
     has_permission_on :borrowings, :to => :index
     has_permission_on :assets, :to => :multilend
     has_permission_on :assets, :to => :destroy_found_set
+    has_permission_on :ip_blocks, :to => :crud
   end
 end
 
