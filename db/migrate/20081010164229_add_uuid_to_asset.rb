@@ -1,7 +1,9 @@
 class AddUuidToAsset < ActiveRecord::Migration
   def self.up
     add_column :assets, :uuid, :string, :limit => 36, :null => false
-    Asset.update_all('uuid = UUID()')
+    if Asset.count > 0
+      Asset.update_all('uuid = UUID()')
+    end
     add_index :assets, :uuid, :unique => true
   end
 
