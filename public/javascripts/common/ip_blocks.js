@@ -54,6 +54,7 @@ $(function() {
       "text": "Add another\u2026",
       "css": { "cursor": "pointer" },
       "click": function() {
+        var i;
         var $p = $("<p/>", {"class": "ipblock"});
         $p.append($("<input/>", {"name": "ipranges[]", "type": "text", "class": "ipedit"}));
         $p.append(" / ");
