@@ -11,7 +11,11 @@ class UsersController < ApplicationController
  
   def create
     @user = User.new(params[:user])
-    @user.is_admin = params[:user][:is_admin] if permitted_to?(:make_admin, @user)
+    if permitted_to?(:make_admin, @user)
+      @user.is_admin = params[:user][:is_admin]
+      @user.ip_block_id = params[:user][:ip_block_id]
+    end
+
     success = @user && @user.save
     if success && @user.errors.empty?
       flash[:message] = "#{@user.login} created"
@@ -33,6 +37,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(params[:user])
       permitted_to?(:make_admin, @user) do
         @user.is_admin = params[:user][:is_admin]
+        @user.ip_block_id = params[:user][:ip_block_id]
         @user.save
       end
       flash[:message] = "Successfully updated."

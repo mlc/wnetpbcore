@@ -1,0 +1,38 @@
+- @user.password = @user.password_confirmation = nil
+= error_messages_for :user
+- form_for @user do |f|
+  %p
+    = label_tag 'login'
+    %br
+    = f.text_field :login
+
+  %p
+    = label_tag 'email'
+    %br
+    = f.text_field :email
+
+  %p
+    = label_tag 'name', "Full Name"
+    %br
+    = f.text_field :name
+
+  %p
+    = label_tag 'password'
+    %br
+    = f.password_field :password
+
+  %p
+    = label_tag 'password_confirmation', 'Confirm Password'
+    %br
+    = f.password_field :password_confirmation
+
+  - permitted_to?(:make_admin, @user) do
+    %p
+      = f.check_box :is_admin
+      = f.label :is_admin, "User is an administrator"
+
+    %p
+      = f.label :ip_block_id, "Restrict login to an IP block:"
+      = f.select :ip_block_id, IpBlock.all.collect{|ipb| [ ipb.name, ipb.id ]}, { :include_blank => true }
+
+  %p= submit_tag(@user.new_record? ? 'Create User' : 'Update User')
