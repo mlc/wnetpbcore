@@ -12,7 +12,6 @@ $.fn.ipblock = function() {
     var $preview = $('<span/>');
     var $ipedit = $this.find('.ipedit');
     var $netmaskedit = $this.find('.netmaskedit');
-    var i = 0;
 
     var updpreview = function () {
       var octets = $ipedit.val().split('.');
@@ -23,6 +22,8 @@ $.fn.ipblock = function() {
       } else if (cidr === 32) {
         $preview.text("(" + octets.join(".") + " only)");
       } else {
+        // all numbers in Javascript are floating-point, so there may be some
+        // problems with doing this bit-arithmetic
         var mask = 0x7FFFFFFF >> (cidr - 1);
         var ip = (octets[0] << 24 | octets[1] << 16 | octets[2] << 8 | octets[3]);
         var start = ip & ~mask;

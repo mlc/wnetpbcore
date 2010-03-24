@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   include Oink::InstanceTypeCounter
 
   before_filter :set_current_user
+  before_filter :check_ip_range
 
   helper :all # include all helpers, all the time
 
@@ -31,6 +32,12 @@ class ApplicationController < ActionController::Base
   protected
   def set_current_user
      Authorization.current_user = current_user
+  end
+
+  def check_ip_range
+    if current_user && current_user.ip_block && !current_user.ip_block.include?(request.remote_ip)
+      render :text => "You must log in from an allowed IP range.", :status => 403, :layout => 'application'
+    end
   end
 
   def permission_denied
