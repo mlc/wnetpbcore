@@ -91,7 +91,7 @@ class AssetsController < ApplicationController
     if @asset
       respond_to do |format|
         format.html do
-          if @asset.online?
+          if @asset.online? && permitted_to?(:watch_video, @asset)
             enable_flash
             @video = @asset.instantiations.detect(&:online?)
           end
