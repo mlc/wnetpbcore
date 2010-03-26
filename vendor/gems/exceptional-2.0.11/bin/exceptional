@@ -1,0 +1,64 @@
+#!/usr/bin/env ruby
+
+args = ARGV.dup
+ARGV.clear
+command = args.shift.strip rescue 'help'
+
+case command
+  when 'help'
+    puts <<USAGE
+help               # Show this usage.
+test               # Send a test exception to Exceptional.
+install <api_key>  # Create config/exceptional.yml with your api_key. Overrites existing one.
+install <api_key> <environment> # Create config/exceptional.yml with your api_key and enabled for a specific environment. Overrites existing config file.
+install <api_key> <environment>,<environment> # Create config/exceptional.yml with your api_key enabled for multiple environments (comma seperated). Overrites existing config file.
+
+USAGE
+  when 'test'
+    if defined?(RAILS_ROOT)
+      puts "Loading Rails environment."
+      require(File.join('config', 'boot'))
+      require(File.join(RAILS_ROOT, 'config', 'environment')) if defined?(RAILS_ROOT)
+      require "exceptional/integration/tester"
+    else 
+      require 'json'
+      require 'exceptional'    
+      require "exceptional/integration/tester"      
+      Exceptional::Config.load('config/exceptional.yml')
+    end    
+    unless Exceptional::Config.api_key.empty?
+      Exceptional::Integration.test
+    else
+      puts 'API key not configured'
+    end 
+  when 'install'
+    api_key = args[0]
+    environments = args[1]
+    
+    if (api_key.nil?)
+      puts 'Missing required paramater <api-key>. Check your app configuration at http://getexceptional.com.'
+    else
+      if (defined?(RAILS_ROOT) && !File.file?('config/environment.rb'))
+        puts "Run this command from the root of your rails application." and return
+      else
+        Dir.mkdir('config') unless File.exists?('config')        
+      end
+    end        
+    config_file = File.open('config/exceptional.yml', 'w')
+    config_file.puts("api-key: #{api_key}\n")
+
+    unless(environments.nil?)
+      environments.split(',').each do |envo|
+        config_file.puts("#{envo}:\n")
+        config_file.puts("  enabled: true\n")
+      end
+    end
+    
+    config_file.close
+    puts "Config file written as config/exceptional.yml.";
+    puts "----------------------------------------------";
+    File.open('config/exceptional.yml').readlines.each do |line|
+      puts line
+    end
+    puts "----------------------------------------------";
+end
