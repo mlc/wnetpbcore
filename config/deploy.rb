@@ -97,8 +97,8 @@ namespace :exceptional do
   desc "configure exceptional"
   task :config do
     if exists?(:exceptional_key)
-      exceptional_config = {"api-key" => exceptional_key}
-      put exceptional_config.to_yaml, "#{shared_path}/config/exceptional.yml"
+      exceptional_config = "api-key: #{exceptional_key}\n"
+      put exceptional_config, "#{shared_path}/config/exceptional.yml"
     end
   end
 
