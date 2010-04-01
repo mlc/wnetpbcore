@@ -1,12 +1,23 @@
 <%- title "About this software" -%>
 <p>
-  The web PBCore database was originally developed by <a
-  href="http://vermicel.li/">Roasted Vermicelli LLC</a> for the <a
-  href="http://www.thirteen.org/">WNET Digital Archive</a>. Copyright
-  &copy; 2008&ndash;2009 Educational Broadcasting
-  Corporation. Copyright 2009&ndash;2010 Roasted Vermicelli, LLC. All
-  rights reserved.
+The web PBCore database was originally developed by <a
+href="http://vermicel.li/">Roasted Vermicelli LLC</a> for the <a
+href="http://www.thirteen.org/">WNET Digital Archive</a>. It was
+futher developed in 2009–2010 for the <a
+href="http://www.danceheritage.org">Dance Heritage Coalition</a>
+Secure Media Network with funding from <a
+href="http://www.mellon.org">The Andrew W. Mellon
+Foundation</a>. Design by <a href="http://thebluegriffin.com">The Blue
+Griffin Design Studio</a>.
 </p>
+<p>
+Copyright © 2008–2009 Educational Broadcasting
+Corporation. Copyright © 2009–2010 Roasted Vermicelli, LLC. All
+rights reserved.
+</p>
+<%- if @extra && !@extra.empty? -%>
+<p><%= @extra %></p>
+<%- end -%>
 <p>
 This program is free software: you can redistribute it and/or modify it
 under the terms of the GNU General Public License as published by the

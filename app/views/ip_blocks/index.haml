@@ -1,0 +1,11 @@
+- title "IP Blocks"
+%ul
+  - @blocks.each do |block|
+    %li{ :id => "block_#{block.id}" }
+      &= block.name
+      & (#{block.ranges_str})
+      = link_to "edit", edit_ip_block_path(block) if permitted_to? :edit, block
+      = link_to_remote "destroy", :url => { :action => 'destroy', :id => block.id }, :method => :delete, :confirm => "Are you sure you wish to delete #{block.name}?", :html => { :class => "destroy_link" } if permitted_to? :destroy, block
+
+- permitted_to? :create, :ip_blocks do
+  %p= link_to "Create new IP block", :action => 'new'

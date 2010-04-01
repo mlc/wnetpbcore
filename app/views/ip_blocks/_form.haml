@@ -1,0 +1,17 @@
+= error_messages_for :ip_block
+
+- form_for @ip_block do |f|
+  %p
+    = f.label 'name'
+    = f.text_field :name
+
+  %h3 Associated IP Ranges
+  #strings
+    - (@ip_block.ranges || ['/24']).each do |range|
+      %p.ipblock
+        %input{ :name => "ipranges[]", :value => range.split('/')[0], :class => "ipedit", :type => 'text'}
+        = "/"
+        %select{ :name => "netmasks[]", :class => 'netmaskedit'}
+          = options_for_select((0..32).to_a.map(&:to_s).reverse, range.split('/')[1])
+
+  %p= f.submit

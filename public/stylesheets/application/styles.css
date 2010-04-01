@@ -355,3 +355,7 @@ a.index_thumbnail img {
 .nonstandardnote {
     color: #77f;
 }
+
+.required {
+    background-color: #fcc;
+}

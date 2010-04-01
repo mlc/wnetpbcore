@@ -1,13 +1,12 @@
 authorization do
   role :guest do
-    # NO PERMISSIONS
+    has_permission_on :assets, :to => [:read]
+    has_permission_on :instantiations, :to => [:read]
   end
 
   role :user do
     includes :guest
-    has_permission_on :assets, :to => [:read, :create, :update]
-    has_permission_on :instantiations, :to => [:read, :create, :update]
-    has_permission_on :last_used_ids, :to => :index
+    has_permission_on :assets, :to => :watch_video
     has_permission_on :users, :to => [:show, :update] do
       if_attribute :id => is { user.id }
     end
@@ -15,8 +14,9 @@ authorization do
 
   role :admin do
     includes :user
-    has_permission_on :assets, :to => [:destroy, :merge]
-    has_permission_on :instantiations, :to => [:destroy, :video]
+    has_permission_on :last_used_ids, :to => :index
+    has_permission_on :assets, :to => :crud
+    has_permission_on :instantiations, :to => [:crud, :video]
     has_permission_on :users, :to => :crud
     has_permission_on :users, :to => :make_admin do
       if_attribute :id => is_not { user.id }
@@ -27,6 +27,7 @@ authorization do
     end
     has_permission_on :assets, :to => :multilend
     has_permission_on :assets, :to => :destroy_found_set
+    has_permission_on :ip_blocks, :to => :crud
   end
 end
 

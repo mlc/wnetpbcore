@@ -93,6 +93,26 @@ end
 after "deploy:setup", :aws
 after "deploy:update_code", "aws:symlink"
 
+namespace :exceptional do
+  desc "configure exceptional"
+  task :config do
+    if exists?(:exceptional_key)
+      exceptional_config = "api-key: #{exceptional_key}\n"
+      put exceptional_config, "#{shared_path}/config/exceptional.yml"
+    end
+  end
+
+  desc "symlink exceptional config"
+  task :symlink do
+    if exists?(:exceptional_key)
+      run "ln -nfs #{shared_path}/config/exceptional.yml #{release_path}/config/exceptional.yml"
+    end
+  end
+end
+
+after "deploy:setup", "exceptional:config"
+after "deploy:update_code", "exceptional:symlink"
+
 namespace :app do
   desc "configure application"
   task :config do

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100120222132) do
+ActiveRecord::Schema.define(:version => 20100323173055) do
 
   create_table "annotations", :force => true do |t|
     t.integer "instantiation_id"
@@ -305,6 +305,13 @@ ActiveRecord::Schema.define(:version => 20100120222132) do
   add_index "instantiations", ["asset_id"], :name => "index_instantiations_on_asset_id"
   add_index "instantiations", ["uuid"], :name => "index_instantiations_on_uuid", :unique => true
 
+  create_table "ip_blocks", :force => true do |t|
+    t.string "name",   :null => false
+    t.text   "ranges"
+  end
+
+  add_index "ip_blocks", ["name"], :name => "index_ip_blocks_on_name", :unique => true
+
   create_table "publisher_roles", :force => true do |t|
     t.string  "name",                       :null => false
     t.boolean "visible", :default => false, :null => false
@@ -389,6 +396,7 @@ ActiveRecord::Schema.define(:version => 20100120222132) do
     t.string   "remember_token",            :limit => 40
     t.datetime "remember_token_expires_at"
     t.boolean  "is_admin",                                 :default => false, :null => false
+    t.integer  "ip_block_id"
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true

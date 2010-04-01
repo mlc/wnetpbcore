@@ -1,6 +1,6 @@
 authorization do
   role :guest do
-    has_permission_on :assets, :to => :read
+    has_permission_on :assets, :to => [:read, :watch_video]
     has_permission_on :instantiations, :to => :read
     has_permission_on :last_used_ids, :to => :index
   end
@@ -29,6 +29,7 @@ authorization do
     has_permission_on :borrowings, :to => :index
     has_permission_on :assets, :to => :multilend
     has_permission_on :assets, :to => :destroy_found_set
+    has_permission_on :ip_blocks, :to => :crud
   end
 end
 

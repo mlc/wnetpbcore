@@ -26,6 +26,8 @@ class AssetsController < ApplicationController
       Asset::FACET_NAMES.each do |facet_name|
         facet facet_name, :limit => 15
         if the_params["facet_#{facet_name}"]
+          the_params["facet_#{facet_name}"].reject!{|val| val.empty?}
+
           the_params["facet_#{facet_name}"].each do |value|
             with facet_name, value
           end
@@ -91,7 +93,7 @@ class AssetsController < ApplicationController
     if @asset
       respond_to do |format|
         format.html do
-          if @asset.online?
+          if @asset.online? && permitted_to?(:watch_video, @asset)
             enable_flash
             @video = @asset.instantiations.detect(&:online?)
           end
