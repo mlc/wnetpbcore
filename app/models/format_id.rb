@@ -4,6 +4,7 @@ class FormatId < ActiveRecord::Base
   belongs_to :format_identifier_source
 
   validates_length_of :format_identifier, :minimum => 1
+  validates_presence_of :format_identifier_source
   
   xml_string "formatIdentifier"
   xml_picklist "formatIdentifierSource"
