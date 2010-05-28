@@ -12,6 +12,11 @@ class XmlController < ApplicationController
   # gah, this method is awful code. no one look at it please. kthxbye.
   def index
     if request.post?
+      unless params[:xml] && params[:xml].respond_to?(:original_filename)
+        flash[:error] = "You must provide an XML or ZIP file."
+        redirect_to :action => :index and return
+      end
+
       havezip = MIME::Types.of(params[:xml].original_filename).any?{|t| t.content_type == "application/zip"}
       if havezip
         successes = 0
@@ -59,6 +64,9 @@ class XmlController < ApplicationController
     elsif request.put?
       respond_to do |format|
         format.xml do
+          unless params[:xml] && !params[:xml].empty?
+            render :xml => "<message severity='error'>no XML provided.</message>" and return
+          end
           a = Asset.from_xml(params[:xml])
           if a.valid?
             a.destroy_existing
