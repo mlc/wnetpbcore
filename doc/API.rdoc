@@ -1,0 +1,41 @@
+= PBCore Repository API
+
+The PBCore Record Repository has an API of sorts, so you can use the repository programmatically.
+
+== Searching
+
+To search, visit http://server/?q=my%20search -- replacing
+<tt>my%20search</tt> with your search query, URL-encoded of
+course. Advanced search syntax is supported.
+
+If you would prefer to have your results returned in Atom format, you
+need change the URL only slightly: visit
+http://server/assets.atom?q=my%20search
+
+=== Available URL parameters
+
+[q]      Query string. Advanced syntax permitted. If omitted, all records
+         will be returned.
+
+[page]   (One-based) page number of results to return. If omitted,
+         defaults to page 1.
+
+[bydate] If set to <tt>1</tt>, results will be returned showing most
+         recently updated records first; if omitted, defaults to
+         returning the most relevant results first.
+
+The returned results include OpenSearch-compliant metadata; an
+OpenSearch descriptor document is available for use by your
+application or your web browser at /assets/opensearch.xml
+
+== Importing
+
+This documentation needs to be cleaned up a bit, but for now, note: 
+
+To add an asset:
+
+ curl -i -H 'Accept: application/xml' -H 'Content-Type: application/xml' -u 'username:password' -T YSTP_000000_Std.xml http://wnet-pbcore/xml
+
+To add an instantiation:
+
+ curl -H 'Accept: application/xml' -H 'Content-Type: application/xml' -u 'username:password' -d @filename.xml http://wnet-pbcore/assets/EXISTING_ASSET_ID/instantiations.xml
