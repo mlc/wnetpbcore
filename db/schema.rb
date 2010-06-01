@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100323173055) do
+ActiveRecord::Schema.define(:version => 20100527194736) do
 
   create_table "annotations", :force => true do |t|
     t.integer "instantiation_id"
@@ -182,8 +182,8 @@ ActiveRecord::Schema.define(:version => 20100323173055) do
     t.text    "essence_track_frame_rate"
     t.text    "essence_track_language"
     t.text    "essence_track_annotation"
-    t.integer "essence_track_type_id",              :null => false
-    t.integer "essence_track_identifier_source_id", :null => false
+    t.integer "essence_track_type_id"
+    t.integer "essence_track_identifier_source_id"
   end
 
   add_index "essence_tracks", ["instantiation_id"], :name => "index_essence_tracks_on_instantiation_id"

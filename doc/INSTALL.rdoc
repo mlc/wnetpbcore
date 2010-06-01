@@ -1,9 +1,14 @@
 = PBCore Repository Installation
 
-Here is how to install the PBCore Record Repository on a CentOS or
-Debian server. Note: this is technical documentation intended for
-systems administrators already familiar with Linux and Debian or
-CentOS. As with any recipe, read the whole thing before proceeding.
+Here is how to install the PBCore Record Repository on a CentOS,
+Debian, or Ubuntu server. Note: this is technical documentation
+intended for systems administrators already familiar with Linux and
+their distribution of choice. As with any recipe, read the whole thing
+before proceeding.
+
+WARNING: The CentOS instructions here are out-of-date. In the case of
+errors, read the Debian/Ubuntu instructions and adjust the CentOS
+instructions appropriately.
 
 == Install prerequisite software
 Our front-end webserver will be nginx
@@ -14,7 +19,7 @@ On CentOS:
  service httpd stop
  yum remove httpd
 
-or on Debian:
+or on Debian or Ubuntu:
  aptitude remove apache2
 
 (You could also use apache httpd instead, but doing so is a bit tricky
@@ -24,8 +29,8 @@ On CentOS:
  rpm -i http://download.fedora.redhat.com/pub/epel/5/x86_64/epel-release-5-3.noarch.rpm
  yum install nginx git libxml2-devel.x86_64 mysql.x86_64 mysql-server mysql-devel.x86_64 gcc gcc-c++
 
-On Debian:
- aptitude install nginx git-core libxml2-dev mysql-server libmysqlclient-dev build-essential ruby-full
+On Debian or Ubuntu:
+ aptitude install nginx git-core libxml2-dev mysql-server libmysqlclient-dev libxslt1-dev build-essential ruby-full
 
 Next, on CentOS, you have to install ruby (http://www.ruby-lang.org/)
 <b>1.8.6</b> or later. Version 1.8.5, as provided with CentOS 5, is *not*
@@ -35,8 +40,8 @@ as well. If you manage to find some alternate source for suitable RPM
 packages, install <tt>ruby ruby-devel ruby-irb ruby-libs ruby-rdoc</tt> and,
 optionally, <tt>ruby-docs</tt>
 
-Current versions of debian ship with a suitable version of Ruby and
-will be taken care of by the +aptitude+ line above.
+Current versions of Debian and Ubuntu ship with suitable versions of
+Ruby and will be taken care of by the +aptitude+ line above.
 
 Only after installing this suitable version of Ruby, install rubygems
 (http://www.rubygems.org/) either from its website or by doing <tt>yum
@@ -44,19 +49,19 @@ install rubygems</tt> (on CentOS) or <tt>aptitude install
 rubygems</tt> (on Debian).
 
 You'll need at least version 1.3 of rubygems, so if you're using
-Debian lenny or earlier, you'll need to get this from backports.
+Debian lenny or earlier, you'll need to get this from
+backports. Current versions of Ubuntu ship with a suitable version, so
+there is no need for any such shenanigans.
 
 Make sure also that you have Java available, for the Solr search
-engine.
-
-TODO: Explain how to get Java.
+engine. On Debian/Ubuntu, you can accomplish this by doing
+<tt>aptitude install openjdk-6-jre-headless</tt>.
 
 And, finally, install some needed ruby packages by doing
  gem install -v 2.1.2 rails --no-ri --no-rdoc
  gem install -v 0.9.6 rsolr --no-ri --no-rdoc
- gem install chronic libxml-ruby rake rack thin fast_xs --no-ri --no-rdoc
+ gem install chronic libxml-ruby rake rack thin fast_xs whenever sunspot sunspot_rails aws-s3 haml libxslt-ruby grit delayed_job --no-ri --no-rdoc
  gem install mysql --no-ri --no-rdoc -- --with-mysql-config=/usr/bin/mysql_config
- gem install whenever sunspot sunspot_rails --source http://gemcutter.org/ --no-ri --no-rdoc
 
 If you're using the Debian-provided rubygems package, then the
 binaries for the install gems will not automatically be in your
@@ -68,13 +73,15 @@ binaries for the install gems will not automatically be in your
 If you're concerned about security, edit <tt>/etc/my.cnf</tt>, adding the line
  bind-address = 127.0.0.1
 
-to the <tt>[mysqld]</tt> section. Then, on CentOS, start +mysqld+ and make sure
+to the <tt>[mysqld]</tt> section. (On Debian and Ubuntu, the file is
+called <tt>/etc/mysql/my.cnf</tt> and this configuration is already
+the default.) Then, on CentOS, start +mysqld+ and make sure
 it stays started:
  /etc/init.d/mysqld start
  chkconfig mysqld on
 
-On Debian, +mysqld+ will be automatically started when you install the
-package.
+On Debian and Ubuntu, +mysqld+ will be automatically started when you
+install the package.
 
 Now would be a good time to set a mysql password for the root user if
 you've not done so already. Next, create the database we'll be using,
@@ -119,14 +126,15 @@ directory are owned by the +www+ user.
 == Install the repository software
 
 On the server, make a directory <tt>/var/www/pbcore</tt> where the
-software will live. We use capistrano (http://www.capify.org/) for
-deployment, so now you will have to do some things on your local
-machine. The following instructions assume your local machine is POSIX
-(GNU/Linux or Mac OS X). It may somehow be possible to do all this on
-Windows, perhaps with cygwin (http://www.cygwin.com/) , but this is
+software will live and set its owner to the +www+ user you created
+above. We use capistrano (http://www.capify.org/) for deployment, so
+now you will have to do some things on your local machine. The
+following instructions assume your local machine is POSIX (GNU/Linux
+or Mac OS X). It may somehow be possible to do all this on Windows,
+perhaps with cygwin (http://www.cygwin.com/) , but this is
 untested. If you don't already have them, install ruby, rubygems, and
-git (http://git-scm.com/) . Get capistrano by doing
- sudo gem install capistrano capistrano-ext
+git (http://git-scm.com/) . Get capistrano by doing <tt>sudo gem install
+capistrano capistrano-ext</tt>
 
 Now, grab a copy of the software (again, on your local machine):
  git clone git://git.mlcastle.net/pbcore.git pbcore; cd pbcore

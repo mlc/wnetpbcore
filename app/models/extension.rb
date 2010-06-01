@@ -35,6 +35,7 @@ class Extension < ActiveRecord::Base
   end
 
   def extension_name_str
+    return nil if extension_name.nil?
     extension_name.description
   end
   
