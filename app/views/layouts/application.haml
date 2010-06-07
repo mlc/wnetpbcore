@@ -2,7 +2,8 @@
 !!!
 %html{ :xmlns => "http://www.w3.org/1999/xhtml" }
   %head
-    %title& pbcore || #{yield(:title)}
+    -# yes, that is a literal double-pipe, not a computed boolean OR
+    %title& #{application_title} || #{yield(:title)}
     = stylesheet_bundle 'application'
     = stylesheet_bundle PBCore.config[:theme]
     = google_javascript_libraries(@page_has_flash)

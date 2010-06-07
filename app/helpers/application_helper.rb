@@ -3,6 +3,10 @@ module ApplicationHelper
   def title(title)
     content_for(:title) { title }
   end
+
+  def application_title
+    PBCore.config['site_title'] || 'pbcore'
+  end
   
   def add_navbar(*link_to_args)
     @have_second_nav = true
@@ -15,7 +19,7 @@ module ApplicationHelper
     msg = [tag("link",  {:href=>"/assets/opensearch.xml",
       :rel=>"search",
       :type=>"application/opensearchdescription+xml",
-      :title=>"pbcore"})]
+      :title=> application_title})]
     unless collection.nil?
       opensearch_properties(collection).each do |k,v|
         msg << tag("meta", { "name" => k, "content" => v })

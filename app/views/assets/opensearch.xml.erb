@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
-    <ShortName>pbcore</ShortName>
+    <ShortName><%= h(application_title) %></ShortName>
     <Description>Search PBCore XML Database</Description>
     <Url type="text/html" template="<%= url_for :action => :index, :only_path => false %>?q={searchTerms}&amp;page={startPage?}"/>
     <Url type="application/atom+xml" template="<%= url_for :action => :index, :format => :atom, :only_path => false %>?q={searchTerms}&amp;page={startPage?}"/>
