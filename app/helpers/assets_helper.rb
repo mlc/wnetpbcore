@@ -11,6 +11,9 @@ module AssetsHelper
       if permitted_to?(:index, :instantiations)
         add_navbar("instantiations", asset_instantiations_url(@asset))
       end
+      if permitted_to?(:request, @asset)
+        add_navbar("request", request_mailto_link(@asset))
+      end
     end
     if @instantiation && !@instantiation.new_record?
       if permitted_to?(:edit, @instantiation)
@@ -20,6 +23,10 @@ module AssetsHelper
         add_navbar("borrowings", borrowings_asset_instantiation_url(@asset, @instantiation))
       end
     end
+  end
+
+  def request_mailto_link(asset)
+    "mailto:#{PBCore.config['request_email']}?subject=Archive%20Request&body=#{CGI::escape(asset_url(asset.uuid))}"
   end
 
   def eltshow(fld)

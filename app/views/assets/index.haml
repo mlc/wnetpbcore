@@ -16,6 +16,8 @@
           - permitted_to? :show, :assets do
             = link_to "VIEW", asset_url(asset.uuid), :class => "title2"
             = link_to "XML", formatted_asset_url(asset.uuid, "xml"), :class => "title2"
+          - permitted_to? :request, :assets do
+            = link_to "REQUEST", request_mailto_link(asset), :class => "title2"
           - permitted_to? :edit, :assets do
             = link_to "EDIT", edit_asset_url(asset), :class => "title2"
 
