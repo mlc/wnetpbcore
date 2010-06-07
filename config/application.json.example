@@ -3,5 +3,17 @@
   "footer_links": [
     ["pbcore.org", "http://www.pbcore.org/"],
     ["Roasted Vermicelli", "http://vermicel.li/"]
+  ],
+  "about_extra": "This is a truly wonderful site.",
+  "site_title": "My PBCore Site",
+  "request_email": "test@example.com",
+  "facets": [
+    ["Subject", "simple_map"],
+    ["Genre", "map", "genres", "name"],
+    ["Coverage", "simple_map"],
+    ["Creator", "simple_map"],
+    ["Contributor", "simple_map"],
+    ["Publisher", "simple_map"],
+    ["Location", "format_location"]
   ]
 }

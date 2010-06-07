@@ -17,8 +17,6 @@ class Asset < ActiveRecord::Base
       :date_availables, :annotations]}
     ]
 
-  FACET_NAMES = [:subject, :genres, :coverage, :creator, :contributor, :publisher, :formatlocation]
-
   UUID_REGEX = /[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}/
 
   has_many :identifiers, :dependent => :destroy, :attributes => true
@@ -152,25 +150,18 @@ class Asset < ActiveRecord::Base
     end
     text(:title, :boost => 1.2) { titles.map(&:title) }
     text(:subject) { subjects.map(&:subject) }
-    string(:subject, :multiple => true) { subjects.map(&:subject) }
     text(:description) { descriptions.map(&:description) }
     text(:genre) { genres.map(&:name) }
-    string(:genres, :multiple => true) { genres.map(&:name) }
     text(:relation) { relations.map(&:relation_identifier) }
     text(:coverage) { coverages.map(&:coverage) }
-    string(:coverage, :multiple => true) { coverages.map(&:coverage) }
     text(:audience_level) { audience_levels.map(&:name) }
     text(:audience_rating) { audience_ratings.map(&:name) }
     text(:creator) { creators.map(&:creator) }
-    string(:creator, :multiple => true) { creators.map(&:creator) }
     text(:contributor) { contributors.map(&:contributor) }
-    string(:contributor, :multiple => true) { contributors.map(&:contributor) }
     text(:publisher) { publishers.map(&:publisher) }
-    string(:publisher, :multiple => true) { publishers.map(&:publisher) }
     text(:rights) { rights_summaries.map(&:rights_summary) }
     text(:extension) { extensions.map{|a| "#{a.extension} #{a.extension_authority_used}"} }
     text(:location) { instantiations.map{|a| a.format_location} }
-    string(:formatlocation, :multiple => true) { instantiations.map{|a| a.format_location}.select{|fml| !(fml.index('/') || fml.match(UUID_REGEX))} }
     text(:annotation) do
       (
        instantiations.map{|a| a.annotations.map{|b| b.annotation}} +
@@ -187,6 +178,23 @@ class Asset < ActiveRecord::Base
     time :updated_at
     string :uuid
     boolean(:online_asset) { self.online? }
+    dynamic_string :facets, :multiple => true do
+      PBCore.config['facets'].inject({}) do |hash, facet|
+        key = facet[0].to_sym
+        value = []
+        case facet[1]
+        when "map"
+          value = send(facet[2].to_sym).map(&facet[3].to_sym)
+        when "simple_map"
+          value = send(facet[0].downcase.pluralize.to_sym).map(&facet[0].downcase.to_sym)
+        when "if_map"
+          value = send(facet[2].to_sym).select{|p| p.send(facet[4].to_sym).name == facet[5]}.map(&facet[3].to_sym)
+        when "format_location"
+          value = instantiations.map{|a| a.format_location}.select{|fml| !(fml.index('/') || fml.match(UUID_REGEX))}
+        end
+        hash.merge(key => value)
+      end
+    end
   end
 
   def self.dedupe
