@@ -4,7 +4,7 @@ xml.feed :xmlns => 'http://www.w3.org/2005/Atom', "xmlns:opensearch" => "http://
   atom.title @query || 'Assets', :type => :text
   atom.link :href => url_for(:action => 'index', :q => @query, :only_path => false, :escape => false), :type => 'text/html', :rel => :alternate
   atom.link :href => url_for(:action => 'index', :q => @query, :format => :atom, :only_path => false, :escape => false), :rel => :self, :type => 'application/atom+xml'
-  atom.link :href => url_for(:controller => "/pbcore.opensearch.xml", :only_path => false, :escape => false), :rel => 'search', :type => 'application/opensearch+xml'
+  atom.link :href => url_for(:action => 'opensearch', :format => :xml, :controller => :assets, :only_path => false, :escape => false), :rel => 'search', :type => 'application/opensearch+xml'
   atom.link :href => url_for(:action => 'index', :format => :atom, :q => @query, :page => 1, :only_path => false, :escape => false), :rel => 'first', :type => 'application/atom+xml'
   atom.link :href => url_for(:action => 'index', :format => :atom, :q => @query, :page => @assets.total_pages, :only_path => false, :escape => false), :rel => 'last', :type => 'application/atom+xml'
   if @assets.next_page
