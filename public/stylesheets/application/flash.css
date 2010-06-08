@@ -1,3 +1,11 @@
+/*
+ * NOTE: This has nothing to do with Adobe Flash (for that, see flv.css)
+ * but rather with Rails method of generating a message on one action
+ * and displaying it on the next, usually because the first generates a
+ * redirect.
+ * 
+ * see http://api.rubyonrails.org/classes/ActionController/Flash.html
+ */
 div.flash {
     padding: 5px 0px 10px 30px;
     margin-bottom: 10px;
