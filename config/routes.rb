@@ -16,6 +16,8 @@ ActionController::Routing::Routes.draw do |map|
       :member => { "borrowings" => :get, "borrow" => :post, "return" => :post },
       :new => { "video" => :get, "upload_video" => :put, "thumbnail" => :get, "upload_thumbnail" => :put } }
   end
+
+  map.resources :templates
   
   [:audience_levels, :audience_ratings, :contributor_roles, :creator_roles,
     :description_types, :format_colors, :format_generations, :format_media_types,

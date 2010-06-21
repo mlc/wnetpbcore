@@ -1,0 +1,6 @@
+- title "Template"
+- form_for @instantiation, :url => template_path(@instantiation.id), :html => { :method => :put } do |f|
+  %p
+    = f.label :template_name
+    = f.text_field :template_name
+  %p= f.submit

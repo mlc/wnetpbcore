@@ -1,0 +1,2 @@
+# -*- ruby -*-
+page.visual_effect :fade, "template_#{@instantiation.id}", :duration => 0.5

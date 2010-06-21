@@ -17,6 +17,7 @@ authorization do
     has_permission_on :last_used_ids, :to => :index
     has_permission_on :assets, :to => :crud
     has_permission_on :instantiations, :to => [:crud]
+    has_permission_on :templates, :to => :crud
     has_permission_on :users, :to => :crud
     has_permission_on :users, :to => :make_admin do
       if_attribute :id => is_not { user.id }
