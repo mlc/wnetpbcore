@@ -17,6 +17,8 @@
         = link_to_remote "destroy",  :url => { :action => 'destroy', :id => instantiation.id }, :method => :delete, :confirm => "Are you sure you wish to delete #{instantiation.identifier}?", :html => { :class => "destroy_link" }
   - permitted_to? :new, :instantiations do
     %li= link_to("Add a new instantiation…", :action => 'new')
+    - @templates.each do |template_id, template_name|
+      %li= link_to("Add a new #{h(template_name)}…", :action => 'new', :template_id => template_id)
   - permitted_to? :video, :instantiations do
     %li#uploadinst{:style => @asset.online? ? "display: none;" : nil}= link_to("Upload a video instantiation…", :action => 'video')
     %li#uploadthumb{:style => @asset.has_thumbnail? ? "display: none;" : nil}= link_to("Upload a thumbnail…", :action => 'thumbnail')

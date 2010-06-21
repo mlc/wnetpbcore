@@ -10,10 +10,15 @@ class InstantiationsController < ApplicationController
   
   def index
     @instantiations = @asset.instantiations
+    @templates = Instantiation.templates
   end
   
   def new
-    @instantiation = Instantiation.new(:asset => @asset)
+    if (params[:template_id].nil?)
+      @instantiation = Instantiation.new(:asset => @asset)
+    else
+      @instantiation = Instantiation.new_from_template(params[:template_id], @asset)
+    end
     @instantiation.format_ids.build
   end
 

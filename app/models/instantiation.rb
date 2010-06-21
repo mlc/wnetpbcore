@@ -100,6 +100,25 @@ class Instantiation < ActiveRecord::Base
     format_ids.any?(&:thumbnail?)
   end
 
+  def self.templates
+    Instantiation.all(:conditions => "template_name IS NOT NULL", :order => "template_name ASC", :select => "id, template_name").map{|i| [i.id, i.template_name]}
+  end
+
+  def self.new_from_template(template_id, asset = nil)
+    template = Instantiation.find(template_id, :include => [:essence_tracks, :annotations])
+    template_attrs = template.attributes.reject{|k,v| ["asset_id", "template_name", "date_created", "date_issued", "id", "uuid"].include?(k)}
+    newone = Instantiation.new(template_attrs)
+    newone.asset = asset
+    template.essence_tracks.each do |et|
+      newone.essence_tracks << EssenceTrack.new(et.attributes.reject{|k,v| ["instantiation_id", "id"].include?(k)})
+    end
+    template.annotations.each do |an|
+      newone.annotations << Annotation.new(an.attributes.reject{|k,v| ["instantiation_id", "id"].include?(k)})
+    end
+
+    newone
+  end
+
   protected
   def generate_uuid
     self.uuid = UUID.random_create.to_s unless (self.uuid && !self.uuid.empty?)

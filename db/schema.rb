@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100527194736) do
+ActiveRecord::Schema.define(:version => 20100621184923) do
 
   create_table "annotations", :force => true do |t|
     t.integer "instantiation_id"
@@ -299,10 +299,12 @@ ActiveRecord::Schema.define(:version => 20100527194736) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "uuid",                         :limit => 36,       :null => false
+    t.string   "template_name"
   end
 
   add_index "instantiations", ["uuid"], :name => "index_instantiations_on_uuid", :unique => true
   add_index "instantiations", ["asset_id"], :name => "index_instantiations_on_asset_id"
+  add_index "instantiations", ["template_name"], :name => "index_instantiations_on_template_name"
 
   create_table "ip_blocks", :force => true do |t|
     t.string "name",   :null => false
