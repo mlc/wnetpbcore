@@ -26,7 +26,9 @@ module AssetsHelper
   end
 
   def request_mailto_link(asset)
-    "mailto:#{PBCore.config['request_email']}?subject=Archive%20Request&body=#{CGI::escape(asset_url(asset.uuid))}"
+    link = "mailto:#{PBCore.config['request_email']}?subject=Archive%20Request&body=#{CGI::escape(asset_url(asset.uuid))}"
+    link += CGI::escape("\n\n#{PBCore.config['request_body']}").gsub('+', '%20') if PBCore.config['request_body']
+    link
   end
 
   def eltshow(fld)
