@@ -14,7 +14,7 @@ class PicklistsController < ApplicationController
 
   def index
     if @klass.nil?
-      @controllers = SUBCLASSES.sort
+      @controllers = (SUBCLASSES + ['templates']).sort
       render :action => 'picklists_index'
     else
       @emit_warning = should_emit_warning

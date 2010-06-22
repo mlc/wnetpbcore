@@ -7,7 +7,7 @@
     %li= link_to_unless_current "new asset", :controller => :assets, :action => 'new'
     %li= link_to_unless_current "upload assets", :controller => :xml
   - permitted_to? :show, :picklists do
-    %li= link_to_unless_current "picklists", :controller => :picklists
+    %li= link_to_unless_current "manage", :controller => :picklists
   - permitted_to? :index, :borrowings do
     %li= link_to_unless_current "borrowings", :controller => :borrowings, :action => :index
   - permitted_to? :index, :users do

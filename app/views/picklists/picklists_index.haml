@@ -1,6 +1,7 @@
-- title "Edit Picklists"
+- title "Manage"
 
-%p Select a type of picklist to edit:
+%p Select a type of item to manage:
 %ul
   - @controllers.each do |controller|
-    %li= link_to controller.gsub('_', ' ').titlecase, :controller => controller, :action => 'index'
+    - if permitted_to?(:index, controller.to_sym)
+      %li= link_to controller.gsub('_', ' ').titlecase, :controller => controller, :action => 'index'

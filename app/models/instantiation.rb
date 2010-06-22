@@ -100,8 +100,10 @@ class Instantiation < ActiveRecord::Base
     format_ids.any?(&:thumbnail?)
   end
 
-  def self.templates
-    Instantiation.all(:conditions => "template_name IS NOT NULL", :order => "template_name ASC", :select => "id, template_name").map{|i| [i.id, i.template_name]}
+  def self.templates(options = nil)
+    opts = options || {:select => "id, template_name"}
+    inst = Instantiation.all({:conditions => "template_name IS NOT NULL", :order => "template_name ASC"}.merge(opts))
+    options ? inst : inst.map{|i| [i.id, i.template_name]}
   end
 
   def self.new_from_template(template_id, asset = nil)

@@ -3,7 +3,7 @@ class TemplatesController < ApplicationController
   before_filter :get_instantiation
 
   def index
-    @templates = Instantiation.templates
+    @templates = Instantiation.templates(:include => [{:asset => :titles}, :format_ids])
   end
 
   def edit

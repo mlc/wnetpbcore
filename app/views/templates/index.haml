@@ -1,8 +1,13 @@
 - title "Template Management"
 %ul
-  - @templates.each do |id, name|
-    %li{ :id => "template_#{id}" }
-      &= name
-      = link_to("edit name", edit_template_path(id)) if permitted_to? :edit, :templates
+  - @templates.each do |template|
+    %li{ :id => "template_#{template.id}" }
+      &= template.template_name
+      = link_to("edit name", edit_template_path(template.id)) if permitted_to? :edit, :templates
       - if permitted_to? :destroy, :templates
-        = link_to_remote("destroy", :url => {:action => 'destroy', :id => id}, :method => :delete, :html => {:class => 'destroy_link'})
+        = link_to_remote("destroy", :url => {:action => 'destroy', :id => template.id}, :method => :delete, :html => {:class => 'destroy_link'})
+      %br
+        based on
+        %q&= template.identifier
+        from
+        = link_to(h(template.asset.title), template.asset)
