@@ -83,8 +83,18 @@ module PbcoreXmlElement
 
   def build_xml(builder)
     self._working_xml = builder
+    builder.comment! created_string if respond_to?(:created_at)
+    builder.comment! updated_string if respond_to?(:updated_at)
     run_callbacks(:to_xml_elt)
     self._working_xml = nil
+  end
+
+  def created_string
+    "created at #{created_at.to_s} by #{creator_id.nil? ? "unknown" : record_creator.login}"
+  end
+
+  def updated_string
+    "updated at #{updated_at.to_s} by #{updater_id.nil? ? "unknown" : record_updater.login}"
   end
 
   def doing_xml?
