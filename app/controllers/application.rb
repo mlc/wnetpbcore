@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
   before_filter :set_current_user
   before_filter :check_ip_range
 
+  include Userstamp
+
   helper :all # include all helpers, all the time
 
   # See ActionController::RequestForgeryProtection for details

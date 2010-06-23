@@ -12,6 +12,7 @@ class Instantiation < ActiveRecord::Base
   has_many :date_availables, :dependent => :destroy, :attributes => true
   has_many :annotations, :dependent => :destroy, :attributes => true
   has_many :borrowings, :dependent => :destroy
+  stampable
   
   attr_protected :asset, :asset_id, :uuid
 

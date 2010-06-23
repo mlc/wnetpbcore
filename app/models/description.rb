@@ -2,6 +2,7 @@ class Description < ActiveRecord::Base
   include PbcoreXmlElement
   belongs_to :asset
   belongs_to :description_type
+  stampable
   
   xml_string "description"
   xml_picklist "descriptionType", :description_type, DescriptionType

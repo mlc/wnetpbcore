@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   include Authentication::ByCookieToken
 
   belongs_to :ip_block
+  model_stamper
+  stampable
 
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40

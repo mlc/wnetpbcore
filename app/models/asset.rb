@@ -34,6 +34,7 @@ class Asset < ActiveRecord::Base
   has_many :rights_summaries, :dependent => :destroy, :attributes => true
   has_many :instantiations, :dependent => :destroy
   has_many :extensions, :dependent => :destroy, :attributes => true
+  stampable
 
   validates_size_of :identifiers, :minimum => 1, :message => "must have at least one entry"
   validates_size_of :titles, :minimum => 1, :message => "must have at least one entry"

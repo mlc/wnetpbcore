@@ -1,6 +1,8 @@
 class Coverage < ActiveRecord::Base
   include PbcoreXmlElement
   belongs_to :asset
+  stampable
+
   xml_string "coverage"
   xml_string "coverageType"
 

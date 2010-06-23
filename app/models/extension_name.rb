@@ -6,6 +6,7 @@
 #
 class ExtensionName < ActiveRecord::Base
   before_save :synthesize_description
+  stampable
 
   def name
     description

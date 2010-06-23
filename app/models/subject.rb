@@ -3,6 +3,8 @@ class Subject < ActiveRecord::Base
   include Picklist
 
   has_and_belongs_to_many :assets
+  stampable
+
   quick_column 'CONCAT(subject, " (", COALESCE(subject_authority, ""), ")")'
   xml_string "subject", :subject
   xml_string "subjectAuthorityUsed", :subject_authority

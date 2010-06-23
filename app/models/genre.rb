@@ -1,6 +1,7 @@
 class Genre < ActiveRecord::Base
   include PbcoreXmlElement
   include Picklist
+  stampable
 
   has_and_belongs_to_many :assets
   xml_string "genre", :name

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100621184923) do
+ActiveRecord::Schema.define(:version => 20100623181718) do
 
   create_table "annotations", :force => true do |t|
     t.integer "instantiation_id"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(:version => 20100621184923) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "uuid",       :limit => 36, :null => false
+    t.integer  "creator_id"
+    t.integer  "updater_id"
   end
 
   add_index "assets", ["uuid"], :name => "index_assets_on_uuid", :unique => true
@@ -87,6 +89,8 @@ ActiveRecord::Schema.define(:version => 20100621184923) do
     t.integer  "contributor_role_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "creator_id"
+    t.integer  "updater_id"
   end
 
   add_index "contributors", ["asset_id"], :name => "index_contributors_on_asset_id"
@@ -97,6 +101,8 @@ ActiveRecord::Schema.define(:version => 20100621184923) do
     t.string   "coverage_type",                     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "creator_id"
+    t.integer  "updater_id"
   end
 
   add_index "coverages", ["asset_id"], :name => "index_coverages_on_asset_id"
@@ -114,6 +120,8 @@ ActiveRecord::Schema.define(:version => 20100621184923) do
     t.integer  "creator_role_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "creator_id"
+    t.integer  "updater_id"
   end
 
   add_index "creators", ["asset_id"], :name => "index_creators_on_asset_id"
@@ -152,6 +160,8 @@ ActiveRecord::Schema.define(:version => 20100621184923) do
     t.integer  "description_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "creator_id"
+    t.integer  "updater_id"
   end
 
   add_index "descriptions", ["asset_id"], :name => "index_descriptions_on_asset_id"
@@ -194,6 +204,8 @@ ActiveRecord::Schema.define(:version => 20100621184923) do
     t.boolean  "visible",             :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "creator_id"
+    t.integer  "updater_id"
   end
 
   add_index "extension_names", ["extension_authority", "extension_key"], :name => "index_extension_names_on_extension_authority_and_extension_key", :unique => true
@@ -230,6 +242,8 @@ ActiveRecord::Schema.define(:version => 20100621184923) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "format_identifier_source_id", :null => false
+    t.integer  "creator_id"
+    t.integer  "updater_id"
   end
 
   add_index "format_ids", ["instantiation_id"], :name => "index_format_ids_on_instantiation_id"
@@ -256,6 +270,8 @@ ActiveRecord::Schema.define(:version => 20100621184923) do
     t.boolean  "visible",              :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "creator_id"
+    t.integer  "updater_id"
   end
 
   create_table "identifier_sources", :force => true do |t|
@@ -266,6 +282,8 @@ ActiveRecord::Schema.define(:version => 20100621184923) do
     t.boolean  "show_in_index",                     :default => true,  :null => false
     t.string   "regex"
     t.boolean  "auto_merge",                        :default => false, :null => false
+    t.integer  "creator_id"
+    t.integer  "updater_id"
   end
 
   create_table "identifiers", :force => true do |t|
@@ -274,6 +292,8 @@ ActiveRecord::Schema.define(:version => 20100621184923) do
     t.integer  "identifier_source_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "creator_id"
+    t.integer  "updater_id"
   end
 
   add_index "identifiers", ["asset_id"], :name => "index_identifiers_on_asset_id"
@@ -300,6 +320,8 @@ ActiveRecord::Schema.define(:version => 20100621184923) do
     t.datetime "updated_at"
     t.string   "uuid",                         :limit => 36,       :null => false
     t.string   "template_name"
+    t.integer  "creator_id"
+    t.integer  "updater_id"
   end
 
   add_index "instantiations", ["uuid"], :name => "index_instantiations_on_uuid", :unique => true
@@ -326,6 +348,8 @@ ActiveRecord::Schema.define(:version => 20100621184923) do
     t.integer  "publisher_role_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "creator_id"
+    t.integer  "updater_id"
   end
 
   add_index "publishers", ["asset_id"], :name => "index_publishers_on_asset_id"
@@ -341,6 +365,8 @@ ActiveRecord::Schema.define(:version => 20100621184923) do
     t.string   "relation_identifier"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "creator_id"
+    t.integer  "updater_id"
   end
 
   add_index "relations", ["asset_id"], :name => "index_relations_on_asset_id"
@@ -351,6 +377,8 @@ ActiveRecord::Schema.define(:version => 20100621184923) do
     t.text     "rights_summary", :limit => 16777215, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "creator_id"
+    t.integer  "updater_id"
   end
 
   add_index "rights_summaries", ["asset_id"], :name => "index_rights_summaries_on_asset_id"
@@ -361,6 +389,8 @@ ActiveRecord::Schema.define(:version => 20100621184923) do
     t.boolean  "visible",           :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "creator_id"
+    t.integer  "updater_id"
   end
 
   create_table "title_type_categories", :force => true do |t|
@@ -381,6 +411,8 @@ ActiveRecord::Schema.define(:version => 20100621184923) do
     t.integer  "title_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "creator_id"
+    t.integer  "updater_id"
   end
 
   add_index "titles", ["asset_id"], :name => "index_titles_on_asset_id"
@@ -398,6 +430,8 @@ ActiveRecord::Schema.define(:version => 20100621184923) do
     t.datetime "remember_token_expires_at"
     t.boolean  "is_admin",                                 :default => false, :null => false
     t.integer  "ip_block_id"
+    t.integer  "creator_id"
+    t.integer  "updater_id"
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
