@@ -27,6 +27,10 @@ ActionController::Routing::Routes.draw do |map|
     map.resources t
   end
 
+  map.resources :value_lists do |vl|
+    vl.resources :values
+  end
+
   map.ids 'ids', :controller => 'last_used_ids', :action => 'index'
 
   map.set_streamable 'options/streamable/:value', :controller => 'options', :action => 'streamable'
