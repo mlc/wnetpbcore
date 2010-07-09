@@ -1,9 +1,0 @@
-<div class="contributor">
-  <p>
-    <%= f.label(:contributor_role_id, "Contributor Role: ") %>
-    <%= f.select :contributor_role_id, ContributorRole.quick_load_for_select(["visible = 1 OR id = ?", contributor.contributor_role_id]) %>
-    &nbsp;&nbsp;
-    <%= f.label(:contributor, "Contributor:") %> <%= f.text_field :contributor %>
-    <%= f.remove_link "remove" %>
-  </p>
-</div>

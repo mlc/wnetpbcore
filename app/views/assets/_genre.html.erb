@@ -1,9 +1,0 @@
-<div class="genre">
-  <p>
-    <select name="asset[genre_ids][]">
-    <%= option_groups_from_collection_for_select(genres_including(genre), :last, :first, :last, :first, genre.nil? ? nil : genre.id) %>
-    </select>
-    <%= f.remove_link "remove" %>
-    <br />
-  </p>
-</div>

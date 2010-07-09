@@ -1,16 +1,3 @@
-if (!String.prototype.capitalize) {
-  String.prototype.capitalize = function() {
-    switch(this.length) {
-    case 0:
-      return this;
-    case 1:
-      return this.toUpperCase();
-    default:
-      return this.slice(0,1).toUpperCase() + this.slice(1);
-    }
-  };
-}
-
 /*
  * JavaScript PBCore Editor!
  */
@@ -23,11 +10,20 @@ var FormEditor = (function($) {
   var xml, picklists;
   var field_counter = 0;
   var made_form = false;
-  var STYLE_PLAIN = 0,
-    STYLE_TEXTAREA = 1,
-    STYLE_VERBOSE = 2,
-    STYLE_SIMPLE = 3;
-                    
+
+  // enum pattern http://is.gd/dlQFY
+  var Style = function(name) {
+    this._name = name;
+  };
+  Style.prototype.toString = function() {
+    return this._name;
+  };
+  Style.PLAIN = new Style('plain');
+  Style.TEXTAREA = new Style('textarea');
+  Style.VERBOSE = new Style('verbose');
+  Style.SIMPLE = new Style('simple');
+  Style.ONLY_TEXTAREA = new Style("only texarea");
+
   var safe_log = function(obj) {
     if (console !== undefined && (typeof console.log === 'function'))
       console.log(obj);
@@ -71,19 +67,57 @@ var FormEditor = (function($) {
     })));
   };
 
-  var simple_maker = function(field, picklistfield, style, locked) {
+  var mkboxes = function(div, pbcore, field) {
+    var $div = $("#" + div);
+    var picklist = picklists[field.capitalize()];
+    var i, len = picklist.length;
+
+    var makebox = function(text) {
+      var span = $("<span>", {
+        css: { 'white-space': 'nowrap' }
+      });
+      ++field_counter;
+      var input = $("<input>", {
+        "id": "box_" + field_counter,
+        "name": field,
+        "type": 'checkbox',
+        "value": text
+      });
+      span.append(input).append(' ')
+      .append($("<label>", {
+        "for": "box_" + field_counter,
+        "text": text
+      }));
+      $div.append(span).append(' \u00a0\u00a0 ');
+      return input;
+    };
+
+    for(i = 0; i < len; ++i) {
+      makebox(picklist[i]);
+    }
+    xml.find(pbcore + " " + field).each(function() {
+      var text = $(this).text();
+      var input = $div.find("input[value='" + text + "']");
+      if (input.length == 0) {
+        input = makebox(text);
+      }
+      input.attr("checked", true);
+    });
+  };
+
+  var pbcore_maker = function(field, picklistfield, style, locked) {
     return function(where, obj) {
       safe_log(obj);
       var label, formfield, remove, box, boxlabel;
-      style = style || STYLE_PLAIN;
-      var textarea = (style == STYLE_TEXTAREA);
+      style = style || Style.PLAIN;
+      var textarea = (style == Style.TEXTAREA || style == Style.ONLY_TEXTAREA);
       var required = false; /* for now */
       var ret = $("<div>", {"class": "form_field_container " + field});
 
       if (field) {
         ++field_counter;
         label = $("<label>", {
-          "text": field.capitalize() + ":",
+          "text": field.capitalize().addspaces() + ":",
           "for": "input_" + field_counter
         });
         var args = {
@@ -106,7 +140,7 @@ var FormEditor = (function($) {
           "id": "combobox_" + (++field_counter),
           "name": picklistfield,
           "value": $(obj).find(picklistfield).text(),
-          "size": (style == STYLE_VERBOSE ? 15 : 25),
+          "size": (style == Style.VERBOSE ? 15 : 25),
           "readonly": locked
         });
         box.autocomplete({
@@ -122,25 +156,28 @@ var FormEditor = (function($) {
           return false;
         }
       });
-      if (style == STYLE_VERBOSE) {
+      if (style == Style.VERBOSE) {
         boxlabel = $("<label>", {
-          "text": picklistfield.capitalize() + ":",
+          "text": picklistfield.capitalize().addspaces() + ":",
           "for": "combobox_" + field_counter
         });        
       }
       
       switch(style) {
-      case STYLE_PLAIN:
+      case Style.PLAIN:
         ret.append(label).append(' ').append(formfield).append(' ').append(box).append(' ').append(remove);
         break;
-      case STYLE_TEXTAREA:
+      case Style.TEXTAREA:
         ret.append(label).append(' ').append(box).append(' ').append(remove).append(' ').append(formfield);
         break;
-      case STYLE_VERBOSE:
+      case Style.VERBOSE:
         ret.append(boxlabel).append(' ').append(box).append(' ').append(label).append(' ').append(formfield).append(' ').append(remove);
         break;
-      case STYLE_SIMPLE:
+      case Style.SIMPLE:
         ret.append(box).append(' ').append(remove);
+        break;
+      case Style.ONLY_TEXTAREA:
+        ret.append(label).append(' ').append(remove).append(' ').append(formfield);
         break;
       default:
         safe_log("warning! unexpected style!");
@@ -189,13 +226,19 @@ var FormEditor = (function($) {
         return;
 
       made_form = true;
-      mkfields("identifiers", "pbcoreIdentifier", simple_maker("identifier", "identifierSource"));
-      mkfields("titles", "pbcoreTitle", simple_maker("title", "titleType"));
-      mkfields("subjects", "pbcoreSubject", simple_maker(null, "subject", STYLE_SIMPLE));
-      mkfields("descriptions", "pbcoreDescription", simple_maker("description", "descriptionType", STYLE_TEXTAREA));
-      mkfields("genres", "pbcoreGenre", simple_maker(null, "genre", STYLE_SIMPLE));
-      mkfields("relations", "pbcoreRelation", simple_maker("relationIdentifier", "relationType", STYLE_VERBOSE));
-      mkfields("coverages", "pbcoreCoverage", simple_maker("coverage", "coverageType", STYLE_VERBOSE, true));
+      mkfields("identifiers", "pbcoreIdentifier", pbcore_maker("identifier", "identifierSource"));
+      mkfields("titles", "pbcoreTitle", pbcore_maker("title", "titleType"));
+      mkfields("subjects", "pbcoreSubject", pbcore_maker(null, "subject", Style.SIMPLE));
+      mkfields("descriptions", "pbcoreDescription", pbcore_maker("description", "descriptionType", Style.TEXTAREA));
+      mkfields("genres", "pbcoreGenre", pbcore_maker(null, "genre", Style.SIMPLE));
+      mkfields("relations", "pbcoreRelation", pbcore_maker("relationIdentifier", "relationType", Style.VERBOSE));
+      mkfields("coverages", "pbcoreCoverage", pbcore_maker("coverage", "coverageType", Style.VERBOSE, true));
+      mkboxes("audience_levels", 'pbcoreAudienceLevel', 'audienceLevel');
+      mkboxes("audience_ratings", 'pbcoreAudienceRating', 'audienceRating');
+      mkfields("creators", "pbcoreCreator", pbcore_maker("creator", "creatorRole", Style.VERBOSE));
+      mkfields("contributors", "pbcoreContributor", pbcore_maker("contributor", "contributorRole", Style.VERBOSE));
+      mkfields("publishers", "pbcorePublisher", pbcore_maker("publisher", "publisherRole", Style.VERBOSE));
+      mkfields("rights_summaries", "pbcoreRightsSummary", pbcore_maker("rightsSummary", undefined, Style.ONLY_TEXTAREA));
     }
   };
 })(jQuery);

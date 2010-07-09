@@ -231,7 +231,7 @@ class AssetsController < ApplicationController
   end
 
   def picklists
-    classes = [Genre, Subject, ContributorRole, CreatorRole, IdentifierSource, PublisherRole, TitleType, DescriptionType, RelationType]
+    classes = [Genre, Subject, ContributorRole, CreatorRole, IdentifierSource, PublisherRole, TitleType, DescriptionType, RelationType, AudienceLevel, AudienceRating]
     @picklists = {}
     classes.each do |kl|
       options = kl.quick_load_for_select(["visible = ?", true])

@@ -1,9 +1,0 @@
-<div class="publisher">
-  <p>
-    <%= f.label(:publisher_role_id, "Publisher Role: ") %>
-    <%= f.select :publisher_role_id, PublisherRole.quick_load_for_select(["visible = 1 OR id = ?", publisher.publisher_role_id]) %>
-    &nbsp;&nbsp;
-    <%= f.label(:publisher, "Publisher:") %> <%= f.text_field :publisher %>
-    <%= f.remove_link "remove" %>
-  </p>
-</div>
