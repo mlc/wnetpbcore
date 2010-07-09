@@ -1,0 +1,74 @@
+- assets_navbar
+#edit_id&= @asset.id
+- form_for @asset do |f|
+  = error_messages_for :asset
+  %h2 Intellectual Content
+  %h3 Identifiers
+  #identifiers
+  %h3 Titles
+  #titles
+  %h3 Subjects
+  #subjects
+    = f.render_associated_form(@asset.subjects)
+  %p= f.add_associated_link "Add a subject…", @asset.subjects.build
+  %h3 Descriptions
+  #descriptions
+    = f.render_associated_form(@asset.descriptions)
+  %p= f.add_associated_link "Add a description…", @asset.descriptions.build
+  %h3 Genres
+  #genres
+    = f.render_associated_form(@asset.genres)
+  %p= f.add_associated_link "Add a genre…", @asset.genres.build
+  %h3 Relations
+  #relations
+    = f.render_associated_form(@asset.relations)
+  %p= f.add_associated_link "Add a relation…", @asset.relations.build
+  %h3 Coverages
+  #coverages
+    = f.render_associated_form(@asset.coverages)
+  %p= f.add_associated_link "Add a coverage…", @asset.coverages.build
+  %h3 Audience Levels
+  #audience_levels
+    - AudienceLevel.all(:conditions => "visible = 1 OR id IN (#{([0]+@asset.audience_levels.map{|k| k.id.to_s}).join(",")})").each do |level|
+      %span{:style => "white-space: nowrap;"}
+        = check_box_tag "asset[audience_level_ids][]", level.id, @asset.audience_levels.include?(level), :id => "level_box_#{level.id}"
+        %label{:for => "level_box_#{level.id}"}= level.name
+      \&nbsp;&nbsp;
+  %h3 Audience Ratings
+  #audience_ratings
+    - AudienceRating.all(:conditions => "visible = 1 OR id IN (#{([0]+@asset.audience_ratings.map{|k| k.id.to_s}).join(",")})").each do |rating|
+      %span{:style => "white-space: nowrap;"}
+        = check_box_tag "asset[audience_rating_ids][]", rating.id, @asset.audience_ratings.include?(rating), :id => "rating_box_#{rating.id}"
+        %label{:for => "rating_box_#{rating.id}"}= rating.name
+      \&nbsp;&nbsp;
+  %h2 Intellectual Property Section
+  %h3 Creators
+  #creators
+    = f.render_associated_form(@asset.creators)
+  %p= f.add_associated_link "Add a creator…", @asset.creators.build
+  %h3 Contributors
+  #contributors
+    = f.render_associated_form(@asset.contributors)
+  %p= f.add_associated_link "Add a contributor…", @asset.contributors.build
+  %h3 Publishers
+  #publishers
+    = f.render_associated_form(@asset.publishers)
+  %p= f.add_associated_link "Add a publisher…", @asset.publishers.build
+  %h3 Rights
+  #rights_summaries
+    = f.render_associated_form(@asset.rights_summaries)
+  %p= f.add_associated_link "Add a rights summary…", @asset.rights_summaries.build
+  - unless @asset.new_record?
+    %h2 Instantiation Section
+    %p
+      This asset currently has
+      %strong= icount = @asset.instantiations.count
+      instantiation#{icount == 1 ? '' : 's'}.
+      \#{link_to "Edit, modify, and delete instantiations for this record.", asset_instantiations_url(@asset)}
+  %h2 Extension Section
+  %h3 Extensions
+  #extensions
+    = f.render_associated_form(@asset.extensions)
+  %p= f.add_associated_link "Add an extension…", @asset.extensions.build
+  %p
+    = f.submit "Submit"

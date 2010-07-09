@@ -359,3 +359,20 @@ a.index_thumbnail img {
 .required {
     background-color: #fcc;
 }
+
+#edit_id {
+    display: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.form_field_container {
+    clear: both;
+    margin: 1em 0px;
+}
+
+.ui-button { margin-left: -1px; }
+.ui-button-icon-only .ui-button-text { padding: 0.35em; } 
+.ui-autocomplete-input { margin: 0; padding: 0.48em 0 0.47em 0.45em; font-size: smaller; }
+
+.ui-autocomplete { max-height: 15em; overflow: auto; }

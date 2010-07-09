@@ -3,7 +3,8 @@ class AssetsController < ApplicationController
   filter_access_to :opensearch, :require => :read
   filter_access_to :toggleannotations, :require => :read
   filter_access_to :lastsearch, :require => :read
-  
+  filter_access_to :picklists, :require => :read
+
   def index
     params.delete("x")
     params.delete("y")
@@ -226,6 +227,21 @@ class AssetsController < ApplicationController
       redirect_to session[:search]
     else
       redirect_to :action => 'index'
+    end
+  end
+
+  def picklists
+    classes = [Genre, Subject, ContributorRole, CreatorRole, IdentifierSource, PublisherRole, TitleType]
+    @picklists = {}
+    classes.each do |kl|
+      options = kl.quick_load_for_select(["visible = ?", true])
+      @picklists[kl.to_s] = options.map(&:first)
+    end
+    respond_to do |format|
+      format.json do
+        response.headers["Cache-Control"] = "public, max-age=600"
+        render :json => @picklists.to_json
+      end
     end
   end
 end

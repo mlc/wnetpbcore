@@ -11,7 +11,7 @@ ActionController::Routing::Routes.draw do |map|
   map.home '', :controller => "assets", :action => "index"
   map.lastsearch 'lastsearch', :controller => "assets", :action => "lastsearch"
 
-  map.resources :assets, :collection => { "opensearch" => :get, "toggleannotations" => :get , "zip" => :get, "destroy_found_set" => :delete } do |assets|
+  map.resources :assets, :collection => { "opensearch" => :get, "toggleannotations" => :get , "zip" => :get, "destroy_found_set" => :delete, "picklists" => :get } do |assets|
     assets.resources :instantiations, {
       :member => { "borrowings" => :get, "borrow" => :post, "return" => :post },
       :new => { "video" => :get, "upload_video" => :put, "thumbnail" => :get, "upload_thumbnail" => :put } }

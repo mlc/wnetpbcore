@@ -1,6 +1,7 @@
 class IdentifierSource < ActiveRecord::Base
   include Picklist
   has_many :identifiers
+  quick_column :name
   stampable
   
   OUR_UUID_SOURCE = find_or_create_by_name("pbcore XML database UUID") rescue nil
