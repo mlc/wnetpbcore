@@ -9,24 +9,14 @@
   #titles
   %h3 Subjects
   #subjects
-    = f.render_associated_form(@asset.subjects)
-  %p= f.add_associated_link "Add a subject…", @asset.subjects.build
   %h3 Descriptions
   #descriptions
-    = f.render_associated_form(@asset.descriptions)
-  %p= f.add_associated_link "Add a description…", @asset.descriptions.build
   %h3 Genres
   #genres
-    = f.render_associated_form(@asset.genres)
-  %p= f.add_associated_link "Add a genre…", @asset.genres.build
   %h3 Relations
   #relations
-    = f.render_associated_form(@asset.relations)
-  %p= f.add_associated_link "Add a relation…", @asset.relations.build
   %h3 Coverages
   #coverages
-    = f.render_associated_form(@asset.coverages)
-  %p= f.add_associated_link "Add a coverage…", @asset.coverages.build
   %h3 Audience Levels
   #audience_levels
     - AudienceLevel.all(:conditions => "visible = 1 OR id IN (#{([0]+@asset.audience_levels.map{|k| k.id.to_s}).join(",")})").each do |level|

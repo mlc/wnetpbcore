@@ -231,12 +231,13 @@ class AssetsController < ApplicationController
   end
 
   def picklists
-    classes = [Genre, Subject, ContributorRole, CreatorRole, IdentifierSource, PublisherRole, TitleType]
+    classes = [Genre, Subject, ContributorRole, CreatorRole, IdentifierSource, PublisherRole, TitleType, DescriptionType, RelationType]
     @picklists = {}
     classes.each do |kl|
       options = kl.quick_load_for_select(["visible = ?", true])
       @picklists[kl.to_s] = options.map(&:first)
     end
+    @picklists["CoverageType"] = ["Spatial", "Temporal"]
     respond_to do |format|
       format.json do
         response.headers["Cache-Control"] = "public, max-age=600"
