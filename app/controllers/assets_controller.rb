@@ -238,10 +238,14 @@ class AssetsController < ApplicationController
       @picklists[kl.to_s] = options.map(&:first)
     end
     @picklists["CoverageType"] = ["Spatial", "Temporal"]
+    # FIXME: do something useful
+    @valuelists = {
+      "TitleType" => { "Series" => ["NOVA", "Something Else"] }
+    }
     respond_to do |format|
       format.json do
         response.headers["Cache-Control"] = "public, max-age=600"
-        render :json => @picklists.to_json
+        render :json => {:picklists => @picklists, :valuelists => @valuelists}.to_json
       end
     end
   end

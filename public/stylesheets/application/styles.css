@@ -372,7 +372,12 @@ a.index_thumbnail img {
 }
 
 .ui-button { margin-left: -1px; }
-.ui-button-icon-only .ui-button-text { padding: 0.35em; } 
-.ui-autocomplete-input { margin: 0; padding: 0.48em 0 0.47em 0.45em; }
+.ui-button-icon-only .ui-button-text { padding: 1px; }
+.ui-autocomplete-input { margin: 0; padding: 1px; }
 
 .ui-autocomplete { max-height: 15em; overflow: auto; }
+
+/* optimally, these two widths should be 34 different.
+ * one day, I will learn from whence the magic constant 34 comes */
+input.pbcorefield { width: 245px; }
+input.pbcorefield.ui-autocomplete-input { width: 211px; }

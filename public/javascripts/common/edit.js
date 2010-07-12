@@ -7,7 +7,7 @@ var FormEditor = (function($) {
       FormEditor.load();
   });
                     
-  var xml, picklists;
+  var xml, picklists, valuelists;
   var field_counter = 0;
   var made_form = false;
 
@@ -24,9 +24,13 @@ var FormEditor = (function($) {
   Style.SIMPLE = new Style('simple');
   Style.ONLY_TEXTAREA = new Style("only texarea");
 
-  var safe_log = function(obj) {
-    if (console !== undefined && (typeof console.log === 'function'))
-      console.log(obj);
+  var safe_log = function(obj, level) {
+    if (typeof console === 'object') {
+      if (level !== 'undefined' && typeof console[level] === 'function')
+        console[level](obj);
+      else if (typeof console.log === 'function')
+        console.log(obj);
+    }
   };
                     
   var makecombo = function(box) {
@@ -107,7 +111,6 @@ var FormEditor = (function($) {
 
   var pbcore_maker = function(field, picklistfield, style, locked) {
     return function(where, obj) {
-      safe_log(obj);
       var label, formfield, remove, box, boxlabel;
       style = style || Style.PLAIN;
       var textarea = (style == Style.TEXTAREA || style == Style.ONLY_TEXTAREA);
@@ -121,7 +124,7 @@ var FormEditor = (function($) {
           "for": "input_" + field_counter
         });
         var args = {
-          "class": required ? "required" : '',
+          "class": required ? "required pbcorefield" : 'pbcorefield',
           "id": "input_" + field_counter,
           "name": field
         };
@@ -145,7 +148,8 @@ var FormEditor = (function($) {
         });
         box.autocomplete({
           "source": picklists[picklistfield.capitalize()],
-          "minLength": 0
+          "minLength": 0,
+          "delay": 0
         });
       }
       remove = $("<a>", {
@@ -180,12 +184,48 @@ var FormEditor = (function($) {
         ret.append(label).append(' ').append(remove).append(' ').append(formfield);
         break;
       default:
-        safe_log("warning! unexpected style!");
-        safe_log(style);
+        safe_log("warning! unexpected style!", "warn");
+        safe_log(style, "warn");
       }
 
       if (box)
         makecombo(box);
+
+      /* deal with value lists */
+      if ((style == Style.PLAIN || style == Style.VERBOSE) && valuelists[picklistfield.capitalize()]) {
+        (function() { // create a new scope
+          var fieldlists = valuelists[picklistfield.capitalize()],
+            have_autocomplete = false;
+          var maybe_valuelist = function(event, ui) {
+            var str, fieldlist;
+            if (event && event.type === 'autocompleteselect')
+              str = ui.item.value;
+            else
+              str = box.val();
+
+            if ((fieldlist = fieldlists[str])) {
+              if (have_autocomplete) {
+                formfield.autocomplete('option', 'source', fieldlist);
+              } else {
+                formfield.autocomplete({
+                  "source": fieldlist,
+                  "minLength": 0,
+                  "delay": 0
+                });
+                makecombo(formfield);
+                have_autocomplete = true;
+              }
+            } else if (have_autocomplete) {
+              formfield.autocomplete('destroy');
+              formfield.next('button').remove(); // rm combobox button
+              have_autocomplete = false;
+            }
+            return true;
+          };
+          box.bind("autocompleteselect change", maybe_valuelist);
+          maybe_valuelist();
+        })();
+      }
       
       where.append(ret);
     };
@@ -200,7 +240,8 @@ var FormEditor = (function($) {
         "dataType": "json",
         "type": "GET",
         "success": function(data, textStatus, xhr) {
-          picklists = data;
+          picklists = data.picklists;
+          valuelists = data.valuelists;
           safe_log("got picklists!");
           if (xml)
             FormEditor.create_form();
