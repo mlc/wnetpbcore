@@ -55,10 +55,11 @@ var FormEditor = (function($) {
     });    
   };
  
-  var mkfields = function(div, pbcore, callback) {
+  var mkfields = function(div, pbcore, callback, rejector) {
     var $div = $("#" + div);
     xml.find(pbcore).each(function(i) {
-      callback($div, this, i);
+      if (!(rejector && rejector(this)))
+        callback($div, this, i);
     });
     $div.after($("<p>").append($("<a>", {
       "href": "#",
@@ -267,7 +268,9 @@ var FormEditor = (function($) {
         return;
 
       made_form = true;
-      mkfields("identifiers", "pbcoreIdentifier", pbcore_maker("identifier", "identifierSource"));
+      mkfields("identifiers", "pbcoreIdentifier", pbcore_maker("identifier", "identifierSource"), function(elt) {
+        return $(elt).find("identifierSource").text() === "pbcore XML database UUID";
+      });
       mkfields("titles", "pbcoreTitle", pbcore_maker("title", "titleType"));
       mkfields("subjects", "pbcoreSubject", pbcore_maker(null, "subject", Style.SIMPLE));
       mkfields("descriptions", "pbcoreDescription", pbcore_maker("description", "descriptionType", Style.TEXTAREA));
