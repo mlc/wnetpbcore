@@ -15,3 +15,8 @@ String.prototype.addspaces = function() {
   return this.replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2')
     .replace(/([a-z\d])([A-Z])/g, '$1 $2');
 }
+
+// Crockford, p. 61
+function is_array(value) {
+  return Object.prototype.toString.apply(value) === '[object Array]';
+}

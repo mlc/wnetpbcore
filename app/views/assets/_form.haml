@@ -1,7 +1,11 @@
 - assets_navbar
-#edit_id&= @asset.id
+#edit_id&= @asset.new_record? ? 'new' : @asset.uuid
 - form_for @asset do |f|
-  = error_messages_for :asset
+  %div{:style => "margin:0; padding:0"}<
+    %input{:type => "hidden", :name => "xml", :id => "xml_from_editor"}
+%form
+  #error_messages
+    = error_messages_for :asset
   %h2 Intellectual Content
   %h3 Identifiers
   #identifiers
@@ -39,8 +43,8 @@
       \#{link_to "Edit, modify, and delete instantiations for this record.", asset_instantiations_url(@asset)}
   %h2 Extension Section
   %h3 Extensions
-  #extensions
-    = f.render_associated_form(@asset.extensions)
-  %p= f.add_associated_link "Add an extension…", @asset.extensions.build
-  %p
-    = f.submit "Submit"
+  -#
+    #extensions
+      = f.render_associated_form(@asset.extensions)
+    %p= f.add_associated_link "Add an extension…", @asset.extensions.build
+  %p#submit_area

@@ -1,0 +1,14 @@
+# -*- ruby -*-
+if @success
+  if session[:search].is_a?(Hash)
+    page.redirect_to session[:search]
+  else
+    page.redirect_to :action => 'index'
+  end
+else
+  page.replace_html 'error_messages', error_messages_for(:asset)
+  # scroll up so they see the error messages
+  page << 'var $t = $("#error_messages"), offset = $t.offset().top;'
+  page << '$(window).scrollTop(offset);'
+  page << '$t.highlight(1000);'
+end

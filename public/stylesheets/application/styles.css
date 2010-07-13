@@ -52,11 +52,6 @@ h3 {
 	text-transform: none;
 }
 
-.title {
-	color: #333333;
-	font-weight: bold;
-}
-
 .title2 {
 	color: #555555;
 	letter-spacing: 0.5px;
@@ -356,7 +351,7 @@ a.index_thumbnail img {
     color: #77f;
 }
 
-.required {
+.pbcorefield.title, .pbcorefield.description, .pbcorefield.identifier, .picklistbox.identifierSource {
     background-color: #fcc;
 }
 

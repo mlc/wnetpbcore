@@ -4,6 +4,7 @@ class AssetsController < ApplicationController
   filter_access_to :toggleannotations, :require => :read
   filter_access_to :lastsearch, :require => :read
   filter_access_to :picklists, :require => :read
+  filter_access_to :picklist, :require => :read
 
   def index
     params.delete("x")
@@ -113,6 +114,10 @@ class AssetsController < ApplicationController
     @asset = Asset.new
     @asset.identifiers.build
     @asset.titles.build
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => @asset.to_xml }
+    end
   end
   
   def edit
@@ -120,32 +125,31 @@ class AssetsController < ApplicationController
   end
   
   def create
-    @asset = Asset.new(params[:asset])
-    if @asset.save
+    Asset.transaction do
+      @asset = Asset.from_xml(params[:xml])
+      @success = @asset.save
+      raise ActiveRecord::Rollback unless @success
+    end
+
+    if @success
       flash[:message] = "Successfully created new Asset. You must now add an instantiation for the record to be valid PBCore."
-      redirect_to asset_instantiations_url(@asset)
-    else
-      render :action => 'new'
     end
   end
   
   def update
     @asset = Asset.find(params[:id], :include => Asset::ALL_INCLUDES)
-    params[:asset] ||= {}
-    params[:asset][:identifier_attributes] ||= {}
-    params[:asset][:title_attributes] ||= {}
-    params[:asset][:subject_ids] ||= []
-    params[:asset][:description_attributes] ||= {}
-    params[:asset][:genre_ids] ||= []
-    params[:asset][:relation_attributes] ||= {}
-    params[:asset][:coverage_attributes] ||= {}
-    params[:asset][:audience_rating_ids] ||= []
-    params[:asset][:audience_level_ids] ||= []
-    if @asset.update_attributes(params[:asset])
+    @asset.transaction do
+      parsed_asset = Asset.from_xml(params[:xml])
+      [:identifiers, :titles, :subjects, :descriptions, :genres,
+       :relations, :coverages, :audience_levels, :audience_ratings,
+       :creators, :contributors, :publishers, :rights_summaries].each do |field|
+        @asset.send("#{field}=".to_sym, parsed_asset.send(field))
+      end
+      @success = @asset.save
+      raise ActiveRecord::Rollback unless @success
+    end
+    if @success
       flash[:message] = "Successfully updated your Asset."
-      lastsearch
-    else
-      render :action => 'edit'
     end
   end
 
@@ -244,9 +248,12 @@ class AssetsController < ApplicationController
     }
     respond_to do |format|
       format.json do
-        response.headers["Cache-Control"] = "public, max-age=600"
+        response.headers["Cache-Control"] = "private, max-age=600"
         render :json => {:picklists => @picklists, :valuelists => @valuelists}.to_json
       end
     end
+  end
+
+  def picklist
   end
 end

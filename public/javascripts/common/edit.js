@@ -6,7 +6,7 @@ var FormEditor = (function($) {
     if ((FormEditor.objid = $("#edit_id").text()))
       FormEditor.load();
   });
-                    
+
   var xml, picklists, valuelists;
   var field_counter = 0;
   var made_form = false;
@@ -31,6 +31,43 @@ var FormEditor = (function($) {
       else if (typeof console.log === 'function')
         console.log(obj);
     }
+  };
+
+  var autocompleteopts = function(name) {
+    var picklist = picklists[name.capitalize()], cache = {};
+    switch(typeof picklist) {
+    case 'string':
+      return {
+        "source": function(request, response) {
+          if (request.term in cache) {
+            response(cache[request.term]);
+            return;
+          }
+          
+          $.ajax({
+            url: picklist,
+            dataType: 'json',
+            data: request,
+            success: function(data) {
+              cache[request.term] = data;
+              response(data);
+            }
+          });
+        },
+        "minLength": 2,
+        "delay": 300
+      };
+    case 'object':
+      if (!is_array(picklist))
+        return undefined;
+
+      return {
+        "source": picklist,
+        "minLength": 0,
+        "delay": 0
+      };
+    }
+    return undefined;
   };
                     
   var makecombo = function(box) {
@@ -59,21 +96,21 @@ var FormEditor = (function($) {
     var $div = $("#" + div);
     xml.find(pbcore).each(function(i) {
       if (!(rejector && rejector(this)))
-        callback($div, this, i);
+        callback(pbcore, $div, this, i);
     });
     $div.after($("<p>").append($("<a>", {
       "href": "#",
       "text": "Add another\u2026",
       "class": "adder",
       "click": function() {
-        callback($div);
+        callback(pbcore, $div);
         return false;
       }
     })));
   };
 
   var mkboxes = function(div, pbcore, field) {
-    var $div = $("#" + div);
+    var $div = $("#" + div).addClass("pbcorechecks").attr("pbcore", pbcore);
     var picklist = picklists[field.capitalize()];
     var i, len = picklist.length;
 
@@ -111,12 +148,12 @@ var FormEditor = (function($) {
   };
 
   var pbcore_maker = function(field, picklistfield, style, locked) {
-    return function(where, obj) {
+    return function(pbcore, where, obj) {
       var label, formfield, remove, box, boxlabel;
       style = style || Style.PLAIN;
       var textarea = (style == Style.TEXTAREA || style == Style.ONLY_TEXTAREA);
       var required = false; /* for now */
-      var ret = $("<div>", {"class": "form_field_container " + field});
+      var ret = $("<div>", {"class": "form_field_container " + field, "pbcore": pbcore});
 
       if (field) {
         ++field_counter;
@@ -125,7 +162,7 @@ var FormEditor = (function($) {
           "for": "input_" + field_counter
         });
         var args = {
-          "class": required ? "required pbcorefield" : 'pbcorefield',
+          "class": "pbcorefield " + field,
           "id": "input_" + field_counter,
           "name": field
         };
@@ -142,16 +179,13 @@ var FormEditor = (function($) {
       if (picklistfield) {
         box = $("<input>", {
           "id": "combobox_" + (++field_counter),
+          "class": "picklistbox " + picklistfield,
           "name": picklistfield,
           "value": $(obj).find(picklistfield).text(),
           "size": (style == Style.VERBOSE ? 15 : 25),
           "readonly": locked
         });
-        box.autocomplete({
-          "source": picklists[picklistfield.capitalize()],
-          "minLength": 0,
-          "delay": 0
-        });
+        box.autocomplete(autocompleteopts(picklistfield));
       }
       remove = $("<a>", {
         "href": "#",
@@ -208,6 +242,7 @@ var FormEditor = (function($) {
               if (have_autocomplete) {
                 formfield.autocomplete('option', 'source', fieldlist);
               } else {
+                /* TODO: consider possibility of using autocompleteopts here */
                 formfield.autocomplete({
                   "source": fieldlist,
                   "minLength": 0,
@@ -231,7 +266,26 @@ var FormEditor = (function($) {
       where.append(ret);
     };
   };
-                    
+
+  var mksubmit = function() {
+    $("#submit_area").append($("<button/>", {
+      "text": "Save record",
+      "type": "button",
+      "click": function() {
+        var xml = FormEditor.to_xml();
+        var field = $("#xml_from_editor"), form = field.closest('form');
+        field.val(XML.serialize(xml));
+        $.ajax({
+          "type": "POST",
+          "url": form.attr("action"),
+          "dataType": "script",
+          "data": form.serialize()
+        });
+        return false;
+      }
+    }).button());
+  };
+
   return {
     "objid": null,
     "load": function() {
@@ -283,6 +337,36 @@ var FormEditor = (function($) {
       mkfields("contributors", "pbcoreContributor", pbcore_maker("contributor", "contributorRole", Style.VERBOSE));
       mkfields("publishers", "pbcorePublisher", pbcore_maker("publisher", "publisherRole", Style.VERBOSE));
       mkfields("rights_summaries", "pbcoreRightsSummary", pbcore_maker("rightsSummary", undefined, Style.ONLY_TEXTAREA));
+      mksubmit();
+    },
+    "to_xml": function() {
+      var doc = XML.newDocument("PBCoreDescriptionDocument", "http://www.pbcore.org/PBCore/PBCoreNamespace.html");
+      var root = doc.documentElement;
+      root.appendChild(doc.createComment("serialized in JavaScript at " + (new Date()).toString()));
+      $("div.form_field_container").each(function() {
+        var $this = $(this);
+        var elt = doc.createElement($this.attr("pbcore"));
+        root.appendChild(elt);
+        $("input, textarea", $this).each(function() {
+          var subelt = doc.createElement(this.name);
+          elt.appendChild(subelt);
+          subelt.appendChild(doc.createTextNode(this.value));
+        });
+      });
+
+      // NB: PBCore requires that the elements appear in a specific order; we
+      // violate this by just sticking checkboxes at the end of the document.
+      // If this bothers you, futz with the code yourself.
+      $("div.pbcorechecks").each(function() {
+        var $this = $(this), pbcore = $this.attr("pbcore");
+        $("input:checked", $this).each(function() {
+          var elt = doc.createElement(pbcore), subelt = doc.createElement(this.name);
+          root.appendChild(elt);
+          elt.appendChild(subelt);
+          subelt.appendChild(doc.createTextNode(this.value));
+        });
+      });
+      return doc;
     }
   };
 })(jQuery);
