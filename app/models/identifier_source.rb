@@ -9,4 +9,8 @@ class IdentifierSource < ActiveRecord::Base
   def safe_to_delete?
     identifiers.count == 0
   end
+
+  def max_identifier
+    self.class.find_by_sql(["SELECT MAX(identifier) AS maxid FROM identifiers WHERE identifier_source_id = ?", self.id])[0]["maxid"] || 0
+  end
 end

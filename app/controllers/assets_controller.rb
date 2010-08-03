@@ -127,6 +127,10 @@ class AssetsController < ApplicationController
   def create
     Asset.transaction do
       @asset = Asset.from_xml(params[:xml])
+      if @asset.valid? && PBCore.config["auto_id"]
+        identifier_source = IdentifierSource.find_or_create_by_name(PBCore.config["auto_id"])
+        @asset.identifiers << Identifier.new(:identifier_source => identifier_source, :identifier => identifier_source.max_identifier + 1)
+      end
       @success = @asset.save
       raise ActiveRecord::Rollback unless @success
     end
