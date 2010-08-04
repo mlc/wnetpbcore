@@ -10,6 +10,7 @@ class IdentifierSource < ActiveRecord::Base
   end
 
   def max_identifier
-    self.class.find_by_sql(["SELECT MAX(identifier) AS maxid FROM identifiers WHERE identifier_source_id = ?", self.id])[0]["maxid"] || 0
+    a = self.class.find_by_sql(["SELECT MAX(identifier) AS maxid FROM identifiers WHERE identifier_source_id = ?", self.id])[0]["maxid"]
+    a.nil? ? 0 : a.to_i
   end
 end
