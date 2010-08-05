@@ -110,7 +110,12 @@ class AssetsController < ApplicationController
   
   def new
     @asset = Asset.new
-    @asset.identifiers.build
+    if PBCore.config["auto_id"]
+      identifier_source = IdentifierSource.find_or_create_by_name(PBCore.config["auto_id"])
+      @asset.identifiers = [Identifier.new(:identifier_source => identifier_source, :identifier => (identifier_source.next_sequence).to_s), Identifier.new]
+    else
+      @asset.identifiers.build
+    end
     @asset.titles.build
   end
   
@@ -120,10 +125,6 @@ class AssetsController < ApplicationController
   
   def create
     @asset = Asset.new(params[:asset])
-    if @asset.valid? && PBCore.config["auto_id"]
-      identifier_source = IdentifierSource.find_or_create_by_name(PBCore.config["auto_id"])
-      @asset.identifiers << Identifier.new(:identifier_source => identifier_source, :identifier => (identifier_source.max_identifier + 1).to_s)
-    end
     if @asset.save
       flash[:message] = "Successfully created new Asset. You must now add an instantiation for the record to be valid PBCore."
       redirect_to asset_instantiations_url(@asset)
