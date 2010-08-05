@@ -13,4 +13,10 @@ class IdentifierSource < ActiveRecord::Base
     a = self.class.find_by_sql(["SELECT MAX(CAST(identifier AS SIGNED INTEGER)) AS maxid FROM identifiers WHERE identifier_source_id = ?", self.id])[0]["maxid"]
     a.nil? ? 0 : a.to_i
   end
+
+  def next_sequence
+    old = self.sequence.nil? ? max_identifier : sequence
+    update_attribute(:sequence, old + 1)
+    old + 1
+  end
 end
