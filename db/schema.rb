@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100623181718) do
+ActiveRecord::Schema.define(:version => 20100805071707) do
 
   create_table "annotations", :force => true do |t|
     t.integer "instantiation_id"
@@ -284,6 +284,7 @@ ActiveRecord::Schema.define(:version => 20100623181718) do
     t.boolean  "auto_merge",                        :default => false, :null => false
     t.integer  "creator_id"
     t.integer  "updater_id"
+    t.integer  "sequence"
   end
 
   create_table "identifiers", :force => true do |t|
