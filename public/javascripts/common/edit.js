@@ -7,7 +7,7 @@ var FormEditor = (function($) {
       FormEditor.load();
   });
 
-  var xml, picklists, valuelists;
+  var xml, picklists, valuelists, extension_names;
   var field_counter = 0;
   var made_form = false;
 
@@ -147,6 +147,17 @@ var FormEditor = (function($) {
     });
   };
 
+  var mkremove = function(div) {
+    return $("<a>", {
+      "href": "#",
+      "text": "remove",
+      "click": function() {
+        div.remove();
+        return false;
+      }
+    });
+  };
+
   var pbcore_maker = function(field, picklistfield, style, locked) {
     return function(pbcore, where, obj) {
       var label, formfield, remove, box, boxlabel;
@@ -187,14 +198,7 @@ var FormEditor = (function($) {
         });
         box.autocomplete(autocompleteopts(picklistfield));
       }
-      remove = $("<a>", {
-        "href": "#",
-        "text": "remove",
-        "click": function() {
-          ret.remove();
-          return false;
-        }
-      });
+      remove = mkremove(ret);
       if (style == Style.VERBOSE) {
         boxlabel = $("<label>", {
           "text": picklistfield.capitalize().addspaces() + ":",
@@ -286,6 +290,85 @@ var FormEditor = (function($) {
     }).button());
   };
 
+  var parse_extension = function(obj) {
+    var $obj = $(obj),
+    extension = $obj.find("extension").text(),
+    extension_authority_used = $obj.find("extensionAuthorityUsed").text(),
+    colon = extension.indexOf(":"),
+    extension_key, extension_value;
+
+    if (colon < 0) {
+      extension_key = null;
+      extension_value = extension;
+    } else {
+      extension_key = extension.substr(0, colon);
+      extension_value = extension.substr(colon + 1);
+    }
+
+    return {
+      "authority": extension_authority_used,
+      "key": extension_key,
+      "value": extension_value
+    };
+  };
+
+  var fill_extension_select = function(select, extension) {
+    var i, len = extension_names.length, extension_name, match;
+    for(i = 0; i < len; ++i) {
+      extension_name = extension_names[i];
+      match = (extension.authority === extension_name.authority && extension.key === extension_name.key);
+      if (match || extension_name.visible) {
+        select.append($("<option>", {
+          "value": i,
+          "selected": match,
+          "text": extension_name.description
+        }));
+      }
+    }
+  };
+
+  var serialize_extension = function(doc, xml, html) {
+    var extension_name = extension_names[html.find("select").val()],
+      value = html.find("textarea").val(),
+      extension_elt = doc.createElement("extension"),
+      authority_elt = doc.createElement("extensionAuthorityUsed"),
+      extension_str = '';
+
+    xml.appendChild(extension_elt);
+    if (extension_name && extension_name.key) {
+      extension_str = extension_name.key + ':';
+    }
+    extension_str += value;
+    extension_elt.appendChild(doc.createTextNode(extension_str));
+    if (extension_name && extension_name.authority) {
+      xml.appendChild(authority_elt);
+      authority_elt.appendChild(doc.createTextNode(extension_name.authority));
+    }
+  };
+
+  var extension_maker = function(pbcore, where, obj) {
+    var div = $("<div/>", {"class": "form_field_container extension", "pbcore": "pbcoreExtension"}),
+    select,
+    extension = parse_extension(obj);
+
+    ++field_counter;
+    div.append($("<label/>", {text: "Extension Type: ", "for": "ext_type_" + field_counter}));
+    select = $("<select/>", {id: "ext_type_" + field_counter});
+    div.append(select).append(mkremove(div));
+    fill_extension_select(select, extension);
+    div.append($("<br/>"));
+    div.append($("<label/>", {text: "Extension Value: ", "for": "ext_value_" + field_counter}));
+    div.append($("<br/>"));
+    div.append($("<textarea>", {
+      text: extension.value,
+      id: "ext_value_" + field_counter,
+      "class": "pbcore extension_value",
+      cols: 80,
+      rows: 5
+    }));
+    where.append(div);
+  };
+
   return {
     "objid": null,
     "load": function() {
@@ -297,6 +380,7 @@ var FormEditor = (function($) {
         "success": function(data, textStatus, xhr) {
           picklists = data.picklists;
           valuelists = data.valuelists;
+          extension_names = data.extension_names;
           safe_log("got picklists!");
           if (xml)
             FormEditor.create_form();
@@ -337,6 +421,7 @@ var FormEditor = (function($) {
       mkfields("contributors", "pbcoreContributor", pbcore_maker("contributor", "contributorRole", Style.VERBOSE));
       mkfields("publishers", "pbcorePublisher", pbcore_maker("publisher", "publisherRole", Style.VERBOSE));
       mkfields("rights_summaries", "pbcoreRightsSummary", pbcore_maker("rightsSummary", undefined, Style.ONLY_TEXTAREA));
+      mkfields("extensions", "pbcoreExtension", extension_maker);
       mksubmit();
     },
     "to_xml": function() {
@@ -344,14 +429,18 @@ var FormEditor = (function($) {
       var root = doc.documentElement;
       root.appendChild(doc.createComment("serialized in JavaScript at " + (new Date()).toString()));
       $("div.form_field_container").each(function() {
-        var $this = $(this);
-        var elt = doc.createElement($this.attr("pbcore"));
+        var $this = $(this), pbcorename = $this.attr("pbcore");
+        var elt = doc.createElement(pbcorename);
         root.appendChild(elt);
-        $("input, textarea", $this).each(function() {
-          var subelt = doc.createElement(this.name);
-          elt.appendChild(subelt);
-          subelt.appendChild(doc.createTextNode(this.value));
-        });
+        if (pbcorename === 'pbcoreExtension') {
+          serialize_extension(doc, elt, $this);
+        } else {
+          $("input, textarea", $this).each(function() {
+            var subelt = doc.createElement(this.name);
+            elt.appendChild(subelt);
+            subelt.appendChild(doc.createTextNode(this.value));
+          });
+        }
       });
 
       // NB: PBCore requires that the elements appear in a specific order; we

@@ -43,8 +43,5 @@
       \#{link_to "Edit, modify, and delete instantiations for this record.", asset_instantiations_url(@asset)}
   %h2 Extension Section
   %h3 Extensions
-  -#
-    #extensions
-      = f.render_associated_form(@asset.extensions)
-    %p= f.add_associated_link "Add an extension…", @asset.extensions.build
+  #extensions
   %p#submit_area

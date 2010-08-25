@@ -256,7 +256,7 @@ class AssetsController < ApplicationController
     respond_to do |format|
       format.json do
         response.headers["Cache-Control"] = "private, max-age=600"
-        render :json => {:picklists => @picklists, :valuelists => @valuelists}.to_json
+        render :json => {:picklists => @picklists, :valuelists => @valuelists, :extension_names => ExtensionName.all}.to_json
       end
     end
   end

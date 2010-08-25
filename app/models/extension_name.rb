@@ -28,4 +28,13 @@ class ExtensionName < ActiveRecord::Base
   def safe_to_delete?
     true
   end
+
+  def to_json(options = nil)
+    {
+      :authority => extension_authority,
+      :key => extension_key,
+      :description => name,
+      :visible => visible
+    }.to_json(options)
+  end
 end
