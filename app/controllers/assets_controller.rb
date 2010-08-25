@@ -112,16 +112,18 @@ class AssetsController < ApplicationController
   
   def new
     @asset = Asset.new
-    if PBCore.config["auto_id"]
-      identifier_source = IdentifierSource.find_or_create_by_name(PBCore.config["auto_id"])
-      @asset.identifiers = [Identifier.new(:identifier_source => identifier_source, :identifier => (identifier_source.next_sequence).to_s), Identifier.new]
-    else
-      @asset.identifiers.build
-    end
     @asset.titles.build
     respond_to do |format|
       format.html
-      format.xml { render :xml => @asset.to_xml }
+      format.xml do
+        if PBCore.config["auto_id"]
+          identifier_source = IdentifierSource.find_or_create_by_name(PBCore.config["auto_id"])
+          @asset.identifiers = [Identifier.new(:identifier_source => identifier_source, :identifier => (identifier_source.next_sequence).to_s)]
+        else
+          @asset.identifiers.build
+        end
+        render :xml => @asset.to_xml
+      end
     end
   end
   
