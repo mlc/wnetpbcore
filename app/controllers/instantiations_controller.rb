@@ -20,6 +20,7 @@ class InstantiationsController < ApplicationController
       @instantiation = Instantiation.new_from_template(params[:template_id], @asset)
     end
     @instantiation.format_ids.build
+    @instantiation.essence_tracks.build
   end
 
   def upload_video
