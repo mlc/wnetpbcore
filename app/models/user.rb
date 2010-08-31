@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
   end
 
   def role_symbols
-    is_admin? ? [:admin] : [:user]
+    [role.to_sym]
   end
 
   protected

@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if permitted_to?(:make_admin, @user)
-      @user.is_admin = params[:user][:is_admin]
+      @user.role = params[:user][:role]
       @user.ip_block_id = params[:user][:ip_block_id]
     end
 
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes(params[:user])
       permitted_to?(:make_admin, @user) do
-        @user.is_admin = params[:user][:is_admin]
+        @user.role = params[:user][:role]
         @user.ip_block_id = params[:user][:ip_block_id]
         @user.save
       end

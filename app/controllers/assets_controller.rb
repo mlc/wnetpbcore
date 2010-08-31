@@ -1,10 +1,14 @@
 class AssetsController < ApplicationController
+  prepend_before_filter :fetch_asset
   filter_access_to :all
   filter_access_to :opensearch, :require => :read
   filter_access_to :toggleannotations, :require => :read
   filter_access_to :lastsearch, :require => :read
   filter_access_to :picklists, :require => :read
   filter_access_to :picklist, :require => :read
+  filter_access_to :edit, :attribute_check => true
+  filter_access_to :update, :attribute_check => true
+  filter_access_to :destroy, :attribute_check => true
 
   def index
     params.delete("x")
@@ -89,11 +93,6 @@ class AssetsController < ApplicationController
 
   def show
     alternate "application/xml", :format => "xml"
-    if params[:id] =~ /^[\d]+$/
-      @asset = Asset.find(params[:id], :include => Asset::ALL_INCLUDES)
-    else
-      @asset = Asset.find_by_uuid(params[:id].gsub(/^urn:uuid:/, ''), :include => Asset::ALL_INCLUDES)
-    end
     if @asset
       respond_to do |format|
         format.html do
@@ -128,7 +127,7 @@ class AssetsController < ApplicationController
   end
   
   def edit
-    @asset = Asset.find(params[:id], :include => Asset::ALL_INCLUDES)
+    # just show form
   end
   
   def create
@@ -144,7 +143,6 @@ class AssetsController < ApplicationController
   end
 
   def update
-    @asset = Asset.find(params[:id], :include => Asset::ALL_INCLUDES)
     @asset.transaction do
       parsed_asset = Asset.from_xml(params[:xml])
       [:identifiers, :titles, :subjects, :descriptions, :genres,
@@ -262,5 +260,14 @@ class AssetsController < ApplicationController
   end
 
   def picklist
+  end
+
+  protected
+  def fetch_asset
+    if params[:id] =~ /^[\d]+$/
+      @asset = Asset.find(params[:id], :include => Asset::ALL_INCLUDES)
+    elsif params[:id]
+      @asset = Asset.find_by_uuid(params[:id].gsub(/^urn:uuid:/, ''), :include => Asset::ALL_INCLUDES)
+    end
   end
 end

@@ -28,8 +28,8 @@
 
   - permitted_to?(:make_admin, @user) do
     %p
-      = f.check_box :is_admin
-      = f.label :is_admin, "User is an administrator"
+      = f.label :role, "Role"
+      = f.select :role, PBCore.config['roles']
 
     %p
       = f.label :ip_block_id, "Restrict login to an IP block:"

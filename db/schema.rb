@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100805071707) do
+ActiveRecord::Schema.define(:version => 20100831175310) do
 
   create_table "annotations", :force => true do |t|
     t.integer "instantiation_id"
@@ -429,12 +429,27 @@ ActiveRecord::Schema.define(:version => 20100805071707) do
     t.datetime "updated_at"
     t.string   "remember_token",            :limit => 40
     t.datetime "remember_token_expires_at"
-    t.boolean  "is_admin",                                 :default => false, :null => false
     t.integer  "ip_block_id"
     t.integer  "creator_id"
     t.integer  "updater_id"
+    t.string   "role",                                     :default => "user", :null => false
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
+
+  create_table "value_lists", :force => true do |t|
+    t.string  "table_name",        :null => false
+    t.string  "fixed_field_name"
+    t.integer "fixed_field_value"
+  end
+
+  add_index "value_lists", ["table_name"], :name => "index_value_lists_on_table_name"
+
+  create_table "values", :force => true do |t|
+    t.integer "value_list_id", :null => false
+    t.string  "value",         :null => false
+  end
+
+  add_index "values", ["value_list_id"], :name => "index_values_on_value_list_id"
 
 end

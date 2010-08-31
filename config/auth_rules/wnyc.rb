@@ -12,11 +12,27 @@ authorization do
     end
   end
 
-  role :admin do
+  role :cataloger do
     includes :user
-    has_permission_on :last_used_ids, :to => :index
+    has_permission_on :assets, :to => [:create]
+    has_permission_on :assets, :to => [:update, :delete] do
+      if_attribute :creator_id => is { user.id }
+    end
+    has_permission_on :instantiatons, :to => [:create]
+    has_permission_on :instantiations, :to => [:update, :delete] do
+      if_attribute :creator_id => is { user.id }
+    end
+  end
+
+  role :editor do
+    includes :user
     has_permission_on :assets, :to => :crud
-    has_permission_on :instantiations, :to => [:crud]
+    has_permission_on :instantiations, :to => :crud
+  end
+
+  role :admin do
+    includes :editor
+    has_permission_on :last_used_ids, :to => :index
     has_permission_on :templates, :to => :crud
     has_permission_on :users, :to => :crud
     has_permission_on :users, :to => :make_admin do
