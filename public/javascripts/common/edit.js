@@ -2,6 +2,8 @@
  * JavaScript PBCore Editor!
  */
 var FormEditor = (function($) {
+  var PASTA_NS = "http://vermicel.li/pbcore-extensions";
+
   $(function() {
     if ((FormEditor.objid = $("#edit_id").text()))
       FormEditor.load();
@@ -163,8 +165,8 @@ var FormEditor = (function($) {
       var label, formfield, remove, box, boxlabel;
       style = style || Style.PLAIN;
       var textarea = (style == Style.TEXTAREA || style == Style.ONLY_TEXTAREA);
-      var required = false; /* for now */
-      var ret = $("<div>", {"class": "form_field_container " + field, "pbcore": pbcore});
+      var $obj = $(obj);
+      var ret = $("<div>", {"class": "form_field_container " + field, "pbcore": pbcore, "dbid": $obj.attr("pasta:id")});
 
       if (field) {
         ++field_counter;
@@ -184,7 +186,7 @@ var FormEditor = (function($) {
           args.size = 30;
           args.type = "text";
         }
-        args[textarea ? "text" : "value"] = $(obj).find(field).text();
+        args[textarea ? "text" : "value"] = $obj.find(field).text();
         formfield = $(textarea ? "<textarea>" : "<input>", args);
       }
       if (picklistfield) {
@@ -192,7 +194,7 @@ var FormEditor = (function($) {
           "id": "combobox_" + (++field_counter),
           "class": "picklistbox " + picklistfield,
           "name": picklistfield,
-          "value": $(obj).find(picklistfield).text(),
+          "value": $obj.find(picklistfield).text(),
           "size": (style == Style.VERBOSE ? 15 : 25),
           "readonly": locked
         });
@@ -290,9 +292,8 @@ var FormEditor = (function($) {
     }).button());
   };
 
-  var parse_extension = function(obj) {
-    var $obj = $(obj),
-    extension = $obj.find("extension").text(),
+  var parse_extension = function($obj) {
+    var extension = $obj.find("extension").text(),
     extension_authority_used = $obj.find("extensionAuthorityUsed").text(),
     colon = extension.indexOf(":"),
     extension_key, extension_value;
@@ -347,9 +348,10 @@ var FormEditor = (function($) {
   };
 
   var extension_maker = function(pbcore, where, obj) {
-    var div = $("<div/>", {"class": "form_field_container extension", "pbcore": "pbcoreExtension"}),
+    var $obj = $(obj),
+    div = $("<div/>", {"class": "form_field_container extension", "pbcore": "pbcoreExtension", "dbid": $obj.attr("pasta:id")}),
     select,
-    extension = parse_extension(obj);
+    extension = parse_extension($obj);
 
     ++field_counter;
     div.append($("<label/>", {text: "Extension Type: ", "for": "ext_type_" + field_counter}));
@@ -387,7 +389,7 @@ var FormEditor = (function($) {
         }
       });
       $.ajax({
-        "url": "/assets/" + FormEditor.objid + ".xml",
+        "url": "/assets/" + FormEditor.objid + ".xml?include_ids=true",
         "dataType": "xml",
         "type": "GET",
         "success": function(data, textStatus, xhr) {
@@ -427,10 +429,13 @@ var FormEditor = (function($) {
     "to_xml": function() {
       var doc = XML.newDocument("PBCoreDescriptionDocument", "http://www.pbcore.org/PBCore/PBCoreNamespace.html");
       var root = doc.documentElement;
+      root.setAttribute("xmlns:pasta", PASTA_NS);
       root.appendChild(doc.createComment("serialized in JavaScript at " + (new Date()).toString()));
       $("div.form_field_container").each(function() {
-        var $this = $(this), pbcorename = $this.attr("pbcore");
+        var $this = $(this), pbcorename = $this.attr("pbcore"), dbid = $this.attr("dbid");
         var elt = doc.createElement(pbcorename);
+        if (dbid)
+          elt.setAttribute("pasta:id", dbid);
         root.appendChild(elt);
         if (pbcorename === 'pbcoreExtension') {
           serialize_extension(doc, elt, $this);

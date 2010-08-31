@@ -62,14 +62,21 @@ class Asset < ActiveRecord::Base
   xml_subelements "pbcoreInstantiation", :instantiations
   xml_subelements "pbcoreExtension", :extensions
   
-  def to_xml
+  def to_xml(options = {})
     builder = Builder::XmlMarkup.new(:indent => 2)
     builder.instruct!
-    builder.PBCoreDescriptionDocument "xmlns" => "http://www.pbcore.org/PBCore/PBCoreNamespace.html",
+    attrs = {
+      "xmlns" => "http://www.pbcore.org/PBCore/PBCoreNamespace.html",
       "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance",
-      "xsi:schemaLocation" => "http://www.pbcore.org/PBCore/PBCoreNamespace.html http://www.pbcore.org/PBCore/PBCoreXSD_Ver_1-2-1.xsd" do
+      "xsi:schemaLocation" => "http://www.pbcore.org/PBCore/PBCoreNamespace.html http://www.pbcore.org/PBCore/PBCoreXSD_Ver_1-2-1.xsd"
+    }
+    if options[:include_ids]
+      attrs["xmlns:pasta"] = "http://vermicel.li/pbcore-extensions"
+      attrs["pasta:id"] = self.id
+    end
+    builder.PBCoreDescriptionDocument attrs do
       builder.comment! "XML Generated at #{Time.new} by rails pbcore database"
-      build_xml(builder)
+      build_xml(builder, options)
     end
   end
   

@@ -86,7 +86,7 @@ class AssetsController < ApplicationController
     session[:search] = nil
     redirect_to :action => "index"
   end
-  
+
   def show
     alternate "application/xml", :format => "xml"
     if params[:id] =~ /^[\d]+$/
@@ -102,14 +102,14 @@ class AssetsController < ApplicationController
             @video = @asset.instantiations.detect(&:online?)
           end
         end
-        format.xml { render :xml => @asset.to_xml }
+        format.xml { render :xml => @asset.to_xml(:include_ids => params[:include_ids]) }
       end
     else
       flash[:error] = "Invalid Asset ID specified"
       redirect_to :action => 'index'
     end
   end
-  
+
   def new
     @asset = Asset.new
     @asset.titles.build
@@ -142,7 +142,7 @@ class AssetsController < ApplicationController
       flash[:message] = "Successfully created new Asset. You must now add an instantiation for the record to be valid PBCore."
     end
   end
-  
+
   def update
     @asset = Asset.find(params[:id], :include => Asset::ALL_INCLUDES)
     @asset.transaction do
