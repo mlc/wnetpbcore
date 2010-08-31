@@ -3,7 +3,11 @@ class ValueListsController < ApplicationController
   filter_access_to :all
 
   def index
-    @lists = ValueList.find
+    @value_lists = ValueList.all
+  end
+
+  def new
+    @value_list = ValueList.new
   end
 
   private

@@ -1,0 +1,12 @@
+- title "Value Lists"
+
+- if @value_lists.empty?
+  %p No existing value lists.
+- else
+  %p Select a value list to manage:
+  %ul
+    - @value_lists.each do |value_list|
+      - if permitted_to?(:crud, value_list)
+        %li= link_to h(value_list.name), value_list_path(value_list)
+- if permitted_to?(:create, :value_lists)
+  %p= link_to "Create a new value list", new_value_list_path
