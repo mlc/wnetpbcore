@@ -280,7 +280,7 @@ var FormEditor = (function($) {
       "click": function() {
         var xml = FormEditor.to_xml();
         var field = $("#xml_from_editor"), form = field.closest('form');
-        field.val(XML.serialize(xml));
+        field.val(OraXML.serialize(xml));
         $.ajax({
           "type": "POST",
           "url": form.attr("action"),
@@ -427,7 +427,7 @@ var FormEditor = (function($) {
       mksubmit();
     },
     "to_xml": function() {
-      var doc = XML.newDocument("PBCoreDescriptionDocument", "http://www.pbcore.org/PBCore/PBCoreNamespace.html");
+      var doc = OraXML.newDocument("PBCoreDescriptionDocument", "http://www.pbcore.org/PBCore/PBCoreNamespace.html");
       var root = doc.documentElement;
       root.setAttribute("xmlns:pasta", PASTA_NS);
       root.appendChild(doc.createComment("serialized in JavaScript at " + (new Date()).toString()));

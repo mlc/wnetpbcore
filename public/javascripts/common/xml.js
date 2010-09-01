@@ -7,14 +7,14 @@
  */
 
 // Make sure we haven't already been loaded
-var XML;
-if (XML && (typeof XML != "object" || XML.NAME))
-    throw new Error("Namespace 'XML' already exists");
+var OraXML;
+if (OraXML && (typeof OraXML != "object" || OraXML.NAME))
+    throw new Error("Namespace 'OraXML' already exists");
 
 // Create our namespace, and specify some meta-information
-XML = {};
-XML.NAME = "XML";     // The name of this namespace
-XML.VERSION = 1.0;    // The version of this namespace
+OraXML = {};
+OraXML.NAME = "OraXML";     // The name of this namespace
+OraXML.VERSION = 1.0;    // The version of this namespace
 
 /**
  * Create a new Document object.  If no arguments are specified, 
@@ -23,7 +23,7 @@ XML.VERSION = 1.0;    // The version of this namespace
  * prefix, the second argument must specify the URL that identifies the
  * namespace.
  */
-XML.newDocument = function(rootTagName, namespaceURL) {
+OraXML.newDocument = function(rootTagName, namespaceURL) {
     if (!rootTagName) rootTagName = "";
     if (!namespaceURL) namespaceURL = "";
     
@@ -72,7 +72,7 @@ XML.newDocument = function(rootTagName, namespaceURL) {
 /**
  * Serialize an XML Document or Element and return it as a string.
  */
-XML.serialize = function(node) {
+OraXML.serialize = function(node) {
     if (typeof XMLSerializer != "undefined")
         return (new XMLSerializer()).serializeToString(node);
     else if (node.xml) return node.xml;
