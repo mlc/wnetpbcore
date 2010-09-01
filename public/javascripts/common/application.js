@@ -1,5 +1,5 @@
 /* make transparent PNGs work in IE6 */
-$(function(){$('body').supersleight({shim: '/imgages/x.gif'})});
+$(function(){$('body').supersleight({shim: '/images/x.gif'})});
 
 function checkMerge() {
   var count = $(".mergebox input:checked").length;

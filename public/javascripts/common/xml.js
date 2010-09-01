@@ -35,7 +35,7 @@ OraXML.newDocument = function(rootTagName, namespaceURL) {
     else { // This is the IE way to do it
         // Create an empty document as an ActiveX object
         // If there is no root element, this is all we have to do
-        var doc = new ActiveXObject("MSXML2.DOMDocument");
+        var doc = new ActiveXObject("MSXML2.DOMDocument.3.0");
 
         // If there is a root tag, initialize the document
         if (rootTagName) {
@@ -48,18 +48,11 @@ OraXML.newDocument = function(rootTagName, namespaceURL) {
                 tagname = rootTagName.substring(p+1);
             }
 
-            // If we have a namespace, we must have a namespace prefix
-            // If we don't have a namespace, we discard any prefix
-            if (namespaceURL) {
-                if (!prefix) prefix = "a0"; // What Firefox uses
-            }
-            else prefix = "";
-
             // Create the root element (with optional namespace) as a
             // string of text
             var text = "<" + (prefix?(prefix+":"):"") +  tagname +
                 (namespaceURL
-                 ?(" xmlns:" + prefix + '="' + namespaceURL +'"')
+                 ?(" xmlns" + (prefix?(":"+prefix):"") + '="' + namespaceURL +'"')
                  :"") +
                 "/>";
             // And parse that text into the empty document

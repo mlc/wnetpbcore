@@ -2,7 +2,8 @@
  * JavaScript PBCore Editor!
  */
 var FormEditor = (function($) {
-  var PASTA_NS = "http://vermicel.li/pbcore-extensions";
+  var PASTA_NS = "http://vermicel.li/pbcore-extensions",
+      PBCORE_NS = "http://www.pbcore.org/PBCore/PBCoreNamespace.html";
 
   $(function() {
     if ((FormEditor.objid = $("#edit_id").text()))
@@ -73,9 +74,10 @@ var FormEditor = (function($) {
   };
                     
   var makecombo = function(box) {
-    $("<button>", {
+    var btn = document.createElement("button");
+    // btn.type = "button";
+    $(btn).attr({
       "text": '\u00a0',
-      "type": "button",
       "tabIndex": -1,
       "title": "Show Options"
     }).insertAfter(box).button({
@@ -274,10 +276,12 @@ var FormEditor = (function($) {
   };
 
   var mksubmit = function() {
-    $("#submit_area").append($("<button/>", {
-      "text": "Save record",
-      "type": "button",
-      "click": function() {
+    var btn = document.createElement("button");
+    // btn.type = "button";
+
+    $("#submit_area").append($(btn)
+      .text("Save record")
+      .click(function() {
         var xml = FormEditor.to_xml();
         var field = $("#xml_from_editor"), form = field.closest('form');
         field.val(OraXML.serialize(xml));
@@ -288,8 +292,9 @@ var FormEditor = (function($) {
           "data": form.serialize()
         });
         return false;
-      }
-    }).button());
+      })
+      .button()
+    );
   };
 
   var parse_extension = function($obj) {
@@ -328,11 +333,11 @@ var FormEditor = (function($) {
     }
   };
 
-  var serialize_extension = function(doc, xml, html) {
+  var serialize_extension = function(doc, xml, html, mkelt) {
     var extension_name = extension_names[html.find("select").val()],
       value = html.find("textarea").val(),
-      extension_elt = doc.createElement("extension"),
-      authority_elt = doc.createElement("extensionAuthorityUsed"),
+      extension_elt = mkelt("extension"),
+      authority_elt = mkelt("extensionAuthorityUsed"),
       extension_str = '';
 
     xml.appendChild(extension_elt);
@@ -427,21 +432,30 @@ var FormEditor = (function($) {
       mksubmit();
     },
     "to_xml": function() {
-      var doc = OraXML.newDocument("PBCoreDescriptionDocument", "http://www.pbcore.org/PBCore/PBCoreNamespace.html");
+      var doc = OraXML.newDocument("PBCoreDescriptionDocument", PBCORE_NS);
+      var mkelt = ((typeof doc.createElementNS === 'function') ?
+        (function(tagName) {
+          return doc.createElementNS(PBCORE_NS, tagName);
+        })
+        :
+        (function(tagName) {
+           return doc.createNode(1, tagName, PBCORE_NS);
+        })
+      );
       var root = doc.documentElement;
       root.setAttribute("xmlns:pasta", PASTA_NS);
       root.appendChild(doc.createComment("serialized in JavaScript at " + (new Date()).toString()));
       $("div.form_field_container").each(function() {
         var $this = $(this), pbcorename = $this.attr("pbcore"), dbid = $this.attr("dbid");
-        var elt = doc.createElement(pbcorename);
+        var elt = mkelt(pbcorename);
         if (dbid)
           elt.setAttribute("pasta:id", dbid);
         root.appendChild(elt);
         if (pbcorename === 'pbcoreExtension') {
-          serialize_extension(doc, elt, $this);
+          serialize_extension(doc, elt, $this, mkelt);
         } else {
           $("input, textarea", $this).each(function() {
-            var subelt = doc.createElement(this.name);
+            var subelt = mkelt(this.name);
             elt.appendChild(subelt);
             subelt.appendChild(doc.createTextNode(this.value));
           });
@@ -454,7 +468,7 @@ var FormEditor = (function($) {
       $("div.pbcorechecks").each(function() {
         var $this = $(this), pbcore = $this.attr("pbcore");
         $("input:checked", $this).each(function() {
-          var elt = doc.createElement(pbcore), subelt = doc.createElement(this.name);
+          var elt = mkelt(pbcore), subelt = mkelt(this.name);
           root.appendChild(elt);
           elt.appendChild(subelt);
           subelt.appendChild(doc.createTextNode(this.value));
