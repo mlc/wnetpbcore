@@ -15,7 +15,7 @@ class Subject < ActiveRecord::Base
 
   # we use the standard PbcoreXmlElement definition of to_xml, but we have
   # to customize the from_xml direction...
-  def self.from_xml(xml, oldid = nil)
+  def self.from_xml(xml)
     subject = xml.find("pbcore:subject", PbcoreXmlElement::PBCORE_NAMESPACE)
     return nil if subject.empty? || subject[0].child.nil?
     subjname = subject[0].child.content

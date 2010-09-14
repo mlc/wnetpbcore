@@ -1,6 +1,5 @@
 module PbcoreXmlElement
   PBCORE_NAMESPACE = "pbcore:http://www.pbcore.org/PBCore/PBCoreNamespace.html"
-  PASTA_NAMESPACE = "pasta:http://vermicel.li/pbcore-extensions"
 
   module ClassMethods
     def xml_string(attr, field=nil)
@@ -38,17 +37,14 @@ module PbcoreXmlElement
       klass ||= field.to_s.singularize.camelize.constantize
       from_xml_elt do |record|
         elts = record._working_xml.find("pbcore:#{attr}", PBCORE_NAMESPACE)
-        objs = elts.map do |elt|
-          oldid = elt['id']
-          klass.from_xml(elt, oldid)
-        end.select{|obj| obj.valid?}
+        objs = elts.map{|elt| klass.from_xml(elt)}.select{|obj| obj.valid?}
         record.send("#{field}=".to_sym, objs)
       end
       to_xml_elt do |record|
         builder = record._working_xml
         record.send(field).each do |item|
-          builder.tag!(attr, record._xml_opts[:include_ids] ? {"pasta:id" => item.id} : {}) do
-            item.build_xml(builder, record._xml_opts)
+          builder.tag!(attr) do
+            item.build_xml(builder)
           end
         end
       end
@@ -71,13 +67,13 @@ module PbcoreXmlElement
       end
     end
     
-    def from_xml(xml, oldid = nil)
+    def from_xml(xml)
       if xml.is_a?(String)
         parser = XML::Parser.new
         parser.string = xml
         xml = parser.parse.root
       end
-      obj = oldid ? find(oldid) : new
+      obj = new
       obj._working_xml = xml
       obj.run_callbacks(:from_xml_elt)
       obj._working_xml = nil
@@ -85,14 +81,12 @@ module PbcoreXmlElement
     end
   end
 
-  def build_xml(builder, options = {})
+  def build_xml(builder)
     self._working_xml = builder
-    self._xml_opts = options
     builder.comment! created_string if respond_to?(:created_at)
     builder.comment! updated_string if respond_to?(:updated_at)
     run_callbacks(:to_xml_elt)
     self._working_xml = nil
-    self._xml_opts = nil
   end
 
   def created_string
@@ -110,7 +104,7 @@ module PbcoreXmlElement
   def self.included(base)
     base.extend(ClassMethods)
     base.send :include, ActiveSupport::Callbacks
-    base.send :attr_accessor, :_working_xml, :_xml_opts
+    base.send :attr_accessor, :_working_xml
     base.define_callbacks :from_xml_elt, :to_xml_elt
   end
 end

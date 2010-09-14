@@ -11,7 +11,7 @@ class Genre < ActiveRecord::Base
 
   # we use the standard PbcoreXmlElement definition of to_xml, but we have
   # to customize the from_xml direction...
-  def self.from_xml(xml, oldid = nil)
+  def self.from_xml(xml)
     genre = xml.find("pbcore:genre", PbcoreXmlElement::PBCORE_NAMESPACE)
     return nil if genre.empty? || genre[0].child.nil?
     genrename = genre[0].child.content
