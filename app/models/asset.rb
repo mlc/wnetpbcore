@@ -189,7 +189,10 @@ class Asset < ActiveRecord::Base
         when "simple_map"
           value = send(facet[0].downcase.pluralize.to_sym).map(&facet[0].downcase.to_sym)
         when "if_map"
-          value = send(facet[2].to_sym).select{|p| p.send(facet[4].to_sym).name == facet[5]}.map(&facet[3].to_sym)
+          value = send(facet[2].to_sym).select{|p|
+            subelt = p.send(facet[4].to_sym)
+            !(subelt.nil?) && (subelt.name == facet[5])
+          }.map(&facet[3].to_sym)
         when "format_location"
           value = instantiations.map{|a| a.format_location}.select{|fml| !(fml.index('/') || fml.match(UUID_REGEX))}
         end
