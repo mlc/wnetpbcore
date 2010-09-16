@@ -39,7 +39,7 @@ authorization do
       if_attribute :id => is_not { user.id }
     end
     has_permission_on :picklists, :to => :crud
-    PicklistsController::SUBCLASSES.each do |kl|
+    (PicklistsController::SUBCLASSES - ['subjects']).each do |kl|
       has_permission_on kl.to_sym, :to => :crud
     end
     has_permission_on :assets, :to => :multilend

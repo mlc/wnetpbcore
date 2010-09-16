@@ -4,12 +4,13 @@ module Picklist
   module ClassMethods
     # avoid instantiating lots and lots of ActiveRecord objects when
     # all we need is a select box
-    def quick_load_for_select(conditions = nil)
+    def quick_load_for_select(conditions = nil, limit = nil)
       columns = (["#{get_quick_column} AS quick"] + (extra_quick_columns.to_a || []) + ["id"]).join(", ")
       sql = "SELECT #{columns} FROM #{connection.quote_table_name(table_name)}"
       sanitized_conditions = sanitize_sql_for_conditions(conditions)
       sql << " WHERE #{sanitized_conditions}" if sanitized_conditions
       sql << " ORDER BY quick ASC"
+      sql << " LIMIT #{limit.to_i}" if limit
 
       result = connection.execute(sql)
       rows = []

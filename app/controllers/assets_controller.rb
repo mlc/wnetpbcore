@@ -243,8 +243,12 @@ class AssetsController < ApplicationController
     classes = [Genre, Subject, ContributorRole, CreatorRole, IdentifierSource, PublisherRole, TitleType, DescriptionType, RelationType, AudienceLevel, AudienceRating]
     @picklists = {}
     classes.each do |kl|
-      options = kl.quick_load_for_select(["visible = ?", true])
-      @picklists[kl.to_s] = options.map(&:first)
+      if PBCore.config["big_fields"] && PBCore.config["big_fields"].include?(kl.to_s.underscore)
+        @picklists[kl.to_s] = formatted_picklist_assets_path(:format => "json", :field => kl.to_s.underscore)
+      else
+        options = kl.quick_load_for_select(["visible = ?", true])
+        @picklists[kl.to_s] = options.map(&:first)
+      end
     end
     @picklists["CoverageType"] = ["Spatial", "Temporal"]
     # FIXME: do something useful
@@ -258,6 +262,19 @@ class AssetsController < ApplicationController
   end
 
   def picklist
+    if params[:term] && params[:field] && PBCore.config["big_fields"] && PBCore.config["big_fields"].include?(params[:field])
+      klass = params[:field].camelize.constantize
+      #FIXME: This won't work for anything but subjects, duh.
+      @picklist = klass.quick_load_for_select(["subject LIKE ? ESCAPE '|'", params[:term].gsub(/[%_|]/, '|\0') + '%'], 100).map(&:first)
+    else
+      @picklist = []
+    end
+
+    respond_to do |format|
+      format.json do
+        render :json => @picklist.to_json
+      end
+    end
   end
 
   protected
