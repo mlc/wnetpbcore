@@ -6,8 +6,8 @@ class Genre < ActiveRecord::Base
   has_and_belongs_to_many :assets
   xml_string "genre", :name
   xml_string "genreAuthorityUsed", :genre_authority_used
-  quick_column :name
-  extra_quick_column :genre_authority_used
+
+  quick_column 'CONCAT(name, " (", COALESCE(genre_authority_used, ""), ")")'
 
   # we use the standard PbcoreXmlElement definition of to_xml, but we have
   # to customize the from_xml direction...

@@ -167,7 +167,6 @@ var FormEditor = (function($) {
       var label, formfield, remove, box, boxlabel;
       style = style || Style.PLAIN;
       var textarea = (style == Style.TEXTAREA || style == Style.ONLY_TEXTAREA);
-      var required = false; /* for now */
       var ret = $("<div>", {"class": "form_field_container " + field, "pbcore": pbcore});
 
       if (field) {
@@ -297,6 +296,60 @@ var FormEditor = (function($) {
     );
   };
 
+  /* SUBJECT / GENRE FUNCTIONS */
+
+  var subject_maker = function(field) {
+    var authority_field = field + "AuthorityUsed";
+
+    var stringify_with_authority = function(obj) {
+      var $obj = $(obj),
+        ret = $obj.find(field).text(),
+        authority = $obj.find(authority_field).text();
+
+      if (authority) {
+        ret = ret + " (" + authority + ")";
+      }
+
+      return ret;
+    };
+
+    return function(pbcore, where, obj) {
+      var ret = $("<div>", {"class": "form_field_container " + field, "pbcore": pbcore});
+      var box = $("<input>", {
+        "id": "comboxbox_" + (++field_counter),
+        "class": "picklistbox " + field,
+        "name": field,
+        "value": stringify_with_authority(obj),
+        "size": 25
+      });
+      box.autocomplete(autocompleteopts(field));
+      ret.append(box).append(' ').append(mkremove(ret));
+      makecombo(box);
+
+      where.append(ret);
+    };
+  };
+
+  var SUBJECT_PARSING_REGEX = /^(.+\S)\s+\(\s*(.+\S)\s*\)\s*$/;
+
+  var serialize_subject = function(doc, xml, html, mkelt) {
+    var input = html.find("input"),
+      field = input.attr("name"),
+      entered_text = input.val(),
+      match = SUBJECT_PARSING_REGEX.exec(entered_text),
+      subject_elt = mkelt(field);
+
+    xml.appendChild(subject_elt);
+    subject_elt.appendChild(doc.createTextNode(match ? match[1] : entered_text));
+    if (match) {
+      var authority_elt = mkelt(field + "AuthorityUsed");
+      xml.appendChild(authority_elt);
+      authority_elt.appendChild(doc.createTextNode(match[2]));
+    }
+  };
+
+  /* EXTENSIONS FUNCTIONS */
+
   var parse_extension = function(obj) {
     var $obj = $(obj),
     extension = $obj.find("extension").text(),
@@ -417,9 +470,9 @@ var FormEditor = (function($) {
         return $(elt).find("identifierSource").text() === "pbcore XML database UUID";
       });
       mkfields("titles", "pbcoreTitle", pbcore_maker("title", "titleType"));
-      mkfields("subjects", "pbcoreSubject", pbcore_maker(null, "subject", Style.SIMPLE));
+      mkfields("subjects", "pbcoreSubject", subject_maker("subject"));
       mkfields("descriptions", "pbcoreDescription", pbcore_maker("description", "descriptionType", Style.TEXTAREA));
-      mkfields("genres", "pbcoreGenre", pbcore_maker(null, "genre", Style.SIMPLE));
+      mkfields("genres", "pbcoreGenre", subject_maker("genre"));
       mkfields("relations", "pbcoreRelation", pbcore_maker("relationIdentifier", "relationType", Style.VERBOSE));
       mkfields("coverages", "pbcoreCoverage", pbcore_maker("coverage", "coverageType", Style.VERBOSE, true));
       mkboxes("audience_levels", 'pbcoreAudienceLevel', 'audienceLevel');
@@ -448,14 +501,23 @@ var FormEditor = (function($) {
         var $this = $(this), pbcorename = $this.attr("pbcore");
         var elt = mkelt(pbcorename);
         root.appendChild(elt);
-        if (pbcorename === 'pbcoreExtension') {
+        switch(pbcorename) {
+        case 'pbcoreSubject':
+        case 'pbcoreGenre':
+          serialize_subject(doc, elt, $this, mkelt);
+          break;
+
+        case 'pbcoreExtension':
           serialize_extension(doc, elt, $this, mkelt);
-        } else {
+          break;
+
+        default:
           $("input, textarea", $this).each(function() {
             var subelt = mkelt(this.name);
             elt.appendChild(subelt);
             subelt.appendChild(doc.createTextNode(this.value));
           });
+          break;
         }
       });
 
