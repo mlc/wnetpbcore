@@ -13,7 +13,7 @@ class ValueListsController < ApplicationController
   def create
     @value_list = ValueList.new(params[:value_list])
     if @value_list.save
-      flash[:info] = "Value list created"
+      flash[:message] = "Value list created"
       redirect_to value_list_path(@value_list)
     else
       render :action => 'new'
@@ -27,7 +27,7 @@ class ValueListsController < ApplicationController
   def update
     @value_list.bulk_values = params[:value_list][:bulk_values]
     if @value_list.save
-      flash[:info] = "Value list updated"
+      flash[:message] = "Value list updated"
       redirect_to value_lists_path
     else
       render :action => 'show'
