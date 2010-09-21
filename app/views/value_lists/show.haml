@@ -1,0 +1,6 @@
+- title "Value List for #{@value_list.name}"
+- form_for @value_list do |f|
+  %p
+    Enter the possible values for this value list, one per line:
+    = f.text_area :bulk_values, :size => "50x12"
+  %p= f.submit

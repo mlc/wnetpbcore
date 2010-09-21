@@ -251,8 +251,7 @@ class AssetsController < ApplicationController
       end
     end
     @picklists["CoverageType"] = ["Spatial", "Temporal"]
-    # FIXME: do something useful
-    @valuelists = {}
+    @valuelists = ValueList.quick_load_all_for_edit_form
     respond_to do |format|
       format.json do
         response.headers["Cache-Control"] = "private, max-age=600"

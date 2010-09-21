@@ -46,7 +46,6 @@ authorization do
     has_permission_on :assets, :to => :destroy_found_set
     has_permission_on :ip_blocks, :to => :crud
     has_permission_on :value_lists, :to => :crud
-    has_permission_on :values, :to => :crud
   end
 end
 
