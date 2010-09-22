@@ -90,11 +90,11 @@ module PbcoreXmlElement
   end
 
   def created_string
-    "created at #{created_at.to_s} by #{creator_id.nil? ? "unknown" : record_creator.login}"
+    "created at #{created_at.to_s} by #{(creator_id.nil? || creator.nil?) ? "unknown" : record_creator.login}"
   end
 
   def updated_string
-    "updated at #{updated_at.to_s} by #{updater_id.nil? ? "unknown" : record_updater.login}"
+    "updated at #{updated_at.to_s} by #{(updater_id.nil? || updater.nil?) ? "unknown" : record_updater.login}"
   end
 
   def doing_xml?
