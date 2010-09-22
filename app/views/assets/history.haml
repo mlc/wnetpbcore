@@ -1,0 +1,21 @@
+- title "Asset History"
+- assets_navbar
+
+%h2& History of #{@asset.title}
+- form_tag({:action => "diff"}, {:id => "asset_diff_form", :method => "get"}) do
+  %table#asset_history
+    %thead
+      %tr
+        %th
+        %th Date
+        %th User
+    %tbody
+      - @versions.each do |version|
+        %tr{ :class => cycle("even", "odd") }
+          %td= check_box_tag 'version_ids[]', version.id
+          %td= version.created_at.strftime("%b %e, %Y %l:%M %p")
+          %td= version.record_creator.nil? ? "unknown" : version.record_creator.login
+  %p
+    %span.smallnote You must select exactly two versions in order to compare them.
+    %br
+    = submit_tag("Compare Checked Versions", :disabled => true, :id => "diff_submit")

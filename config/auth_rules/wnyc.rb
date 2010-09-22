@@ -5,7 +5,7 @@ authorization do
 
   role :user do
     includes :guest
-    has_permission_on :assets, :to => [:read, :request]
+    has_permission_on :assets, :to => [:read, :request, :history, :diff]
     has_permission_on :instantiations, :to => [:read]
     has_permission_on :users, :to => [:show, :update] do
       if_attribute :id => is { user.id }

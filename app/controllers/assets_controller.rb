@@ -276,6 +276,41 @@ class AssetsController < ApplicationController
     end
   end
 
+  def history
+    @versions = @asset.versions.all(:select => 'id, creator_id, created_at', :order => "created_at DESC")
+  end
+
+  def diff
+    if params[:version_ids] && params[:version_ids].size == 2
+      @versions = Version.find(params[:version_ids])
+    else
+      flash[:error] = "You must select exactly two versions to compare"
+      redirect_to :action => 'index' and return
+    end
+
+    # ensure that @versions[0].created_at ≤ @versions[1].created_at
+    if @versions[1].created_at < @versions[0].created_at
+      tmp = @versions[1]
+      @versions[1] = @versions[0]
+      @versions[0] = tmp
+    end
+
+    @asset = @versions[0].asset
+
+    f0 = Tempfile.new("asset-diff")
+    f0 << @versions[0].body
+    f0.close
+
+    f1 = Tempfile.new("asset-diff")
+    f1 << @versions[1].body
+    f1.close
+
+    @diff = `xmldiff -c #{f0.path} #{f1.path}`
+
+    f0.unlink
+    f1.unlink
+  end
+
   protected
   def fetch_asset
     if params[:id] =~ /^[\d]+$/

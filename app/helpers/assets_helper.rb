@@ -14,6 +14,9 @@ module AssetsHelper
       if permitted_to?(:request, @asset)
         add_navbar("request", request_mailto_link(@asset))
       end
+      if permitted_to?(:history, @asset)
+        add_navbar("history", history_asset_url(@asset))
+      end
     end
     if @instantiation && !@instantiation.new_record?
       if permitted_to?(:edit, @instantiation)

@@ -376,3 +376,11 @@ a.index_thumbnail img {
  * one day, I will learn from whence the magic constant 34 comes */
 input.pbcorefield { width: 245px; }
 input.pbcorefield.ui-autocomplete-input { width: 211px; }
+
+.smallnote {
+    font-size: smaller;
+}
+
+#asset_history td { padding: 2px 5px; }
+#asset_history tr.odd td { background-color: #eee; }
+#asset_history tr.even td { background-color: #ddd; }

@@ -1,5 +1,5 @@
 /* make transparent PNGs work in IE6 */
-$(function(){$('body').supersleight({shim: '/images/x.gif'})});
+$(function(){$('body').supersleight({shim: '/images/x.gif'});});
 
 function checkMerge() {
   var count = $(".mergebox input:checked").length;
@@ -22,7 +22,7 @@ function approveMerge() {
    var message = "Are you sure you wish to merge these records?\n";
    titles.each(function(i) {
        message += "\n * " + $(this).text();
-   })
+   });
 
    return confirm(message);
 }
@@ -73,4 +73,13 @@ $(function() {
     };
 
     $('a.showtracks').toggle(mkshower(true), mkshower(false));
+});
+
+$(function() {
+  var $submit;
+  $("#asset_history input").bind("click change", function() {
+    $submit = $submit || $("#diff_submit");
+
+    $submit.attr("disabled", $("#asset_history input:checked").length !== 2);
+  });
 });
