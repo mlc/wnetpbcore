@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100921180557) do
+ActiveRecord::Schema.define(:version => 20100922190155) do
 
   create_table "annotations", :force => true do |t|
     t.integer "instantiation_id"
@@ -450,5 +450,15 @@ ActiveRecord::Schema.define(:version => 20100921180557) do
   end
 
   add_index "values", ["value_list_id", "value"], :name => "index_values_on_value_list_id_and_value", :unique => true
+
+  create_table "versions", :force => true do |t|
+    t.integer  "asset_id",   :null => false
+    t.text     "body"
+    t.integer  "creator_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "versions", ["asset_id"], :name => "index_versions_on_asset_id"
 
 end

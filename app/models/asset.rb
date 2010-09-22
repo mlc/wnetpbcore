@@ -1,5 +1,6 @@
 class Asset < ActiveRecord::Base
   before_create :generate_uuid
+  after_save :save_version
 
   attr_protected :uuid
   
@@ -34,6 +35,7 @@ class Asset < ActiveRecord::Base
   has_many :rights_summaries, :dependent => :destroy, :attributes => true
   has_many :instantiations, :dependent => :destroy
   has_many :extensions, :dependent => :destroy, :attributes => true
+  has_many :versions, :dependent => :delete_all
   stampable
 
   validates_size_of :identifiers, :minimum => 1, :message => "must have at least one entry"
@@ -69,6 +71,8 @@ class Asset < ActiveRecord::Base
       "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance",
       "xsi:schemaLocation" => "http://www.pbcore.org/PBCore/PBCoreNamespace.html http://www.pbcore.org/PBCore/PBCoreXSD_Ver_1-2-1.xsd" do
       builder.comment! "XML Generated at #{Time.new} by rails pbcore database"
+      builder.comment! created_string if respond_to?(:created_at)
+      builder.comment! updated_string if respond_to?(:updated_at)
       build_xml(builder)
     end
   end
@@ -244,6 +248,12 @@ class Asset < ActiveRecord::Base
     hash.delete("uuid")
     hash.delete("created_at")
     hash.delete("updated_at")
+    hash.delete("created_by")
+    hash.delete("updated_by")
     hash
+  end
+
+  def save_version
+    Version.create(:asset => self, :body => self.to_xml)
   end
 end

@@ -83,8 +83,8 @@ module PbcoreXmlElement
 
   def build_xml(builder)
     self._working_xml = builder
-    builder.comment! created_string if respond_to?(:created_at)
-    builder.comment! updated_string if respond_to?(:updated_at)
+    #builder.comment! created_string if respond_to?(:created_at)
+    #builder.comment! updated_string if respond_to?(:updated_at)
     run_callbacks(:to_xml_elt)
     self._working_xml = nil
   end
