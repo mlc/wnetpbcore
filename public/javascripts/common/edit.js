@@ -1,18 +1,24 @@
 /*
- * JavaScript PBCore Editor!
+ * JavaScript/JQuery PBCore Editor!
+ * 
+ * Basic theory of operation: we load in an XML object and a JSON of
+ * the various "picklists." Then, we make some form fields, using some
+ * JQuery UI autocomplete magic to have comboboxes as appropriate. And
+ * when the user presses Submit, a new XML document is generated and
+ * posted to the server.
+ * 
+ * It is probably possible to adapt this JS for use outside the
+ * wnetpbcore project. If you have a project for which this would be
+ * helpful, let me know.
  */
-var FormEditor = (function($) {
+var FormEditor = (function($, undefined) {
   var PASTA_NS = "http://vermicel.li/pbcore-extensions",
       PBCORE_NS = "http://www.pbcore.org/PBCore/PBCoreNamespace.html";
-
-  $(function() {
-    if ((FormEditor.objid = $("#edit_id").text()))
-      FormEditor.load();
-  });
 
   var xml, picklists, valuelists, extension_names;
   var field_counter = 0;
   var made_form = false;
+  var obj_type;
 
   // enum pattern http://is.gd/dlQFY
   var Style = function(name) {
@@ -26,10 +32,11 @@ var FormEditor = (function($) {
   Style.VERBOSE = new Style('verbose');
   Style.SIMPLE = new Style('simple');
   Style.ONLY_TEXTAREA = new Style("only texarea");
+  Style.TWO_PLAIN = new Style("two plain");
 
   var safe_log = function(obj, level) {
     if (typeof console === 'object') {
-      if (level !== 'undefined' && typeof console[level] === 'function')
+      if (level !== undefined && typeof console[level] === 'function')
         console[level](obj);
       else if (typeof console.log === 'function')
         console.log(obj);
@@ -162,6 +169,10 @@ var FormEditor = (function($) {
     });
   };
 
+  /*
+   * This is a function which returns a function. The returned function is
+   * a callback passed to mkfields(), above. Um, yay, Javascript.
+   */
   var pbcore_maker = function(field, picklistfield, style, locked) {
     return function(pbcore, where, obj) {
       var label, formfield, remove, box, boxlabel;
@@ -191,15 +202,26 @@ var FormEditor = (function($) {
         formfield = $(textarea ? "<textarea>" : "<input>", args);
       }
       if (picklistfield) {
-        box = $("<input>", {
-          "id": "combobox_" + (++field_counter),
-          "class": "picklistbox " + picklistfield,
-          "name": picklistfield,
-          "value": $(obj).find(picklistfield).text(),
-          "size": (style == Style.VERBOSE ? 15 : 25),
-          "readonly": locked
-        });
-        box.autocomplete(autocompleteopts(picklistfield));
+        if (style === Style.TWO_PLAIN) {
+          box = $("<input>", {
+            "id": "input_" + (++field_counter),
+            "class": "pbcorefield " + picklistfield,
+            "name": picklistfield,
+            "value": $(obj).find(picklistfield).text(),
+            "size": 30,
+            "type": "text"
+          });
+        } else {
+          box = $("<input>", {
+            "id": "combobox_" + (++field_counter),
+            "class": "picklistbox " + picklistfield,
+            "name": picklistfield,
+            "value": $(obj).find(picklistfield).text(),
+            "size": (style == Style.VERBOSE ? 15 : 25),
+            "readonly": locked
+          });
+          box.autocomplete(autocompleteopts(picklistfield));
+        }
       }
       remove = mkremove(ret);
       if (style == Style.VERBOSE) {
@@ -207,6 +229,11 @@ var FormEditor = (function($) {
           "text": picklistfield.capitalize().addspaces() + ":",
           "for": "combobox_" + field_counter
         });        
+      } else if (style === Style.TWO_PLAIN) {
+        boxlabel = $("<label>", {
+          "text": picklistfield.capitalize().addspaces() + ":",
+          "for": "input_" + field_counter
+        });
       }
       
       switch(style) {
@@ -225,12 +252,15 @@ var FormEditor = (function($) {
       case Style.ONLY_TEXTAREA:
         ret.append(label).append(' ').append(remove).append(' ').append(formfield);
         break;
+      case Style.TWO_PLAIN:
+        ret.append(label).append(' ').append(formfield).append($("<br/>")).append(boxlabel).append(' ').append(box).append(' ').append(remove);
+        break;
       default:
         safe_log("warning! unexpected style!", "warn");
         safe_log(style, "warn");
       }
 
-      if (box)
+      if (box && style !== Style.TWO_PLAIN)
         makecombo(box);
 
       /* deal with value lists */
@@ -429,12 +459,212 @@ var FormEditor = (function($) {
     where.append(div);
   };
 
+  /* ESSENCE TRACK FUNCTIONS */
+
+  var essence_track_maker = function(pbcore, where, obj) {
+    var div = $("<div/>", {"class": "form_field_container essence_track", "pbcore":"pbcoreEssenceTrack"}), p = $("<p/>"), $obj = $(obj);
+
+    function plain_field(ignored, name) {
+      name = name || ignored;
+
+      ++field_counter;
+      p.append($("<label/>", {text: name.addspaces() + ": ", "for": "etpf_" + field_counter}))
+        .append($("<input/>", {value: $obj.find("essenceTrack" + name).text(), id: "etpf_" + field_counter, name: "essenceTrack" + name, size: 25, "class": "pbcoreField essenceTrack" + name}))
+        .append($("<br/>"));
+    }
+
+    ++field_counter;
+    div.append($("<h4/>", {text: "Essence Track"}));
+    div.append(p.append(mkremove(div)));
+    p.append($("<br/>"));
+    p.append($("<label/>", {text: "Type: ", "for": "ett_" + field_counter}));
+    var ett = $("<input>", {
+      "id": "ett_" + field_counter,
+      "class": "picklistbox essence_track_type",
+      "name": "essence_track_type",
+      "value": $obj.find("essenceTrackType").text(),
+      "size": 25
+    });
+    ett.autocomplete(autocompleteopts("essenceTrackType"));
+    p.append(ett);
+    makecombo(ett);
+    p.append($("<br/>"));
+
+    plain_field("Identifier");
+
+    ++field_counter;
+    p.append($("<label/>", {text: "Identifier Source: ", "for": "etis_" + field_counter}));
+    ett = $("<input>", {
+      "id": "etis_" + field_counter,
+      "class": "picklistbox essence_track_identifier_source",
+      "name": "essence_track_identifier_source",
+      "value": $obj.find("essenceTrackIdentifierSource").text(),
+      "size": 25
+    });
+    ett.autocomplete(autocompleteopts("essenceTrackIdentifierSource"));
+    p.append(ett);
+    makecombo(ett);
+    p.append($("<br/>"));
+
+    $.each(["Standard", "Encoding", "DataRate", "TimeStart", "Duration", "BitDepth", "SamplingRate", "FrameSize", "AspectRatio", "FrameRate", "Annotation"], plain_field);
+
+    ++field_counter;
+    p.append($("<label/>", {text: "Language: ", "for": "etl_" + field_counter}));
+    var etlang = $("<input>", {
+      id: "etl_" + field_counter,
+      value: $obj.find("essenceTrackLanguage").text(),
+      name: "essenceTrackLanguage",
+      "class": "pbcoreField essenceTrackLanguage",
+      "type": "hidden"
+    });
+    p.append(etlang);
+    etlang.langedit();
+    where.append(div);
+  };
+
+  /*
+   * Create and fill in the basic (non-repeatable) instantiation fields
+   */
+  var basic_instantiation_fields = function() {
+    var $p = $("<p/>").appendTo($("#instantiation_info"));
+
+    var text_field = function(name) {
+      $p.append($("<input/>", {
+        'id': "if_" + field_counter,
+        'type': 'text',
+        'value': xml.find(name).text(),
+        'class': 'pbcorefield instantiationfield ' + name,
+        'name': name
+      }));
+    },
+    picklist_field = function(name) {
+      var input = $("<input/>", {
+        'id': "if_" + field_counter,
+        'type': 'text',
+        'value': xml.find(name).text(),
+        'class': 'picklistbox instantiationfield ' + name,
+        'name': name
+      });
+      input.autocomplete(autocompleteopts(name));
+      $p.append(input);
+      makecombo(input);
+      return input;
+    },
+    format_field = function(name) {
+      var picklist = picklist_field(name),
+      span = $("<span/>").insertBefore(picklist),
+      mkradio = function(str) {
+        ++field_counter;
+        var radio = $("<input/>", {
+          'id': "rad_" + field_counter,
+          'type': "radio",
+          'name': 'format_type',
+          'value': str,
+          'checked': !!(xml.find("format" + str).text())
+        });
+        span.append(radio);
+        span.append($("<label/>", {
+          'for': "rad_" + field_counter,
+          'text': str
+        }));
+        span.append(' \u00a0 ');
+
+        return radio;
+      },
+      radios = mkradio('Physical').add(mkradio('Digital')),
+      updatepicklist = function() {
+        var which = span.find("input:checked").val();
+        picklist.autocomplete('option', 'source',  picklists["Format" + which]);
+      };
+
+      picklist.val(xml.find("formatPhysical, formatDigital").text());
+      updatepicklist();
+      radios.bind('change', updatepicklist);
+
+      /* make change event be fired on IE */
+      if ($.browser.msie) {
+        radios.click(function () {
+          $(this).blur().focus();
+        });
+      }
+    },
+    language_field = function(name) {
+      var input = $("<input/>", {
+        'id': "if_" + field_counter,
+        'type': 'hidden',
+        'value': xml.find(name).text(),
+        'class': 'pbcorefield instantiationfield ' + name,
+        'name': name
+      });
+      $p.append(input);
+      input.langedit();
+    };
+
+    $.each([
+      [text_field, "dateCreated"],
+      [text_field, "dateIssued"],
+      [format_field, "format"],
+      [text_field, "formatLocation"],
+      [picklist_field, "formatMediaType"],
+      [picklist_field, "formatGenerations", "identifies the particular use or manner in which a version or rendition of a media item is used"],
+      [text_field, "formatFileSize"],
+      [text_field, "formatTimeStart"],
+      [text_field, "formatDuration"],
+      [text_field, "formatDataRate"],
+      [picklist_field, "formatColors"],
+      [text_field, "formatTracks"],
+      [text_field, "formatChannelConfiguration"],
+      [language_field, "language"],
+      [text_field, "alternativeModes", "identifies equivalent alternatives to the primary visual, sound or textual information that exists in a media item. These are modes that offer alternative ways to see, hear, and read the content of a media item. Examples include DVI (Descriptive Video Information), SAP (Supplementary Audio Program), ClosedCaptions, OpenCaptions, Subtitles, Language Dubs, and Transcripts."]
+    ], function() {
+      var name = this[1];
+      ++field_counter;
+      $p.append($("<label/>", {
+        'text': name.capitalize().addspaces() + ": ",
+        'for': "if_" + field_counter,
+        'title': this[2]
+      }));
+      this[0](name);
+      $p.append($("<br/>"));
+    });
+  };
+
+  var form_creators = {
+    "asset": function() {
+      mkfields("identifiers", "pbcoreIdentifier", pbcore_maker("identifier", "identifierSource"), function(elt) {
+        return $(elt).find("identifierSource").text() === "pbcore XML database UUID";
+      });
+      mkfields("titles", "pbcoreTitle", pbcore_maker("title", "titleType"));
+      mkfields("subjects", "pbcoreSubject", subject_maker("subject"));
+      mkfields("descriptions", "pbcoreDescription", pbcore_maker("description", "descriptionType", Style.TEXTAREA));
+      mkfields("genres", "pbcoreGenre", subject_maker("genre"));
+      mkfields("relations", "pbcoreRelation", pbcore_maker("relationIdentifier", "relationType", Style.VERBOSE));
+      mkfields("coverages", "pbcoreCoverage", pbcore_maker("coverage", "coverageType", Style.VERBOSE, true));
+      mkboxes("audience_levels", 'pbcoreAudienceLevel', 'audienceLevel');
+      mkboxes("audience_ratings", 'pbcoreAudienceRating', 'audienceRating');
+      mkfields("creators", "pbcoreCreator", pbcore_maker("creator", "creatorRole", Style.VERBOSE));
+      mkfields("contributors", "pbcoreContributor", pbcore_maker("contributor", "contributorRole", Style.VERBOSE));
+      mkfields("publishers", "pbcorePublisher", pbcore_maker("publisher", "publisherRole", Style.VERBOSE));
+      mkfields("rights_summaries", "pbcoreRightsSummary", pbcore_maker("rightsSummary", undefined, Style.ONLY_TEXTAREA));
+      mkfields("extensions", "pbcoreExtension", extension_maker);
+    },
+    "instantiation": function() {
+      mkfields("format_ids", "pbcoreFormatID", pbcore_maker("formatIdentifier", "formatIdentifierSource"), function(elt) {
+        return $(elt).find("formatIdentifierSource").text() === 'pbcore XML database UUID';
+      });
+      basic_instantiation_fields();
+      mkfields("essence_tracks", "pbcoreEssenceTrack", essence_track_maker);
+      mkfields("date_availables", "pbcoreDateAvailable", pbcore_maker("dateAvailableStart", "dateAvailableEnd", Style.TWO_PLAIN));
+      mkfields("annotations", "pbcoreAnnotation", pbcore_maker("annotation", undefined, Style.ONLY_TEXTAREA));
+    }
+  };
+
   return {
-    "objid": null,
-    "load": function() {
+    "load": function(provided_obj_type) {
+      obj_type = provided_obj_type;
       made_form = false;
       $.ajax({
-        "url": "/assets/picklists.json",
+        "url": $('link[rel="picklists"]').attr("href"),
         "dataType": "json",
         "type": "GET",
         "success": function(data, textStatus, xhr) {
@@ -447,7 +677,7 @@ var FormEditor = (function($) {
         }
       });
       $.ajax({
-        "url": "/assets/" + FormEditor.objid + ".xml",
+        "url": $('link[rel="toedit"]').attr("href"),
         "dataType": "xml",
         "type": "GET",
         "success": function(data, textStatus, xhr) {
@@ -466,23 +696,12 @@ var FormEditor = (function($) {
         return;
 
       made_form = true;
-      mkfields("identifiers", "pbcoreIdentifier", pbcore_maker("identifier", "identifierSource"), function(elt) {
-        return $(elt).find("identifierSource").text() === "pbcore XML database UUID";
-      });
-      mkfields("titles", "pbcoreTitle", pbcore_maker("title", "titleType"));
-      mkfields("subjects", "pbcoreSubject", subject_maker("subject"));
-      mkfields("descriptions", "pbcoreDescription", pbcore_maker("description", "descriptionType", Style.TEXTAREA));
-      mkfields("genres", "pbcoreGenre", subject_maker("genre"));
-      mkfields("relations", "pbcoreRelation", pbcore_maker("relationIdentifier", "relationType", Style.VERBOSE));
-      mkfields("coverages", "pbcoreCoverage", pbcore_maker("coverage", "coverageType", Style.VERBOSE, true));
-      mkboxes("audience_levels", 'pbcoreAudienceLevel', 'audienceLevel');
-      mkboxes("audience_ratings", 'pbcoreAudienceRating', 'audienceRating');
-      mkfields("creators", "pbcoreCreator", pbcore_maker("creator", "creatorRole", Style.VERBOSE));
-      mkfields("contributors", "pbcoreContributor", pbcore_maker("contributor", "contributorRole", Style.VERBOSE));
-      mkfields("publishers", "pbcorePublisher", pbcore_maker("publisher", "publisherRole", Style.VERBOSE));
-      mkfields("rights_summaries", "pbcoreRightsSummary", pbcore_maker("rightsSummary", undefined, Style.ONLY_TEXTAREA));
-      mkfields("extensions", "pbcoreExtension", extension_maker);
-      mksubmit();
+      if (form_creators[obj_type]) {
+        form_creators[obj_type]();
+        mksubmit();
+      } else {
+        safe_log("unknown obj type " + self.obj_type, "error");
+      }
     },
     "to_xml": function() {
       var doc = OraXML.newDocument("PBCoreDescriptionDocument", PBCORE_NS);
@@ -534,6 +753,9 @@ var FormEditor = (function($) {
         });
       });
       return doc;
+    },
+    "get_obj_type": function() {
+      return obj_type;
     }
   };
 })(jQuery);

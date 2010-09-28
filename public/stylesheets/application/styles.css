@@ -384,3 +384,6 @@ input.pbcorefield.ui-autocomplete-input { width: 211px; }
 #asset_history td { padding: 2px 5px; }
 #asset_history tr.odd td { background-color: #eee; }
 #asset_history tr.even td { background-color: #ddd; }
+
+.removable-language { margin-right: 1em; white-space: nowrap; }
+.removable-language .ui-button { margin-left: 1px; }

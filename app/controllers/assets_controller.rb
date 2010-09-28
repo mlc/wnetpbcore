@@ -240,7 +240,7 @@ class AssetsController < ApplicationController
   end
 
   def picklists
-    classes = [Genre, Subject, ContributorRole, CreatorRole, IdentifierSource, PublisherRole, TitleType, DescriptionType, RelationType, AudienceLevel, AudienceRating]
+    classes = [Genre, Subject, ContributorRole, CreatorRole, IdentifierSource, PublisherRole, TitleType, DescriptionType, RelationType, AudienceLevel, AudienceRating, FormatIdentifierSource, EssenceTrackType, EssenceTrackIdentifierSource, FormatMediaType, FormatGeneration, FormatColor]
     @picklists = {}
     classes.each do |kl|
       if PBCore.config["big_fields"] && PBCore.config["big_fields"].include?(kl.to_s.underscore)
@@ -250,7 +250,13 @@ class AssetsController < ApplicationController
         @picklists[kl.to_s] = options.map(&:first)
       end
     end
+    @picklists["FormatGenerations"] = @picklists["FormatGeneration"]
+    @picklists.delete("FormatGeneration")
+    @picklists["FormatColors"] = @picklists["FormatColor"]
+    @picklists.delete("FormatColor")
     @picklists["CoverageType"] = ["Spatial", "Temporal"]
+    @picklists["FormatPhysical"] = Format.quick_load_for_select(["visible = ? AND type = ?", true, "FormatPhysical"]).map(&:first)
+    @picklists["FormatDigital"] = Format.quick_load_for_select(["visible = ? AND type = ?", true, "FormatDigital"]).map(&:first)
     @valuelists = ValueList.quick_load_all_for_edit_form
     respond_to do |format|
       format.json do

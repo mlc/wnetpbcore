@@ -1,5 +1,10 @@
+- content_for :head do
+  %link{ :rel => "picklists", :type => "application/json", :href => formatted_picklists_assets_path(:json) }
+  %link{ :rel => "toedit", :type => "application/xml", :href => @asset.new_record? ? formatted_new_asset_path(:xml) : formatted_asset_path(@asset.uuid, :xml) }
+  :javascript
+    $(function() { FormEditor.load('asset'); });
+
 - assets_navbar
-#edit_id&= @asset.new_record? ? 'new' : @asset.uuid
 - form_for @asset do |f|
   %div{:style => "margin:0; padding:0"}<
     %input{:type => "hidden", :name => "xml", :id => "xml_from_editor"}

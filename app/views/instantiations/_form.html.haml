@@ -1,0 +1,24 @@
+- content_for :head do
+  %link{ :rel => "picklists", :type => "application/json", :href => formatted_picklists_assets_path(:json) }
+  %link{ :rel => "toedit", :type => "application/xml", :href => @instantiation.new_record? ? formatted_new_asset_instantiation_path(@asset, :xml, :template_id => params[:template_id]) : formatted_asset_instantiation_path(@asset, @instantiation, :xml) }
+  :javascript
+    $(function() { FormEditor.load('instantiation'); });
+
+- assets_navbar
+
+- form_for([@asset, @instantiation]) do |f|
+  %div{:style => 'margin:0; padding:0'}<
+    %input{:type => "hidden", :name => "xml", :id => "xml_from_editor"}
+%form
+  #error_messages
+    = error_messages_for :instantiation
+  %h3 Format Identifiers
+  #format_ids
+  %h3 Instantiation Information
+  #instantiation_info
+  %h3 Essence Tracks
+  #essence_tracks
+  %h3 Dates Available
+  #date_availables
+  %h3 Annotations
+  #annotations

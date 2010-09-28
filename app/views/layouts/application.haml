@@ -12,6 +12,7 @@
       = javascript_bundle 'flash'
     = opensearch_headers(@search_object)
     = alternate_views
+    = yield :head
   %body
     %table.holder{ :cellspacing => "0", :border => "0", :width => "100%", :cellpadding => "0" }
       %tr

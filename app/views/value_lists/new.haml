@@ -1,11 +1,13 @@
 - title "New Value List"
+- content_for :head do
+  :javascript
+    window.value_list_choices = #{ValueList.permitted_values_json};
+
 = error_messages_for :value_list
 - form_for @value_list do |f|
   %p
     = f.label :category
     = f.select :category, ValueList.permitted_fields_for_select
-  :javascript
-    window.value_list_choices = #{ValueList.permitted_values_json};
   %p#value_container{ :style => 'display: none' }
     = f.select :value, [] # filled in by JS
   %p= f.submit "Create Value List"

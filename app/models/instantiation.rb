@@ -122,6 +122,14 @@ class Instantiation < ActiveRecord::Base
     newone
   end
 
+  def to_xml
+    builder = Builder::XmlMarkup.new(:indent => 2)
+    builder.instruct!
+    builder.pbcoreInstantiation "xmlns" => "http://www.pbcore.org/PBCore/PBCoreNamespace.html" do
+      build_xml(builder)
+    end
+  end
+
   protected
   def generate_uuid
     self.uuid = UUID.random_create.to_s unless (self.uuid && !self.uuid.empty?)

@@ -21,6 +21,18 @@ class InstantiationsController < ApplicationController
     end
     @instantiation.format_ids.build
     @instantiation.essence_tracks.build
+
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => @instantiation.to_xml }
+    end
+  end
+
+  def show
+    @instantiation = @asset.instantiations.find(params[:id])
+    respond_to do |format|
+      format.xml { render :xml => @instantiation.to_xml }
+    end
   end
 
   def upload_video
