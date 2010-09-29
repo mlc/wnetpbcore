@@ -574,7 +574,12 @@ var FormEditor = (function($, undefined) {
       radios = mkradio('Physical').add(mkradio('Digital')),
       updatepicklist = function() {
         var which = span.find("input:checked").val();
-        picklist.autocomplete('option', 'source',  picklists["Format" + which]);
+        if (which) {
+          picklist.attr("disabled", false);
+          picklist.autocomplete('option', 'source',  picklists["Format" + which]).autocomplete('option', 'minLength', 0);
+        } else {
+          picklist.attr("disabled", true);
+        }
       };
 
       picklist.val(xml.find("formatPhysical, formatDigital").text());
