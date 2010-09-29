@@ -1,0 +1,10 @@
+# -*- ruby -*-
+if @success
+  page.redirect_to :action => 'index'
+else
+  page.replace_html 'error_messages', error_messages_for(:instantiation)
+  # scroll up so they see the error messages
+  page << 'var $t = $("#error_messages"), offset = $t.offset().top;'
+  page << '$(window).scrollTop(offset);'
+  page << '$t.highlight(1000);'
+end

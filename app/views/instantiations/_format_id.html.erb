@@ -1,9 +1,0 @@
-<div class="format_id">
-  <p>
-    <%= f.label(:format_identifier, "Identifier:") %> <%= f.text_field :format_identifier, :class => 'required' %>
-    <%= f.remove_link "remove" %>
-    <br />
-    <%= f.label(:format_identifier_source_id, "Source:") %>
-    <%= f.select :format_identifier_source_id, FormatIdentifierSource.all(:conditions => ["visible = 1 or id = ?", format_id.format_identifier_source_id]).map{|i| [i.name, i.id]}, {:include_blank => true}, {:class => 'required'} %>
-  </p>
-</div>

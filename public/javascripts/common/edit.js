@@ -481,7 +481,7 @@ var FormEditor = (function($, undefined) {
     var ett = $("<input>", {
       "id": "ett_" + field_counter,
       "class": "picklistbox essence_track_type",
-      "name": "essence_track_type",
+      "name": "essenceTrackType",
       "value": $obj.find("essenceTrackType").text(),
       "size": 25
     });
@@ -497,7 +497,7 @@ var FormEditor = (function($, undefined) {
     ett = $("<input>", {
       "id": "etis_" + field_counter,
       "class": "picklistbox essence_track_identifier_source",
-      "name": "essence_track_identifier_source",
+      "name": "essenceTrackIdentifierSource",
       "value": $obj.find("essenceTrackIdentifierSource").text(),
       "size": 25
     });
@@ -659,6 +659,11 @@ var FormEditor = (function($, undefined) {
     }
   };
 
+  var root_elt_names = {
+    "asset": "PBCoreDescriptionDocument",
+    "instantiation": "pbcoreInstantiation"
+  };
+
   return {
     "load": function(provided_obj_type) {
       obj_type = provided_obj_type;
@@ -700,11 +705,11 @@ var FormEditor = (function($, undefined) {
         form_creators[obj_type]();
         mksubmit();
       } else {
-        safe_log("unknown obj type " + self.obj_type, "error");
+        safe_log("unknown obj type " + obj_type, "error");
       }
     },
     "to_xml": function() {
-      var doc = OraXML.newDocument("PBCoreDescriptionDocument", PBCORE_NS);
+      var doc = OraXML.newDocument(root_elt_names[obj_type], PBCORE_NS);
       var mkelt = ((typeof doc.createElementNS === 'function') ?
         (function(tagName) {
           return doc.createElementNS(PBCORE_NS, tagName);
@@ -752,6 +757,22 @@ var FormEditor = (function($, undefined) {
           subelt.appendChild(doc.createTextNode(this.value));
         });
       });
+
+      // Similarly, there are some strings directly under pbcoreInstantiation
+      // which will end up at the bottom of the document rather than anywhere
+      // else.
+      if (obj_type === 'instantiation') {
+        $("input.instantiationfield").each(function() {
+          var name = this.name, elt;
+          if (name === 'format') {
+            name += $('input[name="format_type"]:checked').val();
+          }
+          elt = mkelt(name);
+          root.appendChild(elt);
+          elt.appendChild(doc.createTextNode(this.value));
+        });
+      }
+
       return doc;
     },
     "get_obj_type": function() {

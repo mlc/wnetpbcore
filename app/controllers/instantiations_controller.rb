@@ -14,7 +14,7 @@ class InstantiationsController < ApplicationController
   end
   
   def new
-    if (params[:template_id].nil?)
+    if (params[:template_id].nil? || params[:template_id].empty?)
       @instantiation = Instantiation.new(:asset => @asset)
     else
       @instantiation = Instantiation.new_from_template(params[:template_id], @asset)
@@ -61,11 +61,7 @@ class InstantiationsController < ApplicationController
   end
   
   def create
-    if params[:xml]
-      @instantiation = Instantiation.from_xml(params[:xml])
-    else
-      @instantiation = Instantiation.new(params[:instantiation])
-    end
+    @instantiation = Instantiation.from_xml(params[:xml])
     uuid = @instantiation.format_ids.detect{|fid| fid.format_identifier_source == FormatIdentifierSource::OUR_UUID_SOURCE}
     unless uuid.nil?
       @instantiation.format_ids -= [uuid]
@@ -79,13 +75,11 @@ class InstantiationsController < ApplicationController
       old_us.each{|ou| ou.destroy}
     end
     respond_to do |format|
-      format.html do
-        if @asset.save
+      format.js do
+        @success = @asset.save
+        if @success
           @asset.send_later(:index!)
           flash[:message] = "Successfully created new instantiation."
-          redirect_to :action => 'index'
-        else
-          render :action => 'new'
         end
       end
       format.xml do
@@ -105,17 +99,25 @@ class InstantiationsController < ApplicationController
   
   def update
     @instantiation = @asset.instantiations.find(params[:id])
-    params[:instantiation] ||= {}
-    params[:instantiation][:format_id_attributes] ||= {}
-    params[:instantiation][:essence_track_attributes] ||= {}
-    params[:instantiation][:annotation_attributes] ||= {}
-    params[:instantiation][:date_available_attributes] ||= {}
-    if @instantiation.update_attributes(params[:instantiation])
+    @instantiation.transaction do
+      parsed_instantiation = Instantiation.from_xml(params[:xml])
+      [:format_ids, :essence_tracks, :date_availables, :annotations, :format,
+       :format_media_type, :format_generation, :format_color, :format_location,
+       :format_file_size, :format_time_start, :format_duration,
+       :format_data_rate, :format_tracks, :format_channel_configuration,
+       :language, :alternative_modes].each do |field|
+        @instantiation.send("#{field}=".to_sym, parsed_instantiation.send(field))
+      end
+      @success = @instantiation.save
+      if @success
+        @asset.save
+      else
+        raise ActiveRecord::Rollback
+      end
+    end
+    if @success
       @asset.send_later(:index!)
       flash[:message] = "Successfully updated your instantiation."
-      redirect_to :action => 'index'
-    else
-      render :action => 'edit'
     end
   end
 
