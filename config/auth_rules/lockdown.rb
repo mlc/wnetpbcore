@@ -6,7 +6,7 @@ authorization do
 
   role :user do
     includes :guest
-    has_permission_on :assets, :to => :watch_video
+    has_permission_on :assets, :to => [:watch_video, :history, :diff]
     has_permission_on :users, :to => [:show, :update] do
       if_attribute :id => is { user.id }
     end
