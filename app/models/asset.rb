@@ -195,7 +195,7 @@ class Asset < ActiveRecord::Base
         when "if_map"
           value = send(facet[2].to_sym).select{|p|
             subelt = p.send(facet[4].to_sym)
-            !(subelt.nil?) && (subelt.name == facet[5])
+            !(subelt.nil?) && ((subelt.respond_to?(:name) ? subelt.name : subelt) == facet[5])
           }.map(&facet[3].to_sym)
         when "format_location"
           value = instantiations.map{|a| a.format_location}.select{|fml| !(fml.index('/') || fml.match(UUID_REGEX))}
