@@ -105,7 +105,7 @@ class InstantiationsController < ApplicationController
        :format_media_type, :format_generation, :format_color, :format_location,
        :format_file_size, :format_time_start, :format_duration,
        :format_data_rate, :format_tracks, :format_channel_configuration,
-       :language, :alternative_modes].each do |field|
+       :language, :alternative_modes, :date_created, :date_issued].each do |field|
         @instantiation.send("#{field}=".to_sym, parsed_instantiation.send(field))
       end
       @success = @instantiation.save
