@@ -1,0 +1,5 @@
+- title "Reports"
+%p Select a report:
+%ul
+  - @reports.each do |report|
+    %li= link_to(report, :action => report.to_sym)

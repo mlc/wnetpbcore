@@ -14,3 +14,5 @@
     %li= link_to_unless_current "users", :controller => :users
   - permitted_to? :index, :last_used_ids do
     %li= link_to_unless_current "ids", :controller => :last_used_ids
+  - permitted_to? :index, :reports do
+    %li= link_to_unless_current "reports", :controller => :reports
