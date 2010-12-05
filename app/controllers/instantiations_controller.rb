@@ -19,7 +19,15 @@ class InstantiationsController < ApplicationController
     else
       @instantiation = Instantiation.new_from_template(params[:template_id], @asset)
     end
-    @instantiation.format_ids.build
+
+    if PBCore.config["auto_id"] && PBCore.config["auto_instantiation_id"] && @asset.identifiers.any?{|inst| inst.identifier_source.name == PBCore.config["auto_id"]}
+      @instantiation.format_ids = [FormatId.new({
+        :format_identifier => @asset.identifiers.detect{|inst| inst.identifier_source.name == PBCore.config["auto_id"]}.identifier,
+        :format_identifier_source => FormatIdentifierSource.find_or_create_by_name(PBCore.config["auto_instantiation_id"])
+      })]
+    else
+      @instantiation.format_ids.build
+    end
     @instantiation.essence_tracks.build
 
     respond_to do |format|
