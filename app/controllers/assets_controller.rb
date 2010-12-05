@@ -111,7 +111,6 @@ class AssetsController < ApplicationController
   
   def new
     @asset = Asset.new
-    @asset.titles.build
     respond_to do |format|
       format.html
       format.xml do
@@ -120,6 +119,14 @@ class AssetsController < ApplicationController
           @asset.identifiers = [Identifier.new(:identifier_source => identifier_source, :identifier => (identifier_source.next_sequence).to_s)]
         else
           @asset.identifiers.build
+        end
+
+        if PBCore.config["default_title_types"]
+          PBCore.config["default_title_types"].each do |tt|
+            @asset.titles << Title.new(:title_type => TitleType.find_or_create_by_name(tt))
+          end
+        else
+          @asset.titles.build
         end
         render :xml => @asset.to_xml
       end
