@@ -367,7 +367,7 @@ a.index_thumbnail img {
 }
 
 .ui-button { margin-left: -1px; }
-.ui-button-icon-only .ui-button-text { padding: 1px; }
+.ui-button-icon-only .ui-button-text { padding: 0.7em 0.35em; }
 .ui-autocomplete-input { margin: 0; padding: 1px; }
 
 .ui-autocomplete { max-height: 15em; overflow: auto; }
