@@ -113,7 +113,7 @@ class Instantiation < ActiveRecord::Base
     newone = Instantiation.new(template_attrs)
     newone.asset = asset
     template.essence_tracks.each do |et|
-      newone.essence_tracks << EssenceTrack.new(et.attributes.reject{|k,v| ["instantiation_id", "id"].include?(k)})
+      newone.essence_tracks << EssenceTrack.new(et.attributes.reject{|k,v| ["instantiation_id", "id", "essence_track_duration"].include?(k)})
     end
     template.annotations.each do |an|
       newone.annotations << Annotation.new(an.attributes.reject{|k,v| ["instantiation_id", "id"].include?(k)})
