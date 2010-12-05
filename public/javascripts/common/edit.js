@@ -466,11 +466,21 @@ var FormEditor = (function($, undefined) {
 
     function plain_field(ignored, name) {
       name = name || ignored;
+      var textarea = (name === 'Annotation');
 
       ++field_counter;
-      p.append($("<label/>", {text: name.addspaces() + ": ", "for": "etpf_" + field_counter}))
-        .append($("<input/>", {value: $obj.find("essenceTrack" + name).text(), id: "etpf_" + field_counter, name: "essenceTrack" + name, size: 25, "class": "pbcoreField essenceTrack" + name}))
-        .append($("<br/>"));
+      p.append($("<label/>", {text: name.addspaces() + ": ", "for": "etpf_" + field_counter}));
+      var attrs = {id: "etpf_" + field_counter, name: "essenceTrack" + name, "class": "pbcoreField essenceTrack" + name};
+      attrs[textarea ? 'text' : 'value'] = $obj.find("essenceTrack" + name).text();
+      if (textarea) {
+        attrs.css = { width: "560px" };
+        attrs.rows = 3;
+      } else {
+        attrs.size = 25;
+        attrs.type = 'text';
+      }
+      p.append($(textarea ? "<textarea/>" : "<input/>", attrs));
+      p.append($("<br/>"));
     }
 
     ++field_counter;
