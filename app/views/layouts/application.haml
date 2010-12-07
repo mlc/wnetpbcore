@@ -45,7 +45,8 @@
                       = link_to("Streamable Assets", set_streamable_path("on"), :id => "streamable_asset_link", :class => session[:streamable] ? "selected_option" : nil)
             %tr
               %td.sidebarMiddle
-                = render :partial => "assets/search"
+                - if permitted_to? :index, :assets
+                  = render :partial => "assets/search"
               %td.contentMiddle{ :align => "left", :bgcolor => "#FFFFFF" }
                 - if @have_second_nav
                   %h1.inside&= yield(:title)
