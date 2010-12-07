@@ -1,6 +1,8 @@
 # Filters added to this controller apply to all controllers in the application.
 # Likewise, all the methods added will be available for all controllers.
 
+require 'ipaddr'
+
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
 
@@ -31,7 +33,20 @@ class ApplicationController < ActionController::Base
 
   protected
   def set_current_user
-     Authorization.current_user = current_user
+     Authorization.current_user = current_user || Authorization::GuestUser.new(get_ip_based_roles)
+  end
+
+  def get_ip_based_roles
+    return [:guest] unless PBCore.config["auto_login_blocks"]
+
+    client = IPAddr.new(request.remote_ip)
+    PBCore.config["auto_login_blocks"].each do |ip, roles|
+      if IPAddr.new(ip).include?(client)
+        return roles.is_a?(Array) ? roles.map(&:to_sym) : [roles.to_sym]
+      end
+    end
+
+    [:guest]
   end
 
   def check_ip_range
