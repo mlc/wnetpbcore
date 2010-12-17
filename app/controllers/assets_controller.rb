@@ -20,12 +20,18 @@ class AssetsController < ApplicationController
     asset_includes = [:titles, {:identifiers => [:identifier_source]}, {:instantiations => [:format, :format_ids, :annotations, :borrowings]}, :descriptions]
     the_params = params # so it can be seen inside the search DSL.
     streamable = session[:streamable] # ditto
+    @search_fields = params[:search_fields]
+    @show_field_chooser = !!@search_fields
 
     @search_object = Asset.search do
       paginate pageopts
       data_accessor_for(Asset).include = asset_includes
       if the_query
-        fulltext the_query
+        if the_params[:search_fields]
+          fulltext the_query, :fields => the_params[:search_fields].map(&:to_sym)
+        else
+          fulltext the_query
+        end
       else
         order_by :updated_at, :desc
       end

@@ -205,6 +205,15 @@ class Asset < ActiveRecord::Base
     end
   end
 
+  def self.full_text_fields
+    # there must be a DRY way to ask sunspot for this
+    [
+     :identifier, :title, :subject, :description, :genre, :relation, :coverage,
+     :audience_level, :audience_rating, :creator, :contributor, :publisher,
+     :rights, :extension, :location, :annotation, :date, :format
+    ]
+  end
+
   def self.dedupe
     dedupe_field(:titles, :title, :title_type_id, :asset_id)
     dedupe_field(:identifiers, :identifier, :identifier_source_id, :asset_id)

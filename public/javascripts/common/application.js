@@ -83,3 +83,19 @@ $(function() {
     $submit.attr("disabled", $("#asset_history input:checked").length !== 2);
   });
 });
+
+$(function() {
+  $("#chooseFields").click(function() {
+    $(this).closest("tr").remove();
+    $("#fieldChooser").show();
+    return false;
+  });
+
+  $("#all_fields_box").change(function() {
+    $(".search_field_box").attr('checked', false);
+    $(this).attr('checked', true);
+  });
+  $(".search_field_box").change(function() {
+    $("#all_fields_box").attr('checked', $(".search_field_box:checked").length === 0);
+  });
+});

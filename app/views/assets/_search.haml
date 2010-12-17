@@ -3,6 +3,21 @@
     %tr
       %td(width="145" align="right" valign="top")= text_field_tag :q, @query, :class => "left_search_field"
       %td(width="35" align="center")= image_submit_tag("#{PBCore.config[:theme]}/buttons/btnSearch.jpg", :size => "24x22")
+    - unless @show_field_chooser
+      %tr
+        %td
+          %a#chooseFields{ :href => "#"} Choose fields…
+    %tr#fieldChooser{ :style => @show_field_chooser ? nil : "display: none;" }
+      %td
+        = check_box_tag nil, nil, !@search_fields, { :id => 'all_fields_box' }
+        = label_tag 'all_fields_box', 'All'
+        %br
+        - Asset.full_text_fields.each do |field|
+          = check_box_tag('search_fields[]', field, @search_fields && @search_fields.include?(field.to_s), {:id => "search_field_box_#{field.to_s}", :class => "search_field_box"})
+          = label_tag "search_field_box_#{field.to_s}", field.to_s.humanize
+          %br
+    %tr<
+      %td &nbsp;
 - if @assets
   %table{ :cellspacing => "0", :border => "0", :bgcolor => "#FFFFFF", :width => "170", :cellpadding => "0" }
     = render :partial => "assets/facets"
