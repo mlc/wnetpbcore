@@ -31,7 +31,7 @@ class AssetsController < ApplicationController
       end
       dynamic :facets do
         PBCore.config['facets'].map{|facet| facet[0]}.each do |facet_name|
-          facet facet_name, :limit => 15
+          facet facet_name, :limit => 100
           if the_params["facet_#{facet_name}"]
             the_params["facet_#{facet_name}"].reject!{|val| val.empty?}
 

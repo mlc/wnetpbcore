@@ -8,11 +8,17 @@
     - arr = params[param_name] || []
     %tr.secondaryLinks{ :style => arr.empty? ? "display:none;" : nil }
       %td
-        - facet.rows.each do |row|
-          - if arr.include?(row.value)
-            %strong& #{row.value} (#{row.count})
-            = link_to("[X]", params.merge(param_name => arr - [row.value]))
-          - else
-            = link_to(h(row.value), params.merge(param_name => arr + [row.value]), :class => "secondaryLink")
-            (#{row.count})
-          %br
+        - first = true
+        - facet.rows.each_slice(10) do |rowset|
+          .rowset{ :style => first ? nil : "display:none;" }
+            - first = false
+            - rowset.each do |row|
+              - if arr.include?(row.value)
+                %strong& #{row.value} (#{row.count})
+                = link_to("[X]", params.merge(param_name => arr - [row.value]))
+              - else
+                = link_to(h(row.value), params.merge(param_name => arr + [row.value]), :class => "secondaryLink")
+                (#{row.count})
+              %br
+        - if facet.rows.size > 10
+          %a.morelink{ :href => "#", "data-shown" => 1, "data-possible" => (facet.rows.size - 1) / 10 + 1 } More…
