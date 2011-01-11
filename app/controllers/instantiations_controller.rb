@@ -3,6 +3,7 @@ class InstantiationsController < ApplicationController
 
   before_filter :get_asset
   before_filter :enable_flash, :only => :video
+  skip_before_filter :verify_authenticity_token, :only => [:upload_video, :upload_thumbnail]
 
   param_parsers[Mime::XML] = Proc.new do |data|
     {:xml => data}
@@ -50,7 +51,10 @@ class InstantiationsController < ApplicationController
     else
       flash[:warning] = 'No video was uploaded.'
     end
-    redirect_to :action => 'index'
+    respond_to do |format|
+      format.html { redirect_to :action => 'index' }
+      format.json { render :json => {:ok => true} }
+    end
   end
 
   def upload_thumbnail
@@ -59,9 +63,14 @@ class InstantiationsController < ApplicationController
       File.open(tmpfn, "w") do |f|
         f << params[:thumbnail].read
       end
-      flash[:message] = 'Your thumbnail has been uploaded and will now be processed. Please wait a few minutes for it to appear on the site.'
       Delayed::Job.enqueue Importers::ImageImportJob.new(@asset.id, tmpfn)
-      redirect_to :action => 'index'
+      respond_to do |format|
+        format.html do
+          flash[:message] = 'Your thumbnail has been uploaded and will now be processed. Please wait a few minutes for it to appear on the site.'
+          redirect_to :action => 'index'
+        end
+        format.json { render :json => {:ok => true} }
+      end
     else
       flash[:error] = 'You must select a thumbnail image in order to upload a thumbnail.'
       redirect_to :action => 'thumbnail'
