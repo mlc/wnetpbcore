@@ -137,13 +137,13 @@ optparser = OptionParser.new do |opts|
   end
 
   opts.separator('')
-  opts.separator('At least -s, -a, and either -t or -v are required. Unless the site in')
+  opts.separator('At least -s, -a, and one or both of -t or -v are required. Unless the site in')
   opts.separator('questions allows unauthenticated uploads (unlikely), -u and -p are required')
   opts.separator('as well.')
   opts.separator('')
   opts.separator('Example: ');
-  opts.separator('  upload-video -s http://pbcore.vermicel.li/ -v myvideo.mp4 -a \\')
-  opts.separator('  \'b7548fd8-0533-472e-8605-04f86bcae4a2\' -u myuser -p mypass')
+  opts.separator('  upload-video -s http://pbcore.vermicel.li/ -v myvideo.mp4 -t mythumb.jpg \\')
+  opts.separator('  -a \'b7548fd8-0533-472e-8605-04f86bcae4a2\' -u myuser -p mypass')
 
 end
 
