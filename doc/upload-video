@@ -1,0 +1,274 @@
+#!/usr/bin/env ruby
+
+# Try
+# $ sudo gem install curb httparty --no-ri --no-rdoc
+
+begin
+  require 'rubygems'
+
+  require 'curb'
+  require 'httparty'
+  require 'optparse'
+  require 'rexml/document'
+rescue LoadError => e
+  $stderr.puts "ERROR: #{e.to_s}"
+  $stderr.puts
+  $stderr.puts "Sorry, could not load all required rubygems. Please make sure they are\ninstalled and try again."
+  exit 1
+end
+
+class PbcoreDb
+  include HTTParty
+  headers({
+            "Accept" => "application/json;q=1.0,application/xml;q=0.9",
+            "User-Agent" => "upload-video (httparty #{HTTParty::VERSION}, http://github.com/mlc/wnetpbcore)"
+          })
+  no_follow true
+
+  def initialize(opts)
+    self.class.base_uri opts[:site]
+    if opts[:user]
+      self.class.basic_auth(opts[:user], opts[:password])
+    end
+  end
+
+  def asset(asset_id, opts = {})
+    self.class.get("/assets/#{asset_id}.xml", opts)
+  end
+
+  def s3_uploads(query, opts = {})
+    self.class.get('/s3_uploads', opts.merge(:query => query))
+  end
+
+  def upload_video(asset_id, key, opts = {})
+    self.class.put("/assets/#{asset_id}/instantiations/new/upload_video.json", opts.merge(:query => {"uploaded_filename" => key}))
+  end
+end
+
+def which(bin)
+  ENV["PATH"].split(File::PATH_SEPARATOR).each do |dir|
+    trial = File.join(dir, bin)
+    if File.executable?(trial)
+      return trial
+    end
+  end
+  return nil
+end
+
+def verify_exists(fn, mediainfo, type)
+  return unless fn
+
+  unless File.readable?(fn)
+    $stderr.puts "#{fn} does not exist"
+    exit 1
+  end
+
+  if mediainfo
+    errs = []
+
+    xml = `#{mediainfo} --Full --Language=raw --Output=XML '#{fn}'`
+    doc = REXML::Document.new xml
+    docroot = doc.root
+    gentrack = docroot.elements["File"].elements["track"]
+    case type
+    when :video
+      errs.push "video file is not MPEG-4 container" unless gentrack.elements["Format"] && gentrack.elements["Format"].text == 'MPEG-4'
+      errs.push "video file does not contain AVC video" unless gentrack.elements["Video_Format_List"] && gentrack.elements["Video_Format_List"].text == 'AVC'
+      errs.push "video file does not contain AAC audio" unless gentrack.elements["Audio_Format_List"] && gentrack.elements["Audio_Format_List"].text == 'AAC'
+    when :image
+      errs.push "thumbnail file is not an image" unless gentrack.elements["InternetMediaType"] && gentrack.elements["InternetMediaType"].text =~ /^image\//
+    end
+
+    unless errs.empty?
+      $stderr.puts(errs.join("\n"))
+      $stderr.puts
+      $stderr.puts("Re-run with the --force option if you want to proceed anyway.")
+      exit 1
+    end
+  end
+end
+
+options = {}
+optparser = OptionParser.new do |opts|
+  opts.banner = "Usage: upload-video OPTIONS..."
+  opts.separator ""
+  opts.separator "script to upload a video, creating a new instantiation, for the"
+  opts.separator "PBCore database."
+  opts.separator ""
+  opts.separator "Allowed options:"
+
+  opts.on('-a', '--asset ASSET', 'set the UUID of the asset for which you', 'wish to upload a video') do |a|
+    options[:asset] = a
+  end
+
+  opts.on('-v', '--video FILE', 'set the filename of the video to upload') do |f|
+    options[:video] = f
+  end
+
+  opts.on('-t', '--thumbnail FILE', 'set the filename of the thumbnail to upload') do |f|
+    options[:thumbnail] = f
+  end
+
+  opts.on('-p', '--pass PASS', 'set the password to log in with') do |p|
+    options[:password] = p
+  end
+
+  opts.on('-s', '--site SITE', 'set the base URL of your PBCore repository') do |s|
+    options[:site] = s
+  end
+
+  opts.on('-u', '--user USER', 'set the username to log in with') do |u|
+    options[:user] = u
+  end
+
+  opts.on('-q', '--quiet', 'don\'t show progress while uploading video') do
+    options[:quiet] = true
+  end
+
+  opts.on('--force', 'check only that the files exist, not that', 'they are valid') do
+    options[:force] = true
+  end
+
+  opts.separator('')
+  opts.separator('Common options:')
+  opts.on('-h', '--help', 'Show this help') do
+    puts opts
+    exit
+  end
+
+  opts.separator('')
+  opts.separator('At least -s, -a, and either -t or -v are required. Unless the site in')
+  opts.separator('questions allows unauthenticated uploads (unlikely), -u and -p are required')
+  opts.separator('as well.')
+  opts.separator('')
+  opts.separator('Example: ');
+  opts.separator('  upload-video -s http://pbcore.vermicel.li/ -v myvideo.mp4 -a \\')
+  opts.separator('  \'b7548fd8-0533-472e-8605-04f86bcae4a2\' -u myuser -p mypass')
+
+end
+
+begin
+  optparser.parse!(ARGV)
+rescue OptionParser::ParseError => ex
+  $stderr.puts ex.message
+  $stderr.puts
+  $stderr.puts "Run \"#{$0} --help\" for help"
+  exit 1
+end
+
+unless (options[:site] && options[:asset] && (options[:video] || options[:thumbnail]))
+  $stderr.puts "Site, asset UUID, and either video or thumbnail are all required."
+  $stderr.puts
+  $stderr.puts "Run \"#{$0} --help\" for help"
+  exit 1
+end
+
+if ARGV.size > 0
+  $stderr.puts "Unexpected non-option arguments found."
+  $stderr.puts
+  $stderr.puts "Run \"#{$0} --help\" for help"
+  exit 1
+end
+
+if options[:force]
+  mediainfo = nil
+else
+  mediainfo = which('mediainfo')
+
+  unless mediainfo
+    $stderr.puts "Warning: you don't have mediainfo installed, or it is not in your PATH."
+    $stderr.puts "Proceeding without it."
+  end
+end
+
+verify_exists(options[:video], mediainfo, :video)
+verify_exists(options[:thumbnail], mediainfo, :image)
+
+client = PbcoreDb.new(options)
+
+# check asset exists
+asset = client.asset(options[:asset])
+if asset.response.code.to_s != '200'
+  $stderr.puts "couldn't get asset (HTTP resoponse #{asset.response.msg})"
+  $stderr.puts "make sure the asset exists and that you have provided the username and password\nif needed"
+  exit 1
+end
+
+if options[:video]
+  filename = File.basename(options[:video])
+  key = "#{options[:asset]}/#{filename}"
+  size = File.size(options[:video])
+  if size >= (5 * (1024**3)) # 5 Gbyte
+    $stderr.puts "Sorry, currently only files of up to 5 Gbyte can be uploaded."
+    $stderr.puts "If this is a problem, contact mlc."
+  end
+  s3_info_resp = client.s3_uploads(:key => key, :content_type => "video/mp4", :file_size => size)
+  unless s3_info_resp.response.code.to_s == '200'
+    $stderr.puts "/s3_uploads failed. Perhaps you do not have permission to upload videos?"
+    exit 1
+  end
+  s3_info = s3_info_resp["hash"]
+
+  # we can't use httparty for the AWS upload because net/http would
+  # read the whole file into RAM. yay.
+  curb = Curl::Easy.new do |easy|
+    easy.url = "http#{s3_info["https"] == "true" ? 's' : ''}://#{s3_info["bucket"]}.s3.amazonaws.com"
+    easy.multipart_form_post = true
+    easy.on_progress do |dl_total, dl_now, ul_total, ul_now|
+      unless options[:quiet]
+        $stdout << "video upload: #{ul_now}/#{ul_total} (#{"%.01f" % (100 * ul_now.to_f / ul_total.to_f)}%)\r"
+        $stdout.flush
+      end
+    end
+  end
+  curb.http_post(
+                 Curl::PostField.content('AWSAccessKeyId', s3_info["accesskeyid"]),
+                 Curl::PostField.content('Content-Type', 'video/mp4'),
+                 Curl::PostField.content('key', key),
+                 Curl::PostField.content('acl', s3_info['acl']),
+                 Curl::PostField.content('signature', s3_info['signature']),
+                 Curl::PostField.content('policy', s3_info['policy']),
+                 Curl::PostField.content('success_action_status', '201'),
+                 Curl::PostField.content('Filename', File.basename(options[:video])),
+                 Curl::PostField.file('file', options[:video], key)
+                 )
+  $stdout.puts unless options[:quiet]
+  if curb.response_code.to_s != '201'
+    $stderr.puts "couldn't upload file to S3!"
+    exit 1
+  end
+
+  uvr = client.upload_video(options[:asset], key)
+  unless uvr.response.code.to_s == '200' && uvr['ok']
+    $stderr.puts "notificiation of uploaded vieo failed."
+    exit 1
+  end
+
+  $stdout.puts "Video uploaded successfully!" unless options[:quiet]
+end
+
+if options[:thumbnail]
+  curb = Curl::Easy.new do |easy|
+    easy.url = "#{options[:site]}assets/#{options[:asset]}/instantiations/new/upload_thumbnail.json"
+    easy.userpwd = "#{options[:user]}:#{options[:password]}"
+    easy.http_auth_types = Curl::CURLAUTH_BASIC
+    easy.multipart_form_post = true
+    easy.on_progress do |dl_total, dl_now, ul_total, ul_now|
+      unless options[:quiet]
+        $stdout << "thumbnail upload: #{ul_now}/#{ul_total} (#{"%.01f" % (100 * ul_now.to_f / ul_total.to_f)}%)\r"
+        $stdout.flush
+      end
+    end
+  end
+  curb.http_post(
+                 Curl::PostField.content('_method', 'put'),
+                 Curl::PostField.file('thumbnail', options[:thumbnail], File.basename(options[:thumbnail]))
+                 )
+  $stdout.puts unless options[:quiet]
+
+  if curb.response_code.to_s != '200'
+    $stderr.puts "Couldn't upload thumbnail"
+    exit 1
+  end
+  $stdout.puts "Thumbnail uploaded successfully!" unless options[:quiet]
+end
