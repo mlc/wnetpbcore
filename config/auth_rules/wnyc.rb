@@ -44,6 +44,7 @@ authorization do
     end
     has_permission_on :assets, :to => :multilend
     has_permission_on :assets, :to => :destroy_found_set
+    has_permission_on :assets, :to => :replace
     has_permission_on :ip_blocks, :to => :crud
     has_permission_on :value_lists, :to => :crud
     has_permission_on :reports, :to => :index
@@ -58,4 +59,5 @@ privileges do
   privilege :crud, :includes => [:create, :read, :update, :destroy]
   privilege :merge, :includes => :multiprocess
   privilege :video, :includes => [:upload_video, :thumbnail, :upload_thumbnail]
+  privilege :replace, :includes => :do_replace
 end

@@ -5,3 +5,8 @@
   - @controllers.each do |controller|
     - if permitted_to?(:index, controller.to_sym)
       %li= link_to controller.gsub('_', ' ').titlecase, :controller => controller, :action => 'index'
+
+- if permitted_to?(:replace, :assets)
+  %p Find &amp; replace
+  %ul
+    %li= link_to "Find and replace text within the database", replace_assets_path
