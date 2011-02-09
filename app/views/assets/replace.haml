@@ -1,0 +1,19 @@
+- title "Find and Replace"
+%p
+  This is an <strong>experimental</strong> feature which will allow you
+  to find and replace strings across the entire collection of records.
+%p
+  Note that only records <strong>exactly</strong> the <code>from</code>
+  value will be modified. Please be careful! There is no "undo" button!
+
+- form_for(@slow_replace_options, :url => do_replace_assets_path) do |f|
+  %p
+    = f.label :field
+    = f.select :field, [nil] + SlowReplacer.allowed_fields
+  %p
+    = f.label :from
+    = f.text_field :from
+  %p
+    = f.label :to
+    = f.text_field :to
+  %p= f.submit("Submit", :confirm => "Are you sure you want to perform this find and replace on the database?")

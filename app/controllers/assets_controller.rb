@@ -330,6 +330,23 @@ class AssetsController < ApplicationController
     f1.unlink
   end
 
+  def replace
+    @slow_replace_options = SlowReplaceOptions.new
+  end
+
+  def do_replace
+    @slow_replace_options = SlowReplaceOptions.new(params[:slow_replace_options])
+    if @slow_replace_options.valid?
+      @slow_replace_options.user = current_user
+      Delayed::Job.enqueue @slow_replace_options.to_slow_replacer
+      flash[:message] = "Your find and replace operation has been queued. It may take some time to complete, depending on how many records match."
+      redirect_to :action => "index"
+    else
+      flash.now[:error] = "Please complete all the form fields."
+      render :action => "replace"
+    end
+  end
+
   protected
   def fetch_asset
     if params[:id] =~ /^[\d]+$/
