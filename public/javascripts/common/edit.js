@@ -350,7 +350,7 @@ var FormEditor = (function($, undefined) {
         "class": "picklistbox " + field,
         "name": field,
         "value": stringify_with_authority(obj),
-        "size": 25
+        "size": 50
       });
       box.autocomplete(autocompleteopts(field));
       ret.append(box).append(' ').append(mkremove(ret));
@@ -476,7 +476,7 @@ var FormEditor = (function($, undefined) {
         attrs.css = { width: "560px" };
         attrs.rows = 3;
       } else {
-        attrs.size = 25;
+        attrs.size = (name === "Identifier" ? 40 : 25);
         attrs.type = 'text';
       }
       p.append($(textarea ? "<textarea/>" : "<input/>", attrs));
