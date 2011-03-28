@@ -31,7 +31,7 @@ var FormEditor = (function($, undefined) {
   Style.TEXTAREA = new Style('textarea');
   Style.VERBOSE = new Style('verbose');
   Style.SIMPLE = new Style('simple');
-  Style.ONLY_TEXTAREA = new Style("only texarea");
+  Style.ONLY_TEXTAREA = new Style("only textarea");
   Style.TWO_PLAIN = new Style("two plain");
   Style.SELECT = new Style("two plain");
 
@@ -236,7 +236,8 @@ var FormEditor = (function($, undefined) {
         }
       }
       remove = mkremove(ret);
-      if (style == Style.VERBOSE || Style.SELECT) {
+      if (style === Style.VERBOSE || style === Style.SELECT) {
+        console.log(field, picklistfield, style, locked, arguments);
         boxlabel = $("<label>", {
           "text": picklistfield.capitalize().addspaces() + ":",
           "for": "combobox_" + field_counter
