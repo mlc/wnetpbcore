@@ -237,7 +237,6 @@ var FormEditor = (function($, undefined) {
       }
       remove = mkremove(ret);
       if (style === Style.VERBOSE || style === Style.SELECT) {
-        console.log(field, picklistfield, style, locked, arguments);
         boxlabel = $("<label>", {
           "text": picklistfield.capitalize().addspaces() + ":",
           "for": "combobox_" + field_counter
