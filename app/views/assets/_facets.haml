@@ -15,9 +15,9 @@
             - rowset.each do |row|
               - if arr.include?(row.value)
                 %strong& #{row.value} (#{row.count})
-                = link_to("[X]", params.merge(param_name => arr - [row.value]))
+                = link_to("[X]", params.merge(param_name => arr - [row.value]), :rel => "nofollow")
               - else
-                = link_to(h(row.value), params.merge(param_name => arr + [row.value]), :class => "secondaryLink")
+                = link_to(h(row.value), params.merge(param_name => arr + [row.value]), :class => "secondaryLink", :rel => "nofollow")
                 (#{row.count})
               %br
         - if facet.rows.size > 10

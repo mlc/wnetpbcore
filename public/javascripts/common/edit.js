@@ -31,8 +31,9 @@ var FormEditor = (function($, undefined) {
   Style.TEXTAREA = new Style('textarea');
   Style.VERBOSE = new Style('verbose');
   Style.SIMPLE = new Style('simple');
-  Style.ONLY_TEXTAREA = new Style("only texarea");
+  Style.ONLY_TEXTAREA = new Style("only textarea");
   Style.TWO_PLAIN = new Style("two plain");
+  Style.SELECT = new Style("two plain");
 
   var safe_log = function(obj, level) {
     if (typeof console === 'object') {
@@ -211,6 +212,17 @@ var FormEditor = (function($, undefined) {
             "size": 30,
             "type": "text"
           });
+        } else if (style === Style.SELECT) {
+          box = $("<select>", {
+            "id": "select_" + (++field_counter),
+            "class": "picklistbox " + picklistfield,
+            "name": picklistfield
+          });
+          var opts = picklists[picklistfield.capitalize()];
+          for (var i = 0, len = opts.length; i < len; ++i) {
+            box.append($("<option>", { value: opts[i], text: opts[i] }));
+          }
+          box.val($(obj).find(picklistfield).text());
         } else {
           box = $("<input>", {
             "id": "combobox_" + (++field_counter),
@@ -224,7 +236,7 @@ var FormEditor = (function($, undefined) {
         }
       }
       remove = mkremove(ret);
-      if (style == Style.VERBOSE) {
+      if (style === Style.VERBOSE || style === Style.SELECT) {
         boxlabel = $("<label>", {
           "text": picklistfield.capitalize().addspaces() + ":",
           "for": "combobox_" + field_counter
@@ -244,6 +256,7 @@ var FormEditor = (function($, undefined) {
         ret.append(label).append(' ').append(box).append(' ').append(remove).append(' ').append(formfield);
         break;
       case Style.VERBOSE:
+      case Style.SELECT:
         ret.append(boxlabel).append(' ').append(box).append(' ').append(label).append(' ').append(formfield).append(' ').append(remove);
         break;
       case Style.SIMPLE:
@@ -260,7 +273,7 @@ var FormEditor = (function($, undefined) {
         safe_log(style, "warn");
       }
 
-      if (box && style !== Style.TWO_PLAIN)
+      if (box && style !== Style.TWO_PLAIN && style !== Style.SELECT)
         makecombo(box);
 
       /* deal with value lists */
@@ -350,7 +363,7 @@ var FormEditor = (function($, undefined) {
         "class": "picklistbox " + field,
         "name": field,
         "value": stringify_with_authority(obj),
-        "size": 25
+        "size": 50
       });
       box.autocomplete(autocompleteopts(field));
       ret.append(box).append(' ').append(mkremove(ret));
@@ -476,7 +489,7 @@ var FormEditor = (function($, undefined) {
         attrs.css = { width: "560px" };
         attrs.rows = 3;
       } else {
-        attrs.size = 25;
+        attrs.size = (name === "Identifier" ? 40 : 25);
         attrs.type = 'text';
       }
       p.append($(textarea ? "<textarea/>" : "<input/>", attrs));
@@ -654,7 +667,7 @@ var FormEditor = (function($, undefined) {
       mkfields("descriptions", "pbcoreDescription", pbcore_maker("description", "descriptionType", Style.TEXTAREA));
       mkfields("genres", "pbcoreGenre", subject_maker("genre"));
       mkfields("relations", "pbcoreRelation", pbcore_maker("relationIdentifier", "relationType", Style.VERBOSE));
-      mkfields("coverages", "pbcoreCoverage", pbcore_maker("coverage", "coverageType", Style.VERBOSE, true));
+      mkfields("coverages", "pbcoreCoverage", pbcore_maker("coverage", "coverageType", Style.SELECT, true));
       mkboxes("audience_levels", 'pbcoreAudienceLevel', 'audienceLevel');
       mkboxes("audience_ratings", 'pbcoreAudienceRating', 'audienceRating');
       mkfields("creators", "pbcoreCreator", pbcore_maker("creator", "creatorRole", Style.VERBOSE));
@@ -751,7 +764,7 @@ var FormEditor = (function($, undefined) {
           break;
 
         default:
-          $("input, textarea", $this).each(function() {
+          $("input, select, textarea", $this).each(function() {
             var subelt = mkelt(this.name);
             elt.appendChild(subelt);
             subelt.appendChild(doc.createTextNode(this.value));
