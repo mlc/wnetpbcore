@@ -2,12 +2,22 @@
 
 ActiveRecord::Schema.define(:version => 20100922190155) do
 
+# updated annotations to move to asset level. New additiona instationation annotation also needed.
+
   create_table "annotations", :force => true do |t|
-    t.integer "instantiation_id"
+    t.integer "asset_id"
     t.text    "annotation",       :limit => 16777215
   end
 
   add_index "annotations", ["instantiation_id"], :name => "index_annotation_on_instantiation_id"
+  
+  # added new table for annotations_types
+ 
+  create_table "annotations_types", :id => false, :force => true do |t|
+  	t.string  "name"
+  	t.text    "ref"
+    t.boolean "visible", :default => false, :null => false
+  end
 
   create_table "assets", :force => true do |t|
     t.datetime "created_at"
@@ -23,6 +33,13 @@ ActiveRecord::Schema.define(:version => 20100922190155) do
     t.integer "asset_id"
     t.integer "audience_level_id"
   end
+  
+  create_table "assets_asset_types", :id => false, :force => true do |t| 
+  	t.integer  "asset_id", 		:null => false
+  	t.integer  "asset_type_id" 	:null => false
+  end
+  
+  # added new table for assets_asset_types
 
   add_index "assets_audience_levels", ["asset_id"], :name => "index_assets_audience_levels_on_asset_id"
 
@@ -33,19 +50,71 @@ ActiveRecord::Schema.define(:version => 20100922190155) do
 
   add_index "assets_audience_ratings", ["asset_id"], :name => "index_assets_audience_ratings_on_asset_id"
 
+# added attributes to assets_genres table
+
   create_table "assets_genres", :id => false, :force => true do |t|
     t.integer "asset_id", :null => false
     t.integer "genre_id", :null => false
+    t.string  "start_time"
+    t.string  "end_time"
+    t.text    "time_annotation", :limit => 16777215,
   end
 
   add_index "assets_genres", ["asset_id"], :name => "index_assets_genres_on_asset_id"
 
+# added attributes to asset_subjects table 
+
   create_table "assets_subjects", :id => false, :force => true do |t|
     t.integer "asset_id",   :null => false
     t.integer "subject_id", :null => false
+    t.string  "start_time"
+    t.string  "end_time"
+    t.text    "time_annotation", :limit => 16777215
   end
 
   add_index "assets_subjects", ["asset_id"], :name => "index_assets_subjects_on_asset_id"
+ 
+ # created new table for asset_dates
+ 
+ create_table "asset_dates", :id => false, :force => true do |t|
+ 	t.integer  "asset_id"
+ 	t.string   "asset_date"
+ 	t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "creator_id"
+    t.integer  "updater_id"
+    t.boolean  "visible", :default => false, :null => false
+ end
+ 
+ # created new table for asset_date_types
+ 
+  create_table "asset_date_types", :id => false, :force => true do |t|
+  	t.string  "name"
+    t.boolean "visible", :default => false, :null => false
+  end
+  
+  # created add_index for asset_date_types 
+  
+  add_index "asset_date_types", ["name"], :name => "index_asset_date_types_on_name"	
+ 
+  # added table for asset_types
+ 
+  create_table "asset_types", :force => true do |t|
+  	t.string   "name",		:null => false
+  	t.text	   "source"
+  	t.text     "ref"
+  	t.text     "version"
+  	t.text     "annotation", :limit => 16777215
+  	t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "creator_id"
+    t.integer  "updater_id"
+    t.boolean  "visible", :default => false, :null => false
+  end
+  
+  # added the add_index for asset_types, hope this is right
+  
+   add_index "asset_types", ["asset_id"], :name => "index_asset_types_on_asset_id"
 
   create_table "audience_levels", :force => true do |t|
     t.string  "name",                       :null => false
@@ -138,8 +207,14 @@ ActiveRecord::Schema.define(:version => 20100922190155) do
     t.datetime "updated_at"
   end
 
+# added sooooo many attributes to description_types and description tables
+
   create_table "description_types", :force => true do |t|
     t.string  "name"
+    t.text    "source"
+    t.text    "ref"
+    t.text    "version"
+    t.text    "description_type_annotation"
     t.boolean "visible", :default => false, :null => false
   end
 
@@ -149,6 +224,15 @@ ActiveRecord::Schema.define(:version => 20100922190155) do
     t.integer  "asset_id"
     t.text     "description",         :limit => 16777215, :null => false
     t.integer  "description_type_id"
+    t.text     "segment_type"
+    t.text     "segment_type_source"
+    t.text     "segment_type_ref"
+    t.text     "segment_type_version"
+    t.text     "segment_type_annotation"
+    t.string   "start_time"
+    t.string   "end_time"
+    t.text     "time_annotation"
+    t.text     "annotation"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "creator_id"
@@ -255,9 +339,13 @@ ActiveRecord::Schema.define(:version => 20100922190155) do
 
   add_index "formats", ["type", "name"], :name => "index_formats_on_type_and_name"
 
+# added ref and version attributes
+
   create_table "genres", :force => true do |t|
     t.text     "name",                                    :null => false
-    t.text     "genre_authority_used"
+    t.text     "source"  				# used to be genre_authority_used
+    t.text	   "ref"
+    t.text	   "version"
     t.boolean  "visible",              :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -346,15 +434,27 @@ ActiveRecord::Schema.define(:version => 20100922190155) do
 
   add_index "publishers", ["asset_id"], :name => "index_publishers_on_asset_id"
 
+# added attributes to relation_types
+
   create_table "relation_types", :force => true do |t|
     t.text    "name",    :limit => 16777215,                    :null => false
+    t.text    "source"             
+    t.text    "ref"
+    t.text    "version"
+    t.text    "annotation",        :limit => 16777215 
     t.boolean "visible",                     :default => false, :null => false
   end
+
+# added attributes to relations
 
   create_table "relations", :force => true do |t|
     t.integer  "asset_id"
     t.integer  "relation_type_id"
     t.string   "relation_identifier"
+    t.text    "source"             
+    t.text    "ref"
+    t.text    "version"
+    t.text    "annotation",        :limit => 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "creator_id"
@@ -375,15 +475,22 @@ ActiveRecord::Schema.define(:version => 20100922190155) do
 
   add_index "rights_summaries", ["asset_id"], :name => "index_rights_summaries_on_asset_id"
 
+# added attributes to subjects table
+
   create_table "subjects", :force => true do |t|
     t.text     "subject",                              :null => false
-    t.text     "subject_authority"
+    t.text     "source"              # used to be subject_authority
+    t.text     "ref"
+    t.text     "version"
+    t.text     "annotation",        :limit => 16777215 
     t.boolean  "visible",           :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "creator_id"
     t.integer  "updater_id"
   end
+
+# title categories appear to have been abandoned.  left as is for now.
 
   create_table "title_type_categories", :force => true do |t|
     t.string "name", :null => false
