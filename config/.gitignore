@@ -2,6 +2,5 @@ application.json
 amazon_s3.yml
 authorization_rules.rb
 database.yml
-deploy/*.rb
 *.sphinx.conf
 site_key.txt
