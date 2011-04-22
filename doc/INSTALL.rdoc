@@ -171,7 +171,7 @@ necessary:
 
 Now, ask the search server to index the data (even if there is no data
 yet, it will create an empty index). Then, start everything up:
- cap my_site cap my_site deploy:start
+ cap my_site deploy:start
 
 Things can be a bit hairy on the first deployment, so you might have
 to manually start one or more services:
