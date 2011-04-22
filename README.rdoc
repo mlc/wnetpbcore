@@ -46,5 +46,22 @@ Public Broadcasting.
 
 Refer to the server set-up, but don't actually set up a server.
 
+Some points:
+
+* Copy a config from config/auth_rules to config/authorization_rules.rb (site-specific)
+
+* You need to create config/application.json (see .example file)
+
+* Sunspot gem versions > 1.1 do not seem to work with Rails 2.1, so
+
+	sudo gem install sunspot_rails --version=1.1.0
+	
+* Sunspot needs to be indexed and running:
+
+ 	$ rake sunspot:solr:start
+	$ rake sunspot:solr:reindex
+
+
 == SERVER SET-UP
+
 See doc/INSTALL.rdoc

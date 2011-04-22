@@ -32,7 +32,7 @@ Rails::Initializer.run do |config|
   config.gem 'whenever', :lib => false, :source => 'http://gemcutter.org'
   config.gem 'rsolr', :version => '0.9.6' # NEWER VERSIONS ARE BUGGY!
   config.gem 'sunspot', :lib => 'sunspot', :source  => 'http://gemcutter.org'
-  config.gem 'sunspot_rails', :lib => 'sunspot_rails', :source  => 'http://gemcutter.org'
+  config.gem 'sunspot_rails', :lib => 'sunspot/rails', :source  => 'http://gemcutter.org'
   config.gem 'grit', :source => 'http://gemcutter.org/'
   config.gem 'aws-s3', :lib => 'aws/s3', :source => 'http://gemcutter.org/'
   config.gem 'delayed_job', :lib => 'delayed_job', :source => 'http://gemcutter.org/'
