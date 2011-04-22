@@ -2,12 +2,21 @@
 
 ActiveRecord::Schema.define(:version => 20100922190155) do
 
-  create_table "annotations", :force => true do |t|
+  create_table "instantiation_annotations", :force => true do |t|
     t.integer "instantiation_id"
-    t.text "annotation", :limit => 16777215
+    t.integer "instantiation_annotation_type_id"
+    t.text "instantiation_annotation", :limit => 16777215
   end
 
-  add_index "annotations", ["instantiation_id"], :name => "index_annotation_on_instantiation_id"
+  add_index "instantiation_annotations", ["instantiation_id"], :name => "index_instantiation_annotation_on_instantiation_id"
+
+  create_table "instantiation_annotations_types", :force => true do |t|
+    t.string "name"
+    t.text "ref"
+    t.boolean "visible", :default => false, :null => false
+  end
+
+  add_index "instantiation_annotation_types", ["name"], :name => "index_instantiation_annotation_types_on_name"
 
   create_table "assets", :force => true do |t|
     t.datetime "created_at"
