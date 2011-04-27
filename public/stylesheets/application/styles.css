@@ -25,15 +25,15 @@ h1 {
 	text-transform: none;
 	font-family: 'Switzera ADF Cd', 'Arial Narrow', Arial, Helvetica, sans-serif;
 	font-size: 15px;
-	line-height: .5px;
 }
 
 h1.inside {
 	color: #999;
 	line-height: 18px;
-	margin-bottom: 10px;
+    margin-bottom: 10px;
 	font-size: 16px;
 	font-weight: bold;
+	
 }
 
 h2 {
@@ -45,7 +45,7 @@ h2 {
 	padding:20px 0 10px 10px;
 	background-color:#666;
 	text-shadow: 0px 1px 0px #000;
-	filter: dropshadow(color=#000, offx=0, offy=1);
+/*	filter: dropshadow(color=#000, offx=0, offy=1);*/
 	-webkit-box-shadow: 0px 1px 2px #333;
 	-moz-box-shadow: 0px 1px 2px #333;
 	box-shadow: 0px 1px 2px #333;
@@ -62,7 +62,7 @@ h3 {
 	margin:10px 10px 0 0;
 	background-color:#eee;
 	text-shadow: 0px 1px 0px #fff;
-	filter: dropshadow(color=#fff, offx=0, offy=1);
+/*	filter: dropshadow(color=#fff, offx=0, offy=1);*/
 	-moz-border-radius-topleft: 10px;
 	-moz-border-radius-topright: 10px;
 	-moz-border-radius-bottomright: 0px;
@@ -70,7 +70,8 @@ h3 {
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 	border-bottom-right-radius: 0px;
-	border-bottom-left-radius: 0px;	
+	border-bottom-left-radius: 0px;
+
 }
 
 .title2 {
@@ -144,29 +145,34 @@ a.secondaryLink:hover {
 }
 
 /* second-level nav */
-.secondnav {
+/*.secondnav {
     margin: 0px;
     padding: 6px 0px 0px;
 }
 
 .secondnav li {
-    display: inline; padding: 0px 4px; margin: 0px 2px;
+    display: inline-block; padding:5px 4px 0px 4px; margin: 0px 2px;
     font-size: 12px;
     text-transform: uppercase;
     color: #999999;
     font-weight: bold;
     vertical-align: middle;
+
 }
 
 .secondnav li a {
 	color: #d2849c;
-	text-decoration: none;	
+	text-decoration: none;
 }
 
 .secondnav li a:hover {
 	color: #a2c0c0;
 	text-decoration: none;	
 }
+
+td.secondnav{
+	padding-top:5px;
+}*/
 
 /* login user*/
 .topnavuserBar {
@@ -180,13 +186,15 @@ a.secondaryLink:hover {
 }
 
 .topnavuserBar a {
-	letter-spacing: 1px;
 	text-decoration: none;	
 }
 
 .topnavuserBar a:hover {
 	text-decoration: none;	
 }
+
+
+
 
 /* sidebar*/
 
@@ -261,6 +269,55 @@ a.contentTopLinks {
 a.contentTopLinks:hover {
 	text-decoration: none;	
 }
+
+
+
+.contentTopLinksArea ul{
+padding:0 10px;
+margin:0;
+display:block;
+}
+
+.contentTopLinksArea ul li{
+padding:5px;
+margin:0;
+display:block;
+float:left;
+height:12px;
+line-height:12px;
+font-size:12px;
+}
+
+.contentTopLinksArea ul li a{
+padding:0;
+margin:0;
+line-height:12px;
+font-size:12px;
+}
+
+.contentTopLinksArea .iconLinks{
+padding:0;
+margin:0;
+display:block;
+float:left;
+height:22px;
+
+}
+.contentTopLinksArea h1{
+	padding:0 5px;
+	margin:0;
+	display:block;
+	float:left;
+	height:22px;
+	line-height:22px;
+	font-size:14px;
+	font-weight:bold;
+
+}
+
+
+
+
 
 
 .contentLink {
@@ -384,7 +441,7 @@ a.index_thumbnail img {
 
 .form_field_container {
     clear: both;
-    margin: 0 0 10px 5px;
+    margin:0 0 10px 5px;
 	padding:0px;
 }
 
@@ -409,6 +466,7 @@ input.pbcorefield.ui-autocomplete-input { width: 211px; }
 
 .removable-language { margin-right: 1em; white-space: nowrap; }
 .removable-language .ui-button { margin-left: 1px; }
+
 
 #identifiers, #titles, #subjects, #descriptions, #genres, #relations, #publishers{
 	padding:5px;
@@ -451,7 +509,7 @@ a.adder{
 	text-align:center;
 	font-weight:bold;
 	text-shadow: 0px 1px 0px #fff;
-	filter: dropshadow(color=#fff, offx=0, offy=1);
+/*	filter: dropshadow(color=#fff, offx=0, offy=1);*/
 	
 }
 
@@ -469,7 +527,8 @@ a.adder:hover{
 	display:block;
 	width:615px;
 	position:relative;
-	
+	overflow:hidden;
+	/*height:20px;*/
 }
 
 
@@ -482,9 +541,9 @@ a.adder:hover{
 	display:inline-block;
 	position:relative;
 	text-shadow: 0px 1px 0px #fff;
-	filter: dropshadow(color=#fff, offx=0, offy=1);
+	/*filter: dropshadow(color=#fff, offx=0, offy=1);*/
 	vertical-align:middle;
-	
+	overflow:hidden;		
 }
 
 .form_field_container input{
@@ -501,7 +560,7 @@ a.adder:hover{
 	border-spacing: 0;
 	vertical-align:middle;
 	margin-left:5px;
-
+	overflow:hidden;
 }
 
 .pbcorefield.title, .pbcorefield.description, .pbcorefield.identifier, .picklistbox.identifierSource {
@@ -520,7 +579,7 @@ a.adder:hover{
 	vertical-align:middle;
 }
 
-a.remove{
+/* a.remove{
 	font-family: Verdana,Arial,sans-serif;
 	font-weight:bold;
 	color:#f00;
@@ -547,4 +606,31 @@ a.remove{
 a.remove:hover{
 	border:1px #999 solid;
 	color:#999;
+}
+
+*/
+
+a.remove{
+	padding:0;
+	width:20px;
+	height:20px;
+	display:inline-block;
+	overflow:hidden;
+	vertical-align:middle;
+	text-indent:-999px;
+	background:transparent url(/images/delete.gif) 0 0 no-repeat;
+}
+
+a.remove:hover{
+	background:transparent url(/images/delete.gif) 0 -20px no-repeat;
+}
+
+
+a#chooseFields{
+	padding:5px 0 0 0;
+	display:block;
+}
+
+#relations input.pbcorefield{
+	width:220px;
 }

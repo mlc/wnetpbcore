@@ -163,6 +163,7 @@ var FormEditor = (function($, undefined) {
     return $("<a>", {
       "href": "#",
       "text": "remove",
+	  "class": "remove",
       "click": function() {
         div.remove();
         return false;

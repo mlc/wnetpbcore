@@ -4,7 +4,7 @@
   %head
     -# yes, that is a literal double-pipe, not a computed boolean OR
     %title& #{application_title} || #{yield(:title)}
-    = stylesheet_bundle 'application'
+    = stylesheet_bundle 'reset', 'application'
     = stylesheet_bundle PBCore.config[:theme]
     = google_javascript_libraries(@page_has_flash)
     = javascript_bundle 'common'
@@ -14,10 +14,10 @@
     = alternate_views
     = yield :head
   %body
-    %table.holder{ :cellspacing => "0", :border => "0", :width => "100%", :cellpadding => "0" }
+    %table.holder
       %tr
         %td{ :align => "center" }
-          %table#header.header{ :cellspacing => "3", :border => "0", :width => "100%", :cellpadding => "3" }
+          %table#header.header
             %tr
               %td &nbsp;
           %table#body{ :cellspacing => "0", :border => "0", :cellpadding => "0" }
@@ -33,16 +33,14 @@
               %td.sidebarTop{ :align => "left" }
                 %h1 Search / Browse
               %td.contentTop
-                %table.contentTopLinksArea{ :cellspacing => "0", :border => "0", :width => "93%", :cellpadding => "0" }
-                  %tr
-                    %td{ :nowrap => "nowrap", :align => "left", :valign => "top" }
-                      - if @have_second_nav
-                        = render(:partial => "layouts/second_nav")
-                      - else
-                        %h1&= yield(:title)
-                    %td{ :align => "right", :valign => "middle" }
-                      = link_to("All Assets", set_streamable_path("off"), :id => "all_asset_link", :class => session[:streamable] ? nil : "selected_option")
-                      = link_to("Streamable Assets", set_streamable_path("on"), :id => "streamable_asset_link", :class => session[:streamable] ? "selected_option" : nil)
+                %div.contentTopLinksArea
+                  - if @have_second_nav
+                    = render(:partial => "layouts/second_nav")
+                  - else
+                    %h1&= yield(:title)
+                  %div.iconLinks
+                    = link_to("All Assets", set_streamable_path("off"), :id => "all_asset_link", :class => session[:streamable] ? nil : "selected_option")
+                    = link_to("Streamable Assets", set_streamable_path("on"), :id => "streamable_asset_link", :class => session[:streamable] ? "selected_option" : nil)
             %tr
               %td.sidebarMiddle
                 - if permitted_to? :index, :assets
