@@ -4,10 +4,10 @@
   %head
     -# yes, that is a literal double-pipe, not a computed boolean OR
     %title& #{application_title} || #{yield(:title)}
-    = stylesheet_bundle 'reset', 'application'
+    = stylesheet_bundle 'application'
     = stylesheet_bundle PBCore.config[:theme]
     = google_javascript_libraries(@page_has_flash)
-    = javascript_include_tag 'common/001_jrails.js', 'common/application.js', 'common/core_exts.js', 'common/edit.js', 'common/facets.js',	 'common/ip_blocks.js', 'common/iso6391.js', 'common/jquery.blockUI.js', 'common/jquery.caret.js', 'common/jquery.ipaddress.js',	 'common/jquery.template.js', 'common/langdialog.js', 'common/supersleight.plugin.js', 'common/value_lists.js', 'common/xml.js', 'common/modernizr-1.7.min.js'
+    = javascript_bundle 'common'
     - if @page_has_flash
       = javascript_bundle 'flash'
     = opensearch_headers(@search_object)
