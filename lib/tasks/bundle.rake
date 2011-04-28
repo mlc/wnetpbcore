@@ -23,7 +23,7 @@ namespace :bundle do
       target = RAILS_ROOT + "/public/javascripts/bundle_#{bundle_name}.js"
 
       if compression_method == "closure"
-        `java -jar #{closure_path} --js #{files.join(" --js ")} --js_output_file #{target} 2> /dev/null`
+        `java -jar #{closure_path} --js #{files.join(" --js ")} --js_output_file #{target}`
       else
         File.open(target, 'w+') do |f|
           f.puts JSMinimizer.minimize_files(*files)
