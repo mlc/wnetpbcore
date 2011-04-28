@@ -44,6 +44,24 @@ var FormEditor = (function($, undefined) {
     }
   };
 
+  var show_spinner = function(message){
+	$.blockUI({
+		theme: true,
+		title: (message||'Please Wait'),
+		message: '<img src="/images/spinner.gif" style="float:left;padding:0 10px 0 2px" /> Loading',
+		showOverlay: true,
+		overlayCSS:{
+			opacity: 0.3
+		},
+		'-webkit-border-radius': '10px',
+		'-moz-border-radius':	 '10px',
+	});	
+  };
+
+  var hide_spinner = function(){
+	$.unblockUI();
+  }; 
+
   var autocompleteopts = function(name) {
     var picklist = picklists[name.capitalize()], cache = {};
     switch(typeof picklist) {
@@ -165,7 +183,7 @@ var FormEditor = (function($, undefined) {
       "text": "remove",
 	  "class": "remove",
       "click": function() {
-		div.slideUp(function(){div.remove();});
+		div.fadeOut(250,function(){div.remove();});
         return false;
       }
     });
@@ -697,6 +715,8 @@ var FormEditor = (function($, undefined) {
     "load": function(provided_obj_type) {
       obj_type = provided_obj_type;
       made_form = false;
+	  show_spinner($('.contentMiddle h1').text());
+	
       $.ajax({
         "url": $('link[rel="picklists"]').attr("href"),
         "dataType": "json",
@@ -719,6 +739,7 @@ var FormEditor = (function($, undefined) {
           safe_log("got data!");
           if (picklists)
             FormEditor.create_form();
+		  	hide_spinner();
         }
       });
     },
