@@ -54,7 +54,7 @@ var FormEditor = (function($, undefined) {
 			opacity: 0.3
 		},
 		'-webkit-border-radius': '10px',
-		'-moz-border-radius':	 '10px',
+		'-moz-border-radius':	 '10px'
 	});	
   };
 
