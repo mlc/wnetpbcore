@@ -165,7 +165,7 @@ var FormEditor = (function($, undefined) {
       "text": "remove",
 	  "class": "remove",
       "click": function() {
-        div.remove();
+		div.slideUp(function(){div.remove();});
         return false;
       }
     });
@@ -314,7 +314,7 @@ var FormEditor = (function($, undefined) {
         })();
       }
       
-      where.append(ret);
+      where.append(ret.fadeIn());
     };
   };
 
@@ -550,7 +550,7 @@ var FormEditor = (function($, undefined) {
    * Create and fill in the basic (non-repeatable) instantiation fields
    */
   var basic_instantiation_fields = function() {
-    var $p = $("<p/>").appendTo($("#instantiation_info"));
+    var $p = $("<div/>").addClass('form_field_container').appendTo($("#instantiation_info"));
 
     var text_field = function(name) {
       $p.append($("<input/>", {

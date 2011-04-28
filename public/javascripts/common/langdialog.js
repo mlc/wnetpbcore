@@ -33,7 +33,7 @@
         if (!lang)
           return;
 
-        var langspan = $("<span/>", {
+        var langspan = $("<div/>", {
           "class": "removable-language",
           "text": lang.en,
           "title": code

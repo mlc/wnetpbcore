@@ -12,7 +12,7 @@ body,td,th {
 	vertical-align: bottom;
 	color: #777777;
 	font-style: normal;
-	font-family: 'Switzera ADF Cd', 'Arial Narrow', Arial, Helvetica, sans-serif; 
+	font-family: 'Switzera ADF Cd', 'Arial Narrow', Arial, sans-serif; 
 	vertical-align: top;
 	text-decoration: none;
 	font-size: 12px;
@@ -439,11 +439,6 @@ a.index_thumbnail img {
     padding: 0px;
 }
 
-.form_field_container {
-    clear: both;
-    margin:0 0 10px 5px;
-	padding:0px;
-}
 
 .ui-button { margin-left: -1px; }
 .ui-button-icon-only .ui-button-text { padding: 0.7em 0.35em; }
@@ -464,11 +459,30 @@ input.pbcorefield.ui-autocomplete-input { width: 211px; }
 #asset_history tr.odd td { background-color: #eee; }
 #asset_history tr.even td { background-color: #ddd; }
 
-.removable-language { margin-right: 1em; white-space: nowrap; }
-.removable-language .ui-button { margin-left: 1px; }
+.languages{
+	display:block;
+	width: 350px;
+	margin-bottom: 2px;
+}
+.removable-language { 
+	white-space: nowrap; 
+	display:block;
+	margin: 3px 0;
+	padding: 0 0 0 27px;
+	position:relative;
+}
+.removable-language .ui-button { 
+	margin-left: 1px; 
+	padding:0;
+	width:22px;
+	height:22px;
+	position:absolute;
+	left: 0px;
+	top: 0px;
+}
 
 
-#identifiers, #titles, #subjects, #descriptions, #genres, #relations, #publishers{
+#identifiers, #titles, #subjects, #descriptions, #genres, #relations, #publishers, #essence_tracks, #instantiation_info, #format_ids, #date_availables, #annotations, #creators, #contributors, #publishers, #rights_summaries, #extensions, #coverages, #audience_levels, #audience_ratings{
 	padding:5px;
 	margin:0 10px 0 0;
 	display:block;
@@ -482,7 +496,6 @@ input.pbcorefield.ui-autocomplete-input { width: 211px; }
 	border-bottom-right-radius: 10px;
 	border-bottom-left-radius: 10px;
 	background-color:#eee;
-
 }
 
 p{
@@ -521,6 +534,7 @@ a.adder:hover{
 }
 
 .form_field_container{
+	font-family: Helvetica, 'Microsoft Sans Serif', 'Arial Narrow', Arial, sans-serif; 	
     margin:0;
 	width:615px;
 	padding:0 5px 5px 5px;	
@@ -528,7 +542,7 @@ a.adder:hover{
 	width:615px;
 	position:relative;
 	overflow:hidden;
-	/*height:20px;*/
+	line-height: 22px;
 }
 
 
@@ -541,7 +555,6 @@ a.adder:hover{
 	display:inline-block;
 	position:relative;
 	text-shadow: 0px 1px 0px #fff;
-	/*filter: dropshadow(color=#fff, offx=0, offy=1);*/
 	vertical-align:middle;
 	overflow:hidden;		
 }
@@ -568,7 +581,7 @@ a.adder:hover{
  background-color: #ffeac0;
 }
 .pbcorefield.description{
-	width:615px;
+	width:608px;
 	padding:5px;
 	margin:10px 0 0 0;
 }
@@ -632,5 +645,21 @@ a#chooseFields{
 }
 
 #relations input.pbcorefield{
-	width:220px;
+	width:204px;
+}
+form.instantiations label{
+	width:190px;
+}
+form.instantiations span label{
+	width: auto;
+	margin-left: 3px;
+}
+#format_ids .formatIdentifier label{
+	width: auto;
+}
+#format_ids .formatIdentifierSource{
+	width: 175px;
+}
+#contributors .pbcorefield{
+	width:175px;
 }

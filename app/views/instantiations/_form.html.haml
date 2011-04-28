@@ -9,7 +9,7 @@
 - form_for([@asset, @instantiation]) do |f|
   %div{:style => 'margin:0; padding:0'}<
     %input{:type => "hidden", :name => "xml", :id => "xml_from_editor"}
-%form
+%form.instantiations
   #error_messages
     = error_messages_for :instantiation
   %h3 Format Identifiers
