@@ -64,7 +64,7 @@ class Asset < ActiveRecord::Base
   xml_subelements "pbcoreRightsSummary", :rights_summaries
   xml_subelements "pbcoreInstantiation", :instantiations
   xml_subelements "pbcoreExtension", :extensions
-  xml_subelements "pbcoreAssetDate", :extensions  
+  xml_subelements "pbcoreAssetDate", :asset_dates  
   
   def to_xml
     builder = Builder::XmlMarkup.new(:indent => 2)

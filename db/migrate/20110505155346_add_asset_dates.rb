@@ -1,7 +1,7 @@
 class AddAssetDates < ActiveRecord::Migration
   def self.up
     # new table for asset_dates
-    create_table "asset_dates", :id => false, :force => true do |t|
+    create_table "asset_dates" do |t|
       t.integer  "asset_id"
       t.integer  "asset_date_type_id"
       t.datetime "asset_date"
@@ -12,7 +12,7 @@ class AddAssetDates < ActiveRecord::Migration
     end
 
     # new table for asset_date_types
-    create_table "asset_date_types", :id => false, :force => true do |t|
+    create_table "asset_date_types" do |t|
       t.string  "name"
       t.boolean "visible", :default => false, :null => false
     end
