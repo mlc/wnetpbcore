@@ -9,7 +9,8 @@ class PicklistsController < ApplicationController
     'format_generations', 'format_media_types', 'format_physicals',
     'identifier_sources', 'publisher_roles', 'relation_types', 'title_types',
     'essence_track_types', 'essence_track_identifier_sources',
-    'format_identifier_sources', 'genres', 'extension_names', 'subjects'
+    'format_identifier_sources', 'genres', 'extension_names', 'subjects',
+    'asset_date_types'
   ]
 
   def index

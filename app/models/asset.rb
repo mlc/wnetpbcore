@@ -36,6 +36,7 @@ class Asset < ActiveRecord::Base
   has_many :instantiations, :dependent => :destroy
   has_many :extensions, :dependent => :destroy, :attributes => true
   has_many :versions, :dependent => :delete_all
+  has_many :asset_dates, :dependent => :destroy, :attributes => true
   stampable
 
   validates_size_of :identifiers, :minimum => 1, :message => "must have at least one entry"
@@ -63,6 +64,7 @@ class Asset < ActiveRecord::Base
   xml_subelements "pbcoreRightsSummary", :rights_summaries
   xml_subelements "pbcoreInstantiation", :instantiations
   xml_subelements "pbcoreExtension", :extensions
+  xml_subelements "pbcoreAssetDate", :asset_dates  
   
   def to_xml
     builder = Builder::XmlMarkup.new(:indent => 2)
@@ -101,7 +103,7 @@ class Asset < ActiveRecord::Base
   # Copies the stuff from some other asset object into us.
   def merge(other)
     [:identifiers, :titles, :descriptions, :relations, :coverages, :creators, :contributors,
-      :publishers, :rights_summaries, :instantiations, :extensions].each do |field|
+      :publishers, :rights_summaries, :instantiations, :extensions, :asset_dates].each do |field|
       ours = self.send(field)
       theirs = other.send(field)
 
@@ -181,6 +183,8 @@ class Asset < ActiveRecord::Base
     text(:format) { instantiations.map{|a| a.format.nil? ? '' : a.format.name} }
     time :created_at
     time :updated_at
+    # # foz: not sure if this would be right:
+    #   time(:asset_dates) { asset_dates.map{|a| a.asset_date}}
     string :uuid
     boolean(:online_asset) { self.online? }
     dynamic_string :facets, :multiple => true do

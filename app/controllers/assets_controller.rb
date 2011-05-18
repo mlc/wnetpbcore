@@ -253,7 +253,7 @@ class AssetsController < ApplicationController
   end
 
   def picklists
-    classes = [Genre, Subject, ContributorRole, CreatorRole, IdentifierSource, PublisherRole, TitleType, DescriptionType, RelationType, AudienceLevel, AudienceRating, FormatIdentifierSource, EssenceTrackType, EssenceTrackIdentifierSource, FormatMediaType, FormatGeneration, FormatColor]
+    classes = [Genre, Subject, ContributorRole, CreatorRole, IdentifierSource, PublisherRole, TitleType, DescriptionType, RelationType, AudienceLevel, AudienceRating, FormatIdentifierSource, EssenceTrackType, EssenceTrackIdentifierSource, FormatMediaType, FormatGeneration, FormatColor, AssetDateType]
     @picklists = {}
     classes.each do |kl|
       if PBCore.config["big_fields"] && PBCore.config["big_fields"].include?(kl.to_s.underscore)
