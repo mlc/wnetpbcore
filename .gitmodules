@@ -1,0 +1,3 @@
+[submodule "config/deploy"]
+	path = config/deploy
+	url = git@github.com:mlc/pbcore-deploy.git
