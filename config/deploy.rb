@@ -4,6 +4,7 @@ require 'capistrano/ext/multistage'
 
 set :application, "pbcore"
 set :repository,  "git://github.com/mlc/wnetpbcore.git"
+set :branch, git_working_dir_branch || "master"
 
 # If you aren't deploying to /u/apps/#{application} on the target
 # servers (which is the default), you can specify the actual location
