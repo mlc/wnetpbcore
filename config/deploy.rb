@@ -1,19 +1,23 @@
 require 'erb'
 require 'json'
+require 'grit'
 require 'capistrano/ext/multistage'
 
+def git_working_dir_branch
+  repo = Grit::Repo.new(".")
+  repo.head.name
+end
+
 set :application, "pbcore"
+set :scm, :git
 set :repository,  "git://github.com/mlc/wnetpbcore.git"
+set :branch, git_working_dir_branch || "master"
 
 # If you aren't deploying to /u/apps/#{application} on the target
 # servers (which is the default), you can specify the actual location
 # via the :deploy_to variable:
 set :deploy_to, "/var/www/#{application}"
 set :deploy_via, :remote_cache
-
-# If you aren't using Subversion to manage your source code, specify
-# your SCM below:
-set :scm, :git
 
 set :keep_releases, 5
 
