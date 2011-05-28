@@ -22,20 +22,20 @@ Rails::Initializer.run do |config|
 
   # Specify gems that this application depends on. 
   # They can then be installed with "rake gems:install" on new installations.
-  config.gem 'haml', :version => '>= 2.2.8'
+  config.gem 'haml', :version => '~> 3.0.6'
   config.gem 'libxml-ruby', :lib => 'libxml', :version => '>=0.8.0'
   config.gem 'libxslt-ruby', :lib => 'libxslt', :version => '>=0.9.0'
   config.gem 'rubyzip', :lib => 'zip/zip'
   config.gem 'mime-types', :lib => 'mime/types'
   config.gem 'uuidtools'
   config.gem 'mislav-will_paginate', :version => '~> 2.2.3', :lib => 'will_paginate', :source => 'http://gems.github.com'
-  config.gem 'whenever', :lib => false, :source => 'http://gemcutter.org'
+  config.gem 'whenever', :version => "0.4.1", :lib => false
   config.gem 'rsolr', :version => '0.9.6' # NEWER VERSIONS ARE BUGGY!
-  config.gem 'sunspot', :lib => 'sunspot', :source  => 'http://gemcutter.org'
-  config.gem 'sunspot_rails', :lib => 'sunspot/rails', :source  => 'http://gemcutter.org'
-  config.gem 'grit', :source => 'http://gemcutter.org/'
-  config.gem 'aws-s3', :lib => 'aws/s3', :source => 'http://gemcutter.org/'
-  config.gem 'delayed_job', :lib => 'delayed_job', :source => 'http://gemcutter.org/'
+  config.gem 'sunspot', :version => "1.1.0", :lib => 'sunspot'
+  config.gem 'sunspot_rails', :version => "1.1.0", :lib => 'sunspot/rails'
+  config.gem 'grit'
+  config.gem 'aws-s3', :lib => 'aws/s3'
+  config.gem 'delayed_job', :lib => 'delayed_job'
   config.gem 'exceptional' if RAILS_ENV=='production'
   config.gem 'fastercsv'
 
