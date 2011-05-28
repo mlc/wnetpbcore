@@ -314,6 +314,11 @@ var FormEditor = (function($, undefined) {
       }
       
       where.append(ret);
+
+      if (textarea) {
+        safe_log(formfield);
+        formfield.autoResize();
+      }
     };
   };
 
@@ -764,7 +769,7 @@ var FormEditor = (function($, undefined) {
           break;
 
         default:
-          $("input, select, textarea", $this).each(function() {
+          $("input, select, textarea[name]", $this).each(function() {
             var subelt = mkelt(this.name);
             elt.appendChild(subelt);
             subelt.appendChild(doc.createTextNode(this.value));
