@@ -22,7 +22,7 @@ Rails::Initializer.run do |config|
 
   # Specify gems that this application depends on. 
   # They can then be installed with "rake gems:install" on new installations.
-  config.gem 'haml', :version => '~> 2.2.8'
+  config.gem 'haml', :version => '~> 2.2'
   config.gem 'libxml-ruby', :lib => 'libxml', :version => '>=0.8.0'
   config.gem 'libxslt-ruby', :lib => 'libxslt', :version => '>=0.9.0'
   config.gem 'rubyzip', :lib => 'zip/zip'
