@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PBCoreDescriptionDocument xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html http://www.pbcore.org/PBCore/PBCoreXSD_Ver_1-2-1.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <!-- XML Generated at Sun May 29 02:29:22 +0200 2011 by rails pbcore database -->
+  <!-- created at 2010-07-06 18:54:11 UTC by admin -->
+  <!-- updated at 2010-07-06 18:54:11 UTC by admin -->
+  <pbcoreIdentifier>
+    <identifier>9891</identifier>
+    <identifierSource>WNYC Archive Catalog</identifierSource>
+  </pbcoreIdentifier>
+  <pbcoreIdentifier>
+    <identifier>19110bd2-8035-4672-99ac-4e6b2bd3173a</identifier>
+    <identifierSource>pbcore XML database UUID</identifierSource>
+  </pbcoreIdentifier>
+  <pbcoreTitle>
+    <title>New York City Mayoral Primary 9/12/1989</title>
+    <titleType>Episode</titleType>
+  </pbcoreTitle>
+  <pbcoreTitle>
+    <title>Miscellaneous</title>
+    <titleType>Series</titleType>
+  </pbcoreTitle>
+  <pbcoreDescription>
+    <description>No description available</description>
+  </pbcoreDescription>
+  <pbcoreGenre>
+    <genre>Actuality</genre>
+    <genreAuthorityUsed>PBCore Genre Picklist</genreAuthorityUsed>
+  </pbcoreGenre>
+  <pbcoreRelation>
+    <relationType>Is Part Of</relationType>
+    <relationIdentifier>WNYC</relationIdentifier>
+  </pbcoreRelation>
+  <pbcoreContributor>
+    <contributor>Dinkins, David N.</contributor>
+    <contributorRole>[Personality]</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Giuliani, Rudolph W.</contributor>
+    <contributorRole>[Personality]</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Koch, Edward I., 1924-</contributor>
+    <contributorRole>[Personality]</contributorRole>
+  </pbcoreContributor>
+  <pbcoreRightsSummary>
+    <rightsSummary>WNYC</rightsSummary>
+  </pbcoreRightsSummary>
+  <pbcoreInstantiation>
+    <pbcoreFormatID>
+      <formatIdentifier>9891.1</formatIdentifier>
+      <formatIdentifierSource>WNYC Media Archive MDB</formatIdentifierSource>
+    </pbcoreFormatID>
+    <pbcoreFormatID>
+      <formatIdentifier>6e8bc965-8f64-4e8c-8cd8-657cf63da147</formatIdentifier>
+      <formatIdentifierSource>pbcore XML database UUID</formatIdentifierSource>
+    </pbcoreFormatID>
+    <dateCreated>1989-09-12</dateCreated>
+    <dateIssued>1989-09-12</dateIssued>
+    <formatPhysical>1/4 inch audio tape</formatPhysical>
+    <formatLocation>Archives storage</formatLocation>
+    <formatMediaType>Sound</formatMediaType>
+    <formatGenerations>Preservation</formatGenerations>
+    <formatDuration>00:00:00</formatDuration>
+    <formatChannelConfiguration>2 track</formatChannelConfiguration>
+    <pbcoreAnnotation>
+      <annotation>dimensions:7 in.</annotation>
+    </pbcoreAnnotation>
+    <pbcoreAnnotation>
+      <annotation>generation_copy:Master tape</annotation>
+    </pbcoreAnnotation>
+    <pbcoreAnnotation>
+      <annotation>original_dateAdded:2007-08-13T00:00:00</annotation>
+    </pbcoreAnnotation>
+  </pbcoreInstantiation>
+</PBCoreDescriptionDocument>

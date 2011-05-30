@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100922190155) do
+ActiveRecord::Schema.define(:version => 20110530094149) do
 
   create_table "annotations", :force => true do |t|
     t.integer "instantiation_id"
@@ -17,6 +17,24 @@ ActiveRecord::Schema.define(:version => 20100922190155) do
   end
 
   add_index "annotations", ["instantiation_id"], :name => "index_annotation_on_instantiation_id"
+
+  create_table "asset_date_types", :force => true do |t|
+    t.string  "name"
+    t.boolean "visible", :default => false, :null => false
+  end
+
+  create_table "asset_dates", :force => true do |t|
+    t.integer  "asset_id"
+    t.integer  "asset_date_type_id"
+    t.text     "asset_date"
+    t.integer  "creator_id"
+    t.integer  "updater_id"
+    t.boolean  "visible",            :default => false, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "asset_dates", ["asset_id"], :name => "index_asset_dates_on_asset_id"
 
   create_table "assets", :force => true do |t|
     t.datetime "created_at"

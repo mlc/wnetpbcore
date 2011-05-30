@@ -96,6 +96,13 @@ module PbcoreXmlElement
   def updated_string
     "updated at #{updated_at.to_s} by #{(updater_id.nil? || record_updater.nil?) ? "unknown" : record_updater.login}"
   end
+  
+  # for unit tests
+  def xml_output
+    xml=Builder::XmlMarkup.new
+    build_xml(xml)
+    xml.target!
+  end
 
   def doing_xml?
     !(_working_xml.nil?)

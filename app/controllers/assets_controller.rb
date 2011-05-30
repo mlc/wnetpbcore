@@ -160,7 +160,7 @@ class AssetsController < ApplicationController
       parsed_asset = Asset.from_xml(params[:xml])
       [:identifiers, :titles, :subjects, :descriptions, :genres,
        :relations, :coverages, :audience_levels, :audience_ratings,
-       :creators, :contributors, :publishers, :rights_summaries, :extensions].each do |field|
+       :creators, :contributors, :publishers, :rights_summaries, :extensions, :asset_dates].each do |field|
         @asset.send("#{field}=".to_sym, parsed_asset.send(field))
       end
       @success = @asset.save
