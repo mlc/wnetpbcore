@@ -42,6 +42,7 @@ class Asset < ActiveRecord::Base
   validates_size_of :identifiers, :minimum => 1, :message => "must have at least one entry"
   validates_size_of :titles, :minimum => 1, :message => "must have at least one entry"
   
+  xml_subelements "pbcoreAssetDate", :asset_dates  
   xml_subelements "pbcoreIdentifier", :identifiers
   to_xml_elt do |obj|
     xml = obj._working_xml
@@ -64,7 +65,6 @@ class Asset < ActiveRecord::Base
   xml_subelements "pbcoreRightsSummary", :rights_summaries
   xml_subelements "pbcoreInstantiation", :instantiations
   xml_subelements "pbcoreExtension", :extensions
-  xml_subelements "pbcoreAssetDate", :asset_dates  
   
   def to_xml
     builder = Builder::XmlMarkup.new(:indent => 2)
