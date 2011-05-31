@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PBCoreDescriptionDocument xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html http://www.pbcore.org/PBCore/PBCoreXSD_Ver_1-2-1.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreIdentifier>
+    <identifier>123</identifier>
+    <identifierSource>Test Catalog</identifierSource>
+  </pbcoreIdentifier>
+  <pbcoreTitle>
+    <title>Asset Title</title>
+    <titleType>Episode</titleType>
+  </pbcoreTitle>
+  <pbcoreSubject>
+    <subject>Testing Import</subject>
+    <subjectAuthorityUsed>http://pbcore.org/</subjectAuthorityUsed>
+  </pbcoreSubject>
+  <pbcoreAssetDate>
+    <assetDate dateType="availableEnd">2010-03-23</assetDate>
+  </pbcoreAssetDate>
+</PBCoreDescriptionDocument>

@@ -14,22 +14,16 @@ module PbcoreXmlElement
         builder = record._working_xml
         value = record.send(field)
         unless value.nil? || value.empty?
-          if record._inline_attributes
-            attr_array = record._inline_attributes.keys.map do |ia| 
-              [record._inline_attributes[ia][:tag_name], record._inline_attributes[ia][:value]]
-            end.flatten
-          else
-            attr_array = []
-          end
-          builder.tag!(attr, value, Hash[*attr_array])
+          attr_array = record._xml_attribute_name ? record._inline_attributes : {}
+          builder.tag!(attr, value, attr_array)
         end
       end
     end
     
     def xml_attribute(attr, xml_attr_name)
-      to_xml_elt do |record|
-        record._inline_attributes ||= {}
-        record._inline_attributes[attr] = {:tag_name => xml_attr_name}
+      xml_init do |record|
+        record._xml_attribute_name = xml_attr_name
+        record._inline_attributes = {}
       end
     end
     
@@ -44,8 +38,8 @@ module PbcoreXmlElement
       end
       to_xml_elt do |record|
         result = record.send(field)
-        if record._inline_attributes
-          record._inline_attributes[attr][:value] = result.is_a?(klass) ? result.name : result
+        if record._xml_attribute_name
+          record._inline_attributes[record._xml_attribute_name] = result.is_a?(klass) ? result.name : result
         else
           builder = record._working_xml
           builder.tag!(attr, result.name) if result.is_a?(klass)
@@ -105,6 +99,7 @@ module PbcoreXmlElement
     self._working_xml = builder
     #builder.comment! created_string if respond_to?(:created_at)
     #builder.comment! updated_string if respond_to?(:updated_at)
+    run_callbacks(:xml_init)
     run_callbacks(:to_xml_elt)
     self._working_xml = nil
   end
@@ -133,6 +128,7 @@ module PbcoreXmlElement
     base.send :include, ActiveSupport::Callbacks
     base.send :attr_accessor, :_working_xml
     base.send :attr_accessor, :_inline_attributes
-    base.define_callbacks :from_xml_elt, :to_xml_elt
+    base.send :attr_accessor, :_xml_attribute_name
+    base.define_callbacks :from_xml_elt, :to_xml_elt, :xml_init
   end
 end
