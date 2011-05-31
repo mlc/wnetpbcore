@@ -482,7 +482,7 @@ input.pbcorefield.ui-autocomplete-input { width: 211px; }
 }
 
 
-#identifiers, #titles, #subjects, #descriptions, #genres, #relations, #publishers, #essence_tracks, #instantiation_info, #format_ids, #date_availables, #annotations, #creators, #contributors, #publishers, #rights_summaries, #extensions, #coverages, #audience_levels, #audience_ratings{
+#identifiers, #titles, #subjects, #descriptions, #genres, #relations, #publishers, #essence_tracks, #instantiation_info, #format_ids, #date_availables, #annotations, #creators, #contributors, #publishers, #rights_summaries, #extensions, #coverages, #audience_levels, #audience_ratings, #asset_dates{
 	padding:5px;
 	margin:0 10px 0 0;
 	display:block;
@@ -662,4 +662,7 @@ form.instantiations span label{
 }
 #contributors .pbcorefield{
 	width:175px;
+}
+#asset_dates input.assetDate{
+	width: 220px;
 }
