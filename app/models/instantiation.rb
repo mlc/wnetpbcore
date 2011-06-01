@@ -25,10 +25,10 @@ class Instantiation < ActiveRecord::Base
   xml_subelements "pbcoreFormatID", :format_ids
   to_xml_elt do |obj|
     xml = obj._working_xml
-    xml.pbcoreFormatID do
-      xml.formatIdentifier obj.uuid
-      xml.formatIdentifierSource "pbcore XML database UUID"
-    end
+    fid = XML::Node.new("pbcoreFormatID")
+    xml << fid
+    fid << XML::Node.new("formatIdentifier", obj.uuid)
+    fid << XML::Node.new("formatIdentifierSource", "pbcore XML database UUID")
   end
   xml_string "dateCreated"
   xml_string "dateIssued"

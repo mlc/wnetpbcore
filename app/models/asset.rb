@@ -46,10 +46,10 @@ class Asset < ActiveRecord::Base
   xml_subelements "pbcoreIdentifier", :identifiers
   to_xml_elt do |obj|
     xml = obj._working_xml
-    xml.pbcoreIdentifier do
-      xml.identifier obj.uuid
-      xml.identifierSource "pbcore XML database UUID"
-    end
+    identif = XML::Node.new("pbcoreIdentifier")
+    xml << identif
+    identif << XML::Node.new("identifier", obj.uuid)
+    identif << XML::Node.new("identifierSource", "pbcore XML database UUID")
   end
   xml_subelements "pbcoreTitle", :titles
   xml_subelements "pbcoreSubject", :subjects
@@ -67,16 +67,19 @@ class Asset < ActiveRecord::Base
   xml_subelements "pbcoreExtension", :extensions
   
   def to_xml
-    builder = Builder::XmlMarkup.new(:indent => 2)
-    builder.instruct!
-    builder.PBCoreDescriptionDocument "xmlns" => "http://www.pbcore.org/PBCore/PBCoreNamespace.html",
-      "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance",
-      "xsi:schemaLocation" => "http://www.pbcore.org/PBCore/PBCoreNamespace.html http://www.pbcore.org/PBCore/PBCoreXSD_Ver_1-2-1.xsd" do
-      builder.comment! "XML Generated at #{Time.new} by rails pbcore database"
-      builder.comment! created_string if respond_to?(:created_at)
-      builder.comment! updated_string if respond_to?(:updated_at)
-      build_xml(builder)
-    end
+    doc = XML::Document.new
+    root = XML::Node.new("PBCoreDescriptionDocument")
+    pbcorens = XML::Namespace.new(root, nil, "http://www.pbcore.org/PBCore/PBCoreNamespace.html")
+    root.namespaces.namespace = pbcorens
+    xsins = XML::Namespace.new(root, "xsi", "http://www.w3.org/2001/XMLSchema-instance")
+    schemaloc = XML::Attr.new(root, "schemaLocation", "http://www.pbcore.org/PBCore/PBCoreNamespace.html http://www.pbcore.org/PBCore/PBCoreXSD_Ver_1-2-1.xsd")
+    schemaloc.namespaces.namespace = xsins
+    doc.root = root
+    root << XML::Node.new_comment("XML Generated at #{Time.new} by rails pbcore database")
+    root << XML::Node.new_comment(created_string) if respond_to?(:created_at)
+    root << XML::Node.new_comment(updated_string) if respond_to?(:updated_at)
+    build_xml(root)
+    doc.to_s
   end
   
   def destroy_existing

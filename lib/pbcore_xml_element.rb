@@ -14,16 +14,23 @@ module PbcoreXmlElement
         builder = record._working_xml
         value = record.send(field)
         unless value.nil? || value.empty?
-          attr_array = record._xml_attribute_name ? record._inline_attributes : {}
-          builder.tag!(attr, value, attr_array)
+          builder << XML::Node.new(attr, value)
         end
       end
     end
     
-    def xml_attribute(attr, xml_attr_name)
-      xml_init do |record|
-        record._xml_attribute_name = xml_attr_name
-        record._inline_attributes = {}
+    def xml_attribute(attr, field=nil)
+      field ||= attr.underscore.to_sym
+      from_xml_elt do |record|
+        xmlattr = record._working_xml[attr]
+        unless xmlattr.nil?
+          record.send("#{field}=".to_sym, xmlattr)
+        end
+      end
+      to_xml_elt do |record|
+        xml = record._working_xml
+        value = record.send(field)
+        xml[attr] = value unless value.nil? || value.empty?
       end
     end
     
@@ -37,16 +44,32 @@ module PbcoreXmlElement
         end
       end
       to_xml_elt do |record|
+        builder = record._working_xml
         result = record.send(field)
-        if record._xml_attribute_name
-          record._inline_attributes[record._xml_attribute_name] = result.is_a?(klass) ? result.name : result
-        else
-          builder = record._working_xml
-          builder.tag!(attr, result.name) if result.is_a?(klass)
+        if result.is_a?(klass)
+          builder << XML::Node.new(attr, result.name)
         end
       end
     end
     
+    def xml_picklist_attribute(attr, field=nil, klass=nil)
+      field ||= attr.underscore.to_sym
+      klass ||= field.to_s.camelize.constantize
+      from_xml_elt do |record|
+        xmlattr = record._working_xml[attr]
+        unless xmlattr.nil?
+          record.send("#{field}=".to_sym, klass.find_or_create_by_name(xmlattr))
+        end
+      end
+      to_xml_elt do |record|
+        xml = record._working_xml
+        value = record.send(field)
+        if value.is_a?(klass)
+          xml[attr] = value.name
+        end
+      end
+    end
+
     def xml_subelements(attr, field, klass=nil)
       klass ||= field.to_s.singularize.camelize.constantize
       from_xml_elt do |record|
@@ -57,9 +80,9 @@ module PbcoreXmlElement
       to_xml_elt do |record|
         builder = record._working_xml
         record.send(field).each do |item|
-          builder.tag!(attr) do
-            item.build_xml(builder)
-          end
+          node = XML::Node.new(attr)
+          builder << node
+          item.build_xml(node)
         end
       end
     end
@@ -74,17 +97,16 @@ module PbcoreXmlElement
       to_xml_elt do |record|
         builder = record._working_xml
         record.send(field).each do |item|
-          builder.tag!(attr1) do
-            builder.tag!(attr2, item.name)
-          end
+          node = XML::Node.new(attr1)
+          builder << node
+          node << XML::Node.new(attr2, item.name)
         end
       end
     end
     
     def from_xml(xml)
       if xml.is_a?(String)
-        parser = XML::Parser.new
-        parser.string = xml
+        parser = XML::Parser.string(xml)
         xml = parser.parse.root
       end
       obj = self.new
@@ -99,7 +121,6 @@ module PbcoreXmlElement
     self._working_xml = builder
     #builder.comment! created_string if respond_to?(:created_at)
     #builder.comment! updated_string if respond_to?(:updated_at)
-    run_callbacks(:xml_init)
     run_callbacks(:to_xml_elt)
     self._working_xml = nil
   end
@@ -113,10 +134,13 @@ module PbcoreXmlElement
   end
   
   # for unit tests
-  def xml_output
-    xml=Builder::XmlMarkup.new
-    build_xml(xml)
-    xml.target!
+  def dummy_xml_output
+    doc = XML::Document.new
+    root = XML::Node.new("DUMMY")
+    doc.root = root
+    build_xml(root)
+    $stderr.puts doc.to_s(:indent => false)
+    /<DUMMY>(.*)<\/DUMMY>/m.match(doc.to_s(:indent => false))[1]
   end
 
   def doing_xml?
@@ -127,8 +151,6 @@ module PbcoreXmlElement
     base.extend(ClassMethods)
     base.send :include, ActiveSupport::Callbacks
     base.send :attr_accessor, :_working_xml
-    base.send :attr_accessor, :_inline_attributes
-    base.send :attr_accessor, :_xml_attribute_name
-    base.define_callbacks :from_xml_elt, :to_xml_elt, :xml_init
+    base.define_callbacks :from_xml_elt, :to_xml_elt
   end
 end
