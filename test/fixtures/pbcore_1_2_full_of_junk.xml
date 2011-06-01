@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PBCoreDescriptionDocument xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html http://pbcore.org/PBCore/PBCoreXSD_Ver_1-2-1.xsd">
+    <pbcoreIdentifier>
+        <identifier>identifier0</identifier>
+        <identifierSource version="version1">identifierSource0</identifierSource>
+    </pbcoreIdentifier>
+    <pbcoreIdentifier>
+        <identifier>identifier1</identifier>
+        <identifierSource version="version3">identifierSource1</identifierSource>
+    </pbcoreIdentifier>
+    <pbcoreTitle>
+        <title>title0</title>
+        <titleType version="version5">titleType0</titleType>
+    </pbcoreTitle>
+    <pbcoreTitle>
+        <title>title1</title>
+        <titleType version="version7">titleType1</titleType>
+    </pbcoreTitle>
+    <pbcoreSubject>
+        <subject>subject0</subject>
+        <subjectAuthorityUsed version="version9">subjectAuthorityUsed0</subjectAuthorityUsed>
+    </pbcoreSubject>
+    <pbcoreSubject>
+        <subject>subject1</subject>
+        <subjectAuthorityUsed version="version11">subjectAuthorityUsed1</subjectAuthorityUsed>
+    </pbcoreSubject>
+    <pbcoreDescription>
+        <description>description0</description>
+        <descriptionType version="version13">descriptionType0</descriptionType>
+    </pbcoreDescription>
+    <pbcoreDescription>
+        <description>description1</description>
+        <descriptionType version="version15">descriptionType1</descriptionType>
+    </pbcoreDescription>
+    <pbcoreGenre>
+        <genre version="version17">genre0</genre>
+        <genreAuthorityUsed version="version19">genreAuthorityUsed0</genreAuthorityUsed>
+    </pbcoreGenre>
+    <pbcoreGenre>
+        <genre version="version21">genre1</genre>
+        <genreAuthorityUsed version="version23">genreAuthorityUsed1</genreAuthorityUsed>
+    </pbcoreGenre>
+    <pbcoreRelation>
+        <relationType version="version25">relationType0</relationType>
+        <relationIdentifier>relationIdentifier0</relationIdentifier>
+    </pbcoreRelation>
+    <pbcoreRelation>
+        <relationType version="version27">relationType1</relationType>
+        <relationIdentifier>relationIdentifier1</relationIdentifier>
+    </pbcoreRelation>
+    <pbcoreCoverage>
+        <coverage>coverage0</coverage>
+        <coverageType version="version29">Spatial</coverageType>
+    </pbcoreCoverage>
+    <pbcoreCoverage>
+        <coverage>coverage1</coverage>
+        <coverageType version="version31">Spatial</coverageType>
+    </pbcoreCoverage>
+    <pbcoreAudienceLevel>
+        <audienceLevel version="version33">audienceLevel0</audienceLevel>
+    </pbcoreAudienceLevel>
+    <pbcoreAudienceLevel>
+        <audienceLevel version="version35">audienceLevel1</audienceLevel>
+    </pbcoreAudienceLevel>
+    <pbcoreAudienceRating>
+        <audienceRating version="version37">audienceRating0</audienceRating>
+    </pbcoreAudienceRating>
+    <pbcoreAudienceRating>
+        <audienceRating version="version39">audienceRating1</audienceRating>
+    </pbcoreAudienceRating>
+    <pbcoreCreator>
+        <creator>creator0</creator>
+        <creatorRole version="version41">creatorRole0</creatorRole>
+    </pbcoreCreator>
+    <pbcoreCreator>
+        <creator>creator1</creator>
+        <creatorRole version="version43">creatorRole1</creatorRole>
+    </pbcoreCreator>
+    <pbcoreContributor>
+        <contributor>contributor0</contributor>
+        <contributorRole version="version45">contributorRole0</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+        <contributor>contributor1</contributor>
+        <contributorRole version="version47">contributorRole1</contributorRole>
+    </pbcoreContributor>
+    <pbcorePublisher>
+        <publisher>publisher0</publisher>
+        <publisherRole version="version49">publisherRole0</publisherRole>
+    </pbcorePublisher>
+    <pbcorePublisher>
+        <publisher>publisher1</publisher>
+        <publisherRole version="version51">publisherRole1</publisherRole>
+    </pbcorePublisher>
+    <pbcoreRightsSummary>
+        <rightsSummary>rightsSummary0</rightsSummary>
+    </pbcoreRightsSummary>
+    <pbcoreRightsSummary>
+        <rightsSummary>rightsSummary1</rightsSummary>
+    </pbcoreRightsSummary>
+    <pbcoreInstantiation>
+        <pbcoreFormatID>
+            <formatIdentifier>formatIdentifier0</formatIdentifier>
+            <formatIdentifierSource version="version53">formatIdentifierSource0</formatIdentifierSource>
+        </pbcoreFormatID>
+        <pbcoreFormatID>
+            <formatIdentifier>formatIdentifier1</formatIdentifier>
+            <formatIdentifierSource version="version55">formatIdentifierSource1</formatIdentifierSource>
+        </pbcoreFormatID>
+        <dateCreated>dateCreated0</dateCreated>
+        <dateIssued>dateIssued0</dateIssued>
+        <formatPhysical version="version57">formatPhysical0</formatPhysical>
+        <formatDigital version="version59">formatDigital0</formatDigital>
+        <formatLocation>formatLocation0</formatLocation>
+        <formatMediaType version="version61">formatMediaType0</formatMediaType>
+        <formatGenerations version="version63">formatGenerations0</formatGenerations>
+        <formatFileSize>formatFileSize0</formatFileSize>
+        <formatTimeStart>formatTimeStart0</formatTimeStart>
+        <formatDuration>formatDuration0</formatDuration>
+        <formatDataRate>formatDataRate0</formatDataRate>
+        <formatColors version="version65">formatColors0</formatColors>
+        <formatTracks>formatTracks0</formatTracks>
+        <formatChannelConfiguration>formatChannelConfiguration0</formatChannelConfiguration>
+        <language version="version67">aaa</language>
+        <alternativeModes>alternativeModes0</alternativeModes>
+        <pbcoreEssenceTrack>
+            <essenceTrackType>essenceTrackType0</essenceTrackType>
+            <essenceTrackIdentifier>essenceTrackIdentifier0</essenceTrackIdentifier>
+            <essenceTrackIdentifierSource>essenceTrackIdentifierSource0</essenceTrackIdentifierSource>
+            <essenceTrackStandard version="version69">essenceTrackStandard0</essenceTrackStandard>
+            <essenceTrackEncoding>essenceTrackEncoding0</essenceTrackEncoding>
+            <essenceTrackDataRate>essenceTrackDataRate0</essenceTrackDataRate>
+            <essenceTrackTimeStart>essenceTrackTimeStart0</essenceTrackTimeStart>
+            <essenceTrackDuration>essenceTrackDuration0</essenceTrackDuration>
+            <essenceTrackBitDepth version="version71">essenceTrackBitDepth0</essenceTrackBitDepth>
+            <essenceTrackSamplingRate version="version73">essenceTrackSamplingRate0</essenceTrackSamplingRate>
+            <essenceTrackFrameSize version="version75">essenceTrackFrameSize0</essenceTrackFrameSize>
+            <essenceTrackAspectRatio version="version77">essenceTrackAspectRatio0</essenceTrackAspectRatio>
+            <essenceTrackFrameRate version="version79">essenceTrackFrameRate0</essenceTrackFrameRate>
+            <essenceTrackLanguage version="version81">aaa</essenceTrackLanguage>
+            <essenceTrackAnnotation>essenceTrackAnnotation0</essenceTrackAnnotation>
+        </pbcoreEssenceTrack>
+        <pbcoreEssenceTrack>
+            <essenceTrackType>essenceTrackType1</essenceTrackType>
+            <essenceTrackIdentifier>essenceTrackIdentifier1</essenceTrackIdentifier>
+            <essenceTrackIdentifierSource>essenceTrackIdentifierSource1</essenceTrackIdentifierSource>
+            <essenceTrackStandard version="version83">essenceTrackStandard1</essenceTrackStandard>
+            <essenceTrackEncoding>essenceTrackEncoding1</essenceTrackEncoding>
+            <essenceTrackDataRate>essenceTrackDataRate1</essenceTrackDataRate>
+            <essenceTrackTimeStart>essenceTrackTimeStart1</essenceTrackTimeStart>
+            <essenceTrackDuration>essenceTrackDuration1</essenceTrackDuration>
+            <essenceTrackBitDepth version="version85">essenceTrackBitDepth1</essenceTrackBitDepth>
+            <essenceTrackSamplingRate version="version87">essenceTrackSamplingRate1</essenceTrackSamplingRate>
+            <essenceTrackFrameSize version="version89">essenceTrackFrameSize1</essenceTrackFrameSize>
+            <essenceTrackAspectRatio version="version91">essenceTrackAspectRatio1</essenceTrackAspectRatio>
+            <essenceTrackFrameRate version="version93">essenceTrackFrameRate1</essenceTrackFrameRate>
+            <essenceTrackLanguage version="version95">aaa</essenceTrackLanguage>
+            <essenceTrackAnnotation>essenceTrackAnnotation1</essenceTrackAnnotation>
+        </pbcoreEssenceTrack>
+        <pbcoreDateAvailable>
+            <dateAvailableStart>dateAvailableStart0</dateAvailableStart>
+            <dateAvailableEnd>dateAvailableEnd0</dateAvailableEnd>
+        </pbcoreDateAvailable>
+        <pbcoreDateAvailable>
+            <dateAvailableStart>dateAvailableStart1</dateAvailableStart>
+            <dateAvailableEnd>dateAvailableEnd1</dateAvailableEnd>
+        </pbcoreDateAvailable>
+        <pbcoreAnnotation>
+            <annotation>annotation0</annotation>
+        </pbcoreAnnotation>
+        <pbcoreAnnotation>
+            <annotation>annotation1</annotation>
+        </pbcoreAnnotation>
+    </pbcoreInstantiation>
+    <pbcoreInstantiation>
+        <pbcoreFormatID>
+            <formatIdentifier>formatIdentifier2</formatIdentifier>
+            <formatIdentifierSource version="version97">formatIdentifierSource2</formatIdentifierSource>
+        </pbcoreFormatID>
+        <pbcoreFormatID>
+            <formatIdentifier>formatIdentifier3</formatIdentifier>
+            <formatIdentifierSource version="version99">formatIdentifierSource3</formatIdentifierSource>
+        </pbcoreFormatID>
+        <dateCreated>dateCreated1</dateCreated>
+        <dateIssued>dateIssued1</dateIssued>
+        <formatPhysical version="version101">formatPhysical1</formatPhysical>
+        <formatDigital version="version103">formatDigital1</formatDigital>
+        <formatLocation>formatLocation1</formatLocation>
+        <formatMediaType version="version105">formatMediaType1</formatMediaType>
+        <formatGenerations version="version107">formatGenerations1</formatGenerations>
+        <formatFileSize>formatFileSize1</formatFileSize>
+        <formatTimeStart>formatTimeStart1</formatTimeStart>
+        <formatDuration>formatDuration1</formatDuration>
+        <formatDataRate>formatDataRate1</formatDataRate>
+        <formatColors version="version109">formatColors1</formatColors>
+        <formatTracks>formatTracks1</formatTracks>
+        <formatChannelConfiguration>formatChannelConfiguration1</formatChannelConfiguration>
+        <language version="version111">aaa</language>
+        <alternativeModes>alternativeModes1</alternativeModes>
+        <pbcoreEssenceTrack>
+            <essenceTrackType>essenceTrackType2</essenceTrackType>
+            <essenceTrackIdentifier>essenceTrackIdentifier2</essenceTrackIdentifier>
+            <essenceTrackIdentifierSource>essenceTrackIdentifierSource2</essenceTrackIdentifierSource>
+            <essenceTrackStandard version="version113">essenceTrackStandard2</essenceTrackStandard>
+            <essenceTrackEncoding>essenceTrackEncoding2</essenceTrackEncoding>
+            <essenceTrackDataRate>essenceTrackDataRate2</essenceTrackDataRate>
+            <essenceTrackTimeStart>essenceTrackTimeStart2</essenceTrackTimeStart>
+            <essenceTrackDuration>essenceTrackDuration2</essenceTrackDuration>
+            <essenceTrackBitDepth version="version115">essenceTrackBitDepth2</essenceTrackBitDepth>
+            <essenceTrackSamplingRate version="version117">essenceTrackSamplingRate2</essenceTrackSamplingRate>
+            <essenceTrackFrameSize version="version119">essenceTrackFrameSize2</essenceTrackFrameSize>
+            <essenceTrackAspectRatio version="version121">essenceTrackAspectRatio2</essenceTrackAspectRatio>
+            <essenceTrackFrameRate version="version123">essenceTrackFrameRate2</essenceTrackFrameRate>
+            <essenceTrackLanguage version="version125">aaa</essenceTrackLanguage>
+            <essenceTrackAnnotation>essenceTrackAnnotation2</essenceTrackAnnotation>
+        </pbcoreEssenceTrack>
+        <pbcoreEssenceTrack>
+            <essenceTrackType>essenceTrackType3</essenceTrackType>
+            <essenceTrackIdentifier>essenceTrackIdentifier3</essenceTrackIdentifier>
+            <essenceTrackIdentifierSource>essenceTrackIdentifierSource3</essenceTrackIdentifierSource>
+            <essenceTrackStandard version="version127">essenceTrackStandard3</essenceTrackStandard>
+            <essenceTrackEncoding>essenceTrackEncoding3</essenceTrackEncoding>
+            <essenceTrackDataRate>essenceTrackDataRate3</essenceTrackDataRate>
+            <essenceTrackTimeStart>essenceTrackTimeStart3</essenceTrackTimeStart>
+            <essenceTrackDuration>essenceTrackDuration3</essenceTrackDuration>
+            <essenceTrackBitDepth version="version129">essenceTrackBitDepth3</essenceTrackBitDepth>
+            <essenceTrackSamplingRate version="version131">essenceTrackSamplingRate3</essenceTrackSamplingRate>
+            <essenceTrackFrameSize version="version133">essenceTrackFrameSize3</essenceTrackFrameSize>
+            <essenceTrackAspectRatio version="version135">essenceTrackAspectRatio3</essenceTrackAspectRatio>
+            <essenceTrackFrameRate version="version137">essenceTrackFrameRate3</essenceTrackFrameRate>
+            <essenceTrackLanguage version="version139">aaa</essenceTrackLanguage>
+            <essenceTrackAnnotation>essenceTrackAnnotation3</essenceTrackAnnotation>
+        </pbcoreEssenceTrack>
+        <pbcoreDateAvailable>
+            <dateAvailableStart>dateAvailableStart2</dateAvailableStart>
+            <dateAvailableEnd>dateAvailableEnd2</dateAvailableEnd>
+        </pbcoreDateAvailable>
+        <pbcoreDateAvailable>
+            <dateAvailableStart>dateAvailableStart3</dateAvailableStart>
+            <dateAvailableEnd>dateAvailableEnd3</dateAvailableEnd>
+        </pbcoreDateAvailable>
+        <pbcoreAnnotation>
+            <annotation>annotation2</annotation>
+        </pbcoreAnnotation>
+        <pbcoreAnnotation>
+            <annotation>annotation3</annotation>
+        </pbcoreAnnotation>
+    </pbcoreInstantiation>
+    <pbcoreExtension>
+        <extension>extension0</extension>
+        <extensionAuthorityUsed version="version141">extensionAuthorityUsed0</extensionAuthorityUsed>
+    </pbcoreExtension>
+    <pbcoreExtension>
+        <extension>extension1</extension>
+        <extensionAuthorityUsed version="version143">extensionAuthorityUsed1</extensionAuthorityUsed>
+    </pbcoreExtension>
+</PBCoreDescriptionDocument>
