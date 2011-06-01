@@ -2,19 +2,45 @@ module PbcoreXmlElement
   PBCORE_NAMESPACE = "pbcore:http://www.pbcore.org/PBCore/PBCoreNamespace.html"
 
   module ClassMethods
-    def xml_string(attr, field=nil)
+    def xml_string(attr, field=nil, *args)
       field ||= attr.underscore.to_sym
+      attributes = args.map do |k|
+        if k.is_a?(Hash)
+          if k.size != 1
+            raise "invalid argument"
+          else
+            k.first
+          end
+        else
+          [k, k.underscore.to_sym]
+        end
+      end
+
       from_xml_elt do |record|
         elts = record._working_xml.find("pbcore:#{attr}", PBCORE_NAMESPACE)
         unless elts.empty? || elts[0].child.nil?
           record.send("#{field}=".to_sym, elts[0].content)
+          attributes.each do |name, fld|
+            if elts[0][name]
+              val = elts[0][name]
+              reflect = record.class.reflect_on_association(fld)
+              val = reflect.klass.find_or_create_by_name(val) if reflect
+              record.send("#{fld}=".to_sym, val)
+            end
+          end
         end
       end
       to_xml_elt do |record|
         builder = record._working_xml
         value = record.send(field)
         unless value.nil? || value.empty?
-          builder << XML::Node.new(attr, value)
+          node = XML::Node.new(attr, value)
+          attributes.each do |name, fld|
+            val = record.send(fld)
+            val = val.name if val.respond_to?(:name)
+            node[name] = val unless val.nil? || val.empty?
+          end
+          builder << node
         end
       end
     end
@@ -139,7 +165,7 @@ module PbcoreXmlElement
     root = XML::Node.new("DUMMY")
     doc.root = root
     build_xml(root)
-    $stderr.puts doc.to_s(:indent => false)
+    # $stderr.puts doc.to_s(:indent => false)
     /<DUMMY>(.*)<\/DUMMY>/m.match(doc.to_s(:indent => false))[1]
   end
 

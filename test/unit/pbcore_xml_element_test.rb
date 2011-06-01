@@ -21,6 +21,6 @@ class PbcoreXmlElementTest < Test::Unit::TestCase
     a = Asset.from_xml(File.read('test/fixtures/asset_date_with_attributes.xml'))
     assert a.valid?
     assert_equal '2010-03-23', a.asset_dates.first.asset_date
-    # assert_equal 'availableEnd', a.asset_dates.first.asset_date_type.name # NO WORKY! :/
+    assert_equal 'availableEnd', a.asset_dates.first.asset_date_type.name
   end
 end
