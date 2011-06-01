@@ -66,5 +66,7 @@ class AssetTest < Test::Unit::TestCase
     assert_equal "audienceRating0", parsed_xml.find_first("//pbcore:audienceRating", PbcoreXmlElement::PBCORE_NAMESPACE).content
     assert_equal ["publisher0", "publisher1"], parsed_xml.find("//pbcore:publisher", PbcoreXmlElement::PBCORE_NAMESPACE).map(&:content)
     assert_equal ["contributorRole0", "contributorRole1"], parsed_xml.find("//pbcore:contributorRole", PbcoreXmlElement::PBCORE_NAMESPACE).map(&:content)
+    assert_equal ["genre0", "genre1"], parsed_xml.find("pbcore:pbcoreGenre/pbcore:genre", PbcoreXmlElement::PBCORE_NAMESPACE).map(&:content)
+    assert_equal ["genreAuthorityUsed0", "genreAuthorityUsed1"], parsed_xml.find("pbcore:pbcoreGenre/pbcore:genreAuthorityUsed", PbcoreXmlElement::PBCORE_NAMESPACE).map(&:content)
   end
 end
