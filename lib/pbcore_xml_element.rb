@@ -9,7 +9,7 @@ module PbcoreXmlElement
 
   module Util
     def self.set_pbcore_ns(node)
-      pbcorens = XML::Namespace.new(node, nil, "http://www.pbcore.org/PBCore/PBCoreNamespace.html")
+      pbcorens = XML::Namespace.new(node, nil, PBCORE_URI)
       node.namespaces.namespace = pbcorens
     end
   end
