@@ -1,98 +1,49 @@
+# This is a set of methods which define a DSL for explaining how a model
+# should be transformed between ActiveRecord and PBCore XML.
+#
+# To understand this code, I unfortunately must at this time recommend
+# that you see http://www.catb.org/jargon/html/magic-story.html
 module PbcoreXmlElement
-  PBCORE_NAMESPACE = "pbcore:http://www.pbcore.org/PBCore/PBCoreNamespace.html"
+  PBCORE_URI = "http://www.pbcore.org/PBCore/PBCoreNamespace.html"
+  PBCORE_NAMESPACE = "pbcore:#{PBCORE_URI}"
+
+  module Util
+    def self.set_pbcore_ns(node)
+      pbcorens = XML::Namespace.new(node, nil, "http://www.pbcore.org/PBCore/PBCoreNamespace.html")
+      node.namespaces.namespace = pbcorens
+    end
+  end
 
   module ClassMethods
     def xml_string(attr, field=nil, *args)
       field ||= attr.underscore.to_sym
-      attributes = args.map do |k|
-        if k.is_a?(Hash)
-          if k.size != 1
-            raise "invalid argument"
-          else
-            k.first
-          end
-        else
-          [k, k.underscore.to_sym]
-        end
-      end
+      attributes = map_to_xml_attributes(args)
 
       from_xml_elt do |record|
         elts = record._working_xml.find("pbcore:#{attr}", PBCORE_NAMESPACE)
         unless elts.empty? || elts[0].child.nil?
-          record.send("#{field}=".to_sym, elts[0].content)
-          attributes.each do |name, fld|
-            if elts[0][name]
-              val = elts[0][name]
-              reflect = record.class.reflect_on_association(fld)
-              val = reflect.klass.find_or_create_by_name(val) if reflect
-              record.send("#{fld}=".to_sym, val)
-            end
-          end
+          record.store_string_or_name(field, elts[0].content)
+          fetch_attributes(record, elts[0], attributes)
         end
       end
       to_xml_elt do |record|
         builder = record._working_xml
-        value = record.send(field)
+        value = record.string_or_name(field)
         unless value.nil? || value.empty?
           node = XML::Node.new(attr, value)
-          attributes.each do |name, fld|
-            val = record.send(fld)
-            val = val.name if val.respond_to?(:name)
-            node[name] = val unless val.nil? || val.empty?
-          end
+          store_attributes(record, node, attributes)
           builder << node
         end
       end
     end
     
-    def xml_attribute(attr, field=nil)
-      field ||= attr.underscore.to_sym
+    def xml_attributes(*args)
+      attributes = map_to_xml_attributes(args)
       from_xml_elt do |record|
-        xmlattr = record._working_xml[attr]
-        unless xmlattr.nil?
-          record.send("#{field}=".to_sym, xmlattr)
-        end
+        fetch_attributes(record, record._working_xml, attributes)
       end
       to_xml_elt do |record|
-        xml = record._working_xml
-        value = record.send(field)
-        xml[attr] = value unless value.nil? || value.empty?
-      end
-    end
-    
-    def xml_picklist(attr, field=nil, klass=nil)
-      field ||= attr.underscore.to_sym
-      klass ||= field.to_s.camelize.constantize
-      from_xml_elt do |record|
-        elts = record._working_xml.find("pbcore:#{attr}", PBCORE_NAMESPACE)
-        unless elts.empty? || elts[0].child.nil?
-          record.send("#{field}=".to_sym, klass.find_or_create_by_name(elts[0].child.content))
-        end
-      end
-      to_xml_elt do |record|
-        builder = record._working_xml
-        result = record.send(field)
-        if result.is_a?(klass)
-          builder << XML::Node.new(attr, result.name)
-        end
-      end
-    end
-    
-    def xml_picklist_attribute(attr, field=nil, klass=nil)
-      field ||= attr.underscore.to_sym
-      klass ||= field.to_s.camelize.constantize
-      from_xml_elt do |record|
-        xmlattr = record._working_xml[attr]
-        unless xmlattr.nil?
-          record.send("#{field}=".to_sym, klass.find_or_create_by_name(xmlattr))
-        end
-      end
-      to_xml_elt do |record|
-        xml = record._working_xml
-        value = record.send(field)
-        if value.is_a?(klass)
-          xml[attr] = value.name
-        end
+        store_attributes(record, record._working_xml, attributes)
       end
     end
 
@@ -112,7 +63,7 @@ module PbcoreXmlElement
         end
       end
     end
-    
+
     def xml_subelements_picklist(attr1, attr2, field, klass=nil)
       klass ||= field.to_s.singularize.camelize.constantize
       from_xml_elt do |record|
@@ -129,7 +80,7 @@ module PbcoreXmlElement
         end
       end
     end
-    
+
     def from_xml(xml)
       if xml.is_a?(String)
         parser = XML::Parser.string(xml)
@@ -141,6 +92,37 @@ module PbcoreXmlElement
       obj._working_xml = nil
       obj
     end
+
+    protected
+    def map_to_xml_attributes(attr_array)
+      attr_array.map do |k|
+        if k.is_a?(Hash)
+          if k.size != 1
+            raise "invalid argument"
+          else
+            k.first
+          end
+        else
+          [k, k.underscore.to_sym]
+        end
+      end
+    end
+
+    def fetch_attributes(record, node, attributes)
+      attributes.each do |name, fld|
+        if node[name]
+          val = node[name]
+          record.store_string_or_name(fld, val) if val
+        end
+      end
+    end
+
+    def store_attributes(record, node, attributes)
+      attributes.each do |name, fld|
+        val = record.string_or_name(fld)
+        node[name] = val unless val.nil? || val.empty?
+      end
+    end
   end
 
   def build_xml(builder)
@@ -149,6 +131,17 @@ module PbcoreXmlElement
     #builder.comment! updated_string if respond_to?(:updated_at)
     run_callbacks(:to_xml_elt)
     self._working_xml = nil
+  end
+
+  def string_or_name(field)
+    value = self.send(field)
+    value.respond_to?(:name) ? value.name : value
+  end
+
+  def store_string_or_name(field, value)
+    reflect = self.class.reflect_on_association(field)
+    value = reflect.klass.find_or_create_by_name(value) if reflect
+    self.send("#{field}=".to_sym, value)
   end
 
   def created_string

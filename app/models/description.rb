@@ -5,7 +5,7 @@ class Description < ActiveRecord::Base
   stampable
   
   xml_string "description"
-  xml_picklist "descriptionType", :description_type, DescriptionType
+  xml_string "descriptionType"
 
   validates_length_of :description, :minimum => 1
 end

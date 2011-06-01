@@ -5,7 +5,7 @@ class Identifier < ActiveRecord::Base
   stampable
 
   xml_string "identifier", :identifier
-  xml_picklist "identifierSource", :identifier_source, IdentifierSource
+  xml_string "identifierSource"
   
   validates_length_of :identifier, :minimum => 1
   validates_presence_of :identifier_source

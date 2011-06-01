@@ -4,7 +4,7 @@ class Relation < ActiveRecord::Base
   belongs_to :relation_type
   stampable
 
-  xml_picklist "relationType", :relation_type, RelationType
+  xml_string "relationType"
   xml_string "relationIdentifier", :relation_identifier
   
   def to_s

@@ -8,7 +8,8 @@ class FormatId < ActiveRecord::Base
   validates_presence_of :format_identifier_source
   
   xml_string "formatIdentifier"
-  xml_picklist "formatIdentifierSource"
+  xml_string "formatIdentifierSource"
+
   def validate
     super
     unless doing_xml? || format_identifier_source.nil? || format_identifier_source.regex.nil? ||

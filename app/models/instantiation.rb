@@ -32,16 +32,27 @@ class Instantiation < ActiveRecord::Base
   end
   xml_string "dateCreated"
   xml_string "dateIssued"
-  xml_picklist "formatPhysical", :format, FormatPhysical
-  xml_picklist "formatDigital", :format, FormatDigital
+  from_xml_elt do |record|
+    elt = record._working_xml.find_first("pbcore:formatPhysical|pbcore:formatDigital", PbcoreXmlElement::PBCORE_NAMESPACE)
+    if elt && elt.content
+      klass = elt.name.sub(/^[a-z]/){|f| f.upcase}.constantize # capitalize first letter
+      record.format = klass.find_or_create_by_name(elt.content)
+    end
+  end
+  to_xml_elt do |record|
+    if record.format
+      eltname = record.format.class.to_s.sub(/^[A-Z]/){|f| f.downcase}
+      record._working_xml << XML::Node.new(eltname, record.format.name)
+    end
+  end
   xml_string "formatLocation"
-  xml_picklist "formatMediaType"
-  xml_picklist "formatGenerations", :format_generation
+  xml_string "formatMediaType"
+  xml_string "formatGenerations", :format_generation
   xml_string "formatFileSize"
   xml_string "formatTimeStart"
   xml_string "formatDuration"
   xml_string "formatDataRate"
-  xml_picklist "formatColors", :format_color, FormatColor
+  xml_string "formatColors", :format_color
   xml_string "formatTracks"
   xml_string "formatChannelConfiguration"
   xml_string "language"
@@ -123,11 +134,11 @@ class Instantiation < ActiveRecord::Base
   end
 
   def to_xml
-    builder = Builder::XmlMarkup.new(:indent => 2)
-    builder.instruct!
-    builder.pbcoreInstantiation "xmlns" => "http://www.pbcore.org/PBCore/PBCoreNamespace.html" do
-      build_xml(builder)
-    end
+    doc = XML::Document.new
+    root = XML::Node.new("PBCoreDescriptionDocument")
+    PbcoreXmlElement::Util.set_pbcore_ns(root)
+    doc.root = root
+    build_xml(root)
   end
 
   protected

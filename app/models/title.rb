@@ -5,5 +5,5 @@ class Title < ActiveRecord::Base
   stampable
 
   xml_string "title", :title
-  xml_picklist "titleType", :title_type, TitleType
+  xml_string "titleType"
 end

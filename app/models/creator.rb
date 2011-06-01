@@ -5,7 +5,7 @@ class Creator < ActiveRecord::Base
   stampable
 
   xml_string "creator"
-  xml_picklist "creatorRole", :creator_role, CreatorRole
+  xml_string "creatorRole"
   
   def to_s
     creator_role.nil? ? creator : "#{creator_role.name}: #{creator}"

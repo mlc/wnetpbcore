@@ -5,7 +5,7 @@ class Publisher < ActiveRecord::Base
   stampable
 
   xml_string "publisher"
-  xml_picklist "publisherRole", :publisher_role, PublisherRole
+  xml_string "publisherRole"
 
   validates_length_of :publisher, :minimum => 1
 
