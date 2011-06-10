@@ -335,7 +335,6 @@ var FormEditor = (function($, undefined) {
       where.append(ret.fadeIn());
 
       if (textarea) {
-        safe_log(formfield);
         formfield.autoResize();
       }
     };
@@ -683,7 +682,7 @@ var FormEditor = (function($, undefined) {
 
   var form_creators = {
     "asset": function() {
-	  mkfields("asset_dates", "pbcoreAssetDate", pbcore_maker("assetDate", "assetDateType", Style.VERBOSE));
+      mkfields("asset_dates", "pbcoreAssetDate", pbcore_maker("assetDate", "assetDateType", Style.VERBOSE));
       mkfields("identifiers", "pbcoreIdentifier", pbcore_maker("identifier", "identifierSource"), function(elt) {
         return $(elt).find("identifierSource").text() === "pbcore XML database UUID";
       });
