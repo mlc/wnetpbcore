@@ -6,4 +6,8 @@ class AssetDateType < ActiveRecord::Base
   def safe_to_delete?
     asset_dates.size == 0
   end
+
+  def self.xml_picklist_name
+    "DateType"
+  end
 end
