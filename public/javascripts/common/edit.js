@@ -200,32 +200,41 @@ var FormEditor = (function($, undefined) {
       var textarea = (style == Style.TEXTAREA || style == Style.ONLY_TEXTAREA);
       var ret = $("<div>", {"class": "form_field_container " + field, "pbcore": pbcore});
 
-      if (field) {
-        ++field_counter;
-        label = $("<label>", {
-          "text": field.capitalize().addspaces() + ":",
-          "for": "input_" + field_counter
-        });
-        var args = {
-          "class": "pbcorefield " + field,
-          "id": "input_" + field_counter,
-          "name": field
-        };
-        if (textarea) {
-          args.cols = 80;
-          args.rows = 5;
-        } else {
-          args.size = 30;
-          args.type = "text";
-        }
-        args[textarea ? "text" : "value"] = $(obj).find(field).text();
-        formfield = $(textarea ? "<textarea>" : "<input>", args);
+      ++field_counter;
+      label = $("<label>", {
+        "text": (field || pbcore).capitalize().addspaces(),
+        "for": "input_" + field_counter
+      });
+      var args = {
+        "class": "pbcorefield " + field,
+        "id": "input_" + field_counter,
+        "name": field || "_text"
+      };
+      if (textarea) {
+        args.cols = 80;
+        args.rows = 5;
+      } else {
+        args.size = 30;
+        args.type = "text";
       }
+      var setme = textarea ? "text" : "value";
+      if (field)
+        args[setme] = $(obj).find(field).text();
+      else
+        args[setme] = $(obj).text();
+      formfield = $(textarea ? "<textarea>" : "<input>", args);
+
       if (picklistfield) {
-        var picklistval = attr ?
-            $(obj).find(field).attr(picklistfield) :
-            $(obj).find(picklistfield).text(),
-          attrclass = attr ? " pbcoreattr" : "";
+        var picklistval, attrclass = attr ? "pbcoreattr " : "";
+        if (attr) {
+          if (field)
+            picklistval = $(obj).find(field).attr(picklistfield);
+          else
+            picklistval = $(obj).attr(picklistfield);
+        } else {
+          picklistval = $(obj).find(picklistfield).text();
+        }
+
         if (style === Style.TWO_PLAIN) {
           box = $("<input>", {
             "id": "input_" + (++field_counter),
@@ -258,6 +267,7 @@ var FormEditor = (function($, undefined) {
           box.autocomplete(autocompleteopts(picklistfield));
         }
       }
+
       remove = mkremove(ret);
       if (style === Style.VERBOSE || style === Style.SELECT) {
         boxlabel = $("<label>", {
@@ -270,7 +280,9 @@ var FormEditor = (function($, undefined) {
           "for": "input_" + field_counter
         });
       }
-      
+
+      // safe_log({boxlabel: boxlabel, box: box, label: label, formfield: formfield, remove: remove});
+
       switch(style) {
       case Style.PLAIN:
         ret.append(label).append(' ').append(formfield).append(' ').append(box).append(' ').append(remove);
@@ -686,7 +698,7 @@ var FormEditor = (function($, undefined) {
 
   var form_creators = {
     "asset": function() {
-      mkfields("asset_dates", "pbcoreAssetDate", pbcore_maker("assetDate", "dateType", Style.VERBOSE, false, true));
+      mkfields("asset_dates", "pbcoreAssetDate", pbcore_maker(undefined, "dateType", Style.VERBOSE, false, true));
       mkfields("identifiers", "pbcoreIdentifier", pbcore_maker("identifier", "identifierSource"), function(elt) {
         return $(elt).find("identifierSource").text() === "pbcore XML database UUID";
       });
@@ -795,20 +807,17 @@ var FormEditor = (function($, undefined) {
           break;
 
         default:
-          var attrname = undefined, attrval = undefined, subelt;
           $("input, select, textarea[name]", $this).each(function() {
-            if ($(this).hasClass("")) {
-              attrname = this.name;
-              attrval = this.value;
+            if ($(this).hasClass("pbcoreattr")) {
+              elt.setAttribute(this.name, this.value);
+            } else if (this.name == "_text") {
+              elt.appendChild(doc.createTextNode(this.value));
             } else {
-              subelt = mkelt(this.name);
+              var subelt = mkelt(this.name);
               elt.appendChild(subelt);
               subelt.appendChild(doc.createTextNode(this.value));
             }
           });
-          // this is extremely flaky.
-          if (attrname && attrval)
-            subelt.setAttribute(attrname, attrval);
           break;
         }
       });
