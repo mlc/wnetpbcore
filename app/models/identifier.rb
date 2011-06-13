@@ -4,8 +4,8 @@ class Identifier < ActiveRecord::Base
   belongs_to :identifier_source
   stampable
 
-  xml_string "identifier", :identifier
-  xml_string "identifierSource"
+  xml_text_field :identifier
+  xml_attributes({"source" => :identifier_source})
   
   validates_length_of :identifier, :minimum => 1
   validates_presence_of :identifier_source

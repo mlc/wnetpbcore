@@ -4,6 +4,6 @@ class Title < ActiveRecord::Base
   belongs_to :asset
   stampable
 
-  xml_string "title", :title
-  xml_string "titleType"
+  xml_text_field :title
+  xml_attributes "titleType"
 end

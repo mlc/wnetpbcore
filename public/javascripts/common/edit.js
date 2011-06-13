@@ -699,10 +699,10 @@ var FormEditor = (function($, undefined) {
   var form_creators = {
     "asset": function() {
       mkfields("asset_dates", "pbcoreAssetDate", pbcore_maker(undefined, "dateType", Style.VERBOSE, false, true));
-      mkfields("identifiers", "pbcoreIdentifier", pbcore_maker("identifier", "identifierSource"), function(elt) {
+      mkfields("identifiers", "pbcoreIdentifier", pbcore_maker(undefined, "source", undefined, undefined, true), function(elt) {
         return $(elt).find("identifierSource").text() === "pbcore XML database UUID";
       });
-      mkfields("titles", "pbcoreTitle", pbcore_maker("title", "titleType"));
+      mkfields("titles", "pbcoreTitle", pbcore_maker(undefined, "titleType", undefined, undefined, true));
       mkfields("subjects", "pbcoreSubject", subject_maker("subject"));
       mkfields("descriptions", "pbcoreDescription", pbcore_maker("description", "descriptionType", Style.TEXTAREA));
       mkfields("genres", "pbcoreGenre", subject_maker("genre"));
