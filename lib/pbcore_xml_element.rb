@@ -47,6 +47,15 @@ module PbcoreXmlElement
       end
     end
 
+    def xml_text_field(field)
+      from_xml_elt do |record|
+        record.store_string_or_name(field, record._working_xml.children.select(&:text?).map(&:content).join)
+      end
+      to_xml_elt do |record|
+        record._working_xml << XML::Node.new_text(record.string_or_name(field))
+      end
+    end
+
     def xml_subelements(attr, field, klass=nil)
       klass ||= field.to_s.singularize.camelize.constantize
       from_xml_elt do |record|
@@ -153,13 +162,15 @@ module PbcoreXmlElement
   end
   
   # for unit tests
-  def dummy_xml_output
+  def dummy_xml_output(container="DUMMY")
     doc = XML::Document.new
-    root = XML::Node.new("DUMMY")
+    root = XML::Node.new(container)
     doc.root = root
     build_xml(root)
     # $stderr.puts doc.to_s(:indent => false)
-    /<DUMMY>(.*)<\/DUMMY>/m.match(doc.to_s(:indent => false))[1]
+    (container == "DUMMY" ?
+     /<DUMMY>(.*)<\/DUMMY>/m.match(doc.to_s(:indent => false))[1] :
+     doc.to_s(:indent => false).split("\n")[1])
   end
 
   def doing_xml?

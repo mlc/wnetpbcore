@@ -12,7 +12,5 @@
     <subject>Testing Import</subject>
     <subjectAuthorityUsed>http://pbcore.org/</subjectAuthorityUsed>
   </pbcoreSubject>
-  <pbcoreAssetDate>
-    <assetDate dateType="availableEnd">2010-03-23</assetDate>
-  </pbcoreAssetDate>
+  <pbcoreAssetDate dateType="availableEnd">2010-03-23</pbcoreAssetDate>
 </PBCoreDescriptionDocument>

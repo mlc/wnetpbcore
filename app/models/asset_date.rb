@@ -4,5 +4,6 @@ class AssetDate < ActiveRecord::Base
   belongs_to :asset_date_type
   stampable
 
-  xml_string "assetDate", :asset_date, {"dateType" => :asset_date_type}
+  xml_text_field :asset_date
+  xml_attributes "dateType" => :asset_date_type
 end

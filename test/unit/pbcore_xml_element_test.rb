@@ -14,7 +14,7 @@ class PbcoreXmlElementTest < Test::Unit::TestCase
   def test_asset_date_attribute_output
     adt = AssetDateType.create!(:name=>'when')
     ad = AssetDate.create!(:asset_date=>'today', :asset_date_type => adt)
-    assert_equal '<assetDate dateType="when">today</assetDate>', ad.dummy_xml_output
+    assert_equal '<assetDate dateType="when">today</assetDate>', ad.dummy_xml_output("assetDate")
   end
   
   def test_asset_date_attribute_from_xml

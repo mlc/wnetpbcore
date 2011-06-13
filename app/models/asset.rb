@@ -233,7 +233,70 @@ class Asset < ActiveRecord::Base
     dedupe_trivial_field(:assets_subjects, :asset_id, :subject_id)
     dedupe_trivial_field(:assets_genres, :asset_id, :genre_id)
   end
-  
+
+  # import some XML
+  # returns an array. the first elt is an array of UUIDs of successful
+  # imports; the second is an array of error messages.
+  def self.import_xml(stream_or_string, fn = "input")
+    begin
+      if (stream_or_string.respond_to?(:read))
+        parser = XML::Parser.io(stream_or_string)
+      else
+        parser = XML::Parser.string(stream_or_string)
+      end
+
+      xmldoc = parser.parse
+    rescue ex
+      return [[], [ex.to_s]]
+    end
+
+    docs = xmldoc.find("/pbcore:pbcoreDescriptionDocument|/pbcore:PBCoreDescriptionDocument|/pbcore:pbcoreCollection/pbcore:pbcoreDescriptionDocument", PbcoreXmlElement::PBCORE_NAMESPACE)
+
+    if docs.size == 0
+      [[], ["no PBCore Description Documents found"]]
+    else
+      count = 0
+      successes = []
+      errors = []
+
+      docs.each do |doc|
+        count += 1
+        Asset.transaction do
+          asset = Asset.from_xml(doc)
+          if asset.valid?
+            asset.destroy_existing
+            asset.save unless asset.merge_existing
+            successes << asset.uuid
+          else
+            errors << "document #{count} of #{fn} is not valid: #{asset.errors.full_messages.join("; ")}"
+            raise ActiveRecord::Rollback
+          end
+        end
+      end
+
+      [successes, errors]
+    end
+  end
+
+  def self.xmlify_import_results(results)
+    successes, failures = results
+    doc = XML::Document.new
+    doc.root = root = XML::Node.new("results")
+    successes_node = XML::Node.new("successes")
+    root << successes_node
+    successes.each do |succ|
+      succ_text = block_given? ? yield(succ) : succ
+      successes_node << XML::Node.new("success", succ_text)
+    end
+    failures_node = XML::Node.new("failures")
+    root << failures_node
+    failures.each do |failure|
+      failures_node << XML::Node.new("failure", failure)
+    end
+
+    doc.to_s(:indent => false)
+  end
+
   protected
   def generate_uuid
     self.uuid = UUID.random_create.to_s unless (self.uuid && !self.uuid.empty?)
