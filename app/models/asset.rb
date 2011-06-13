@@ -46,10 +46,9 @@ class Asset < ActiveRecord::Base
   xml_subelements "pbcoreIdentifier", :identifiers
   to_xml_elt do |obj|
     xml = obj._working_xml
-    identif = XML::Node.new("pbcoreIdentifier")
+    identif = XML::Node.new("pbcoreIdentifier", obj.uuid)
+    identif["source"] = "pbcore XML database UUID"
     xml << identif
-    identif << XML::Node.new("identifier", obj.uuid)
-    identif << XML::Node.new("identifierSource", "pbcore XML database UUID")
   end
   xml_subelements "pbcoreTitle", :titles
   xml_subelements "pbcoreSubject", :subjects

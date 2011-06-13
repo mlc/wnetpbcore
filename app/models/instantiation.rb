@@ -22,13 +22,12 @@ class Instantiation < ActiveRecord::Base
   before_create :generate_uuid
   after_destroy :delete_files
   
-  xml_subelements "pbcoreFormatID", :format_ids
+  xml_subelements "instantiationIdentifier", :format_ids
   to_xml_elt do |obj|
     xml = obj._working_xml
-    fid = XML::Node.new("pbcoreFormatID")
+    fid = XML::Node.new("instantiationIdentifier", obj.uuid)
+    fid["source"] = "pbcore XML database UUID"
     xml << fid
-    fid << XML::Node.new("formatIdentifier", obj.uuid)
-    fid << XML::Node.new("formatIdentifierSource", "pbcore XML database UUID")
   end
   xml_string "dateCreated"
   xml_string "dateIssued"
@@ -139,6 +138,7 @@ class Instantiation < ActiveRecord::Base
     PbcoreXmlElement::Util.set_pbcore_ns(root)
     doc.root = root
     build_xml(root)
+    doc.to_s(:indent => true)
   end
 
   protected

@@ -4,8 +4,8 @@ class Description < ActiveRecord::Base
   belongs_to :description_type
   stampable
   
-  xml_string "description"
-  xml_string "descriptionType"
+  xml_text_field :description
+  xml_attributes "descriptionType"
 
   validates_length_of :description, :minimum => 1
 end

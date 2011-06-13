@@ -4,8 +4,8 @@ class Genre < ActiveRecord::Base
   stampable
 
   has_and_belongs_to_many :assets
-  xml_string "genre", :name
-  xml_string "genreAuthorityUsed", :genre_authority_used
+  xml_text_field :name
+  xml_attributes "source" => :genre_authority_used
 
   quick_column 'CONCAT(name, " (", COALESCE(genre_authority_used, ""), ")")'
 

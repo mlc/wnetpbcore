@@ -381,12 +381,10 @@ var FormEditor = (function($, undefined) {
   /* SUBJECT / GENRE FUNCTIONS */
 
   var subject_maker = function(field) {
-    var authority_field = field + "AuthorityUsed";
-
     var stringify_with_authority = function(obj) {
       var $obj = $(obj),
-        ret = $obj.find(field).text(),
-        authority = $obj.find(authority_field).text();
+        ret = $obj.text(),
+        authority = $obj.attr("source");
 
       if (authority) {
         ret = ret + " (" + authority + ")";
@@ -400,7 +398,7 @@ var FormEditor = (function($, undefined) {
       var box = $("<input>", {
         "id": "comboxbox_" + (++field_counter),
         "class": "picklistbox " + field,
-        "name": field,
+        "name": "_text",
         "value": stringify_with_authority(obj),
         "size": 50
       });
@@ -418,15 +416,11 @@ var FormEditor = (function($, undefined) {
     var input = html.find("input"),
       field = input.attr("name"),
       entered_text = input.val(),
-      match = SUBJECT_PARSING_REGEX.exec(entered_text),
-      subject_elt = mkelt(field);
+      match = SUBJECT_PARSING_REGEX.exec(entered_text);
 
-    xml.appendChild(subject_elt);
-    subject_elt.appendChild(doc.createTextNode(match ? match[1] : entered_text));
+    xml.appendChild(doc.createTextNode(match ? match[1] : entered_text));
     if (match) {
-      var authority_elt = mkelt(field + "AuthorityUsed");
-      xml.appendChild(authority_elt);
-      authority_elt.appendChild(doc.createTextNode(match[2]));
+      xml.setAttribute("source", match[2]);
     }
   };
 
@@ -700,11 +694,11 @@ var FormEditor = (function($, undefined) {
     "asset": function() {
       mkfields("asset_dates", "pbcoreAssetDate", pbcore_maker(undefined, "dateType", Style.VERBOSE, false, true));
       mkfields("identifiers", "pbcoreIdentifier", pbcore_maker(undefined, "source", undefined, undefined, true), function(elt) {
-        return $(elt).find("identifierSource").text() === "pbcore XML database UUID";
+        return $(elt).attr("source") === "pbcore XML database UUID";
       });
       mkfields("titles", "pbcoreTitle", pbcore_maker(undefined, "titleType", undefined, undefined, true));
       mkfields("subjects", "pbcoreSubject", subject_maker("subject"));
-      mkfields("descriptions", "pbcoreDescription", pbcore_maker("description", "descriptionType", Style.TEXTAREA));
+      mkfields("descriptions", "pbcoreDescription", pbcore_maker(undefined, "descriptionType", Style.TEXTAREA, false, true));
       mkfields("genres", "pbcoreGenre", subject_maker("genre"));
       mkfields("relations", "pbcoreRelation", pbcore_maker("relationIdentifier", "relationType", Style.VERBOSE));
       mkfields("coverages", "pbcoreCoverage", pbcore_maker("coverage", "coverageType", Style.SELECT, true));
@@ -717,8 +711,8 @@ var FormEditor = (function($, undefined) {
       mkfields("extensions", "pbcoreExtension", extension_maker);
     },
     "instantiation": function() {
-      mkfields("format_ids", "pbcoreFormatID", pbcore_maker("formatIdentifier", "formatIdentifierSource"), function(elt) {
-        return $(elt).find("formatIdentifierSource").text() === 'pbcore XML database UUID';
+      mkfields("format_ids", "instantiationIdentifier", pbcore_maker(undefined, "source", undefined, false, true), function(elt) {
+        return $(elt).attr("source") === 'pbcore XML database UUID';
       });
       basic_instantiation_fields();
       mkfields("essence_tracks", "pbcoreEssenceTrack", essence_track_maker);

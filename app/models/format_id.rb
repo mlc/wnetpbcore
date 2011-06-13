@@ -1,3 +1,7 @@
+#
+# In PBCore 2.0, this is called "instantiationIdentifier", but we are
+# not renaming the class because it would be too much work.
+#
 class FormatId < ActiveRecord::Base
   include PbcoreXmlElement
   belongs_to :instantiation
@@ -7,8 +11,8 @@ class FormatId < ActiveRecord::Base
   validates_length_of :format_identifier, :minimum => 1
   validates_presence_of :format_identifier_source
   
-  xml_string "formatIdentifier"
-  xml_string "formatIdentifierSource"
+  xml_text_field :format_identifier
+  xml_attributes "source" => :format_identifier_source
 
   def validate
     super

@@ -6,8 +6,8 @@ class Subject < ActiveRecord::Base
   stampable
 
   quick_column 'IF(subject_authority IS NULL, subject, CONCAT(subject, " (", subject_authority, ")"))'
-  xml_string "subject", :subject
-  xml_string "subjectAuthorityUsed", :subject_authority
+  xml_text_field :subject
+  xml_attributes "source" => :subject_authority
 
   def name
     subject
