@@ -5,5 +5,5 @@ class Title < ActiveRecord::Base
   stampable
 
   xml_text_field :title
-  xml_attributes "titleType"
+  xml_attributes "titleType", "source", "ref", "annotation", "startTime", "endTime", "timeAnnotation"
 end

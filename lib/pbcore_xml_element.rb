@@ -52,7 +52,7 @@ module PbcoreXmlElement
         record.store_string_or_name(field, record._working_xml.children.select(&:text?).map(&:content).join)
       end
       to_xml_elt do |record|
-        record._working_xml << XML::Node.new_text(record.string_or_name(field))
+        record._working_xml << XML::Node.new_text(record.string_or_name(field) || '')
       end
     end
 
