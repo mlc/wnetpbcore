@@ -35,7 +35,7 @@ Rails::Initializer.run do |config|
   config.gem 'sunspot_rails', :version => "1.1.0", :lib => 'sunspot/rails'
   config.gem 'grit'
   config.gem 'aws-s3', :lib => 'aws/s3'
-  config.gem 'delayed_job', :lib => 'delayed_job'
+  config.gem 'delayed_job', :lib => 'delayed_job', :version => "<2"
   config.gem 'exceptional' if RAILS_ENV=='production'
   config.gem 'fastercsv'
 
