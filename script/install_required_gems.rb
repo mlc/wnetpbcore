@@ -15,7 +15,10 @@ GEMS={
   'mime-types' => '1.16',
   'sunspot' => '1.1.0',
   'sunspot_rails' => '1.1.0',
-  # not required for `rake gems:install` but needed to run `thin start`:
+  # needed to run `rake solr:sunspot:start`:
+  'escape' => '0.0.4', 
+  'nokogiri' => '1.5.0',
+  # needed to run `thin start`
   'thin' => '1.2.11'
 }
 GEMS.each do |gem, version|
