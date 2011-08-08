@@ -15,7 +15,7 @@ class Asset < ActiveRecord::Base
     {:instantiations => [{:format_ids => :format_identifier_source}, :format,
       :format_media_type, :format_generation, :format_color,
       {:essence_tracks => [:essence_track_type, :essence_track_identifier_source]},
-      :date_availables, :annotations]}
+      :instantiation_dates, :annotations]}
     ]
 
   UUID_REGEX = /[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}/
@@ -178,14 +178,13 @@ class Asset < ActiveRecord::Base
     end
     text(:date) do
       (
-       instantiations.map{|a| [a.date_created, a.date_issued]+a.date_availables.map{|b| [b.date_available_start, b.date_available_end]}}
+       asset_dates.map(&:asset_date) + 
+       instantiations.map{|a| a.instantiation_dates.map{|b| b.date}}
       ).flatten
     end
     text(:format) { instantiations.map{|a| a.format.nil? ? '' : a.format.name} }
     time :created_at
     time :updated_at
-    # # foz: not sure if this would be right:
-    #   time(:asset_dates) { asset_dates.map{|a| a.asset_date}}
     string :uuid
     boolean(:online_asset) { self.online? }
     dynamic_string :facets, :multiple => true do

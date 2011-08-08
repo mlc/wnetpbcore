@@ -9,11 +9,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110627160858) do
+ActiveRecord::Schema.define(:version => 20110808202551) do
 
   create_table "annotations", :force => true do |t|
     t.integer "instantiation_id"
     t.text    "annotation",       :limit => 16777215
+    t.text    "annotation_type"
+    t.text    "ref"
   end
 
   add_index "annotations", ["instantiation_id"], :name => "index_annotation_on_instantiation_id"
@@ -109,6 +111,17 @@ ActiveRecord::Schema.define(:version => 20110627160858) do
     t.datetime "updated_at"
     t.integer  "creator_id"
     t.integer  "updater_id"
+    t.text     "affiliation"
+    t.text     "ref"
+    t.text     "annotation"
+    t.text     "start_time"
+    t.text     "end_time"
+    t.text     "time_annotation"
+    t.text     "role_source"
+    t.text     "role_ref"
+    t.text     "role_version"
+    t.text     "role_annotation"
+    t.text     "role_portrayal"
   end
 
   add_index "contributors", ["asset_id"], :name => "index_contributors_on_asset_id"
@@ -146,17 +159,19 @@ ActiveRecord::Schema.define(:version => 20110627160858) do
     t.datetime "updated_at"
     t.integer  "creator_id"
     t.integer  "updater_id"
+    t.text     "affiliation"
+    t.text     "ref"
+    t.text     "annotation"
+    t.text     "start_time"
+    t.text     "end_time"
+    t.text     "time_annotation"
+    t.text     "role_source"
+    t.text     "role_ref"
+    t.text     "role_version"
+    t.text     "role_annotation"
   end
 
   add_index "creators", ["asset_id"], :name => "index_creators_on_asset_id"
-
-  create_table "date_availables", :force => true do |t|
-    t.integer "instantiation_id"
-    t.string  "date_available_start"
-    t.string  "date_available_end"
-  end
-
-  add_index "date_availables", ["instantiation_id"], :name => "index_date_availables_on_instantiation_id"
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -337,10 +352,23 @@ ActiveRecord::Schema.define(:version => 20110627160858) do
   add_index "identifiers", ["asset_id"], :name => "index_identifiers_on_asset_id"
   add_index "identifiers", ["identifier_source_id", "identifier"], :name => "index_identifiers_on_identifier_source_id_and_identifier"
 
+  create_table "instantiation_date_types", :force => true do |t|
+    t.string  "name"
+    t.boolean "visible", :default => false, :null => false
+  end
+
+  create_table "instantiation_dates", :force => true do |t|
+    t.integer  "instantiation_id",           :null => false
+    t.integer  "instantiation_date_type_id"
+    t.text     "date"
+    t.integer  "creator_id"
+    t.integer  "updater_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "instantiations", :force => true do |t|
     t.integer  "asset_id"
-    t.string   "date_created"
-    t.string   "date_issued"
     t.integer  "format_id"
     t.text     "format_location",              :limit => 16777215, :null => false
     t.integer  "format_media_type_id"
@@ -360,6 +388,9 @@ ActiveRecord::Schema.define(:version => 20110627160858) do
     t.string   "template_name"
     t.integer  "creator_id"
     t.integer  "updater_id"
+    t.text     "start_time"
+    t.text     "end_time"
+    t.text     "time_annotation"
   end
 
   add_index "instantiations", ["uuid"], :name => "index_instantiations_on_uuid", :unique => true
@@ -388,6 +419,16 @@ ActiveRecord::Schema.define(:version => 20110627160858) do
     t.datetime "updated_at"
     t.integer  "creator_id"
     t.integer  "updater_id"
+    t.text     "affiliation"
+    t.text     "ref"
+    t.text     "annotation"
+    t.text     "start_time"
+    t.text     "end_time"
+    t.text     "time_annotation"
+    t.text     "role_source"
+    t.text     "role_ref"
+    t.text     "role_version"
+    t.text     "role_annotation"
   end
 
   add_index "publishers", ["asset_id"], :name => "index_publishers_on_asset_id"

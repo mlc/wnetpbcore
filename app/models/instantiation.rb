@@ -4,12 +4,12 @@ class Instantiation < ActiveRecord::Base
   
   belongs_to :asset
   has_many :format_ids, :dependent => :destroy, :attributes => true
+  has_many :instantiation_dates, :dependent => :destroy, :attributes => true
   belongs_to :format
   belongs_to :format_media_type
   belongs_to :format_generation
   belongs_to :format_color
   has_many :essence_tracks, :dependent => :destroy, :attributes => true
-  has_many :date_availables, :dependent => :destroy, :attributes => true
   has_many :annotations, :dependent => :destroy, :attributes => true
   has_many :borrowings, :dependent => :destroy
   stampable
@@ -21,7 +21,8 @@ class Instantiation < ActiveRecord::Base
 
   before_create :generate_uuid
   after_destroy :delete_files
-  
+
+  xml_attributes "startTime", "endTime", "timeAnnotation"
   xml_subelements "instantiationIdentifier", :format_ids
   to_xml_elt do |obj|
     xml = obj._working_xml
@@ -29,36 +30,34 @@ class Instantiation < ActiveRecord::Base
     fid["source"] = "pbcore XML database UUID"
     xml << fid
   end
-  xml_string "dateCreated"
-  xml_string "dateIssued"
+  xml_subelements "instantiationDate", :instantiation_dates
   from_xml_elt do |record|
-    elt = record._working_xml.find_first("pbcore:formatPhysical|pbcore:formatDigital", PbcoreXmlElement::PBCORE_NAMESPACE)
+    elt = record._working_xml.find_first("pbcore:instantiationPhysical|pbcore:instantiationDigital", PbcoreXmlElement::PBCORE_NAMESPACE)
     if elt && elt.content
-      klass = elt.name.sub(/^[a-z]/){|f| f.upcase}.constantize # capitalize first letter
+      klass = elt.name.sub(/^instantiation/, "Format").constantize
       record.format = klass.find_or_create_by_name(elt.content)
     end
   end
   to_xml_elt do |record|
     if record.format
-      eltname = record.format.class.to_s.sub(/^[A-Z]/){|f| f.downcase}
+      eltname = record.format.class.to_s.sub(/^Format/, "instantiation")
       record._working_xml << XML::Node.new(eltname, record.format.name)
     end
   end
-  xml_string "formatLocation"
-  xml_string "formatMediaType"
-  xml_string "formatGenerations", :format_generation
-  xml_string "formatFileSize"
-  xml_string "formatTimeStart"
-  xml_string "formatDuration"
-  xml_string "formatDataRate"
-  xml_string "formatColors", :format_color
-  xml_string "formatTracks"
-  xml_string "formatChannelConfiguration"
+  xml_string "instantiationLocation", :format_location
+  xml_string "instantiationMediaType", :format_media_type
+  xml_string "instantiationGenerations", :format_generation
+  xml_string "instantiationFileSize", :format_file_size
+  xml_string "instantiationTimeStart", :format_time_start
+  xml_string "instantiationDuration", :format_duration
+  xml_string "instantiationDataRate", :format_data_rate
+  xml_string "instantiationColors", :format_color
+  xml_string "instantiationTracks", :format_tracks
+  xml_string "instantiationChannelConfiguration", :format_channel_configuration
   xml_string "language"
   xml_string "alternativeModes"
   xml_subelements "pbcoreEssenceTrack", :essence_tracks
-  xml_subelements "pbcoreDateAvailable", :date_availables
-  xml_subelements "pbcoreAnnotation", :annotations
+  xml_subelements "instantiationAnnotation", :annotations
   
   def identifier
     format_ids.map{|i| i.format_identifier}.join("; ")
@@ -66,8 +65,7 @@ class Instantiation < ActiveRecord::Base
 
   def summary
     result = (format_ids.map{|id| id.format_identifier}.join(" / ") +
-      (format.nil? ? '' : " (#{format.name})") +
-      " " + date_issued.to_s).strip
+      (format.nil? ? '' : " (#{format.name})")).strip
     (result.empty? ? "(instantiation)" : result)
   end
 

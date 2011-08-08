@@ -36,7 +36,7 @@ class XmlController < ApplicationController
 
       successes, failures = counts
       if successes.size == 1
-        flash.now[:message] = "asset #{link_to(successes[0], asset_path(successes[0]))} imported"
+        flash.now[:message] = "asset <a href=\"#{asset_path(successes[0]}\">#{successes[0].title}</a> imported"
       else
         flash.now[:message] = "#{successes.size} records imported"
       end

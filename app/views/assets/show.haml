@@ -64,8 +64,8 @@
 
         %p
           = render :partial => "field_array", :locals => {:objs => instantiation.format_ids, :field => "Format ID", :key => :format_identifier_source, :value => :format_identifier, :searchkey => :identifier, :searchvalue => :format_identifier}
-          = render :partial => "field_one", :locals => {:key => "Date Created", :value => instantiation.date_created}
-          = render :partial => "field_one", :locals => {:key => "Date Issued", :value => instantiation.date_issued}
+          -#= render :partial => "field_one", :locals => {:key => "Date Created", :value => instantiation.date_created}
+          -#= render :partial => "field_one", :locals => {:key => "Date Issued", :value => instantiation.date_issued}
           = render :partial => "field_one", :locals => {:key => "Format", :value => instantiation.format, :field => :name }
           = render :partial => "field_one", :locals => {:key => "Format Location", :value => instantiation.format_location } unless instantiation.online? && !permitted_to?(:watch_video, @asset)
           = render :partial => "field_one", :locals => {:key => "Media Type", :value => instantiation.format_media_type, :field => :name }
@@ -79,7 +79,7 @@
           = render :partial => "field_one", :locals => {:key => "Channel Configuration", :value => instantiation.format_channel_configuration }
           = render :partial => "field_one", :locals => {:key => "Language", :value => instantiation.language }
           = render :partial => "field_one", :locals => {:key => "Alternative Modes", :value => instantiation.alternative_modes }
-          = render :partial => "field_array", :locals => {:objs => instantiation.date_availables, :field => "Date Available", :value => :to_s }
+          -#= render :partial => "field_array", :locals => {:objs => instantiation.date_availables, :field => "Date Available", :value => :to_s }
           = render :partial => "field_array", :locals => {:objs => instantiation.annotations, :field => "Annotation", :value => :annotation}
         - if instantiation.essence_tracks.any?
           = render :partial => "essence_tracks", :locals => {:instantiation => instantiation}
