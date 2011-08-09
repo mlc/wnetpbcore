@@ -10,6 +10,10 @@ RAILS_GEM_VERSION = '2.1.2' unless defined? RAILS_GEM_VERSION
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
+if !File.exists?(File.join(Rails.root, 'config','authorization_rules.rb'))
+  raise "Error: config/authorization_rules.rb must be present. Pick one from config/auth_rules."
+end
+
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
@@ -35,7 +39,7 @@ Rails::Initializer.run do |config|
   config.gem 'sunspot_rails', :version => "1.1.0", :lib => 'sunspot/rails'
   config.gem 'grit'
   config.gem 'aws-s3', :lib => 'aws/s3'
-  config.gem 'delayed_job', :lib => 'delayed_job'
+  config.gem 'delayed_job', :lib => 'delayed_job', :version => "<2"
   config.gem 'exceptional' if RAILS_ENV=='production'
   config.gem 'fastercsv'
 

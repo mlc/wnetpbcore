@@ -174,10 +174,10 @@ ActiveRecord::Schema.define(:version => 20110808202551) do
   add_index "creators", ["asset_id"], :name => "index_creators_on_asset_id"
 
   create_table "delayed_jobs", :force => true do |t|
-    t.integer  "priority",   :default => 0
-    t.integer  "attempts",   :default => 0
-    t.text     "handler"
-    t.text     "last_error"
+    t.integer  "priority",                       :default => 0
+    t.integer  "attempts",                       :default => 0
+    t.text     "handler",    :limit => 16777215
+    t.text     "last_error", :limit => 16777215
     t.datetime "run_at"
     t.datetime "locked_at"
     t.datetime "failed_at"
@@ -250,8 +250,8 @@ ActiveRecord::Schema.define(:version => 20110808202551) do
   create_table "extension_names", :force => true do |t|
     t.string   "extension_key"
     t.string   "extension_authority"
-    t.text     "description"
-    t.boolean  "visible",             :default => false, :null => false
+    t.text     "description",         :limit => 16777215
+    t.boolean  "visible",                                 :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "creator_id"
@@ -315,9 +315,9 @@ ActiveRecord::Schema.define(:version => 20110808202551) do
   add_index "formats", ["type", "name"], :name => "index_formats_on_type_and_name"
 
   create_table "genres", :force => true do |t|
-    t.text     "name",                                    :null => false
-    t.text     "genre_authority_used"
-    t.boolean  "visible",              :default => false, :null => false
+    t.text     "name",                 :limit => 16777215,                    :null => false
+    t.text     "genre_authority_used", :limit => 16777215
+    t.boolean  "visible",                                  :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "creator_id"
@@ -398,8 +398,8 @@ ActiveRecord::Schema.define(:version => 20110808202551) do
   add_index "instantiations", ["template_name"], :name => "index_instantiations_on_template_name"
 
   create_table "ip_blocks", :force => true do |t|
-    t.string "name",   :null => false
-    t.text   "ranges"
+    t.string "name",                       :null => false
+    t.text   "ranges", :limit => 16777215
   end
 
   add_index "ip_blocks", ["name"], :name => "index_ip_blocks_on_name", :unique => true
@@ -466,9 +466,9 @@ ActiveRecord::Schema.define(:version => 20110808202551) do
   add_index "rights_summaries", ["asset_id"], :name => "index_rights_summaries_on_asset_id"
 
   create_table "subjects", :force => true do |t|
-    t.text     "subject",                              :null => false
-    t.text     "subject_authority"
-    t.boolean  "visible",           :default => false, :null => false
+    t.text     "subject",           :limit => 16777215,                    :null => false
+    t.text     "subject_authority", :limit => 16777215
+    t.boolean  "visible",                               :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "creator_id"

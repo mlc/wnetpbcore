@@ -1,96 +1,78 @@
-- title @asset.title
 - assets_navbar
 
-%table.content{ :cellspacing => "0", :border => "0", :cellpadding => "0" }
-  %tr
-    %td.contentDivider &nbsp;
+%div.recordItem  
+  %div.recordItemTitle      
+    %h2
+      = title @asset.title  
 
   - if @video
-    %tr
-      %td
-        #flowplayer{ :style => @asset.has_thumbnail? ? "background-image: url(#{img_thumb_url(@asset.thumbnail, 'preview')})" : nil }
-          %img{ :src => '/images/play_large.png', :height => 83, :width => 83, :style => 'cursor: pointer; position: relative; left: 278px; top: 198px;', :alt => 'Play Video' }
-        :javascript
-          $(function(){ $('#flowplayer').flowplayer(#{flashembed_params.to_json}, #{flowplayer_params(@video).to_json})});
-    %tr
-      %td.contentDivider &nbsp;
+    %div
+      #flowplayer{ :style => @asset.has_thumbnail? ? "background-image: url(#{img_thumb_url(@asset.thumbnail, 'preview')})" : nil }
+        %img{ :src => '/images/play_large.png', :height => 83, :width => 83, :style => 'cursor: pointer; position: relative; left: 278px; top: 198px;', :alt => 'Play Video' }
+      :javascript
+        $(function(){ $('#flowplayer').flowplayer(#{flashembed_params.to_json}, #{flowplayer_params(@video).to_json})});
+
   - elsif @asset.has_thumbnail?
-    %tr
-      %td= img_thumb_tag(@asset.thumbnail, 'preview', '640x480')
-    %tr
-      %td.contentDivider &nbsp;
+    %div.thumb
+      img_thumb_tag(@asset.thumbnail, 'preview', '640x480')
 
-  %tr
-    %td
-      %h2 Intellectual Content Section
-      %p
-        %span.title Asset <acronym title="Universally Unique Identifier">UUID</acronym>:
+  %div.recordSection
+    %h3 Intellectual Content Section
+    %h4.uuid 
+      Asset <acronym title="Universally Unique Identifier">UUID</acronym>:
+      %span
         = @asset.uuid
-        %br
-        = render :partial => "field_array", :locals => {:objs => @asset.identifiers, :field => "Identifier", :key => :identifier_source, :value => :identifier, :searchkey => :identifier, :searchvalue => :identifier}
-        = render :partial => "field_array", :locals => {:objs => @asset.titles, :field => "Title", :key => :title_type, :value => :title, :searchkey => :title, :searchvalue => :title, :searchxtra => :title_type }
-        = render :partial => "field_array", :locals => {:objs => @asset.subjects, :field => "Subject", :key => :subject_authority, :value => :subject, :searchkey => :subject, :searchvalue => :subject}
-        = render :partial => "field_array", :locals => {:objs => @asset.descriptions, :field => "Description", :key => :description_type, :value => :description}
-        = render :partial => "field_array", :locals => {:objs => @asset.genres, :field => "Genre", :key => :genre_authority_used, :value => :name, :searchkey => :genre, :searchvalue => :name}
-        = render :partial => "field_array", :locals => {:objs => @asset.relations, :field => "Relation", :value => :to_s, :searchkey => :identifier, :searchvalue => :relation_identifier}
-        = render :partial => "field_array", :locals => {:objs => @asset.coverages, :field => "Coverage", :key => :coverage_type, :value => :coverage}
-        = render :partial => "field_array", :locals => {:objs => @asset.audience_levels, :field => "Audience Level", :value => :name}
-        = render :partial => "field_array", :locals => {:objs => @asset.audience_ratings, :field => "Audience Rating", :value => :name}
 
-  %tr
-    %td.contentDivider &nbsp;
+    = render :partial => "field_array", :locals => {:objs => @asset.identifiers, :field => "Identifier", :key => :identifier_source, :value => :identifier, :searchkey => :identifier, :searchvalue => :identifier}
+    = render :partial => "field_array", :locals => {:objs => @asset.titles, :field => "Title", :key => :title_type, :value => :title, :searchkey => :title, :searchvalue => :title, :searchxtra => :title_type }
+    = render :partial => "field_array", :locals => {:objs => @asset.subjects, :field => "Subject", :key => :subject_authority, :value => :subject, :searchkey => :subject, :searchvalue => :subject}
+    = render :partial => "field_array", :locals => {:objs => @asset.descriptions, :field => "Description", :key => :description_type, :value => :description}
+    = render :partial => "field_array", :locals => {:objs => @asset.genres, :field => "Genre", :key => :genre_authority_used, :value => :name, :searchkey => :genre, :searchvalue => :name}
+    = render :partial => "field_array", :locals => {:objs => @asset.relations, :field => "Relation", :value => :to_s, :searchkey => :identifier, :searchvalue => :relation_identifier}
+    = render :partial => "field_array", :locals => {:objs => @asset.coverages, :field => "Coverage", :key => :coverage_type, :value => :coverage}
+    = render :partial => "field_array", :locals => {:objs => @asset.audience_levels, :field => "Audience Level", :value => :name}
+    = render :partial => "field_array", :locals => {:objs => @asset.audience_ratings, :field => "Audience Rating", :value => :name}
 
-  %tr
-    %td
-      %h2 Intellectual Property Section
-      %p
-        = render :partial => "field_array", :locals => {:objs => @asset.creators, :field => "Creators", :value => :to_s, :searchkey => :creator, :searchvalue => :creator}
-        = render :partial => "field_array", :locals => {:objs => @asset.contributors, :field => "Contributors", :value => :to_s, :searchkey => :contributor, :searchvalue => :contributor}
-        = render :partial => "field_array", :locals => {:objs => @asset.publishers, :field => "Publishers", :value => :to_s, :searchkey => :publisher, :searchvalue => :publisher}
-        = render :partial => "field_array", :locals => {:objs => @asset.rights_summaries, :field => "Rights", :value => :rights_summary}
+  %div.recordSection
+    %h3 Intellectual Property Section
+    = render :partial => "field_array", :locals => {:objs => @asset.creators, :field => "Creators", :value => :to_s, :searchkey => :creator, :searchvalue => :creator}
+    = render :partial => "field_array", :locals => {:objs => @asset.contributors, :field => "Contributors", :value => :to_s, :searchkey => :contributor, :searchvalue => :contributor}
+    = render :partial => "field_array", :locals => {:objs => @asset.publishers, :field => "Publishers", :value => :to_s, :searchkey => :publisher, :searchvalue => :publisher}
+    = render :partial => "field_array", :locals => {:objs => @asset.rights_summaries, :field => "Rights", :value => :rights_summary}
 
+  %div.recordSection
   - @asset.instantiations.each do |instantiation|
-    %tr
-      %td.contentDivider &nbsp;
+    %h3 Instantiation
+    - if instantiation.borrowed?
+      = link_to_if(permitted_to?(:borrowings, instantiation), "[on loan]", borrowings_asset_instantiation_url(@asset, instantiation), :class => :borrowednote)
+    - elsif permitted_to?(:borrowings, instantiation)
+      = link_to "(borrow)", borrowings_asset_instantiation_url(@asset, instantiation)
 
-    %tr
-      %td
-        %h2
-          Instantiation
-          - if instantiation.borrowed?
-            = link_to_if(permitted_to?(:borrowings, instantiation), "[on loan]", borrowings_asset_instantiation_url(@asset, instantiation), :class => :borrowednote)
-          - elsif permitted_to?(:borrowings, instantiation)
-            = link_to "(borrow)", borrowings_asset_instantiation_url(@asset, instantiation)
+    = render :partial => "field_array", :locals => {:objs => instantiation.format_ids, :field => "Format ID", :key => :format_identifier_source, :value => :format_identifier, :searchkey => :identifier, :searchvalue => :format_identifier}
+    -#= render :partial => "field_one", :locals => {:key => "Date Created", :value => instantiation.date_created}
+    -#= render :partial => "field_one", :locals => {:key => "Date Issued", :value => instantiation.date_issued}
+    = render :partial => "field_one", :locals => {:key => "Format", :value => instantiation.format, :field => :name }
+    = render :partial => "field_one", :locals => {:key => "Format Location", :value => instantiation.format_location } unless instantiation.online? && !permitted_to?(:watch_video, @asset)
+    = render :partial => "field_one", :locals => {:key => "Media Type", :value => instantiation.format_media_type, :field => :name }
+    = render :partial => "field_one", :locals => {:key => "Generations", :value => instantiation.format_generation, :field => :name }
+    = render :partial => "field_one", :locals => {:key => "File Size", :value => instantiation.pretty_file_size }
+    = render :partial => "field_one", :locals => {:key => "Time Start", :value => instantiation.format_time_start }
+    = render :partial => "field_one", :locals => {:key => "Duration", :value => instantiation.format_duration }
+    = render :partial => "field_one", :locals => {:key => "Data Rate", :value => instantiation.format_data_rate }
+    = render :partial => "field_one", :locals => {:key => "Colors", :value => instantiation.format_color, :field => :name }
+    = render :partial => "field_one", :locals => {:key => "Tracks", :value => instantiation.format_tracks }
+    = render :partial => "field_one", :locals => {:key => "Channel Configuration", :value => instantiation.format_channel_configuration }
+    = render :partial => "field_one", :locals => {:key => "Language", :value => instantiation.language }
+    = render :partial => "field_one", :locals => {:key => "Alternative Modes", :value => instantiation.alternative_modes }
+    -#= render :partial => "field_array", :locals => {:objs => instantiation.date_availables, :field => "Date Available", :value => :to_s }
+    = render :partial => "field_array", :locals => {:objs => instantiation.annotations, :field => "Annotation", :value => :annotation}
 
-        %p
-          = render :partial => "field_array", :locals => {:objs => instantiation.format_ids, :field => "Format ID", :key => :format_identifier_source, :value => :format_identifier, :searchkey => :identifier, :searchvalue => :format_identifier}
-          -#= render :partial => "field_one", :locals => {:key => "Date Created", :value => instantiation.date_created}
-          -#= render :partial => "field_one", :locals => {:key => "Date Issued", :value => instantiation.date_issued}
-          = render :partial => "field_one", :locals => {:key => "Format", :value => instantiation.format, :field => :name }
-          = render :partial => "field_one", :locals => {:key => "Format Location", :value => instantiation.format_location } unless instantiation.online? && !permitted_to?(:watch_video, @asset)
-          = render :partial => "field_one", :locals => {:key => "Media Type", :value => instantiation.format_media_type, :field => :name }
-          = render :partial => "field_one", :locals => {:key => "Generations", :value => instantiation.format_generation, :field => :name }
-          = render :partial => "field_one", :locals => {:key => "File Size", :value => instantiation.pretty_file_size }
-          = render :partial => "field_one", :locals => {:key => "Time Start", :value => instantiation.format_time_start }
-          = render :partial => "field_one", :locals => {:key => "Duration", :value => instantiation.format_duration }
-          = render :partial => "field_one", :locals => {:key => "Data Rate", :value => instantiation.format_data_rate }
-          = render :partial => "field_one", :locals => {:key => "Colors", :value => instantiation.format_color, :field => :name }
-          = render :partial => "field_one", :locals => {:key => "Tracks", :value => instantiation.format_tracks }
-          = render :partial => "field_one", :locals => {:key => "Channel Configuration", :value => instantiation.format_channel_configuration }
-          = render :partial => "field_one", :locals => {:key => "Language", :value => instantiation.language }
-          = render :partial => "field_one", :locals => {:key => "Alternative Modes", :value => instantiation.alternative_modes }
-          -#= render :partial => "field_array", :locals => {:objs => instantiation.date_availables, :field => "Date Available", :value => :to_s }
-          = render :partial => "field_array", :locals => {:objs => instantiation.annotations, :field => "Annotation", :value => :annotation}
-        - if instantiation.essence_tracks.any?
-          = render :partial => "essence_tracks", :locals => {:instantiation => instantiation}
-
-  %tr
-    %td.contentDivider &nbsp;
+    - if instantiation.essence_tracks.any?
+      %div.recordSection
+      = render :partial => "essence_tracks", :locals => {:instantiation => instantiation}
 
   - if @asset.extensions.any?
-    %tr
-      %td
-        %h2 Extension Section
-        %p= render :partial => "field_array", :locals => {:objs => @asset.extensions, :field => "Extension", :key => :extension_name_str, :value => :extension_value }
-    %tr
-      %td.contentDivider &nbsp;
+    %div.recordSection
+      %h3 
+        Extension Section
+      %p= render :partial => "field_array", :locals => {:objs => @asset.extensions, :field => "Extension", :key => :extension_name_str, :value => :extension_value }

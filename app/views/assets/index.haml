@@ -2,46 +2,44 @@
 
 - unless @assets.empty?
   = render :partial => "pagination"
-  %table.content{ :cellspacing => "0", :border => "0", :cellpadding => "0" }
-    %tr
-      %td.contentDivider{ :colspan => "2" } &nbsp;
-
-    - @assets.each do |asset|
-      %tr{ :id => "tr_asset_#{asset.id}" }
+  - @assets.each do |asset|
+    %div.recordItem
+      %div.recordItemTitle      
+  
+        %h2
+          = link_to asset.title, asset_url(asset.uuid)
+        %h3&= asset.identifier
         - if asset.has_thumbnail?
-          %td{ :width => "95" }<
-            = link_to img_thumb_tag(asset.thumbnail, "thumb", "80x60"), asset_url(asset.uuid), :class => "index_thumbnail"
-        %td{ :colspan => asset.has_thumbnail? ? 1 : 2 }
-          %span.title2&= asset.identifier
-          - permitted_to? :show, asset do
-            = link_to "VIEW", asset_url(asset.uuid), :class => "title2"
-            = link_to "XML", formatted_asset_url(asset.uuid, "xml"), :class => "title2"
-          - permitted_to? :request, asset do
-            = link_to "REQUEST", request_mailto_link(asset), :class => "title2"
-          - permitted_to? :edit, asset do
-            = link_to "EDIT", edit_asset_url(asset), :class => "title2"
+          = link_to img_thumb_tag(asset.thumbnail, "thumb", "80x60"), asset_url(asset.uuid), :class => "index_thumbnail"
+    
+        - permitted_to? :edit, asset do
+          = link_to "EDIT", edit_asset_url(asset), :class => "editBtn"
+        %div.moreBtn< 
+          %span><= "+"
+          %ul
+            - permitted_to? :request, asset do
+              %li<
+                = link_to "REQUEST", request_mailto_link(asset)
+            - permitted_to? :edit, asset do
+              %li<
+                = link_to "XML", formatted_asset_url(asset.uuid, "xml")
+            - permitted_to? :destroy, asset do
+              %li<
+                = link_to_remote "DELETE", :url => { :action => 'destroy', :id => asset.id }, :method => :delete, :confirm => "Are you sure you wish to delete #{asset.title}?", :html => { :class => "title2" }
 
-          - permitted_to? :merge, :assets do
-            %span.title2
-              = check_box_tag "asset_ids[]", asset.id, false, :id => "merge_#{asset.id}"
-              %label{ :for => "merge_#{asset.id}" } MERGE
+            - permitted_to? :merge, :assets do
+              %li<
+                = check_box_tag "asset_ids[]", asset.id, false, :id => "merge_#{asset.id}"
+                %label{ :for => "merge_#{asset.id}" } MERGE
 
-          - permitted_to? :destroy, asset do
-            = link_to_remote "DELETE", :url => { :action => 'destroy', :id => asset.id }, :method => :delete, :confirm => "Are you sure you wish to delete #{asset.title}?", :html => { :class => "title2" }
-
-          %br
-          %strong&= asset.title
-
-          %br
+        %ul.recordFormats
           - asset.instantiations.sort{ |a,b| a.summary <=> b.summary }.each do |instantiation|
-            &= instantiation.summary
-            - if instantiation.format_location =~ /^(f|ht)tp:\/\//
-              = link_to "[link]", instantiation.format_location
-            - if instantiation.borrowed?
-              [on loan]
-            %br
+            %li
+              = instantiation.summary
+              - if instantiation.format_location =~ /^(f|ht)tp:\/\//
+                = link_to "[link]", instantiation.format_location
+              - if instantiation.borrowed?
+                [on loan]
 
-      %tr{ :id => "tr_divider_#{asset.id}" }
-        %td.contentDivider{ :colspan => "2" } &nbsp;
       
   = render :partial => "pagination"
