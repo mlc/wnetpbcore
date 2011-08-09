@@ -448,7 +448,7 @@ a.index_thumbnail img {
 
 /* optimally, these two widths should be 34 different.
  * one day, I will learn from whence the magic constant 34 comes */
-input.pbcorefield { width: 245px; }
+input.pbcorefield { width: 230px; }
 input.pbcorefield.ui-autocomplete-input { width: 211px; }
 
 .smallnote {
@@ -665,4 +665,201 @@ form.instantiations span label{
 }
 #asset_dates input.assetDate{
 	width: 220px;
+}
+
+
+/* assets list view styles */
+
+.recordItem, .recordItem h2{
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;	
+	border-radius: 10px;
+}
+	
+.recordItem{
+	color:#666;
+	text-transform: none;
+	padding:0px;
+	margin:5px 0px;
+	background-color:#eee;
+	text-shadow: 0px 1px 0px #fff;
+}
+
+.recordItem h2 a{
+	color: #fff;
+	font-weight: bold;
+	font-family: 'Switzera ADF Cd', 'Arial Narrow', Arial, Helvetica, sans-serif; 
+	font-size: 20px;
+	line-height:24px;
+	text-transform: none;
+}
+.recordItem h2{
+	padding:10px;
+	margin:0px 0;
+	text-shadow: 0px 1px 0px #000;
+	background-color:#999999;
+	display:block;
+}
+
+.recordItem h3{
+	color: #508bc7;
+	font-weight: bold;
+	font-family: 'Switzera ADF Cd', 'Arial Narrow', Arial, Helvetica, sans-serif; 
+	font-size: 16px;
+	text-transform: none;
+	padding:5px 15px;
+	margin:5px 0 0 0;
+	text-shadow: 0px 1px 0px #fff;
+}
+
+.recordItemTitle{
+	position:relative;
+}
+
+.recordItemTitle a.editBtn, .recordItemTitle .moreBtn span{
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;	
+	border-radius: 7px;
+}
+
+.recordItemTitle a.editBtn{
+	position:absolute;
+	top:7px;
+	right:40px;
+	width:40px;
+	height:25px;
+	line-height:25px;
+	text-align:center;
+	border:#777 2px solid;
+	background:#ccc;
+	font-size:12px;
+	font-weight:bold;
+	
+}
+
+.recordItemTitle a.editBtn:hover{
+	border:#cccccc 2px solid;
+	background:#f0f0f0;
+}
+
+.recordItemTitle .moreBtn{
+	position:absolute;
+	top:7px;
+	right:7px;
+	width:29px;
+	height:29px;
+	line-height:29px;
+	text-align:center;
+	border:none;
+	background:none;
+	display:block;
+	
+}
+.recordItemTitle .moreBtn span{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:25px;
+	height:25px;
+	line-height:25px;
+	text-align:center;
+	font-size:18px;
+	font-weight:bold;
+	display:block;
+	z-index:10000;
+	border:#777 2px solid;
+	background:#ccc;
+	color:#000;
+}
+
+
+.recordItemTitle .moreBtn ul{
+	z-index:9999;
+	display:none;
+	position:absolute;
+	top:13px;
+	right:0px;
+	text-align:left;
+	color:#333;
+	font-size:13px;
+	padding:5px 0;
+	text-shadow: 0px 1px 0px #eee;
+	-moz-border-radius-topleft: 7px;
+	-moz-border-radius-topright: 0px;
+	-moz-border-radius-bottomright: 7px;
+	-moz-border-radius-bottomleft: 7px;
+	border-top-left-radius: 7px;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 7px;
+	border-bottom-left-radius: 7px;
+	border:#cccccc 2px solid;
+	background:#f0f0f0;
+	
+}
+
+.recordItemTitle .moreBtn ul li{
+	list-style:none;
+	padding:1px 10px;
+	margin:0;
+	line-height:15px;
+	
+}
+
+.recordItemTitle .moreBtn ul li a{
+	padding:0px;
+	margin:0;
+	line-height:15px;
+}
+
+.recordItemTitle .moreBtn:hover span{
+	border:#cccccc 2px solid;
+	background:#f0f0f0;
+	color:#508bc7;
+	-moz-border-radius-topleft: 7px;
+	-moz-border-radius-topright: 7px;
+	-moz-border-radius-bottomright: 0px;
+	-moz-border-radius-bottomleft: 0px;
+	border-top-left-radius: 7px;
+	border-top-right-radius: 7px;
+	border-bottom-right-radius: 0px;
+	border-bottom-left-radius: 0px;
+	border-bottom-color:#f0f0f0;
+}
+
+.recordItemTitle .moreBtn:hover ul{
+	display:block;
+}
+
+ul.recordFormats{
+	display:block;
+	margin:0;
+	padding:15px;
+	background-color:#cccccc;
+	border:#eee 5px solid;
+	-moz-border-radius-topleft: 0px;
+	-moz-border-radius-topright: 0px;
+	-moz-border-radius-bottomright: 10px;
+	-moz-border-radius-bottomleft: 10px;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	list-style:none;
+}
+ul.recordFormats li{
+	color:#333;
+	font-size:13px;
+	padding:1px 0;
+	text-shadow: 0px 1px 0px #eee;
+}
+dl{
+	margin-left:20px;
+	font-size:13px;
+}
+dl dt{
+	width: 200px;
+	display:inline-block;
+}
+dl dd{
+	display:inline;
 }
