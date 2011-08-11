@@ -61,7 +61,7 @@ $(function() {
     var mkshower = function(flag) {
 	return function() {
 	    var $this = $(this);
-	    var tracks = $this.parent().next("table.tracks");
+	    var tracks = $this.parent().next(".tracks");
 
 	    tracks.toggle(flag);
 	    if (flag)

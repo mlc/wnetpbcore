@@ -1,5 +1,6 @@
 - unless value.nil? || (value.respond_to?(:empty?) && value.empty?)
   - val = (local_assigns[:field] ? value.send(field) : value)
-  %strong.title&= key
-  = auto_link(h(val))
-  %br
+  %dt
+    = "#{key}:"
+  %dd 
+    = auto_link(h(val))

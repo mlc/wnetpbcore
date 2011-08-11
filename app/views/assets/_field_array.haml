@@ -1,13 +1,13 @@
 - objs.each do |obj|
-  %dl
-    - if local_assigns[:key]
-      - objkey = obj.send(key)
-      - objkey = objkey.name if objkey.respond_to?(:name)
-      %dt.title
-        = field
-        = auto_link(objkey)+':'
-    - else
-      %dt.title #{field}:
-    - query = nil
-    %dd 
-      = auto_link(h(obj.send(value)).gsub(/\r\n|\r|\n/, "<br />"))
+  - if local_assigns[:key]
+    - objkey = obj.send(key)
+    - objkey = objkey.name if objkey.respond_to?(:name)
+    %dt
+      = field
+      = "(#{objkey}):"
+  - else
+    %dt 
+      = "#{field}:"
+  - query = nil
+  %dd 
+    = auto_link(h(obj.send(value)).gsub(/\r\n|\r|\n/, "<br />"))

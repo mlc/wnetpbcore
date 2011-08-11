@@ -852,14 +852,70 @@ ul.recordFormats li{
 	padding:1px 0;
 	text-shadow: 0px 1px 0px #eee;
 }
-dl{
-	margin-left:20px;
-	font-size:13px;
+
+/* show page */
+
+.recordItem.show{
+	width: 650px;
+	font-size: 14px;	
+	line-height:1;
 }
-dl dt{
-	width: 200px;
-	display:inline-block;
+.recordSection{
+	margin: 20px 10px;
 }
-dl dd{
-	display:inline;
+.recordSection h3, .recordSection h4{
+  padding: 5px 0;
+}
+.recordSection dl{
+  margin-bottom: 30px;
+	margin-left: 5px;
+}
+.recordSection dl dt{
+	width: 220px;
+	line-height: 1.1;
+	height: 12px;
+	clear: left;
+  float: left;
+  font-weight:bold;
+  margin: 0 10px 0 0;
+  padding: 3px 0;
+	overflow: hidden;
+}
+.recordSection dl dd{
+  margin:2px 0;
+	padding: 3px 0;
+}
+.recordItem.show h2{
+	font-size: 22px;
+}
+.recordItem.show h3{
+	font-size: 18px;
+	margin: 0 0 10px 0;
+	padding: 0;
+}
+.recordSection h4.uuid{
+	font-weight:bold;
+	margin-left: 5px;
+}
+.recordSection h4.uuid span{
+	background-color:white;
+	padding: 2px;
+}
+.tracks{
+	width: 630px;
+	overflow:auto;	
+	margin: 0 0 20px 0;
+}
+.tracks table{
+	background-color: white;
+}
+.tracks table td, .tracks table th{
+	padding: 2px;
+}
+.tracks table th{
+	color: black;
+	font-weight:bold;
+}
+.tracks table tr.odd{
+	background-color:#eef;
 }
