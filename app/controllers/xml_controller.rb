@@ -36,7 +36,7 @@ class XmlController < ApplicationController
 
       successes, failures = counts
       if successes.size == 1
-        flash.now[:message] = "asset <a href=\"#{asset_path(successes[0]}\">#{successes[0].title}</a> imported"
+        flash.now[:message] = "asset <a href=\"#{asset_path(successes[0])}\">#{successes[0].title}</a> imported"
       else
         flash.now[:message] = "#{successes.size} records imported"
       end
@@ -49,7 +49,7 @@ class XmlController < ApplicationController
             render :xml => "<message severity='error'>no XML provided.</message>" and return
           end
           counts = Asset.import_xml(params[:xml])
-          render :xml => Asset.xmlify_import_results(counts){|uuid| asset_url(uuid)}
+          render :xml => (Asset.xmlify_import_results(counts){|uuid| asset_url(uuid)})
         end
       end
     end
