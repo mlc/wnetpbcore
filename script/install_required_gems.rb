@@ -25,7 +25,7 @@ GEMS={
   'capistrano-ext' => '1.2.1'
 }
 GEMS.each do |gem, version|
-  cmd = "gem install -r --no-rdoc --no-ri --ignore-dependencies #{gem} -v #{version}"
+  cmd = "gem install -r --no-rdoc --no-ri #{gem} -v #{version}"
   puts `#{cmd}`
 end
 
