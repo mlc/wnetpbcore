@@ -73,3 +73,5 @@ See doc/INSTALL.rdoc
 - wnet is out-of-date and unsupported
 - bavc is gone
 
+There's a way to get a list of records as an RSS feed. If you don't provide a search parameter, the records come back BY DEFAULT in most-recently-modified order.
+
