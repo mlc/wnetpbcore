@@ -1,0 +1,1742 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<pbcoreCollection xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xalan="http://xml.apache.org/xalan" xmlns:fmp="http://www.filemaker.com/xml/fmresultset"> 
+<pbcoreDescriptionDocument> 
+<pbcoreAssetType source="WITNESS ContentType Main">Raw</pbcoreAssetType> 
+<pbcoreAssetType source="WITNESS ContentType Other">Interview(s)</pbcoreAssetType> 
+<pbcoreAssetDate dateType="Probable Date">2005</pbcoreAssetDate> 
+<pbcoreIdentifier source="WITNESS Media Archive Title ID">6186</pbcoreIdentifier> 
+<pbcoreIdentifier source="WITNESS Media Archive Partner Title ID">RB06 /116 </pbcoreIdentifier> 
+<pbcoreTitle titleType="Main">[Otto Saki interview]</pbcoreTitle> 
+<pbcoreSubject subjectType="Topical" source="WITNESS.org" ref="http://www.witness.org/vocab/topics/index.php?tema=5">Activists</pbcoreSubject> 
+<pbcoreSubject subjectType="Topical" source="WITNESS.org" ref="http://www.witness.org/vocab/topics/index.php?tema=165">Judicial Reform</pbcoreSubject> 
+<pbcoreSubject subjectType="Topical" source="WITNESS.org" ref="http://www.witness.org/vocab/topics/index.php?tema=171">Legal Proceedings</pbcoreSubject> 
+<pbcoreSubject subjectType="Geographic" source="WITNESS.org">Zimbabwe</pbcoreSubject> 
+<pbcoreSubject subjectType="Corporate" source="WITNESS.org">United Nations</pbcoreSubject> 
+<pbcoreSubject subjectType="Personal" source="WITNESS.org">Saki, Otto</pbcoreSubject> 
+<pbcoreDescription descriptionType="Summary">Interview with Otto Saki, a lawyer at Zimbabwe Lawyers for Human Rights where he coordinates urgent appeals to African human rights systems and the United Nations and is responsible for international litigation and human rights defenders? duties.  Saki discusses the origins of ZLHR, his childhood, and his activism and advocacy . </pbcoreDescription> 
+<pbcoreCoverage> 
+<coverage>Zimbabwe/ </coverage> 
+<coverageType>Spatial</coverageType> 
+</pbcoreCoverage> 
+<pbcoreCreator> 
+<creator>Rainlake Productions</creator> 
+<creatorRole>Creator</creatorRole> 
+</pbcoreCreator> 
+<pbcorePublisher> 
+<publisher>WITNESS</publisher> 
+<publisherRole>Copyright Holder</publisherRole> 
+</pbcorePublisher> 
+<pbcoreInstantiation> 
+<instantiationIdentifier source="WITNESS Media Archive Item ID">B05087</instantiationIdentifier> 
+<instantiationPhysical>DV Mini</instantiationPhysical> 
+<instantiationLocation>WITNESS Media Archive</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Original</instantiationGenerations> 
+<instantiationEssenceTrack> 
+<essenceTrackType>video</essenceTrackType> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+</instantiationEssenceTrack> 
+<instantiationAnnotation annotationType="preservation_priority">Unknown</instantiationAnnotation> 
+<instantiationAnnotation annotationType="reel_number">1</instantiationAnnotation> 
+</pbcoreInstantiation> 
+<pbcoreInstantiation> 
+<instantiationIdentifier source="WITNESS Media Archive Item ID">E005448</instantiationIdentifier> 
+<instantiationLocation>Witness</instantiationLocation> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005448_part_1_of_19</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 0_00_00_04.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN3_Archive/P-RAINLAKE/Raw/E005448_6186_OttoSaki1/B05087 - 0_00_00_04.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">1806241864</instantiationFileSize> 
+<instantiationTimeStart>00:00:00.160</instantiationTimeStart> 
+<instantiationDuration>00:07:56.320</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30336611</instantiationDataRate> 
+<instantiationTracks>1 video track, 2 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV DVCPRO (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:00:00.160</essenceTrackTimeStart> 
+<essenceTrackDuration>00:07:56.320</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:07:56.320</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:00:00.160</essenceTrackTimeStart> 
+<essenceTrackDuration>00:07:56.320</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005448_part_2_of_19</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 0_07_56_12.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN3_Archive/P-RAINLAKE/Raw/E005448_6186_OttoSaki1/B05087 - 0_07_56_12.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">850791400</instantiationFileSize> 
+<instantiationTimeStart>00:07:56.480</instantiationTimeStart> 
+<instantiationDuration>00:03:44.360</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30336651</instantiationDataRate> 
+<instantiationTracks>1 video track, 2 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV DVCPRO (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:07:56.480</essenceTrackTimeStart> 
+<essenceTrackDuration>00:03:44.360</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:03:44.360</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:07:56.480</essenceTrackTimeStart> 
+<essenceTrackDuration>00:03:44.360</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005448_part_3_of_19</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 0_11_41_04.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN3_Archive/P-RAINLAKE/Raw/E005448_6186_OttoSaki1/B05087 - 0_11_41_04.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">3794119</instantiationFileSize> 
+<instantiationTimeStart>00:11:41.160</instantiationTimeStart> 
+<instantiationDuration>00:00:01.000</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30352952</instantiationDataRate> 
+<instantiationTracks>1 video track, 1 audio track</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV DVCPRO (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:11:41.160</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:01.000</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:01.000</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005448_part_4_of_19</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 0_11_42_04.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN3_Archive/P-RAINLAKE/Raw/E005448_6186_OttoSaki1/B05087 - 0_11_42_04.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">602486524</instantiationFileSize> 
+<instantiationTimeStart>00:11:42.160</instantiationTimeStart> 
+<instantiationDuration>00:02:38.880</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30336682</instantiationDataRate> 
+<instantiationTracks>1 video track, 2 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV DVCPRO (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:11:42.160</essenceTrackTimeStart> 
+<essenceTrackDuration>00:02:38.880</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:02:38.880</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:11:42.160</essenceTrackTimeStart> 
+<essenceTrackDuration>00:02:38.880</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005448_part_5_of_19</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 0_14_21_01.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN3_Archive/P-RAINLAKE/Raw/E005448_6186_OttoSaki1/B05087 - 0_14_21_01.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">1030990660</instantiationFileSize> 
+<instantiationTimeStart>00:14:21.040</instantiationTimeStart> 
+<instantiationDuration>00:04:31.880</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30336638</instantiationDataRate> 
+<instantiationTracks>1 video track, 2 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV DVCPRO (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:14:21.040</essenceTrackTimeStart> 
+<essenceTrackDuration>00:04:31.880</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:04:31.880</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:14:21.040</essenceTrackTimeStart> 
+<essenceTrackDuration>00:04:31.880</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005448_part_6_of_19</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 0_18_52_23.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN3_Archive/P-RAINLAKE/Raw/E005448_6186_OttoSaki1/B05087 - 0_18_52_23.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">3058687404</instantiationFileSize> 
+<instantiationTimeStart>00:18:52.920</instantiationTimeStart> 
+<instantiationDuration>00:13:26.600</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30336597</instantiationDataRate> 
+<instantiationTracks>1 video track, 2 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV DVCPRO (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:18:52.920</essenceTrackTimeStart> 
+<essenceTrackDuration>00:13:26.600</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:13:26.600</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:18:52.920</essenceTrackTimeStart> 
+<essenceTrackDuration>00:13:26.600</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005448_part_7_of_19</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 0_32_19_13.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN3_Archive/P-RAINLAKE/Raw/E005448_6186_OttoSaki1/B05087 - 0_32_19_13.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">916621764</instantiationFileSize> 
+<instantiationTimeStart>00:32:19.520</instantiationTimeStart> 
+<instantiationDuration>00:04:01.720</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30336646</instantiationDataRate> 
+<instantiationTracks>1 video track, 2 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV DVCPRO (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:32:19.520</essenceTrackTimeStart> 
+<essenceTrackDuration>00:04:01.720</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:04:01.720</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:32:19.520</essenceTrackTimeStart> 
+<essenceTrackDuration>00:04:01.720</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005448_part_8_of_19</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 0_36_21_06.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN3_Archive/P-RAINLAKE/Raw/E005448_6186_OttoSaki1/B05087 - 0_36_21_06.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">2139792504</instantiationFileSize> 
+<instantiationTimeStart>00:36:21.240</instantiationTimeStart> 
+<instantiationDuration>00:09:24.280</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30336605</instantiationDataRate> 
+<instantiationTracks>1 video track, 2 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV DVCPRO (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:36:21.240</essenceTrackTimeStart> 
+<essenceTrackDuration>00:09:24.280</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:09:24.280</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:36:21.240</essenceTrackTimeStart> 
+<essenceTrackDuration>00:09:24.280</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005448_part_9_of_19</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 0_45_45_13.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN3_Archive/P-RAINLAKE/Raw/E005448_6186_OttoSaki1/B05087 - 0_45_45_13.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">1217560608</instantiationFileSize> 
+<instantiationTimeStart>00:45:45.520</instantiationTimeStart> 
+<instantiationDuration>00:05:21.080</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30336629</instantiationDataRate> 
+<instantiationTracks>1 video track, 2 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV DVCPRO (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:45:45.520</essenceTrackTimeStart> 
+<essenceTrackDuration>00:05:21.080</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:05:21.080</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:45:45.520</essenceTrackTimeStart> 
+<essenceTrackDuration>00:05:21.080</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005448_part_10_of_19</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 0_51_06_15.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN3_Archive/P-RAINLAKE/Raw/E005448_6186_OttoSaki1/B05087 - 0_51_06_15.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">989126188</instantiationFileSize> 
+<instantiationTimeStart>00:51:06.600</instantiationTimeStart> 
+<instantiationDuration>00:04:20.840</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30336641</instantiationDataRate> 
+<instantiationTracks>1 video track, 2 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV DVCPRO (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:51:06.600</essenceTrackTimeStart> 
+<essenceTrackDuration>00:04:20.840</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:04:20.840</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:51:06.600</essenceTrackTimeStart> 
+<essenceTrackDuration>00:04:20.840</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005448_part_11_of_19</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 0_55_27_11.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN3_Archive/P-RAINLAKE/Raw/E005448_6186_OttoSaki1/B05087 - 0_55_27_11.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">25788204</instantiationFileSize> 
+<instantiationTimeStart>00:55:27.440</instantiationTimeStart> 
+<instantiationDuration>00:00:06.800</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30339063</instantiationDataRate> 
+<instantiationTracks>1 video track, 2 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV DVCPRO (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:55:27.440</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:06.800</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:06.800</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:55:27.440</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:06.800</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005448_part_12_of_19</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 0_55_34_06.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN3_Archive/P-RAINLAKE/Raw/E005448_6186_OttoSaki1/B05087 - 0_55_34_06.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">515420548</instantiationFileSize> 
+<instantiationTimeStart>00:55:34.240</instantiationTimeStart> 
+<instantiationDuration>00:02:15.920</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30336700</instantiationDataRate> 
+<instantiationTracks>1 video track, 2 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV DVCPRO (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:55:34.240</essenceTrackTimeStart> 
+<essenceTrackDuration>00:02:15.920</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:02:15.920</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:55:34.240</essenceTrackTimeStart> 
+<essenceTrackDuration>00:02:15.920</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005448_part_13_of_19</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 1_12_06_06.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN3_Archive/P-RAINLAKE/Raw/E005448_6186_OttoSaki1/B05087 - 1_12_06_06.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">270149271</instantiationFileSize> 
+<instantiationTimeStart>01:12:06.240</instantiationTimeStart> 
+<instantiationDuration>00:01:11.240</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30336807</instantiationDataRate> 
+<instantiationTracks>1 video track, 2 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV DVCPRO (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>01:12:06.240</essenceTrackTimeStart> 
+<essenceTrackDuration>00:01:11.240</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:01:11.240</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>01:12:06.240</essenceTrackTimeStart> 
+<essenceTrackDuration>00:01:11.240</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005448_part_14_of_19</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 1_13_17_12.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN3_Archive/P-RAINLAKE/Raw/E005448_6186_OttoSaki1/B05087 - 1_13_17_12.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">22602871</instantiationFileSize> 
+<instantiationTimeStart>01:13:17.480</instantiationTimeStart> 
+<instantiationDuration>00:00:05.960</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30339424</instantiationDataRate> 
+<instantiationTracks>1 video track, 2 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV DVCPRO (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>01:13:17.480</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:05.960</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:05.960</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>01:13:17.480</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:05.960</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005448_part_15_of_19</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 1_13_23_11.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN3_Archive/P-RAINLAKE/Raw/E005448_6186_OttoSaki1/B05087 - 1_13_23_11.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">68866155</instantiationFileSize> 
+<instantiationTimeStart>01:13:23.440</instantiationTimeStart> 
+<instantiationDuration>00:00:18.160</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30337513</instantiationDataRate> 
+<instantiationTracks>1 video track, 2 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV DVCPRO (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>01:13:23.440</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:18.160</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:18.160</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>01:13:23.440</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:18.160</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005448_part_16_of_19</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 1_13_41_15.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN3_Archive/P-RAINLAKE/Raw/E005448_6186_OttoSaki1/B05087 - 1_13_41_15.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">42928387</instantiationFileSize> 
+<instantiationTimeStart>01:13:41.600</instantiationTimeStart> 
+<instantiationDuration>00:00:11.320</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30338082</instantiationDataRate> 
+<instantiationTracks>1 video track, 2 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV DVCPRO (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>01:13:41.600</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:11.320</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:11.320</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>01:13:41.600</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:11.320</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005448_part_17_of_19</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 1_13_52_23.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN3_Archive/P-RAINLAKE/Raw/E005448_6186_OttoSaki1/B05087 - 1_13_52_23.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">109213791</instantiationFileSize> 
+<instantiationTimeStart>01:13:52.920</instantiationTimeStart> 
+<instantiationDuration>00:00:28.800</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30337164</instantiationDataRate> 
+<instantiationTracks>1 video track, 2 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV DVCPRO (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>01:13:52.920</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:28.800</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:28.800</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>01:13:52.920</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:28.800</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005448_part_18_of_19</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 1_22_51_09.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN3_Archive/P-RAINLAKE/Raw/E005448_6186_OttoSaki1/B05087 - 1_22_51_09.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">5311026</instantiationFileSize> 
+<instantiationTimeStart>01:22:51.360</instantiationTimeStart> 
+<instantiationDuration>00:00:01.400</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30348720</instantiationDataRate> 
+<instantiationTracks>1 video track, 2 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV DVCPRO (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>01:22:51.360</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:01.400</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:01.400</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>01:22:51.360</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:01.400</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005448_part_19_of_19</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087.txt</instantiationIdentifier> 
+<instantiationLocation>/Volumes/SAN3_Archive/P-RAINLAKE/Raw/E005448_6186_OttoSaki1/B05087.txt</instantiationLocation> 
+<instantiationMediaType/> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">17857</instantiationFileSize> 
+<instantiationTracks/> 
+</instantiationPart> 
+</pbcoreInstantiation> 
+<pbcoreInstantiation> 
+<instantiationIdentifier source="WITNESS Media Archive Item ID">E007208</instantiationIdentifier> 
+<instantiationLocation>Witness</instantiationLocation> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E007208_part_1_of_18</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 0_00_00_04-QuickTime H.264 VisTC.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">AVC</instantiationStandard> 
+<instantiationLocation>/Volumes/DigitalMediaLibrary/PROJECTS/P-RAINLAKE/Raw_Preview/E007208_6186_OttoSaki1/B05087 - 0_00_00_04-QuickTime H.264 VisTC.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Viewing copy</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">28513836</instantiationFileSize> 
+<instantiationTimeStart>00:00:00.160</instantiationTimeStart> 
+<instantiationDuration>00:07:56.334</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">478888</instantiationDataRate> 
+<instantiationTracks>1 video track, 1 audio track</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AVC Main@L2.1 (avc1)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">410938</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>480x360</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:00:00.160</essenceTrackTimeStart> 
+<essenceTrackDuration>00:07:56.320</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AAC Version 4 LC</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">64000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>44.1 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:00:00.160</essenceTrackTimeStart> 
+<essenceTrackDuration>00:07:56.334</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E007208_part_2_of_18</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 0_07_56_12-QuickTime H.264 VisTC.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">AVC</instantiationStandard> 
+<instantiationLocation>/Volumes/DigitalMediaLibrary/PROJECTS/P-RAINLAKE/Raw_Preview/E007208_6186_OttoSaki1/B05087 - 0_07_56_12-QuickTime H.264 VisTC.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Viewing copy</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">13544039</instantiationFileSize> 
+<instantiationTimeStart>00:07:56.480</instantiationTimeStart> 
+<instantiationDuration>00:03:44.374</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">482909</instantiationDataRate> 
+<instantiationTracks>1 video track, 1 audio track</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AVC Main@L2.1 (avc1)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">414957</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>480x360</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:07:56.480</essenceTrackTimeStart> 
+<essenceTrackDuration>00:03:44.360</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AAC Version 4 LC</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">64000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>44.1 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:07:56.480</essenceTrackTimeStart> 
+<essenceTrackDuration>00:03:44.374</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E007208_part_3_of_18</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 0_11_41_04-QuickTime H.264 VisTC.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">AVC</instantiationStandard> 
+<instantiationLocation>/Volumes/DigitalMediaLibrary/PROJECTS/P-RAINLAKE/Raw_Preview/E007208_6186_OttoSaki1/B05087 - 0_11_41_04-QuickTime H.264 VisTC.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Viewing copy</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">92825</instantiationFileSize> 
+<instantiationTimeStart>00:11:41.160</instantiationTimeStart> 
+<instantiationDuration>00:00:01.021</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">727326</instantiationDataRate> 
+<instantiationTracks>1 video track, 1 audio track</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AVC Main@L2.1 (avc1)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">643672</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>480x360</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:11:41.160</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:01.000</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AAC Version 4 LC</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">72000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>44.1 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:11:41.160</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:01.021</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E007208_part_4_of_18</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 0_11_42_04-QuickTime H.264 VisTC.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">AVC</instantiationStandard> 
+<instantiationLocation>/Volumes/DigitalMediaLibrary/PROJECTS/P-RAINLAKE/Raw_Preview/E007208_6186_OttoSaki1/B05087 - 0_11_42_04-QuickTime H.264 VisTC.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Viewing copy</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">9546604</instantiationFileSize> 
+<instantiationTimeStart>00:11:42.160</instantiationTimeStart> 
+<instantiationDuration>00:02:38.894</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">480652</instantiationDataRate> 
+<instantiationTracks>1 video track, 1 audio track</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AVC Main@L2.1 (avc1)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">412682</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>480x360</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:11:42.160</essenceTrackTimeStart> 
+<essenceTrackDuration>00:02:38.880</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AAC Version 4 LC</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">64000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>44.1 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:11:42.160</essenceTrackTimeStart> 
+<essenceTrackDuration>00:02:38.894</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E007208_part_5_of_18</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 0_14_21_01-QuickTime H.264 VisTC.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">AVC</instantiationStandard> 
+<instantiationLocation>/Volumes/DigitalMediaLibrary/PROJECTS/P-RAINLAKE/Raw_Preview/E007208_6186_OttoSaki1/B05087 - 0_14_21_01-QuickTime H.264 VisTC.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Viewing copy</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">16358440</instantiationFileSize> 
+<instantiationTimeStart>00:14:21.040</instantiationTimeStart> 
+<instantiationDuration>00:04:31.882</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">481339</instantiationDataRate> 
+<instantiationTracks>1 video track, 1 audio track</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AVC Main@L2.1 (avc1)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">413490</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>480x360</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:14:21.040</essenceTrackTimeStart> 
+<essenceTrackDuration>00:04:31.880</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AAC Version 4 LC</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">64000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>44.1 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:14:21.040</essenceTrackTimeStart> 
+<essenceTrackDuration>00:04:31.882</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E007208_part_6_of_18</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 0_18_52_23-QuickTime H.264 VisTC.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">AVC</instantiationStandard> 
+<instantiationLocation>/Volumes/DigitalMediaLibrary/PROJECTS/P-RAINLAKE/Raw_Preview/E007208_6186_OttoSaki1/B05087 - 0_18_52_23-QuickTime H.264 VisTC.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Viewing copy</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">48475998</instantiationFileSize> 
+<instantiationTimeStart>00:18:52.920</instantiationTimeStart> 
+<instantiationDuration>00:13:26.614</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">480785</instantiationDataRate> 
+<instantiationTracks>1 video track, 1 audio track</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AVC Main@L2.1 (avc1)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">412774</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>480x360</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:18:52.920</essenceTrackTimeStart> 
+<essenceTrackDuration>00:13:26.600</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AAC Version 4 LC</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">64000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>44.1 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:18:52.920</essenceTrackTimeStart> 
+<essenceTrackDuration>00:13:26.614</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E007208_part_7_of_18</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 0_32_19_13-QuickTime H.264 VisTC.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">AVC</instantiationStandard> 
+<instantiationLocation>/Volumes/DigitalMediaLibrary/PROJECTS/P-RAINLAKE/Raw_Preview/E007208_6186_OttoSaki1/B05087 - 0_32_19_13-QuickTime H.264 VisTC.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Viewing copy</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">14490919</instantiationFileSize> 
+<instantiationTimeStart>00:32:19.520</instantiationTimeStart> 
+<instantiationDuration>00:04:01.742</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">479549</instantiationDataRate> 
+<instantiationTracks>1 video track, 1 audio track</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AVC Main@L2.1 (avc1)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">411637</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>480x360</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:32:19.520</essenceTrackTimeStart> 
+<essenceTrackDuration>00:04:01.720</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AAC Version 4 LC</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">64000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>44.1 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:32:19.520</essenceTrackTimeStart> 
+<essenceTrackDuration>00:04:01.742</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E007208_part_8_of_18</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 0_36_21_06-QuickTime H.264 VisTC.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">AVC</instantiationStandard> 
+<instantiationLocation>/Volumes/DigitalMediaLibrary/PROJECTS/P-RAINLAKE/Raw_Preview/E007208_6186_OttoSaki1/B05087 - 0_36_21_06-QuickTime H.264 VisTC.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Viewing copy</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">34008877</instantiationFileSize> 
+<instantiationTimeStart>00:36:21.240</instantiationTimeStart> 
+<instantiationDuration>00:09:24.291</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">482146</instantiationDataRate> 
+<instantiationTracks>1 video track, 1 audio track</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AVC Main@L2.1 (avc1)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">414236</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>480x360</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:36:21.240</essenceTrackTimeStart> 
+<essenceTrackDuration>00:09:24.280</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AAC Version 4 LC</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">64000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>44.1 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:36:21.240</essenceTrackTimeStart> 
+<essenceTrackDuration>00:09:24.291</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E007208_part_9_of_18</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 0_45_45_13-QuickTime H.264 VisTC.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">AVC</instantiationStandard> 
+<instantiationLocation>/Volumes/DigitalMediaLibrary/PROJECTS/P-RAINLAKE/Raw_Preview/E007208_6186_OttoSaki1/B05087 - 0_45_45_13-QuickTime H.264 VisTC.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Viewing copy</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">19298143</instantiationFileSize> 
+<instantiationTimeStart>00:45:45.520</instantiationTimeStart> 
+<instantiationDuration>00:05:21.085</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">480823</instantiationDataRate> 
+<instantiationTracks>1 video track, 1 audio track</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AVC Main@L2.1 (avc1)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">412854</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>480x360</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:45:45.520</essenceTrackTimeStart> 
+<essenceTrackDuration>00:05:21.080</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AAC Version 4 LC</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">64000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>44.1 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:45:45.520</essenceTrackTimeStart> 
+<essenceTrackDuration>00:05:21.085</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E007208_part_10_of_18</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 0_51_06_15-QuickTime H.264 VisTC.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">AVC</instantiationStandard> 
+<instantiationLocation>/Volumes/DigitalMediaLibrary/PROJECTS/P-RAINLAKE/Raw_Preview/E007208_6186_OttoSaki1/B05087 - 0_51_06_15-QuickTime H.264 VisTC.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Viewing copy</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">15703135</instantiationFileSize> 
+<instantiationTimeStart>00:51:06.600</instantiationTimeStart> 
+<instantiationDuration>00:04:20.852</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">481595</instantiationDataRate> 
+<instantiationTracks>1 video track, 1 audio track</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AVC Main@L2.1 (avc1)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">413481</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>480x360</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:51:06.600</essenceTrackTimeStart> 
+<essenceTrackDuration>00:04:20.840</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AAC Version 4 LC</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">64000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>44.1 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:51:06.600</essenceTrackTimeStart> 
+<essenceTrackDuration>00:04:20.852</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E007208_part_11_of_18</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 0_55_27_11-QuickTime H.264 VisTC.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">AVC</instantiationStandard> 
+<instantiationLocation>/Volumes/DigitalMediaLibrary/PROJECTS/P-RAINLAKE/Raw_Preview/E007208_6186_OttoSaki1/B05087 - 0_55_27_11-QuickTime H.264 VisTC.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Viewing copy</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">344298</instantiationFileSize> 
+<instantiationTimeStart>00:55:27.440</instantiationTimeStart> 
+<instantiationDuration>00:00:06.803</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">404877</instantiationDataRate> 
+<instantiationTracks>1 video track, 1 audio track</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AVC Main@L2.1 (avc1)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">333682</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>480x360</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:55:27.440</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:06.800</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AAC Version 4 LC</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">64000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>44.1 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:55:27.440</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:06.803</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E007208_part_12_of_18</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 0_55_34_06-QuickTime H.264 VisTC.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">AVC</instantiationStandard> 
+<instantiationLocation>/Volumes/DigitalMediaLibrary/PROJECTS/P-RAINLAKE/Raw_Preview/E007208_6186_OttoSaki1/B05087 - 0_55_34_06-QuickTime H.264 VisTC.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Viewing copy</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">8155343</instantiationFileSize> 
+<instantiationTimeStart>00:55:34.240</instantiationTimeStart> 
+<instantiationDuration>00:02:15.929</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">479976</instantiationDataRate> 
+<instantiationTracks>1 video track, 1 audio track</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AVC Main@L2.1 (avc1)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">411757</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>480x360</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:55:34.240</essenceTrackTimeStart> 
+<essenceTrackDuration>00:02:15.920</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AAC Version 4 LC</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">64000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>44.1 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:55:34.240</essenceTrackTimeStart> 
+<essenceTrackDuration>00:02:15.929</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E007208_part_13_of_18</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 1_12_06_06-QuickTime H.264 VisTC.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">AVC</instantiationStandard> 
+<instantiationLocation>/Volumes/DigitalMediaLibrary/PROJECTS/P-RAINLAKE/Raw_Preview/E007208_6186_OttoSaki1/B05087 - 1_12_06_06-QuickTime H.264 VisTC.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Viewing copy</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">4323546</instantiationFileSize> 
+<instantiationTimeStart>01:12:06.240</instantiationTimeStart> 
+<instantiationDuration>00:01:11.262</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">485369</instantiationDataRate> 
+<instantiationTracks>1 video track, 1 audio track</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AVC Main@L2.1 (avc1)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">416310</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>480x360</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>01:12:06.240</essenceTrackTimeStart> 
+<essenceTrackDuration>00:01:11.240</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AAC Version 4 LC</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">64000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>44.1 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>01:12:06.240</essenceTrackTimeStart> 
+<essenceTrackDuration>00:01:11.262</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E007208_part_14_of_18</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 1_13_17_12-QuickTime H.264 VisTC.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">AVC</instantiationStandard> 
+<instantiationLocation>/Volumes/DigitalMediaLibrary/PROJECTS/P-RAINLAKE/Raw_Preview/E007208_6186_OttoSaki1/B05087 - 1_13_17_12-QuickTime H.264 VisTC.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Viewing copy</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">363225</instantiationFileSize> 
+<instantiationTimeStart>01:13:17.480</instantiationTimeStart> 
+<instantiationDuration>00:00:05.967</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">486978</instantiationDataRate> 
+<instantiationTracks>1 video track, 1 audio track</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AVC Main@L2.1 (avc1)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">416886</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>480x360</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>01:13:17.480</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:05.960</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AAC Version 4 LC</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">64000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>44.1 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>01:13:17.480</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:05.967</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E007208_part_15_of_18</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 1_13_23_11-QuickTime H.264 VisTC.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">AVC</instantiationStandard> 
+<instantiationLocation>/Volumes/DigitalMediaLibrary/PROJECTS/P-RAINLAKE/Raw_Preview/E007208_6186_OttoSaki1/B05087 - 1_13_23_11-QuickTime H.264 VisTC.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Viewing copy</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">1111021</instantiationFileSize> 
+<instantiationTimeStart>01:13:23.440</instantiationTimeStart> 
+<instantiationDuration>00:00:18.181</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">488871</instantiationDataRate> 
+<instantiationTracks>1 video track, 1 audio track</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AVC Main@L2.1 (avc1)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">420985</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>480x360</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>01:13:23.440</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:18.160</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AAC Version 4 LC</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">64000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>44.1 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>01:13:23.440</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:18.181</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E007208_part_16_of_18</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 1_13_41_15-QuickTime H.264 VisTC.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">AVC</instantiationStandard> 
+<instantiationLocation>/Volumes/DigitalMediaLibrary/PROJECTS/P-RAINLAKE/Raw_Preview/E007208_6186_OttoSaki1/B05087 - 1_13_41_15-QuickTime H.264 VisTC.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Viewing copy</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">696009</instantiationFileSize> 
+<instantiationTimeStart>01:13:41.600</instantiationTimeStart> 
+<instantiationDuration>00:00:11.331</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">491401</instantiationDataRate> 
+<instantiationTracks>1 video track, 1 audio track</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AVC Main@L2.1 (avc1)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">422746</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>480x360</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>01:13:41.600</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:11.320</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AAC Version 4 LC</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">64000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>44.1 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>01:13:41.600</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:11.331</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E007208_part_17_of_18</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 1_13_52_23-QuickTime H.264 VisTC.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">AVC</instantiationStandard> 
+<instantiationLocation>/Volumes/DigitalMediaLibrary/PROJECTS/P-RAINLAKE/Raw_Preview/E007208_6186_OttoSaki1/B05087 - 1_13_52_23-QuickTime H.264 VisTC.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Viewing copy</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">1749587</instantiationFileSize> 
+<instantiationTimeStart>01:13:52.920</instantiationTimeStart> 
+<instantiationDuration>00:00:28.815</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">485743</instantiationDataRate> 
+<instantiationTracks>1 video track, 1 audio track</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AVC Main@L2.1 (avc1)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">415562</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>480x360</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>01:13:52.920</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:28.800</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AAC Version 4 LC</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">64000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>44.1 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>01:13:52.920</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:28.815</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E007208_part_18_of_18</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B05087 - 1_22_51_09-QuickTime H.264 VisTC.mov</instantiationIdentifier> 
+<instantiationDigital>video/mp4</instantiationDigital> 
+<instantiationStandard profile="QuickTime">AVC</instantiationStandard> 
+<instantiationLocation>/Volumes/DigitalMediaLibrary/PROJECTS/P-RAINLAKE/Raw_Preview/E007208_6186_OttoSaki1/B05087 - 1_22_51_09-QuickTime H.264 VisTC.mov</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Viewing copy</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">95231</instantiationFileSize> 
+<instantiationTimeStart>01:22:51.360</instantiationTimeStart> 
+<instantiationDuration>00:00:01.416</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">538028</instantiationDataRate> 
+<instantiationTracks>1 video track, 1 audio track</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AVC Main@L2.1 (avc1)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">455514</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>480x360</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>01:22:51.360</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:01.400</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>AAC Version 4 LC</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">68887</essenceTrackDataRate> 
+<essenceTrackSamplingRate>44.1 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>01:22:51.360</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:01.416</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+</pbcoreInstantiation> 
+</pbcoreDescriptionDocument> 
+</pbcoreCollection> 

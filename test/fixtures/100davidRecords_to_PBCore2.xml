@@ -1,0 +1,2052 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pbcoreCollection xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">1</pbcoreIdentifier>
+    <pbcoreTitle>Performance Today Live From Aspen (Full show) 07/20/08</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">5</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{0D333A52-BE6E-4955-8DB2-4E69ABC87E82}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-21 14:32:24</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_41D006D81236410AA59605F693D647A9.WAV</instantiationLocation>
+      <instantiationFileSize>1253792124</instantiationFileSize>
+      <instantiationDuration>01:58:00.000</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">2</pbcoreIdentifier>
+    <pbcoreTitle>Music from the 92nd St Y Program 10 FULL (for web transfer) aired 6/28/08</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">10</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{A2A10B93-6F84-4D1B-9F6F-D0A379247AB4}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 19:11:26</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_DBC85A38E9A54C3286567EC76AB94860.WAV</instantiationLocation>
+      <instantiationFileSize>606264536</instantiationFileSize>
+      <instantiationDuration>00:57:03.492</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">3</pbcoreIdentifier>
+    <pbcoreTitle>Music from the 92nd St. Y : Program 7 FULL (for web stream)</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">15</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{D4254191-F4A8-4EAE-B6CB-3B4960304E93}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 20:15:45</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_C7BC6D320B54426AB2F63F9EE683F17F.WAV</instantiationLocation>
+      <instantiationFileSize>615610544</instantiationFileSize>
+      <instantiationDuration>00:57:56.267</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">4</pbcoreIdentifier>
+    <pbcoreTitle>Wordless Music on WNYC: Episode Four 06.05.08</pbcoreTitle>
+    <pbcoreDescription descriptionType="Remark">3 60-sec breaks w/music bed (see rundown)</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">20</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{7E5B49CD-D412-4F5E-8E42-B0A7C5DF9F08}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">Unknown Artist - Wordless Music Episode Four - Unknown Album.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 19:31:59</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_771FDDD1CAED4F05810FD21408167D1B.WAV</instantiationLocation>
+      <instantiationFileSize>629149952</instantiationFileSize>
+      <instantiationDuration>00:58:58.952</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">5</pbcoreIdentifier>
+    <pbcoreTitle>Wordless Music on WNYC: Episode Three 06.04.08</pbcoreTitle>
+    <pbcoreDescription descriptionType="Remark">3 60-sec breaks w/music bed (see rundown)</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">25</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{42229D8B-4F93-477F-A941-D06A76FA8AE5}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">Unknown Artist - Wordless Music Episode Three - Unknown Album.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 19:52:12</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_C63AD371BFD84F669BEA63F63C875C62.WAV</instantiationLocation>
+      <instantiationFileSize>629156200</instantiationFileSize>
+      <instantiationDuration>00:58:58.988</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">6</pbcoreIdentifier>
+    <pbcoreIdentifier source="NYPR_DAVID:MUSIC">--1-01-01</pbcoreIdentifier>
+    <!--HELP: um, can we remove this from the map?-->
+    <pbcoreTitle>Wordless Music on WNYC: Episode Two 06.03.08</pbcoreTitle>
+    <pbcoreDescription descriptionType="Remark">3 60-sec breaks w/music bed (see rundown)</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">30</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{BD145E1F-982F-4700-8EB8-837864ED587E}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">Unknown Artist - Wordless Music Episode Two - Unknown Album.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 19:36:52</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_FC77EC95ED44493698AAF5EB94A5EBFB.WAV</instantiationLocation>
+      <instantiationFileSize>629150828</instantiationFileSize>
+      <instantiationDuration>00:58:58.957</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">7</pbcoreIdentifier>
+    <pbcoreTitle>Wordless Music on WNYC: Episode One 06.02.08</pbcoreTitle>
+    <pbcoreDescription descriptionType="Remark">three 60-sec breaks with music bed (see rundown)</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">35</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{A4F3E96B-67C5-4171-9268-34C3C8E24C68}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">Unknown Artist - Wordless Music Episode One - Unknown Album.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 20:16:36</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_A5C6EE6C37764EC5A020BD8BECAED570.WAV</instantiationLocation>
+      <instantiationFileSize>629153224</instantiationFileSize>
+      <instantiationDuration>00:58:58.971</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">8</pbcoreIdentifier>
+    <pbcoreTitle>music from the 92nd st y program six FULL 5/31 (for web transfer)</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>AAMBROSE</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>AAMBROSE</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">40</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{22C71F9C-C7AD-4EF8-8D83-0EE5823186AE}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 19:45:13</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_A38EF1EAB8454D41865CC3557930BFF3.WAV</instantiationLocation>
+      <instantiationFileSize>605728560</instantiationFileSize>
+      <instantiationDuration>00:57:00.465</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">9</pbcoreIdentifier>
+    <pbcoreTitle>Music From the 92nd St Y episode five (5/24/08) FULL</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>AAMBROSE</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>AAMBROSE</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">45</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{E7177161-923D-4100-AAC0-AF4A8B6CA3F6}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 19:09:48</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_2C943DBD30B44D32BB482399E449D0DB.WAV</instantiationLocation>
+      <instantiationFileSize>614723840</instantiationFileSize>
+      <instantiationDuration>00:57:51.260</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">10</pbcoreIdentifier>
+    <pbcoreTitle>Music from the 92nd St Y Episode Four: Tokyo St. Qrt. II (5/17/08)</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">50</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{45389B7D-0512-4543-93B0-DB8F70EA3EA4}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 20:11:39</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_E1266494C83A4594A71BA8854A7C7F18.WAV</instantiationLocation>
+      <instantiationFileSize>607020216</instantiationFileSize>
+      <instantiationDuration>00:57:07.759</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">11</pbcoreIdentifier>
+    <pbcoreTitle>Music from the 92nd Street Y with Sara Fishko Episode Three (The Czechs)</pbcoreTitle>
+    <pbcoreDescription descriptionType="Remark">originally aired 5/10/08</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">55</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{320DEC79-5F7B-497B-BC46-4831DB83A749}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 20:01:31</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_036B05C0FFBE4D3EA0179B033E9EC8A1.WAV</instantiationLocation>
+      <instantiationFileSize>614832320</instantiationFileSize>
+      <instantiationDuration>00:57:51.873</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">12</pbcoreIdentifier>
+    <pbcoreTitle>Music from the 92nd Street Y with Sara Fishko Episode Two (Winds)</pbcoreTitle>
+    <pbcoreDescription descriptionType="Remark">originally aired May 3, 2008</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">60</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{E6CDD6B8-5D60-40FE-8774-E1EAFFD621A9}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 20:08:43</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_522C5C35544E48038E503137D15BF836.WAV</instantiationLocation>
+      <instantiationFileSize>605495576</instantiationFileSize>
+      <instantiationDuration>00:56:59.149</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">13</pbcoreIdentifier>
+    <pbcoreTitle>Music from the 92nd Street Y with Sara Fishko Episode One (Tokyo Str. Qrt.)</pbcoreTitle>
+    <pbcoreDescription descriptionType="Remark">originally aired April 26, 2008</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">65</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{6238029A-B0A5-4342-ABCE-9AF6BFFAF81D}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 20:19:34</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_1493F3B44EC944A7A52C45CC9112D163.WAV</instantiationLocation>
+      <instantiationFileSize>596955856</instantiationFileSize>
+      <instantiationDuration>00:56:10.927</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">14</pbcoreIdentifier>
+    <pbcoreTitle>Orpheus Chamber Orchestra at Carnegie Hall 04-01-2008 Live Broadcast</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>AAMBROSE</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>AAMBROSE</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">70</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{8655CEE0-4DA2-4DB0-9CF0-B6A116225C68}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 19:22:48</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_F1AE82300DDE4ABBB72048569398B87A.WAV</instantiationLocation>
+      <instantiationFileSize>1403870688</instantiationFileSize>
+      <instantiationDuration>02:11:36.748</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">15</pbcoreIdentifier>
+    <pbcoreTitle>Concerts from the Frick: Markus Groh SEGMENT THREE OF THREE 3/29/08</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">75</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{5FC567F0-BF67-4B00-A862-7A44968947BC}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">Unknown Artist - groh concert track three - Unknown Album.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 19:30:22</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_EA482D854A5F44D3887504E2223379C8.WAV</instantiationLocation>
+      <instantiationFileSize>360948020</instantiationFileSize>
+      <instantiationDuration>00:33:50.320</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">16</pbcoreIdentifier>
+    <pbcoreTitle>Concerts from the Frick: Markus Groh SEGMENT TWO OF THREE 3/29/08</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">80</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{8009E07E-DC70-4529-A16D-590DC7EBEEE5}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">Unknown Artist - Groh track two - Unknown Album.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 20:12:47</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_B38AE73B71CF40A2B03E1D1376C7A2FD.WAV</instantiationLocation>
+      <instantiationFileSize>356547716</instantiationFileSize>
+      <instantiationDuration>00:33:25.568</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">17</pbcoreIdentifier>
+    <pbcoreTitle>Concerts from the Frick: Markus Groh SEGMENT ONE OF THREE 3/29/08</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">85</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{29F906A5-2ED7-40B3-948D-E812155A49B3}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">Unknown Artist - Groh track one - Unknown Album.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 19:54:14</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_73E920FBA3574F42A511AAA1B49A6E4D.WAV</instantiationLocation>
+      <instantiationFileSize>140584160</instantiationFileSize>
+      <instantiationDuration>00:13:10.775</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">18</pbcoreIdentifier>
+    <pbcoreTitle>Evening Music 03-03-2008 22:00:00</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">90</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{E4EC8632-2A50-4FED-97EC-51DF44A3A94A}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">multicoder_2_WNYCDAVIDIN01_03-03-2008_22-00-002.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 13:35:21</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_D723A01935AA4C919C96088C87D83B86.WAV</instantiationLocation>
+      <instantiationFileSize>640006660</instantiationFileSize>
+      <instantiationDuration>01:00:00.021</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">19</pbcoreIdentifier>
+    <pbcoreTitle>Evening Music 03-03-2008 21:00:00</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">95</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{16AD2EF1-0201-4876-B416-9897BAD71653}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">multicoder_2_WNYCDAVIDIN01_03-03-2008_21-00-002.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 12:39:05</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_1A7AD9E2AAB04608AA653ADECD4EA386.WAV</instantiationLocation>
+      <instantiationFileSize>640006660</instantiationFileSize>
+      <instantiationDuration>01:00:00.021</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">20</pbcoreIdentifier>
+    <pbcoreTitle>Evening Music 03-03-2008 20:00:00</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">100</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{ADA592E6-DC79-4409-97AB-2B14E029B5E6}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">multicoder_2_WNYCDAVIDIN01_03-03-2008_20-00-002.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 13:27:12</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_860C41785C1948FE919E481253E25B5C.WAV</instantiationLocation>
+      <instantiationFileSize>640006660</instantiationFileSize>
+      <instantiationDuration>01:00:00.021</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">21</pbcoreIdentifier>
+    <pbcoreTitle>Evening Music 03-03-2008 19:00:00</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">105</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{9AE802E8-CE95-4338-8D7E-4A59170915B8}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">multicoder_2_WNYCDAVIDIN01_03-03-2008_19-00-00.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 13:20:07</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_FCCDB10543D34F3296602A06DB48D19D.WAV</instantiationLocation>
+      <instantiationFileSize>639967956</instantiationFileSize>
+      <instantiationDuration>00:59:59.804</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">22</pbcoreIdentifier>
+    <pbcoreTitle>Ear to Ear: Taoufiq Ben Amor  02-02-2008</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">110</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{5CCD0E59-588D-4B2E-888C-92CD0E5A9FCD}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 19:38:23</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_E008C4E20A9D49029F6ABB4C4382C6C6.WAV</instantiationLocation>
+      <instantiationFileSize>788260224</instantiationFileSize>
+      <instantiationDuration>01:13:53.946</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">23</pbcoreIdentifier>
+    <pbcoreTitle>Ear to Ear: Ming Xao-Fen  01-26-2008</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">115</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{BF3C801C-6D86-46B4-9725-8490FFFAE671}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 20:09:41</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_ADCB59E2294240459C7D657F19B9ACE8.WAV</instantiationLocation>
+      <instantiationFileSize>829580800</instantiationFileSize>
+      <instantiationDuration>01:17:46.374</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">24</pbcoreIdentifier>
+    <pbcoreTitle>Ear to Ear 01-19-2008 Benjamin Bagy</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">120</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{A1328A06-7AD7-481D-9904-559D5D93E8DA}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 19:07:44</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_4D732E69560745B489E4F3C51B89C5CF.WAV</instantiationLocation>
+      <instantiationFileSize>841935312</instantiationFileSize>
+      <instantiationDuration>01:18:55.868</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">25</pbcoreIdentifier>
+    <pbcoreTitle>Wordless Music 1/16/08 Segment C</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>Ellen Horne</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">125</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{F54A413A-B060-4590-B5E2-CCAAE793D494}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">proMUI.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 19:26:02</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_4F83DC37E63F44E0A3725894BB3CC1D8.WAV</instantiationLocation>
+      <instantiationFileSize>448061748</instantiationFileSize>
+      <instantiationDuration>00:42:20.025</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">26</pbcoreIdentifier>
+    <pbcoreTitle>Wordless Music 1/16/08 Segment B</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>Ellen Horne</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">130</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{78C5937B-816F-4A3B-B4ED-375636200B13}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">mus110.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 19:59:39</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_101584D1145148F9A3176B2E62A5FE95.WAV</instantiationLocation>
+      <instantiationFileSize>209514800</instantiationFileSize>
+      <instantiationDuration>00:19:47.719</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">27</pbcoreIdentifier>
+    <pbcoreTitle>Wordless Music 1/16/08 Segment A</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>Ellen Horne</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">135</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{ACBC00F0-6F12-4A37-AEF2-58634A49D6F3}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">mus10V.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 20:12:28</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_0656352F14184981BAAE44DDBA6087DD.WAV</instantiationLocation>
+      <instantiationFileSize>140562960</instantiationFileSize>
+      <instantiationDuration>00:13:16.835</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">28</pbcoreIdentifier>
+    <pbcoreTitle>Rockwell Matters - 1 - EMu - It Aint Necessarily So</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>AAMBROSE</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>AAMBROSE</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">140</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{077736C2-80AD-438E-A422-D4C262AE02BA}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 18:44:45</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_B571324CE9AD42488DCD85789E1B27FF.WAV</instantiationLocation>
+      <instantiationFileSize>57523424</instantiationFileSize>
+      <instantiationDuration>00:05:24.819</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">29</pbcoreIdentifier>
+    <pbcoreTitle>Songs of the Spirit Segment 2 of 3</pbcoreTitle>
+    <pbcoreDescription descriptionType="Remark">segment 2 of 3    25:06</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>delahunty</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">145</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{02AD0CA8-B311-4B18-81CC-5EFF640AC574}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">proMS5.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 13:03:27</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_6F7AC15A90D04DCE988F04FC4C4AB265.WAV</instantiationLocation>
+      <instantiationFileSize>267817662</instantiationFileSize>
+      <instantiationDuration>00:25:06.463</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">30</pbcoreIdentifier>
+    <pbcoreTitle>Songs of the Spirit Part One of Three</pbcoreTitle>
+    <pbcoreDescription descriptionType="Remark">Segment one of three   24:15</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>delahunty</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">150</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{FAD9FA5C-20B9-44B8-AA7F-0C2F5D9E08A5}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">proMS4.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 13:15:28</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_2228F3A7F4354AF9812018A7E016DD47.WAV</instantiationLocation>
+      <instantiationFileSize>258778090</instantiationFileSize>
+      <instantiationDuration>00:24:15.615</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">31</pbcoreIdentifier>
+    <pbcoreTitle>Rockwell Matters 1/14/07: Crazed Grecian Princesses</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>Alex</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">155</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{AD6508CD-4D9F-47CA-B535-DC6737C82B32}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">proMQJ.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 15:59:07</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_D5EDD597BC4B475287147D4AED471135.WAV</instantiationLocation>
+      <instantiationFileSize>68289680</instantiationFileSize>
+      <instantiationDuration>00:06:27.123</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">32</pbcoreIdentifier>
+    <pbcoreTitle>Rockwell Matters 1/7/08: Demon Barbers and Human Ovens</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>Alex</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">160</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{551822BE-150A-4D20-B8F2-2781FFDFEE30}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">proMN7.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 15:54:53</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_76C893C9F74341549879169B1E0B47BE.WAV</instantiationLocation>
+      <instantiationFileSize>61475228</instantiationFileSize>
+      <instantiationDuration>00:05:48.492</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">33</pbcoreIdentifier>
+    <pbcoreTitle>Ear to Ear with Eyal Maoz 12/29/07</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">165</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{5E51F7EC-C422-4392-9FFC-232F02636DC3}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 19:33:27</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_C4E88C028F204B6BA4C5899BB4293228.WAV</instantiationLocation>
+      <instantiationFileSize>895318780</instantiationFileSize>
+      <instantiationDuration>01:23:56.149</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">34</pbcoreIdentifier>
+    <pbcoreTitle>Ear to Ear with Amir El Shaffar</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">170</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{CD66553E-2445-4157-9A97-3371DB89860A}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 19:47:07</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_0B7ECC1E621945BE9ABEB5FB06AEDAF5.WAV</instantiationLocation>
+      <instantiationFileSize>952629888</instantiationFileSize>
+      <instantiationDuration>01:29:18.524</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">35</pbcoreIdentifier>
+    <pbcoreTitle>Orpheus 2007-12-08 full program</pbcoreTitle>
+    <pbcoreDescription descriptionType="Remark">Orpheus Chamber Orchestra
+Carnegie Hall, December 8, 2007
+full broadcast mix, ready for encoding for web streaming.</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>MCEOD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>MCEOD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">175</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{9CF3237F-5960-4069-80CC-A3000B69FFD0}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">Orpheus 071208 full program.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 19:49:21</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_ECBF7B6EDF89487ABFF5E4A1A812A81E.WAV</instantiationLocation>
+      <instantiationFileSize>1388352534</instantiationFileSize>
+      <instantiationDuration>02:10:09.456</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">36</pbcoreIdentifier>
+    <pbcoreTitle>Phil Kline's Holiday Mix, Part Two</pbcoreTitle>
+    <pbcoreDescription descriptionType="Remark">This show has three :60 breaks with bed music at 14:10, 36:18, and 44:51.  There's also bed music at the end from 57:41 until 60:00. (you can fade out bed at 59:00)</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">180</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{86DECFB9-6D8D-4351-9EE0-9ED368121ACB}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 19:53:13</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_839EBD608C1949A7BA1733AAE1BBA011.WAV</instantiationLocation>
+      <instantiationFileSize>637835448</instantiationFileSize>
+      <instantiationDuration>01:00:01.769</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">37</pbcoreIdentifier>
+    <pbcoreTitle>Phil Kline's Holiday Mix, Part One</pbcoreTitle>
+    <pbcoreDescription descriptionType="Remark">This show has two :60 breaks with bed music at 26:22 and 32:03.  There's also bed music at the end from 58:44 until 60:00. (You can fade out bed at 59:00)</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">185</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{1045AE9B-4E03-454E-BCD8-8B92DE33339E}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 19:48:25</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_1E294FDE83094E5BBCFF1CECB6ACF3B8.WAV</instantiationLocation>
+      <instantiationFileSize>637865824</instantiationFileSize>
+      <instantiationDuration>01:00:01.940</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">38</pbcoreIdentifier>
+    <pbcoreTitle>Must Have Lisa Phillips Part THREE of THREE (Sunday 12/16)</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">190</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{7E7C6D3D-F580-4403-B3E5-E3CE670748C8}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 20:02:19</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_CBD4E7E2F81E47A4917438097FC6C3A4.WAV</instantiationLocation>
+      <instantiationFileSize>113105008</instantiationFileSize>
+      <instantiationDuration>00:10:36.205</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">39</pbcoreIdentifier>
+    <pbcoreTitle>Must Have Lisa Phillips Part TWO of THREE (Sunday 12/16)</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">195</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{06934BF0-AFC0-41E8-8105-A06E49B8E4F5}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 19:36:25</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_AA6E06C25F744ACBB2B7F7403C06AE64.WAV</instantiationLocation>
+      <instantiationFileSize>209964156</instantiationFileSize>
+      <instantiationDuration>00:19:41.037</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">40</pbcoreIdentifier>
+    <pbcoreTitle>Must Have Lisa Phillips Part ONE of THREE (Sunday 12/16 8PM)</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">200</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{3EFF185B-6FA3-4744-8ACE-6CC1800F8522}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 19:22:06</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_0B5C74C5991348ABBD88B5DB42802AF4.WAV</instantiationLocation>
+      <instantiationFileSize>290077000</instantiationFileSize>
+      <instantiationDuration>00:27:11.671</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">41</pbcoreIdentifier>
+    <pbcoreTitle>Must Have - Stew -Part THREE of three</pbcoreTitle>
+    <pbcoreDescription descriptionType="Remark">16:34</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>delahunty</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">205</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{79A08B4B-5E63-4315-8F53-B6C10296E3AD}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">proM98.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 12:49:34</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_15AE7C770A7E4F84941A2154E15FF668.WAV</instantiationLocation>
+      <instantiationFileSize>175509392</instantiationFileSize>
+      <instantiationDuration>00:16:34.944</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">42</pbcoreIdentifier>
+    <pbcoreTitle>Must Have - Stew Part TWO of three</pbcoreTitle>
+    <pbcoreDescription descriptionType="Remark">23:05</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>delahunty</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">210</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{06ABE405-CB06-4970-A163-B5C755B65BA4}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">proM97.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 12:59:59</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_A8D0FC66DC77469E9B7354620783A2B9.WAV</instantiationLocation>
+      <instantiationFileSize>244326780</instantiationFileSize>
+      <instantiationDuration>00:23:05.065</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">43</pbcoreIdentifier>
+    <pbcoreTitle>Must Have - Stew Part ONE Of three</pbcoreTitle>
+    <pbcoreDescription descriptionType="Remark">time 22:24</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>delahunty</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">215</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{2C21F161-C2F3-4A56-AEE1-DBE5E618DC04}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">proM96.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 12:59:25</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_9EE06BED1F3448FA885DFD2CE7AEC0B6.WAV</instantiationLocation>
+      <instantiationFileSize>237207880</instantiationFileSize>
+      <instantiationDuration>00:22:24.709</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">44</pbcoreIdentifier>
+    <pbcoreTitle>Must Have - Mortier THREE of three</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>delahunty</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">220</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{F87CA9E9-285D-4D33-A6CD-60F99D77A55D}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">proM94.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 13:10:53</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_CA959553F36741EE80690A6C6A9CDB73.WAV</instantiationLocation>
+      <instantiationFileSize>230057104</instantiationFileSize>
+      <instantiationDuration>00:21:44.171</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">45</pbcoreIdentifier>
+    <pbcoreTitle>Must Have Mortier TWO of three</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>delahunty</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">225</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{F3C57AD5-E7EF-4AE3-B940-5BA6F4FB14DB}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">proM92.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 13:44:57</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_E8D8F67835014C95810ACF68437E3D62.WAV</instantiationLocation>
+      <instantiationFileSize>235680912</instantiationFileSize>
+      <instantiationDuration>00:22:16.052</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">46</pbcoreIdentifier>
+    <pbcoreTitle>Must Have - MOrtier Part ONE of three</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>delahunty</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">230</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{840E2E5D-702A-464C-9A8A-F7D66CD722E5}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">proM91.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 13:43:39</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_80E6FC0ED6F44030AF25039B1E9092C3.WAV</instantiationLocation>
+      <instantiationFileSize>483706000</instantiationFileSize>
+      <instantiationDuration>00:45:42.090</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">47</pbcoreIdentifier>
+    <pbcoreTitle>Must Have - John Jasperse Part THREE of three</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>delahunty</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">235</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{BB125D94-4CF0-458E-AD16-A5B74353357B}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">proM7V.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 13:16:03</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_8A46D95835954A9EA79BBD6EB8A43B11.WAV</instantiationLocation>
+      <instantiationFileSize>462365840</instantiationFileSize>
+      <instantiationDuration>00:43:41.114</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">48</pbcoreIdentifier>
+    <pbcoreTitle>Must Have - John Jasperse Part TWO of three</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>delahunty</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">240</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{81BBB148-EED6-4099-A156-678028453F79}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">proM7U.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 13:14:43</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_F9D72743E3E941088066C48CEF1A40ED.WAV</instantiationLocation>
+      <instantiationFileSize>203138704</instantiationFileSize>
+      <instantiationDuration>00:19:11.573</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">49</pbcoreIdentifier>
+    <pbcoreTitle>Must Have - Alex Ross 12-11-2007</pbcoreTitle>
+    <pbcoreDescription descriptionType="Remark">edited version - no underwriting</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">245</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{E5A28005-EFF4-49B3-AA1C-171A34584B82}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 20:02:28</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_C9648424E8BD42789F85C5C982327817.WAV</instantiationLocation>
+      <instantiationFileSize>803939364</instantiationFileSize>
+      <instantiationDuration>01:15:22.141</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">50</pbcoreIdentifier>
+    <pbcoreTitle>Must Have - Majora Carter THREE of three</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>delahunty</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">250</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{41B91891-3DA4-4945-9FE1-9B44CD0C1854}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">proM55.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 13:15:09</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_AA6945CAF63B41B097179D0B6FDD6258.WAV</instantiationLocation>
+      <instantiationFileSize>130871248</instantiationFileSize>
+      <instantiationDuration>00:12:21.893</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">51</pbcoreIdentifier>
+    <pbcoreTitle>Must Have Majora Carter TWO of three</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>delahunty</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">255</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{0E2BBEC6-125E-4C7E-82ED-4AD2A55139EA}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">proM54.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 12:35:46</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_7E23AAE1CBCB4C00B958C06FAAD2FA3E.WAV</instantiationLocation>
+      <instantiationFileSize>433763728</instantiationFileSize>
+      <instantiationDuration>00:40:58.971</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">52</pbcoreIdentifier>
+    <pbcoreTitle>Must Have - Majora Carter ONE of three</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>delahunty</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">260</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{9779062F-FC40-4EF3-8686-35C40DCBE035}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">proM53.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 13:02:44</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_B33823B354EC4A4E9418726F792FE1DA.WAV</instantiationLocation>
+      <instantiationFileSize>224986768</instantiationFileSize>
+      <instantiationDuration>00:21:15.428</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">53</pbcoreIdentifier>
+    <pbcoreTitle>Rockwell Matters 12/10/07 - The Dude Abides</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>Alex</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>Alex</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">265</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{83447064-D239-4F29-B012-424D59056666}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 15:13:20</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_107454F34F774D9DA7D980C00E1BC78E.WAV</instantiationLocation>
+      <instantiationFileSize>63132360</instantiationFileSize>
+      <instantiationDuration>00:05:56.491</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">54</pbcoreIdentifier>
+    <pbcoreTitle>Anthony Davis and Helga Davis raw interview</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>GPRESTON</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>GPRESTON</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">270</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{9E98CEE3-40FC-496F-BCDD-2DDBC5A80392}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">WNYCDAVIDCR03_D2EA1F96322D427D950F1AA585E4F42B.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 13:53:13</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_574CD28E563B46828E940C031F797B23.WAV</instantiationLocation>
+      <instantiationFileSize>375605074</instantiationFileSize>
+      <instantiationDuration>00:35:20.986</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">55</pbcoreIdentifier>
+    <pbcoreTitle>Sadiq at the Yellow Lounge Emu 11/13/07</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">275</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{8C6DA51A-40F2-4BD0-98E2-E9EB7065865F}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 20:12:41</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_F76C1894D9F1403697B0A8E00304086F.WAV</instantiationLocation>
+      <instantiationFileSize>77260880</instantiationFileSize>
+      <instantiationDuration>00:07:14.582</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">56</pbcoreIdentifier>
+    <pbcoreTitle>Berlin Without Walls-The Sound</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>GPRESTON</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>GPRESTON</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">280</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{1CA408FA-6E12-4E33-8052-CAC2FCA778CA}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">Unknown Artist - Track 4 - Unknown Album.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 15:16:12</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_3DCD5486512B460E9B38A2DD469FBFE8.WAV</instantiationLocation>
+      <instantiationFileSize>108981900</instantiationFileSize>
+      <instantiationDuration>00:10:13.013</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">57</pbcoreIdentifier>
+    <pbcoreTitle>Rockwell Matters - 1 - Full - It Aint Necessarily So</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>AAMBROSE</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>AAMBROSE</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">285</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{FF0D71A2-FC07-4EAA-BFC6-F97AF185D726}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 20:20:18</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_9C80B9397EB84F82B6DCFE02419DD78E.WAV</instantiationLocation>
+      <instantiationFileSize>129653764</instantiationFileSize>
+      <instantiationDuration>00:12:09.292</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">58</pbcoreIdentifier>
+    <pbcoreTitle>John Cage 09-06-2007 12:00:00</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">290</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{A78B5E87-40CD-4F50-BFAC-8B30F327088B}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">multicoder_1_WNYCDAVIDIN02_09-06-2007_12-00-002.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 12:19:45</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_98B4419EEB4B45EC854CAA9A2BDB45D1.WAV</instantiationLocation>
+      <instantiationFileSize>640029876</instantiationFileSize>
+      <instantiationDuration>01:00:00.152</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">59</pbcoreIdentifier>
+    <pbcoreTitle>John Cage 09-06-2007 11:00:00</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">295</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{33101F51-3DB5-4890-A5B4-7B6BE84687E5}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">multicoder_1_WNYCDAVIDIN02_09-06-2007_11-00-002.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 12:12:44</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_E5ADE5C8BF90475ABCE9AC662B86E0DA.WAV</instantiationLocation>
+      <instantiationFileSize>639967956</instantiationFileSize>
+      <instantiationDuration>00:59:59.804</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">60</pbcoreIdentifier>
+    <pbcoreTitle>John Cage 09-06-2007 10:00:00</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">300</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{21717B70-4B2B-4EAE-8E66-DB50A7E6110D}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">multicoder_1_WNYCDAVIDIN02_09-06-2007_10-00-002.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 12:31:03</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_1E933D3E81C1488EB24ACE91C0274256.WAV</instantiationLocation>
+      <instantiationFileSize>639944740</instantiationFileSize>
+      <instantiationDuration>00:59:59.673</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">61</pbcoreIdentifier>
+    <pbcoreTitle>John Cage 09-06-2007 09:00:00</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">305</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{BB09D615-6965-4034-9192-A0A0287F83ED}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">multicoder_1_WNYCDAVIDIN02_09-06-2007_09-00-002.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 12:26:47</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_C844F9DA7CD340FE910B14C2CC56F180.WAV</instantiationLocation>
+      <instantiationFileSize>640006660</instantiationFileSize>
+      <instantiationDuration>01:00:00.021</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">62</pbcoreIdentifier>
+    <pbcoreTitle>John Cage 09-06-2007 08:00:00</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">310</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{E4851B1B-EE2F-4964-8E66-3DEFD50D08EE}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">multicoder_1_WNYCDAVIDIN02_09-06-2007_08-00-002.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 12:11:04</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_C9C898634D0E43F1BB195692B8401C9A.WAV</instantiationLocation>
+      <instantiationFileSize>640238860</instantiationFileSize>
+      <instantiationDuration>01:00:01.327</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">63</pbcoreIdentifier>
+    <pbcoreTitle>John Cage 09-06-2007 07:00:00</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">315</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{EAC2CC82-258F-422B-9308-7EEF4ABDAD9C}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">multicoder_1_WNYCDAVIDIN02_09-06-2007_07-00-002.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 12:18:24</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_27F1E0C130144C099766430847733A1C.WAV</instantiationLocation>
+      <instantiationFileSize>639967956</instantiationFileSize>
+      <instantiationDuration>00:59:59.804</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">64</pbcoreIdentifier>
+    <pbcoreTitle>John Cage 09-06-2007 06:00:00</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">320</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{9308554F-D914-416D-AA61-273B07642C96}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">multicoder_1_WNYCDAVIDIN02_09-06-2007_06-00-002.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 12:29:57</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_9A73DA25515B47F0AD570262E97EA8A5.WAV</instantiationLocation>
+      <instantiationFileSize>639975700</instantiationFileSize>
+      <instantiationDuration>00:59:59.847</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">65</pbcoreIdentifier>
+    <pbcoreTitle>John Cage 09-06-2007 05:00:00</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">325</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{A0C9F5B1-7A40-4954-81C6-813F382D3A5B}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">multicoder_1_WNYCDAVIDIN02_09-06-2007_05-00-002.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 12:06:50</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_726EC9E62F7B4D44AC29A34EAF5FAA27.WAV</instantiationLocation>
+      <instantiationFileSize>639975700</instantiationFileSize>
+      <instantiationDuration>00:59:59.847</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">66</pbcoreIdentifier>
+    <pbcoreTitle>John Cage 09-06-2007 04:00:00</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">330</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{F83745BE-5102-4441-9A28-8521A08525CD}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">multicoder_1_WNYCDAVIDIN02_09-06-2007_04-00-002.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 12:15:39</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_3405651B8B234CE9B66393FD60271523.WAV</instantiationLocation>
+      <instantiationFileSize>639975700</instantiationFileSize>
+      <instantiationDuration>00:59:59.847</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">67</pbcoreIdentifier>
+    <pbcoreTitle>John Cage 09-06-2007 03:00:00</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">335</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{F385D2F6-41EA-4301-AD43-EDE45E7CDDD7}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">multicoder_1_WNYCDAVIDIN02_09-06-2007_03-00-002.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 12:05:04</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_7B74132AD2C54CBC8067AC2244250461.WAV</instantiationLocation>
+      <instantiationFileSize>639967956</instantiationFileSize>
+      <instantiationDuration>00:59:59.804</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">68</pbcoreIdentifier>
+    <pbcoreTitle>John Cage 09-06-2007 02:00:00</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">340</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{ECB753BC-D92B-412A-B8E3-43C918C76E60}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">multicoder_1_WNYCDAVIDIN02_09-06-2007_02-00-002.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 12:01:30</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_9489E6EE9EB543958AC18EA6C30212A2.WAV</instantiationLocation>
+      <instantiationFileSize>639975700</instantiationFileSize>
+      <instantiationDuration>00:59:59.847</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">69</pbcoreIdentifier>
+    <pbcoreTitle>John Cage 09-06-2007 01:00:00</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">345</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{F8FB7575-8502-4CBE-92A7-8F79626AB56E}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">multicoder_1_WNYCDAVIDIN02_09-06-2007_01-00-002.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 12:17:01</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_0A13A552B2384D31A5380E3A7E743E02.WAV</instantiationLocation>
+      <instantiationFileSize>640006660</instantiationFileSize>
+      <instantiationDuration>01:00:00.021</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">70</pbcoreIdentifier>
+    <pbcoreTitle>John Cage 09-06-2007 00:00:00</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">350</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{0A5D7B57-0D02-4ABF-B368-B449133A05DA}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">multicoder_1_WNYCDAVIDIN02_09-06-2007_00-00-002.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 12:08:54</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_00E05D3F62C34605B2BF30D64C53A869.WAV</instantiationLocation>
+      <instantiationFileSize>639975700</instantiationFileSize>
+      <instantiationDuration>00:59:59.847</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">71</pbcoreIdentifier>
+    <pbcoreTitle>John Cage 09-05-2007 23:00:00</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">355</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{0E3B9BEE-2FB0-477E-BECA-B44EECF889E0}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">multicoder_1_WNYCDAVIDIN02_09-05-2007_23-00-002.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 12:22:32</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_F004C04FC6054FDF858FE26ECD791CA2.WAV</instantiationLocation>
+      <instantiationFileSize>640006660</instantiationFileSize>
+      <instantiationDuration>01:00:00.021</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">72</pbcoreIdentifier>
+    <pbcoreTitle>John Cage 09-05-2007 22:00:00</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">360</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{94E09489-773F-4A8C-9545-2A23DCCD31B9}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">multicoder_1_WNYCDAVIDIN02_09-05-2007_22-00-002.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 11:58:55</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_AE0F9880B6EE46D0A6265BF3A30D6255.WAV</instantiationLocation>
+      <instantiationFileSize>639875076</instantiationFileSize>
+      <instantiationDuration>00:59:59.281</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">73</pbcoreIdentifier>
+    <pbcoreTitle>John Cage 09-05-2007 21:00:00</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">365</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{3F3C8DD5-9D69-4F11-B428-CA7E7E3F289B}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">multicoder_1_WNYCDAVIDIN02_09-05-2007_21-00-002.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 11:57:33</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_42DBFC2240B0406AA97204D5975856CC.WAV</instantiationLocation>
+      <instantiationFileSize>640006660</instantiationFileSize>
+      <instantiationDuration>01:00:00.021</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">74</pbcoreIdentifier>
+    <pbcoreTitle>John Cage 09-05-2007 20:00:00</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">370</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{354D6463-7308-40E5-A735-5227E6E174D6}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">multicoder_1_WNYCDAVIDIN02_09-05-2007_20-00-002.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 12:21:04</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_BE9B2B2F3783440FB2782AAF447C5AA5.WAV</instantiationLocation>
+      <instantiationFileSize>640006660</instantiationFileSize>
+      <instantiationDuration>01:00:00.021</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">75</pbcoreIdentifier>
+    <pbcoreTitle>John Cage 09-05-2007 19:00:00</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">375</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{8C439138-B66A-469B-9F66-AA87765D2EB0}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">multicoder_1_WNYCDAVIDIN02_09-05-2007_19-00-002.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 12:23:57</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_32812B2F0A424B4986F78DA443E2AA08.WAV</instantiationLocation>
+      <instantiationFileSize>640037620</instantiationFileSize>
+      <instantiationDuration>01:00:00.195</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">76</pbcoreIdentifier>
+    <pbcoreTitle>John Cage 09-05-2007 18:00:00</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">380</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{55623FF5-5F31-462A-AD21-11FF86AAC975}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">multicoder_1_WNYCDAVIDIN02_09-05-2007_18-00-002.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 12:28:39</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_3DCA7E55B40D45D1B7A9C7FB751E3699.WAV</instantiationLocation>
+      <instantiationFileSize>640107276</instantiationFileSize>
+      <instantiationDuration>01:00:00.587</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">77</pbcoreIdentifier>
+    <pbcoreTitle>John Cage 09-05-2007 17:00:00</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">385</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{4D249250-514E-4066-A7FE-5EDE2FBEFE39}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">multicoder_1_WNYCDAVIDIN02_09-05-2007_17-00-002.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 12:32:11</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_EB9906C331164C36B029C34B4DE012B1.WAV</instantiationLocation>
+      <instantiationFileSize>640006660</instantiationFileSize>
+      <instantiationDuration>01:00:00.021</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">78</pbcoreIdentifier>
+    <pbcoreTitle>John Cage 09-05-2007 16:00:00</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">390</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{9C95A8FD-38B1-4FA4-AFDD-6B17779FDF70}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">multicoder_1_WNYCDAVIDIN02_09-05-2007_16-00-002.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 12:03:16</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_0D56D28CC7554562B37F1850B4D94F53.WAV</instantiationLocation>
+      <instantiationFileSize>639875076</instantiationFileSize>
+      <instantiationDuration>00:59:59.281</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">79</pbcoreIdentifier>
+    <pbcoreTitle>John Cage 09-05-2007 15:00:00</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">395</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{C787FDD6-09F0-430B-992E-92C2E8042C90}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">multicoder_1_WNYCDAVIDIN02_09-05-2007_15-00-002.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 12:14:09</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_EC75EBA77FF14F6898A3F7B1821CEFA2.WAV</instantiationLocation>
+      <instantiationFileSize>640006660</instantiationFileSize>
+      <instantiationDuration>01:00:00.021</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">80</pbcoreIdentifier>
+    <pbcoreTitle>John Cage 09-05-2007 14:00:00</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">400</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{0F1AF914-B956-4008-B6A4-81D8B7E5BAA1}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">multicoder_1_WNYCDAVIDIN02_09-05-2007_14-00-002.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 11:54:42</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_41E22806C5ED434A80884F80B68E1DCF.WAV</instantiationLocation>
+      <instantiationFileSize>640006660</instantiationFileSize>
+      <instantiationDuration>01:00:00.021</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">81</pbcoreIdentifier>
+    <pbcoreTitle>John Cage 09-05-2007 13:00:00</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">405</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{1A3AEF0C-D06C-4416-B286-55B589622558}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">multicoder_1_WNYCDAVIDIN02_09-05-2007_13-00-002.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 11:56:08</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_A0B95B630BA34B15A89F23847D0096F5.WAV</instantiationLocation>
+      <instantiationFileSize>640006660</instantiationFileSize>
+      <instantiationDuration>01:00:00.021</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">82</pbcoreIdentifier>
+    <pbcoreTitle>John Cage 09-05-2007 12:00:00</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">410</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{AA4AD2A3-2E30-41CC-A93C-075BBDC9991F}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">multicoder_1_WNYCDAVIDIN02_09-05-2007_12-00-00.wav</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 12:25:22</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_EF97B826122C43DDB08E5F0AE25E153D.WAV</instantiationLocation>
+      <instantiationFileSize>639967956</instantiationFileSize>
+      <instantiationDuration>00:59:59.804</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">83</pbcoreIdentifier>
+    <pbcoreIdentifier source="NYPR_DAVID:MUSIC">146174</pbcoreIdentifier>
+    <!--HELP: um, can we remove this from the map?-->
+    <pbcoreTitle>Cage 2433: John Cage Speaks</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>RDOANE</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>AAMBROSE</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">415</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{0A8BF155-C2D6-4042-8529-4FABDF74C8B1}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 15:16:43</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_7725A75103F94942AB63727810FF6C41.WAV</instantiationLocation>
+      <instantiationFileSize>52891156</instantiationFileSize>
+      <instantiationDuration>00:04:57.503</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">84</pbcoreIdentifier>
+    <pbcoreIdentifier source="NYPR_DAVID:MUSIC">PS940</pbcoreIdentifier>
+    <!--HELP: um, can we remove this from the map?-->
+    <pbcoreTitle>John Cage Marathon</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>Rex</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">420</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{198FA8A5-3EED-41FB-BF50-D8F163D86F36}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">prm4LU.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 20:19:21</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_76E2D264F84F431FAC8583323AC76D93.WAV</instantiationLocation>
+      <instantiationFileSize>5350544</instantiationFileSize>
+      <instantiationDuration>00:00:30.325</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">85</pbcoreIdentifier>
+    <pbcoreIdentifier source="NYPR_DAVID:MUSIC">PS939</pbcoreIdentifier>
+    <!--HELP: um, can we remove this from the map?-->
+    <pbcoreTitle>John Cage Marathon</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>Rex</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">425</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{F57A5445-809F-4845-A402-E4B9DC8EAC0F}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">prm4LR.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 20:09:32</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_4CE8A9A55CCC4A23AB84B95BB70DEC78.WAV</instantiationLocation>
+      <instantiationFileSize>5330064</instantiationFileSize>
+      <instantiationDuration>00:00:30.209</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">86</pbcoreIdentifier>
+    <pbcoreIdentifier source="NYPR_DAVID:MUSIC">PS938</pbcoreIdentifier>
+    <!--HELP: um, can we remove this from the map?-->
+    <pbcoreTitle>John Cage Marathon</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>Rex</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">430</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{F2867BEB-08FE-430C-AD2D-1911221D412D}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">prm4LQ.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 20:09:32</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_5680D1C83EA64D93A18D42026A9C8218.WAV</instantiationLocation>
+      <instantiationFileSize>5379216</instantiationFileSize>
+      <instantiationDuration>00:00:30.487</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">87</pbcoreIdentifier>
+    <pbcoreIdentifier source="NYPR_DAVID:MUSIC">PS937</pbcoreIdentifier>
+    <!--HELP: um, can we remove this from the map?-->
+    <pbcoreTitle>John Cage Marathon</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>Rex</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">435</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{45B1D413-36A7-4F3E-8267-780AC098F3BF}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">prm4LP.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 19:51:54</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_0553E9317806446591175C21169783B2.WAV</instantiationLocation>
+      <instantiationFileSize>5350544</instantiationFileSize>
+      <instantiationDuration>00:00:30.325</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">88</pbcoreIdentifier>
+    <pbcoreIdentifier source="NYPR_DAVID:MUSIC">PS936</pbcoreIdentifier>
+    <!--HELP: um, can we remove this from the map?-->
+    <pbcoreTitle>John Cage Marathon</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>Rex</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">440</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{A779F079-C7D6-4B41-A108-D80387D2A6C3}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">prm4LO.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 20:03:32</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_171BEFEFE6E54FA38EFF5C0006735CAC.WAV</instantiationLocation>
+      <instantiationFileSize>5309584</instantiationFileSize>
+      <instantiationDuration>00:00:30.093</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">89</pbcoreIdentifier>
+    <pbcoreIdentifier source="NYPR_DAVID:MUSIC">PS935</pbcoreIdentifier>
+    <!--HELP: um, can we remove this from the map?-->
+    <pbcoreTitle>John Cage Marathon</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>Rex</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">445</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{82427D9E-E319-44D1-80CE-ECD0F3B675BF}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">prm4LN.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 17:06:06</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_9FA856F28A3240C596360496FCDD60BC.WAV</instantiationLocation>
+      <instantiationFileSize>5372560</instantiationFileSize>
+      <instantiationDuration>00:00:30.450</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">90</pbcoreIdentifier>
+    <pbcoreIdentifier source="NYPR_DAVID:MUSIC">PS919</pbcoreIdentifier>
+    <!--HELP: um, can we remove this from the map?-->
+    <pbcoreTitle>John Cage Marathon</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>Rex</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">450</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{6CE30D1F-AB01-4BE4-A8DC-BB977D889F8F}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">prm4LM.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 19:09:48</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_981B127007204A05873ACF2716A5CC0C.WAV</instantiationLocation>
+      <instantiationFileSize>5358736</instantiationFileSize>
+      <instantiationDuration>00:00:30.371</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">91</pbcoreIdentifier>
+    <pbcoreIdentifier source="NYPR_DAVID:MUSIC">PS936</pbcoreIdentifier>
+    <!--HELP: um, can we remove this from the map?-->
+    <pbcoreTitle>John Cage Marathon</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>Rex</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">455</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{A2E4017A-9F00-4574-8CC3-21D7533771A0}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">prm4LL.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 20:09:32</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_3C1F4680DF674D82A21BD29C9A6C548B.WAV</instantiationLocation>
+      <instantiationFileSize>5358736</instantiationFileSize>
+      <instantiationDuration>00:00:30.371</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">92</pbcoreIdentifier>
+    <pbcoreIdentifier source="NYPR_DAVID:MUSIC">PS916</pbcoreIdentifier>
+    <!--HELP: um, can we remove this from the map?-->
+    <pbcoreTitle>John Cage Marathon</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>Rex</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">460</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{04F3B8A9-A139-4970-B222-63199EA4765A}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">prm4LK.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 19:13:49</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_629D9EF347E74B78B454F988C1E8DAFC.WAV</instantiationLocation>
+      <instantiationFileSize>5368976</instantiationFileSize>
+      <instantiationDuration>00:00:30.429</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">93</pbcoreIdentifier>
+    <pbcoreIdentifier source="NYPR_DAVID:MUSIC">PS910</pbcoreIdentifier>
+    <!--HELP: um, can we remove this from the map?-->
+    <pbcoreTitle>John Cage Marathon</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>Rex</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">465</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{B732F005-7FEF-4B49-86C1-81F3CB81B6C8}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">prm4LJ.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 20:09:31</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_3140C169005040E586865B24DF6FC96F.WAV</instantiationLocation>
+      <instantiationFileSize>5350544</instantiationFileSize>
+      <instantiationDuration>00:00:30.325</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">94</pbcoreIdentifier>
+    <pbcoreIdentifier source="NYPR_DAVID:MUSIC">PS907</pbcoreIdentifier>
+    <!--HELP: um, can we remove this from the map?-->
+    <pbcoreTitle>John Cage Marathon</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>Rex</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">470</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{EBA90E03-12A8-4048-8FF0-DC161C66B3F5}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">prm4LI.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 19:58:42</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_F21ACC755FD9448BBE7D388AE644B4C4.WAV</instantiationLocation>
+      <instantiationFileSize>5293200</instantiationFileSize>
+      <instantiationDuration>00:00:30.000</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">95</pbcoreIdentifier>
+    <pbcoreIdentifier source="NYPR_DAVID:MUSIC">PS906</pbcoreIdentifier>
+    <!--HELP: um, can we remove this from the map?-->
+    <pbcoreTitle>John Cage Marathon</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>Rex</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">475</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{CD5EECD6-65E9-4A4E-B898-9313E7D73B7C}</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:FILENAME">prm4LH.WAV</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 19:58:43</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_AA0304A9903844CD98B231409FD2B115.WAV</instantiationLocation>
+      <instantiationFileSize>5367952</instantiationFileSize>
+      <instantiationDuration>00:00:30.423</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">96</pbcoreIdentifier>
+    <pbcoreIdentifier source="NYPR_DAVID:MUSIC">146175</pbcoreIdentifier>
+    <!--HELP: um, can we remove this from the map?-->
+    <pbcoreTitle>Cage 2433: Tribute from David Garland</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>AAMBROSE</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>AAMBROSE</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">480</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{55A9D26F-8128-403C-8234-E33CCC4C118F}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 15:41:56</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_D126DC733D864989BBF96C6C1D2FCB5B.WAV</instantiationLocation>
+      <instantiationFileSize>74056908</instantiationFileSize>
+      <instantiationDuration>00:06:56.560</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">97</pbcoreIdentifier>
+    <pbcoreTitle>Music from  the 92nd St Y Episode 9 FULL (for web transfer) aired  6/21/08</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">485</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{29D6A63C-468D-4FC8-84BD-4673ACF305C4}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 20:06:33</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_DDA2C5EFDF8740F0A0403947C69EFB9B.WAV</instantiationLocation>
+      <instantiationFileSize>606161672</instantiationFileSize>
+      <instantiationDuration>00:57:02.911</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">98</pbcoreIdentifier>
+    <pbcoreTitle>Music from the 92nd ST Y Episode 8 FULL (for web transfer) aired  6/14/08</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">490</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{B306F4E7-5151-4C60-B7A8-12728EA4D524}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-07-30 19:43:47</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_C287F7107E6A4EF78CC8D096488D3E92.WAV</instantiationLocation>
+      <instantiationFileSize>608424988</instantiationFileSize>
+      <instantiationDuration>00:57:15.691</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">99</pbcoreIdentifier>
+    <pbcoreTitle>Musto and Bastianello on Evening Music 8/5/08</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">495</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{47FEF447-BB14-4104-BA14-E3978963FAD4}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-08-06 14:34:13</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_1A7D912CB8F142ADB6875296D345538E.WAV</instantiationLocation>
+      <instantiationFileSize>602498364</instantiationFileSize>
+      <instantiationDuration>00:56:42.224</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+  <pbcoreDescriptionDocument>
+    <pbcoreIdentifier source="NYPR_DAVID:NUMBER">100</pbcoreIdentifier>
+    <pbcoreTitle>Mark Morris: West Coast Composers (use for edit)</pbcoreTitle>
+    <pbcoreDescription>No Description Available</pbcoreDescription>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#editor">Editor</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+      <contributor>BRAD</contributor>
+      <contributorRole ref="http://pbcore.org/vocabularies/contributorRole#author">Author</contributorRole>
+    </pbcoreContributor>
+    <pbcoreInstantiation>
+      <instantiationIdentifier source="NYPR_DAVID:REFNR">500</instantiationIdentifier>
+      <instantiationIdentifier source="NYPR_DAVID:UMID">{78B8FA09-ADBD-4B8C-809B-74E5FCA39E39}</instantiationIdentifier>
+      <instantiationDate dateType="Created">2008-08-06 17:46:11</instantiationDate>
+      <instantiationDigital>BWF, Linear</instantiationDigital>
+      <instantiationLocation>\\wnycdavidmedia\media$\Archives44k\DA0_CB00F8916F2E475BA719F39C53257E94.WAV</instantiationLocation>
+      <instantiationFileSize>967552408</instantiationFileSize>
+      <instantiationDuration>01:30:42.463</instantiationDuration>
+      <instantiationAnnotation annotationType="NYPR_DAVID_TYPE">Audio</instantiationAnnotation>
+    </pbcoreInstantiation>
+  </pbcoreDescriptionDocument>
+</pbcoreCollection>

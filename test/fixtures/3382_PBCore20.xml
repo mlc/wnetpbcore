@@ -1,0 +1,984 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<pbcoreCollection xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xalan="http://xml.apache.org/xalan" xmlns:fmp="http://www.filemaker.com/xml/fmresultset"> 
+<pbcoreDescriptionDocument> 
+<pbcoreAssetType source="WITNESS ContentType Main">Raw</pbcoreAssetType> 
+<pbcoreAssetDate dateType="">2003-10</pbcoreAssetDate> 
+<pbcoreIdentifier source="WITNESS Media Archive Title ID">3382</pbcoreIdentifier> 
+<pbcoreIdentifier source="WITNESS Media Archive Partner Title ID">Ajedi-ka NA</pbcoreIdentifier> 
+<pbcoreTitle titleType="Main">[Mai-Mai child soldiers in RCD camp]</pbcoreTitle> 
+<pbcoreSubject subjectType="Topical" source="WITNESS.org" ref="http://www.witness.org/vocab/topics/index.php?tema=38">Child Soldiers</pbcoreSubject> 
+<pbcoreSubject subjectType="Topical" source="WITNESS.org" ref="http://www.witness.org/vocab/topics/index.php?tema=39">Children and Youth</pbcoreSubject> 
+<pbcoreSubject subjectType="Topical" source="WITNESS.org" ref="http://www.witness.org/vocab/topics/index.php?tema=16">Armed Conflict</pbcoreSubject> 
+<pbcoreSubject subjectType="Geographic" source="WITNESS.org">Democratic Republic of Congo (formerly Zaire)</pbcoreSubject> 
+<pbcoreSubject subjectType="Geographic" source="WITNESS.org">Africa</pbcoreSubject> 
+<pbcoreSubject subjectType="Geographic" source="WITNESS.org">Uvira</pbcoreSubject> 
+<pbcoreSubject subjectType="Geographic" source="WITNESS.org">Runingo</pbcoreSubject> 
+<pbcoreDescription descriptionType="Summary">Footage of child soldiers in Uvira in DRC at Camp Mai-Mai de Runingo. Original is a VHS tape received from Ajedi-ka  prior to having become official Witness partners. [VHS original]</pbcoreDescription> 
+<pbcoreCoverage> 
+<coverage>Democratic Republic of the Congo (formerly Zaire)/ Runingo/ </coverage> 
+<coverageType>Spatial</coverageType> 
+</pbcoreCoverage> 
+<pbcoreCoverage> 
+<coverage>Democratic Republic of the Congo (formerly Zaire)/ Uvira/ </coverage> 
+<coverageType>Spatial</coverageType> 
+</pbcoreCoverage> 
+<pbcoreCreator> 
+<creator>Ajedi-ka</creator> 
+<creatorRole>Creator</creatorRole> 
+</pbcoreCreator> 
+<pbcorePublisher> 
+<publisher>Ajedi-ka</publisher> 
+<publisherRole>Copyright Holder</publisherRole> 
+</pbcorePublisher> 
+<pbcoreInstantiation> 
+<instantiationIdentifier source="WITNESS Media Archive Item ID">C01448</instantiationIdentifier> 
+<instantiationPhysical>VHS</instantiationPhysical> 
+<instantiationLocation>WITNESS Media Archive</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Viewing copy</instantiationGenerations> 
+<instantiationEssenceTrack> 
+<essenceTrackType>video</essenceTrackType> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+</instantiationEssenceTrack> 
+<instantiationAnnotation annotationType="best_copy">Yes</instantiationAnnotation> 
+<instantiationAnnotation annotationType="preservation_priority">None</instantiationAnnotation> 
+<instantiationAnnotation annotationType="reel_number">1</instantiationAnnotation> 
+<instantiationAnnotation annotationType="visual_timecode">No</instantiationAnnotation> 
+</pbcoreInstantiation> 
+<pbcoreInstantiation> 
+<instantiationIdentifier source="WITNESS Media Archive Item ID">B01748</instantiationIdentifier> 
+<instantiationPhysical>DV Mini</instantiationPhysical> 
+<instantiationLocation>WITNESS Media Archive</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Duplication Copy</instantiationGenerations> 
+<instantiationEssenceTrack> 
+<essenceTrackType>video</essenceTrackType> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+</instantiationEssenceTrack> 
+<instantiationAnnotation annotationType="best_copy">No</instantiationAnnotation> 
+<instantiationAnnotation annotationType="preservation_priority">None</instantiationAnnotation> 
+<instantiationAnnotation annotationType="reel_number">1</instantiationAnnotation> 
+<instantiationAnnotation annotationType="visual_timecode">No</instantiationAnnotation> 
+<instantiationAnnotation annotationType="additional_info">B01748Mini-DVDuplication CopyPALNoNone11No</instantiationAnnotation> 
+</pbcoreInstantiation> 
+<pbcoreInstantiation> 
+<instantiationIdentifier source="WITNESS Media Archive Item ID">E005009</instantiationIdentifier> 
+<instantiationLocation>Witness</instantiationLocation> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005009_part_1_of_15</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B01748-Child soldiers</instantiationIdentifier> 
+<instantiationDigital>video/quicktime</instantiationDigital> 
+<instantiationStandard>DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN5_Archive/P-OTF/Raw/E005009_3382/B01748-Child soldiers</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">102583285</instantiationFileSize> 
+<instantiationTimeStart>00:05:00.160</instantiationTimeStart> 
+<instantiationDuration>00:00:27.038</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30352329</instantiationDataRate> 
+<instantiationTracks>1 video track, 3 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:05:00.160</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:27.038</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">768000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:26.040</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">768000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:26.040</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">2</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">2</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:05:01.160</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:27.038</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005009_part_2_of_15</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B01748-Child soldiers-2002 boy</instantiationIdentifier> 
+<instantiationDigital>video/quicktime</instantiationDigital> 
+<instantiationStandard>DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN5_Archive/P-OTF/Raw/E005009_3382/B01748-Child soldiers-2002 boy</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">56619205</instantiationFileSize> 
+<instantiationTimeStart>00:06:20.520</instantiationTimeStart> 
+<instantiationDuration>00:00:14.930</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30338488</instantiationDataRate> 
+<instantiationTracks>1 video track, 3 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:06:20.520</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:14.930</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">768000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:13.920</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">768000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:13.920</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">2</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">2</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:06:21.520</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:14.930</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005009_part_3_of_15</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B01748-Child soldiers-boy w baseball cap</instantiationIdentifier> 
+<instantiationDigital>video/quicktime</instantiationDigital> 
+<instantiationStandard>DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN5_Archive/P-OTF/Raw/E005009_3382/B01748-Child soldiers-boy w baseball cap</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">123669285</instantiationFileSize> 
+<instantiationTimeStart>00:07:59.520</instantiationTimeStart> 
+<instantiationDuration>00:00:32.599</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30349221</instantiationDataRate> 
+<instantiationTracks>1 video track, 3 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:07:59.520</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:32.599</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">768000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:31.600</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">768000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:31.600</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">2</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">2</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:08:00.520</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:32.599</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005009_part_4_of_15</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B01748-Child soldiers-boy w turban</instantiationIdentifier> 
+<instantiationDigital>video/quicktime</instantiationDigital> 
+<instantiationStandard>DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN5_Archive/P-OTF/Raw/E005009_3382/B01748-Child soldiers-boy w turban</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">108041957</instantiationFileSize> 
+<instantiationTimeStart>00:06:57.080</instantiationTimeStart> 
+<instantiationDuration>00:00:28.477</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30352061</instantiationDataRate> 
+<instantiationTracks>1 video track, 3 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:06:57.080</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:28.477</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">768000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:27.480</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">768000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:27.480</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">2</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">2</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:06:58.080</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:28.477</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005009_part_5_of_15</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B01748-Child soldiers-camp and kids in front</instantiationIdentifier> 
+<instantiationDigital>video/quicktime</instantiationDigital> 
+<instantiationStandard>DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN5_Archive/P-OTF/Raw/E005009_3382/B01748-Child soldiers-camp and kids in front</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">72094101</instantiationFileSize> 
+<instantiationTimeStart>00:14:04.480</instantiationTimeStart> 
+<instantiationDuration>00:00:18.966</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30409828</instantiationDataRate> 
+<instantiationTracks>1 video track, 3 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:14:04.480</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:18.966</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">768000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:17.960</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">768000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:17.960</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">2</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">2</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:14:05.520</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:18.966</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005009_part_6_of_15</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B01748-Child soldiers-group of women walking and carrying</instantiationIdentifier> 
+<instantiationDigital>video/quicktime</instantiationDigital> 
+<instantiationStandard>DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN5_Archive/P-OTF/Raw/E005009_3382/B01748-Child soldiers-group of women walking and carrying</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">251397237</instantiationFileSize> 
+<instantiationTimeStart>00:31:11.680</instantiationTimeStart> 
+<instantiationDuration>00:01:06.298</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30335423</instantiationDataRate> 
+<instantiationTracks>1 video track, 3 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:31:11.680</essenceTrackTimeStart> 
+<essenceTrackDuration>00:01:06.298</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">768000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:01:05.280</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">768000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:01:05.280</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">2</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">2</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:31:12.680</essenceTrackTimeStart> 
+<essenceTrackDuration>00:01:06.298</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005009_part_7_of_15</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B01748-Child soldiers-kid kneeling down w gun</instantiationIdentifier> 
+<instantiationDigital>video/quicktime</instantiationDigital> 
+<instantiationStandard>DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN5_Archive/P-OTF/Raw/E005009_3382/B01748-Child soldiers-kid kneeling down w gun</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">115174885</instantiationFileSize> 
+<instantiationTimeStart>00:29:36.960</instantiationTimeStart> 
+<instantiationDuration>00:00:30.344</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30365116</instantiationDataRate> 
+<instantiationTracks>1 video track, 3 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:29:36.960</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:30.344</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">768000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:29.320</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">768000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:29.320</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">2</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">2</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:29:38.000</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:30.344</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005009_part_8_of_15</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B01748-Child soldiers-kid walk in w gun</instantiationIdentifier> 
+<instantiationDigital>video/quicktime</instantiationDigital> 
+<instantiationStandard>DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN5_Archive/P-OTF/Raw/E005009_3382/B01748-Child soldiers-kid walk in w gun</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">36286165</instantiationFileSize> 
+<instantiationTimeStart>00:04:39.480</instantiationTimeStart> 
+<instantiationDuration>00:00:09.543</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30419084</instantiationDataRate> 
+<instantiationTracks>1 video track, 3 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:04:39.480</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:09.543</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">768000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:08.520</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">768000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:08.520</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">2</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">2</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:04:40.520</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:09.543</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005009_part_9_of_15</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B01748-Child soldiers-kids training girl in front - CU</instantiationIdentifier> 
+<instantiationDigital>video/quicktime</instantiationDigital> 
+<instantiationStandard>DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN5_Archive/P-OTF/Raw/E005009_3382/B01748-Child soldiers-kids training girl in front - CU</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">950732277</instantiationFileSize> 
+<instantiationTimeStart>00:15:47.760</instantiationTimeStart> 
+<instantiationDuration>00:04:10.667</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30342479</instantiationDataRate> 
+<instantiationTracks>1 video track, 3 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:15:47.760</essenceTrackTimeStart> 
+<essenceTrackDuration>00:04:10.667</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">768000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:04:09.640</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">768000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:04:09.640</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">2</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">2</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:15:48.800</essenceTrackTimeStart> 
+<essenceTrackDuration>00:04:10.667</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005009_part_10_of_15</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B01748-Child soldiers-kids w guns</instantiationIdentifier> 
+<instantiationDigital>video/quicktime</instantiationDigital> 
+<instantiationStandard>DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN5_Archive/P-OTF/Raw/E005009_3382/B01748-Child soldiers-kids w guns</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">120024645</instantiationFileSize> 
+<instantiationTimeStart>00:15:17.000</instantiationTimeStart> 
+<instantiationDuration>00:00:31.611</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30375412</instantiationDataRate> 
+<instantiationTracks>1 video track, 3 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:15:17.000</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:31.611</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">768000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:30.600</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">768000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:30.600</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">2</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">2</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:15:18.040</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:31.611</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005009_part_11_of_15</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B01748-Child soldiers-MS girl w gun</instantiationIdentifier> 
+<instantiationDigital>video/quicktime</instantiationDigital> 
+<instantiationStandard>DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN5_Archive/P-OTF/Raw/E005009_3382/B01748-Child soldiers-MS girl w gun</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">154767045</instantiationFileSize> 
+<instantiationTimeStart>00:02:42.240</instantiationTimeStart> 
+<instantiationDuration>00:00:40.783</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30359129</instantiationDataRate> 
+<instantiationTracks>1 video track, 3 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:02:42.240</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:40.783</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">768000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:39.760</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">768000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:39.760</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">2</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">2</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:02:43.280</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:40.783</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005009_part_12_of_15</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B01748-Child soldiers-pan from girl w gun to other girl</instantiationIdentifier> 
+<instantiationDigital>video/quicktime</instantiationDigital> 
+<instantiationStandard>DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN5_Archive/P-OTF/Raw/E005009_3382/B01748-Child soldiers-pan from girl w gun to other girl</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">80892861</instantiationFileSize> 
+<instantiationTimeStart>00:04:10.600</instantiationTimeStart> 
+<instantiationDuration>00:00:21.300</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30382295</instantiationDataRate> 
+<instantiationTracks>1 video track, 3 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:04:10.600</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:21.300</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">768000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:20.280</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">768000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:20.280</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">2</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">2</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:04:11.640</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:21.300</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005009_part_13_of_15</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B01748-Child soldiers-practicing again</instantiationIdentifier> 
+<instantiationDigital>video/quicktime</instantiationDigital> 
+<instantiationStandard>DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN5_Archive/P-OTF/Raw/E005009_3382/B01748-Child soldiers-practicing again</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">227427605</instantiationFileSize> 
+<instantiationTimeStart>00:27:02.440</instantiationTimeStart> 
+<instantiationDuration>00:00:59.942</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30353021</instantiationDataRate> 
+<instantiationTracks>1 video track, 3 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:27:02.440</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:59.942</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">768000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:58.920</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">768000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:58.920</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">2</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">2</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:27:03.480</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:59.942</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005009_part_14_of_15</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B01748-Child soldiers-walking w guns</instantiationIdentifier> 
+<instantiationDigital>video/quicktime</instantiationDigital> 
+<instantiationStandard>DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN5_Archive/P-OTF/Raw/E005009_3382/B01748-Child soldiers-walking w guns</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">83467925</instantiationFileSize> 
+<instantiationTimeStart>00:26:44.160</instantiationTimeStart> 
+<instantiationDuration>00:00:21.977</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">30383737</instantiationDataRate> 
+<instantiationTracks>1 video track, 3 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:26:44.160</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:21.977</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">768000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:20.960</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">768000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:20.960</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">2</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">2</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:26:45.200</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:21.977</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+<instantiationPart> 
+<instantiationIdentifier source="WITNESS Media Item ID and Part ID">E005009_part_15_of_15</instantiationIdentifier> 
+<instantiationIdentifier source="File Name">B01748-Child soldiers-women walking</instantiationIdentifier> 
+<instantiationDigital>video/quicktime</instantiationDigital> 
+<instantiationStandard>DV</instantiationStandard> 
+<instantiationLocation>/Volumes/SAN5_Archive/P-OTF/Raw/E005009_3382/B01748-Child soldiers-women walking</instantiationLocation> 
+<instantiationMediaType>Moving Image</instantiationMediaType> 
+<instantiationGenerations>Moving image/Master</instantiationGenerations> 
+<instantiationFileSize unitsOfMeasure="bytes">111834591</instantiationFileSize> 
+<instantiationTimeStart>00:32:30.040</instantiationTimeStart> 
+<instantiationDuration>00:00:31.065</instantiationDuration> 
+<instantiationDataRate unitsOfMeasure="bits/second">28800152</instantiationDataRate> 
+<instantiationTracks>1 video track, 3 audio tracks</instantiationTracks> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Video</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackStandard>PAL</essenceTrackStandard> 
+<essenceTrackEncoding>DV (dvcp)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">24441600</essenceTrackDataRate> 
+<essenceTrackFrameRate>25.000 fps</essenceTrackFrameRate> 
+<essenceTrackFrameSize>720x576</essenceTrackFrameSize> 
+<essenceTrackAspectRatio>4:3</essenceTrackAspectRatio> 
+<essenceTrackTimeStart>00:32:30.040</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:31.065</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">768000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:30.266</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">1</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">1</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM Big-endian Signed (twos)</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">768000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackDuration>00:00:30.266</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>Audio</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">2</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">2</essenceTrackIdentifier> 
+<essenceTrackEncoding>PCM</essenceTrackEncoding> 
+<essenceTrackDataRate unitsOfMeasure="bits/second">1536000</essenceTrackDataRate> 
+<essenceTrackSamplingRate>48 kHz</essenceTrackSamplingRate> 
+<essenceTrackTimeStart>00:32:30.040</essenceTrackTimeStart> 
+<essenceTrackDuration>00:00:31.065</essenceTrackDuration> 
+</instantiationEssenceTrack> 
+<instantiationEssenceTrack> 
+<essenceTrackType>timecode</essenceTrackType> 
+<essenceTrackIdentifier source="Mediainfo.ID">0</essenceTrackIdentifier> 
+<essenceTrackIdentifier source="Mediainfo.StreamKindID">0</essenceTrackIdentifier> 
+<essenceTrackEncoding>TimeCode</essenceTrackEncoding> 
+</instantiationEssenceTrack> 
+</instantiationPart> 
+</pbcoreInstantiation> 
+</pbcoreDescriptionDocument> 
+</pbcoreCollection> 
