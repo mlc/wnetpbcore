@@ -61,7 +61,15 @@ Some points:
  	$ rake sunspot:solr:start
 	$ rake sunspot:solr:reindex
 
-
 == SERVER SET-UP
 
 See doc/INSTALL.rdoc
+
+== Notes
+
+- /config/authorization_rules.rb is symlinked to a ruleset in /config/auth_rules/
+- /config/auth_rules/lockdown.rb is for DHC
+- zed is z.mlcastle.net
+- wnet is out-of-date and unsupported
+- bavc is gone
+

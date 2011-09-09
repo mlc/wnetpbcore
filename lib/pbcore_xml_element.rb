@@ -60,7 +60,10 @@ module PbcoreXmlElement
       klass ||= field.to_s.singularize.camelize.constantize
       from_xml_elt do |record|
         elts = record._working_xml.find("pbcore:#{attr}", PBCORE_NAMESPACE)
-        objs = elts.map{|elt| klass.from_xml(elt)}.select{|obj| obj.valid?}
+        objs = elts.map{|elt| klass.from_xml(elt)}.select{|obj| 
+#          $stderr.puts obj.inspect
+          obj.valid?
+        }
         record.send("#{field}=".to_sym, objs)
       end
       to_xml_elt do |record|
