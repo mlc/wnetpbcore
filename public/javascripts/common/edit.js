@@ -20,7 +20,7 @@ var FormEditor = (function($, undefined) {
   var made_form = false;
   var obj_type;
 
-  // enum pattern http://is.gd/dlQFY
+  // enum pattern http://is.gd/dlQFY <-- wrong short url DON'T USE SHORT URLs
   var Style = function(name) {
     this._name = name;
   };
@@ -125,6 +125,8 @@ var FormEditor = (function($, undefined) {
   var mkfields = function(div, pbcore, callback, rejector) {
     var $div = $("#" + div);
     xml.find(pbcore).each(function(i) {
+      // If a field is not supposed to be edited like UUID for example,
+      // don't call the callback.
       if (!(rejector && rejector(this)))
         callback(pbcore, $div, this, i);
     });
@@ -700,7 +702,7 @@ var FormEditor = (function($, undefined) {
       mkfields("subjects", "pbcoreSubject", subject_maker("subject"));
       mkfields("descriptions", "pbcoreDescription", pbcore_maker(undefined, "descriptionType", Style.TEXTAREA, false, true));
       mkfields("genres", "pbcoreGenre", subject_maker("genre"));
-      mkfields("relations", "pbcoreRelation", pbcore_maker("relationIdentifier", "relationType", Style.VERBOSE));
+      mkfields("relations", "pbcoreRelation", pbcore_maker("pbcoreRelationIdentifier", "pbcoreRelationType", Style.VERBOSE));
       mkfields("coverages", "pbcoreCoverage", pbcore_maker("coverage", "coverageType", Style.SELECT, true));
       mkboxes("audience_levels", 'pbcoreAudienceLevel', 'audienceLevel');
       mkboxes("audience_ratings", 'pbcoreAudienceRating', 'audienceRating');

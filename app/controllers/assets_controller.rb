@@ -310,6 +310,9 @@ class AssetsController < ApplicationController
 
     # ensure that @versions[0].created_at ≤ @versions[1].created_at
     if @versions[1].created_at < @versions[0].created_at
+      # Shouldn't this just be...?
+      # @version[0], @version[1] = @version[1], @version[0]
+      
       tmp = @versions[1]
       @versions[1] = @versions[0]
       @versions[0] = tmp
