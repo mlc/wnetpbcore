@@ -15,19 +15,11 @@ class Subject < ActiveRecord::Base
 
   # we use the standard PbcoreXmlElement definition of to_xml, but we have
   # to customize the from_xml direction...
-  # FIXME: This is the problem when trying to save a record, it fails right here.
-  #        Overridden behavior from the standard PbcoreXmlElement way.
-  #        What I need to figure out is how to conform this to the new 2.0 schema
-  #        that is using attributes.
   def self.from_xml(xml)
-    subject = xml.find("pbcore:subject", PbcoreXmlElement::PBCORE_NAMESPACE)
-    return nil if subject.empty? || subject[0].child.nil?
-    subjname = subject[0].child.content
-
-    authority = xml.find("pbcore:subjectAuthorityUsed", PbcoreXmlElement::PBCORE_NAMESPACE)
-    authorityused = (authority.empty? || authority[0].child.nil?) ? nil : authority[0].child.content
-
-    Subject.find_or_create_by_subject_and_subject_authority(subjname, authorityused)
+    subject = xml.content
+    source = xml['source']
+    
+    Subject.find_or_create_by_subject_and_subject_authority(subject, source)
   end
 
   def safe_to_delete?
