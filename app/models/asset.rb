@@ -67,7 +67,7 @@ class Asset < ActiveRecord::Base
   
   def to_xml
     doc = XML::Document.new
-    root = XML::Node.new("PBCoreDescriptionDocument")
+    root = XML::Node.new("pbcoreDescriptionDocument")
     PbcoreXmlElement::Util.set_pbcore_ns(root)
     xsins = XML::Namespace.new(root, "xsi", "http://www.w3.org/2001/XMLSchema-instance")
     schemaloc = XML::Attr.new(root, "schemaLocation", "http://www.pbcore.org/PBCore/PBCoreNamespace.html http://pbcore.org/xsd/pbcore-2.0.xsd")

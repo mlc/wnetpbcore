@@ -724,7 +724,7 @@ var FormEditor = (function($, undefined) {
   };
 
   var root_elt_names = {
-    "asset": "PBCoreDescriptionDocument",
+    "asset": "pbcoreDescriptionDocument",
     "instantiation": "pbcoreInstantiation"
   };
 
