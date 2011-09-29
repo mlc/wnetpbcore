@@ -51,6 +51,7 @@
 
       %dl
         = render :partial => "field_array", :locals => {:objs => instantiation.format_ids, :field => "Format ID", :key => :format_identifier_source, :value => :format_identifier, :searchkey => :identifier, :searchvalue => :format_identifier}
+        = render :partial => "field_array", :locals => {:objs => instantiation.instantiation_dates, :field => "Date", :key => :instantiation_date_type, :value => :date }
         -#= render :partial => "field_one", :locals => {:key => "Date Created", :value => instantiation.date_created}
         -#= render :partial => "field_one", :locals => {:key => "Date Issued", :value => instantiation.date_issued}
         = render :partial => "field_one", :locals => {:key => "Format", :value => instantiation.format, :field => :name }
