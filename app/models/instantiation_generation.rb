@@ -1,4 +1,4 @@
-class FormatGeneration < ActiveRecord::Base
+class InstantiationGeneration < ActiveRecord::Base
   include Picklist
   has_many :instantiations
   quick_column :name

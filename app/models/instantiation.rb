@@ -7,7 +7,7 @@ class Instantiation < ActiveRecord::Base
   has_many :instantiation_dates, :dependent => :destroy, :attributes => true
   belongs_to :format
   belongs_to :instantiation_media_type
-  belongs_to :format_generation
+  belongs_to :instantiation_generation
   belongs_to :format_color
   has_many :essence_tracks, :dependent => :destroy, :attributes => true
   has_many :annotations, :dependent => :destroy, :attributes => true
@@ -46,7 +46,7 @@ class Instantiation < ActiveRecord::Base
   end
   xml_string "instantiationLocation", :format_location
   xml_string "instantiationMediaType", :instantiation_media_type
-  xml_string "instantiationGenerations", :format_generation
+  xml_string "instantiationGenerations", :instantiation_generation
   xml_string "instantiationFileSize", :format_file_size
   xml_string "instantiationTimeStart", :format_time_start
   xml_string "instantiationDuration", :format_duration

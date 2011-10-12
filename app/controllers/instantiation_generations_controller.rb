@@ -1,4 +1,4 @@
-class FormatGenerationsController < PicklistsController
+class InstantiationGenerationsController < PicklistsController
   def set_standard_pbcore
     @standard_pbcore =
       [

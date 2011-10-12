@@ -253,7 +253,7 @@ class AssetsController < ApplicationController
   end
 
   def picklists
-    classes = [Genre, Subject, ContributorRole, CreatorRole, IdentifierSource, PublisherRole, TitleType, DescriptionType, RelationType, AudienceLevel, AudienceRating, FormatIdentifierSource, EssenceTrackType, EssenceTrackIdentifierSource, InstantiationMediaType, FormatGeneration, FormatColor, AssetDateType]
+    classes = [Genre, Subject, ContributorRole, CreatorRole, IdentifierSource, PublisherRole, TitleType, DescriptionType, RelationType, AudienceLevel, AudienceRating, FormatIdentifierSource, EssenceTrackType, EssenceTrackIdentifierSource, InstantiationMediaType, InstantiationGeneration, FormatColor, AssetDateType]
     @picklists = {}
     classes.each do |kl|
       klname = kl.respond_to?(:xml_picklist_name) ? kl.xml_picklist_name : kl.to_s
@@ -264,8 +264,8 @@ class AssetsController < ApplicationController
         @picklists[klname] = options.map(&:first)
       end
     end
-    @picklists["FormatGenerations"] = @picklists["FormatGeneration"]
-    @picklists.delete("FormatGeneration")
+    @picklists["InstantiationGenerations"] = @picklists["InstantiationGeneration"]
+    @picklists.delete("InstantiationGeneration")
     @picklists["FormatColors"] = @picklists["FormatColor"]
     @picklists.delete("FormatColor")
     @picklists["CoverageType"] = ["Spatial", "Temporal"]
