@@ -673,10 +673,10 @@ var FormEditor = (function($, undefined) {
       [text_field, "instantiationDuration"],
       [text_field, "instantiationDataRate"],
       [picklist_field, "formatColors"],
-      [text_field, "formatTracks"],
-      [text_field, "formatChannelConfiguration"],
+      [text_field, "instantiationTracks"],
+      [text_field, "instantiationChannelConfiguration"],
       [language_field, "language"],
-      [text_field, "alternativeModes", "identifies equivalent alternatives to the primary visual, sound or textual information that exists in a media item. These are modes that offer alternative ways to see, hear, and read the content of a media item. Examples include DVI (Descriptive Video Information), SAP (Supplementary Audio Program), ClosedCaptions, OpenCaptions, Subtitles, Language Dubs, and Transcripts."]
+      [text_field, "instantiationAlternativeModes", "identifies equivalent alternatives to the primary visual, sound or textual information that exists in a media item. These are modes that offer alternative ways to see, hear, and read the content of a media item. Examples include DVI (Descriptive Video Information), SAP (Supplementary Audio Program), ClosedCaptions, OpenCaptions, Subtitles, Language Dubs, and Transcripts."]
     ], function() {
       var name = this[1];
       ++field_counter;
