@@ -5,7 +5,7 @@ class PicklistsController < ApplicationController
   filter_access_to :all
 
   SUBCLASSES = ['audience_levels', 'audience_ratings', 'contributor_roles',
-    'creator_roles', 'description_types', 'format_digitals', 'format_colors',
+    'creator_roles', 'description_types', 'format_digitals', 'instantiation_colors',
     'instantiation_generations', 'instantiation_media_types', 'format_physicals',
     'identifier_sources', 'publisher_roles', 'relation_types', 'title_types',
     'essence_track_types', 'essence_track_identifier_sources',

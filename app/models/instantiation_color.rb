@@ -1,4 +1,4 @@
-class FormatColor < ActiveRecord::Base
+class InstantiationColor < ActiveRecord::Base
   include Picklist
   has_many :instantiations
   quick_column :name

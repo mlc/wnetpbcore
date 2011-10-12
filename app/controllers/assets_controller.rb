@@ -253,7 +253,7 @@ class AssetsController < ApplicationController
   end
 
   def picklists
-    classes = [Genre, Subject, ContributorRole, CreatorRole, IdentifierSource, PublisherRole, TitleType, DescriptionType, RelationType, AudienceLevel, AudienceRating, FormatIdentifierSource, EssenceTrackType, EssenceTrackIdentifierSource, InstantiationMediaType, InstantiationGeneration, FormatColor, AssetDateType]
+    classes = [Genre, Subject, ContributorRole, CreatorRole, IdentifierSource, PublisherRole, TitleType, DescriptionType, RelationType, AudienceLevel, AudienceRating, FormatIdentifierSource, EssenceTrackType, EssenceTrackIdentifierSource, InstantiationMediaType, InstantiationGeneration, InstantiationColor, AssetDateType]
     @picklists = {}
     classes.each do |kl|
       klname = kl.respond_to?(:xml_picklist_name) ? kl.xml_picklist_name : kl.to_s
@@ -266,8 +266,8 @@ class AssetsController < ApplicationController
     end
     @picklists["InstantiationGenerations"] = @picklists["InstantiationGeneration"]
     @picklists.delete("InstantiationGeneration")
-    @picklists["FormatColors"] = @picklists["FormatColor"]
-    @picklists.delete("FormatColor")
+    @picklists["InstantiationColors"] = @picklists["InstantiationColor"]
+    @picklists.delete("InstantiationColor")
     @picklists["CoverageType"] = ["Spatial", "Temporal"]
     @picklists["FormatPhysical"] = Format.quick_load_for_select(["visible = ? AND type = ?", true, "FormatPhysical"]).map(&:first)
     @picklists["FormatDigital"] = Format.quick_load_for_select(["visible = ? AND type = ?", true, "FormatDigital"]).map(&:first)

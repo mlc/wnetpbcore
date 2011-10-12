@@ -8,7 +8,7 @@ class Instantiation < ActiveRecord::Base
   belongs_to :format
   belongs_to :instantiation_media_type
   belongs_to :instantiation_generation
-  belongs_to :format_color
+  belongs_to :instantiation_color
   has_many :essence_tracks, :dependent => :destroy, :attributes => true
   has_many :annotations, :dependent => :destroy, :attributes => true
   has_many :borrowings, :dependent => :destroy
@@ -51,7 +51,7 @@ class Instantiation < ActiveRecord::Base
   xml_string "instantiationTimeStart", :format_time_start
   xml_string "instantiationDuration", :format_duration
   xml_string "instantiationDataRate", :format_data_rate
-  xml_string "instantiationColors", :format_color
+  xml_string "instantiationColors", :instantiation_color
   xml_string "instantiationTracks", :format_tracks
   xml_string "instantiationChannelConfiguration", :format_channel_configuration
   xml_string "instantiationLanguage", :language

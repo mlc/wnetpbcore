@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111012023823) do
+ActiveRecord::Schema.define(:version => 20111012154123) do
 
   create_table "annotations", :force => true do |t|
     t.integer "instantiation_id"
@@ -268,11 +268,6 @@ ActiveRecord::Schema.define(:version => 20111012023823) do
 
   add_index "extensions", ["asset_id"], :name => "index_extensions_on_asset_id"
 
-  create_table "format_colors", :force => true do |t|
-    t.string  "name",                       :null => false
-    t.boolean "visible", :default => false, :null => false
-  end
-
   create_table "format_identifier_sources", :force => true do |t|
     t.string  "name",                       :null => false
     t.boolean "visible", :default => false, :null => false
@@ -338,6 +333,11 @@ ActiveRecord::Schema.define(:version => 20111012023823) do
   add_index "identifiers", ["asset_id"], :name => "index_identifiers_on_asset_id"
   add_index "identifiers", ["identifier_source_id", "identifier"], :name => "index_identifiers_on_identifier_source_id_and_identifier"
 
+  create_table "instantiation_colors", :force => true do |t|
+    t.string  "name",                       :null => false
+    t.boolean "visible", :default => false, :null => false
+  end
+
   create_table "instantiation_date_types", :force => true do |t|
     t.string  "name"
     t.boolean "visible", :default => false, :null => false
@@ -377,7 +377,7 @@ ActiveRecord::Schema.define(:version => 20111012023823) do
     t.string   "format_time_start"
     t.string   "format_duration"
     t.string   "format_data_rate"
-    t.integer  "format_color_id"
+    t.integer  "instantiation_color_id"
     t.text     "format_tracks",                :limit => 16777215
     t.text     "format_channel_configuration", :limit => 16777215
     t.string   "language"

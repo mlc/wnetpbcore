@@ -672,7 +672,7 @@ var FormEditor = (function($, undefined) {
       [text_field, "instantiationTimeStart"],
       [text_field, "instantiationDuration"],
       [text_field, "instantiationDataRate"],
-      [picklist_field, "formatColors"],
+      [picklist_field, "instantiationColors"],
       [text_field, "instantiationTracks"],
       [text_field, "instantiationChannelConfiguration"],
       [language_field, "language"],

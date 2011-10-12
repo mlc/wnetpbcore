@@ -1,4 +1,4 @@
-class FormatColorsController < PicklistsController
+class InstantiationColorsController < PicklistsController
   def set_standard_pbcore
     @standard_pbcore =
       [
