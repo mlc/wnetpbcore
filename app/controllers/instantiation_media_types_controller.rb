@@ -1,4 +1,4 @@
-class FormatMediaTypesController < PicklistsController
+class InstantiationMediaTypesController < PicklistsController
   def set_standard_pbcore
     @standard_pbcore =
       [

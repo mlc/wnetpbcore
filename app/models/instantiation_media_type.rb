@@ -1,4 +1,4 @@
-class FormatMediaType < ActiveRecord::Base
+class InstantiationMediaType < ActiveRecord::Base
   include Picklist
   has_many :instantiations
   quick_column :name

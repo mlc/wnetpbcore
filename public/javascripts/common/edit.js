@@ -618,7 +618,7 @@ var FormEditor = (function($, undefined) {
           'type': "radio",
           'name': 'format_type',
           'value': str,
-          'checked': !!(xml.find("format" + str).text())
+          'checked': !!(xml.find("instantiation" + str).text())
         });
         span.append(radio);
         span.append($("<label/>", {
@@ -640,7 +640,7 @@ var FormEditor = (function($, undefined) {
         }
       };
 
-      picklist.val(xml.find("formatPhysical, formatDigital").text());
+      picklist.val(xml.find("instantiationPhysical, instantiationDigital").text());
       updatepicklist();
       radios.bind('change', updatepicklist);
 
@@ -664,12 +664,10 @@ var FormEditor = (function($, undefined) {
     };
 
     $.each([
-      [text_field, "dateCreated"],
-      [text_field, "dateIssued"],
       [format_field, "format"],
-      [text_field, "formatLocation"],
-      [picklist_field, "formatMediaType"],
-      [picklist_field, "formatGenerations", "identifies the particular use or manner in which a version or rendition of a media item is used"],
+      [text_field, "instantiationLocation"],
+      [picklist_field, "instantiationMediaType"],
+      [picklist_field, "instantiationGenerations", "identifies the particular use or manner in which a version or rendition of a media item is used"],
       [text_field, "formatFileSize"],
       [text_field, "formatTimeStart"],
       [text_field, "formatDuration"],
@@ -716,10 +714,11 @@ var FormEditor = (function($, undefined) {
       mkfields("format_ids", "instantiationIdentifier", pbcore_maker(undefined, "source", undefined, false, true), function(elt) {
         return $(elt).attr("source") === 'pbcore XML database UUID';
       });
+      mkfields("instantiation_dates", "instantiationDate", pbcore_maker(undefined, "dateType", Style.VERBOSE, false, true));
       basic_instantiation_fields();
       mkfields("essence_tracks", "pbcoreEssenceTrack", essence_track_maker);
       mkfields("date_availables", "pbcoreDateAvailable", pbcore_maker("dateAvailableStart", "dateAvailableEnd", Style.TWO_PLAIN));
-      mkfields("annotations", "pbcoreAnnotation", pbcore_maker("annotation", undefined, Style.ONLY_TEXTAREA));
+      mkfields("annotations", "instantiationAnnotation", pbcore_maker(undefined, "annotationType", Style.TEXTAREA, false, true));
     }
   };
 

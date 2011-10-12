@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110808202551) do
+ActiveRecord::Schema.define(:version => 20111012011704) do
 
   create_table "annotations", :force => true do |t|
     t.integer "instantiation_id"
@@ -299,13 +299,6 @@ ActiveRecord::Schema.define(:version => 20110808202551) do
   add_index "format_ids", ["instantiation_id"], :name => "index_format_ids_on_instantiation_id"
   add_index "format_ids", ["format_identifier_source_id", "format_identifier"], :name => "by_source_and_identifier"
 
-  create_table "format_media_types", :force => true do |t|
-    t.string  "name",                       :null => false
-    t.boolean "visible", :default => false, :null => false
-  end
-
-  add_index "format_media_types", ["name"], :name => "index_format_media_types_on_name"
-
   create_table "formats", :force => true do |t|
     t.string  "type",                       :null => false
     t.string  "name",                       :null => false
@@ -367,11 +360,18 @@ ActiveRecord::Schema.define(:version => 20110808202551) do
     t.datetime "updated_at"
   end
 
+  create_table "instantiation_media_types", :force => true do |t|
+    t.string  "name",                       :null => false
+    t.boolean "visible", :default => false, :null => false
+  end
+
+  add_index "instantiation_media_types", ["name"], :name => "index_format_media_types_on_name"
+
   create_table "instantiations", :force => true do |t|
     t.integer  "asset_id"
     t.integer  "format_id"
     t.text     "format_location",              :limit => 16777215, :null => false
-    t.integer  "format_media_type_id"
+    t.integer  "instantiation_media_type_id"
     t.integer  "format_generation_id"
     t.string   "format_file_size"
     t.string   "format_time_start"

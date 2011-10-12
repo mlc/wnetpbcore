@@ -253,7 +253,7 @@ class AssetsController < ApplicationController
   end
 
   def picklists
-    classes = [Genre, Subject, ContributorRole, CreatorRole, IdentifierSource, PublisherRole, TitleType, DescriptionType, RelationType, AudienceLevel, AudienceRating, FormatIdentifierSource, EssenceTrackType, EssenceTrackIdentifierSource, FormatMediaType, FormatGeneration, FormatColor, AssetDateType]
+    classes = [Genre, Subject, ContributorRole, CreatorRole, IdentifierSource, PublisherRole, TitleType, DescriptionType, RelationType, AudienceLevel, AudienceRating, FormatIdentifierSource, EssenceTrackType, EssenceTrackIdentifierSource, InstantiationMediaType, FormatGeneration, FormatColor, AssetDateType]
     @picklists = {}
     classes.each do |kl|
       klname = kl.respond_to?(:xml_picklist_name) ? kl.xml_picklist_name : kl.to_s

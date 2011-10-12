@@ -6,7 +6,7 @@ class Instantiation < ActiveRecord::Base
   has_many :format_ids, :dependent => :destroy, :attributes => true
   has_many :instantiation_dates, :dependent => :destroy, :attributes => true
   belongs_to :format
-  belongs_to :format_media_type
+  belongs_to :instantiation_media_type
   belongs_to :format_generation
   belongs_to :format_color
   has_many :essence_tracks, :dependent => :destroy, :attributes => true
@@ -45,7 +45,7 @@ class Instantiation < ActiveRecord::Base
     end
   end
   xml_string "instantiationLocation", :format_location
-  xml_string "instantiationMediaType", :format_media_type
+  xml_string "instantiationMediaType", :instantiation_media_type
   xml_string "instantiationGenerations", :format_generation
   xml_string "instantiationFileSize", :format_file_size
   xml_string "instantiationTimeStart", :format_time_start
@@ -54,8 +54,8 @@ class Instantiation < ActiveRecord::Base
   xml_string "instantiationColors", :format_color
   xml_string "instantiationTracks", :format_tracks
   xml_string "instantiationChannelConfiguration", :format_channel_configuration
-  xml_string "language"
-  xml_string "alternativeModes"
+  xml_string "instantiationLanguage", :language
+  xml_string "instantiationAlternativeModes", :alternative_modes
   xml_subelements "pbcoreEssenceTrack", :essence_tracks
   xml_subelements "instantiationAnnotation", :annotations
   
