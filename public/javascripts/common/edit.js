@@ -715,6 +715,7 @@ var FormEditor = (function($, undefined) {
         return $(elt).attr("source") === 'pbcore XML database UUID';
       });
       mkfields("instantiation_dates", "instantiationDate", pbcore_maker(undefined, "dateType", Style.VERBOSE, false, true));
+      mkfields("instantiation_dimensions", "instantiationDimensions", pbcore_maker(undefined, undefined, Style.ONLY_TEXTAREA));
       basic_instantiation_fields();
       mkfields("essence_tracks", "pbcoreEssenceTrack", essence_track_maker);
       mkfields("annotations", "instantiationAnnotation", pbcore_maker(undefined, "annotationType", Style.TEXTAREA, false, true));
@@ -837,7 +838,6 @@ var FormEditor = (function($, undefined) {
           var name = this.name, elt;
           if (name === 'instantiation') {
             name += $('input[name="format_type"]:checked').val();
-            alert(name);
           }
           elt = mkelt(name);
           root.appendChild(elt);

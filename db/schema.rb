@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111012154123) do
+ActiveRecord::Schema.define(:version => 20111013040951) do
 
   create_table "annotations", :force => true do |t|
     t.integer "instantiation_id"
@@ -349,6 +349,15 @@ ActiveRecord::Schema.define(:version => 20111012154123) do
     t.text     "date"
     t.integer  "creator_id"
     t.integer  "updater_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "instantiation_dimensions", :force => true do |t|
+    t.integer  "instantiation_id"
+    t.string   "dimension"
+    t.string   "units_of_measure"
+    t.text     "annotation"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

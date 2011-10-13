@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  dimension: MyString
+  units_of_measure: MyString
+  annotation: MyText
+
+two:
+  dimension: MyString
+  units_of_measure: MyString
+  annotation: MyText

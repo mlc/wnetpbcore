@@ -5,6 +5,7 @@ class Instantiation < ActiveRecord::Base
   belongs_to :asset
   has_many :format_ids, :dependent => :destroy, :attributes => true
   has_many :instantiation_dates, :dependent => :destroy, :attributes => true
+  has_many :instantiation_dimensions, :dependent => :destroy, :attributes => true
   belongs_to :format
   belongs_to :instantiation_media_type
   belongs_to :instantiation_generation
@@ -31,6 +32,7 @@ class Instantiation < ActiveRecord::Base
     xml << fid
   end
   xml_subelements "instantiationDate", :instantiation_dates
+  xml_subelements "instantiationDimensions", :instantiation_dimensions
   from_xml_elt do |record|
     elt = record._working_xml.find_first("pbcore:instantiationPhysical|pbcore:instantiationDigital", PbcoreXmlElement::PBCORE_NAMESPACE)
     if elt && elt.content
