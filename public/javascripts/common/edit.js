@@ -664,7 +664,7 @@ var FormEditor = (function($, undefined) {
     };
 
     $.each([
-      [format_field, "format"],
+      [format_field, "instantiation"],
       [text_field, "instantiationLocation"],
       [picklist_field, "instantiationMediaType"],
       [picklist_field, "instantiationGenerations", "identifies the particular use or manner in which a version or rendition of a media item is used"],
@@ -675,13 +675,13 @@ var FormEditor = (function($, undefined) {
       [picklist_field, "instantiationColors"],
       [text_field, "instantiationTracks"],
       [text_field, "instantiationChannelConfiguration"],
-      [language_field, "language"],
+      [language_field, "instantiationLanguage"],
       [text_field, "instantiationAlternativeModes", "identifies equivalent alternatives to the primary visual, sound or textual information that exists in a media item. These are modes that offer alternative ways to see, hear, and read the content of a media item. Examples include DVI (Descriptive Video Information), SAP (Supplementary Audio Program), ClosedCaptions, OpenCaptions, Subtitles, Language Dubs, and Transcripts."]
     ], function() {
       var name = this[1];
       ++field_counter;
       $p.append($("<label/>", {
-        'text': name.capitalize().addspaces() + ": ",
+        'text': (name == "instantiation") ? "Format: " : name.replace(/^instantiation(.*)/, "$1").capitalize().addspaces() + ": ",
         'for': "if_" + field_counter,
         'title': this[2]
       }));
@@ -717,7 +717,6 @@ var FormEditor = (function($, undefined) {
       mkfields("instantiation_dates", "instantiationDate", pbcore_maker(undefined, "dateType", Style.VERBOSE, false, true));
       basic_instantiation_fields();
       mkfields("essence_tracks", "pbcoreEssenceTrack", essence_track_maker);
-      mkfields("date_availables", "pbcoreDateAvailable", pbcore_maker("dateAvailableStart", "dateAvailableEnd", Style.TWO_PLAIN));
       mkfields("annotations", "instantiationAnnotation", pbcore_maker(undefined, "annotationType", Style.TEXTAREA, false, true));
     }
   };
@@ -731,8 +730,8 @@ var FormEditor = (function($, undefined) {
     "load": function(provided_obj_type) {
       obj_type = provided_obj_type;
       made_form = false;
-	  show_spinner($('.contentMiddle h1').text());
-	
+      show_spinner($('.contentMiddle h1').text());
+      
       $.ajax({
         "url": $('link[rel="picklists"]').attr("href"),
         "dataType": "json",
@@ -755,7 +754,7 @@ var FormEditor = (function($, undefined) {
           safe_log("got data!");
           if (picklists)
             FormEditor.create_form();
-		  	hide_spinner();
+          hide_spinner();
         }
       });
     },
@@ -836,8 +835,9 @@ var FormEditor = (function($, undefined) {
       if (obj_type === 'instantiation') {
         $("input.instantiationfield").each(function() {
           var name = this.name, elt;
-          if (name === 'format') {
+          if (name === 'instantiation') {
             name += $('input[name="format_type"]:checked').val();
+            alert(name);
           }
           elt = mkelt(name);
           root.appendChild(elt);

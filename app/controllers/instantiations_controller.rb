@@ -118,11 +118,11 @@ class InstantiationsController < ApplicationController
     @instantiation = @asset.instantiations.find(params[:id])
     @instantiation.transaction do
       parsed_instantiation = Instantiation.from_xml(params[:xml])
-      [:format_ids, :essence_tracks, :date_availables, :annotations, :format, ## WTF DATE_AVAILABLES
-       :format_media_type, :format_generation, :format_color, :format_location,
+      [:format_ids, :instantiation_dates, :essence_tracks, :annotations, :format, ## WTF DATE_AVAILABLES :date_availables
+       :instantiation_media_type, :instantiation_generation, :instantiation_color, :format_location,
        :format_file_size, :format_time_start, :format_duration,
        :format_data_rate, :format_tracks, :format_channel_configuration,
-       :language, :alternative_modes, :date_created, :date_issued].each do |field|
+       :language, :alternative_modes].each do |field|
         @instantiation.send("#{field}=".to_sym, parsed_instantiation.send(field))
       end
       @success = @instantiation.save

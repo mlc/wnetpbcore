@@ -13,7 +13,7 @@ class Asset < ActiveRecord::Base
     {:contributors => [:contributor_role]}, {:publishers => [:publisher_role]},
     :rights_summaries, :extensions,
     {:instantiations => [{:format_ids => :format_identifier_source}, :format,
-      :format_media_type, :format_generation, :format_color,
+      :instantiation_media_type, :instantiation_generation, :instantiation_color,
       {:essence_tracks => [:essence_track_type, :essence_track_identifier_source]},
       :instantiation_dates, :annotations]}
     ]
@@ -227,7 +227,7 @@ class Asset < ActiveRecord::Base
     dedupe_field(:publishers, :publisher, :publisher_role_id, :asset_id)
     dedupe_field(:format_ids, :instantiation_id, :format_identifier, :format_identifier_source_id)
     dedupe_field(:annotations, :instantiation_id, :annotation)
-    dedupe_field(:date_availables, :instantiation_id, :date_available_start, :date_available_end)
+    # dedupe_field(:date_availables, :instantiation_id, :date_available_start, :date_available_end)
     dedupe_trivial_field(:assets_subjects, :asset_id, :subject_id)
     dedupe_trivial_field(:assets_genres, :asset_id, :genre_id)
   end

@@ -117,7 +117,7 @@ class Instantiation < ActiveRecord::Base
 
   def self.new_from_template(template_id, asset = nil)
     template = Instantiation.find(template_id, :include => [:essence_tracks, :annotations])
-    template_attrs = template.attributes.reject{|k,v| ["asset_id", "template_name", "date_created", "date_issued", "id", "uuid"].include?(k)}
+    template_attrs = template.attributes.reject{|k,v| ["asset_id", "template_name", "id", "uuid"].include?(k)}
     newone = Instantiation.new(template_attrs)
     newone.asset = asset
     template.essence_tracks.each do |et|

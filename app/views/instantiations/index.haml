@@ -8,7 +8,7 @@
     %li{ :id => "instantiation_#{instantiation.id}" }
       = instantiation.identifier
       (#{instantiation.format.nil? ? "unknown format" : instantiation.format.name},
-      #{instantiation.format_media_type.nil? ? "unknown media type" : instantiation.format_media_type.name})
+      #{instantiation.instantiation_media_type.nil? ? "unknown media type" : instantiation.instantiation_media_type.name})
       - permitted_to? :edit, instantiation do
         = link_to "edit", :action => 'edit', :id => instantiation.id
       - permitted_to? :borrow, instantiation do
