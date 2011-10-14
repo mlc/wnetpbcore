@@ -264,6 +264,10 @@ class AssetsController < ApplicationController
         @picklists[klname] = options.map(&:first)
       end
     end
+    # TODO: This needs to be refactored both in edit.js and here if we want
+    #       to support all these additional attributes.
+    @picklists["Source"] = @picklists["IdentifierSource"]
+    @picklists.delete["IdentifierSource"]
     @picklists["InstantiationGenerations"] = @picklists["InstantiationGeneration"]
     @picklists.delete("InstantiationGeneration")
     @picklists["InstantiationColors"] = @picklists["InstantiationColor"]
