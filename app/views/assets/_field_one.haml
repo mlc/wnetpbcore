@@ -2,5 +2,5 @@
   - val = (local_assigns[:field] ? value.send(field) : value)
   %dt
     = "#{key}:"
-  %dd 
+  %dd.clearfix 
     = auto_link(h(val))

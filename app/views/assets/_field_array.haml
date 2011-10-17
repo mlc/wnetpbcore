@@ -9,5 +9,5 @@
     %dt 
       = "#{field}:"
   - query = nil
-  %dd 
+  %dd.clearfix 
     = auto_link(h(obj.send(value)).gsub(/\r\n|\r|\n/, "<br />"))

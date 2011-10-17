@@ -870,20 +870,17 @@ ul.recordFormats li{
   margin-bottom: 30px;
 	margin-left: 5px;
 }
-.recordSection dl dt{
-	width: 220px;
+.recordSection dl dt {
+	width: 38%;
 	line-height: 1.1;
-	height: 12px;
 	clear: left;
   float: left;
   font-weight:bold;
-  margin: 0 10px 0 0;
   padding: 3px 0;
-	overflow: hidden;
 }
-.recordSection dl dd{
+.recordSection dl dd {
   margin:2px 0;
-	padding: 3px 0;
+	padding: 3px 0 3px 40%;
 }
 .recordItem.show h2{
 	font-size: 22px;
@@ -919,3 +916,7 @@ ul.recordFormats li{
 .tracks table tr.odd{
 	background-color:#eef;
 }
+
+.clearfix:after {content: "."; display: block; height: 0; clear: both; visibility: hidden;}
+
+.clearfix { zoom: 1}
