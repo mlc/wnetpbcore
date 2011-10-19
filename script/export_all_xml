@@ -1,0 +1,7 @@
+assets = Asset.find(:all)
+assets.each do |asset|
+  filename = "/tmp/pbcore_export/" + asset.uuid + ".xml"
+  file = File.open(filename, "w")
+  file.puts asset.to_xml
+  file.close
+end
