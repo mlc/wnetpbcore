@@ -1,7 +1,15 @@
-assets = Asset.find(:all)
-assets.each do |asset|
-  filename = "/tmp/pbcore_export/" + asset.uuid + ".xml"
-  file = File.open(filename, "w")
-  file.puts asset.to_xml
-  file.close
+i = 0
+while true do
+  assets = Asset.find(:all, :limit => 1000, :offset => i)
+  if assets.count > 0
+    assets.each do |asset|
+      filename = "/tmp/pbcore_export/" + asset.uuid + ".xml"
+      file = File.open(filename, "w")
+      file.puts asset.to_xml
+      file.close
+    end
+    i += 1
+  else
+    break
+  end
 end
