@@ -268,6 +268,8 @@ class AssetsController < ApplicationController
     #       to support all these additional attributes.
     @picklists["Source"] = @picklists["IdentifierSource"]
     @picklists.delete("IdentifierSource")
+    @picklists["PbcoreRelationType"] = @picklists["RelationType"]
+    @picklists.delete("RelationType")
     @picklists["InstantiationGenerations"] = @picklists["InstantiationGeneration"]
     @picklists.delete("InstantiationGeneration")
     @picklists["InstantiationColors"] = @picklists["InstantiationColor"]
