@@ -8,6 +8,6 @@ class Relation < ActiveRecord::Base
   xml_string "pbcoreRelationIdentifier", :relation_identifier, "source", "ref", "annotation"
   
   def to_s
-    "#{relation_type.name}: #{relation_identifier}"
+    "#{relation_identifier}"
   end
 end
