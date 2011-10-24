@@ -23,6 +23,7 @@
       %span
         = @asset.uuid
     %dl
+      = render :partial => "field_array", :locals => {:objs => @asset.asset_dates, :field => "Date", :key => :asset_date_type, :value => :asset_date, :searchkey => :asset_date, :searchvalue => :asset_date}
       = render :partial => "field_array", :locals => {:objs => @asset.identifiers, :field => "Identifier", :key => :identifier_source, :value => :identifier, :searchkey => :identifier, :searchvalue => :identifier}
       = render :partial => "field_array", :locals => {:objs => @asset.titles, :field => "Title", :key => :title_type, :value => :title, :searchkey => :title, :searchvalue => :title, :searchxtra => :title_type }
       = render :partial => "field_array", :locals => {:objs => @asset.subjects, :field => "Subject", :key => :subject_authority, :value => :subject, :searchkey => :subject, :searchvalue => :subject}
