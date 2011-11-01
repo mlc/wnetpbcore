@@ -3,7 +3,7 @@ module AssetsHelper
     if @asset && !@asset.new_record?
       if permitted_to?(:show, @asset)
         add_navbar("asset", asset_url(@asset.uuid))
-        add_navbar("xml", formatted_asset_url(@asset.uuid, 'xml'))
+        add_navbar("xml", asset_url(@asset.uuid, :format => :xml))
       end
       if permitted_to?(:edit, @asset)
         add_navbar("edit", edit_asset_url(@asset))

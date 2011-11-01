@@ -258,7 +258,7 @@ class AssetsController < ApplicationController
     classes.each do |kl|
       klname = kl.respond_to?(:xml_picklist_name) ? kl.xml_picklist_name : kl.to_s
       if PBCore.config["big_fields"] && PBCore.config["big_fields"].include?(kl.to_s.underscore)
-        @picklists[klname] = formatted_picklist_assets_path(:format => "json", :field => kl.to_s.underscore)
+        @picklists[klname] = picklist_assets_path(:format => "json", :field => kl.to_s.underscore)
       else
         options = kl.quick_load_for_select(["visible = ?", true])
         @picklists[klname] = options.map(&:first)

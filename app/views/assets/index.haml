@@ -22,7 +22,7 @@
                 = link_to "REQUEST", request_mailto_link(asset)
             - permitted_to? :edit, asset do
               %li<
-                = link_to "XML", formatted_asset_url(asset.uuid, "xml")
+                = link_to "XML", asset_url(asset.uuid, :format => :xml)
             - permitted_to? :destroy, asset do
               %li<
                 = link_to_remote "DELETE", :url => { :action => 'destroy', :id => asset.id }, :method => :delete, :confirm => "Are you sure you wish to delete #{asset.title}?", :html => { :class => "title2" }

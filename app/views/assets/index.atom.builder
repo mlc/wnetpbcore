@@ -26,7 +26,7 @@ xml.feed :xmlns => 'http://www.w3.org/2005/Atom', "xmlns:opensearch" => "http://
     atom.entry do
       atom.title asset.title, :type => :text
       atom.link :href => asset_url(asset.uuid), :type => 'text/html', :rel => :alternate
-      atom.link :href => formatted_asset_url(asset.uuid, "xml"), :type => 'application/xml', :rel => :alternate
+      atom.link :href => asset_url(asset.uuid, :format => :xml), :type => 'application/xml', :rel => :alternate
       atom.id "urn:uuid:#{asset.uuid}"
       atom.updated asset.updated_at.iso8601
       atom.summary :type => :xhtml do

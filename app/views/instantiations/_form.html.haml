@@ -1,6 +1,6 @@
 - content_for :head do
-  %link{ :rel => "picklists", :type => "application/json", :href => formatted_picklists_assets_path(:json) }
-  %link{ :rel => "toedit", :type => "application/xml", :href => @instantiation.new_record? ? formatted_new_asset_instantiation_path(@asset, :xml, :template_id => params[:template_id]) : formatted_asset_instantiation_path(@asset, @instantiation, :xml) }
+  %link{ :rel => "picklists", :type => "application/json", :href => picklists_assets_path(:format => :json) }
+  %link{ :rel => "toedit", :type => "application/xml", :href => @instantiation.new_record? ? new_asset_instantiation_path(@asset, :format => :xml, :template_id => params[:template_id]) : asset_instantiation_path(@asset, @instantiation, :format => :xml) }
   :javascript
     $(function() { FormEditor.load('instantiation'); });
 

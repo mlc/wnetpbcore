@@ -1,6 +1,6 @@
 - content_for :head do
-  %link{ :rel => "picklists", :type => "application/json", :href => formatted_picklists_assets_path(:json) }
-  %link{ :rel => "toedit", :type => "application/xml", :href => @asset.new_record? ? formatted_new_asset_path(:xml) : formatted_asset_path(@asset.uuid, :xml) }
+  %link{ :rel => "picklists", :type => "application/json", :href => picklists_assets_path(:format => :json) }
+  %link{ :rel => "toedit", :type => "application/xml", :href => @asset.new_record? ? new_asset_path(:format => :xml) : asset_path(@asset.uuid, :format => :xml) }
   :javascript
     $(function() { FormEditor.load('asset'); });
 
