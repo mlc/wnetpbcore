@@ -20,24 +20,36 @@ class Asset < ActiveRecord::Base
 
   UUID_REGEX = /[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}/
 
-  has_many :identifiers, :dependent => :destroy, :attributes => true
-  has_many :titles, :dependent => :destroy, :attributes => true
+  has_many :identifiers,      :dependent => :destroy
+  has_many :titles,           :dependent => :destroy
   has_and_belongs_to_many :subjects
-  has_many :descriptions, :dependent => :destroy, :attributes => true
+  has_many :descriptions,     :dependent => :destroy
   has_and_belongs_to_many :genres
-  has_many :relations, :dependent => :destroy, :attributes => true
-  has_many :coverages, :dependent => :destroy, :attributes => true
+  has_many :relations,        :dependent => :destroy
+  has_many :coverages,        :dependent => :destroy
   has_and_belongs_to_many :audience_levels
   has_and_belongs_to_many :audience_ratings
-  has_many :creators, :dependent => :destroy, :attributes => true
-  has_many :contributors, :dependent => :destroy, :attributes => true
-  has_many :publishers, :dependent => :destroy, :attributes => true
-  has_many :rights_summaries, :dependent => :destroy, :attributes => true
-  has_many :instantiations, :dependent => :destroy
-  has_many :extensions, :dependent => :destroy, :attributes => true
-  has_many :versions, :dependent => :delete_all
-  has_many :asset_dates, :dependent => :destroy, :attributes => true
+  has_many :creators,         :dependent => :destroy
+  has_many :contributors,     :dependent => :destroy
+  has_many :publishers,       :dependent => :destroy
+  has_many :rights_summaries, :dependent => :destroy
+  has_many :instantiations,   :dependent => :destroy
+  has_many :extensions,       :dependent => :destroy
+  has_many :versions,         :dependent => :delete_all
+  has_many :asset_dates,      :dependent => :destroy
   stampable
+
+  accepts_nested_attributes_for :identifiers,      :allow_destroy => true
+  accepts_nested_attributes_for :titles,           :allow_destroy => true
+  accepts_nested_attributes_for :descriptions,     :allow_destroy => true
+  accepts_nested_attributes_for :relations,        :allow_destroy => true
+  accepts_nested_attributes_for :coverages,        :allow_destroy => true
+  accepts_nested_attributes_for :creators,         :allow_destroy => true
+  accepts_nested_attributes_for :contributors,     :allow_destroy => true
+  accepts_nested_attributes_for :publishers,       :allow_destroy => true
+  accepts_nested_attributes_for :rights_summaries, :allow_destroy => true
+  accepts_nested_attributes_for :extensions,       :allow_destroy => true
+  accepts_nested_attributes_for :asset_dates,      :allow_destroy => true
 
   validates_size_of :identifiers, :minimum => 1, :message => "must have at least one entry"
   validates_size_of :titles, :minimum => 1, :message => "must have at least one entry"

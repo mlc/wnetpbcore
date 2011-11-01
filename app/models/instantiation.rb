@@ -1,27 +1,35 @@
 class Instantiation < ActiveRecord::Base
   include PbcoreXmlElement
   include ActionView::Helpers::NumberHelper
+
+  before_create :generate_uuid
+  after_destroy :delete_files
+
+  attr_protected :asset, :asset_id, :uuid
   
   belongs_to :asset
-  has_many :format_ids, :dependent => :destroy, :attributes => true
-  has_many :instantiation_dates, :dependent => :destroy, :attributes => true
-  has_many :instantiation_dimensions, :dependent => :destroy, :attributes => true
   belongs_to :format
   belongs_to :instantiation_media_type
   belongs_to :instantiation_generation
   belongs_to :instantiation_color
-  has_many :essence_tracks, :dependent => :destroy, :attributes => true
-  has_many :annotations, :dependent => :destroy, :attributes => true
-  has_many :borrowings, :dependent => :destroy
+
+  has_many :format_ids,               :dependent => :destroy
+  has_many :instantiation_dates,      :dependent => :destroy
+  has_many :instantiation_dimensions, :dependent => :destroy
+  has_many :essence_tracks,           :dependent => :destroy
+  has_many :annotations,              :dependent => :destroy
+  has_many :borrowings,               :dependent => :destroy
+
   stampable
-  
-  attr_protected :asset, :asset_id, :uuid
+
+  accepts_nested_attributes_for :format_ids,               :allow_destroy => true
+  accepts_nested_attributes_for :instantiation_dates,      :allow_destroy => true
+  accepts_nested_attributes_for :instantiation_dimensions, :allow_destroy => true
+  accepts_nested_attributes_for :essence_tracks,           :allow_destroy => true
+  accepts_nested_attributes_for :annotations,              :allow_destroy => true
 
   validates_presence_of :format_location
   validates_size_of :format_ids, :minimum => 1
-
-  before_create :generate_uuid
-  after_destroy :delete_files
 
   xml_attributes "startTime", "endTime", "timeAnnotation"
   xml_subelements "instantiationIdentifier", :format_ids
