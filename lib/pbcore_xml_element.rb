@@ -1,8 +1,12 @@
 # This is a set of methods which define a DSL for explaining how a model
 # should be transformed between ActiveRecord and PBCore XML.
 #
-# To understand this code, I unfortunately must at this time recommend
-# that you see http://www.catb.org/jargon/html/magic-story.html
+# Once this module (which is unfortunately a bit magical) has been
+# included in a model class, it is possible to simply define the
+# class's XML structure by using the xml_string, xml_attributes, and
+# related methods. Or, in the rare cases where it's necessary, the
+# serialization and deserialization can be more fully customized by
+# providing to_xml_elt and from_xml_elt hooks.
 module PbcoreXmlElement
   PBCORE_URI = "http://www.pbcore.org/PBCore/PBCoreNamespace.html"
   PBCORE_NAMESPACE = "pbcore:#{PBCORE_URI}"
@@ -15,6 +19,8 @@ module PbcoreXmlElement
   end
 
   module ClassMethods
+    # Define a subelement with a string or picklist value. The code
+    # will automatically distinguish between these two cases.
     def xml_string(attr, field=nil, *args)
       field ||= attr.underscore.to_sym
       attributes = map_to_xml_attributes(args)
@@ -37,6 +43,7 @@ module PbcoreXmlElement
       end
     end
     
+    # Define a set of attributes on the 'root' XML tag of this object.
     def xml_attributes(*args)
       attributes = map_to_xml_attributes(args)
       from_xml_elt do |record|
@@ -47,6 +54,8 @@ module PbcoreXmlElement
       end
     end
 
+    # Define what should be done with a plain text node placed
+    # directly underneath the 'root' XML tag of this object.
     def xml_text_field(field)
       from_xml_elt do |record|
         record.store_string_or_name(field, record._working_xml.children.select(&:text?).map(&:content).join)
@@ -56,6 +65,8 @@ module PbcoreXmlElement
       end
     end
 
+    # Define sub-elements which will be serialized and deserialized
+    # through instances of some other model class.
     def xml_subelements(attr, field, klass=nil)
       klass ||= field.to_s.singularize.camelize.constantize
       from_xml_elt do |record|
@@ -76,6 +87,8 @@ module PbcoreXmlElement
       end
     end
 
+    # Similar to the above, but with some special handling for a
+    # couple of specially customized picklists.
     def xml_subelements_picklist(attr1, attr2, field, klass=nil)
       klass ||= field.to_s.singularize.camelize.constantize
       from_xml_elt do |record|
@@ -93,6 +106,10 @@ module PbcoreXmlElement
       end
     end
 
+    # "Main" method to construct a model from an XML string or
+    # pre-parsed node. This will call all registered from_xml_elt
+    # callbacks, some of which may recursively call the from_xml
+    # method of another class.
     def from_xml(xml)
       if xml.is_a?(String)
         parser = XML::Parser.string(xml)
@@ -137,6 +154,7 @@ module PbcoreXmlElement
     end
   end
 
+  # Main method for building XML from some model objects.
   def build_xml(builder)
     self._working_xml = builder
     #builder.comment! created_string if respond_to?(:created_at)
