@@ -20,8 +20,10 @@ class Asset < ActiveRecord::Base
 
   UUID_REGEX = /[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}/
 
+  # Intellectual Content
   has_many :identifiers,      :dependent => :destroy
   has_many :titles,           :dependent => :destroy
+  has_many :asset_dates,      :dependent => :destroy
   has_and_belongs_to_many :subjects
   has_many :descriptions,     :dependent => :destroy
   has_and_belongs_to_many :genres
@@ -29,14 +31,20 @@ class Asset < ActiveRecord::Base
   has_many :coverages,        :dependent => :destroy
   has_and_belongs_to_many :audience_levels
   has_and_belongs_to_many :audience_ratings
+
+  # Intellectual Property
   has_many :creators,         :dependent => :destroy
   has_many :contributors,     :dependent => :destroy
   has_many :publishers,       :dependent => :destroy
   has_many :rights_summaries, :dependent => :destroy
+
+  # Instantiations
   has_many :instantiations,   :dependent => :destroy
+
+  # Extensions
   has_many :extensions,       :dependent => :destroy
+
   has_many :versions,         :dependent => :delete_all
-  has_many :asset_dates,      :dependent => :destroy
   stampable
 
   accepts_nested_attributes_for :identifiers,      :allow_destroy => true

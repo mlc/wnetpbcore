@@ -42,6 +42,7 @@ Rails::Initializer.run do |config|
   config.gem 'delayed_job', :lib => 'delayed_job', :version => "<2"
   config.gem 'exceptional' if RAILS_ENV=='production'
   config.gem 'fastercsv'
+  config.gem 'formtastic', :version => "1.2.4"
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.

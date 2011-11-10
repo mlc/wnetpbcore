@@ -1,0 +1,87 @@
+<% semantic_form_for @asset do |form| %>
+  <h2>Intellectual Content</h2>
+  <h3>Identifiers</h3>
+  <% form.semantic_fields_for :identifiers do |f| %>
+    <%= f.input :identifier %>
+    <%= f.input :identifier_source, :collection => IdentifierSource.visible %>
+  <% end %>
+
+  <h3>Asset Dates</h3>
+  <% form.semantic_fields_for :asset_dates do |f| %>
+    <%= f.input :asset_date_type %>
+    <%= f.input :asset_date %>
+  <% end %>
+
+  <h3>Titles</h3>
+  <% form.semantic_fields_for :titles do |f| %>
+    <%= f.input :title, :as => :string %>
+    <%= f.input :title_type %>
+  <% end %>
+
+  <h3>Subject</h3>
+  <%# TODO this needs much love... %>
+  <%= form.input :subjects %>
+
+  <h3>Descriptions</h3>
+  <% form.semantic_fields_for :descriptions do |f| %>
+    <%= f.input :description_type %>
+    <%= f.input :description %>
+  <% end %>
+
+  <h3>Genres</h3>
+  <%= form.input :genres %> 
+
+  <h3>Relations</h3>
+  <% form.semantic_fields_for :relations do |f| %>
+    <%= f.input :relation_type %>
+    <%= f.input :relation %>
+  <% end %>
+
+  <h3>Coverages</h3>
+  <% form.semantic_fields_for :coverages do |f| %>
+    <%= f.input :coverage_type %>
+    <%= f.input :coverage %>
+  <% end %>
+
+  <h3>Audience Levels</h3>
+  <%= form.input :audience_levels, :as => :check_boxes %>
+
+  <h3>Audience Ratings</h3>
+  <%= form.input :audience_ratings, :as => :check_boxes %>
+
+  <h2>Intellectual Property</h2>
+  <h3>Creators</h3>
+  <% form.semantic_fields_for :creators do |f| %>
+    <%= f.input :creator_role %>
+    <%= f.input :creator %>
+  <% end %>
+
+  <h3>Contributors</h3>
+  <% form.semantic_fields_for :contributors do |f| %>
+    <%= f.input :contributor_role %>
+    <%= f.input :contributor %>
+  <% end %>
+
+  <h3>Publishers</h3>
+  <% form.semantic_fields_for :publishers do |f| %>
+    <%= f.input :publisher_role %>
+    <%= f.input :publisher %>
+  <% end %>
+
+  <h3>Rights</h3>
+  <% form.semantic_fields_for :rights_summaries do |f| %>
+    <%= f.input :rights_summary %>
+  <% end %>
+
+  <% unless @asset.new_record? %>
+    <h2>Instantiations</h2>
+    <p>This asset currently has <%= pluralize(@asset.instantiations.count, "instantiation") %>. <%= link_to "Edit, modify, and delete instantiations for this record.", asset_instantiations_path(@asset) %>
+  <% end %>
+
+  <h2>Extensions</h2>
+  <% form.semantic_fields_for :extensions do |f| %>
+    <%= f.input :extension %>
+  <% end %>
+
+  <%= form.buttons %>
+<% end %>

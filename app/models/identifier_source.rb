@@ -3,7 +3,9 @@ class IdentifierSource < ActiveRecord::Base
   has_many :identifiers
   quick_column :name
   stampable
-  
+
+  named_scope :visible, :conditions => { :visible => true }, :order => "name ASC"
+
   OUR_UUID_SOURCE = find_or_create_by_name("pbcore XML database UUID") rescue nil
   
   def safe_to_delete?
