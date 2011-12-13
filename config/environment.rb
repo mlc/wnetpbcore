@@ -31,7 +31,7 @@ Rails::Initializer.run do |config|
   config.gem 'libxslt-ruby', :lib => 'libxslt', :version => '0.9.2'
   config.gem 'rubyzip', :lib => 'zip/zip'
   config.gem 'mime-types', :lib => 'mime/types'
-  config.gem 'uuidtools'
+  config.gem 'uuidtools', :version => '1.0.4'
   config.gem 'mislav-will_paginate', :version => '~> 2.2.3', :lib => 'will_paginate', :source => 'http://gems.github.com'
   config.gem 'whenever', :version => "0.4.1", :lib => false
   config.gem 'rsolr', :version => '0.9.6' # NEWER VERSIONS ARE BUGGY!
