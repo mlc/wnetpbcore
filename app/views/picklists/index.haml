@@ -13,9 +13,9 @@
 
 %ul#objs
   - @objects.each do |obj|
-    = render :partial => 'item', :locals => {:obj => obj}
-    = render :partial => 'mini_form', :locals => {:obj => obj}
-  = render :partial => 'mini_form', :locals => { :obj => @klass.new }
+    = render :partial => 'picklists/item', :locals => {:obj => obj}
+    = render :partial => 'picklists/mini_form', :locals => {:obj => obj}
+  = render :partial => 'picklists/mini_form', :locals => { :obj => @klass.new }
 
 - if @donthave && !@donthave.empty?
   %p.nonstandardnote

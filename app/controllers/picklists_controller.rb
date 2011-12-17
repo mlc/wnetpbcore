@@ -23,6 +23,7 @@ class PicklistsController < ApplicationController
       if @standard_pbcore
         @donthave = (@standard_pbcore - @objects.map(&:name)).sort
       end
+      render :template => 'picklists/index'
     end
   end
   

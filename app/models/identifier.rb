@@ -4,11 +4,22 @@ class Identifier < ActiveRecord::Base
   belongs_to :identifier_source
   stampable
 
+  accepts_nested_attributes_for :identifier_source
+
   xml_text_field :identifier
   xml_attributes({"source" => :identifier_source}, "ref", "annotation")
   
   validates_length_of :identifier, :minimum => 1
   validates_presence_of :identifier_source
+  
+  def identifier_source_name
+    identifier_source.try(:name)
+  end
+  
+  def identifier_source_name=(name)
+    self.identifier_source = IdentifierSource.find_by_name(name) if name.present?
+  end
+  
   def validate
     super
     unless doing_xml? || identifier_source.nil? || identifier_source.regex.nil? ||

@@ -1,3 +1,5 @@
+// Language picker / editor
+// TODO: needs to be made to work with noraml form
 (function($, undefined){
   var langdialog, langselect, create_lang_dialog = function() {
     if (langdialog !== undefined)

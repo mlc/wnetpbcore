@@ -1,8 +1,8 @@
 require 'find'
 module BundleHelper
   AJAX_LIBRARIES = {
-    :jquery => ['jquery-1.4.4.min', 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js'],
-    :jquery_ui => ['jquery-ui-1.8.2.min', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js'],
+    :jquery => ['jquery-1.7.1.min', 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'],
+    :jquery_ui => ['jquery-ui-1.8.16.min', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js'],
     :swfobject => ['swfobject', 'http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js']
   }.freeze
 

@@ -3,7 +3,8 @@
   <h3>Identifiers</h3>
   <% form.semantic_fields_for :identifiers do |f| %>
     <%= f.input :identifier %>
-    <%= f.input :identifier_source, :collection => IdentifierSource.visible %>
+    <%= f.input :identifier_source_name, :input_html => { :class => "pbcore-autocomplete ui-autocomplete-input", 
+                                                          "data-autocomplete-source" => identifier_sources_path } %>
   <% end %>
 
   <h3>Asset Dates</h3>
@@ -34,7 +35,7 @@
   <h3>Relations</h3>
   <% form.semantic_fields_for :relations do |f| %>
     <%= f.input :relation_type %>
-    <%= f.input :relation %>
+    <%= f.input :relation_identifier %>
   <% end %>
 
   <h3>Coverages</h3>

@@ -1,3 +1,4 @@
+// Used in IP Blocks form
 (function($){
   $.fn.caret = function(s, e) {
     var setPosition = function(el, start, end) {

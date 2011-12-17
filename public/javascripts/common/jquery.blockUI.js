@@ -12,6 +12,8 @@
  * Thanks to Amir-Hossein Sobhi for some excellent contributions!
  */
 
+// Used in edit.js
+
 ;(function($) {
 
 if (/1\.(0|1|2)\.(0|1|2)/.test($.fn.jquery) || /^1.1/.test($.fn.jquery)) {

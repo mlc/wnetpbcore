@@ -1,3 +1,4 @@
+// TODO: This can be deleted once edit.js is gone
 if (!String.prototype.capitalize) {
   String.prototype.capitalize = function() {
     switch(this.length) {

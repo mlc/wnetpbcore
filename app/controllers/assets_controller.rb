@@ -156,18 +156,28 @@ class AssetsController < ApplicationController
   end
   
   def update
-    @asset.transaction do
-      parsed_asset = Asset.from_xml(params[:xml])
-      [:identifiers, :titles, :subjects, :descriptions, :genres,
-       :relations, :coverages, :audience_levels, :audience_ratings,
-       :creators, :contributors, :publishers, :rights_summaries, :extensions, :asset_dates].each do |field|
-        @asset.send("#{field}=".to_sym, parsed_asset.send(field))
+    if (params[:xml])
+      @asset.transaction do
+        parsed_asset = Asset.from_xml(params[:xml])
+        [:identifiers, :titles, :subjects, :descriptions, :genres,
+          :relations, :coverages, :audience_levels, :audience_ratings,
+          :creators, :contributors, :publishers, :rights_summaries, :extensions, :asset_dates].each do |field|
+            @asset.send("#{field}=".to_sym, parsed_asset.send(field))
+          end
+          @success = @asset.save
+          raise ActiveRecord::Rollback unless @success
       end
-      @success = @asset.save
-      raise ActiveRecord::Rollback unless @success
-    end
-    if @success
-      flash[:message] = "Successfully updated your Asset."
+      if @success
+        flash[:message] = "Successfully updated your Asset."
+      end
+    else
+      respond_to do |format|
+        if @asset.update_attributes(params[:asset])
+          format.html { redirect_to @asset, :notice => 'Asset was successfully updated.' }
+        else
+          format.html { render :action => "edit" }
+        end
+      end
     end
   end
 
