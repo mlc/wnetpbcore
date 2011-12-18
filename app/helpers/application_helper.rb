@@ -44,4 +44,17 @@ module ApplicationHelper
   def maybe_pluralize(n, text)
     n.to_s + " " + (n == 1 ? text : text.pluralize)
   end
+  
+  # Formtastic has_many form helper stuff
+  def link_to_remove_fields(name, f)
+    f.input(:_destroy, :as => :hidden) + link_to_function(name, "remove_fields(this)")
+  end
+  
+  def link_to_add_fields(name, f, association)
+    new_object = f.object.class.reflect_on_association(association).klass.new
+    fields = f.semantic_fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
+      render(association.to_s.singularize + "_fields", :f => builder)
+    end
+    link_to_function(name, h("add_fields(this, '#{association}', '#{escape_javascript(fields)}')"))
+  end
 end

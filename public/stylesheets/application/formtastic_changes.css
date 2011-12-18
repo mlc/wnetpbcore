@@ -12,3 +12,7 @@ The following style may be *conditionally* included for improved support on olde
 form.formtastic fieldset ol li fieldset legend { margin-left: -6px;}
 
 --------------------------------------------------------------------------------------------------*/
+form.formtastic { width: 655px; }
+form.formtastic fieldset.side-by-side-inputs > ol > li { display: block; float: left; width: 50%; }
+form.formtastic fieldset > ol > li.hide-label label { display: none; }
+form.formtastic fieldset > ol > li.check_boxes fieldset ol li label { float:left; width:50%; }

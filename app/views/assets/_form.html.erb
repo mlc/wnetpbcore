@@ -2,31 +2,40 @@
   <h2>Intellectual Content</h2>
   <h3>Identifiers</h3>
   <% form.semantic_fields_for :identifiers do |f| %>
-    <%= f.input :identifier %>
-    <%= f.input :identifier_source_name, :input_html => { :class => "pbcore-autocomplete ui-autocomplete-input", 
-                                                          "data-autocomplete-source" => identifier_sources_path } %>
+    <%= render 'identifier_fields', :f => f %>
   <% end %>
-
+  <p><%= link_to_add_fields "Add Identifier", form, :identifiers %></p>
+  
   <h3>Asset Dates</h3>
   <% form.semantic_fields_for :asset_dates do |f| %>
-    <%= f.input :asset_date_type %>
-    <%= f.input :asset_date %>
+    <% f.inputs do %>
+      <%= f.input :asset_date_type_name, :as => :pbcore_combobox,
+                                         :input_html => { :class => "pbcore-autocomplete", 
+                                                          "data-autocomplete-source" => asset_date_types_path } %>
+      <%= f.input :asset_date, :as => :string %>
+    <% end %>
   <% end %>
 
   <h3>Titles</h3>
   <% form.semantic_fields_for :titles do |f| %>
-    <%= f.input :title, :as => :string %>
-    <%= f.input :title_type %>
+    <% f.inputs do %>
+      <%= f.input :title, :as => :string %>
+      <%= f.input :title_type %>
+    <% end %>
   <% end %>
 
   <h3>Subject</h3>
   <%# TODO this needs much love... %>
-  <%= form.input :subjects %>
+  <% form.inputs do %>
+    <%= form.input :subjects %>
+  <% end %>
 
   <h3>Descriptions</h3>
   <% form.semantic_fields_for :descriptions do |f| %>
-    <%= f.input :description_type %>
-    <%= f.input :description %>
+    <% f.inputs do %>
+      <%= f.input :description_type %>
+      <%= f.input :description %>
+    <% end %>
   <% end %>
 
   <h3>Genres</h3>
@@ -34,44 +43,60 @@
 
   <h3>Relations</h3>
   <% form.semantic_fields_for :relations do |f| %>
-    <%= f.input :relation_type %>
-    <%= f.input :relation_identifier %>
+    <% f.inputs do %>
+      <%= f.input :relation_type %>
+      <%= f.input :relation_identifier %>
+    <% end %>
   <% end %>
 
   <h3>Coverages</h3>
   <% form.semantic_fields_for :coverages do |f| %>
-    <%= f.input :coverage_type %>
-    <%= f.input :coverage %>
+    <% f.inputs do %>
+      <%= f.input :coverage_type %>
+      <%= f.input :coverage %>
+    <% end %>
   <% end %>
 
   <h3>Audience Levels</h3>
-  <%= form.input :audience_levels, :as => :check_boxes %>
+  <% form.inputs do %>
+    <%= form.input :audience_levels, :as => :check_boxes %>
+  <% end %>
 
   <h3>Audience Ratings</h3>
-  <%= form.input :audience_ratings, :as => :check_boxes %>
+  <% form.inputs do %>
+    <%= form.input :audience_ratings, :as => :check_boxes %>
+  <% end %>
 
   <h2>Intellectual Property</h2>
   <h3>Creators</h3>
   <% form.semantic_fields_for :creators do |f| %>
-    <%= f.input :creator_role %>
-    <%= f.input :creator %>
+    <% f.inputs do %>
+      <%= f.input :creator_role %>
+      <%= f.input :creator %>
+    <% end %>
   <% end %>
 
   <h3>Contributors</h3>
   <% form.semantic_fields_for :contributors do |f| %>
-    <%= f.input :contributor_role %>
-    <%= f.input :contributor %>
+    <% f.inputs do %>
+      <%= f.input :contributor_role %>
+      <%= f.input :contributor, :as => :string %>
+    <% end %>
   <% end %>
 
   <h3>Publishers</h3>
   <% form.semantic_fields_for :publishers do |f| %>
-    <%= f.input :publisher_role %>
-    <%= f.input :publisher %>
+    <% f.inputs do %>
+      <%= f.input :publisher_role %>
+      <%= f.input :publisher, :as => :string %>
+    <% end %>
   <% end %>
 
   <h3>Rights</h3>
   <% form.semantic_fields_for :rights_summaries do |f| %>
-    <%= f.input :rights_summary %>
+    <% f.inputs do %>
+      <%= f.input :rights_summary %>
+    <% end %>
   <% end %>
 
   <% unless @asset.new_record? %>
@@ -81,7 +106,9 @@
 
   <h2>Extensions</h2>
   <% form.semantic_fields_for :extensions do |f| %>
-    <%= f.input :extension %>
+    <% f.inputs do %>
+      <%= f.input :extension %>
+    <% end %>
   <% end %>
 
   <%= form.buttons %>

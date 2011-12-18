@@ -1,3 +1,14 @@
+function remove_fields(link) {
+  $(link).prev("li").find("input[type=hidden]").val("1");
+  $(link).closest("ol").hide();
+}
+
+function add_fields(link, association, content) {
+  var new_id = new Date().getTime();
+  var regexp = new RegExp("new_" + association, "g")
+  $(link).parent().before(content.replace(regexp, new_id));
+}
+
 function checkMerge() {
   var count = $(".mergebox input:checked").length;
   if (count >= 2)
@@ -100,12 +111,34 @@ $(function() {
   });
 });
 
+function create_autocomplete (obj) {
+  obj.autocomplete({
+    source: obj.data("autocomplete-source"),
+    minLength: 2
+  });
+}
+
 // Autocomplete for Edit Form
-$(function() {
- $(".pbcore-autocomplete").each(function() {
-   $(this).autocomplete({
-     source: $(this).data("autocomplete-source") 
-   });
+$(function() { 
+ $(".pbcore-autocomplete").live("keydown.autocomplete", function() {
+   if (!$(this).hasClass('ui-autocomplete-input')) {
+     create_autocomplete($(this));
+   }
+ });
+ 
+ $(".pbcore-combobox-button").live("click", function() {
+   var textField = $(this).prev();
+   if (!textField.hasClass('ui-autocomplete-input')) {
+     create_autocomplete(textField);
+   }
+   
+   if (textField.autocomplete("widget").is(":visible")) {
+     textField.autocomplete("close");
+   } else {
+     var minLength = textField.autocomplete('option', 'minLength');
+     textField.autocomplete('option', 'minLength', 0);
+     textField.autocomplete('search', '');
+     textField.autocomplete('option', 'minLength', minLength);
+   }
  });
 });
-
