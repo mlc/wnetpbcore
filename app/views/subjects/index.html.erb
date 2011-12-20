@@ -1,0 +1,26 @@
+<h2>Subjects</h2>
+<table>
+  <tr>
+    <th>Subject</th>
+    <th>Source</th>
+    <th>Ref</th>
+    <th>Visible</th>
+    <th></th>
+  </tr>
+  <% @subjects.each do |subject| -%>
+    <tr>
+      <td><%= subject.subject %></td>
+      <td><%= subject.subject_authority %></td>
+      <td><%= subject.ref %></td>
+      <td><%= yes_or_no(subject.visible) %></td>
+      <td>
+        <%= link_to 'Edit', edit_subject_path(subject) %>
+        <%= link_to('Destroy', subject, :method => "delete", :confirm => "Are you sure?") if subject.safe_to_delete? %>
+      </td>
+    </tr>
+  <% end -%>
+</table>
+<p>
+  <%= link_to 'Create new Subject', new_subject_path %>
+</p>
+<%= will_paginate @subjects %>

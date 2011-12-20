@@ -1,0 +1,12 @@
+<% semantic_form_for @subject do |form| %>
+  <% form.inputs do %>
+    <%= form.input :subject %>
+    <%= form.input :subject_authority, :as => :string, :label => "Source" %>
+    <%= form.input :ref, :as => :string %>
+    <%= form.input :visible %>
+  <% end %>
+  <% form.inputs do %>
+    <%= form.commit_button %>
+    <%= link_to 'Cancel', :back %>
+  <% end %>
+<% end %>
