@@ -1,0 +1,9 @@
+<% f.inputs do %>
+  <%= f.input :relation_type_name, :as => :pbcore_combobox,
+                                   :input_html => { :class => "pbcore-autocomplete", 
+                                                    "data-autocomplete-source" => relation_types_path },
+                                   :label => "Type" %>
+  <%= f.input :relation_identifier, :label => "Identifier" %>
+  <%= f.input :source, :as => :string %>
+  <%= link_to_remove_fields "remove", f %>
+<% end %>

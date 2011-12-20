@@ -1,0 +1,23 @@
+<table>
+  <tr>
+    <th>Source</th>
+    <th>Ref</td>
+    <th>Visible</th>
+    <th></th>
+  </tr>
+  <% @identifier_sources.each do |identifier_source| -%>
+    <tr>
+      <td><%= identifier_source.name %></td>                                      
+      <td><%= identifier_source.ref %></td>
+      <td><%= yes_or_no(identifier_source.visible) %></td>
+      <td>
+        <%= link_to 'Edit', edit_identifier_source_path(identifier_source) %>
+        <%= link_to('Destroy', identifier_source, :method => "delete", :confirm => "Are you sure?") if identifier_source.safe_to_delete? %>
+      </td>
+    </tr>
+  <% end -%>
+</table>
+<p>
+  <%= link_to 'Create new Identifier Source', new_identifier_source_path %>
+</p>
+<%= will_paginate @identifier_sources %>

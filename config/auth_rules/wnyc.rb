@@ -18,6 +18,7 @@ authorization do
     has_permission_on :assets, :to => [:update, :delete] do
       if_attribute :creator_id => is { user.id }
     end
+    has_permission_on :subjects, :to => [:read]
     has_permission_on :instantiatons, :to => [:create]
     has_permission_on :instantiations, :to => [:update, :delete] do
       if_attribute :creator_id => is { user.id }
@@ -28,6 +29,7 @@ authorization do
     includes :user
     has_permission_on :assets, :to => :crud
     has_permission_on :instantiations, :to => :crud
+    has_permission_on :subjects, :to => [:crud]
   end
 
   role :admin do

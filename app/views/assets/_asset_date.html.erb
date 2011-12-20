@@ -1,0 +1,8 @@
+<% if asset.asset_dates.present? %>
+  <dl class="asset_dates">
+    <% asset.asset_dates.each do |asset_date| %>
+      <dt><%= asset_date.asset_date_type_name %>:</dt>
+      <dd><%= asset_date.asset_date %></dd>
+    <% end %>
+  </dl>
+<% end %>

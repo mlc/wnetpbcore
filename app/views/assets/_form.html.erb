@@ -8,63 +8,56 @@
   
   <h3>Asset Dates</h3>
   <% form.semantic_fields_for :asset_dates do |f| %>
-    <% f.inputs do %>
-      <%= f.input :asset_date_type_name, :as => :pbcore_combobox,
-                                         :input_html => { :class => "pbcore-autocomplete", 
-                                                          "data-autocomplete-source" => asset_date_types_path } %>
-      <%= f.input :asset_date, :as => :string %>
-    <% end %>
+    <%= render 'asset_date_fields', :f => f %>
   <% end %>
+  <p><%= link_to_add_fields "Add Asset Date", form, :asset_dates %></p>
 
   <h3>Titles</h3>
   <% form.semantic_fields_for :titles do |f| %>
-    <% f.inputs do %>
-      <%= f.input :title, :as => :string %>
-      <%= f.input :title_type %>
-    <% end %>
+    <%= render 'title_fields', :f => f %>
   <% end %>
-
-  <h3>Subject</h3>
-  <%# TODO this needs much love... %>
+  <p><%= link_to_add_fields "Add Title", form, :titles %></p>
+  
+  <h3>Subjects</h3>
   <% form.inputs do %>
-    <%= form.input :subjects %>
+    <%= form.input :subject_tokens, :label => "Subjects", :input_html => { "data-pre" => @asset.subjects.collect { |s| { :id => s.id, :name => "#{s.subject} (#{s.subject_authority})"}}.to_json } %>
   <% end %>
-
+  
   <h3>Descriptions</h3>
   <% form.semantic_fields_for :descriptions do |f| %>
-    <% f.inputs do %>
-      <%= f.input :description_type %>
-      <%= f.input :description %>
-    <% end %>
+    <%= render 'description_fields', :f => f %>
   <% end %>
-
+  <p><%= link_to_add_fields "Add Description", form, :descriptions %></p>
+  
   <h3>Genres</h3>
-  <%= form.input :genres %> 
+  <% form.inputs do %>
+    <%= form.input :genre_tokens, :label => "Genres", :input_html => { "data-pre" => @asset.genres.collect { |g| { :id => g.id, :name => "#{g.name} (#{g.genre_authority_used})"}}.to_json } %>
+  <% end %>
 
   <h3>Relations</h3>
   <% form.semantic_fields_for :relations do |f| %>
-    <% f.inputs do %>
-      <%= f.input :relation_type %>
-      <%= f.input :relation_identifier %>
-    <% end %>
+    <%= render 'relation_fields', :f => f %>
   <% end %>
+  <p><%= link_to_add_fields "Add Description", form, :relations %></p>
 
   <h3>Coverages</h3>
   <% form.semantic_fields_for :coverages do |f| %>
-    <% f.inputs do %>
-      <%= f.input :coverage_type %>
-      <%= f.input :coverage %>
+    <%= render 'coverage_fields', :f => f %>
+  <% end %>
+  <p><%= link_to_add_fields "Add Coverage", form, :coverages %></p>
+
+  <% if show_audience_levels? %>
+    <h3>Audience Levels</h3>
+    <% form.inputs do %>
+      <%= form.input :audience_levels, :as => :check_boxes %>
     <% end %>
   <% end %>
 
-  <h3>Audience Levels</h3>
-  <% form.inputs do %>
-    <%= form.input :audience_levels, :as => :check_boxes %>
-  <% end %>
-
-  <h3>Audience Ratings</h3>
-  <% form.inputs do %>
-    <%= form.input :audience_ratings, :as => :check_boxes %>
+  <% if show_audience_ratings? %>
+    <h3>Audience Ratings</h3>
+    <% form.inputs do %>
+      <%= form.input :audience_ratings, :as => :check_boxes %>
+    <% end %>
   <% end %>
 
   <h2>Intellectual Property</h2>

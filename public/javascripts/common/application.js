@@ -141,4 +141,14 @@ $(function() {
      textField.autocomplete('option', 'minLength', minLength);
    }
  });
+ 
+ $("#asset_subject_tokens").tokenInput("/subjects.json", {
+   crossDomain: false,
+   prePopulate: $(this).data("pre")
+ });
+ 
+ $("#asset_genre_tokens").tokenInput("/genres.json", {
+    crossDomain: false,
+    prePopulate: $(this).data("pre")
+  });
 });

@@ -1,0 +1,8 @@
+<% f.inputs do %>
+  <%= f.input :title, :as => :string %>
+  <%= f.input :title_type_name, :as => :pbcore_combobox,
+                           :input_html => { :class => "pbcore-autocomplete", 
+                                            "data-autocomplete-source" => title_types_path },
+                           :label => "Type" %>
+  <%= link_to_remove_fields "remove", f %>
+<% end %>

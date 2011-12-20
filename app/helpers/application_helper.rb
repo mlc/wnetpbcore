@@ -3,7 +3,7 @@ module ApplicationHelper
   def title(title)
     content_for(:title) { title }
   end
-
+  
   def application_title
     PBCore.config['site_title'] || 'pbcore'
   end
@@ -56,5 +56,10 @@ module ApplicationHelper
       render(association.to_s.singularize + "_fields", :f => builder)
     end
     link_to_function(name, h("add_fields(this, '#{association}', '#{escape_javascript(fields)}')"))
+  end
+  
+  # Displays yes or no given a boolean
+  def yes_or_no(boolean)
+    boolean ? "Yes" : "No"
   end
 end

@@ -14,16 +14,24 @@ class PicklistsController < ApplicationController
   ]
 
   def index
-    if @klass.nil?
-      @controllers = (SUBCLASSES + ['templates', 'value_lists']).sort
-      render :action => 'picklists_index'
-    else
-      @emit_warning = should_emit_warning
-      @objects = @klass.all(:order => "name ASC")
-      if @standard_pbcore
-        @donthave = (@standard_pbcore - @objects.map(&:name)).sort
+    respond_to do |format|
+      format.html do
+        if @klass.nil?
+          @controllers = (SUBCLASSES + ['templates', 'value_lists']).sort
+          render :action => 'picklists_index'
+        else
+          @emit_warning = should_emit_warning
+          @objects = @klass.all(:order => "name ASC")
+          if @standard_pbcore
+            @donthave = (@standard_pbcore - @objects.map(&:name)).sort
+          end
+          render :template => 'picklists/index'
+        end
       end
-      render :template => 'picklists/index'
+      format.json do
+        render :json => @klass.find(:all, :conditions => ["name like ? and visible = 1", "%#{params[:term]}%"],
+                                          :order => "name ASC").map(&:name)
+      end
     end
   end
   

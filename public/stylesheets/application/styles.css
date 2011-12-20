@@ -204,6 +204,11 @@ form.instantiations span label { width: auto; margin-left: 3px; }
 ul.recordFormats{ display:block; margin:0; padding:15px; background-color:#cccccc; border:#eee 5px solid; -moz-border-radius-topleft: 0px; -moz-border-radius-topright: 0px; -moz-border-radius-bottomright: 10px; -moz-border-radius-bottomleft: 10px; border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; list-style:none; }
 ul.recordFormats li { color:#333; font-size:13px; padding:1px 0; text-shadow: 0px 1px 0px #eee; }
 
+dl.asset_dates { margin-left: 20px; font-size: 13px; }
+dl.asset_dates dt { float: left; width: 100px; text-align: right; padding: 3px 5px 3px 0px; }
+dl.asset_dates dd { padding: 3px 0px }
+
+
 /* show page */
 .recordItem.show { width: 650px; font-size: 14px; line-height:1; }
 .recordSection { margin: 20px 10px; }

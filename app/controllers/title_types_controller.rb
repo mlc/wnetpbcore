@@ -35,4 +35,5 @@ class TitleTypesController < PicklistsController
       "Other" => ["Other"]
     }.values.flatten.to_set.freeze
   end
+ 
 end

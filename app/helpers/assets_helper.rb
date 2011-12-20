@@ -1,4 +1,20 @@
 module AssetsHelper
+  def show_audience_levels?
+    if PBCore.config['show_audience_levels'] == false
+      false
+    else
+      true
+    end
+  end
+  
+  def show_audience_ratings?
+    if PBCore.config['show_audience_ratings'] == false
+      false
+    else
+      true
+    end
+  end
+  
   def assets_navbar
     if @asset && !@asset.new_record?
       if permitted_to?(:show, @asset)

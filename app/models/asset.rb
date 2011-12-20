@@ -85,6 +85,18 @@ class Asset < ActiveRecord::Base
   xml_subelements "pbcoreInstantiation", :instantiations
   xml_subelements "pbcoreExtension", :extensions
   
+  # This is used by the new form to do subject adding/removing autocompletion
+  # using jquery token input plugin
+  attr_reader :subject_tokens
+  def subject_tokens=(ids)
+    self.subject_ids = ids.split(",")
+  end
+  
+  attr_reader :genre_tokens
+  def genre_tokens=(ids)
+    self.genre_ids = ids.split(",")
+  end
+  
   def to_xml
     doc = XML::Document.new
     root = XML::Node.new("pbcoreDescriptionDocument")

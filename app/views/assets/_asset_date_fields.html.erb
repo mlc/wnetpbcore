@@ -1,0 +1,7 @@
+<% f.inputs do %>
+  <%= f.input :asset_date_type_name, :as => :pbcore_combobox,
+                                     :input_html => { :class => "pbcore-autocomplete", 
+                                                      "data-autocomplete-source" => asset_date_types_path } %>
+  <%= f.input :asset_date, :as => :string %>
+  <%= link_to_remove_fields "remove", f %>
+<% end %>

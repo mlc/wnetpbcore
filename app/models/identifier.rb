@@ -20,6 +20,17 @@ class Identifier < ActiveRecord::Base
     self.identifier_source = IdentifierSource.find_by_name(name) if name.present?
   end
   
+  # This is a virtual attribute that allows for "ref" to be stored in the 
+  # IdentifierSource model
+  def ref
+    identifier_source.try(:ref)
+  end
+  
+  def ref=(reference)
+    self.identifier_source.ref = reference if reference.present?
+  end
+  
+  # TODO: What is this? Investigate.
   def validate
     super
     unless doing_xml? || identifier_source.nil? || identifier_source.regex.nil? ||
