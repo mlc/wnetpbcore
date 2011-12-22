@@ -1,3 +1,7 @@
+# These value lists are used for providing autocomplete and picklist
+# functionality for the Title section in the Asset form. As of 12/2011
+# WNYC uses this for titles of type Series and Collection.
+
 class ValueList < ActiveRecord::Base
   has_many :values, :dependent => :delete_all
 

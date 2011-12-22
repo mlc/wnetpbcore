@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111219192707) do
+ActiveRecord::Schema.define(:version => 20111221234418) do
 
   create_table "annotations", :force => true do |t|
     t.integer "instantiation_id"
@@ -117,11 +117,8 @@ ActiveRecord::Schema.define(:version => 20111219192707) do
     t.text     "start_time"
     t.text     "end_time"
     t.text     "time_annotation"
-    t.text     "role_source"
-    t.text     "role_ref"
-    t.text     "role_version"
-    t.text     "role_annotation"
     t.text     "role_portrayal"
+    t.text     "source"
   end
 
   add_index "contributors", ["asset_id"], :name => "index_contributors_on_asset_id"
@@ -165,10 +162,7 @@ ActiveRecord::Schema.define(:version => 20111219192707) do
     t.text     "start_time"
     t.text     "end_time"
     t.text     "time_annotation"
-    t.text     "role_source"
-    t.text     "role_ref"
-    t.text     "role_version"
-    t.text     "role_annotation"
+    t.text     "source"
   end
 
   add_index "creators", ["asset_id"], :name => "index_creators_on_asset_id"
@@ -317,7 +311,6 @@ ActiveRecord::Schema.define(:version => 20111219192707) do
     t.integer  "creator_id"
     t.integer  "updater_id"
     t.integer  "sequence"
-    t.text     "ref"
   end
 
   create_table "identifiers", :force => true do |t|
@@ -329,6 +322,7 @@ ActiveRecord::Schema.define(:version => 20111219192707) do
     t.integer  "creator_id"
     t.integer  "updater_id"
     t.text     "annotation"
+    t.text     "ref"
   end
 
   add_index "identifiers", ["asset_id"], :name => "index_identifiers_on_asset_id"
@@ -435,10 +429,7 @@ ActiveRecord::Schema.define(:version => 20111219192707) do
     t.text     "start_time"
     t.text     "end_time"
     t.text     "time_annotation"
-    t.text     "role_source"
-    t.text     "role_ref"
-    t.text     "role_version"
-    t.text     "role_annotation"
+    t.text     "source"
   end
 
   add_index "publishers", ["asset_id"], :name => "index_publishers_on_asset_id"
@@ -471,6 +462,8 @@ ActiveRecord::Schema.define(:version => 20111219192707) do
     t.datetime "updated_at"
     t.integer  "creator_id"
     t.integer  "updater_id"
+    t.text     "source"
+    t.text     "ref"
   end
 
   add_index "rights_summaries", ["asset_id"], :name => "index_rights_summaries_on_asset_id"

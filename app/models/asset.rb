@@ -1,22 +1,35 @@
 class Asset < ActiveRecord::Base
+  include PbcoreXmlElement
+  
   before_create :generate_uuid
   after_save :save_version
 
   attr_protected :uuid
   
-  include PbcoreXmlElement
-
+  # IMPORTANT: This has to be kept in sync with ANY SCHEMA CHANGES!
   ALL_INCLUDES = [{:identifiers => [:identifier_source]},
-    {:titles => [:title_type]}, :subjects, {:descriptions => [:description_type]},
-    :genres, {:relations => [:relation_type]}, :coverages, :audience_levels,
-    :audience_ratings, {:creators => [:creator_role]},
-    {:contributors => [:contributor_role]}, {:publishers => [:publisher_role]},
-    :rights_summaries, :extensions,
-    {:instantiations => [{:format_ids => :format_identifier_source}, :format,
-      :instantiation_media_type, :instantiation_generation, :instantiation_color,
-      {:essence_tracks => [:essence_track_type, :essence_track_identifier_source]},
-      :instantiation_dates, :annotations]}
-    ]
+                  {:titles => [:title_type]},
+                  :subjects, 
+                  {:descriptions => [:description_type]},
+                  :genres,
+                  {:relations => [:relation_type]},
+                  :coverages,
+                  :audience_levels,
+                  :audience_ratings,
+                  {:creators => [:creator_role]},
+                  {:contributors => [:contributor_role]},
+                  {:publishers => [:publisher_role]},
+                  :rights_summaries,
+                  :extensions,
+                  {:instantiations => [{:format_ids => :format_identifier_source},
+                                       :format,
+                                       :instantiation_media_type,
+                                       :instantiation_generation,
+                                       :instantiation_color,
+                                       {:essence_tracks => [:essence_track_type, :essence_track_identifier_source]},
+                                       :instantiation_dates,
+                                       :annotations]}
+                 ]
 
   UUID_REGEX = /[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}/
 
@@ -62,6 +75,9 @@ class Asset < ActiveRecord::Base
   validates_size_of :identifiers, :minimum => 1, :message => "must have at least one entry"
   validates_size_of :titles, :minimum => 1, :message => "must have at least one entry"
   
+  
+  # IMPORTANT: This has to be kept in sync with ANY SCHEMA CHANGES
+  # PbcoreXmlElement Declarations
   xml_subelements "pbcoreAssetDate", :asset_dates  
   xml_subelements "pbcoreIdentifier", :identifiers
   to_xml_elt do |obj|
@@ -85,104 +101,7 @@ class Asset < ActiveRecord::Base
   xml_subelements "pbcoreInstantiation", :instantiations
   xml_subelements "pbcoreExtension", :extensions
   
-  # This is used by the new form to do subject adding/removing autocompletion
-  # using jquery token input plugin
-  attr_reader :subject_tokens
-  def subject_tokens=(ids)
-    self.subject_ids = ids.split(",")
-  end
-  
-  attr_reader :genre_tokens
-  def genre_tokens=(ids)
-    self.genre_ids = ids.split(",")
-  end
-  
-  def to_xml
-    doc = XML::Document.new
-    root = XML::Node.new("pbcoreDescriptionDocument")
-    PbcoreXmlElement::Util.set_pbcore_ns(root)
-    xsins = XML::Namespace.new(root, "xsi", "http://www.w3.org/2001/XMLSchema-instance")
-    schemaloc = XML::Attr.new(root, "schemaLocation", "http://www.pbcore.org/PBCore/PBCoreNamespace.html http://pbcore.org/xsd/pbcore-2.0.xsd")
-    schemaloc.namespaces.namespace = xsins
-    doc.root = root
-    root << XML::Node.new_comment("XML Generated at #{Time.new} by rails pbcore database")
-    root << XML::Node.new_comment(created_string) if respond_to?(:created_at)
-    root << XML::Node.new_comment(updated_string) if respond_to?(:updated_at)
-    build_xml(root)
-    doc.to_s
-  end
-  
-  def destroy_existing
-    return nil unless new_record?
-
-    possibility = identifiers.detect{|s| s.identifier_source_id == IdentifierSource::OUR_UUID_SOURCE.id}
-    if possibility
-      other = Asset.find_by_uuid(possibility.identifier)
-      self.identifiers -= [possibility]
-      self.uuid = possibility.identifier
-      other.destroy if other
-    end
-  end
-  
-  def title
-    titles.map{|t| t.title}.join("; ")
-  end
-
-  def identifier
-    result = identifiers.select{|id| id.identifier_source.show_in_index?}
-    (result.empty? ? identifiers : result).map{|id| id.identifier}.join(" / ")
-  end
-
-  # Copies the stuff from some other asset object into us.
-  def merge(other)
-    [:identifiers, :titles, :descriptions, :relations, :coverages, :creators, :contributors,
-      :publishers, :rights_summaries, :instantiations, :extensions, :asset_dates].each do |field|
-      ours = self.send(field)
-      theirs = other.send(field)
-
-      our_attrs = ours.map{|o| clean_attributes(o.attributes)}
-
-      # this is O(n²), but hopefully n is small enough that this isn't a huge problem
-      theirs.each do |object|
-        ours << object unless our_attrs.include?(clean_attributes(object.attributes))
-      end
-    end
-    [:genre_ids, :subject_ids, :audience_level_ids, :audience_rating_ids].each do |field|
-      self.send("#{field}=".to_sym, self.send(field) | other.send(field))
-    end
-  end
-
-  def online?
-    instantiations.any?(&:online?)
-  end
-
-  def has_thumbnail?
-    instantiations.any?(&:thumbnail?)
-  end
-
-  def thumbnail
-    instantiations.detect(&:thumbnail?)
-  end
-
-  def merge_existing
-    return nil unless new_record?
-
-    found = nil
-    self.identifiers.each do |identifier|
-      if identifier.identifier_source.auto_merge && (them = Identifier.find_by_identifier_and_identifier_source_id(identifier.identifier, identifier.identifier_source_id))
-        found = Asset.find(them.asset_id, :include => ALL_INCLUDES)
-        break
-      end
-    end
-
-    if found
-      found.merge(self)
-      found.save
-    end
-
-    found
-  end
-
+  # Sunspot/Solr definitions
   searchable do
     text :identifier do
       identifiers.map{|a| "#{a.identifier} #{a.identifier_source.name}"} +
@@ -240,7 +159,109 @@ class Asset < ActiveRecord::Base
       end
     end
   end
+  
+  # This is used by the new form to do subject adding/removing autocompletion
+  # using jquery token input plugin
+  attr_reader :subject_tokens
+  def subject_tokens=(ids)
+    self.subject_ids = ids.split(",")
+  end
+  
+  attr_reader :genre_tokens
+  def genre_tokens=(ids)
+    self.genre_ids = ids.split(",")
+  end
+  
+  def to_xml
+    doc = XML::Document.new
+    root = XML::Node.new("pbcoreDescriptionDocument")
+    PbcoreXmlElement::Util.set_pbcore_ns(root)
+    xsins = XML::Namespace.new(root, "xsi", "http://www.w3.org/2001/XMLSchema-instance")
+    schemaloc = XML::Attr.new(root, "schemaLocation", "http://www.pbcore.org/PBCore/PBCoreNamespace.html http://pbcore.org/xsd/pbcore-2.0.xsd")
+    schemaloc.namespaces.namespace = xsins
+    doc.root = root
+    root << XML::Node.new_comment("XML Generated at #{Time.new} by rails pbcore database")
+    root << XML::Node.new_comment(created_string) if respond_to?(:created_at)
+    root << XML::Node.new_comment(updated_string) if respond_to?(:updated_at)
+    build_xml(root)
+    doc.to_s
+  end
+  
+  def destroy_existing
+    return nil unless new_record?
 
+    possibility = identifiers.detect{|s| s.identifier_source_id == IdentifierSource::OUR_UUID_SOURCE.id}
+    if possibility
+      other = Asset.find_by_uuid(possibility.identifier)
+      self.identifiers -= [possibility]
+      self.uuid = possibility.identifier
+      other.destroy if other
+    end
+  end
+  
+  def title
+    titles.map{|t| t.title}.join("; ")
+  end
+
+  def identifier
+    result = identifiers.select{|id| id.identifier_source.show_in_index?}
+    (result.empty? ? identifiers : result).map{|id| id.identifier}.join(" / ")
+  end
+
+  def online?
+    instantiations.any?(&:online?)
+  end
+
+  def has_thumbnail?
+    instantiations.any?(&:thumbnail?)
+  end
+
+  def thumbnail
+    instantiations.detect(&:thumbnail?)
+  end
+
+  # Copies the stuff from a new asset object into us.
+  # IMPORTANT: Any changes to models or the schema might affect this code. 
+  #            CHECK THIS WHEN THE SCHEMA CHANGES!
+  def merge(new_asset)
+    [:identifiers, :titles, :descriptions, :relations, :coverages, :creators, :contributors,
+      :publishers, :rights_summaries, :instantiations, :extensions, :asset_dates].each do |field|
+      current_fields = self.send(field)
+      new_fields     = new_asset.send(field)
+
+      current_attrs  = current_fields.map{|o| clean_attributes(o.attributes)}
+
+      # this is O(n²), but hopefully n is small enough that this isn't a huge problem
+      new_fields.each do |fields|
+        current_fields << fields unless current_attrs.include?(clean_attributes(fields.attributes))
+      end
+    end
+    
+    [:genre_ids, :subject_ids, :audience_level_ids, :audience_rating_ids].each do |field|
+      self.send("#{field}=".to_sym, self.send(field) | new_asset.send(field))
+    end
+  end
+
+  def merge_existing
+    return nil unless new_record?
+
+    found = nil
+    self.identifiers.each do |identifier|
+      if identifier.identifier_source.auto_merge && (them = Identifier.find_by_identifier_and_identifier_source_id(identifier.identifier, identifier.identifier_source_id))
+        found = Asset.find(them.asset_id, :include => ALL_INCLUDES)
+        break
+      end
+    end
+
+    if found
+      found.merge(self)
+      found.save
+    end
+
+    found
+  end
+
+  # IMPORTANT: This needs to be checked when the SCHEMA or MODEL changes!
   def self.full_text_fields
     # there must be a DRY way to ask sunspot for this
     [
@@ -248,20 +269,6 @@ class Asset < ActiveRecord::Base
      :audience_level, :audience_rating, :creator, :contributor, :publisher,
      :rights, :extension, :location, :annotation, :date, :format
     ]
-  end
-
-  def self.dedupe
-    dedupe_field(:titles, :title, :title_type_id, :asset_id)
-    dedupe_field(:identifiers, :identifier, :identifier_source_id, :asset_id)
-    dedupe_field(:descriptions, :description, :description_type_id, :asset_id)
-    dedupe_field(:creators, :creator, :creator_role_id, :asset_id)
-    dedupe_field(:contributors, :contributor, :contributor_role_id, :asset_id)
-    dedupe_field(:publishers, :publisher, :publisher_role_id, :asset_id)
-    dedupe_field(:format_ids, :instantiation_id, :format_identifier, :format_identifier_source_id)
-    dedupe_field(:annotations, :instantiation_id, :annotation)
-    # dedupe_field(:date_availables, :instantiation_id, :date_available_start, :date_available_end)
-    dedupe_trivial_field(:assets_subjects, :asset_id, :subject_id)
-    dedupe_trivial_field(:assets_genres, :asset_id, :genre_id)
   end
 
   # import some XML
@@ -327,11 +334,25 @@ class Asset < ActiveRecord::Base
     doc.to_s(:indent => false)
   end
 
-  protected
-  def generate_uuid
-    self.uuid = UUID.random_create.to_s unless (self.uuid && !self.uuid.empty?)
+  # IMPORTANT: This code needs to be checked when models or the schema
+  #            changes.
+  def self.dedupe
+    dedupe_field(:titles, :title, :title_type_id, :asset_id)
+    dedupe_field(:identifiers, :identifier, :identifier_source_id, :asset_id)
+    dedupe_field(:descriptions, :description, :description_type_id, :asset_id)
+    dedupe_field(:creators, :creator, :creator_role_id, :asset_id)
+    dedupe_field(:contributors, :contributor, :contributor_role_id, :asset_id)
+    dedupe_field(:publishers, :publisher, :publisher_role_id, :asset_id)
+    dedupe_field(:format_ids, :instantiation_id, :format_identifier, :format_identifier_source_id)
+    dedupe_field(:annotations, :instantiation_id, :annotation)
+    # dedupe_field(:date_availables, :instantiation_id, :date_available_start, :date_available_end)
+    dedupe_trivial_field(:assets_subjects, :asset_id, :subject_id)
+    dedupe_trivial_field(:assets_genres, :asset_id, :genre_id)
   end
 
+  protected
+  
+  # Protected Class methods
   def self.dedupe_field(table, *fields)
     connection.execute("create temporary table tmp_#{table}_ids select distinct b.id from #{table} a, #{table} b where " + fields.map{|f| "a.#{f} = b.#{f}"}.join(" and ") + " and a.id < b.id")
     connection.execute("delete from #{table} where id in (select * from tmp_#{table}_ids)")
@@ -348,6 +369,11 @@ class Asset < ActiveRecord::Base
     $stdout.puts("#{count_by_sql("SELECT COUNT(*) FROM tmp_#{table}_t2")} duplicate #{table} cleaned up")
     connection.execute("DROP TEMPORARY TABLE tmp_#{table}_t1")
     connection.execute("DROP TEMPORARY TABLE tmp_#{table}_t2")
+  end
+
+  # Protected Instance methods
+  def generate_uuid
+    self.uuid = UUID.random_create.to_s unless (self.uuid && !self.uuid.empty?)
   end
 
   def clean_attributes(hash)

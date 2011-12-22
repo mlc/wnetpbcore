@@ -10,7 +10,7 @@ class IdentifierSourcesController < ApplicationController
       
       # AJAX Autocomplete for edit (perhaps create) form
       format.json do
-        render :json => (@klass.find(:all, :conditions => ["name like ? and visible = 1", "%#{params[:term]}%"],
+        render :json => (IdentifierSource.find(:all, :conditions => ["name like ? and visible = 1", "%#{params[:term]}%"],
                                     :order => "name ASC") - [IdentifierSource::OUR_UUID_SOURCE]).map(&:name)
       end
     end

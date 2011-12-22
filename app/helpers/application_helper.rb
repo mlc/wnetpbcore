@@ -58,6 +58,12 @@ module ApplicationHelper
     link_to_function(name, h("add_fields(this, '#{association}', '#{escape_javascript(fields)}')"))
   end
   
+  def add_another(f, association)
+    content_tag(:p, :class => "add-another") do
+      link_to_add_fields("Add another...", f, association)
+    end
+  end
+  
   # Displays yes or no given a boolean
   def yes_or_no(boolean)
     boolean ? "Yes" : "No"

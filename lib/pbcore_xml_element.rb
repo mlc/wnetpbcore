@@ -157,8 +157,6 @@ module PbcoreXmlElement
   # Main method for building XML from some model objects.
   def build_xml(builder)
     self._working_xml = builder
-    #builder.comment! created_string if respond_to?(:created_at)
-    #builder.comment! updated_string if respond_to?(:updated_at)
     run_callbacks(:to_xml_elt)
     self._working_xml = nil
   end
@@ -173,7 +171,7 @@ module PbcoreXmlElement
     value = reflect.klass.find_or_create_by_name(value) if reflect
     self.send("#{field}=".to_sym, value)
   end
-
+  
   def created_string
     "created at #{created_at.to_s} by #{(creator_id.nil? || record_creator.nil?) ? "unknown" : record_creator.login}"
   end

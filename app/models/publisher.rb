@@ -4,10 +4,20 @@ class Publisher < ActiveRecord::Base
   belongs_to :publisher_role
   stampable
 
-  xml_string "publisher", nil, "affiliation", "ref", "annotation", "startTime", "endTime", "timeAnnotation"
-  xml_string "publisherRole", nil, {"source" => :role_source}, {"ref" => :role_ref}, {"version" => :role_version}, {"annotation" => :role_annotation}
+  accepts_nested_attributes_for :publisher_role
+
+  xml_string "publisher", nil, "affiliation", "ref", "source", "annotation", "startTime", "endTime", "timeAnnotation"
+  xml_string "publisherRole", nil
 
   validates_length_of :publisher, :minimum => 1
+
+  def publisher_role_name
+    publisher_role.try(:name)
+  end
+  
+  def publisher_role_name=(name)
+    self.publisher_role = PublisherRole.find_by_name(name) if name.present?
+  end
 
   def to_s
     publisher_role.nil? ? publisher : "#{publisher_role.name}: #{publisher}"

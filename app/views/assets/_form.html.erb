@@ -4,19 +4,19 @@
   <% form.semantic_fields_for :identifiers do |f| %>
     <%= render 'identifier_fields', :f => f %>
   <% end %>
-  <p><%= link_to_add_fields "Add Identifier", form, :identifiers %></p>
+  <%= add_another form, :identifiers %>
   
   <h3>Asset Dates</h3>
   <% form.semantic_fields_for :asset_dates do |f| %>
     <%= render 'asset_date_fields', :f => f %>
   <% end %>
-  <p><%= link_to_add_fields "Add Asset Date", form, :asset_dates %></p>
+  <%= add_another form, :asset_dates %>
 
   <h3>Titles</h3>
   <% form.semantic_fields_for :titles do |f| %>
     <%= render 'title_fields', :f => f %>
   <% end %>
-  <p><%= link_to_add_fields "Add Title", form, :titles %></p>
+  <%= add_another form, :titles %>
   
   <h3>Subjects</h3>
   <% form.inputs do %>
@@ -27,7 +27,7 @@
   <% form.semantic_fields_for :descriptions do |f| %>
     <%= render 'description_fields', :f => f %>
   <% end %>
-  <p><%= link_to_add_fields "Add Description", form, :descriptions %></p>
+  <%= add_another form, :descriptions %>
   
   <h3>Genres</h3>
   <% form.inputs do %>
@@ -38,13 +38,13 @@
   <% form.semantic_fields_for :relations do |f| %>
     <%= render 'relation_fields', :f => f %>
   <% end %>
-  <p><%= link_to_add_fields "Add Description", form, :relations %></p>
+  <%= add_another form, :relations %>
 
   <h3>Coverages</h3>
   <% form.semantic_fields_for :coverages do |f| %>
     <%= render 'coverage_fields', :f => f %>
   <% end %>
-  <p><%= link_to_add_fields "Add Coverage", form, :coverages %></p>
+  <%= add_another form, :coverages %>
 
   <% if show_audience_levels? %>
     <h3>Audience Levels</h3>
@@ -63,35 +63,28 @@
   <h2>Intellectual Property</h2>
   <h3>Creators</h3>
   <% form.semantic_fields_for :creators do |f| %>
-    <% f.inputs do %>
-      <%= f.input :creator_role %>
-      <%= f.input :creator %>
-    <% end %>
+    <%= render 'creator_fields', :f => f %>
   <% end %>
-
+  <%= add_another form, :creators %>
+  
   <h3>Contributors</h3>
   <% form.semantic_fields_for :contributors do |f| %>
-    <% f.inputs do %>
-      <%= f.input :contributor_role %>
-      <%= f.input :contributor, :as => :string %>
-    <% end %>
+    <%= render 'contributor_fields', :f => f %>
   <% end %>
+  <%= add_another form, :contributors %>
 
   <h3>Publishers</h3>
   <% form.semantic_fields_for :publishers do |f| %>
-    <% f.inputs do %>
-      <%= f.input :publisher_role %>
-      <%= f.input :publisher, :as => :string %>
-    <% end %>
+    <%= render 'publisher_fields', :f => f %>
   <% end %>
+  <%= add_another form, :publishers %>
 
   <h3>Rights</h3>
   <% form.semantic_fields_for :rights_summaries do |f| %>
-    <% f.inputs do %>
-      <%= f.input :rights_summary %>
-    <% end %>
+    <%= render 'rights_summary_fields', :f => f %>
   <% end %>
-
+  <%= add_another form, :rights_summaries %>
+  
   <% unless @asset.new_record? %>
     <h2>Instantiations</h2>
     <p>This asset currently has <%= pluralize(@asset.instantiations.count, "instantiation") %>. <%= link_to "Edit, modify, and delete instantiations for this record.", asset_instantiations_path(@asset) %>

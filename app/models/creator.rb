@@ -4,9 +4,19 @@ class Creator < ActiveRecord::Base
   belongs_to :creator_role
   stampable
 
-  xml_string "creator", nil, "affiliation", "ref", "annotation", "startTime", "endTime", "timeAnnotation"
-  xml_string "creatorRole", nil, {"source" => :role_source}, {"ref" => :role_ref}, {"version" => :role_version}, {"annotation" => :role_annotation}
+  accepts_nested_attributes_for :creator_role
+
+  xml_string "creator", nil, "affiliation", "ref", "source", "annotation", "startTime", "endTime", "timeAnnotation"
+  xml_string "creatorRole"
+
+  def creator_role_name
+    creator_role.try(:name)
+  end
   
+  def creator_role_name=(name)
+    self.creator_role = CreatorRole.find_by_name(name) if name.present?
+  end
+   
   def to_s
     creator_role.nil? ? creator : "#{creator_role.name}: #{creator}"
   end

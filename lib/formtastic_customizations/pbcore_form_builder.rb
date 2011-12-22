@@ -4,8 +4,9 @@ module FormtasticCustomizations
     
     def pbcore_combobox_input(method, options)
       basic_input_helper(:text_field, :string, method, options) <<
-      template.content_tag(:button, :type => :button, :class => "pbcore-combobox-button") do
-        "&#9660;" # Black down pointing arrow
+      template.content_tag(:button, :type => :button, :class => "pbcore-combobox-button ui-button ui-widget ui-state-default ui-button-icon-only ui-corner-right ui-button-icon") do
+        template.content_tag(:span, "", :class => "ui-button-icon-primary ui-icon ui-icon-triangle-1-s") + 
+        template.content_tag(:span, "", :class => "ui-button-text")
       end
     end
   end
