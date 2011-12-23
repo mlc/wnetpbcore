@@ -3,5 +3,5 @@ class InstantiationDimension < ActiveRecord::Base
   belongs_to :instantiation
   
   xml_text_field :dimension
-  # xml_attributes { "unitsOfMeasure" => :units_of_measure }, { "annotation" => :annotation }
+  xml_attributes "unitsOfMeasure"
 end

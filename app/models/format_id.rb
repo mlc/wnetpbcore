@@ -8,11 +8,22 @@ class FormatId < ActiveRecord::Base
   belongs_to :format_identifier_source
   stampable
 
+  accepts_nested_attributes_for :format_identifier_source
+
   validates_length_of :format_identifier, :minimum => 1
   validates_presence_of :format_identifier_source
   
   xml_text_field :format_identifier
   xml_attributes "source" => :format_identifier_source
+
+
+  def format_identifier_source_name
+    format_identifier_source.try(:name)
+  end
+  
+  def format_identifier_source_name=(name)
+    self.format_identifier_source = FormatIdentifierSource.find_by_name(name) if name.present?
+  end
 
   def validate
     super

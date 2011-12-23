@@ -1,0 +1,34 @@
+<%= assets_navbar %>
+
+<% semantic_form_for [@asset, @instantiation] do |form| %>
+  <h3>Instantiation Identifiers</h3>
+  <% form.semantic_fields_for :format_ids do |f| %>
+    <%= render 'format_id_fields', :f => f %>
+  <% end %>
+  <%= add_another form, :format_ids %>
+  
+  <h3>Instantiation Dates</h3>
+  <% form.semantic_fields_for :instantiation_dates do |f| %>
+    <%= render 'instantiation_date_fields', :f => f %>
+  <% end %>
+  <%= add_another form, :instantiation_dates %>
+  
+  <h3>Instantiation Dimensions</h3>
+  <% form.semantic_fields_for :instantiation_dimensions do |f| %>
+    <%= render 'instantiation_dimension_fields', :f => f %>
+  <% end %>
+  <%= add_another form, :instantiation_dimensions %>
+  
+  <h3>Instantiation Information</h3>
+  <% form.inputs do %>
+    <%= form.input :format_location, :as => :string, :label => "Location" %>
+    <%= form.input :format_name, :as => :pbcore_instantiation_format, 
+                                 :collection => [["Physical", "FormatPhysical"], ["Digital", "FormatDigital"]],
+                                 :input_html => { :class => "pbcore-autocomplete", 
+                                                  "data-autocomplete-source" => autocomplete_source_for_format_type(@instantiation) } %>
+  <% end %>
+  <h3>Essence Tracks</h3>
+  <h3>Annotations</h3>
+  
+  <%= form.buttons %>
+<% end %>

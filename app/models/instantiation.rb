@@ -69,6 +69,22 @@ class Instantiation < ActiveRecord::Base
   xml_subelements "pbcoreEssenceTrack", :essence_tracks
   xml_subelements "instantiationAnnotation", :annotations
   
+  def format_type
+    format.try(:type)
+  end
+  
+  def format_type=(format)
+    # do nothing with this
+  end
+  
+  def format_name
+    format.try(:name)
+  end
+  
+  def format_name=(name)
+    self.format = Format.find_by_name(name) if name.present?
+  end
+  
   def identifier
     format_ids.map{|i| i.format_identifier}.join("; ")
   end
