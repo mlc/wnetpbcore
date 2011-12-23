@@ -21,11 +21,24 @@
   
   <h3>Instantiation Information</h3>
   <% form.inputs do %>
-    <%= form.input :format_location, :as => :string, :label => "Location" %>
     <%= form.input :format_name, :as => :pbcore_instantiation_format, 
                                  :collection => [["Physical", "FormatPhysical"], ["Digital", "FormatDigital"]],
                                  :input_html => { :class => "pbcore-autocomplete", 
-                                                  "data-autocomplete-source" => autocomplete_source_for_format_type(@instantiation) } %>
+                                                  "data-autocomplete-source" => autocomplete_source_for_format_type(@instantiation) },
+                                 :label => "Format" %>
+    <%= form.input :format_location,   :as => :string, :label => "Location" %>
+    <%= form.input :format_file_size,  :as => :string, :label => "File Size" %>
+    <%= form.input :format_time_start, :as => :string, :label => "Time Start" %>
+    <%= form.input :format_duration,   :as => :string, :label => "Duration" %>
+    <%= form.input :format_data_rate,  :as => :string, :label => "Data Rate" %>
+    <%= form.input :instantiation_color_name, :as => :pbcore_combobox,
+                                              :input_html => { :class => "pbcore-autocomplete",
+                                                               "data-autocomplete-source" => InstantiationColor.visible.map(&:name).to_json },
+                                              :label => "Colors" %>
+    <%= form.input :format_tracks, :as => :string, :label => "Tracks" %>
+    <%= form.input :format_channel_configuration, :as => :string, :label => "Channel Configuration" %>
+    <%= form.input :language_tokens, :label => "Languages", :input_html => { "data-pre" => @instantiation.language_tokens.split(',').collect { |token| { :id => token, :name => ISO639::ISO639_CODES[token][:en] }}.to_json } %>
+    <%= form.input :alternative_modes, :as => :string %>
   <% end %>
   <h3>Essence Tracks</h3>
   <h3>Annotations</h3>

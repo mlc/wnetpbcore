@@ -85,6 +85,26 @@ class Instantiation < ActiveRecord::Base
     self.format = Format.find_by_name(name) if name.present?
   end
   
+  def instantiation_color_name
+    instantiation_color.try(:name)
+  end
+  
+  def instantiation_color_name=(name)
+    self.instantiation_color = InstantiationColor.find_by_name(name) if name.present?
+  end
+  
+  def language_tokens
+    if language.present?
+      language.gsub(/;/, ",") 
+    else
+      ""
+    end
+  end
+  
+  def language_tokens=(tokens)
+    self.language = tokens.gsub(/,/, ";") if tokens.present?
+  end
+  
   def identifier
     format_ids.map{|i| i.format_identifier}.join("; ")
   end

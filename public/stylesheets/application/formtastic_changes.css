@@ -13,10 +13,14 @@ form.formtastic fieldset ol li fieldset legend { margin-left: -6px;}
 
 --------------------------------------------------------------------------------------------------*/
 form.formtastic { width: 655px; }
+form.formtastic input,
+form.formtastic select,
+form.formtastic textarea,
+form.formtastic label { font-family: Helvetica, 'Microsoft Sans Serif', 'Arial Narrow', Arial, sans-serif; }
 form.formtastic fieldset.side-by-side-inputs > ol > li { display: block; float: left; width: 50%; }
 form.formtastic fieldset > ol > li > label { font-weight: bold; color: #000; font-size: 12px; }
 form.formtastic fieldset > ol > li > input { border: 1px solid #000; background-color: white; padding: 2px; font-size: 12px; }
 form.formtastic fieldset > ol > li.hide-label label { display: none; }
 form.formtastic fieldset > ol > li.check_boxes fieldset ol li label { float:left; width:50%; }
 form.formtastic fieldset { background-color: #EEE; padding: 5px; margin: 0 10px 0 0; }
-p.add-another {padding:5px;margin:0 0 0 0;display:block;width:645px;-moz-border-radius-topleft:0;-moz-border-radius-topright:0;-moz-border-radius-bottomright:10px;-moz-border-radius-bottomleft:10px;border-top-left-radius:0;border-top-right-radius:0;border-bottom-right-radius:10px;border-bottom-left-radius:10px;background-color:#eee; text-align: center; }
+form.formtastic p.add-another {padding:5px;margin:0 0 0 0;display:block;width:635px;-moz-border-radius-topleft:0;-moz-border-radius-topright:0;-moz-border-radius-bottomright:10px;-moz-border-radius-bottomleft:10px;border-top-left-radius:0;border-top-right-radius:0;border-bottom-right-radius:10px;border-bottom-left-radius:10px;background-color:#eee; text-align: center; }

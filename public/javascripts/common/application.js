@@ -118,37 +118,61 @@ function create_autocomplete (obj) {
   });
 }
 
+
+function autocomplete_source_for_format_type(type) {
+  switch(type) {
+    case "FormatDigital":
+      return "/format_digitals"
+      break;
+    case "FormatPhysical":
+      return "/format_physicals"
+      break;
+  }
+}
+
 // Autocomplete for Edit Form
 $(function() { 
- $(".pbcore-autocomplete").live("keydown.autocomplete", function() {
-   if (!$(this).hasClass('ui-autocomplete-input')) {
-     create_autocomplete($(this));
-   }
- });
+  $(".pbcore-autocomplete").live("keydown.autocomplete", function() {
+    if (!$(this).hasClass('ui-autocomplete-input')) {
+      create_autocomplete($(this));
+    }
+  });
  
- $(".pbcore-combobox-button").live("click", function() {
-   var textField = $(this).prev();
-   if (!textField.hasClass('ui-autocomplete-input')) {
-     create_autocomplete(textField);
-   }
-   
-   if (textField.autocomplete("widget").is(":visible")) {
-     textField.autocomplete("close");
-   } else {
-     var minLength = textField.autocomplete('option', 'minLength');
-     textField.autocomplete('option', 'minLength', 0);
-     textField.autocomplete('search', '');
-     textField.autocomplete('option', 'minLength', minLength);
-   }
- });
+  $(".pbcore-combobox-button").live("click", function() {
+    var textField = $(this).prev();
+    if (!textField.hasClass('ui-autocomplete-input')) {
+      create_autocomplete(textField);
+    }
+    
+    if (textField.autocomplete("widget").is(":visible")) {
+      textField.autocomplete("close");
+    } else {
+      var minLength = textField.autocomplete('option', 'minLength');
+      textField.autocomplete('option', 'minLength', 0);
+      textField.autocomplete('search', '');
+      textField.autocomplete('option', 'minLength', minLength);
+    }
+  });
  
- $("#asset_subject_tokens").tokenInput("/subjects.json", {
-   crossDomain: false,
-   prePopulate: $(this).data("pre")
- });
- 
- $("#asset_genre_tokens").tokenInput("/genres.json", {
+  $("#asset_subject_tokens").tokenInput("/subjects.json", {
     crossDomain: false,
     prePopulate: $(this).data("pre")
+  });
+  
+  $("#asset_genre_tokens").tokenInput("/genres.json", {
+    crossDomain: false,
+    prePopulate: $(this).data("pre")
+  });
+  
+  $("#instantiation_language_tokens").tokenInput("/languages.json", {
+    crossDomain: false,
+    prePopulate: $(this).data("pre")
+  });
+  
+  $("input[name='instantiation[format_type]']").change(function() {
+    var autocomplete_source = autocomplete_source_for_format_type($(this).attr('value'));
+    $("#instantiation_format_name").attr('value', '');
+    $("#instantiation_format_name").autocomplete({ source: autocomplete_source });
+    $("#instantiation_format_name").attr("data-autocomplete-source", autocomplete_source);
   });
 });

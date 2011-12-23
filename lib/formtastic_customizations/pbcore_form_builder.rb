@@ -12,6 +12,8 @@ module FormtasticCustomizations
     
     def pbcore_instantiation_format_input(method, options)
       radio_options = options.clone
+      radio_options.delete(:input_html)
+      radio_options[:label] = "Type"
       radio_input(method.to_s.gsub(/_name/, '_type').to_sym, radio_options) <<
       basic_input_helper(:text_field, :string, method, options) <<
       template.content_tag(:button, :type => :button, :class => "pbcore-combobox-button ui-button ui-widget ui-state-default ui-button-icon-only ui-corner-right ui-button-icon") do
