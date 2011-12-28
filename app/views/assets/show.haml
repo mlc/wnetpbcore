@@ -56,7 +56,7 @@
         = render :partial => "field_one", :locals => {:key => "Format", :value => instantiation.format, :field => :name }
         = render :partial => "field_one", :locals => {:key => "Format Location", :value => instantiation.format_location } unless instantiation.online? && !permitted_to?(:watch_video, @asset)
         = render :partial => "field_one", :locals => {:key => "Media Type", :value => instantiation.instantiation_media_type, :field => :name }
-        = render :partial => "field_one", :locals => {:key => "Generations", :value => instantiation.instantiation_generation, :field => :name }
+        -#= render :partial => "field_one", :locals => {:key => "Generations", :value => instantiation.instantiation_generation, :field => :name }
         = render :partial => "field_one", :locals => {:key => "File Size", :value => instantiation.pretty_file_size }
         = render :partial => "field_one", :locals => {:key => "Time Start", :value => instantiation.format_time_start }
         = render :partial => "field_one", :locals => {:key => "Duration", :value => instantiation.format_duration }

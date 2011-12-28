@@ -86,6 +86,12 @@
     <%= render 'rights_summary_fields', :f => f %>
   <% end %>
   <%= add_another form, :rights_summaries %>
+
+  <h3>Annotations</h3>
+  <% form.semantic_fields_for :annotations do |f| %>
+    <%= render 'annotation_fields', :f => f %>
+  <% end %>
+  <%= add_another form, :annotations %>
   
   <% unless @asset.new_record? %>
     <h2>Instantiations</h2>

@@ -20,6 +20,7 @@ class Asset < ActiveRecord::Base
                   {:contributors => [:contributor_role]},
                   {:publishers => [:publisher_role]},
                   :rights_summaries,
+                  :annotations,
                   :extensions,
                   {:instantiations => [{:format_ids => :format_identifier_source},
                                        :format,
@@ -54,6 +55,9 @@ class Asset < ActiveRecord::Base
   # Instantiations
   has_many :instantiations,   :dependent => :destroy
 
+  # Annotations
+  has_many :annotations, :as => :container, :dependent => :destroy
+
   # Extensions
   has_many :extensions,       :dependent => :destroy
 
@@ -69,6 +73,7 @@ class Asset < ActiveRecord::Base
   accepts_nested_attributes_for :contributors,     :allow_destroy => true
   accepts_nested_attributes_for :publishers,       :allow_destroy => true
   accepts_nested_attributes_for :rights_summaries, :allow_destroy => true
+  accepts_nested_attributes_for :annotations,      :allow_destroy => true
   accepts_nested_attributes_for :extensions,       :allow_destroy => true
   accepts_nested_attributes_for :asset_dates,      :allow_destroy => true
 
@@ -99,6 +104,7 @@ class Asset < ActiveRecord::Base
   xml_subelements "pbcorePublisher", :publishers
   xml_subelements "pbcoreRightsSummary", :rights_summaries
   xml_subelements "pbcoreInstantiation", :instantiations
+  xml_subelements "pbcoreAnnotation", :annotations
   xml_subelements "pbcoreExtension", :extensions
   
   # Sunspot/Solr definitions
@@ -124,7 +130,7 @@ class Asset < ActiveRecord::Base
     text(:annotation) do
       (
        instantiations.map{|a| a.annotations.map{|b| b.annotation}} +
-       instantiations.map{|a| a.essence_tracks.map{|b| b.essence_track_annotation}}
+       instantiations.map{|a| a.essence_tracks.map{|b| b.annotation}}
       ).flatten
     end
     text(:date) do

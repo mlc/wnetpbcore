@@ -58,7 +58,7 @@ class Instantiation < ActiveRecord::Base
   xml_string "instantiationStandard", :standard, { "ref" => :standard_ref }, { "source" => :standard_source }
   xml_string "instantiationLocation", :format_location
   xml_string "instantiationMediaType", :instantiation_media_type
-  xml_string "instantiationGenerations", :instantiation_generation
+  xml_string "instantiationGenerations", :instantiation_generations
   xml_string "instantiationFileSize", :format_file_size, { "unitsOfMeasure" => :format_file_size_units_of_measure }
   xml_string "instantiationTimeStart", :format_time_start
   xml_string "instantiationDuration", :format_duration
