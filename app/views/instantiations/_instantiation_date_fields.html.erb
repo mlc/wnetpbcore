@@ -2,7 +2,8 @@
   <%= f.input :instantiation_date_type_name, :as => :pbcore_combobox,
                                      :input_html => { :class => "pbcore-autocomplete", 
                                                       "data-autocomplete-source" => InstantiationDateType.visible.map(&:name).to_json },
-                                     :label => "Type" %>
-  <%= f.input :date, :as => :string, :label => "Date" %>
+                                     :label => "Type",
+                                     :required => false, :wrapper_html => { :class => "col-1" } %>
+  <%= f.input :date, :as => :string, :label => "Date", :required => false, :wrapper_html => { :class => "col-2" } %>
   <%= link_to_remove_fields "remove", f %>
 <% end %>

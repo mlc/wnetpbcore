@@ -2,8 +2,12 @@
   <%= f.input :relation_type_name, :as => :pbcore_combobox,
                                    :input_html => { :class => "pbcore-autocomplete", 
                                                     "data-autocomplete-source" => relation_types_path },
-                                   :label => "Type" %>
-  <%= f.input :relation_identifier, :label => "Identifier" %>
-  <%= f.input :source, :as => :string %>
+                                   :wrapper_html => { :class => "col-1" }, 
+                                   :label => "Type",
+                                   :required => false %>
+  <%= f.input :relation_identifier, :label => "Identifier",
+                                    :wrapper_html => { :class => "col-2" },
+                                    :required => false %>
+  <%= f.input :source, :as => :string, :required => false %>
   <%= link_to_remove_fields "remove", f %>
 <% end %>

@@ -1,5 +1,5 @@
 <% f.inputs do %>
-  <%= f.input :dimension %>
-  <%= f.input :units_of_measure %>
+  <%= f.input :dimension, :required => false, :wrapper_html => { :class => "col-1" } %>
+  <%= f.input :units_of_measure, :required => false, :wrapper_html => { :class => "col-2" } %>
   <%= link_to_remove_fields "remove", f %>
 <% end %>

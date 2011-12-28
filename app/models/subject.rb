@@ -21,7 +21,7 @@ class Subject < ActiveRecord::Base
     xml_ref = xml['ref']
     
     subject = Subject.find_or_create_by_subject_and_subject_authority(xml_subject, xml_source)
-    unless xml_ref.blank?
+    if xml_ref.present?
       if subject.ref.blank?
         subject.ref = xml_ref
         subject.save

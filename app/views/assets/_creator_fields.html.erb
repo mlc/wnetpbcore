@@ -2,9 +2,18 @@
   <%= f.input :creator_role_name, :as => :pbcore_combobox,
                                   :input_html => { :class => "pbcore-autocomplete", 
                                                    "data-autocomplete-source" => creator_roles_path },
-                                  :label => "Role" %>
-  <%= f.input :creator, :as => :string, :label => "Name" %>
-  <%= f.input :source, :as => :string %>
-  <%= f.input :ref, :as => :string %>
+                                  :wrapper_html => { :class => "col-1" },
+                                  :label => "Role",
+                                  :required => false %>
+  <%= f.input :creator, :as => :string, 
+                        :label => "Name",
+                        :wrapper_html => { :class => "col-2" },
+                        :required => false %>
   <%= link_to_remove_fields "remove", f %>
+  <%= f.input :source, :as => :string,
+                       :wrapper_html => { :class => "col-1" },
+                       :required => false %>
+  <%= f.input :ref, :as => :string,
+                    :wrapper_html => { :class => "col-2" },
+                    :required => false %>
 <% end %>

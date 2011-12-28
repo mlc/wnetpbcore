@@ -9,16 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111221234418) do
+ActiveRecord::Schema.define(:version => 20111228065034) do
 
   create_table "annotations", :force => true do |t|
-    t.integer "instantiation_id"
-    t.text    "annotation",       :limit => 16777215
+    t.integer "container_id"
+    t.text    "annotation",      :limit => 16777215
     t.text    "annotation_type"
     t.text    "ref"
+    t.string  "container_type"
   end
 
-  add_index "annotations", ["instantiation_id"], :name => "index_annotation_on_instantiation_id"
+  add_index "annotations", ["container_id"], :name => "index_annotation_on_instantiation_id"
 
   create_table "asset_date_types", :force => true do |t|
     t.string  "name"
@@ -222,21 +223,24 @@ ActiveRecord::Schema.define(:version => 20111221234418) do
 
   create_table "essence_tracks", :force => true do |t|
     t.integer "instantiation_id"
-    t.text    "essence_track_identifier",           :limit => 16777215
-    t.text    "essence_track_standard",             :limit => 16777215
-    t.text    "essence_track_encoding",             :limit => 16777215
-    t.text    "essence_track_data_rate",            :limit => 16777215
-    t.text    "essence_track_time_start",           :limit => 16777215
-    t.text    "essence_track_duration",             :limit => 16777215
-    t.text    "essence_track_bit_depth",            :limit => 16777215
-    t.text    "essence_track_sampling_rate",        :limit => 16777215
-    t.text    "essence_track_frame_size",           :limit => 16777215
-    t.text    "essence_track_aspect_ratio",         :limit => 16777215
-    t.text    "essence_track_frame_rate",           :limit => 16777215
-    t.text    "essence_track_language",             :limit => 16777215
-    t.text    "essence_track_annotation",           :limit => 16777215
+    t.text    "identifier",                         :limit => 16777215
+    t.text    "standard",                           :limit => 16777215
+    t.text    "encoding",                           :limit => 16777215
+    t.text    "data_rate",                          :limit => 16777215
+    t.text    "time_start",                         :limit => 16777215
+    t.text    "duration",                           :limit => 16777215
+    t.text    "bit_depth",                          :limit => 16777215
+    t.text    "sampling_rate",                      :limit => 16777215
+    t.text    "frame_size",                         :limit => 16777215
+    t.text    "aspect_ratio",                       :limit => 16777215
+    t.text    "frame_rate",                         :limit => 16777215
+    t.text    "language",                           :limit => 16777215
+    t.text    "annotation",                         :limit => 16777215
     t.integer "essence_track_type_id"
     t.integer "essence_track_identifier_source_id"
+    t.string  "playback_speed"
+    t.string  "playback_speed_units_of_measure"
+    t.string  "sampling_rate_units_of_measure"
   end
 
   add_index "essence_tracks", ["instantiation_id"], :name => "index_essence_tracks_on_instantiation_id"
@@ -364,6 +368,11 @@ ActiveRecord::Schema.define(:version => 20111221234418) do
 
   add_index "instantiation_generations", ["name"], :name => "index_format_generations_on_name"
 
+  create_table "instantiation_generations_instantiations", :id => false, :force => true do |t|
+    t.integer "instantiation_id"
+    t.integer "instantiation_generation_id"
+  end
+
   create_table "instantiation_media_types", :force => true do |t|
     t.string  "name",                       :null => false
     t.boolean "visible", :default => false, :null => false
@@ -374,27 +383,31 @@ ActiveRecord::Schema.define(:version => 20111221234418) do
   create_table "instantiations", :force => true do |t|
     t.integer  "asset_id"
     t.integer  "format_id"
-    t.text     "format_location",              :limit => 16777215, :null => false
+    t.text     "format_location",                   :limit => 16777215, :null => false
     t.integer  "instantiation_media_type_id"
-    t.integer  "instantiation_generation_id"
     t.string   "format_file_size"
     t.string   "format_time_start"
     t.string   "format_duration"
     t.string   "format_data_rate"
     t.integer  "instantiation_color_id"
-    t.text     "format_tracks",                :limit => 16777215
-    t.text     "format_channel_configuration", :limit => 16777215
+    t.text     "format_tracks",                     :limit => 16777215
+    t.text     "format_channel_configuration",      :limit => 16777215
     t.string   "language"
-    t.text     "alternative_modes",            :limit => 16777215
+    t.text     "alternative_modes",                 :limit => 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "uuid",                         :limit => 36,       :null => false
+    t.string   "uuid",                              :limit => 36,       :null => false
     t.string   "template_name"
     t.integer  "creator_id"
     t.integer  "updater_id"
     t.text     "start_time"
     t.text     "end_time"
     t.text     "time_annotation"
+    t.string   "format_data_rate_units_of_measure"
+    t.string   "format_file_size_units_of_measure"
+    t.text     "standard"
+    t.text     "standard_source"
+    t.text     "standard_ref"
   end
 
   add_index "instantiations", ["asset_id"], :name => "index_instantiations_on_asset_id"

@@ -1,7 +1,7 @@
 <% f.inputs do %>
-  <%= f.input :coverage_type, :as => :radio, :collection => ["Spatial", "Temporal"], :label => "Type" %>
-  <%= f.input :coverage, :as => :string %>
-  <%= f.input :source, :as => :string %>
-  <%= f.input :ref, :as => :string %>
+  <%= f.input :coverage_type, :as => :radio, :collection => ["Spatial", "Temporal"], :label => "Type", :required => false %>
+  <%= f.input :coverage, :as => :string, :required => false %>
+  <%= f.input :source, :as => :string, :required => false %>
+  <%= f.input :ref, :as => :string, :required => false %>
   <%= link_to_remove_fields "remove", f %>
 <% end %>

@@ -47,7 +47,8 @@ module ApplicationHelper
   
   # Formtastic has_many form helper stuff
   def link_to_remove_fields(name, f)
-    f.input(:_destroy, :as => :hidden) + link_to_function(name, "remove_fields(this)")
+    f.input(:_destroy, :as => :hidden) + 
+    content_tag(:li, link_to_function(name, "remove_fields(this)", :class => "remove"), :class => "remove-wrapper")
   end
   
   def link_to_add_fields(name, f, association)
@@ -67,5 +68,9 @@ module ApplicationHelper
   # Displays yes or no given a boolean
   def yes_or_no(boolean)
     boolean ? "Yes" : "No"
+  end
+  
+  def prepopulate_language_tokens_for(object)
+    object.language_tokens.split(',').collect { |token| { :id => token, :name => ISO639::ISO639_CODES[token][:en] }.to_json }
   end
 end

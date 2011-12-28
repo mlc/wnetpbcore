@@ -2,7 +2,8 @@
   <%= f.input :description_type_name, :as => :pbcore_combobox,
                                       :input_html => { :class => "pbcore-autocomplete", 
                                                         "data-autocomplete-source" => description_types_path },
-                                      :label => "Type" %>
-  <%= f.input :description %>
+                                      :label => "Type",
+                                      :required => false %>
+  <%= f.input :description, :required => false %>
   <%= link_to_remove_fields "remove", f %>
 <% end %>

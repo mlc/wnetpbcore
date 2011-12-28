@@ -61,4 +61,18 @@ class InstantiationGenerationsController < PicklistsController
        "Text/Transcript - program"
       ].to_set.freeze
   end
+  
+  def index
+    respond_to do |format|
+      format.html do
+        super
+      end
+      format.json do
+        render :json => InstantiationGeneration.all( 
+                                     :conditions => ["name like ? and visible = 1", "%#{params[:q]}%"],
+                                     :order => "name ASC",
+                                     :limit => 100).collect { |ig| { :id => ig.id, :name => ig.name }}
+      end
+    end
+  end
 end

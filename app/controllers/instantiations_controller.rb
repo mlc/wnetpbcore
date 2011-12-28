@@ -119,7 +119,7 @@ class InstantiationsController < ApplicationController
     @instantiation.transaction do
       parsed_instantiation = Instantiation.from_xml(params[:xml])
       [:format_ids, :instantiation_dates, :instantiation_dimensions, :essence_tracks, :annotations, :format, ## WTF DATE_AVAILABLES :date_availables
-       :instantiation_media_type, :instantiation_generation, :instantiation_color, :format_location,
+       :instantiation_media_type, :instantiation_generations, :instantiation_color, :format_location,
        :format_file_size, :format_time_start, :format_duration,
        :format_data_rate, :format_tracks, :format_channel_configuration,
        :language, :alternative_modes].each do |field|

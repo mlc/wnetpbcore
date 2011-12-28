@@ -24,7 +24,7 @@ class Asset < ActiveRecord::Base
                   {:instantiations => [{:format_ids => :format_identifier_source},
                                        :format,
                                        :instantiation_media_type,
-                                       :instantiation_generation,
+                                       :instantiation_generations,
                                        :instantiation_color,
                                        {:essence_tracks => [:essence_track_type, :essence_track_identifier_source]},
                                        :instantiation_dates,

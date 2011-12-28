@@ -1,0 +1,26 @@
+<% f.inputs do %>
+  <%= f.input :essence_track_type, :as => :pbcore_combobox,
+                                   :input_html => { :class => "pbcore-autocomplete", 
+                                                    "data-autocomplete-source" => essence_track_types_path },
+                                   :label => "Type",
+                                   :required => false %>
+  <%= f.input :identifier, :as => :string, :required => false %>
+  <%= f.input :standard,   :as => :string, :label => "Standard", :required => false %>
+  <%= f.input :encoding,   :as => :string, :required => false %>
+  <%= f.input :data_rate,  :as => :string, :required => false %>
+  <%= f.input :time_start, :as => :string, :required => false %>
+  <%= f.input :duration,   :as => :string, :required => false %>
+  <%= f.input :bit_depth,  :as => :string, :required => false %>
+  <%= f.input :frame_rate, :as => :string, :required => false %>
+  <%= f.input :playback_speed, :required => false, :wrapper_html => { :class => "col-1" } %>
+  <%= f.input :playback_speed_units_of_measure, :label => "Units of Measure", :required => false, :wrapper_html => { :class => "col-2" } %>
+  <%= f.input :sampling_rate, :as=> :string, :wrapper_html => { :class => "col-1" } %>
+  <%= f.input :sampling_rate_units_of_measure, :label => "Units of Measure", :required => false, :wrapper_html => { :class => "col-2" } %>
+  <%= f.input :frame_size, :as => :string, :required => false %>
+  <%= f.input :aspect_ratio, :as => :string, :required => false %>
+  <%= f.input :language_tokens, :label => "Languages", 
+                                :input_html => { "data-pre" => prepopulate_language_tokens_for(f.object),
+                                                 :class => "language-tokens" }, 
+                                :required => false %>
+  <%= link_to_remove_fields "Remove", f %>
+<% end %>

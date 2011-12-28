@@ -10,15 +10,16 @@ class Instantiation < ActiveRecord::Base
   belongs_to :asset
   belongs_to :format
   belongs_to :instantiation_media_type
-  belongs_to :instantiation_generation
   belongs_to :instantiation_color
-
-  has_many :format_ids,               :dependent => :destroy
-  has_many :instantiation_dates,      :dependent => :destroy
-  has_many :instantiation_dimensions, :dependent => :destroy
-  has_many :essence_tracks,           :dependent => :destroy
-  has_many :annotations,              :dependent => :destroy
-  has_many :borrowings,               :dependent => :destroy
+  
+  has_and_belongs_to_many :instantiation_generations
+  
+  has_many :format_ids,                     :dependent => :destroy
+  has_many :instantiation_dates,            :dependent => :destroy
+  has_many :instantiation_dimensions,       :dependent => :destroy
+  has_many :essence_tracks,                 :dependent => :destroy
+  has_many :annotations, :as => :container, :dependent => :destroy
+  has_many :borrowings,                     :dependent => :destroy
 
   stampable
 
@@ -54,19 +55,20 @@ class Instantiation < ActiveRecord::Base
       record._working_xml << XML::Node.new(eltname, record.format.name)
     end
   end
+  xml_string "instantiationStandard", :standard, { "ref" => :standard_ref }, { "source" => :standard_source }
   xml_string "instantiationLocation", :format_location
   xml_string "instantiationMediaType", :instantiation_media_type
   xml_string "instantiationGenerations", :instantiation_generation
-  xml_string "instantiationFileSize", :format_file_size
+  xml_string "instantiationFileSize", :format_file_size, { "unitsOfMeasure" => :format_file_size_units_of_measure }
   xml_string "instantiationTimeStart", :format_time_start
   xml_string "instantiationDuration", :format_duration
-  xml_string "instantiationDataRate", :format_data_rate
+  xml_string "instantiationDataRate", :format_data_rate, { "unitsOfMeasure" => :format_data_rate_units_of_measure }
   xml_string "instantiationColors", :instantiation_color
   xml_string "instantiationTracks", :format_tracks
   xml_string "instantiationChannelConfiguration", :format_channel_configuration
   xml_string "instantiationLanguage", :language
   xml_string "instantiationAlternativeModes", :alternative_modes
-  xml_subelements "pbcoreEssenceTrack", :essence_tracks
+  xml_subelements "instantiationEssenceTrack", :essence_tracks
   xml_subelements "instantiationAnnotation", :annotations
   
   def format_type
@@ -103,6 +105,11 @@ class Instantiation < ActiveRecord::Base
   
   def language_tokens=(tokens)
     self.language = tokens.gsub(/,/, ";") if tokens.present?
+  end
+  
+  attr_reader :instantiation_generation_tokens
+  def instantiation_generation_tokens=(ids)
+    self.instantiation_generation_ids = ids.split(",")
   end
   
   def identifier

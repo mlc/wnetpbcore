@@ -1,6 +1,6 @@
 function remove_fields(link) {
   $(link).prev("li").find("input[type=hidden]").val("1");
-  $(link).closest("ol").hide();
+  $(link).closest("fieldset").hide();
 }
 
 function add_fields(link, association, content) {
@@ -164,7 +164,12 @@ $(function() {
     prePopulate: $(this).data("pre")
   });
   
-  $("#instantiation_language_tokens").tokenInput("/languages.json", {
+  $("#instantiation_language_tokens, input.language-tokens").tokenInput("/languages.json", {
+    crossDomain: false,
+    prePopulate: $(this).data("pre")
+  });
+  
+  $("#instantiation_instantiation_generation_tokens").tokenInput("/instantiation_generations.json", {
     crossDomain: false,
     prePopulate: $(this).data("pre")
   });

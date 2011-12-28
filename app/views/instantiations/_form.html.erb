@@ -19,29 +19,62 @@
   <% end %>
   <%= add_another form, :instantiation_dimensions %>
   
+  <h3>Instantiation Standard</h3>
+  <% form.inputs do %>
+    <%= form.input :standard, :as => :string, :required => false %>
+    <%= form.input :standard_ref, :as => :string, :label => "Ref", :required => false %>
+    <%= form.input :standard_source, :as => :string, :label => "Source", :required => false %>
+  <% end %>
+  
   <h3>Instantiation Information</h3>
   <% form.inputs do %>
     <%= form.input :format_name, :as => :pbcore_instantiation_format, 
                                  :collection => [["Physical", "FormatPhysical"], ["Digital", "FormatDigital"]],
                                  :input_html => { :class => "pbcore-autocomplete", 
                                                   "data-autocomplete-source" => autocomplete_source_for_format_type(@instantiation) },
-                                 :label => "Format" %>
-    <%= form.input :format_location,   :as => :string, :label => "Location" %>
-    <%= form.input :format_file_size,  :as => :string, :label => "File Size" %>
-    <%= form.input :format_time_start, :as => :string, :label => "Time Start" %>
-    <%= form.input :format_duration,   :as => :string, :label => "Duration" %>
-    <%= form.input :format_data_rate,  :as => :string, :label => "Data Rate" %>
+                                 :label => "Format",
+                                 :required => false %>
+    <%= form.input :format_location,   :as => :string, 
+                                       :label => "Location",
+                                       :required => false %>
+    <%= form.input :instantiation_generation_tokens, :label => "Generations", 
+                                                     :input_html => { "data-pre" => @instantiation.instantiation_generations.collect { |ig| { :id => ig.id, :name => ig.name }.to_json }},
+                                                     :required => false %>
+    <%= form.input :format_time_start, :as => :string, :label => "Time Start", :required => false, :wrapper_html => { :class => "col-1" } %>
+    <%= form.input :format_duration,   :as => :string, :label => "Duration", :required => false, :wrapper_html => { :class => "col-2" } %>
+    <%= form.input :format_file_size,  :as => :string,
+                                       :label => "File Size",
+                                       :required => false,
+                                       :wrapper_html => { :class => "col-1" } %>
+    <%= form.input :format_file_size_units_of_measure, 
+                                       :label => "Units of Measure",
+                                       :required => false,
+                                       :wrapper_html => { :class => "col-2" } %>
+    <%= form.input :format_data_rate,  :as => :string, :label => "Data Rate", :required => false, :wrapper_html => { :class => "col-1" } %>
+    <%= form.input :format_data_rate_units_of_measure, :label => "Units of Measure", :required => false, :wrapper_html => { :class => "col-2" } %>
     <%= form.input :instantiation_color_name, :as => :pbcore_combobox,
                                               :input_html => { :class => "pbcore-autocomplete",
                                                                "data-autocomplete-source" => InstantiationColor.visible.map(&:name).to_json },
-                                              :label => "Colors" %>
-    <%= form.input :format_tracks, :as => :string, :label => "Tracks" %>
-    <%= form.input :format_channel_configuration, :as => :string, :label => "Channel Configuration" %>
-    <%= form.input :language_tokens, :label => "Languages", :input_html => { "data-pre" => @instantiation.language_tokens.split(',').collect { |token| { :id => token, :name => ISO639::ISO639_CODES[token][:en] }}.to_json } %>
-    <%= form.input :alternative_modes, :as => :string %>
+                                              :label => "Colors",
+                                              :required => false %>
+    <%= form.input :format_tracks, :as => :string, :label => "Tracks", :required => false %>
+    <%= form.input :format_channel_configuration, :as => :string, :label => "Channel Configuration", :required => false %>
+    <%= form.input :language_tokens, :label => "Languages",
+                                     :input_html => { "data-pre" => prepopulate_language_tokens_for(@instantiation) },
+                                     :required => false %>
+    <%= form.input :alternative_modes, :as => :string, :required => false %>
   <% end %>
+  
   <h3>Essence Tracks</h3>
+  <% form.semantic_fields_for :essence_tracks do |f| %>
+    <%= render 'essence_track_fields', :f => f %>
+  <% end %>
+  <%= add_another form, :essence_tracks %>
+  
   <h3>Annotations</h3>
+  <% form.semantic_fields_for :annotations do |f| %>
+    <%= render 'annotation_fields', :f => f %>
+  <% end %>
   
   <%= form.buttons %>
 <% end %>

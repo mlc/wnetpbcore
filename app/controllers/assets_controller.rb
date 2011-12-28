@@ -151,7 +151,7 @@ class AssetsController < ApplicationController
     end
 
     if @success
-      flash[:message] = "Successfully created new Asset. You must now add an instantiation for the record to be valid PBCore."
+      flash[:message] = "Successfully created new Asset."
     end
   end
   

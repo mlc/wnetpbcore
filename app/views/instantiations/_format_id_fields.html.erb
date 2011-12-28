@@ -1,8 +1,13 @@
 <%f.inputs do %>
-  <%= f.input :format_identifier, :as => :string, :label => "Identifier" %>
+  <%= f.input :format_identifier, :as => :string, 
+                                  :label => "Identifier", 
+                                  :required => false,
+                                  :wrapper_html => { :class => "col-1" } %>
   <%= f.input :format_identifier_source_name, :as => :pbcore_combobox,
                                        :input_html => { :class => "pbcore-autocomplete", 
                                                         "data-autocomplete-source" => format_identifier_sources_path },
-                                       :label => "Source" %>
+                                       :label => "Source",
+                                       :required => false,
+                                       :wrapper_html => { :class => "col-2" } %>
   <%= link_to_remove_fields "remove", f %>
 <% end %>

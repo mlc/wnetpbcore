@@ -3,7 +3,7 @@ ul.token-input-list {
     overflow: hidden; 
     height: auto !important; 
     height: 1%;
-    width: 500px;
+    width: 450px;
     border: 1px solid #999;
     cursor: text;
     font-size: 12px;
@@ -64,7 +64,7 @@ li.token-input-selected-token span {
 
 div.token-input-dropdown {
     position: absolute;
-    width: 500px;
+    width: 450px;
     background-color: #fff;
     overflow: hidden;
     border-left: 1px solid #ccc;
