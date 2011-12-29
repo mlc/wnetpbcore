@@ -71,10 +71,17 @@
   <% end %>
   <%= add_another form, :essence_tracks %>
   
+  <h3>Relations</h3>
+  <% form.semantic_fields_for :instantiation_relations do |f| %>
+    <%= render 'instantiation_relation_fields', :f => f %>
+  <% end %>
+  <%= add_another form, :instantiation_relations %>
+  
   <h3>Annotations</h3>
   <% form.semantic_fields_for :annotations do |f| %>
     <%= render 'annotation_fields', :f => f %>
   <% end %>
+  <%= add_another form, :annotations %>
   
   <%= form.buttons %>
 <% end %>

@@ -17,6 +17,7 @@ class Instantiation < ActiveRecord::Base
   has_many :format_ids,                     :dependent => :destroy
   has_many :instantiation_dates,            :dependent => :destroy
   has_many :instantiation_dimensions,       :dependent => :destroy
+  has_many :instantiation_relations,        :dependent => :destroy
   has_many :essence_tracks,                 :dependent => :destroy
   has_many :annotations, :as => :container, :dependent => :destroy
   has_many :borrowings,                     :dependent => :destroy
@@ -26,6 +27,7 @@ class Instantiation < ActiveRecord::Base
   accepts_nested_attributes_for :format_ids,               :allow_destroy => true
   accepts_nested_attributes_for :instantiation_dates,      :allow_destroy => true
   accepts_nested_attributes_for :instantiation_dimensions, :allow_destroy => true
+  accepts_nested_attributes_for :instantiation_relations,  :allow_destroy => true
   accepts_nested_attributes_for :essence_tracks,           :allow_destroy => true
   accepts_nested_attributes_for :annotations,              :allow_destroy => true
 
@@ -69,6 +71,7 @@ class Instantiation < ActiveRecord::Base
   xml_string "instantiationLanguage", :language
   xml_string "instantiationAlternativeModes", :alternative_modes
   xml_subelements "instantiationEssenceTrack", :essence_tracks
+  xml_subelements "instantiationRelation", :instantiation_relations
   xml_subelements "instantiationAnnotation", :annotations
   
   def format_type

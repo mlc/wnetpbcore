@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  instantiation_id: 1
+  instantiation_relation_identifier: MyString
+  relation_type_id: 1
+  creator_id: 1
+  updater_id: 1
+
+two:
+  instantiation_id: 1
+  instantiation_relation_identifier: MyString
+  relation_type_id: 1
+  creator_id: 1
+  updater_id: 1

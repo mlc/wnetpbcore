@@ -27,7 +27,7 @@ class Asset < ActiveRecord::Base
                                        :instantiation_media_type,
                                        :instantiation_generations,
                                        :instantiation_color,
-                                       {:essence_tracks => [:essence_track_type, :essence_track_identifier_source, :annotations]},
+                                       {:essence_tracks => [:essence_track_type, :annotations]}, # add back essence track identifier source
                                        :instantiation_dates,
                                        :annotations]}
                  ]
