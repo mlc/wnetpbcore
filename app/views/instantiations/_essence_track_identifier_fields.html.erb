@@ -1,0 +1,11 @@
+<% f.inputs do %>
+  <%= f.input :identifier, :as => :string, 
+                           :wrapper_html => { :class => "col-1" },
+                           :required => false %>
+  <%= f.input :essence_track_identifier_source_name, :as => :pbcore_combobox,
+                                                     :input_html => { :class => "pbcore-autocomplete", 
+                                                     "data-autocomplete-source" => essence_track_identifier_sources_path },
+                                                     :wrapper_html => { :class => "col-2" },
+                                                     :required => false %>
+  <%= link_to_remove_fields "remove", f %>
+<% end %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  essence_track_id: 1
+  name: MyText
+  essence_track_identifier_source_id: 1
+
+two:
+  essence_track_id: 1
+  name: MyText
+  essence_track_identifier_source_id: 1

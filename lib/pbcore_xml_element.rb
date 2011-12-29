@@ -28,7 +28,7 @@ module PbcoreXmlElement
       from_xml_elt do |record|
         elts = record._working_xml.find("pbcore:#{attr}", PBCORE_NAMESPACE)
         unless elts.empty? || elts[0].child.nil?
-          record.store_string_or_name(field, elts[0].content)
+          record.store_string_or_name(field, elts[0].content) # CGI.unescape this?
           fetch_attributes(record, elts[0], attributes)
         end
       end
@@ -36,7 +36,7 @@ module PbcoreXmlElement
         builder = record._working_xml
         value = record.string_or_name(field)
         unless value.nil? || value.empty?
-          node = XML::Node.new(attr, value)
+          node = XML::Node.new(attr, CGI.escapeHTML(value))
           store_attributes(record, node, attributes)
           builder << node
         end
@@ -71,8 +71,7 @@ module PbcoreXmlElement
       klass ||= field.to_s.singularize.camelize.constantize
       from_xml_elt do |record|
         elts = record._working_xml.find("pbcore:#{attr}", PBCORE_NAMESPACE)
-        objs = elts.map{|elt| klass.from_xml(elt)}.select{|obj| 
-#          $stderr.puts obj.inspect
+        objs = elts.map{|elt| klass.from_xml(elt)}.select{|obj|
           obj.valid?
         }
         record.send("#{field}=".to_sym, objs)
@@ -94,14 +93,14 @@ module PbcoreXmlElement
       from_xml_elt do |record|
         elts = record._working_xml.find("pbcore:#{attr1}/pbcore:#{attr2}", PBCORE_NAMESPACE)
         elts = elts.select{|elt| !elt.empty? && !elt.child.nil?}
-        record.send("#{field}=".to_sym, elts.map{|elt| klass.find_or_create_by_name(elt.child.content)})
+        record.send("#{field}=".to_sym, elts.map{|elt| klass.find_or_create_by_name(elt.child.content)}) # CGI.unescapeHTML this?
       end
       to_xml_elt do |record|
         builder = record._working_xml
         record.send(field).each do |item|
           node = XML::Node.new(attr1)
           builder << node
-          node << XML::Node.new(attr2, item.name)
+          node << XML::Node.new(attr2, CGI.escapeHTML(item.name))
         end
       end
     end

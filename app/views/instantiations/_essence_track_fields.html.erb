@@ -1,10 +1,14 @@
 <% f.inputs do %>
-  <%= f.input :essence_track_type, :as => :pbcore_combobox,
+  <%= link_to_remove_fields "Remove", f %>
+  <%= f.input :essence_track_type_name, :as => :pbcore_combobox,
                                    :input_html => { :class => "pbcore-autocomplete", 
                                                     "data-autocomplete-source" => essence_track_types_path },
                                    :label => "Type",
                                    :required => false %>
-  <%= f.input :identifier, :as => :string, :required => false %>
+  <% f.semantic_fields_for :essence_track_identifiers do |identifier| %>
+    <%= render 'essence_track_identifier_fields', :f => identifier %>
+  <% end %>
+  <%= add_another f, :essence_track_identifiers, "Add new identifier" %>
   <%= f.input :standard,   :as => :string, :label => "Standard", :required => false %>
   <%= f.input :encoding,   :as => :string, :required => false %>
   <%= f.input :data_rate,  :as => :string, :required => false %>
@@ -22,5 +26,8 @@
                                 :input_html => { "data-pre" => prepopulate_language_tokens_for(f.object),
                                                  :class => "language-tokens" }, 
                                 :required => false %>
-  <%= link_to_remove_fields "Remove", f %>
+  <% f.semantic_fields_for :annotations do |annotation| %>
+    <%= render 'annotation_fields', :f => annotation %>
+  <% end %>
+  <%= add_another f, :annotations, "Add new annotation" %>
 <% end %>

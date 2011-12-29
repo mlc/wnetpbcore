@@ -59,9 +59,9 @@ module ApplicationHelper
     link_to_function(name, h("add_fields(this, '#{association}', '#{escape_javascript(fields)}')"))
   end
   
-  def add_another(f, association)
+  def add_another(f, association, link_text = "Add another...")
     content_tag(:p, :class => "add-another") do
-      link_to_add_fields("Add another...", f, association)
+      link_to_add_fields(link_text, f, association)
     end
   end
   

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111228065034) do
+ActiveRecord::Schema.define(:version => 20111229191620) do
 
   create_table "annotations", :force => true do |t|
     t.integer "container_id"
@@ -216,6 +216,14 @@ ActiveRecord::Schema.define(:version => 20111228065034) do
     t.boolean "visible", :default => false, :null => false
   end
 
+  create_table "essence_track_identifiers", :force => true do |t|
+    t.integer  "essence_track_id"
+    t.text     "identifier"
+    t.integer  "essence_track_identifier_source_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "essence_track_types", :force => true do |t|
     t.string  "name",                       :null => false
     t.boolean "visible", :default => false, :null => false
@@ -223,21 +231,19 @@ ActiveRecord::Schema.define(:version => 20111228065034) do
 
   create_table "essence_tracks", :force => true do |t|
     t.integer "instantiation_id"
-    t.text    "identifier",                         :limit => 16777215
-    t.text    "standard",                           :limit => 16777215
-    t.text    "encoding",                           :limit => 16777215
-    t.text    "data_rate",                          :limit => 16777215
-    t.text    "time_start",                         :limit => 16777215
-    t.text    "duration",                           :limit => 16777215
-    t.text    "bit_depth",                          :limit => 16777215
-    t.text    "sampling_rate",                      :limit => 16777215
-    t.text    "frame_size",                         :limit => 16777215
-    t.text    "aspect_ratio",                       :limit => 16777215
-    t.text    "frame_rate",                         :limit => 16777215
-    t.text    "language",                           :limit => 16777215
-    t.text    "annotation",                         :limit => 16777215
+    t.text    "standard",                        :limit => 16777215
+    t.text    "encoding",                        :limit => 16777215
+    t.text    "data_rate",                       :limit => 16777215
+    t.text    "time_start",                      :limit => 16777215
+    t.text    "duration",                        :limit => 16777215
+    t.text    "bit_depth",                       :limit => 16777215
+    t.text    "sampling_rate",                   :limit => 16777215
+    t.text    "frame_size",                      :limit => 16777215
+    t.text    "aspect_ratio",                    :limit => 16777215
+    t.text    "frame_rate",                      :limit => 16777215
+    t.text    "language",                        :limit => 16777215
+    t.text    "annotation",                      :limit => 16777215
     t.integer "essence_track_type_id"
-    t.integer "essence_track_identifier_source_id"
     t.string  "playback_speed"
     t.string  "playback_speed_units_of_measure"
     t.string  "sampling_rate_units_of_measure"

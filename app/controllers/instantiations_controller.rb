@@ -116,26 +116,34 @@ class InstantiationsController < ApplicationController
   
   def update
     @instantiation = @asset.instantiations.find(params[:id])
-    @instantiation.transaction do
-      parsed_instantiation = Instantiation.from_xml(params[:xml])
-      [:format_ids, :instantiation_dates, :instantiation_dimensions, :essence_tracks, :annotations, :format, ## WTF DATE_AVAILABLES :date_availables
-       :instantiation_media_type, :instantiation_generations, :instantiation_color, :format_location,
-       :format_file_size, :format_time_start, :format_duration,
-       :format_data_rate, :format_tracks, :format_channel_configuration,
-       :language, :alternative_modes].each do |field|
-        @instantiation.send("#{field}=".to_sym, parsed_instantiation.send(field))
-      end
-      @success = @instantiation.save
-      if @success
-        @asset.save
+    
+    respond_to do |format|
+      if @instantiation.update_attributes(params[:instantiation])
+        format.html { redirect_to :back, :message => "Update was successful" }
       else
-        raise ActiveRecord::Rollback
+        format.html { redirect_to :back, :message => "Update was unsuccessful" }
       end
     end
-    if @success
-      @asset.send_later(:index!)
-      flash[:message] = "Successfully updated your instantiation."
-    end
+    # @instantiation.transaction do
+    #       parsed_instantiation = Instantiation.from_xml(params[:xml])
+    #       [:format_ids, :instantiation_dates, :instantiation_dimensions, :essence_tracks, :annotations, :format, ## WTF DATE_AVAILABLES :date_availables
+    #        :instantiation_media_type, :instantiation_generations, :instantiation_color, :format_location,
+    #        :format_file_size, :format_time_start, :format_duration,
+    #        :format_data_rate, :format_tracks, :format_channel_configuration,
+    #        :language, :alternative_modes].each do |field|
+    #         @instantiation.send("#{field}=".to_sym, parsed_instantiation.send(field))
+    #       end
+    #       @success = @instantiation.save
+    #       if @success
+    #         @asset.save
+    #       else
+    #         raise ActiveRecord::Rollback
+    #       end
+    #     end
+    #     if @success
+    #       @asset.send_later(:index!)
+    #       flash[:message] = "Successfully updated your instantiation."
+    #     end
   end
 
   def destroy
