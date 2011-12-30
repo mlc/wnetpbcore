@@ -77,6 +77,12 @@
   <% end %>
   <%= add_another form, :instantiation_relations %>
   
+  <h3>Rights</h3>
+  <% form.semantic_fields_for :instantiation_rights_summaries do |f| %>
+    <%= render 'instantiation_rights_summary_fields', :f => f %>
+  <% end %>
+  <%= add_another form, :instantiation_rights_summaries %>
+  
   <h3>Annotations</h3>
   <% form.semantic_fields_for :annotations do |f| %>
     <%= render 'annotation_fields', :f => f %>

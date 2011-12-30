@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111229215836) do
+ActiveRecord::Schema.define(:version => 20111229235050) do
 
   create_table "annotations", :force => true do |t|
     t.integer "container_id"
@@ -390,6 +390,17 @@ ActiveRecord::Schema.define(:version => 20111229215836) do
     t.integer  "instantiation_id"
     t.string   "instantiation_relation_identifier"
     t.integer  "relation_type_id"
+    t.integer  "creator_id"
+    t.integer  "updater_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "instantiation_rights_summaries", :force => true do |t|
+    t.integer  "instantiation_id"
+    t.text     "rights_summary"
+    t.text     "source"
+    t.text     "ref"
     t.integer  "creator_id"
     t.integer  "updater_id"
     t.datetime "created_at"

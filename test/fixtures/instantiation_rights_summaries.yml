@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  instantiation_id: 1
+  rights_summary: MyText
+  source: MyText
+  ref: MyText
+  creator_id: 1
+  updater_id: 1
+
+two:
+  instantiation_id: 1
+  rights_summary: MyText
+  source: MyText
+  ref: MyText
+  creator_id: 1
+  updater_id: 1

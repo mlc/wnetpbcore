@@ -5,8 +5,6 @@ class EssenceTrackIdentifier < ActiveRecord::Base
   belongs_to :essence_track_identifier_source
   #stampable
 
-  accepts_nested_attributes_for :essence_track_identifier_source
-
   xml_text_field :identifier
   xml_attributes({"source" => :essence_track_identifier_source})
   

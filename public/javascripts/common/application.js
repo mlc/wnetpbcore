@@ -1,5 +1,5 @@
 function remove_fields(link) {
-  $(link).closest("fieldset").find("input[type=hidden]").val("1");
+  $(link).parent("fieldset").find("input[type=hidden]").val("1");
   $(link).closest("fieldset").hide();
 }
 

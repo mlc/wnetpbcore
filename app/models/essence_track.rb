@@ -13,8 +13,7 @@ class EssenceTrack < ActiveRecord::Base
   DISPLAY_FIELDS = ["Identifier", "Standard", "Encoding", "Data Rate", "Time Start", "Duration", "Bit Depth", "Sampling Rate", "Frame Size", "Aspect Ratio", "Frame Rate", "Language", "Annotation"].map{|f| [f, ("" + f.gsub(' ', '').underscore).to_sym]}.freeze
   
   xml_string "essenceTrackType"
-  xml_string "essenceTrackIdentifier", :essence_track_identifiers
-  xml_string "essenceTrackIdentifierSource"
+  xml_subelements "essenceTrackIdentifier", :essence_track_identifiers
   xml_string "essenceTrackStandard", :standard
   xml_string "essenceTrackEncoding", :encoding
   xml_string "essenceTrackDataRate", :data_rate
