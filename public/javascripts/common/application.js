@@ -113,7 +113,20 @@ $(function() {
 
 function create_autocomplete (obj) {
   obj.autocomplete({
-    source: obj.data("autocomplete-source"),
+    source: function(request, response) {
+      var params = { term: request.term };
+      if (obj.data("autocomplete-source") == "/value_lists") {
+        params["value"] = obj.parent().next('li').find('input').attr('value');
+      }
+      $.ajax({
+        url: obj.data("autocomplete-source"),
+        dataType: 'json',
+        data: params,
+        success: function(data) {
+          response(data);
+        }
+      });
+    },
     minLength: 2
   });
 }

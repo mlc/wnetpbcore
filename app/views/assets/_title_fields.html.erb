@@ -1,5 +1,7 @@
 <% f.inputs do %>
-  <%= f.input :title, :as => :string,
+  <%= f.input :title, :as => :pbcore_combobox,
+                      :input_html => { :class => "pbcore-conditional-autocomplete",
+                                       "data-autocomplete-source" => value_lists_path },
                       :wrapper_html => { :class => "col-1" },
                       :required => false %>
   <%= f.input :title_type_name, :as => :pbcore_combobox,

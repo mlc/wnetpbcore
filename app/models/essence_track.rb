@@ -28,6 +28,11 @@ class EssenceTrack < ActiveRecord::Base
   xml_string "essenceTrackLanguage", :language
   xml_string "essenceTrackAnnotation", :annotations
   
+  def identifier
+    result = essence_track_identifiers
+    (result.empty? ? essence_track_identifiers : result).map{|id| id.identifier}.join(" / ")
+  end
+  
   def language_tokens
     if language.present?
       language.gsub(/;/, ",") 

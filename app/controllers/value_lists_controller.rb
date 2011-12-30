@@ -2,11 +2,24 @@
 # functionality for the Title section in the Asset form. As of 12/2011
 # WNYC uses this for titles of type Series and Collection.
 class ValueListsController < ApplicationController
-  before_filter :load_list
+  before_filter :load_list, :except => [:by_value]
   filter_access_to :all
+  filter_access_to :by_value, :require => :read
 
   def index
-    @value_lists = ValueList.all(:order => "category ASC, value ASC")
+    respond_to do |format|
+      format.html do
+        @value_lists = ValueList.all(:order => "category ASC, value ASC")
+      end
+      format.json do
+        if value_list = ValueList.first(:conditions => ["value = ?", params[:value]])
+          values = value_list.values.map(&:value)
+        else
+          values = []
+        end
+        render :json => values
+      end
+    end
   end
 
   def new
