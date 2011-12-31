@@ -1,0 +1,26 @@
+<h2><%= title "Relation Types" %></h2>
+<p>
+  <%= link_to 'Create new Relation Type', new_relation_type_path %>
+</p>
+<%= will_paginate @relation_types %>
+<table class="pbcore-admin">
+  <tr>
+    <th>Type</th>
+    <th>Visible</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @relation_types.each do |relation_type| -%>
+    <tr class="<%= cycle("odd", "even") -%><%= " visible" if relation_type.visible %>">
+      <td><%= relation_type.name %></td>                                      
+      <td class="visibility"><%= yes_or_no(relation_type.visible) %></td>
+      <td>
+        <%= link_to 'Edit', edit_relation_type_path(relation_type) %>
+      </td>
+      <td>
+        <%= link_to('Destroy', relation_type, :method => "delete", :confirm => "Are you sure?") if relation_type.safe_to_delete? %>
+      </td>
+    </tr>
+  <% end -%>
+</table>
+<%= will_paginate @relation_types %>

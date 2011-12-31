@@ -173,7 +173,14 @@ class AssetsController < ApplicationController
     else
       respond_to do |format|
         if @asset.update_attributes(params[:asset])
-          format.html { redirect_to @asset, :notice => 'Asset was successfully updated.' }
+          flash[:message] = 'Asset was successfully updated.'
+          format.html do
+            if params[:edit_instantiations]
+              redirect_to asset_instantiations_path(@asset)
+            else
+              redirect_to edit_asset_path(@asset)
+            end
+          end
         else
           format.html { render :action => "edit" }
         end

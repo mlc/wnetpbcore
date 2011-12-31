@@ -37,18 +37,18 @@ form.formtastic select,
 form.formtastic textarea,
 form.formtastic label { font-family: Helvetica, 'Microsoft Sans Serif', 'Arial Narrow', Arial, sans-serif; }
 form.formtastic label { font-weight: bold; color: black; }
-form.formtastic fieldset > ol > li { margin-left: 10px; margin-bottom: -5px; clear: left; }
-form.formtastic fieldset > ol > li.col-1,
-form.formtastic fieldset > ol > li.col-2 { display: block; float: left; width: 45%; }
-form.formtastic fieldset > ol > li.col-1 { clear: left; }
-form.formtastic fieldset > ol > li.col-2 { clear: none; }
-form.formtastic fieldset > ol > li.remove-wrapper { float: left; clear: none; margin-top: 10px; }
-form.formtastic fieldset > ol > li.col-1 > input,
-form.formtastic fieldset > ol > li.col-2 > input { width: 85%; }
-form.formtastic fieldset > ol > li > label { font-weight: bold; color: #000; font-size: 12px; float: none; width: 100%; }
-form.formtastic fieldset > ol > li input { border: 1px solid #999; background-color: white; padding: 2px; font-size: 12px; height: 14px; }
-form.formtastic fieldset > ol > li.hide-label label { display: none; }
-form.formtastic fieldset > ol > li.check_boxes fieldset ol li label { float:left; width:50%; }
-form.formtastic fieldset > ol > li > fieldset { width: 45%; float: left; display: block; }
-form.formtastic fieldset { background-color: #EEE; padding: 5px; margin: 0 10px 0 0; }
+form.formtastic fieldset.inputs > ol > li { margin-left: 10px; margin-bottom: -5px; clear: left; }
+form.formtastic fieldset.inputs > ol > li.col-1,
+form.formtastic fieldset.inputs > ol > li.col-2 { display: block; float: left; width: 45%; }
+form.formtastic fieldset.inputs > ol > li.col-1 { clear: left; }
+form.formtastic fieldset.inputs > ol > li.col-2 { clear: none; }
+form.formtastic fieldset.inputs > ol > li.remove-wrapper { float: left; clear: none; margin-top: 10px; }
+form.formtastic fieldset.inputs > ol > li.col-1 > input,
+form.formtastic fieldset.inputs > ol > li.col-2 > input { width: 85%; }
+form.formtastic fieldset.inputs > ol > li > label { font-weight: bold; color: #000; font-size: 12px; float: none; width: 100%; }
+form.formtastic fieldset.inputs > ol > li input { border: 1px solid #999; background-color: white; padding: 2px; font-size: 12px; height: 14px; }
+form.formtastic fieldset.inputs > ol > li.hide-label label { display: none; }
+form.formtastic fieldset.inputs > ol > li.check_boxes fieldset ol li label { float:left; width:50%; }
+form.formtastic fieldset.inputs > ol > li > fieldset { width: 45%; float: left; display: block; }
+form.formtastic fieldset.inputs { background-color: #EEE; padding: 5px; margin: 0 10px 0 0; }
 form.formtastic p.add-another { padding: 5px; margin: 0 0 0 0; display: block; width: 635px; -moz-border-radius-topleft: 0; -moz-border-radius-topright: 0; -moz-border-radius-bottomright: 10px; -moz-border-radius-bottomleft: 10px; border-top-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; background-color: #eee; text-align: center; }

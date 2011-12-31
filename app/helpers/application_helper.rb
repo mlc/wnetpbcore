@@ -2,6 +2,7 @@
 module ApplicationHelper
   def title(title)
     content_for(:title) { title }
+    title
   end
   
   def application_title

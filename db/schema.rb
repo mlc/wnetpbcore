@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111229235050) do
+ActiveRecord::Schema.define(:version => 20111231201350) do
 
   create_table "annotations", :force => true do |t|
     t.integer "container_id"
@@ -477,6 +477,7 @@ ActiveRecord::Schema.define(:version => 20111229235050) do
   create_table "relation_types", :force => true do |t|
     t.text    "name",    :limit => 16777215,                    :null => false
     t.boolean "visible",                     :default => false, :null => false
+    t.text    "ref"
   end
 
   create_table "relations", :force => true do |t|

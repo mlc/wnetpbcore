@@ -95,7 +95,9 @@
   
   <% unless @asset.new_record? %>
     <h2>Instantiations</h2>
-    <p>This asset currently has <%= pluralize(@asset.instantiations.count, "instantiation") %>. <%= link_to "Edit, modify, and delete instantiations for this record.", asset_instantiations_path(@asset) %>
+    <% form.buttons do %>
+      <%= form.submit "Update Asset and Edit #{pluralize(@asset.instantiations.count, "Instantiation")}", :name => "edit_instantiations" %>
+    <% end %>
   <% end %>
 
   <h2>Extensions</h2>
