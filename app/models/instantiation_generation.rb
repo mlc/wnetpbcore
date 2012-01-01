@@ -1,9 +1,12 @@
 class InstantiationGeneration < ActiveRecord::Base
+  include PbcoreXmlElement
   include Picklist
   has_and_belongs_to_many :instantiations
   quick_column :name
 
   named_scope :visible, :conditions => ["visible = 1"], :order => "name asc"
+
+  xml_text_field :name
 
   def safe_to_delete?
     instantiations.size == 0
