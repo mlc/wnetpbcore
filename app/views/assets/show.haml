@@ -67,7 +67,7 @@
         = render :partial => "field_one", :locals => {:key => "Language", :value => instantiation.language }
         = render :partial => "field_one", :locals => {:key => "Alternative Modes", :value => instantiation.alternative_modes }
         -#= render :partial => "field_array", :locals => {:objs => instantiation.date_availables, :field => "Date Available", :value => :to_s }
-        = render :partial => "field_array", :locals => {:objs => instantiation.annotations, :field => "Annotation", :value => :annotation}
+        = render :partial => "field_array", :locals => {:objs => instantiation.annotations, :field => "Annotation", :value => :annotation, :key => :annotation_type }
 
       - if instantiation.essence_tracks.any?
         %div.recordSection
