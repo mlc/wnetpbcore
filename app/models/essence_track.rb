@@ -17,14 +17,14 @@ class EssenceTrack < ActiveRecord::Base
   xml_string "essenceTrackStandard", :standard
   xml_string "essenceTrackEncoding", :encoding
   xml_string "essenceTrackDataRate", :data_rate
-  xml_string "essenceTrackTimeStart", :time_start
-  xml_string "essenceTrackDuration", :duration
-  xml_string "essenceTrackBitDepth", :bit_depth
-  xml_string "essenceTrackSamplingRate", :sampling_rate, { "unitsOfMeasure" => :sampling_rate_units_of_measure }
-  xml_string "essenceTrackFrameSize", :frame_size
-  xml_string "essenceTrackAspectRatio", :aspect_ratio
   xml_string "essenceTrackFrameRate", :frame_rate
   xml_string "essenceTrackPlaybackSpeed", :playback_speed, { "unitsOfMeasure" => :playback_speed_units_of_measure }
+  xml_string "essenceTrackSamplingRate", :sampling_rate, { "unitsOfMeasure" => :sampling_rate_units_of_measure }
+  xml_string "essenceTrackBitDepth", :bit_depth
+  xml_string "essenceTrackFrameSize", :frame_size
+  xml_string "essenceTrackAspectRatio", :aspect_ratio
+  xml_string "essenceTrackTimeStart", :time_start
+  xml_string "essenceTrackDuration", :duration
   xml_string "essenceTrackLanguage", :language
   xml_string "essenceTrackAnnotation", :annotations
   

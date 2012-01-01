@@ -9,6 +9,7 @@ class Asset < ActiveRecord::Base
   # IMPORTANT: This has to be kept in sync with ANY SCHEMA CHANGES!
   ALL_INCLUDES = [{:identifiers => [:identifier_source]},
                   {:titles => [:title_type]},
+                  {:asset_dates => [:asset_date_type]},
                   :subjects, 
                   {:descriptions => [:description_type]},
                   :genres,
@@ -24,11 +25,16 @@ class Asset < ActiveRecord::Base
                   :extensions,
                   {:instantiations => [{:format_ids => :format_identifier_source},
                                        :format,
+                                       {:instantiation_dates => [:instantiation_date_type]},
+                                       :instantiation_dimensions,
+                                       {:instantiation_relations => [:relation_type]},
                                        :instantiation_media_type,
                                        :instantiation_generations,
                                        :instantiation_color,
-                                       {:essence_tracks => [:essence_track_type, :annotations, { :essence_track_identifiers => :essence_track_identifier_source }]}, # add back essence track identifier source
-                                       :instantiation_dates,
+                                       :instantiation_rights_summaries,
+                                       {:essence_tracks => [:essence_track_type, 
+                                                            :annotations,
+                                                            {:essence_track_identifiers => :essence_track_identifier_source}]},
                                        :annotations]}
                  ]
 
@@ -81,8 +87,11 @@ class Asset < ActiveRecord::Base
   validates_size_of :titles, :minimum => 1, :message => "must have at least one entry"
   
   
-  # IMPORTANT: This has to be kept in sync with ANY SCHEMA CHANGES
+  # IMPORTANT: This has to be kept in sync with ANY SCHEMA CHANGES also order
+  # matters here.
   # PbcoreXmlElement Declarations
+  
+  # Intellectual Content
   xml_subelements "pbcoreAssetDate", :asset_dates  
   xml_subelements "pbcoreIdentifier", :identifiers
   to_xml_elt do |obj|
@@ -99,13 +108,19 @@ class Asset < ActiveRecord::Base
   xml_subelements "pbcoreCoverage", :coverages
   xml_subelements_picklist "pbcoreAudienceLevel", "audienceLevel", :audience_levels
   xml_subelements_picklist "pbcoreAudienceRating", "audienceRating", :audience_ratings
+  xml_subelements "pbcoreAnnotation", :annotations
+  
+  # Intellectual Property
   xml_subelements "pbcoreCreator", :creators
   xml_subelements "pbcoreContributor", :contributors
   xml_subelements "pbcorePublisher", :publishers
   xml_subelements "pbcoreRightsSummary", :rights_summaries
-  xml_subelements "pbcoreInstantiation", :instantiations
-  xml_subelements "pbcoreAnnotation", :annotations
+  
+  # Extensions
   xml_subelements "pbcoreExtension", :extensions
+  
+  # Instantiation
+  xml_subelements "pbcoreInstantiation", :instantiations
   
   # Sunspot/Solr definitions
   searchable do
