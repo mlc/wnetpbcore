@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111231201350) do
+ActiveRecord::Schema.define(:version => 20111231225416) do
 
   create_table "annotations", :force => true do |t|
     t.integer "container_id"
