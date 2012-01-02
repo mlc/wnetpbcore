@@ -19,16 +19,16 @@ class XmlController < ApplicationController
 
       counts = [0,[]]
 
-      havezip = MIME::Types.of(params[:xml].original_filename).any?{|t| t.content_type == "application/zip"}
-      if havezip
-        zip = Zip::ZipInputStream.new(params[:xml])
-        while (entry = zip.get_next_entry) do
+      # If this is a zip file
+      if MIME::Types.of(params[:xml].original_filename).any?{|t| t.content_type == "application/zip"}
+        zip_file = Zip::ZipInputStream.new(params[:xml])
+        while (entry = zip_file.get_next_entry) do
           next unless entry.file? && entry.size > 0
           next if entry.name =~ /__MACOS/ # attempt to ignore resource fork
           next if entry.name =~ /[\/\\]\.[^\/\\]*/ # and hidden files too
 
           # magical?
-          counts = counts.zip(Asset.import_xml(zip, entry.name)).map{|x,y| x+y}
+          counts = counts.zip(Asset.import_xml(zip_file, entry.name)).map{|x,y| x+y}
         end
       else
         counts = Asset.import_xml(params[:xml].read)

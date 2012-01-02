@@ -29,7 +29,9 @@ class InstantiationsController < ApplicationController
     else
       @instantiation.format_ids.build
     end
-    @instantiation.essence_tracks.build
+    
+    # I don't think we need this anymore with the new form design
+    #@instantiation.essence_tracks.build
 
     respond_to do |format|
       format.html
@@ -78,33 +80,42 @@ class InstantiationsController < ApplicationController
   end
   
   def create
-    @instantiation = Instantiation.from_xml(params[:xml])
-    uuid = @instantiation.format_ids.detect{|fid| fid.format_identifier_source == FormatIdentifierSource::OUR_UUID_SOURCE}
-    unless uuid.nil?
-      @instantiation.format_ids -= [uuid]
-      uuid = uuid.format_identifier
-      old_us = @asset.instantiations.select{|inst| inst.uuid == uuid}
-      @instantiation.uuid = uuid
-      @asset.instantiations -= old_us
-    end
-    @asset.instantiations << @instantiation
-    if @asset.valid? && !old_us.nil?
-      old_us.each{|ou| ou.destroy}
-    end
     respond_to do |format|
-      format.js do
-        @success = @asset.save
-        if @success
-          @asset.send_later(:index!)
-          flash[:message] = "Successfully created new instantiation."
-        end
-      end
       format.xml do
+        @instantiation = Instantiation.from_xml(params[:xml])
+        uuid = @instantiation.format_ids.detect{|fid| fid.format_identifier_source == FormatIdentifierSource::OUR_UUID_SOURCE}
+        
+        unless uuid.nil?
+          @instantiation.format_ids -= [uuid]
+          uuid = uuid.format_identifier
+          old_us = @asset.instantiations.select{|inst| inst.uuid == uuid}
+          @instantiation.uuid = uuid
+          @asset.instantiations -= old_us
+        end
+        
+        @asset.instantiations << @instantiation
+        
+        if @asset.valid? && !old_us.nil?
+          old_us.each{|ou| ou.destroy}
+        end
+        
         if @asset.save
           @asset.send_later(:index!)
           render :xml => "<message severity='notice'>instantiation #{@instantiation.uuid} #{old_us.nil? ? "created" : "updated"}</message>"
         else
           render :xml => "<message severity='error'>sorry, couldn't import.</message>"
+        end
+      end
+      
+      format.html do
+        @instantiation = @asset.instantiations.build(params[:instantiation])
+        
+        if @instantiation.save
+          @asset.send_later(:index!)
+          flash[:message] = "Successfully created new instantiation."
+          redirect_to asset_instantiations_url(@asset)
+        else
+          render :action => "new"
         end
       end
     end
