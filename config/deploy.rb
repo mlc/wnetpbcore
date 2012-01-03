@@ -2,7 +2,6 @@ require 'erb'
 require 'json'
 require 'grit'
 require 'capistrano/ext/multistage'
-require "bundler/capistrano"
 
 def git_working_dir_branch
   repo = Grit::Repo.new(".")
@@ -318,15 +317,14 @@ namespace :delayed_job do
   end
 end
 
-# TODO - FIX THIS
 # http://github.com/javan/whenever/tree/master
 
-# after "deploy:symlink", "deploy:update_crontab"
-# 
-# namespace :deploy do
-#   desc "Update the crontab file"
-#   task :update_crontab, :roles => :db do
-#     god_str = exists?(:have_god) ? "-s have_god=1" : ''
-#     run "cd #{release_path} && PATH=\"#{rb_bin_path}:$PATH\" /usr/bin/env whenever -s server_type=#{server_type} #{god_str} --update-crontab #{application}"
-#   end
-# end
+after "deploy:symlink", "deploy:update_crontab"
+
+namespace :deploy do
+  desc "Update the crontab file"
+  task :update_crontab, :roles => :db do
+    god_str = exists?(:have_god) ? "-s have_god=1" : ''
+    run "cd #{release_path} && PATH=\"#{rb_bin_path}:$PATH\" /usr/bin/env whenever -s server_type=#{server_type} #{god_str} --update-crontab #{application}"
+  end
+end
