@@ -27,9 +27,6 @@ GEM
       actionpack (>= 2.3.7)
       activesupport (>= 2.3.7)
       i18n (~> 0.4)
-    grit (2.4.1)
-      diff-lcs (~> 1.1)
-      mime-types (~> 1.15)
     haml (3.0.25)
     i18n (0.6.0)
     libxml-ruby (2.2.2)
@@ -79,7 +76,6 @@ DEPENDENCIES
   exceptional
   fastercsv
   formtastic (= 1.2.4)
-  grit
   haml (~> 3.0.6)
   libxml-ruby
   libxslt-ruby (= 0.9.2)
