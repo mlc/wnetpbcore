@@ -26,23 +26,8 @@ Rails::Initializer.run do |config|
 
   # Specify gems that this application depends on. 
   # They can then be installed with "rake gems:install" on new installations.
-  config.gem 'haml', :version => '~> 3.0.6'
-  config.gem 'libxml-ruby', :lib => 'libxml' #, :version => '0.8.0'
-  config.gem 'libxslt-ruby', :lib => 'libxslt', :version => '0.9.2'
-  config.gem 'rubyzip', :lib => 'zip/zip'
-  config.gem 'mime-types', :lib => 'mime/types'
-  config.gem 'uuidtools', :version => '1.0.4'
-  config.gem 'mislav-will_paginate', :version => '~> 2.2.3', :lib => 'will_paginate', :source => 'http://gems.github.com'
-  config.gem 'whenever', :version => "0.4.1", :lib => false
-  config.gem 'rsolr', :version => '0.9.6' # NEWER VERSIONS ARE BUGGY!
-  config.gem 'sunspot', :version => "1.1.0", :lib => 'sunspot'
-  config.gem 'sunspot_rails', :version => "1.1.0", :lib => 'sunspot/rails'
-  config.gem 'grit'
-  config.gem 'aws-s3', :lib => 'aws/s3'
-  config.gem 'delayed_job', :lib => 'delayed_job', :version => "<2"
-  config.gem 'exceptional' if RAILS_ENV=='production'
-  config.gem 'fastercsv'
-  config.gem 'formtastic', :version => "1.2.4"
+
+  # Use Gemfile to specify gems and bundle install to install required gems
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.

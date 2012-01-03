@@ -8,3 +8,4 @@ public/javascripts/bundle_*
 public/stylesheets/bundle_*
 .DS_Store
 .rvmrc
+.bundle
