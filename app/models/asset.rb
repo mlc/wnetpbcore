@@ -245,8 +245,8 @@ class Asset < ActiveRecord::Base
   # IMPORTANT: Any changes to models or the schema might affect this code. 
   #            CHECK THIS WHEN THE SCHEMA CHANGES!
   def merge(new_asset)
-    [:identifiers, :titles, :descriptions, :relations, :coverages, :creators, :contributors,
-      :publishers, :rights_summaries, :instantiations, :extensions, :asset_dates].each do |field|
+    [:identifiers, :titles, :asset_dates, :descriptions, :relations, :coverages, :creators, :contributors,
+      :publishers, :rights_summaries, :instantiations, :annotations, :extensions].each do |field|
       current_fields = self.send(field)
       new_fields     = new_asset.send(field)
 
@@ -365,8 +365,8 @@ class Asset < ActiveRecord::Base
     dedupe_field(:contributors, :contributor, :contributor_role_id, :asset_id)
     dedupe_field(:publishers, :publisher, :publisher_role_id, :asset_id)
     dedupe_field(:format_ids, :instantiation_id, :format_identifier, :format_identifier_source_id)
-    dedupe_field(:annotations, :instantiation_id, :annotation)
-    # dedupe_field(:date_availables, :instantiation_id, :date_available_start, :date_available_end)
+    dedupe_field(:annotations, :container_id, :container_type, :annotation, :annotation_type)
+    dedupe_field(:asset_dates, :asset_date_type_id, :asset_date, :asset_id)
     dedupe_trivial_field(:assets_subjects, :asset_id, :subject_id)
     dedupe_trivial_field(:assets_genres, :asset_id, :genre_id)
   end
