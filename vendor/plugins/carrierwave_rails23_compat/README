@@ -1,5 +1,0 @@
-Allows Carrierwave to be bundled as a plugin with a Rails 2.3 app.
-
-To use, just bundle this plugin along with Carrierwave in your Rails 2.3 app's vendor/plugins directory.
-
-This plugin backports ActiveSupport::Concern, ActiveModel::Validator and Module#anonymous?, and stubs out Rails::Railtie, under the CarrierWave namespace.
