@@ -2,6 +2,7 @@ require 'erb'
 require 'json'
 require 'grit'
 require 'capistrano/ext/multistage'
+require "bundler/capistrano"
 
 def git_working_dir_branch
   repo = Grit::Repo.new(".")

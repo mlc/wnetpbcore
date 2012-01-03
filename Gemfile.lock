@@ -86,6 +86,7 @@ DEPENDENCIES
   mime-types
   mysql
   rails (= 2.3.14)
+  rake (= 0.9.2.2)
   rsolr (= 0.12.1)
   rubyzip
   sunspot (= 1.1.0)

@@ -2,6 +2,7 @@ source 'http://rubygems.org/'
 gem 'rails', '2.3.14'
 gem 'mysql'
 
+gem 'rake', '0.9.2.2'
 gem 'haml', '~> 3.0.6'
 gem 'libxml-ruby', :require => 'libxml'
 gem 'libxslt-ruby', '0.9.2', :require => 'libxslt'
