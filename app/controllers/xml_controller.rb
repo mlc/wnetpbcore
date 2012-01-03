@@ -38,8 +38,8 @@ class XmlController < ApplicationController
       if successes.size == 1
         # Get the just uploaded asset and construct a success message with link
         # to newly created record
-        asset = Asset.find_by_uuid(successes[0])
-        flash.now[:message] = "asset <a href=\"#{asset_path(asset)}\">#{asset.title}</a> imported"
+        # asset = Asset.find_by_uuid(successes[0])
+        flash.now[:message] = "asset imported"
       else
         flash.now[:message] = "#{successes.size} records imported"
       end

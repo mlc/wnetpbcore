@@ -254,7 +254,9 @@ class Asset < ActiveRecord::Base
 
       # this is O(n²), but hopefully n is small enough that this isn't a huge problem
       new_fields.each do |fields|
-        current_fields << fields unless current_attrs.include?(clean_attributes(fields.attributes))
+        unless current_attrs.include?(clean_attributes(fields.attributes))
+          current_fields << fields 
+        end
       end
     end
     
@@ -403,8 +405,11 @@ class Asset < ActiveRecord::Base
     hash.delete("uuid")
     hash.delete("created_at")
     hash.delete("updated_at")
-    hash.delete("created_by")
-    hash.delete("updated_by")
+    hash.delete("creator_id")
+    hash.delete("updater_id")
+    hash.each do |key, value|
+      hash[key] = nil if value.blank?
+    end
     hash
   end
 
