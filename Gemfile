@@ -14,7 +14,7 @@ gem 'whenever', '0.4.1', :require => false
 gem 'rsolr', '0.12.1'
 gem 'sunspot', '1.1.0'
 gem 'sunspot_rails', '1.1.0', :require => 'sunspot/rails'
-# gem 'grit'
+gem 'grit'
 gem 'aws-s3', :require => 'aws/s3'
 gem 'delayed_job', '< 2'
 gem 'fastercsv'
