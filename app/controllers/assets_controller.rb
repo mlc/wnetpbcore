@@ -118,7 +118,18 @@ class AssetsController < ApplicationController
   def new
     @asset = Asset.new
     respond_to do |format|
-      format.html
+      format.html do
+        if PBCore.config["auto_id"]
+          identifier_source = IdentifierSource.find_or_create_by_name(PBCore.config["auto_id"])
+          @asset.identifiers = [Identifier.new(:identifier_source => identifier_source, :identifier => (identifier_source.next_sequence).to_s)]
+        end
+        if PBCore.config["default_title_types"]
+          PBCore.config["default_title_types"].each do |tt|
+            @asset.titles << Title.new(:title_type => TitleType.find_or_create_by_name(tt))
+          end
+        end
+      end
+      
       format.xml do
         if PBCore.config["auto_id"]
           identifier_source = IdentifierSource.find_or_create_by_name(PBCore.config["auto_id"])
@@ -144,14 +155,23 @@ class AssetsController < ApplicationController
   end
   
   def create
-    Asset.transaction do
-      @asset = Asset.from_xml(params[:xml])
-      @success = @asset.save
-      raise ActiveRecord::Rollback unless @success
-    end
-
-    if @success
-      flash[:message] = "Successfully created new Asset."
+    respond_to do |format|
+      format.html do
+        @asset = Asset.new(params[:asset])
+        if @asset.save
+          flash[:message] = "Successfully created new Asset."
+          redirect_to @asset
+        else
+          render :action => "new"
+        end
+      end
+      format.xml do
+        Asset.transaction do
+          @asset = Asset.from_xml(params[:xml])
+          @success = @asset.save
+          raise ActiveRecord::Rollback unless @success
+        end
+      end
     end
   end
   
