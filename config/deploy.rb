@@ -1,18 +1,18 @@
 require 'erb'
 require 'json'
-require 'grit'
+# require 'grit'
 require 'capistrano/ext/multistage'
 require "bundler/capistrano"
 
-def git_working_dir_branch
-  repo = Grit::Repo.new(".")
-  repo.head.name
-end
+# def git_working_dir_branch
+#   repo = Grit::Repo.new(".")
+#   repo.head.name
+# end
 
 set :application, "pbcore"
 set :scm, :git
 set :repository,  "git://github.com/mlc/wnetpbcore.git"
-set :branch, git_working_dir_branch || "master"
+set :branch, "master"
 
 # If you aren't deploying to /u/apps/#{application} on the target
 # servers (which is the default), you can specify the actual location
