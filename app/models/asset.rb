@@ -306,7 +306,7 @@ class Asset < ActiveRecord::Base
       end
 
       xmldoc = parser.parse
-    rescue ex
+    rescue Exception => ex
       return [[], [ex.to_s]]
     end
 

@@ -38,7 +38,7 @@
                                        :label => "Location",
                                        :required => false %>
     <%= form.input :instantiation_generation_tokens, :label => "Generations", 
-                                                     :input_html => { "data-pre" => @instantiation.instantiation_generations.collect { |ig| { :id => ig.id, :name => ig.name }.to_json }},
+                                                     :input_html => { "data-pre" => @instantiation.instantiation_generations.collect { |ig| { :id => ig.id, :name => ig.name }}.to_json },
                                                      :required => false %>
     <%= form.input :format_time_start, :as => :string, :label => "Time Start", :required => false, :wrapper_html => { :class => "col-1" } %>
     <%= form.input :format_duration,   :as => :string, :label => "Duration", :required => false, :wrapper_html => { :class => "col-2" } %>
