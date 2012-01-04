@@ -82,7 +82,7 @@ class Instantiation < ActiveRecord::Base
   end
   
   def format_type=(format)
-    # do nothing with this
+    # do nothing, see format_name=
   end
   
   def format_name
