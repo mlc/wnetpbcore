@@ -28,6 +28,7 @@
   
   <h3>Instantiation Information</h3>
   <% form.inputs do %>
+    <%= form.input :instantiation_media_type, :collection => InstantiationMediaType.visible, :label => "Media Type", :required => false %>
     <%= form.input :format_name, :as => :pbcore_instantiation_format, 
                                  :collection => [["Physical", "FormatPhysical"], ["Digital", "FormatDigital"]],
                                  :input_html => { :class => "pbcore-autocomplete", 
