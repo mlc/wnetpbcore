@@ -198,7 +198,7 @@ class AssetsController < ApplicationController
             if params[:edit_instantiations]
               redirect_to asset_instantiations_path(@asset)
             else
-              redirect_to edit_asset_path(@asset)
+              redirect_to @asset
             end
           end
         else

@@ -130,9 +130,10 @@ class InstantiationsController < ApplicationController
     
     respond_to do |format|
       if @instantiation.update_attributes(params[:instantiation])
-        format.html { redirect_to :back, :message => "Update was successful" }
+        flash[:message] = "Update was successful"
+        format.html { redirect_to @asset }
       else
-        format.html { redirect_to :back, :message => "Update was unsuccessful" }
+        format.html { redirect_to :back }
       end
     end
     # @instantiation.transaction do
