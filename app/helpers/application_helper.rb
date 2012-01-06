@@ -55,6 +55,11 @@ module ApplicationHelper
   def link_to_add_fields(name, f, association)
     new_object = f.object.class.reflect_on_association(association).klass.new
     fields = f.semantic_fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
+      # If this is an Essence Track, create an empty Essence Track Identifier
+      if new_object.class == EssenceTrack
+        new_object.essence_track_identifiers.build
+      end
+      
       render(association.to_s.singularize + "_fields", :f => builder)
     end
     link_to_function(name, h("add_fields(this, '#{association}', '#{escape_javascript(fields)}')"))
