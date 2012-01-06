@@ -46,7 +46,19 @@ module ApplicationHelper
     n.to_s + " " + (n == 1 ? text : text.pluralize)
   end
   
-  # Formtastic has_many form helper stuff
+  # This helper formats language values for the jQuery Token Input plugin
+  # that is used for the language pickers in Instantiations and Asset Tracks.
+  def prepopulate_language_tokens_for(object)
+    object.language_tokens.split(',').collect { |token| { :id => token, :name => ISO639::ISO639_CODES[token][:en] }.to_json }
+  end
+  
+  # Formtastic has_many form helpers
+  #
+  # These helper methods help create additional form elements via javascript.
+  # This is not unobtrusive javascript. Once the application has been upgraded
+  # to Rails 3.0, we can look at making all this unobtrusive javascript using
+  # https://github.com/ryanb/nested_form
+  #
   def link_to_remove_fields(name, f)
     f.input(:_destroy, :as => :hidden) + 
     content_tag(:li, link_to_function(name, "remove_fields(this)", :class => "remove"), :class => "remove-wrapper")
@@ -72,11 +84,12 @@ module ApplicationHelper
   end
   
   # Displays yes or no given a boolean
+  #
+  # This is used in some of the administrative forms to show the state of
+  # picklists in index level pages.
+  
   def yes_or_no(boolean)
     boolean ? "Yes" : "No"
   end
   
-  def prepopulate_language_tokens_for(object)
-    object.language_tokens.split(',').collect { |token| { :id => token, :name => ISO639::ISO639_CODES[token][:en] }.to_json }
-  end
 end
