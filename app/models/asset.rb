@@ -207,19 +207,7 @@ class Asset < ActiveRecord::Base
     build_xml(root)
     doc.to_s
   end
-  
-  def destroy_existing
-    return nil unless new_record?
-
-    possibility = identifiers.detect{|s| s.identifier_source_id == IdentifierSource::OUR_UUID_SOURCE.id}
-    if possibility
-      other = Asset.find_by_uuid(possibility.identifier)
-      self.identifiers -= [possibility]
-      self.uuid = possibility.identifier
-      other.destroy if other
-    end
-  end
-  
+    
   def title
     titles.map{|t| t.title}.join("; ")
   end
@@ -241,6 +229,37 @@ class Asset < ActiveRecord::Base
     instantiations.detect(&:thumbnail?)
   end
 
+  def destroy_existing
+    return nil unless new_record?
+
+    possibility = identifiers.detect{|s| s.identifier_source_id == IdentifierSource::OUR_UUID_SOURCE.id}
+    if possibility
+      other = Asset.find_by_uuid(possibility.identifier)
+      self.identifiers -= [possibility]
+      self.uuid = possibility.identifier
+      other.destroy if other
+    end
+  end
+
+  def merge_existing
+    return nil unless new_record?
+    
+    found = nil
+    self.identifiers.each do |identifier|
+      if identifier.identifier_source.auto_merge && (them = Identifier.find_by_identifier_and_identifier_source_id(identifier.identifier, identifier.identifier_source_id))
+        found = Asset.find(them.asset_id, :include => ALL_INCLUDES)
+        break
+      end
+    end
+
+    if found
+      found.merge(self)
+      found.save
+    end
+
+    found
+  end
+  
   # Copies the stuff from a new asset object into us.
   # IMPORTANT: Any changes to models or the schema might affect this code. 
   #            CHECK THIS WHEN THE SCHEMA CHANGES!
@@ -263,35 +282,6 @@ class Asset < ActiveRecord::Base
     [:genre_ids, :subject_ids, :audience_level_ids, :audience_rating_ids].each do |field|
       self.send("#{field}=".to_sym, self.send(field) | new_asset.send(field))
     end
-  end
-
-  def merge_existing
-    return nil unless new_record?
-
-    found = nil
-    self.identifiers.each do |identifier|
-      if identifier.identifier_source.auto_merge && (them = Identifier.find_by_identifier_and_identifier_source_id(identifier.identifier, identifier.identifier_source_id))
-        found = Asset.find(them.asset_id, :include => ALL_INCLUDES)
-        break
-      end
-    end
-
-    if found
-      found.merge(self)
-      found.save
-    end
-
-    found
-  end
-
-  # IMPORTANT: This needs to be checked when the SCHEMA or MODEL changes!
-  def self.full_text_fields
-    # there must be a DRY way to ask sunspot for this
-    [
-     :identifier, :title, :subject, :description, :genre, :relation, :coverage,
-     :audience_level, :audience_rating, :creator, :contributor, :publisher,
-     :rights, :extension, :location, :annotation, :date, :format
-    ]
   end
 
   # import some XML
@@ -355,6 +345,16 @@ class Asset < ActiveRecord::Base
     end
 
     doc.to_s(:indent => false)
+  end
+
+  # IMPORTANT: This needs to be checked when the SCHEMA or MODEL changes!
+  def self.full_text_fields
+    # there must be a DRY way to ask sunspot for this
+    [
+     :identifier, :title, :subject, :description, :genre, :relation, :coverage,
+     :audience_level, :audience_rating, :creator, :contributor, :publisher,
+     :rights, :extension, :location, :annotation, :date, :format
+    ]
   end
 
   # IMPORTANT: This code needs to be checked when models or the schema
