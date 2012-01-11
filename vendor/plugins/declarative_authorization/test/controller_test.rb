@@ -2,11 +2,10 @@ require File.join(File.dirname(__FILE__), 'test_helper.rb')
 
 
 class LoadMockObject < MockDataObject
-  def self.find(*args)
-    new :id => args[0]
+  def self.name
+    "LoadMockObject"
   end
 end
-
 
 ##################
 class SpecificMocksController < MocksController
@@ -25,7 +24,6 @@ end
 
 class BasicControllerTest < ActionController::TestCase
   tests SpecificMocksController
-  
   
   def test_filter_access_to_receiving_an_explicit_array
     reader = Authorization::Reader::DSLReader.new
@@ -129,9 +127,6 @@ class BasicControllerTest < ActionController::TestCase
     }
     request!(MockUser.new(:test_role), "new", reader)
     assert @controller.authorized?
-    
-    request!(MockUser.new(:test_role), "edit_2", reader)
-    assert !@controller.authorized?
   end
   
   def test_existing_instance_var_remains_unchanged
@@ -152,6 +147,20 @@ class BasicControllerTest < ActionController::TestCase
     assert_equal mock_object, 
       @controller.send(:instance_variable_get, :"@load_mock_object")
     assert @controller.authorized?
+  end
+
+  def test_permitted_to_without_context
+    reader = Authorization::Reader::DSLReader.new
+    reader.parse %{
+      authorization do
+        role :test_role do
+          has_permission_on :specific_mocks, :to => :test
+        end
+      end
+    }
+    @controller.current_user = MockUser.new(:test_role)
+    @controller.authorization_engine = Authorization::Engine.new(reader)
+    assert @controller.permitted_to?(:test)
   end
 end
 
@@ -189,18 +198,28 @@ end
 
 ##################
 class LoadMockObjectsController < MocksController
+  before_filter { @@load_method_call_count = 0 }
   filter_access_to :show, :attribute_check => true, :model => LoadMockObject
   filter_access_to :edit, :attribute_check => true
   filter_access_to :update, :delete, :attribute_check => true,
-                   :load_method => lambda {MockDataObject.new(:test => 1)}
+                   :load_method => proc {MockDataObject.new(:test => 1)}
   filter_access_to :create do
     permitted_to! :edit, :load_mock_objects
   end
   filter_access_to :view, :attribute_check => true, :load_method => :load_method
   def load_method
+    self.class.load_method_called
     MockDataObject.new(:test => 2)
   end
   define_action_methods :show, :edit, :update, :delete, :create, :view
+
+  def self.load_method_called
+    @@load_method_call_count ||= 0
+    @@load_method_call_count += 1
+  end
+  def self.load_method_call_count
+    @@load_method_call_count || 0
+  end
 end
 class LoadObjectControllerTest < ActionController::TestCase
   tests LoadMockObjectsController
@@ -211,7 +230,8 @@ class LoadObjectControllerTest < ActionController::TestCase
       authorization do
         role :test_role do
           has_permission_on :load_mock_objects, :to => [:show, :edit] do
-            if_attribute :id => is {"1"}
+            if_attribute :id => 1
+            if_attribute :id => "1"
           end
         end
       end
@@ -228,6 +248,30 @@ class LoadObjectControllerTest < ActionController::TestCase
       :clear => [:@load_mock_object])
     assert @controller.authorized?
     assert @controller.instance_variable_defined?(:@load_mock_object)
+  end
+
+  def test_filter_access_object_load_without_param
+    reader = Authorization::Reader::DSLReader.new
+    reader.parse %{
+      authorization do
+        role :test_role do
+          has_permission_on :load_mock_objects, :to => [:show, :edit] do
+            if_attribute :id => is {"1"}
+          end
+        end
+      end
+    }
+
+    assert_raise StandardError, "No id param supplied" do
+      request!(MockUser.new(:test_role), "show", reader)
+    end
+    
+    Authorization::AuthorizationInController.failed_auto_loading_is_not_found = false
+    assert_nothing_raised "Load error is only logged" do
+      request!(MockUser.new(:test_role), "show", reader)
+    end
+    assert !@controller.authorized?
+    Authorization::AuthorizationInController.failed_auto_loading_is_not_found = true
   end
   
   def test_filter_access_with_object_load_custom
@@ -253,7 +297,12 @@ class LoadObjectControllerTest < ActionController::TestCase
     
     request!(MockUser.new(:test_role), "view", reader)
     assert @controller.authorized?
+    assert_equal 1, @controller.class.load_method_call_count
     
+    request!(MockUser.new(:test_role_2), "view", reader)
+    assert !@controller.authorized?
+    assert_equal 1, @controller.class.load_method_call_count
+
     request!(MockUser.new(:test_role), "update", reader)
     assert @controller.authorized?
   end
@@ -339,7 +388,7 @@ class CommonChild1Controller < CommonController
 end
 class CommonChild2Controller < CommonController
   filter_access_to :delete
-  define_action_methods :show
+  define_action_methods :show, :delete
 end
 class HierachicalControllerTest < ActionController::TestCase
   tests CommonChild2Controller
@@ -359,3 +408,73 @@ class HierachicalControllerTest < ActionController::TestCase
   end
 end
 
+##################
+module Name
+  class SpacedThingsController < MocksController
+    filter_access_to :show
+    filter_access_to :update, :context => :spaced_things
+    define_action_methods :show, :update
+  end
+end
+class NameSpacedControllerTest < ActionController::TestCase
+  tests Name::SpacedThingsController
+  def test_context
+    reader = Authorization::Reader::DSLReader.new
+    reader.parse %{
+      authorization do
+        role :permitted_role do
+          has_permission_on :name_spaced_things, :to => :show
+          has_permission_on :spaced_things, :to => :update
+        end
+        role :prohibited_role do
+          has_permission_on :name_spaced_things, :to => :update
+          has_permission_on :spaced_things, :to => :show
+        end
+      end
+    }
+    request!(MockUser.new(:permitted_role), "show", reader)
+    assert @controller.authorized?
+    request!(MockUser.new(:prohibited_role), "show", reader)
+    assert !@controller.authorized?
+    request!(MockUser.new(:permitted_role), "update", reader)
+    assert @controller.authorized?
+    request!(MockUser.new(:prohibited_role), "update", reader)
+    assert !@controller.authorized?
+  end
+end
+
+module Deep
+  module NameSpaced
+    class ThingsController < MocksController
+      filter_access_to :show
+      filter_access_to :update, :context => :things
+      define_action_methods :show, :update
+    end
+  end
+end
+class DeepNameSpacedControllerTest < ActionController::TestCase
+  tests Deep::NameSpaced::ThingsController
+  def test_context
+    reader = Authorization::Reader::DSLReader.new
+    reader.parse %{
+      authorization do
+        role :permitted_role do
+          has_permission_on :deep_name_spaced_things, :to => :show
+          has_permission_on :things, :to => :update
+        end
+        role :prohibited_role do
+          has_permission_on :deep_name_spaced_things, :to => :update
+          has_permission_on :things, :to => :show
+        end
+      end
+    }
+    request!(MockUser.new(:permitted_role), "show", reader)
+    assert @controller.authorized?
+    request!(MockUser.new(:prohibited_role), "show", reader)
+    assert !@controller.authorized?
+    request!(MockUser.new(:permitted_role), "update", reader)
+    assert @controller.authorized?
+    request!(MockUser.new(:prohibited_role), "update", reader)
+    assert !@controller.authorized?
+  end
+end
