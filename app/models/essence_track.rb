@@ -26,7 +26,7 @@ class EssenceTrack < ActiveRecord::Base
   xml_string "essenceTrackTimeStart", :time_start
   xml_string "essenceTrackDuration", :duration
   xml_string "essenceTrackLanguage", :language
-  xml_string "essenceTrackAnnotation", :annotations
+  xml_subelements "essenceTrackAnnotation", :annotations
   
   def identifier
     result = essence_track_identifiers
