@@ -1,5 +1,6 @@
 class Asset < ActiveRecord::Base
   include PbcoreXmlElement
+  include Merge
   
   before_create :generate_uuid
   after_save :save_version
@@ -300,9 +301,9 @@ class Asset < ActiveRecord::Base
   end
 
   def merge_existing
-    # If the new record comes with an identifier that has it's auto_merge
+    # If the new record comes with an identifier that has its auto_merge
     # flag set and an already existing identifier is found, get the asset
-    # with that existing identifier and merge our new data into the existing
+    # with that existing identifier and merge the new data into the existing
     # record.
     
     # Only do this with new records
@@ -329,26 +330,31 @@ class Asset < ActiveRecord::Base
   # IMPORTANT: Any changes to models or the schema might affect this code. 
   #            CHECK THIS WHEN THE SCHEMA CHANGES!
   def merge(new_asset)
-    [:identifiers, :titles, :asset_dates, :descriptions, :relations, :coverages, :creators, :contributors,
-      :publishers, :rights_summaries, :instantiations, :annotations, :extensions].each do |field|
-      current_fields = self.send(field)
-      new_fields     = new_asset.send(field)
-
-      current_attrs  = current_fields.map { |o| clean_attributes(o.attributes) }
-
-      # this is O(n²), but hopefully n is small enough that this isn't a huge problem
-      new_fields.each do |fields|
-        unless current_attrs.include?(clean_attributes(fields.attributes))
-          current_fields << fields 
-        end
-      end
-    end
-    
-    [:genre_ids, :subject_ids, :audience_level_ids, :audience_rating_ids].each do |field|
-      self.send("#{field}=".to_sym, self.send(field) | new_asset.send(field))
-    end
+    merge!(new_asset)
+    # [:identifiers, :titles, :asset_dates, :descriptions, :relations, :coverages, :creators, :contributors,
+    #       :publishers, :rights_summaries, :instantiations, :annotations, :extensions].each do |field|
+    #       current_fields = self.send(field)
+    #       new_fields     = new_asset.send(field)
+    # 
+    #       current_attrs  = current_fields.map { |o| clean_attributes(o.attributes) }
+    # 
+    #       # this is O(n²), but hopefully n is small enough that this isn't a huge problem
+    #       new_fields.each do |fields|
+    #         Rails.logger.debug { "MERGE (#{field.to_s}): current_attrs: #{current_attrs.inspect}" }
+    #         Rails.logger.debug { "MERGE (#{field.to_s}): new_field: #{clean_attributes(fields.attributes).inspect}"}
+    #         unless current_attrs.include?(clean_attributes(fields.attributes))
+    #           Rails.logger.debug { "--- MERGING (#{field.to_s}) ---" }
+    #           current_fields << fields
+    #         else
+    #           Rails.logger.debug { "--- NOT MERGING (#{field.to_s})" }
+    #         end
+    #       end
+    #     end
+    #     
+    #     [:genre_ids, :subject_ids, :audience_level_ids, :audience_rating_ids].each do |field|
+    #       self.send("#{field}=".to_sym, self.send(field) | new_asset.send(field))
+    #     end
   end
-
 
   def self.xmlify_import_results(results)
     successes, failures = results
