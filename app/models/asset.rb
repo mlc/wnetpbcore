@@ -352,7 +352,7 @@ class Asset < ActiveRecord::Base
             current_fields << fields
           end
         else
-          current_fields << fields # unless current_attrs.include?(clean_attributes(fields.attributes))
+          current_fields << fields unless current_attrs.include?(clean_attributes(fields.attributes))
         end
       end
     end
