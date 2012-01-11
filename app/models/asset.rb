@@ -1,6 +1,5 @@
 class Asset < ActiveRecord::Base
   include PbcoreXmlElement
-  include Merge
   
   before_create :generate_uuid
   after_save :save_version
@@ -330,30 +329,37 @@ class Asset < ActiveRecord::Base
   # IMPORTANT: Any changes to models or the schema might affect this code. 
   #            CHECK THIS WHEN THE SCHEMA CHANGES!
   def merge(new_asset)
-    merge!(new_asset)
-    # [:identifiers, :titles, :asset_dates, :descriptions, :relations, :coverages, :creators, :contributors,
-    #       :publishers, :rights_summaries, :instantiations, :annotations, :extensions].each do |field|
-    #       current_fields = self.send(field)
-    #       new_fields     = new_asset.send(field)
-    # 
-    #       current_attrs  = current_fields.map { |o| clean_attributes(o.attributes) }
-    # 
-    #       # this is O(n²), but hopefully n is small enough that this isn't a huge problem
-    #       new_fields.each do |fields|
-    #         Rails.logger.debug { "MERGE (#{field.to_s}): current_attrs: #{current_attrs.inspect}" }
-    #         Rails.logger.debug { "MERGE (#{field.to_s}): new_field: #{clean_attributes(fields.attributes).inspect}"}
-    #         unless current_attrs.include?(clean_attributes(fields.attributes))
-    #           Rails.logger.debug { "--- MERGING (#{field.to_s}) ---" }
-    #           current_fields << fields
-    #         else
-    #           Rails.logger.debug { "--- NOT MERGING (#{field.to_s})" }
-    #         end
-    #       end
-    #     end
-    #     
-    #     [:genre_ids, :subject_ids, :audience_level_ids, :audience_rating_ids].each do |field|
-    #       self.send("#{field}=".to_sym, self.send(field) | new_asset.send(field))
-    #     end
+    [:identifiers, :titles, :asset_dates, :descriptions, :relations, :coverages, :creators, :contributors,
+      :publishers, :rights_summaries, :instantiations, :annotations, :extensions].each do |field|
+
+      current_fields = self.send(field)
+      new_fields     = new_asset.send(field)
+
+      current_attrs  = current_fields.map { |o| clean_attributes(o.attributes) }
+
+      # this is O(n²), but hopefully n is small enough that this isn't a huge problem
+      new_fields.each do |fields|
+        if field == :instantiations
+          # Check if there is format identifier source that has auto merge set
+          if format_id = fields.format_ids.detect { |format_id| format_id.format_identifier_source.auto_merge == true }
+            # Does the existing record have a format identifier source that matches
+            # if current_format_id = current_fields.format_ids.detect { |current_format_id| format_id.format_identifier_source.name == format_id.format_identifier_source.name }
+            if current_instantiation = self.send(field).find(:first, :include => :format_ids, :conditions => ["format_ids.format_identifier_source_id = ? and format_ids.format_identifier = ?", format_id.format_identifier_source_id, format_id.format_identifier])
+              # Destroy the current instantiation and import the new one
+              current_instantiation.destroy
+            end
+            # Just import the new instantiation
+            current_fields << fields
+          end
+        else
+          current_fields << fields unless current_attrs.include?(clean_attributes(fields.attributes))
+        end
+      end
+    end
+    
+    [:genre_ids, :subject_ids, :audience_level_ids, :audience_rating_ids].each do |field|
+      self.send("#{field}=".to_sym, self.send(field) | new_asset.send(field))
+    end
   end
 
   def self.xmlify_import_results(results)
