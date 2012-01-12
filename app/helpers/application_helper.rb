@@ -51,7 +51,7 @@ module ApplicationHelper
   # that is used for the language pickers in Instantiations and Asset Tracks.
   #
   def prepopulate_language_tokens_for(object)
-    object.language_tokens.split(',').collect { |token| { :id => token, :name => ISO639::ISO639_CODES[token][:en] }.to_json }
+    object.language_tokens.split(',').collect { |token| { :id => token, :name => ISO639::ISO639_CODES[token][:en] } }.to_json
   end
   
   # Formtastic has_many form helpers
