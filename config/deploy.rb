@@ -1,6 +1,7 @@
 require 'erb'
 require 'json'
 require 'grit'
+require 'new_relic/recipes'
 require 'capistrano/ext/multistage'
 
 def git_working_dir_branch
@@ -116,6 +117,7 @@ end
 
 after "deploy:setup", "exceptional:config"
 after "deploy:update_code", "exceptional:symlink"
+after "deploy:update", "newrelic:notice_deployment"
 
 namespace :app do
   desc "configure application"
@@ -225,9 +227,8 @@ namespace :unicorn do
       run "[ -f #{pidfile_location_for(:unicorn)} ] && kill -USR2 `cat #{pidfile_location_for(:unicorn)}`"
     rescue CommandError => e
       logger.info "restarting failed; trying just to start" if logger
+      start
     end
-
-    start
   end
 end
 

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111231225416) do
+ActiveRecord::Schema.define(:version => 20120112162341) do
 
   create_table "annotations", :force => true do |t|
     t.integer "container_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20111231225416) do
     t.string  "container_type"
   end
 
+  add_index "annotations", ["container_id", "container_type"], :name => "index_annotations_on_container_id_and_container_type"
   add_index "annotations", ["container_id"], :name => "index_annotation_on_instantiation_id"
 
   create_table "asset_date_types", :force => true do |t|
@@ -224,6 +225,8 @@ ActiveRecord::Schema.define(:version => 20111231225416) do
     t.datetime "updated_at"
   end
 
+  add_index "essence_track_identifiers", ["essence_track_id"], :name => "index_essence_track_identifiers_on_essence_track_id"
+
   create_table "essence_track_types", :force => true do |t|
     t.string  "name",                       :null => false
     t.boolean "visible", :default => false, :null => false
@@ -251,6 +254,15 @@ ActiveRecord::Schema.define(:version => 20111231225416) do
 
   add_index "essence_tracks", ["instantiation_id"], :name => "index_essence_tracks_on_instantiation_id"
 
+  create_table "exports", :force => true do |t|
+    t.string   "status"
+    t.string   "file"
+    t.integer  "creator_id"
+    t.integer  "updater_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "extension_names", :force => true do |t|
     t.string   "extension_key"
     t.string   "extension_authority"
@@ -273,9 +285,10 @@ ActiveRecord::Schema.define(:version => 20111231225416) do
   add_index "extensions", ["asset_id"], :name => "index_extensions_on_asset_id"
 
   create_table "format_identifier_sources", :force => true do |t|
-    t.string  "name",                       :null => false
-    t.boolean "visible", :default => false, :null => false
+    t.string  "name",                          :null => false
+    t.boolean "visible",    :default => false, :null => false
     t.string  "regex"
+    t.boolean "auto_merge", :default => false
   end
 
   create_table "format_ids", :force => true do |t|
@@ -331,8 +344,8 @@ ActiveRecord::Schema.define(:version => 20111231225416) do
     t.datetime "updated_at"
     t.integer  "creator_id"
     t.integer  "updater_id"
-    t.text     "annotation"
     t.text     "ref"
+    t.text     "annotation"
   end
 
   add_index "identifiers", ["asset_id"], :name => "index_identifiers_on_asset_id"
@@ -357,6 +370,8 @@ ActiveRecord::Schema.define(:version => 20111231225416) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "instantiation_dates", ["instantiation_id"], :name => "index_instantiation_dates_on_instantiation_id"
 
   create_table "instantiation_dimensions", :force => true do |t|
     t.integer  "instantiation_id"
@@ -447,6 +462,14 @@ ActiveRecord::Schema.define(:version => 20111231225416) do
   end
 
   add_index "ip_blocks", ["name"], :name => "index_ip_blocks_on_name", :unique => true
+
+  create_table "pbcore_importers", :force => true do |t|
+    t.string   "file"
+    t.integer  "number_of_records"
+    t.integer  "number_of_records_processed"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "publisher_roles", :force => true do |t|
     t.string  "name",                       :null => false

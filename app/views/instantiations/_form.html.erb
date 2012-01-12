@@ -61,7 +61,7 @@
     <%= form.input :format_tracks, :as => :string, :label => "Tracks", :required => false %>
     <%= form.input :format_channel_configuration, :as => :string, :label => "Channel Configuration", :required => false %>
     <%= form.input :language_tokens, :label => "Languages",
-                                     :input_html => { "data-pre" => prepopulate_language_tokens_for(@instantiation) },
+                                     :input_html => { "data-pre" => prepopulate_language_tokens_for(form.object) },
                                      :required => false %>
     <%= form.input :alternative_modes, :as => :string, :required => false %>
   <% end %>

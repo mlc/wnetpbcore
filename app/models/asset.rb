@@ -207,19 +207,7 @@ class Asset < ActiveRecord::Base
     build_xml(root)
     doc.to_s
   end
-  
-  def destroy_existing
-    return nil unless new_record?
-
-    possibility = identifiers.detect{|s| s.identifier_source_id == IdentifierSource::OUR_UUID_SOURCE.id}
-    if possibility
-      other = Asset.find_by_uuid(possibility.identifier)
-      self.identifiers -= [possibility]
-      self.uuid = possibility.identifier
-      other.destroy if other
-    end
-  end
-  
+    
   def title
     titles.map{|t| t.title}.join("; ")
   end
@@ -239,59 +227,6 @@ class Asset < ActiveRecord::Base
 
   def thumbnail
     instantiations.detect(&:thumbnail?)
-  end
-
-  # Copies the stuff from a new asset object into us.
-  # IMPORTANT: Any changes to models or the schema might affect this code. 
-  #            CHECK THIS WHEN THE SCHEMA CHANGES!
-  def merge(new_asset)
-    [:identifiers, :titles, :asset_dates, :descriptions, :relations, :coverages, :creators, :contributors,
-      :publishers, :rights_summaries, :instantiations, :annotations, :extensions].each do |field|
-      current_fields = self.send(field)
-      new_fields     = new_asset.send(field)
-
-      current_attrs  = current_fields.map{|o| clean_attributes(o.attributes)}
-
-      # this is O(n²), but hopefully n is small enough that this isn't a huge problem
-      new_fields.each do |fields|
-        unless current_attrs.include?(clean_attributes(fields.attributes))
-          current_fields << fields 
-        end
-      end
-    end
-    
-    [:genre_ids, :subject_ids, :audience_level_ids, :audience_rating_ids].each do |field|
-      self.send("#{field}=".to_sym, self.send(field) | new_asset.send(field))
-    end
-  end
-
-  def merge_existing
-    return nil unless new_record?
-
-    found = nil
-    self.identifiers.each do |identifier|
-      if identifier.identifier_source.auto_merge && (them = Identifier.find_by_identifier_and_identifier_source_id(identifier.identifier, identifier.identifier_source_id))
-        found = Asset.find(them.asset_id, :include => ALL_INCLUDES)
-        break
-      end
-    end
-
-    if found
-      found.merge(self)
-      found.save
-    end
-
-    found
-  end
-
-  # IMPORTANT: This needs to be checked when the SCHEMA or MODEL changes!
-  def self.full_text_fields
-    # there must be a DRY way to ask sunspot for this
-    [
-     :identifier, :title, :subject, :description, :genre, :relation, :coverage,
-     :audience_level, :audience_rating, :creator, :contributor, :publisher,
-     :rights, :extension, :location, :annotation, :date, :format
-    ]
   end
 
   # import some XML
@@ -324,7 +259,12 @@ class Asset < ActiveRecord::Base
         Asset.transaction do
           asset = Asset.from_xml(doc)
           if asset.valid?
+            # If the imported record contains a UUID, attempt to find the
+            # existing record and delete it.
             asset.destroy_existing
+            
+            # Attempt to merge existing records, save if the merge_existing
+            # returns nil
             asset.save unless asset.merge_existing
             successes << asset.uuid
           else
@@ -335,6 +275,90 @@ class Asset < ActiveRecord::Base
       end
 
       [successes, errors]
+    end
+  end
+
+  def destroy_existing
+    # Only do this with new records
+    return nil unless new_record?
+
+    # If the new record contains a UUID
+    uuid = identifiers.detect{|s| s.identifier_source_id == IdentifierSource::OUR_UUID_SOURCE.id}
+    if uuid
+      # Find an existing record with this UUID
+      existing = Asset.find_by_uuid(uuid.identifier)
+      
+      # Remove the UUID from the identifiers collection
+      self.identifiers -= [uuid]
+      
+      # Assign the asset the UUID
+      self.uuid = uuid.identifier
+      
+      # Delete the already existing record
+      existing.destroy if existing
+    end
+  end
+
+  def merge_existing
+    # If the new record comes with an identifier that has its auto_merge
+    # flag set and an already existing identifier is found, get the asset
+    # with that existing identifier and merge the new data into the existing
+    # record.
+    
+    # Only do this with new records
+    return nil unless new_record?
+    
+    existing_asset = nil
+    self.identifiers.each do |identifier|
+      if identifier.identifier_source.auto_merge && 
+        (existing_identifier = Identifier.find_by_identifier_and_identifier_source_id(identifier.identifier, identifier.identifier_source_id))
+        existing_asset = Asset.find(existing_identifier.asset_id, :include => ALL_INCLUDES)
+        break
+      end
+    end
+
+    if existing_asset
+      existing_asset.merge(self)
+      existing_asset.save
+    end
+
+    existing_asset
+  end
+  
+  # Copies the stuff from a new asset object into an existing asset.
+  # IMPORTANT: Any changes to models or the schema might affect this code. 
+  #            CHECK THIS WHEN THE SCHEMA CHANGES!
+  def merge(new_asset)
+    [:identifiers, :titles, :asset_dates, :descriptions, :relations, :coverages, :creators, :contributors,
+      :publishers, :rights_summaries, :instantiations, :annotations, :extensions].each do |field|
+
+      current_fields = self.send(field)
+      new_fields     = new_asset.send(field)
+
+      current_attrs  = current_fields.map { |o| clean_attributes(o.attributes) }
+
+      # this is O(n²), but hopefully n is small enough that this isn't a huge problem
+      new_fields.each do |fields|
+        if field == :instantiations
+          # Check if there is format identifier source that has auto merge set
+          if format_id = fields.format_ids.detect { |format_id| format_id.format_identifier_source.auto_merge == true }
+            # Does the existing record have a format identifier source that matches
+            # if current_format_id = current_fields.format_ids.detect { |current_format_id| format_id.format_identifier_source.name == format_id.format_identifier_source.name }
+            if current_instantiation = self.send(field).find(:first, :include => :format_ids, :conditions => ["format_ids.format_identifier_source_id = ? and format_ids.format_identifier = ?", format_id.format_identifier_source_id, format_id.format_identifier])
+              # Destroy the current instantiation and import the new one
+              current_instantiation.destroy
+            end
+            # Just import the new instantiation
+            current_fields << fields
+          end
+        else
+          current_fields << fields unless current_attrs.include?(clean_attributes(fields.attributes))
+        end
+      end
+    end
+    
+    [:genre_ids, :subject_ids, :audience_level_ids, :audience_rating_ids].each do |field|
+      self.send("#{field}=".to_sym, self.send(field) | new_asset.send(field))
     end
   end
 
@@ -355,6 +379,16 @@ class Asset < ActiveRecord::Base
     end
 
     doc.to_s(:indent => false)
+  end
+
+  # IMPORTANT: This needs to be checked when the SCHEMA or MODEL changes!
+  def self.full_text_fields
+    # there must be a DRY way to ask sunspot for this
+    [
+     :identifier, :title, :subject, :description, :genre, :relation, :coverage,
+     :audience_level, :audience_rating, :creator, :contributor, :publisher,
+     :rights, :extension, :location, :annotation, :date, :format
+    ]
   end
 
   # IMPORTANT: This code needs to be checked when models or the schema
