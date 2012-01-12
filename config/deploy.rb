@@ -1,6 +1,7 @@
 require 'erb'
 require 'json'
 require 'grit'
+require 'new_relic/recipes'
 require 'capistrano/ext/multistage'
 
 def git_working_dir_branch
@@ -116,6 +117,7 @@ end
 
 after "deploy:setup", "exceptional:config"
 after "deploy:update_code", "exceptional:symlink"
+after "deploy:update", "newrelic:notice_deployment"
 
 namespace :app do
   desc "configure application"

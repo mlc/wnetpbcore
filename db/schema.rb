@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120111212907) do
+ActiveRecord::Schema.define(:version => 20120112005028) do
 
   create_table "annotations", :force => true do |t|
     t.integer "container_id"
@@ -367,6 +367,8 @@ ActiveRecord::Schema.define(:version => 20120111212907) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "instantiation_dates", ["instantiation_id"], :name => "index_instantiation_dates_on_instantiation_id"
 
   create_table "instantiation_dimensions", :force => true do |t|
     t.integer  "instantiation_id"
