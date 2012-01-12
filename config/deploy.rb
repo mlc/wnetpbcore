@@ -225,9 +225,8 @@ namespace :unicorn do
       run "[ -f #{pidfile_location_for(:unicorn)} ] && kill -USR2 `cat #{pidfile_location_for(:unicorn)}`"
     rescue CommandError => e
       logger.info "restarting failed; trying just to start" if logger
+      start
     end
-
-    start
   end
 end
 
