@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120112005028) do
+ActiveRecord::Schema.define(:version => 20120112010455) do
 
   create_table "annotations", :force => true do |t|
     t.integer "container_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20120112005028) do
     t.string  "container_type"
   end
 
+  add_index "annotations", ["container_id", "container_type"], :name => "index_annotations_on_container_id_and_container_type"
   add_index "annotations", ["container_id"], :name => "index_annotation_on_instantiation_id"
 
   create_table "asset_date_types", :force => true do |t|
