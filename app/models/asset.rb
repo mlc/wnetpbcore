@@ -316,7 +316,7 @@ class Asset < ActiveRecord::Base
         break
       end
     end
-
+    
     if existing_asset
       existing_asset.merge(self)
       existing_asset.save
@@ -331,7 +331,6 @@ class Asset < ActiveRecord::Base
   def merge(new_asset)
     [:identifiers, :titles, :asset_dates, :descriptions, :relations, :coverages, :creators, :contributors,
       :publishers, :rights_summaries, :instantiations, :annotations, :extensions].each do |field|
-
       current_fields = self.send(field)
       new_fields     = new_asset.send(field)
 
@@ -349,6 +348,8 @@ class Asset < ActiveRecord::Base
               current_instantiation.destroy
             end
             # Just import the new instantiation
+            current_fields << fields
+          else
             current_fields << fields
           end
         else
