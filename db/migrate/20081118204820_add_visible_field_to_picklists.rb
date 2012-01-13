@@ -8,7 +8,8 @@ class AddVisibleFieldToPicklists < ActiveRecord::Migration
     TABLES.each do |table|
       # default for new records is false but exsiting records should be true
       add_column table, :visible, :boolean, :null => false, :default => 0
-      table.to_s.camelize.singularize.constantize.update_all("visible = 1")
+      # table.to_s.camelize.singularize.constantize.update_all("visible = 1")
+      execute("UPDATE #{table.to_s} SET visible = 1")
     end
     # lame.
     execute("UPDATE identifier_sources SET visible=0 WHERE id=1")
