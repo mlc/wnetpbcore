@@ -431,7 +431,7 @@ class Asset < ActiveRecord::Base
 
   # Protected Instance methods
   def generate_uuid
-    self.uuid = UUID.random_create.to_s unless (self.uuid && !self.uuid.empty?)
+    self.uuid = UUID.random_create.to_s unless self.uuid.present?
   end
 
   def clean_attributes(hash)
