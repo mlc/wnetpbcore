@@ -28,6 +28,10 @@
   
   <h3>Instantiation Information</h3>
   <% form.inputs do %>
+    <% if PBCore.config["instantiation_digitized_flag"].present? and PBCore.config["instantiation_digitized_flag"] == true %>
+      <%= form.input :digitized, :required => false %>
+    <% end %>
+  
     <%= form.input :instantiation_media_type, :collection => InstantiationMediaType.visible, :label => "Media Type", :required => false %>
     <%= form.input :format_name, :as => :pbcore_instantiation_format, 
                                  :collection => [["Physical", "FormatPhysical"], ["Digital", "FormatDigital"]],

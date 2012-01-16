@@ -258,6 +258,9 @@ class Asset < ActiveRecord::Base
         count += 1
         Asset.transaction do
           asset = Asset.from_xml(doc)
+          
+          asset.autogenerate_identifier if (PBCore.config["auto_id_import"].present? && PBCore.config["auto_id_import"] == true)
+          
           if asset.valid?
             # If the imported record contains a UUID, attempt to find the
             # existing record and delete it.
@@ -275,6 +278,16 @@ class Asset < ActiveRecord::Base
       end
 
       [successes, errors]
+    end
+  end
+
+  def autogenerate_identifier
+    if PBCore.config["auto_id"].present?
+      identifier_source = IdentifierSource.find_or_create_by_name(PBCore.config["auto_id"])
+      identifier = self.identifiers.detect { |i| i.identifier_source_id == identifier_source.id }
+      unless identifier
+        self.identifiers << Identifier.new(:identifier_source => identifier_source, :identifier => (identifier_source.next_sequence).to_s)
+      end
     end
   end
 
