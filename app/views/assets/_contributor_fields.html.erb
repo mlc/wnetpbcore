@@ -9,4 +9,6 @@
   <%= link_to_remove_fields "remove", f %>
   <%= f.input :source, :as => :string, :required => false, :wrapper_html => { :class => "col-1" } %>
   <%= f.input :ref, :as => :string, :required => false, :wrapper_html => { :class => "col-2" } %>
+  <%= f.input :affiliation, :as => :string,
+                            :required => false %>
 <% end %>
