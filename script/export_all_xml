@@ -1,15 +1,8 @@
-i = 0
-while true do
-  assets = Asset.find(:all, :limit => 1000, :offset => i)
-  if assets.count > 0
-    assets.each do |asset|
-      filename = "/tmp/pbcore_export/" + asset.uuid + ".xml"
-      file = File.open(filename, "w")
-      file.puts asset.to_xml
-      file.close
-    end
-    i += 1000
-  else
-    break
+Asset.find_in_batches(:batch_size => 100 ) do |assets|
+  assets.each do |asset|
+    filename = "/tmp/pbcore_export/" + asset.uuid + ".xml"
+    file = File.open(filename, "w")
+    file.puts asset.to_xml
+    file.close
   end
 end
