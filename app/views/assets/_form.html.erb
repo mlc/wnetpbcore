@@ -1,6 +1,6 @@
 <%= assets_navbar %>
 
-<% semantic_form_for @asset do |form| %>
+<% semantic_form_for @asset, :html => {:multipart => true} do |form| %>
   <h2>Intellectual Content</h2>
   <h3>Identifiers</h3>
   <% form.semantic_fields_for :identifiers do |f| %>
@@ -107,5 +107,16 @@
     <% end %>
   <% end %>
 
+  <h2>Attachment</h2>
+  <% form.inputs do %>
+    <%= form.input :attachment, :as => :file %>
+    <%= form.input :attachment_cache, :as => :hidden %>
+    <% if @asset.attachment? %>
+      <ul>
+        <li><%= link_to File.basename(@asset.attachment_url), @asset.attachment_url %></li>
+      </ul>
+      <%= form.input :remove_attachment, :as => :boolean %>
+    <% end %>
+  <% end %>
   <%= form.buttons %>
 <% end %>

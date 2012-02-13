@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120116210456) do
+ActiveRecord::Schema.define(:version => 20120208010410) do
 
   create_table "annotations", :force => true do |t|
     t.integer "container_id"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20120116210456) do
     t.string   "uuid",       :limit => 36, :null => false
     t.integer  "creator_id"
     t.integer  "updater_id"
+    t.string   "attachment"
   end
 
   add_index "assets", ["uuid"], :name => "index_assets_on_uuid", :unique => true

@@ -79,3 +79,12 @@
         Extension Section
       %dl
         = render :partial => "field_array", :locals => {:objs => @asset.extensions, :field => "Extension", :key => :extension_name_str, :value => :extension_value }
+
+  - if @asset.attachment?
+    %div.recordSection
+      %h3
+        Attachment
+      %dl
+        %dt Attachment:
+        %dd
+          = link_to File.basename(@asset.attachment_url), @asset.attachment_url

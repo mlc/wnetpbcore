@@ -29,7 +29,7 @@ Rails::Initializer.run do |config|
 
   config.gem 'haml', :version => '~> 3.0.6'	
   config.gem 'libxml-ruby', :lib => 'libxml' #, :version => '0.8.0'
-  config.gem 'libxslt-ruby', :lib => 'libxslt', :version => '0.9.2'
+  config.gem 'libxslt-ruby', :lib => 'libxslt' #, :version => '0.9.2'
   config.gem 'rubyzip', :lib => 'zip/zip'
   config.gem 'mime-types', :lib => 'mime/types'
   config.gem 'uuidtools', :version => '1.0.4'
@@ -45,6 +45,7 @@ Rails::Initializer.run do |config|
   config.gem 'fastercsv'
   config.gem 'formtastic', :version => "1.2.4"
   config.gem 'newrelic_rpm'
+  config.gem 'carrierwave', :version => '0.4.10'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.

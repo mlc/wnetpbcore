@@ -6,5 +6,6 @@ tmp
 TAGS
 public/javascripts/bundle_*
 public/stylesheets/bundle_*
+public/uploads
 .DS_Store
 .rvmrc

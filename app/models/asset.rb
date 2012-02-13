@@ -1,5 +1,7 @@
 class Asset < ActiveRecord::Base
   include PbcoreXmlElement
+
+  mount_uploader :attachment, AttachmentUploader
   
   before_create :generate_uuid
   after_save :save_version
