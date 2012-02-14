@@ -10,6 +10,10 @@ authorization do
     has_permission_on :users, :to => [:show, :update] do
       if_attribute :id => is { user.id }
     end
+    has_permission_on :picklists, :to => [:read]
+    (PicklistsController::SUBCLASSES - ['subjects']).each do |kl|
+      has_permission_on kl.to_sym, :to => [:read]
+    end
   end
 
   role :cataloger do
