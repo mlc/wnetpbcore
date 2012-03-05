@@ -16,7 +16,7 @@ class EssenceTrackIdentifier < ActiveRecord::Base
   end
   
   def essence_track_identifier_source_name=(name)
-    self.essence_track_identifier_source = EssenceTrackIdentifierSource.find_by_name(name) if name.present?
+    self.essence_track_identifier_source = EssenceTrackIdentifierSource.find_or_create_by_name(name) if name.present?
   end
 
 end
