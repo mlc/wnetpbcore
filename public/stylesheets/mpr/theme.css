@@ -28,8 +28,8 @@ a.contentLink:hover { color: #508bc7; }
 a.footerLink { color: #ccc; }
 a.footerLink:hover { color: #81afdf; }
 
-a#all_asset_link, a#streamable_asset_link { color: #666; }
-a#all_asset_link:hover, a#streamable_asset_link:hover, a#all_asset_link.selected_option, a#streamable_asset_link.selected_option { color: #508bc7; }
+a#all_asset_link, a#streamable_asset_link, a#attachment_asset_link { color: #666; }
+a#all_asset_link:hover, a#streamable_asset_link:hover, a#attachment_asset_link:hover, a#all_asset_link.selected_option, a#streamable_asset_link.selected_option, a#attachment_asset_link.selected_option { color: #508bc7; }
 
 .contentTopLinksArea a { color: #D6D6D6; }
 
@@ -49,4 +49,5 @@ a#all_asset_link:hover, a#streamable_asset_link:hover, a#all_asset_link.selected
 
 a#all_asset_link { background:transparent url(/images/mpr/buttons/btnAssets.png) 0 -2px no-repeat; }
 a#streamable_asset_link { background:transparent url(/images/mpr/buttons/btnStreamable.png) 0 -2px no-repeat; }
+a#attachment_asset_link { background:transparent url(/images/mpr/buttons/btnAttachment.png) 0 -2px no-repeat; }
 

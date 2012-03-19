@@ -161,6 +161,7 @@ class Asset < ActiveRecord::Base
     time :updated_at
     string :uuid
     boolean(:online_asset) { self.online? }
+    boolean(:attachment) { self.attachment.present? }
     dynamic_string :facets, :multiple => true do
       PBCore.config['facets'].inject({}) do |hash, facet|
         key = facet[0].to_sym

@@ -18,6 +18,6 @@ class Creator < ActiveRecord::Base
   end
    
   def to_s
-    creator_role.nil? ? creator : "#{creator_role.name}: #{creator}"
+    creator_role.nil? ? creator : "#{creator} (#{creator_role.name})"
   end
 end

@@ -39,8 +39,9 @@
                   - else
                     %h1&= yield(:title)
                   %div.iconLinks
-                    = link_to("All Assets", set_streamable_path("off"), :id => "all_asset_link", :class => session[:streamable] ? nil : "selected_option")
-                    = link_to("Streamable Assets", set_streamable_path("on"), :id => "streamable_asset_link", :class => session[:streamable] ? "selected_option" : nil)
+                    = link_to("All Assets", set_filter_path("off"), :id => "all_asset_link", :class => (session[:filter] == "off" || session[:filter].nil?) ? nil : "selected_option")
+                    = link_to("Assets with PDF", set_filter_path("attachment"), :id => "attachment_asset_link", :class => (session[:filter] == "attachment") ? "selected_option" : nil)                    
+                    = link_to("Streamable Assets", set_filter_path("streamable"), :id => "streamable_asset_link", :class => (session[:filter] == "streamable") ? "selected_option" : nil)
             %tr
               %td.sidebarMiddle
                 - if permitted_to? :index, :assets

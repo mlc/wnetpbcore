@@ -21,6 +21,6 @@ class Contributor < ActiveRecord::Base
   end
   
   def to_s
-    contributor_role.nil? ? contributor : "#{contributor_role.name}: #{contributor}"
+    contributor_role.nil? ? contributor : "#{contributor} (#{contributor_role.name})"
   end
 end

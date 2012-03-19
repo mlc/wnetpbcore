@@ -19,7 +19,8 @@ class AssetsController < ApplicationController
     pageopts[:page] = 1 if pageopts[:page] == "" || pageopts[:page].to_i < 1
     asset_includes = [:titles, {:identifiers => [:identifier_source]}, {:instantiations => [:format, :format_ids, :annotations, :borrowings]}, :descriptions]
     the_params = params # so it can be seen inside the search DSL.
-    streamable = session[:streamable] # ditto
+    streamable = session[:filter] == "streamable" #ditto
+    attachment = session[:filter] == "attachment"
     @search_fields = params[:search_fields]
     @show_field_chooser = !!@search_fields
 
@@ -49,6 +50,9 @@ class AssetsController < ApplicationController
       end
       if streamable
         with :online_asset, true
+      end
+      if attachment
+        with :attachment, true
       end
     end
     @query = the_query

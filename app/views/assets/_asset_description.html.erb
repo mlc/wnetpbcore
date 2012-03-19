@@ -1,0 +1,8 @@
+<% if asset.descriptions.present? %>
+  <dl class="asset_dates">
+    <% asset.descriptions.each do |description| %>
+      <dt><%= description.description_type.try(:name) %>:</dt>
+      <dd><%= truncate(description.description, :length => 500, :separator => ' ') %></dd>
+    <% end %>
+  </dl>
+<% end %>

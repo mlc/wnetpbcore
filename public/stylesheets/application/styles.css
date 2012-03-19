@@ -39,6 +39,7 @@ a.searchSelected:link{ font-weight: bold; }
 
 a#all_asset_link { height:12px; padding:5px 0 5px 25px; margin:0 5px; line-height:12px; display:block; float:left; }
 a#streamable_asset_link { height:12px; padding:5px 0 5px 25px; margin:0 5px; line-height:12px; display:block; float:left; }
+a#attachment_asset_link { height:12px; padding:5px 0 5px 25px; margin:0 5px; line-height:12px; display:block; float:left; }
 
 /* content*/
 .contentTopLinksArea { color: #999999; line-height: 15px; vertical-align: middle;	padding-top: 4px; letter-spacing: 0.5px; }

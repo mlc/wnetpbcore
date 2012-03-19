@@ -20,6 +20,6 @@ class Publisher < ActiveRecord::Base
   end
 
   def to_s
-    publisher_role.nil? ? publisher : "#{publisher_role.name}: #{publisher}"
+    publisher_role.nil? ? publisher : "#{publisher} (#{publisher_role.name})"
   end
 end

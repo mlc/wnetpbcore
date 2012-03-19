@@ -32,7 +32,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :languages, :only => [:index]
   map.ids 'ids', :controller => 'last_used_ids', :action => 'index'
   
-  map.set_streamable 'options/streamable/:value', :controller => 'options', :action => 'streamable'
+  map.set_filter 'options/filter/:value', :controller => 'options', :action => 'filter'
   
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
