@@ -30,9 +30,8 @@ class InstantiationsController < ApplicationController
       @instantiation.format_ids.build
     end
     
-    # I don't think we need this anymore with the new form design
-    #@instantiation.essence_tracks.build
-
+    @instantiation.essence_tracks.build
+    
     respond_to do |format|
       format.html
       format.xml { render :xml => @instantiation.to_xml }

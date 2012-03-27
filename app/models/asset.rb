@@ -157,6 +157,7 @@ class Asset < ActiveRecord::Base
       ).flatten
     end
     text(:format) { instantiations.map{|a| a.format.nil? ? '' : a.format.name} }
+    text(:duration) { instantiations.map{|a| a.format_duration.nil? ? '' : a.format_duration }}
     time :created_at
     time :updated_at
     string :uuid

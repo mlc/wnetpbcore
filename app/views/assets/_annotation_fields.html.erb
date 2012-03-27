@@ -1,5 +1,9 @@
 <% f.inputs do %>
-  <%= f.input :annotation_type, :as => :string, :required => false, :wrapper_html => { :class => "col-1" } %>
+  <%= f.input :annotation_type, :as => :pbcore_combobox, 
+                                :required => false,
+                                :input_html => { :class => "pbcore-autocomplete", 
+                                                 "data-autocomplete-source" => annotation_types_path }, 
+                                :wrapper_html => { :class => "col-1" } %>
   <%= f.input :annotation, :as => :string, :required => false, :wrapper_html => { :class => "col-2" } %>
   <%= link_to_remove_fields "remove", f %>
 <% end %>

@@ -1,0 +1,9 @@
+<% semantic_form_for @genre do |f| %>
+  <% f.inputs do %>
+    <%= f.input :name, :as => :string %>
+    <%= f.input :genre_authority_used, :as => :string, :label => "Source" %>
+    <%= f.input :ref, :as => :string %>
+    <%= f.input :visible %>
+  <% end %>
+  <%= f.buttons %>
+<% end %>

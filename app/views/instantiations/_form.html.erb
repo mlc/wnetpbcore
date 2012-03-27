@@ -19,11 +19,13 @@
   <% end %>
   <%= add_another form, :instantiation_dimensions %>
   
-  <h3>Instantiation Standard</h3>
-  <% form.inputs do %>
-    <%= form.input :standard, :as => :string, :required => false %>
-    <%= form.input :standard_ref, :as => :string, :label => "Ref", :required => false %>
-    <%= form.input :standard_source, :as => :string, :label => "Source", :required => false %>
+  <% unless PBCore.config["theme"] == "wnyc" %>
+    <h3>Instantiation Standard</h3>
+    <% form.inputs do %>
+      <%= form.input :standard, :as => :string, :required => false %>
+      <%= form.input :standard_ref, :as => :string, :label => "Ref", :required => false %>
+      <%= form.input :standard_source, :as => :string, :label => "Source", :required => false %>
+    <% end %>
   <% end %>
   
   <h3>Instantiation Information</h3>

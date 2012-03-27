@@ -10,9 +10,10 @@ authorization do
     has_permission_on :users, :to => [:show, :update] do
       if_attribute :id => is { user.id }
     end
+    has_permission_on :annotation_types, :to => :read
     has_permission_on :picklists, :to => [:read]
-    (PicklistsController::SUBCLASSES - ['subjects']).each do |kl|
-      has_permission_on kl.to_sym, :to => [:read]
+    (PicklistsController::SUBCLASSES.each do |kl|
+      has_permission_on kl.to_sym, :to => :read
     end
   end
 
@@ -48,6 +49,7 @@ authorization do
     (PicklistsController::SUBCLASSES - ['subjects']).each do |kl|
       has_permission_on kl.to_sym, :to => :crud
     end
+    has_permission_on :annotation_types, :to => :crud
     has_permission_on :assets, :to => :multilend
     has_permission_on :assets, :to => :destroy_found_set
     has_permission_on :assets, :to => :replace

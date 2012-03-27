@@ -9,7 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120214070449) do
+ActiveRecord::Schema.define(:version => 20120325210855) do
+
+  create_table "annotation_types", :force => true do |t|
+    t.string   "name"
+    t.boolean  "visible"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "annotations", :force => true do |t|
     t.integer "container_id"

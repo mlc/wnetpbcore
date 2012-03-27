@@ -1,0 +1,8 @@
+<% if asset.relations.present? %>
+  <dl class="asset_dates">
+    <% asset.relations.each do |relation| %>
+      <dt><%= relation.relation_type.name %>:</dt>
+      <dd><%= relation.relation_identifier %></dd>
+    <% end %>
+  </dl>
+<% end %>

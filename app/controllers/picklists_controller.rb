@@ -9,7 +9,7 @@ class PicklistsController < ApplicationController
     'instantiation_generations', 'instantiation_media_types', 'format_physicals',
     'identifier_sources', 'publisher_roles', 'relation_types', 'title_types',
     'essence_track_types', 'essence_track_identifier_sources',
-    'format_identifier_sources', 'genres', 'extension_names', 'subjects',
+    'format_identifier_sources', 'genres', 'instantiation_date_types', 'extension_names', 'subjects',
     'asset_date_types'
   ]
 
@@ -17,7 +17,7 @@ class PicklistsController < ApplicationController
     respond_to do |format|
       format.html do
         if @klass.nil?
-          @controllers = (SUBCLASSES + ['templates', 'value_lists']).sort
+          @controllers = (SUBCLASSES + ['annotation_types', 'templates', 'value_lists']).sort
           render :action => 'picklists_index'
         else
           @emit_warning = should_emit_warning

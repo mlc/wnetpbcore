@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+
   map.resources :s3_uploads
 
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
@@ -22,12 +23,12 @@ ActionController::Routing::Routes.draw do |map|
   
   [:audience_levels, :audience_ratings, :contributor_roles, :creator_roles,
     :description_types, :instantiation_colors, :instantiation_generations, :instantiation_media_types,
-    :format_digitals, :format_physicals, :identifier_sources, :publisher_roles,
+    :format_digitals, :format_physicals, :identifier_sources, :instantiation_date_types, :publisher_roles,
     :relation_types, :title_types, :essence_track_types, :essence_track_identifier_sources,
     :format_identifier_sources, :genres, :extension_names, :subjects, :asset_date_types].each do |t|
     map.resources t
   end
-
+  map.resources :annotation_types
   map.resources :value_lists
   map.resources :languages, :only => [:index]
   map.ids 'ids', :controller => 'last_used_ids', :action => 'index'

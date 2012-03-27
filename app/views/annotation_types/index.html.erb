@@ -1,0 +1,26 @@
+<h2><%= title "Annotation Types" %></h2>
+<p>
+  <%= link_to 'Create new Annotation Type', new_annotation_type_path %>
+</p>
+<%= will_paginate @annotation_types %>
+<table class="pbcore-admin">
+  <tr>
+    <th>Type</th>
+    <th>Visible</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @annotation_types.each do |annotation_type| -%>
+    <tr class="<%= cycle("odd", "even") -%><%= " visible" if annotation_type.visible %>">
+      <td><%= annotation_type.name %></td>                                      
+      <td class="visibility"><%= yes_or_no(annotation_type.visible) %></td>
+      <td>
+        <%= link_to 'Edit', edit_annotation_type_path(annotation_type) %>
+      </td>
+      <td>
+        <%= link_to('Destroy', annotation_type, :method => "delete", :confirm => "Are you sure?")  %>
+      </td>
+    </tr>
+  <% end -%>
+</table>
+<%= will_paginate @annotation_types %>

@@ -9,10 +9,9 @@
         %h2
           = link_to asset.title, asset_url(asset.uuid)
         %h3&= asset.identifier
+        = render "asset_date", :asset => asset
         - if PBCore.config["show_asset_descriptions_in_search_results"].present? and PBCore.config["show_asset_descriptions_in_search_results"] == true
           = render "asset_description", :asset => asset
-        - else
-          = render "asset_date", :asset => asset
         - if asset.has_thumbnail?
           = link_to img_thumb_tag(asset.thumbnail, "thumb", "80x60"), asset_url(asset.uuid), :class => "index_thumbnail"
     

@@ -1,0 +1,26 @@
+<h2><%= title "Genres" %></h2>
+<p>
+  <%= link_to 'Create new Genre', new_genre_path %>
+</p>
+<%= will_paginate @genres %>
+<table class="pbcore-admin">
+  <tr>
+    <th>Genre</th>
+    <th>Visible</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @genres.each do |genre| -%>
+    <tr class="<%= cycle("odd", "even") -%><%= " visible" if genre.visible %>">
+      <td><%= genre.name %></td>                                      
+      <td class="visibility"><%= yes_or_no(genre.visible) %></td>
+      <td>
+        <%= link_to 'Edit', edit_genre_path(genre) %>
+      </td>
+      <td>
+        <%= link_to('Destroy', genre, :method => "delete", :confirm => "Are you sure?") if genre.safe_to_delete? %>
+      </td>
+    </tr>
+  <% end -%>
+</table>
+<%= will_paginate @genres %>

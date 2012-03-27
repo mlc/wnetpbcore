@@ -132,6 +132,7 @@ class AssetsController < ApplicationController
             @asset.titles << Title.new(:title_type => TitleType.find_or_create_by_name(tt))
           end
         end
+        @asset.asset_dates.build
       end
       
       format.xml do
