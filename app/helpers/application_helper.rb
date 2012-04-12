@@ -80,7 +80,7 @@ module ApplicationHelper
   end
   
   def add_another(f, association, link_text = "Add another...")
-    content_tag(:p, :class => "add-another") do
+    content_tag(:p, :class => "add-another #{association}") do
       link_to_add_fields(link_text, f, association)
     end
   end

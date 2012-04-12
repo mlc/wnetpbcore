@@ -1,3 +1,15 @@
+<script>
+$(function(){
+  if ($("fieldset.inputs.essence_tracks").size() == 0){
+    $("p.add-another.essence_tracks a:first").click();    
+  }
+
+  if ($("fieldset.inputs.essence_track_identifier").size() == 0){
+    $("p.add-another.essence_track_identifiers a:first").click();    
+  }
+})
+</script>
+
 <%= assets_navbar %>
 
 <% semantic_form_for [@asset, @instantiation] do |form| %>
