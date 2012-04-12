@@ -13,11 +13,15 @@ class ValueListsController < ApplicationController
       end
       format.json do
         if value_list = ValueList.first(:conditions => ["value = ?", params[:value]])
-          values = value_list.values.map(&:value)
+          values = if params[:term].present?
+            value_list.values.find(:all, :conditions => ["values.value LIKE ?", "%#{params[:term]}%"])
+          else
+            value_list.values
+          end
         else
           values = []
         end
-        render :json => values
+        render :json => values.map(&:value)
       end
     end
   end
