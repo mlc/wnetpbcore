@@ -60,7 +60,7 @@ class PicklistsController < ApplicationController
       @obj.destroy
     end
     respond_to do |format|
-      format.js
+      format.js { render :partial => 'picklists/destroy' }
       format.html { redirect_to :action => 'index' }
     end
   end
