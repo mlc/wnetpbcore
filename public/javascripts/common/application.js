@@ -149,7 +149,7 @@ function autocomplete_source_for_format_type(type) {
 
 // Autocomplete for Edit Form
 $(function() { 
-  $(".pbcore-autocomplete").live("keydown.autocomplete", function() {
+  $(".pbcore-autocomplete, .pbcore-conditional-autocomplete").live("keydown.autocomplete", function() {
     if (!$(this).hasClass('ui-autocomplete-input')) {
       create_autocomplete($(this));
     }
