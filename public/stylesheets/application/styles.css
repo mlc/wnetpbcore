@@ -128,7 +128,7 @@ form.instantiations span label { width: auto; margin-left: 3px; }
 	
 .recordItem { color:#666; text-transform: none; padding:0px; margin:5px 0px; background-color:#eee; text-shadow: 0px 1px 0px #fff; }
 
-.recordItem h2 a { color: #fff; font-weight: bold; font-family: 'Switzera ADF Cd', 'Arial Narrow', Arial, Helvetica, sans-serif; font-size: 20px; line-height:24px; text-transform: none; }
+.recordItem h2 a { color: #fff; font-weight: bold; font-family: 'Switzera ADF Cd', 'Arial Narrow', Arial, Helvetica, sans-serif; font-size: 20px; line-height:24px; text-transform: none; display: block; width: 560px}
 .recordItem h2 { padding:10px; margin:0px 0; text-shadow: 0px 1px 0px #000; background-color:#999999; display:block; }
 .recordItem h3 { color: #508bc7; font-weight: bold; font-family: 'Switzera ADF Cd', 'Arial Narrow', Arial, Helvetica, sans-serif; font-size: 16px; text-transform: none; padding:5px 15px; margin:5px 0 0 0; text-shadow: 0px 1px 0px #fff; }
 .recordItemTitle{ position:relative; }
