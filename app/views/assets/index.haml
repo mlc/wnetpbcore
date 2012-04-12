@@ -3,7 +3,7 @@
 - unless @assets.empty?
   = render :partial => "pagination"
   - @assets.each do |asset|
-    %div.recordItem
+    %div.recordItem{:id => "asset_#{asset.id}"}
       %div.recordItemTitle      
   
         %h2

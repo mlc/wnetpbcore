@@ -1,0 +1,5 @@
+if @destroyed_id
+  page.visual_effect :fade, "asset_#{@destroyed_id}", :duration => 0.5
+else
+  page.call 'alert', "That entry is still in use and can not be destroyed."
+end

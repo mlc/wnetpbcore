@@ -79,7 +79,7 @@ class AssetsController < ApplicationController
         flash[:warning] = "<strong>#{titles}</strong> has been deleted from the database."
         lastsearch
       end
-      format.js
+      format.js { render :partial => 'assets/destroy' }
     end
   end
 
